@@ -58,26 +58,26 @@
 % Fertility, Birth Spacing and Missing Girls
 % Where have all the girls gone: An analysis of sex-selective abortions
 
-\title{Sex-Selective Abortions, Fertility, and Birth Spacing
-% \protect\thanks{%
-% I am grateful to Andrew Foster and Darryl Holman for discussions about the method.
-% I owe thanks to three anonymous referees, Shelly Lundberg, Daniel Rees, David Ribar, 
-% Hendrik Wolff, seminar participants at University of Copenhagen, University of Michigan, 
-% University of Washington, University of \AA{}rhus, the Fourth 
-% Annual Conference on Population, Reproductive Health, 
-% and Economic Development, and the Economic Demography Workshop for helpful suggestions and comments.
-% I would also like to thank Nalina Varanasi for research assistance.
-% Support from the University of Washington Royalty Research Fund and the 
-% Development Research Group of the World Bank is gratefully acknowledged.
-% The views and findings expressed here are those of the author and
-% should not be attributed to the World Bank or any of its member countries.
-% Partial support for this research came from a Eunice Kennedy Shriver National
-% Institute of Child Health and Human Development research infrastructure grant,
-% 5R24HD042828, to the Center for Studies in Demography and Ecology at the
-% University of Washington.
+\title{Sex-Selective Abortions and Birth Spacing
+\protect\thanks{%
+I am grateful to Andrew Foster and Darryl Holman for discussions about the method.
+I owe thanks to three anonymous referees, Shelly Lundberg, Daniel Rees, David Ribar, 
+Hendrik Wolff, seminar participants at University of Copenhagen, University of Michigan, 
+University of Washington, University of \AA{}rhus, the Fourth 
+Annual Conference on Population, Reproductive Health, 
+and Economic Development, and the Economic Demography Workshop for helpful suggestions and comments.
+I would also like to thank Nalina Varanasi for research assistance.
+Support from the University of Washington Royalty Research Fund and the 
+Development Research Group of the World Bank is gratefully acknowledged.
+The views and findings expressed here are those of the author and
+should not be attributed to the World Bank or any of its member countries.
+Partial support for this research came from a Eunice Kennedy Shriver National
+Institute of Child Health and Human Development research infrastructure grant,
+5R24HD042828, to the Center for Studies in Demography and Ecology at the
+University of Washington.
 % Prior versions of this paper were presented under the title ``The 
 % Determinants of sex-selective Abortions.''
-% }
+}
 }
 
 \author{}
@@ -101,7 +101,7 @@
 
 
 \begin{document}
-\graphicspath{{graphs/},{figures/}}
+\graphicspath{{figures/}}
 \DeclareGraphicsExtensions{.jpg,.pdf,.mps,.png}
 
 % \setcounter{page}{-1}
@@ -121,29 +121,24 @@
 \thispagestyle{empty}
 
 
-% \newpage
+\newpage
 \doublespacing
 
 
 \begin{abstract}
 
 % Demography abstract
-\noindent This paper addresses two main questions:
-what is the relationship between fertility and sex selection 
-and
+\noindent This paper addresses the question:
 how does birth spacing interact with the use of sex-selective abortions? 
 I introduce a statistical method that incorporates how sex-selective abortions 
 affect both the likelihood of a son and spacing between births.
 Using India's National Family and Health Surveys,
-I show that falling fertility intensifies use of sex selection, leading to use at 
-lower parities, and longer spacing after a daughter is born.
+I show that use of sex selection leads to longer spacing after a daughter is born.
 Women with 8 or more years of education, both in urban and rural areas, are the main users 
-of sex-selective abortions and have the lowest fertility.
-Women with less education have substantially higher fertility and do not appear to use 
-sex selection.
+of sex-selective abortions.
+Women with less education do not appear to use sex selection.
 Predicted lifetime fertility for high-education women declined more than 10\% 
 between 1985--1994, when sex selection was legal, and 1995--2006, when sex selection was illegal.
-Fertility is now around replacement level.
 Abortions per woman increased almost 20\% for urban women and 50\%
 for rural women between the two periods, suggesting that making sex selection illegal has 
 not reversed its use.
@@ -159,9 +154,6 @@ Finally, sex selection appears to be used to ensure one son rather than multiple
 %------------------------------------------------------------------------
 
 \section{Introduction\label{sec:intro}}
-
-% India's male to female ratio increased almost continuously during the last century, 
-% mainly because of excess mortality of girls \citep{murthi95,dyson01}.
 
 The males-to-females ratio at birth increased dramatically over the last three 
 decades in India as access to prenatal sex determination expanded.%
@@ -203,87 +195,18 @@ There is substantial disagreement on whether sex-selective abortion is used for 
 first birth \citep{retherford03b,jha06}.
 }
 
-I address two important questions that the prior literature has been unable
-to examine because of the simple method's limitations.
-First, what is the relationship between fertility decisions and use of sex selection?
-Second, how does birth spacing interact with use of sex-selective abortions?
+I address an important questions that the prior literature has been unable
+to examine because of the simple method's limitations:
+how does birth spacing interact with use of sex-selective abortions?
 I introduce a novel method that directly incorporates that sex-selective 
 abortions affect both the likelihood of a son being born \emph{and} the duration between 
 births.
-I use the method to argue that differences in fertility over time and between groups
-explain a substantial portion of the changes in the use of sex selection in 
-India, and to show how spacing between births play an important role in our understanding 
-of fertility and sex selection decisions.
+I use the method to show how spacing between births play an important role in our 
+understanding of sex selection decisions.
 
-We already know that fertility and son preference are related from the substantial literature
-on fertility stopping behavior before sex selection was available.
-This literature shows that families are more likely to stop childbearing after the 
-birth of a son than after the birth of a daughter
-\cite[see, for example,][]{Das1987,Arnold1997,clark00}.%
-\footnote{
-\citet{filmer09} analyse the relationship between the sex composition of previous
-children and subsequent fertility behavior using data from 64 countries.
-}
-It is also easy to see how declining fertility may increase use of sex selection.
-Take a family that wants one son.
-If the family is willing to have up to 4 children, the probability of having a son
-is more than 94 percent, even without sex selection, and that increases to almost 99 
-percent if the family is willing to have up to 6 children.%
-\footnote{
-The probability of not having a son are 48.8 percent for one child, 23.8 percent for
-two children, 11.6 percent for 3 children, 5.7 percent for 4 children, 2.8 percent
-for 5 children, and 1.4 percent for 6 children.
-}
-% If the family is willing to have up to six children, the probability of having a son
-% is more than 99 percent, even without sex selection.
-If the desire is instead for one son \emph{and} a maximum of two children, there 
-is a 24 percent chance that the family will have to resort to sex selection to achieve 
-both targets.
-% Working in the opposite direction, the stated preference for sons appears to decline with 
-% lower fertility \citep{das_gupta97,bhat03}.
-Despite these opposite targets, there is little empirical analysis of 
-the effects of fertility on sex selection using individual level data 
-\citep{park95,Ebenstein2011}.%
-\footnote{
-\citet{Dharmalingam2014} examine how state level fertility in India
-relates to desired family size and son preference over time, but does 
-not look at how fertility preferences shape the decision on sex-selective 
-abortions.
-At country level \citet{Bongaarts2013} shows how sex ratios at births are 
-only elevated for countries with lower fertility and
-\citet{Bongaarts2015} use national level estimates of the relationship
-between sex ratio at birth and fertility as part of their
-prediction of the number of missing women past and present.
-Simulations suggest that in Korea introduction of sex selection
-changed family size little, but did result in abortions
-of female fetuses equal to about 5 percent of actual female
-births \citep{park95}.
-For China allowing a three-child policy has been predicted to 
-increase the fertility rate by 35 percent, but also reduce the
-number of girls aborted by 56 percent \citep{Ebenstein2011}.
-}
-
-
-
-% Not only can a decline in desired fertility increase the use of sex selection, 
-% increasing the availability of prenatal sex determination also allows a 
-% woman to reach a desired number of sons with fewer births.
-% To fully understand the use of sex selection we therefore need
-% to understand both its use by parity \emph{and} by the fertility decision.
-% This is especially important if lower fertility is the driver of the
-% increased use of sex selection.
-
-
-% The use of sex-selective abortions may increase over time for a number of different reasons.
-% 1. preferences can change to make people desire boys more than before
-% 2. the return to girls can fall further 
-% 3. desired fertility can fall (even if nothing else changes)
-% 3. the cost of sex-selective abortions can fall, which increases its use even though
-% there are no other changes.
 
 % [literature on birth spacing - why spacing is important]
 
-Closely related to the overall fertility decisions are decisions on  spacing between births.
 In the absence of sex-selective abortions, son preference often leads to a shorter duration 
 until the next birth if the previous birth was a daughter  
 \citep[see, for example,][]{Das1987,Rahman1993,Pong1994,Haughton1996,Arnold1997}.
@@ -358,26 +281,17 @@ childbearing is complete.
 
 
 % [contribution of paper]
+[TK maybe not focus so much on the simple method but rather understanding son preference].
 The main contribution of this paper is the introduction and application of a method that 
-incorporates the decisions about fertility, birth spacing, and sex-selective abortions.
-The method allows us to better understand the relationship between these three decisions.
-% The method allows us to better understand the relationship between sex-selective abortions, 
-% fertility, and birth spacing.
+incorporates the decisions about birth spacing, and sex-selective abortions.
 The empirical model is a competing risk, non-proportional hazard model with two exit 
 states: either a boy or a girl is born.
-This approach has three major advantages over the simple method.
-First and foremost, it models fertility and spacing decisions jointly with the birth 
-outcome, which makes it possible to better understand how changing fertility decisions
-affects the use of sex selection.
+This approach has TK major advantages over the simple method 
+
 Secondly, by explicitly incorporating censoring of birth spacing, it addresses any 
 potential bias from ignoring how sex selection decisions may change with duration from 
 the previous birth.
-Finally, the method allows us to predict completed fertility, total number of abortions, 
-and final sex ratio over a woman's reproductive life cycle.
-These provide a better way of measuring changes in the use of sex selection 
-than what we can get from individual parities---especially because individual 
-parities may show a decline in sex selection at the same time as overall
-use is increasing.
+
 None of these is possible using the simple method.
 
 % [EXPLAIN RESULTS HERE]
@@ -385,16 +299,7 @@ None of these is possible using the simple method.
 I apply the method to birth histories from India's National Family and Health Surveys 
 for Hindu women covering the period 1972 to 2006. 
 There are three main findings.
-First, fertility is an important factor in the decision to use sex-selective 
-abortions.
-On the one hand, women with fewer than 8 years of education have relatively high fertility 
-and do not appear to use sex selection.
-On the other hand, better-educated women in both urban and rural areas have much lower
-fertility and are the main users of sex-selective abortions.
-For women with 8 or more years of education and only daughters the 
-use is substantial: around 60 percent of the children born are boys.
-Furthermore, as better-educated women's fertility has declined over time, sex selection 
-occurs for earlier and earlier parities and has correspondingly increased in intensity.
+
 There is, however, still no evidence of sex selection being used on the first birth.
 
 Secondly, sex selection appears to be used for securing one son, rather than a large 
@@ -406,82 +311,26 @@ the higher child mortality in rural areas.
 These results are in line with the differential stopping behavior observed in many studies
 before sex selection became available \citep{repetto72,arnold98,dreze01}.
 
-Finally, 
-the legal steps taken to combat sex-selective abortions have not been able 
-to reverse its use.
-In 1994, the Central Government passed the Prenatal Diagnostic Techniques (PNDT) Act 
-making determining and communicating the sex of a fetus illegal.%
-\footnote{
-Abortion has been legal in India since 1971 and still is.
-The Act is described in detail at \href{http://pndt.gov.in/}{http://pndt.gov.in/}.
-The number of convictions has been low.
-It took until January 2008 for the first state, Haryana, to reach 5 convictions.
-Hence, private clinics operate with little risk of legal action \citep{Sudha1999}.
-Maharashtra was the first state to pass a similar law in 1988.
-}
-In the period 1985-1994 the predicted total number of abortions per 100 women by the 
-end of childbearing was 8 for urban women and 6.8 for rural women.
-As completed fertility for high-education women fell to now 
-around 2 in urban areas and 2.6 in rural areas, 
-the number of sex-selective abortions 100 women are predicted to have 
-during their childbearing years has increased to 9.4 for urban women and 
-10.5 for rural women.
-In other words, close to one in ten well-educated women will now have at least 
-one abortion motivated by sex selection during their childbearing.
-Hence, although it is possible that the PDNT Act slowed the increase in use 
-of sex selection, the total predicted number of abortions per woman continued 
-to increase after the law was enacted.
-The end result is a sex ratio across all children of 53.7\% boys for well-educated 
-urban women and 53.4\% for well-educated rural women.
-
-% This is a substantial increase in sex-selective abortions compared to
-% the period before the practice was made illegal nationwide in India in 1994.
 
 
 
 
+\section{Theoretical Framework\label{sec:model}}
 
+[TK Calling this a model will be overkill - save the model for the fertility paper]
 
-\section{Theory\label{sec:model}}
+[TK find examples of the son preference spacing papers and look at what they did
+for "theory"]
 
-The model I present here serves three purposes.
-First, it allows me to illustrate how fertility, sex selection, and birth 
-spacing interact when changing the cost of children and access to sex selection.
+The model I present here serves two purposes.
+First, the model informs the empirical strategy presented below.
 Second, I show that there are cases where parents reconsider their decision to 
 use sex selection between births, which underscores why 
 using only observed births may provide a biased view of how much
 sex selection takes place and what the final sex ratio will be.
-Finally, the model informs the empirical strategy presented below.
 
-In the model, parents decide on fertility sequentially,
-given the number of boys and girls they already have.
-Parents fully control fertility in each period and the only
-source of uncertainty is whether they conceive a boy or a girl.
-This means that spacing between births arise only from 
-the use of sex selection.%
-\footnote{
-A more realistic approach would have parents choose how 
-``intensive'' they want to use contraceptives, where the
-intensiveness translates into a stochastic conception process,
-so that parents do not directly control the timing of births 
-but rather the probability of having a birth in a given period.
-The added complexity would, however, not add anything substantial 
-to help answer the main question of what the relationship between fertility 
-and sex selection is, and would detract from the main source of uncertainty,
-which is whether the couple will conceive a male or female fetus.
-Assuming that parents fully control fertility is relatively common 
-in the economics literature on dynamic models of fertility, such as
-\citet{Happel1984}, \citet{wolpin84}, \citet{rosenzweig85}.
-The empirical approach does allow for stochastic occurrence of births
-through the use of a hazard model.
+[move discussion of spacing from footnote above to here?]
 
-See \citet{Leung1991} for a model that incorporates both stochastic 
-births based on a chosen level of contraception and differential 
-preferences for boys and girls.
-The model does not, however, allow for abortions and it does
-not appear possible to extend the model to incorporate abortions
-and still solve it an similar manner.
-}
 This is obviously a simplification and since the interaction
 between son preference and spacing is at the core of this paper,
 I first discuss factors that may affect spacing between birth.%
@@ -545,18 +394,6 @@ on the specification of the depreciation function.
 See also the discussion in \citet[p 315]{Hotz1997}
 and references therein.
 }
-% %
-% \footnote{
-% As \citet{Heckman1976} show an increasing
-% income stream can also lead to longer spacing.
-% If children are costly in each period, as in the
-% model presented here, parent may use contraception to wait for
-% sufficiently higher income before having the next child.
-% Notice, that we would expect both the income and the
-% cost of children to increase as women's education goes up and
-% it is likely that the cost of children increases faster
-% than income.
-% }
 
 Finally, increased reliability of access and effectiveness of
 contraceptive can lead to shorter spacing between births 
@@ -898,44 +735,9 @@ These are available upon request.
 }
 
 
-In the absence of prenatal sex determination, stronger son preference is often thought 
-to increase overall fertility.
-That is not the case here.
-In fact, there is little correlation between the weight placed on utility from boys and 
-fertility.%
-\footnote{
-This is confirmed by regressing the weight places on sons, cost of children,
-and discount factor against fertility for the expanded set of values.
-}
-Similarly, parents' discount factor has no impact on fertility in the absence of
-prenatal sex determination.
-The one factor that does affect fertility is the cost of children;
-increasing the cost of children substantially reduces fertility.
 
 % Access / cost of prenatal sex determination
 
-Introducing prenatal sex determination has two opposing effects on fertility 
-in the model.
-On one hand, it takes fewer births to reach a desired number of sons and this 
-reduces fertility.
-On the other hand, parents no longer have to pay for unwanted children and 
-this ``wealth effect'' increases fertility.
-% The simulations show a small negative effect of lowering the cost of
-% sex selection holding the other parameters constant.
-The simulations show that for most combinations of son preference and 
-cost of children cutting the cost of abortion has little effect 
-on fertility---even if the cut is substantial---indicating that for this 
-set-up and the chosen parameter values the two effects 
-cancel each other out.%
-\footnote{
-Running regressions on the expanded simulation results show a negative, but
-statistically insignificant relationship between cost of abortion
-and fertility.
-For high son preference and cost of children the effect of 
-decreasing cost of prenatal scan is either nill or slightly
-positive.
-See also the discussions in \cite{leung94} and \cite{davies97}.
-}
 
 Lowering the cost of prenatal sex determination does, however, bias the overall sex 
 ratio further towards boys, and the stronger the son preference and the 
@@ -972,26 +774,6 @@ individual parity results.
 It also highlights the need to incorporate fertility progression into
 estimates, something the simple model is incapable of.
 
-
-% Cost of children 
-
-The strongest driver of fertility in the model is the cost of
-child maintenance per period.
-% For a period maintenance cost of 12 fertility is between 7 and 7.5,
-% while for a cost of 22 fertility it is only 2.
-As fertility decreases with higher cost of children, sex ratios 
-become more male biased---although it is possible that there is 
-non-linearity in the effect of child cost on sex ratios.%
-\footnote{
-The changes in sex ratio are not uniformly positive, possibly because 
-the discrete nature of fertility decisions combined with the uncertainty 
-of the sex of the next conception produce knife-edge cases that can
-dramatically swing the outcomes.
-}
-This non-linearity also shows up in the number of abortions 
-and spells where a prenatal scan has been used, 
-but the overall trend is towards more abortions and more spells with
-prenatal scan per birth as the cost of children increase.
 
 % Son preference 
 
@@ -1049,69 +831,6 @@ This is a concern because the way we currently measure son preference
 allows us to capture only the distribution preference, and 
 the different types of son preference likely have different policy 
 implications.
-
-% The non-uniform effect in spacing by parity when changing
-% the cost of prenatal scan show up here as well.
-% Consider, for example, the case when cost of prenatal scan falls from 20
-% to 16 when cost of children is 16. 
-% The average spacing for parity 5 births falls from 1.44 to 1.18, but
-% the spacing for parity 4 births increases only from 1 to 1.09. 
-% What this hides is, of course, that there are substantially more 
-% parity 4 births than there are parity 5 births--and only a slight 
-% decline in fertility from 4.16 to 4.11---and that the number of
-% abortions per 100 woman doubles. 
-
-% non-uniform effect in spacing by parity
-% Interestingly, something similar happens when there is no son preference
-% See a=0.5, k = 18 all p. Fourth parity reduces throughout, but third parity
-% increases throughout.
-
-% from p= 20 to p=16 it looks like sex selection is falling overall
-% because the average spacing goes down substantially for parity 5 (1.44 to 1.18)
-% and spacing for parity 4 only increases from 1 to 1.09
-
-% Less clear but generally similar is k = 14]
-
-
-% The problem with testing this idea is that balance would, for example,
-% show up as people using sex selection on having 2 girls and 1 boy and
-% the desired fertility is 4. 
-% But, if people have high alpha then we would get the same outcome.
-
-% [something on the importance of this and the idea that are 
-% multiple forms of son preference.
-% people may treat their children equally, but would not abort
-% a male to ensure equal number of sons and daughters]
-
-
-% Discount rate
-
-The discount rate affects fertility little, but sex ratios 
-become more biased the more patient people are (higher $d$).%
-\footnote{
-If son preference is very strong the effect appear to 
-depend on the cost of children. 
-For low cost of children higher impatience leads to higher
-fertility, but for higher cost of children it is sometimes reversed.
-Furthermore, these effects are not very strong or clear and
-potentially non-linear.
-}
-% The motivation for this is that less weight you place on the future
-% the more appealing it is to simply have another child instead of
-% paying for prenatal sex determination, which is ``wasted'' if
-% you have a boy.
-Similarly, the number of abortions and the number of spells where
-prenatal scans are used are higher the more 
-weight is place on future utility over current utility.
-Just like the discount rate, increasing parents'  
-horizon (larger $T$) changes fertility little, but does tend to 
-increase the sex ratio in favor of boys when there is access 
-to sex selection.%
-\footnote{
-These simulation results are presented in the online Appendix.
-}
-Correspondingly, the number of abortions are higher the 
-longer the time horizon.
 
 % Highlights and tie into empirical model:
 
@@ -1195,13 +914,6 @@ the results may look different.
 % for balance and for parents to change their decision on use
 % of sex selection between births.
 }
-First, the strongest driver of increased use of sex selection is 
-the fertility decline that arise from an higher cost of 
-children---for example because of more education for women or 
-migration to urban areas.
-% As discussed, an important predictor of cost of children is the
-% mother's education---more educated women have higher opportunity 
-% cost of time.
 The increased use of sex selection shows up both in the 
 proportion of boys among births and longer spacing between 
 births---and the higher the parity the longer the duration between 
@@ -1226,34 +938,18 @@ As long as parents are only willing to abort female fetuses, declining
 fertility will lead to increased use of sex selection to ensure 
 a balanced number of sons and daughters.
 
-% Wonder if it would be possible to that some of the
-% couples with a son already that look like they are
-% using sex selection were not planning on having the
-% last child, but with prenatal testing and access to
-% abortion they would abort a female fetus but not
-% a male one, even if the pregnancy was ``unintended''
-% (as in having selected a high $e$, but random 
-% chance lead to a pregnancy anyway.
-
 
 % Empirical method
-The model highlights three major limitations of the simple 
+The model highlights two major limitations of the simple 
 empirical method, which a better empirical approach needs to 
 allow for.
-% First, as fertility declines the proportion of boys among births 
-% increases and the spells between births become longer.
-% Second, the higher the parity the longer the duration between births because of
-% the more intensive use of sex selection.
-% Finally, households may reverse its decision to use sex selection within a spell.
-First, the simple model cannot capture changes in fertility and the extent 
-to which these fertility changes drive the use of sex selection.
-Second, increased use of sex selection leads to longer spacing which,
+First, increased use of sex selection leads to longer spacing which,
 everything else equal, reduces the number of births available for 
 estimation in the simple model and thereby lowers its precision
 because fewer parents will make it to a given parity by the time of the survey.
 Furthermore, the more intensively sex selection is used the larger 
 the decline in sample size.
-Finally, by using only observed births the simple method cannot capture
+Second, by using only observed births the simple method cannot capture
 when parents change their decision on the use of sex selection;
 with a reversal the spell can still result in the birth of a girl.
 This last point is especially important when trying to establish whether 
@@ -1989,849 +1685,417 @@ the online Appendix.
 
 
 
-\subsection{Desired Fertility and Sex Selection}
 
-A first step to understand the relationship between fertility and sex selection
-is to examine how use of sex-selective abortions vary with self-reported desired 
-fertility.
-If lower fertility drives sex selection and desired and actual fertility are
-at least partly correlated, women with lower desired fertility should be more 
-likely to use sex selection than women with higher desired fertility, 
-holding other characteristics constant.
-Figure \ref{fig:results_spell2_high_want} presents results by desired fertility 
-for the second spell of women with 8 or more years of education whose first child was a 
-girl.%
+\subsection{Comparing the Hazard and Simple Models}
+
+As detailed in the main paper, one of the main advantages of the hazard model 
+approach is that it can be used to predict what completed fertility, number of abortions, 
+and sex ratios will be once women are done with childbearing.
+This cannot be done with the simple model because it does not predict fertility
+progression, does not take into account censoring, and cannot capture if parents
+change their use of sex selection within a spell.
+% This is possible because the hazard model approach uses both censored and 
+% uncensored observations, which, in turn, allows me to predict both how many 
+% women will have a next birth and the final sex ratio for that parity, under the 
+% assumption that the patterns of spacing and use of sex selection remain 
+% the same within a spell.
+We can, however, still compare differences in predicted sex ratios for 
+\emph{individual} parities.%
 \footnote{
-For women with living children the question asked was
-``If you could go back to the time you did not have any children and could choose exactly 
-the number of children to have in your whole life, how many would that be?'', while
-for women with no living children the question was
-``If you could choose exactly the number of children to have in your whole life, how many 
-would that be?''
-% P 116 Appendix F in NFHS book
+The simple model uses only observed births and the predicted sex ratio is 
+therefore simply what we observe for the relevant uncensored sample.
 }
 
-A majority of better-educated women report that they want two or fewer 
-children, and the proportion who wants two or fewer is increasing over time.%
+For each parity, the simple model is
+\begin{equation}
+Y_i = \gamma + \alpha' \mathbf{Z_i} + \beta' \mathbf{X}_{i} + \epsilon_i,
+\end{equation}
+where $Y$ is a dummy variable that takes the value 1 if the child born is a boy and zero 
+if it is a girl, and the vectors of explanatory variables, $\mathbf{Z}_{i}$ and 
+$\mathbf{X}_{i}$, are the same as for the proposed method, except that 
+$\mathbf{Z}_{i}$ obviously does not include the baseline hazard and that there are 
+no time dependence.%
 \footnote{
-In the first period 2,055 out of 8,202 (25\%) women wanted 3 or more 
-children, including giving a non-numeric response.
-In the second period this number was 2,583 out of 16,600 (16\%) 
-and in the third period it was 1,264 out of 13,610 (9\%).
-} 
-To achieve a large enough sample of women who want three or more children, I use all 
-second spells that began in the period 1985 to 2006.
-This allows me to estimate non-proportional hazards by area of residence, sex of 
-previous child, and desired fertility.
-For both rural and urban women, the left panel shows the results for women who want two 
-or fewer children and the right panel shows the results for women who 
-want three or more children.%
+To ease presentation, the indicator for parity number is not shown.
+}
+I estimate this using a logit model, although a linear probability model leads to
+similar results.
+This model is estimated on all observed births for a given parity in the relevant 
+period to ensure that the results are as close to the standard method of 
+examining sex selection \citep[see, for example, ][]{retherford03b,jha06,abrevaya09}.
+
+
+% Two factors determine the differences in the predicted sex ratio and number 
+% of abortions between the two models.
+% First, how many women have censored spells but will have a birth after the survey.
+% Second, how much use of sex selection changes within a spell.
+% % If there are few censored spells or the women with the censored spells have low likelihoods
+% % of having a next birth the two models produce similar predicted sex ratios and 
+% % number of abortions.
+% % If there is little change in the use of sex-selective abortions over a spell then the
+% % predicted sex ratio is going to be similar for the two models, although the predicted
+% % number of abortions will differ depending on how many censored observations there are
+% % and how likely they are to exit with a birth.
+% Consider four possible combinations of the two factors.
+% First, there are few censored birth spells and use of sex selection is constant over
+% the spell.
+% In that case, the predictions will be similar across the two models.
+% Second, there are many censored birth spells and use of sex selection is constant over
+% the spell.
+% The predicted sex ratios will be similar, but the simple model will predict a too low
+% number of abortions per woman and fertility will appear to be falling faster than it is.
+% Third, there are few censored birth spells and use of sex selection changes substantially
+% with spell length.
+% The sex ratios again are close to each other in the two models, but the estimated use of
+% abortions will be biased in the simple model because it cannot account for the changes
+% in use of sex selection over the spell.
+% Finally, there are many censored birth spells and use of sex selection changes substantially
+% with spell length.
+% In this case the predicted sex ratio based on the simple model will be biased.
+% Specifically, if use of sex selection declines over the spell, the simple model 
+% will predict a higher final sex ratio than the hazard model.
+% Similarly, the predicted number of abortions will also be biased. 
+% With sex selection and falling fertility censored spells become more and more likely,
+% but how much this matter is an empirical question.
+
+% To determine the predicted number of abortions I use the natural sex ratio.
+% On average, 105 boys should be born per 100 girls born, which corresponds exactly
+% with what we observe for first births in India as seen above.
+% Hence, if we observe $b$ boys, then we should expect to see $b\frac{100}{105}$ girls.
+% If we observe $g$ girls the number of abortions is therefore $b\frac{100}{105}-g$.
+% The standard approach is to use the observed sex ratio for a given parity and 
+% calculate the number of abortions using this formula.
+% For the hazard model it is, however, possible to calculate the number of predicted
+% abortions for each time period based on the predicted sex ratio and the 
+% number of women predicted to exit with a birth in that period using the same formula.
+% Summing across the entire period covered by the hazard model provides a predicted total 
+% number of abortions.%
+% \footnote{
+% There is no difference between the two method in the predicted number of abortions for 
+% those women for whom we observe the subsequent birth.
+% }
+
+% [NEED TO WORK THROUGH A MATH EXAMPLE OF THE FIRST FACTOR: IS THAT REALLY CORRECT?]
+% period 0: 100 births 65 boys 35 girls 26.90476191
+% period 1: 100 births 60 boys 40 girls 17.14285714
+% period 2: 100 births 55 boys 45 girls 7.380952381
+%                     180 boys 120 girls abortions: 51.42857143
+% 
+% period 0: 1000 women: 512 boys 400 girls , 88 abortions  87.61904762
+% period 1:   98 women: 50 boys 42 girls, 6 Abortions  5.619047619
+% period 1:    6 women: 3.073 boys 2.927 girls 0 abortions -0.000333333
+%                     562 boys 442 girls    93.23809524 93.2377619 93.23776191
+% 
+% [HOW TO CALCULATE NUMBER OF ABORTIONS HERE]
+%
+% In addition, the standard model does not provide any information about abortions
+% for those women for whom we do not observe a birth.
+% In contrast, the hazard model can be used to predict the number of abortions even for 
+% those women who have not yet had a birth at the parity of interest.
+% This number is the sum of two set of predictions.
+% First, the number of abortions that are predicted have occurred up to the time of the 
+% survey for women without a given parity birth.
+% Second, we can predict how many additional abortions will take in the future for these
+% women from the time of censoring until the end of the spell period used for the hazard
+% model.
+% This follows directly from the standard feature of hazard models where one can predict
+% the likelihood of future exits for those censored.
+% To the extent that people change their use of sex-selective abortions within a spell
+% the two numbers will be different.
+%
+% [TRYING TO WORK THROUGH THE SET-UP HERE]
+% 
+% For each women who had one birth we follow her until 24 quarters (6 years) after the 
+% birth of her first child. 
+% Contrary to the standard logit model we can predict two things: How likely it is that she
+% will have her second child during a particular quarter and what the sex ratio will be in 
+% that quarter.
+% In other words, by the end of the 24 quarter period we will know the probability of her
+% having had a child, which is what is shown by the survival curves in the graphs above,
+% and expected sex ratio for all women like her.
+% So, one women might have 73 percent probability of giving birth to a second child within
+% the 24 quarters with 58.3 percent probability of a boy and a 41.7 percent probability
+% of a girl, whereas another might only have a 29 percent probability of giving birth to a 
+% second child with a 55.4 percent probability of a son and a 44.6 percent probability of a
+% girl.
+% 
+% Summing across all women with specific characteristics, like being an urban woman with
+% a girl as her first child, we can then predict how many children will be born to these
+% women in the 6 years after the birth of their first child, together with information on
+% how many abortions will have taken place and the final sex ratio for those second-born
+% children.
+% 
+% The advantage of this is that it is not reliant just on observed births.
+% To the extent that the probability of using sex-selective abortions changes with time since
+% the last birth the results from the hazard model prediction will be different from the
+% Logit model prediction (which is just the sex ratio for birth observed in the 6 year 
+% period).
+% Furthermore, even if the probability of sex-selective abortions does not change substantially 
+% with duration since last birth, the hazard model provides an estimate of how many births
+% there will be and what the final sex ratio for a given parity birth will be.
+% The more censored observations there are the bigger the difference between the logit and
+% the hazard models are going to be.
+% This is important because that those numbers are an input into determining what the
+% population sex ratio will be.
+
+% [is there a way of understanding the difference between censored and uncensored women
+% using the hazard model?
+% One option would be to run everybody until they are censored and see if that fits with
+% the logit numbers.
+% that should presumably match the logit results except for picking up differences in use
+% of sex-selective abortions. 
+% This means that the births should be the same for the two methods.
+% 
+% For those censored we could then run the rest of the time. 
+% This would require that we started from one woman again, instead of continuing from the
+% censoring left off.
+
+
+\begin{table}[htbp]
+\begin{center}
+\begin{footnotesize}
+\begin{threeparttable}
+\caption{Comparison of Hazard and Simple Models for  \protect\linebreak
+Women with 8 or More Years of Education}
+\label{tab:compare2}
+\begin{tabular} {@{} l D{.}{.}{5.2} D{.}{.}{5.2} D{.}{.}{5.2} D{.}{.}{5.2}   @{}} \toprule
+                                  &  \multicolumn{2}{c}{Urban}        & \multicolumn{2}{c}{Rural}         \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+                                  & \mco{Simple}     &  \mco{Hazard}   &  \mco{Simple}    & \mco{Hazard}      \\   \midrule
+                                  & \multicolumn{4}{c}{1985--1994 - Second Birth} \\ \cmidrule(l){2-5}
+                                  & \multicolumn{4}{c}{1 girl} \\
+Number of women\tnote{a}          &             & 4,869   &         & 3,105   \\
+Births\tnote{b}                   &     3,848   & 3,926   & 2,417   & 2,795   \\
+Percentage boys                   &      54.0   &  54.7   &  52.6   &  53.5   \\
+Sex ratio (boys per 100 girls)    &     117.4   & 120.7   & 110.9   & 115.1   \\
+\addlinespace 
+                                  & \multicolumn{4}{c}{1985--1994 - Third Birth}  \\ \cmidrule(l){2-5}
+%                                   & \multicolumn{4}{c}{1 boy and 1 girl}        \\
+% Number of women\tnote{a}          &             & 3,460   &         & 1,987   \\
+% Births\tnote{c}                   &     1,431   & 1,558   & 1,107   & 1,336   \\
+% Percentage boys                   &      53.0   &  52.5   &  53.5   &  54.6   \\
+% Sex ratio (boys per 100 girls)    &     112.9   & 110.4   & 115.0   & 120.2   \\
+% \addlinespace
+                                  & \multicolumn{4}{c}{2 girls}        \\
+Number of women\tnote{a}          &             & 1,654   &         &   982   \\
+Births\tnote{c}                   &     1,034   & 1,092   &   682   &   853   \\
+Percentage boys                   &      60.8   &  63.7   &  54.7   &  57.4   \\
+Sex ratio (boys per 100 girls)    &     155.3   & 175.3   & 120.7   & 134.6   \\
+\addlinespace 
+                                  & \multicolumn{4}{c}{1995--2006 - Second Birth} \\ \cmidrule(l){2-5}
+                                  & \multicolumn{4}{c}{1 girl} \\                                                  
+Number of women\tnote{a}          &             & 3,774   &         & 2,823   \\
+Births\tnote{b}                   &     3,031   & 2,704   & 2,489   & 2,407   \\
+Percentage boys                   &      58.0   &  58.6   &  56.0   &  56.9   \\
+Sex ratio (boys per 100 girls)    &     138.1   & 141.3   & 127.1   & 132.2   \\
+\addlinespace 
+                                  & \multicolumn{4}{c}{1995--2006 - Third Birth}  \\ \cmidrule(l){2-5}
+%                                   & \multicolumn{4}{c}{1 boy and 1 girl}        \\
+% Number of women\tnote{a}          &             & 2,357   &         & 1,819   \\
+% Births\tnote{c}                   &       830   &   775   &   853   &   998   \\
+% Percentage boys                   &      53.9   &  52.9   &  55.5   &  56.5   \\
+% Sex ratio (boys per 100 girls)    &     116.7   & 112.1   & 124.5   & 129.8   \\
+% \addlinespace
+                                  & \multicolumn{4}{c}{2 girls}        \\
+Number of women\tnote{a}          &             & 1,000   &         &   863   \\
+Births\tnote{c}                   &       695   &   600   &   690   &   661   \\
+Percentage boys                   &      65.5   &  62.4   &  62.0   &  61.7   \\
+Sex ratio (boys per 100 girls)    &     189.6   & 166.0   & 163.4   & 161.0   \\
+\bottomrule
+\end{tabular}                        
+\begin{tablenotes} \tiny
+\item \hspace*{-0.5em} \textbf{Note.} 
+The simple models are estimated using logit on all births for a given parity that
+occurred during the relevant time period.
+The hazard models are estimated using all spells that began in the relevant time period.
+For the second birth the hazard model covers the period from beginning of spell to 6 
+years (24 quarters) after the birth of the first child.
+For the third birth it covers the period from beginning of spell to 7.25 years 
+(29 quarters) after the birth of the second child for the period 1985--1994 and from 
+beginning of spell to 5.75 years (23 quarters) after the birth of the second child for 
+the period 1995--2006.
+\item[a] Number of women in period who began the spell with given sex composition of prior 
+child/children in the relevant period.
+\item[b] For Logit model the number of women who are observed to have a second birth
+in the period. 
+For hazard model the predicted number of second births that will occur between beginning 
+of the spell and 6 years (24 quarters) after the birth of the first child.
+% \item[c] Number of women in period who had one boy and one girl as their first two children.
+\item[c] For Logit model the number of women who are observed to have a third birth
+in the period. 
+For hazard model the predicted number of third births that will occur between beginning of 
+the spell and 7.25 years (29 quarters) after the birth of the second child for the
+1985--1994 period and between beginning of the spell and 5.75 years (23 quarters) after 
+the birth of the second child for the 1995--2006 period.
+\end{tablenotes}
+\end{threeparttable}
+\end{footnotesize}
+\end{center}
+\end{table}
+
+I focus on those cases where there is evidence of sex-selective abortions: the spells
+from parity one to two and two to three for women with eight or more years of education.%
 \footnote{
-Restricting to wanting exactly 3 children has little to no impact on the spacing
-pattern, suggesting that higher desired number of children does not lead to
-substantially shorter spacing.
+The results for the spell from parity three to four are available on request.
+They are not presented because the number of educated women who end up with three births 
+and the probability of having a fourth birth are small, which makes
+comparing the simple and hazard models with any precision difficult.
 }
+Table \ref{tab:compare2} shows the number of women who enter the second and third spells
+for the hazard model,
+the number of births, observed in the case of the simple model and predicted in the case 
+of the hazard model, predicted percent boys, and the associated predicted sex ratio.
+It is possible for the number of births used for the simple model to be larger than the
+hazard models' predicted number of births because the simple model is based
+on all births that occurred in the period---independently of when the prior birth
+occurred---whereas the hazard model uses only spells that began in the period. 
 
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-2}
-\subfloat[Wants 2 or fewer children (N=7,779)]{
-    \begin{minipage}{0.31\textwidth}
-    \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-    \subfloat[Probability of a boy (\%)]{\includegraphics[width=\textwidth]{want_spell2_high_r8_pc}}\\
-    \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{want_spell2_high_r8_s}}
-    \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{-1}
-\subfloat[Wants 3 or more children (N=864)]{
-    \begin{minipage}{0.31\textwidth}
-    \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-    \subfloat[Probability of a boy (\%)]{\includegraphics[width=\textwidth]{want_spell2_high_r4_pc}}\\
-    \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{want_spell2_high_r4_s}}
-    \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{0}
-\subfloat[Wants 2 or fewer children (N=4,851)]{
-    \begin{minipage}{0.31\textwidth}
-    \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-    \subfloat[Probability of a boy (\%)]{\includegraphics[width=\textwidth]{want_spell2_high_r7_pc}}\\
-    \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{want_spell2_high_r7_s}} 
-    \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{1}
-\subfloat[Wants 3 or more children (N=1,077)]{
-    \begin{minipage}{0.31\textwidth}
-    \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-    \subfloat[Probability of a boy (\%)]{\includegraphics[width=\textwidth]{want_spell2_high_r3_pc}}\\
-    \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{want_spell2_high_r3_s}}
-    \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Desired fertility and predicted probabilities of having a boy and 
-no birth yet from 9 months after first birth for
-women with 8 or more years of education by quarter (3 month period). 
-Predictions based on first child a girl and woman age 22 at first birth.
-N indicates the number of women in the relevant group in the underlying samples.
-}
-\label{fig:results_spell2_high_want}
-\end{figure}
-
-Three main results stand out.
-First, the sex ratios by quarter for women who want 2 or fewer children show 
-substantial evidence of sex selection, while there is little evidence among those who want 
-3 or more.
-This supports that fertility is an important factor in the use of sex selection.
-Second, for women who want 2 or fewer children, use of sex selection is higher among urban 
-than rural women, but not significantly so.
-The proportion of boys born is between 55 and 60 percent and statistically 
-significant higher than the natural sex ratio for all quarters for urban women, whereas
-for rural women the proportion is generally 2 to 3 percentage points below the urban 
-level.%
-\footnote{
-For comparison, if 55 percent of children born in a given quarter were boys,
-approximately 14 percent of the female fetuses were aborted.
-Assume 105 boys per 100 girls born, the expected natural sex ratio.
-With $b$ boys, we should expect $b\frac{100}{105}$ girls born.
-If we observe $g$ girls the number of abortions is therefore $b\frac{100}{105}-g$
-and the percent aborted female fetuses is 
-$\frac{b\frac{100}{105}-g}{b\frac{100}{105}}\times 100$.
-With 55 percent boys we get $\frac{55\frac{100}{105}-45}{55\frac{100}{105}}\times 100 = 14.09$.
-The corresponding numbers for 60 percent and 65 percent boys are approximately 30 percent and
-43 percent of the female fetuses aborted.
-}
-
-Third, the effects of sex-selective abortions on spacing show clearly in the differences 
-across the survival curves for the different groups.
-A normal spacing pattern without sex-selective abortions---where most women have the second 
-child relatively early---leads to a survival curve with a steep slope first, followed 
-by a leveling off.
-This pattern is followed by rural women who want 3 or more children.
-As discussed above, use of sex-selective abortions should results in substantially
-longer spacing between births, which makes the survival curves appear more as 
-straight lines.
-Urban women who want 2 or fewer children show this pattern.
-
-Another way to see the effects of sex-selective abortions on spacing is to compare the 
-proportion of women who have not had a second birth yet at a specific time.
-Ten quarters into the spell---equivalent to 13 quarters (3\sfrac{1}{4} years) after the 
-first birth---just below 35\% of rural women who want 3 or more children have not had their 
-second birth yet, compared with more than 45\% among rural women who want 2 or fewer children.
-Similarly, among urban women about 35\% of those who want 3 or more children have not had 
-a second birth yet at 10 quarters after their first birth, compared with almost 55\% of 
-those  who want 2 or fewer.
-% These numbers reinforce that there is little sex selection among women who want 3 or
-% more children, regardless of whether they live in rural or urban areas, and that for
-% women who want 2 or fewer children more sex selection takes place among urban than
-% rural women.%
-% % \footnote{
-% % % proportions who end up with a second birth!
-% % The proportion of women who have not yet had a second birth at the end of the estimated
-% % spell period is higher for 
-% % }
-
-There are, however, three major methodological concerns with using self-reported 
-desired fertility.
-First, although the correlation between desired and actual fertility is positive,
-it is far from one.
-Second, it is potentially endogenous to the number of children a woman already has 
-and may be measured with error \citep{Jensen1985,Rasul2008,Ashraf2009}.
-Finally, there is much less variation in desired fertility than in actual fertility,
-making it difficult to precisely estimate changes in sex selection over time.
-I therefore next examine whether decreases in observed fertility over time are
-associated with increased use of sex-selective abortions.
-
-% The predicted percentage boys for the second, third and fourth spells for 
-% women with 8 or more years of education show that this is, indeed, the case.
-% As for the first spell, the results are presented using a representative woman
-% with the same characteristics as above, except that the ages at the beginning of
-% the spell are 22, 24 and 25 years for the second, third and fourth
-% spell and that the first spell length is set equal to 16 months.
-
-\subsection{Changes in Fertility over Time\label{sec:changes}}
-
-
-The first step when examining how declining fertility affects the use of sex selection is 
-to show how fertility has decreased over time.
-The challenge is that women who use sex selection have longer birth spacing, which 
-makes it look like they have lower fertility than they really do, and consequently would
-make the relationship between fertility and sex selection appear stronger than it really is.
-As I show below, and as suggested by the previous literature, women with one or more sons 
-do not appear to use sex selection.
-Hence, these women's fertility decisions will not be affected by the availability
-of prenatal sex determination techniques.
-I therefore show fertility progression only for women who have already had at least one 
-son, continuing to focus on the better-educated women.
+%
+% We begin with women who had a girl as their first child.
+% Table \ref{tab:compare2} shows the number of women who enter the second spell,
+% the number of births by the end of the six year period following the first birth,  
+% observed in the case of the logit model and predicted in the case of the hazard model, 
+% predicted number of abortions, and the sex ratio.%
+% \footnote{
+% The two latter obviously captures the same information and is both presented for
+% the reader's convenience.
+% }
 
 
 
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[2nd spell---has 1 boy (N=2,806)]{\includegraphics[width=\textwidth]{spell2_g1_high_r2_s}}\\
-        \subfloat[3rd spell---has 1 boy (N=1,409)]{\includegraphics[width=\textwidth]{spell3_g1_high_r4_s}}\\
-        \subfloat[3rd spell---has 2 boys  (N=780)]{\includegraphics[width=\textwidth]{spell3_g1_high_r2_s}}   
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-2}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[2nd spell---has 1 boy  (N=5,246)]{\includegraphics[width=\textwidth]{spell2_g2_high_r2_s}}\\
-        \subfloat[3rd spell---has 1 boy (N=3,460)]{\includegraphics[width=\textwidth]{spell3_g2_high_r4_s}}\\
-        \subfloat[3rd spell---has 2 boys (N=1,660)]{\includegraphics[width=\textwidth]{spell3_g2_high_r2_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{-1}
-\subfloat[1995--2006]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[2nd spell---has 1 boy  (N=3,969)]{\includegraphics[width=\textwidth]{spell2_g3_high_r2_s}}\\
-        \subfloat[3rd spell---has 1 boy (N=2,357)]{\includegraphics[width=\textwidth]{spell3_g3_high_r4_s}}\\
-        \subfloat[3rd spell---has 2 boys (N=1,098)]{\includegraphics[width=\textwidth]{spell3_g3_high_r2_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Predicted progression to birth for women with 8 or more years of education by 
-quarter (3 month period) conditional on having at least one boy. 
-Left column shows results prior to sex selection available, middle column before
-sex selection illegal, and right column after sex selection illegal.
-N indicates the number of women in the relevant group in the underlying samples.
-}
-\label{fig:fertility_progression_boys}
-\end{figure}
+For the 1985--1994 period---which is when sex selection become available---the 
+hazard model consistently predicts a higher sex ratio than the logit model.
+Furthermore, some of these differences are substantial.
+For urban women with 2 girls as their first two children, the hazard model
+predicts a sex ratio of 175 boys per 100 girls, whereas the simple method
+``only'' predicts 155 boys per 100 girls.
+The difference is smaller in rural areas but still 14 boys per 100 girls
+higher for the hazard model than for the simple model.
+A similar, if less pronounced pattern, show up for the second birth,
+where the hazard model predict 3 and 5 boys more per 100 girls for
+urban and rural women.
+
+For the latest period, 1995--2006, the hazard model still produces higher 
+predicted sex ratios for second birth and the differences are of a 
+similar magnitude to the 1985--1994 period.
+The predicted sex ratios for the third birth are, however, 
+higher for the simple model than for the hazard model.
+This difference is substantially for urban women where the difference 
+is 23 boys extra per 100 girls.  
+
+A possible explanation for these differences is that the simple model 
+fails to capture the move towards lower fertility and the subsequent 
+increase in the use of sex-selective abortions at earlier parities that 
+occurred over the periods.
+The results also suggest that the take-up of sex selection occurred 
+rapidly as the new methods became available and that this take-up
+is not fully captured by the simple model.
+More broadly, a possible interpretation of the differences is that
+the simple model will tend to underestimate when sex-selective abortions
+are initially spreading in use and overestimate when the spread of sex 
+selection is slowing.
+This is most clearly seen for the third births for urban women where
+the hazard model show a \emph{decline} is use of sex-selective abortions,
+consistent with the lower fertility as discussed in the main paper,
+while the simple model show a substantial increase. 
 
 
-\begin{figure}[htpb]
-\ContinuedFloat
-\centering
-\caption*{Rural}
-\setcounter{subfigure}{0}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[2nd spell---has 1 boy (N=1,404)]{\includegraphics[width=\textwidth]{spell2_g1_high_r1_s}} \\
-        \subfloat[3rd spell---has 1 boy (N=700)]{\includegraphics[width=\textwidth]{spell3_g1_high_r3_s}} \\
-        \subfloat[3rd spell---has 2 boys (N=370)]{\includegraphics[width=\textwidth]{spell3_g1_high_r1_s}}  
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{1}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[2nd spell---has 1 boy (N=3,381)]{\includegraphics[width=\textwidth]{spell2_g2_high_r1_s}}\\
-        \subfloat[3rd spell---has 1 boy (N=1,987)]{\includegraphics[width=\textwidth]{spell3_g2_high_r3_s}}\\
-        \subfloat[3rd spell---has 2 boys (N=945)]{\includegraphics[width=\textwidth]{spell3_g2_high_r1_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[1995--2006]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[2nd spell---has 1 boy (N=3,044)]{\includegraphics[width=\textwidth]{spell2_g3_high_r1_s}}\\
-        \subfloat[3rd spell---has 1 boy (N=1,819)]{\includegraphics[width=\textwidth]{spell3_g3_high_r3_s}}\\
-        \subfloat[3rd spell---has 2 boys (N=790)]{\includegraphics[width=\textwidth]{spell3_g3_high_r1_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{(Continued) Predicted progression to birth for women with 8 or more years of education by 
-quarter (3 month period) conditional on having at least one boy. 
-Left column shows results prior to sex selection available, middle column before
-sex selection illegal, and right column after sex selection illegal.
-N indicates the number of women in the relevant group in the underlying samples.
-}
-% \label{fig:fertility_progression_boys}
-\end{figure}
+% [CLOSING ARGUMENTS ON COMPARISON?]
+% [logit will tend to underestimate when sex-selective abortions is spreading/increasing
+% and overestimate when sex-selective abortions is declining.]
 
-Figure \ref{fig:fertility_progression_boys} shows the predicted progression to
-next birth for urban and rural women with 8 or more years of education, conditional on 
-having at least one boy, by the starting period of the spell, and within each period by 
-spell.%
-\footnote{
-Could the prior births for each of these groups have been the result of sex selection?
-As I show in the online Appendix there is little evidence of sex selection on first births,
-so it is unlikely that women with a son as their first child ended up with a 
-boy through anything other than random chance.
-Similarly, for the third spell group, women with two boys are unlikely to have used sex 
-selection since there is no evidence on sex selection on first birth and no evidence of 
-sex selection if a son is already present.
-It is possible that third spell women with one son and one daughter could 
-have used sex selection in a prior spell, if they had the girl as the first child, as
-described below.
-There is, however, little difference in fertility progression for the third spell between 
-women with two sons and women with one son and one daughter as their first children.
-}
-In all cases the proportion of women without a birth by the end of the spell period has 
-increased substantial.
-In other words, fertility has declined over time for both urban and rural women.
-Although it is possible that some women will have a child after the end
-of each estimated spell, it is unlikely to be a substantial number given the shape
-of the survival curves.
-
-For urban women with a son as the first child, the proportion who did not have a second 
-child 6 years after the birth of their first child increased from around 15\% in 
-1972--1984 period to more than 30\% in the 1995--2006 period.%
-\footnote{
-Recall that for the second and higher spell, the spells are estimated starting from the 
-fourth quarter after the birth of their previous child.
-Hence, 3 quarters has to be added to the spell lengths in the figure to get the actual
-spacing.
-}
-Similarly, the proportion who did not have a third child by 6\sfrac{3}{4} years after their second
-birth went from 40\% in the 1972--1984 period to almost 70\% in the 1995--2006 period
-if the woman already had one son, and from 45\% to more than 70\% if she had two sons.
-Rural fertility is higher, but the underlying pattern is the same.
-In all cases, more women finish the spell without another birth in the last period than 
-in the first.%
-\footnote{
-The results for the fourth spell---available in the on-line Appendix---show similar 
-results with women with at least one son experiencing large reductions in progression
-rates over time.
-}
-
-Changes over time for this group of women provides an indication of whether increased 
-availability of contraceptives affects the spacing between births over time.
-Increased use of modern, reversible contraceptives allows greater control over spacing, 
-potentially making the survival curves straighter if there are \emph{uniformly} distributed
-``preferences'' for how long spacing between births should ideally be.
-There are two reasons why this is not a substantial concern here.
-First, use rates of modern, reversible contraceptive have not changed much.
-For India as a whole current use of any modern method has gone from 36.5\% in NFHS-1 to 
-48.5\% in NFHS-3, but most of this increase has come from female sterilization, which has 
-increased from 27.4\% to 37.3\% over the same period 
-\citep[p.\ 127]{International-Institute-for-Population-Sciences-IIPS2007}.
-Second, survival curves in Figure \ref{fig:fertility_progression_boys} appear to have 
-retained their shapes across periods to the extent possible given fertility declines, 
-suggesting that the availability of contraceptives has not had a strong effect on the 
-spacing between births.
-Because the estimations are done separately by periods the similarity of shapes come from 
-the data, not from assumptions about functional form.
-
-% [refer to discussion in model section on opposite effect on fertility of access
-% to sex selection.
-% Also use R3's point on differences in costs between boys and girls and the
-% effect of access to sex selection on fertility.
-% Given that abortion is relatively cheap the decline in fertility would 
-% suggest that girls are not substantially more costly than boys.
-% Thank anonymous referee for this point.
-% Include Jat village paper reference on cost of sex selection.]
-
-The decline in fertility over time implicitly provide information on the relative
-cost of having a boy versus a girl.%
-\footnote{
-I am grateful to an anonymous reviewer for suggesting this point.
-}
-As discussed in Section \ref{sec:model}, there are two opposite effects of introducing
-sex selection on fertility: parents can reach their desired number of sons with fewer 
-births, which reduces fertility, but also do not have to pay for unwanted children,
-and this wealth effect will tend to increase fertility.
-The size of the wealth effect depends on the relative cost of boys and girls and the cost 
-of sex selection; if girls are very costly and abortion cheap the wealth effect will be
-larger, making it more likely that fertility increases with introduction of 
-sex selection.
-The cost of sex selection does, indeed, appear to be relatively low 
-\citep[see, for example][]{Khanna1997}.
-Hence, the decline in fertility after the introduction of sex determination is an 
-indicator that girls are not substantially more expensive than boys.
-
-\subsection{Effect of Declining Fertility on Sex-selective Abortions}
-
-\begin{figure}[htpb]
-\centering
-\caption*{Second spell for urban women---first child a girl}
-\setcounter{subfigure}{-2}
-\subfloat[1972--1984 (N=2,689)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r4_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r4_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-1}
-\subfloat[1985--1994 (N=4,869)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r4_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r4_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{0}
-\subfloat[1995--2006 (N=3,774)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r4_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r4_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Third spell---first two children girls}
-\setcounter{subfigure}{1}
-\subfloat[1972--1984 (N=709)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r6_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r6_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{2}
-\subfloat[1985--1994 (N=1,654)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r6_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r6_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{3}
-\subfloat[1995--2006 (N=1,000)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r6_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r6_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Predicted probability of having a boy and probability of
-no birth yet from 9 months after first birth for urban
-women with 8 or more years of education by quarter (3 month period). 
-Predictions based on age 22 at first birth for second spell and on age 24 at second
-birth for third spell.
-Left column shows results prior to sex selection available, middle column before
-sex selection illegal and right column after sex selection illegal.
-N indicates the number of women in the relevant group in the underlying samples.
-}
-\label{fig:over_time_urban}
-\end{figure}
+% Urban
+% 0.566585492 hazard sex ratio for 1985
+% 0.592900726 hazard sex ratio for 1995
+% 
+% 0.554402294 logit sex ratio for 1985
+% 0.593989533 logit sex ratio for 1995
+% 
+% Rural
+% 0.544119243 hazard sex ratio for 1985
+% 0.579341591 hazard sex ratio for 1995
+% 
+% 0.530621491 logit sex ratio for 1985
+% 0.573022963 logit sex ratio for 1995
 
 
 
-\begin{figure}[htpb]
-\centering
-\caption*{Second spell for rural women---first child a girl}
-\setcounter{subfigure}{-2}
-\subfloat[1972--1984 (N=1,305)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r3_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r3_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-1}
-\subfloat[1985--1994 (N=3,105)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r3_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r3_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{0}
-\subfloat[1995--2006 (N=2,823)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Third spell---first two children girls}
-\setcounter{subfigure}{1}
-\subfloat[1972--1984 (N=348)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r5_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r5_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{2}
-\subfloat[1985--1994 (N=982)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r5_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r5_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{3}
-\subfloat[1995--2006 (N=863)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r5_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r5_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Predicted probability of having a boy and probability of
-no birth yet from 9 months after first birth for rural
-women with 8 or more years of education by quarter (3 month period). 
-Predictions based on age 22 at first birth for second spell and on age 24 at second
-birth for third spell.
-Left column shows results prior to sex selection available, middle column before
-sex selection illegal and right column after sex selection illegal.
-N indicates the number of women in the relevant group in the underlying samples.
-}
-\label{fig:over_time_rural}
-\end{figure}
-
-The second step is to show that with the fertility decline there is a corresponding 
-increase in sex-selective abortions.
-If the decline in fertility drives the increase in use of sex-selective abortions, we 
-should see an increase in sex ratios for a given spell number \emph{and} use of sex 
-selection for earlier spells over time.
-As discussed, the group most likely to use sex selection is women without sons.
-Figures \ref{fig:over_time_urban} and \ref{fig:over_time_rural} therefore show the 
-development in sex ratios by quarter for second and third spells for women without sons in 
-urban and rural areas.
-Both urban and rural women follow the expected pattern, consistent with declining 
-fertility driving the use of sex selection.
-
-For urban women's third spell in the first period, the predicted sex ratios  
-show no evidence of sex-selective abortions.
-After the introduction of prenatal sex determination techniques there is substantial
-evidence of sex selection both before and after sex selection was made illegal.
-The increased sex ratio within the spell for the 1985--1994 period is likely the
-result of those women who---for one reason or another---waited longer to try for 
-a third child having easier access to sex selection.
-Compared to the 1985--1994 period, there appears to be a leveling off of the sex ratio 
-for the 1995--2006 period and the overall sex ratio may even be a little lower.
-Consistent with this there is little difference in the survival curves between
-the two periods.
-
-Does the small difference between the two last periods for the third spell then show that 
-banning sex selection at least stalled the increase in the use of sex selection?
-The results for the second spell show that this is not the case.
-With the falling fertility there is increased use of sex selection for the 
-second spell.
-There is limited evidence of sex selection for the second spell in the 1985--1994 
-period, which is expected given that many women were still having 
-three children.
-For the 1995--2006 period, however, there is is a consistently high and 
-statistically significant sex ratio.
-Hence, with declining fertility the use of sex selection has simply moved to an
-earlier parity.
-Consistent with the theoretical model predictions the result is a decline in 
-sex ratio for an \emph{individual} parity at the same time as the overall
-use of sex selection increases.
-The most likely explanation for the relative small difference between periods for 
-the third spell is that a smaller proportion of women make it to a situation
-where they have two girls as their first two children in the latest period;
-those with the strongest preference for having a boy and for lower fertility have 
-already used sex selection during the second spell.
-
-Rural women follow the same general pattern as urban women, but the samples are smaller
-making for noisier estimates.
-The changes between the 1985--1994 and 1995--2006 periods for the third spell is again
-of special interest because it appears that the use of sex selection falls over time.
-But, the change for the second spell over time is even more pronounces for rural women
-than for urban women with very substantial increase in the use of sex selection for
-the second spell.
-
-Another way to see the interaction between fertility and sex selection is to compare
-the survival curves across sex composition and spells.
-As fertility has fallen the survival curves have become straighter for
-women without sons relative to for women with sons;
-the result of longer spacing arising from the use of sex selection.
-Among women with no sons the proportion of women without a birth by the end of 
-the spells has increased, but to a much smaller extent than for women with 
-at least one son.
-% Furthermore, the close to straight survival curves even at the end of the spells is an 
-% indication that at least some women who have not had a birth yet by the end of the spell 
-% may still have a child. 
-
-
-\subsection{Fertility and Sex Selection Across Groups}
-
-As shown the decline in fertility over time is associated with both an increased use 
-of sex-selective abortions for a given spell \emph{and} use of sex selection for 
-earlier spells for the women most likely to have low and falling fertility, women
-with 8 or more years of education.
-What remains is to show that women who have lower costs of children have higher
-fertility and consequently show less or no use of sex-selective abortions. 
-Assuming that preferences for having one son is similar across education groups
-the lower cost of children makes it more attractive for less-educated women to continue
-having children with the aim of having at least one son instead of resorting to
-sex selection.
-
-
-\begin{figure}[htpb]
-\centering
-\caption*{No Education}
-\setcounter{subfigure}{-2}
-\subfloat[Spell 1 (N=1,762)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell1_g3_low_r2_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell1_g3_low_r2_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{-1}
-\subfloat[Spell 2 - 1 girl (N=952)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_low_r4_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_r4_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{0}
-\subfloat[Spell 3 - 2 girls (N=475)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r6_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r6_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{1 to 7 Years of Education}
-\setcounter{subfigure}{1}
-\subfloat[Spell 1 (N=2,302)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell1_g3_med_r2_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell1_g3_med_r2_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[Spell 2 - 1 girl (N=1,082)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_med_r4_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_r4_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{3}
-\subfloat[Spell 3 - 2 girls (N=425)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_med_r6_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_r6_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{8 or More Years of Education}
-\setcounter{subfigure}{4}
-\subfloat[Spell 1 (N=9,116)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell1_g3_high_r2_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell1_g3_high_r2_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{5}
-\subfloat[Spell 2 - 1 girl (N=3,774)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r4_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r4_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[Spell 3 - 2 girls (N=1,000)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r6_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r6_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Predicted probability of having a boy and probability of
-no birth by quarter (3 month period) for urban women for 1995--2006. 
-N is number of women in the relevant group in the underlying samples.
-}
-\label{fig:groups_urban}
-\end{figure}
 
 
 
-\begin{figure}[htpb]
-\centering
-\caption*{No Education}
-\setcounter{subfigure}{-2}
-\subfloat[Spell 1 (N=7,922)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell1_g3_low_r1_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell1_g3_low_r1_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{-1}
-\subfloat[Spell 2 - 1 girl (N=3,686)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_low_r3_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_r3_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{0}
-\subfloat[Spell 3 - 2 girls (N=1,879)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r5_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r5_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{1 to 7 Years of Education}
-\setcounter{subfigure}{1}
-\subfloat[Spell 1 (N=5,208)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell1_g3_med_r1_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell1_g3_med_r1_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[Spell 2 - 1 girl (N=2,159)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_med_r3_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_r3_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{3}
-\subfloat[Spell 3 - 2 girls (N=848)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_med_r5_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_r5_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\caption*{8 or More Years of Education}
-\setcounter{subfigure}{4}
-\subfloat[Spell 1 (N=7,504)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell1_g3_high_r1_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell1_g3_high_r1_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{5}
-\subfloat[Spell 2 - 1 girl (N=2,823)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[Spell 3 - 2 girls (N=863)]{
-    \begin{minipage}{0.21\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r5_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r5_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Predicted probability of having a boy and probability of
-no birth by quarter (3 month period) for rural women for 1995--2006. 
-N is number of women in the relevant group in the underlying samples.
-}
-\label{fig:groups_rural}
-\end{figure}
+% I begin with women who had a girl as their first child.
+% For rural women in the 1985--1994 period relatively few censored women are
+% predicted to go on to have a second birth (only 5 percent of the starting population
+% is predicted to have a second birth and have not yet had one).
+% In addition, there is only some evidence of sex-selective abortions.
+% Hence, the predicted sex ratios for the simple and hazard models are close. 
+% There are slightly more abortions for the hazard model, but the abortion rates (number
+% of abortions per birth) are fairly similar between the observed births and those predicted
+% to have a birth later.
+% 
+% Urban women in the same time period follow a similar pattern with relatively few 
+% censored women predicted to move on to a second birth (around 2 percent of starting 
+% population), but the abortion rate for those additional births is 8.1 abortions per 100 
+% births, whereas it is only 6.7 for the observed births, as we would expect from the 
+% increasing probability of having a son with increasing spell length seen in panel (b) in 
+% Figure \ref{fig:results_spell2_high_urban}.
+% Despite this the resulting difference in sex ratios is
+% relatively small because of the small number of censored women predicted to exit with a
+% birth.
+% 
+% 
+% Not surprisingly there are substantially more censored observations for the 1995--2006
+% period.
+% For urban women about 19 percent of the starting population are predicted to have a
+% second birth but have not yet had one and for rural women it is 23 percent.
+% This allows for potentially larger differences in predicted sex ratios and number of
+% abortions.
+% Despite the large number of censored observations for rural women there is relatively
+% little difference in the predicted sex ratio.
+% The more interesting difference is for urban women in the 1995--2006 period.
+% The hazard model predicts 100 more abortions by the end of the spell, but the simple 
+% model \emph{overestimates} the final sex ratio.
+% The simple model predicts 143.5 boys and the hazard model 141.3 boys per 100 girls.
+% This is consistent with the very high probability of having a son early on in the spell
+% followed by a somewhat lower probability for later births seen in panel (c) in 
+% Figure \ref{fig:results_spell2_high_urban}.
+% 
+% 
+% 
+% The lower two panels of Table \ref{tab:compare2} presents the predicted outcomes for urban
+% and rural women for the third spell, split by the sex composition of their first two 
+% children and when the spell began.%
+% \footnote{
+% There is no evidence of sex-selective abortions and very few births for women with two boys 
+% and those predictions are therefore not presented.
+% }
+% For urban women with two girls in the 1985--1994 period there are only 77 more births for 
+% the hazard model, but the difference in number of abortions is 15 with the hazard model 
+% predicting 266 abortions and the simple model 251.
+% The resulting sex ratio is 175.3 for the hazard model versus ``only'' 170.0 for
+% the simple model.
+% In other words, it appears that the simple model underestimates the spread of the use of
+% sex-selective abortions during the expansion of access to prenatal sex determination 
+% for this group of urban women.
+% As discussed in the paper, use of sex selection for urban women with two girls appears to  
+% have fallen from the 1985--1994 period to the 1995--2006 period, but this is mainly an 
+% indication that sex-selective abortions are being used more during the spell to second 
+% birth for this group of women for the 1995--2006 period.
+% The result is fewer women with two girls for their first two births and those who do are 
+% substantially less likely to have a third birth than they were before.
+% 
+% For rural women the main difference between the two models is for those with one boy
+% and one girl in the 1995--2006 period.
+% Only about 60\% of the birth predicted by the hazard model are observed in the simple
+% model, leading to substantial censoring.
+% Furthermore, use of sex-selective abortions is predicted to be substantial for those
+% remaining births resulting in a sex ratio of 129.8 for the hazard model and 124.6 for
+% the simple model. 
+% As discussed in the paper, this case is the exception to the rule that sex selection
+% does not appear to be used by families that already have one son.
+% Presumably the use by rural women in this case is an insurance against mortality. 
 
-Figures \ref{fig:groups_urban} and \ref{fig:groups_rural} show sex ratios and
-survival curves for the three education groups for the latest period, 1995--2006,
-for urban and rural women.
-For each education group the figure shows the first spell, from marriage to first
-birth, the second spell for women with a girl as the first child, and, finally,
-the third spell for women with two girls as their first children.
-The second and third spells for the better-educated women are the same as in
-Figure \ref{fig:over_time_urban} and \ref{fig:over_time_rural}, panels (c) and (f),
-and are reproduced to ease comparison.
 
-As expected, progression rates are higher the lower the education level and higher in
-rural areas than in urban areas.
-The proportion of women with no education who end up with no birth at the end of the 
-third spell is less than 10 \% for urban women and less than 5\% for rural women.
-For those with 1 to 7 years of education less than 20\% of urban women do not go on to 
-having a third child, while for rural women it is less than 10\%.
-What is more, the progression rates for women with either two boys or a boy and a girl
-as their first children are only marginally higher than for women with two girls.%
-\footnote{
-In the interest of space these are shown in the online Appendix. 
-The Appendix also shows progression rates for the fourth spell.
-Although samples become very small, the results correspond well.
-Progression rates are higher the lower the education and higher for rural women than
-for urban women.
-The samples become so small exactly for the reason discussed above:
-there is a less than 12\% chance of not having a son by the third child.
-}
-Hence, women with less than 8 years of education still have high fertility in both
-urban and rural areas.
 
-Corresponding to the higher fertility among women with less education there is little
-evidence of sex selection among women with less than 8 years of education.
-Generally the predicted sex ratios are not statistically significantly
-higher than the natural rate and the survival curves all show a similar pattern where
-most of the births occur early in the spell and there is no evidence of the changing
-survival curves associated with longer spells that would indicate use of sex-selective 
-abortions.%
-\footnote{
-The exceptions are small parts of the second spell for no education women and 
-third spell for women with 1 to 7 years of education. 
-As the survival curves show both are based on very few births.
-Fourth spell results generally confirm the absence of sex selection among women with 
-less education.
-}
-Hence, there is evidence of two different paths to having a son:
-high education women have few children and substantial use of sex selection, while
-low education women have many children and little to no use of sex selection.
-
-Two other important results stand out.
-First, there is no evidence of sex selection on first birth, no matter the education
-level.
-The sex ratios are never statistically significant different from the expected and 
-timing of births is close to identical for all groups, with most women having their 
-first child soon after marrying.%
-\footnote{
-This cast serious doubts on the data used by \citet{jha06} and their result that 
-there is substantial use of sex selection on first births.
-As discussed above and in the online Appendix their results are likely the result of
-substantial recall bias.
-}
-Second, the natural sex ratio for India appear to be in line with what is found for 
-other countries at around 105 boys per 100 girls.
-For all groups for whom we would expect little to no use of sex selection and have
-many births to base the estimate on, such as rural women with no education and urban
-women with 8 or more years of education, the sex ratios almost completely coincide 
-with the 105/100 line.
-
-% points to cover:
-% - fertility is higher, the lower the education level, as shown by the lower proportion
-% who end up with no birth (also refer to appendix figures)
-% - no evidence of sex selection for lower educated women (both sex ratios and survival
-% curves show this)
-% - no sex selection on first birth, no matter the education level
-% - sex ratio at birth is 105/100, showing no differences between India and other places
 
 \subsection{One Son or Many Sons?}
 
@@ -3823,721 +3087,6 @@ likely to see a substantially increased use of sex selection in India.
 \setcounter{table}{0}
   
 
-\begin{table}[!htp]
-\centering
-\footnotesize
-\begin{threeparttable}
-\caption{Fertility and Percent Boys by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_fertility_100}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} @{}}
-\toprule
-               & \multicolumn{10}{c}{Discount rate ( $ d = 1.0 $ ) }                         \\ 
-               & \multicolumn{10}{c}{Cost of prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{2}{c}{12} & \multicolumn{2}{c}{16} & \multicolumn{2}{c}{20} & \multicolumn{2}{c}{24} & \multicolumn{2}{c}{200} \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
-\multirow{2}{12mm}{Cost of\\children}  & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       \\
-                                       & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} \\
-\midrule
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 \\
- k = 14        &  5.41 &  50.3 &  5.41 &  50.2 &  5.42 &  50.0 &  5.43 &  50.0 &  5.43 &  50.0 \\
- k = 16        &  4.10 &  51.4 &  4.11 &  51.3 &  4.16 &  50.6 &  4.17 &  50.5 &  4.19 &  49.9 \\
- k = 18        &  3.13 &  54.0 &  3.14 &  53.7 &  3.19 &  52.9 &  3.25 &  51.7 &  3.25 &  50.0 \\
- k = 20        &  2.50 &  55.1 &  2.50 &  55.0 &  2.50 &  54.9 &  2.50 &  54.7 &  2.50 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.4 &  2.00 &  62.1 &  2.00 &  61.0 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &  7.29 &  50.6 &  7.30 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 \\
- k = 14        &  5.26 &  53.3 &  5.37 &  51.5 &  5.40 &  50.4 &  5.41 &  50.1 &  5.42 &  50.0 \\
- k = 16        &  4.10 &  57.8 &  4.10 &  52.6 &  4.10 &  51.4 &  4.11 &  51.2 &  4.19 &  49.9 \\
- k = 18        &  3.13 &  57.0 &  3.13 &  54.0 &  3.13 &  54.0 &  3.14 &  53.8 &  3.32 &  50.0 \\
- k = 20        &  2.25 &  61.2 &  2.25 &  61.1 &  2.27 &  60.7 &  2.31 &  59.5 &  2.50 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.4 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &  7.14 &  54.2 &  7.26 &  51.4 &  7.32 &  50.3 &  7.34 &  50.0 &  7.34 &  50.0 \\
- k = 14        &  5.05 &  61.7 &  5.07 &  56.1 &  5.11 &  53.6 &  5.22 &  50.9 &  5.26 &  50.0 \\
- k = 16        &  4.06 &  66.3 &  4.06 &  60.1 &  4.07 &  58.6 &  4.07 &  55.2 &  4.16 &  49.9 \\
- k = 18        &  3.13 &  69.7 &  3.13 &  68.3 &  3.13 &  64.9 &  3.13 &  57.5 &  3.32 &  50.0 \\
- k = 20        &  2.68 &  67.5 &  2.25 &  61.2 &  2.25 &  61.1 &  2.25 &  61.1 &  2.63 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.25 &  49.9 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &  7.09 &  62.8 &  7.13 &  57.5 &  7.19 &  53.9 &  7.26 &  51.7 &  7.34 &  50.0 \\
- k = 14        &  5.05 &  73.9 &  5.05 &  66.6 &  5.07 &  61.9 &  5.08 &  58.5 &  5.27 &  50.0 \\
- k = 16        &  4.06 &  74.9 &  4.06 &  73.0 &  4.06 &  68.8 &  4.07 &  63.3 &  4.17 &  49.9 \\
- k = 18        &  3.13 &  69.9 &  3.13 &  69.7 &  3.13 &  69.5 &  3.13 &  68.3 &  3.32 &  50.0 \\
- k = 20        &  2.73 &  72.5 &  2.69 &  72.1 &  2.56 &  70.7 &  2.25 &  66.6 &  2.38 &  50.0 \\
- k = 22        &  2.00 &  97.2 &  2.00 &  86.6 &  2.00 &  68.7 &  2.00 &  62.5 &  2.25 &  49.9 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \scriptsize
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-
-\begin{table}[!htp]
-\centering
-\footnotesize
-\begin{threeparttable}
-\caption{Fertility and Percent Boys by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_fertility_95}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} @{}}
-\toprule
-               & \multicolumn{10}{c}{Discount rate ( $ d = 0.95 $ ) }                         \\ 
-               & \multicolumn{10}{c}{Cost of prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{2}{c}{12} & \multicolumn{2}{c}{16} & \multicolumn{2}{c}{20} & \multicolumn{2}{c}{24} & \multicolumn{2}{c}{200} \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
-\multirow{2}{12mm}{Cost of\\children}  & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       \\
-                                       & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} \\
-\midrule
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 \\
- k = 14        &  5.41 &  50.2 &  5.42 &  50.1 &  5.43 &  50.0 &  5.43 &  50.0 &  5.43 &  50.0 \\
- k = 16        &  4.11 &  51.3 &  4.16 &  50.7 &  4.17 &  50.3 &  4.19 &  49.9 &  4.19 &  49.9 \\
- k = 18        &  3.13 &  53.9 &  3.25 &  51.9 &  3.25 &  51.7 &  3.25 &  50.0 &  3.25 &  50.0 \\
- k = 20        &  2.50 &  55.0 &  2.50 &  55.0 &  2.50 &  54.7 &  2.50 &  52.6 &  2.50 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.1 &  2.00 &  59.4 &  2.00 &  50.0 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &  7.30 &  50.1 &  7.30 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 \\
- k = 14        &  5.38 &  51.4 &  5.40 &  50.2 &  5.41 &  50.1 &  5.42 &  50.0 &  5.42 &  50.0 \\
- k = 16        &  4.10 &  54.9 &  4.10 &  51.4 &  4.13 &  51.0 &  4.17 &  50.5 &  4.19 &  49.9 \\
- k = 18        &  3.13 &  54.0 &  3.13 &  54.0 &  3.14 &  53.7 &  3.26 &  51.8 &  3.32 &  50.0 \\
- k = 20        &  2.25 &  61.1 &  2.27 &  60.7 &  2.50 &  55.0 &  2.50 &  54.9 &  2.50 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.4 &  2.00 &  62.1 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &  7.27 &  51.2 &  7.33 &  50.1 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 \\
- k = 14        &  5.06 &  58.0 &  5.14 &  52.7 &  5.22 &  50.8 &  5.25 &  50.1 &  5.26 &  50.0 \\
- k = 16        &  4.06 &  59.0 &  4.06 &  57.8 &  4.07 &  52.6 &  4.08 &  51.2 &  4.16 &  49.9 \\
- k = 18        &  3.13 &  69.0 &  3.13 &  64.8 &  3.13 &  54.0 &  3.13 &  53.9 &  3.32 &  50.0 \\
- k = 20        &  2.25 &  61.2 &  2.25 &  61.2 &  2.25 &  61.1 &  2.27 &  60.7 &  2.63 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.25 &  49.9 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &  7.11 &  58.4 &  7.23 &  52.2 &  7.32 &  50.3 &  7.34 &  50.0 &  7.34 &  50.0 \\
- k = 14        &  5.05 &  68.2 &  5.06 &  60.3 &  5.10 &  54.7 &  5.20 &  51.5 &  5.27 &  50.0 \\
- k = 16        &  4.06 &  74.1 &  4.06 &  69.0 &  4.06 &  61.3 &  4.07 &  57.5 &  4.17 &  49.9 \\
- k = 18        &  3.13 &  69.9 &  3.13 &  69.7 &  3.13 &  68.3 &  3.13 &  64.9 &  3.32 &  50.0 \\
- k = 20        &  2.71 &  72.4 &  2.56 &  70.7 &  2.00 &  62.5 &  2.00 &  62.4 &  2.38 &  50.0 \\
- k = 22        &  2.00 &  85.8 &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.25 &  49.9 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \scriptsize
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-\begin{table}[!htp]
-\centering
-\footnotesize
-\begin{threeparttable}
-\caption{Fertility and Percent Boys by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_fertility_90}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} @{}}
-\toprule
-               & \multicolumn{10}{c}{Discount rate ( $ d = 0.9 $ ) }                         \\ 
-               & \multicolumn{10}{c}{Cost of prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{2}{c}{12} & \multicolumn{2}{c}{16} & \multicolumn{2}{c}{20} & \multicolumn{2}{c}{24} & \multicolumn{2}{c}{200} \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
-\multirow{2}{12mm}{Cost of\\children}  & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       \\
-                                       & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} \\
-\midrule
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 \\
- k = 14        &  5.42 &  50.1 &  5.43 &  50.0 &  5.43 &  50.0 &  5.43 &  50.0 &  5.43 &  50.0 \\
- k = 16        &  4.16 &  50.7 &  4.17 &  50.5 &  4.19 &  49.9 &  4.19 &  49.9 &  4.19 &  49.9 \\
- k = 18        &  3.25 &  51.9 &  3.25 &  51.8 &  3.25 &  50.0 &  3.25 &  50.0 &  3.25 &  50.0 \\
- k = 20        &  2.50 &  55.0 &  2.50 &  54.7 &  2.50 &  50.0 &  2.50 &  50.0 &  2.50 &  50.0 \\
- k = 22        &  2.00 &  62.3 &  2.00 &  56.2 &  2.00 &  50.0 &  2.00 &  50.0 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &  7.30 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 \\
- k = 14        &  5.40 &  50.3 &  5.41 &  50.1 &  5.42 &  50.0 &  5.42 &  50.0 &  5.42 &  50.0 \\
- k = 16        &  4.10 &  51.4 &  4.16 &  50.7 &  4.17 &  50.5 &  4.19 &  49.9 &  4.19 &  49.9 \\
- k = 18        &  3.13 &  54.0 &  3.16 &  53.5 &  3.26 &  51.8 &  3.28 &  50.9 &  3.32 &  50.0 \\
- k = 20        &  2.27 &  60.8 &  2.50 &  55.0 &  2.50 &  54.9 &  2.50 &  53.8 &  2.50 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.1 &  2.00 &  56.2 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &  7.32 &  50.3 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 \\
- k = 14        &  5.10 &  53.4 &  5.24 &  50.5 &  5.25 &  50.1 &  5.26 &  50.0 &  5.26 &  50.0 \\
- k = 16        &  4.06 &  58.4 &  4.07 &  52.2 &  4.10 &  51.0 &  4.13 &  50.5 &  4.16 &  49.9 \\
- k = 18        &  3.13 &  66.8 &  3.13 &  54.0 &  3.14 &  53.8 &  3.26 &  51.8 &  3.32 &  50.0 \\
- k = 20        &  2.25 &  61.2 &  2.25 &  61.1 &  2.28 &  60.3 &  2.50 &  55.0 &  2.63 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.3 &  2.25 &  49.9 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &  7.16 &  53.9 &  7.32 &  50.3 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 \\
- k = 14        &  5.05 &  62.5 &  5.08 &  54.1 &  5.22 &  50.8 &  5.26 &  50.0 &  5.27 &  50.0 \\
- k = 16        &  4.06 &  71.3 &  4.06 &  58.8 &  4.07 &  55.2 &  4.08 &  51.2 &  4.17 &  49.9 \\
- k = 18        &  3.13 &  69.9 &  3.13 &  69.0 &  3.13 &  57.5 &  3.13 &  53.9 &  3.32 &  50.0 \\
- k = 20        &  2.64 &  71.6 &  2.00 &  62.5 &  2.00 &  62.5 &  2.01 &  62.3 &  2.38 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.25 &  49.9 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \scriptsize
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-\begin{table}[!htp]
-\centering
-\footnotesize
-\begin{threeparttable}
-\caption{Fertility and Percent Boys by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_fertility_85}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} D{.}{.}{2.2} D{.}{.}{1.2} D{.}{.}{1.2} @{}}
-\toprule
-               & \multicolumn{10}{c}{Discount rate ( $ d = 0.85 $ ) }                         \\ 
-               & \multicolumn{10}{c}{Cost of prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{2}{c}{12} & \multicolumn{2}{c}{16} & \multicolumn{2}{c}{20} & \multicolumn{2}{c}{24} & \multicolumn{2}{c}{200} \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11}
-\multirow{2}{12mm}{Cost of\\children}  & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       & \mco{Avg}       & \mco{Percent}       \\
-                                       & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} & \mco{Fertility} & \mco{Boys\tnote{a}} \\
-\midrule
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 &  7.47 &  50.0 \\
- k = 14        &  5.42 &  50.0 &  5.43 &  50.0 &  5.43 &  50.0 &  5.43 &  50.0 &  5.43 &  50.0 \\
- k = 16        &  4.16 &  50.6 &  4.19 &  49.9 &  4.19 &  49.9 &  4.19 &  49.9 &  4.19 &  49.9 \\
- k = 18        &  3.25 &  51.9 &  3.25 &  50.0 &  3.25 &  50.0 &  3.25 &  50.0 &  3.25 &  50.0 \\
- k = 20        &  2.50 &  55.0 &  2.50 &  50.0 &  2.50 &  50.0 &  2.50 &  50.0 &  2.50 &  50.0 \\
- k = 22        &  2.19 &  54.3 &  2.00 &  50.0 &  2.00 &  50.0 &  2.00 &  50.0 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &  7.31 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 &  7.31 &  50.0 \\
- k = 14        &  5.40 &  50.2 &  5.42 &  50.0 &  5.42 &  50.0 &  5.42 &  50.0 &  5.42 &  50.0 \\
- k = 16        &  4.16 &  50.7 &  4.17 &  50.6 &  4.19 &  49.9 &  4.19 &  49.9 &  4.19 &  49.9 \\
- k = 18        &  3.14 &  53.7 &  3.26 &  51.9 &  3.32 &  50.0 &  3.32 &  50.0 &  3.32 &  50.0 \\
- k = 20        &  2.50 &  55.1 &  2.50 &  55.0 &  2.50 &  52.6 &  2.50 &  50.0 &  2.50 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.2 &  2.00 &  50.0 &  2.00 &  50.0 &  2.00 &  50.0 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &  7.33 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 \\
- k = 14        &  5.24 &  51.3 &  5.25 &  50.1 &  5.26 &  50.0 &  5.26 &  50.0 &  5.26 &  50.0 \\
- k = 16        &  4.06 &  52.2 &  4.13 &  50.7 &  4.14 &  50.4 &  4.16 &  49.9 &  4.16 &  49.9 \\
- k = 18        &  3.13 &  54.0 &  3.14 &  53.9 &  3.26 &  51.9 &  3.32 &  50.0 &  3.32 &  50.0 \\
- k = 20        &  2.25 &  61.2 &  2.31 &  59.5 &  2.50 &  55.0 &  2.52 &  54.4 &  2.63 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.4 &  2.13 &  58.1 &  2.25 &  49.9 \\
-               &  \multicolumn{10}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &  7.31 &  50.7 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 &  7.34 &  50.0 \\
- k = 14        &  5.07 &  54.9 &  5.24 &  50.5 &  5.26 &  50.0 &  5.27 &  50.0 &  5.27 &  50.0 \\
- k = 16        &  4.06 &  59.0 &  4.07 &  55.2 &  4.10 &  51.0 &  4.17 &  50.1 &  4.17 &  49.9 \\
- k = 18        &  3.13 &  69.7 &  3.13 &  57.0 &  3.13 &  53.9 &  3.26 &  51.8 &  3.32 &  50.0 \\
- k = 20        &  2.00 &  62.5 &  2.00 &  62.5 &  2.01 &  62.2 &  2.25 &  55.5 &  2.38 &  50.0 \\
- k = 22        &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.5 &  2.00 &  62.4 &  2.25 &  49.9 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \scriptsize
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Abortions and Change in Abortion Use by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_abortion_100}
-\begin{tabular}{@{} c D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 1.0 $ ) }                         \\ 
-               & \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{3}{c}{12}    & \multicolumn{3}{c}{16}    & \multicolumn{3}{c}{20}    & \multicolumn{3}{c}{24}    \\ \cmidrule(lr){2-4}  \cmidrule(lr){5-7}  \cmidrule(lr){8-10}  \cmidrule(lr){11-13}  
-                                      & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       \\
-\multirow{2}{9mm}{Cost of\\children}  & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         \\
-                                      & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} \\
-\midrule
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &    0.6 &    0.0 &   54.8 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &    3.1 &    0.0 &    8.4 &    2.6 &    0.0 &   28.5 &    0.8 &    0.0 &   50.3 &    0.0 &    0.0 &      . \\
- k = 16        &   12.4 &    0.1 &    3.9 &   10.9 &    0.1 &   23.5 &    5.5 &    0.1 &   12.9 &    4.7 &    0.1 &   25.6 \\
- k = 18        &   25.1 &    0.3 &    2.0 &   23.5 &    0.3 &   12.5 &   18.6 &    0.3 &   41.8 &   11.0 &    0.1 &   12.7 \\
- k = 20        &   25.3 &    0.3 &    0.2 &   25.1 &    0.3 &    0.8 &   24.4 &    0.3 &    3.2 &   23.6 &    0.3 &    6.4 \\
- k = 22        &   50.3 &    0.5 &    0.2 &   49.9 &    0.5 &    0.9 &   48.7 &    0.5 &    3.2 &   44.0 &    0.5 &   12.6 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &    8.3 &    0.2 &   47.8 &    0.8 &    0.0 &   50.3 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &   35.0 &    0.5 &   24.5 &   16.7 &    0.3 &   38.3 &    4.4 &    0.1 &   45.4 &    1.6 &    0.0 &   51.2 \\
- k = 16        &   64.2 &    0.7 &   12.0 &   22.0 &    0.3 &   23.0 &   12.0 &    0.1 &    7.8 &   10.6 &    0.1 &   25.1 \\
- k = 18        &   44.1 &    0.6 &   22.6 &   25.2 &    0.3 &    1.1 &   25.0 &    0.3 &    2.2 &   24.1 &    0.3 &    7.9 \\
- k = 20        &   50.3 &    0.5 &    0.3 &   49.9 &    0.5 &    1.7 &   48.7 &    0.5 &    6.3 &   43.9 &    0.6 &   22.9 \\
- k = 22        &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.2 &   50.1 &    0.5 &    0.4 &   49.9 &    0.5 &    0.9 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &   60.4 &    0.9 &   32.5 &   20.5 &    0.3 &   27.7 &    3.9 &    0.1 &   50.0 &    0.0 &    0.0 &      . \\
- k = 14        &  119.3 &    1.3 &   12.1 &   62.1 &    0.8 &   21.9 &   37.0 &    0.5 &   26.6 &   10.2 &    0.1 &   27.6 \\
- k = 16        &  133.6 &    1.7 &   20.4 &   82.8 &    0.9 &   10.1 &   70.2 &    1.0 &   32.7 &   43.0 &    0.6 &   33.1 \\
- k = 18        &  123.8 &    1.2 &    1.4 &  114.6 &    1.2 &    6.9 &   93.4 &    1.1 &   18.3 &   47.0 &    0.5 &   12.2 \\
- k = 20        &   94.3 &    0.9 &    0.0 &   50.3 &    0.5 &    0.1 &   50.2 &    0.5 &    0.5 &   50.0 &    0.5 &    1.1 \\
- k = 22        &   50.4 &    0.5 &    0.0 &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.1 &   50.3 &    0.5 &    0.2 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &  182.2 &    2.2 &   16.8 &  108.0 &    1.4 &   25.0 &   56.7 &    0.9 &   40.2 &   25.2 &    0.5 &   50.1 \\
- k = 14        &  241.8 &    2.7 &   11.2 &  169.4 &    2.0 &   17.3 &  121.4 &    1.6 &   23.0 &   86.8 &    1.3 &   31.6 \\
- k = 16        &  203.9 &    2.1 &    3.2 &  188.2 &    2.0 &    7.9 &  154.2 &    1.8 &   16.2 &  109.7 &    1.3 &   14.6 \\
- k = 18        &  125.4 &    1.2 &    0.5 &  123.9 &    1.2 &    1.3 &  122.2 &    1.2 &    2.5 &  114.5 &    1.2 &    6.9 \\
- k = 20        &  123.9 &    1.2 &    0.0 &  119.5 &    1.2 &    0.0 &  106.9 &    1.1 &    0.1 &   75.3 &    0.7 &    0.2 \\
- k = 22        &  189.4 &    2.0 &    4.4 &  147.3 &    1.8 &   17.6 &   75.1 &    1.3 &   39.9 &   50.3 &    0.5 &    0.1 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent of spells where prenatal scan was initially used but birth is the result
-of pregnancy without prenatal scan.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Abortions and Change in Abortion Use by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_abortion_95}
-\begin{tabular}{@{} c D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 0.95 $ ) }                         \\ 
-               & \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{3}{c}{12}    & \multicolumn{3}{c}{16}    & \multicolumn{3}{c}{20}    & \multicolumn{3}{c}{24}    \\ \cmidrule(lr){2-4}  \cmidrule(lr){5-7}  \cmidrule(lr){8-10}  \cmidrule(lr){11-13}  
-                                      & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       \\
-\multirow{2}{9mm}{Cost of\\children}  & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         \\
-                                      & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} \\
-\midrule
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &    0.2 &    0.0 &   48.2 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &    3.0 &    0.0 &   16.7 &    1.2 &    0.0 &   27.5 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 16        &   11.0 &    0.1 &   22.8 &    6.0 &    0.1 &    7.0 &    3.1 &    0.1 &   50.0 &    0.0 &    0.0 &      . \\
- k = 18        &   24.4 &    0.3 &    6.7 &   12.2 &    0.1 &    3.5 &   11.0 &    0.1 &   12.7 &    0.0 &    0.0 &      . \\
- k = 20        &   25.2 &    0.3 &    0.5 &   24.9 &    0.3 &    1.8 &   23.6 &    0.3 &    6.4 &   12.6 &    0.3 &   50.4 \\
- k = 22        &   50.1 &    0.5 &    0.4 &   48.7 &    0.5 &    3.2 &   37.7 &    0.5 &   25.4 &    0.0 &    0.0 &      . \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &    1.2 &    0.0 &   27.5 &    0.2 &    0.0 &   48.2 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &   15.6 &    0.3 &   46.0 &    2.8 &    0.0 &   14.1 &    1.2 &    0.0 &   27.5 &    0.0 &    0.0 &      . \\
- k = 16        &   41.0 &    0.7 &   38.5 &   12.1 &    0.1 &    7.1 &    9.1 &    0.2 &   42.5 &    4.7 &    0.1 &   25.6 \\
- k = 18        &   25.2 &    0.3 &    0.6 &   25.0 &    0.3 &    2.2 &   23.5 &    0.3 &   12.5 &   11.8 &    0.1 &    6.4 \\
- k = 20        &   50.1 &    0.5 &    0.9 &   48.7 &    0.5 &    6.3 &   25.1 &    0.3 &    0.8 &   24.4 &    0.3 &    3.2 \\
- k = 22        &   50.3 &    0.5 &    0.1 &   50.3 &    0.5 &    0.2 &   49.9 &    0.5 &    0.9 &   48.7 &    0.5 &    3.2 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &   18.3 &    0.2 &   23.7 &    2.0 &    0.0 &   51.9 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &   82.1 &    1.2 &   30.9 &   28.5 &    0.5 &   38.1 &    8.3 &    0.2 &   50.1 &    1.6 &    0.0 &   51.2 \\
- k = 16        &   73.7 &    0.7 &    2.3 &   64.2 &    0.7 &   12.1 &   21.8 &    0.3 &   23.8 &   10.6 &    0.1 &   25.1 \\
- k = 18        &  119.3 &    1.2 &    4.2 &   92.6 &    1.1 &   19.5 &   25.1 &    0.3 &    0.8 &   24.7 &    0.3 &    4.0 \\
- k = 20        &   50.3 &    0.5 &    0.2 &   50.3 &    0.5 &    0.2 &   50.0 &    0.5 &    1.1 &   48.5 &    0.5 &    6.5 \\
- k = 22        &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.1 &   50.3 &    0.5 &    0.2 &   50.1 &    0.5 &    0.4 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &  120.8 &    1.7 &   30.9 &   31.9 &    0.4 &   23.7 &    3.9 &    0.1 &   50.0 &    0.0 &    0.0 &      . \\
- k = 14        &  184.4 &    2.5 &   25.6 &  105.0 &    1.3 &   17.7 &   48.5 &    0.8 &   37.5 &   16.6 &    0.3 &   50.3 \\
- k = 16        &  197.8 &    2.1 &    5.1 &  155.7 &    1.8 &   15.7 &   93.2 &    1.3 &   26.1 &   61.8 &    1.0 &   39.3 \\
- k = 18        &  125.3 &    1.2 &    0.5 &  123.8 &    1.2 &    1.4 &  114.5 &    1.2 &    6.9 &   93.3 &    1.1 &   18.3 \\
- k = 20        &  122.3 &    1.2 &    0.0 &  106.9 &    1.1 &    0.1 &   50.3 &    0.5 &    0.2 &   50.1 &    0.5 &    0.4 \\
- k = 22        &  144.2 &    1.8 &   20.8 &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.1 &   50.3 &    0.5 &    0.2 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent of spells where prenatal scan was initially used but birth is the result
-of pregnancy without prenatal scan.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Abortions and Change in Abortion Use by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_abortion_90}
-\begin{tabular}{@{} c D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 0.9 $ ) }                         \\ 
-               & \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{3}{c}{12}    & \multicolumn{3}{c}{16}    & \multicolumn{3}{c}{20}    & \multicolumn{3}{c}{24}    \\ \cmidrule(lr){2-4}  \cmidrule(lr){5-7}  \cmidrule(lr){8-10}  \cmidrule(lr){11-13}  
-                                      & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       \\
-\multirow{2}{9mm}{Cost of\\children}  & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         \\
-                                      & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} \\
-\midrule
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &    1.5 &    0.0 &   13.2 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 16        &    6.2 &    0.1 &    3.4 &    4.7 &    0.1 &   25.6 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 18        &   12.6 &    0.1 &    0.9 &   11.8 &    0.1 &    6.4 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 20        &   25.1 &    0.3 &    0.8 &   23.6 &    0.3 &    6.4 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 22        &   49.5 &    0.5 &    1.6 &   25.0 &    0.5 &   50.3 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &    0.3 &    0.0 &   26.8 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &    3.1 &    0.0 &    8.4 &    1.2 &    0.0 &   27.5 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 16        &   12.4 &    0.1 &    3.9 &    6.2 &    0.1 &    3.4 &    4.7 &    0.1 &   25.6 &    0.0 &    0.0 &      . \\
- k = 18        &   25.2 &    0.3 &    1.1 &   22.1 &    0.3 &   22.7 &   11.8 &    0.1 &    6.4 &    6.3 &    0.1 &   49.6 \\
- k = 20        &   48.7 &    0.5 &    6.2 &   25.2 &    0.3 &    0.5 &   24.4 &    0.3 &    3.2 &   18.9 &    0.3 &   25.0 \\
- k = 22        &   50.3 &    0.5 &    0.1 &   50.1 &    0.5 &    0.4 &   48.7 &    0.5 &    3.2 &   25.0 &    0.5 &   50.3 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &    5.0 &    0.1 &   41.4 &    0.2 &    0.0 &   48.2 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &   35.0 &    0.5 &   24.5 &    5.4 &    0.1 &   25.7 &    1.2 &    0.0 &   27.5 &    0.0 &    0.0 &      . \\
- k = 16        &   69.1 &    0.7 &    7.0 &   18.7 &    0.3 &   41.8 &    9.1 &    0.2 &   42.5 &    4.7 &    0.1 &   25.6 \\
- k = 18        &  105.3 &    1.2 &   13.2 &   25.2 &    0.3 &    1.1 &   24.3 &    0.3 &    7.0 &   11.8 &    0.1 &    6.4 \\
- k = 20        &   50.3 &    0.5 &    0.1 &   50.1 &    0.5 &    1.0 &   47.1 &    0.5 &   12.1 &   24.9 &    0.3 &    1.8 \\
- k = 22        &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.1 &   50.1 &    0.5 &    0.4 &   49.5 &    0.5 &    1.6 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &   55.9 &    0.9 &   39.5 &    3.9 &    0.1 &   50.0 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &  127.6 &    1.4 &    9.0 &   42.1 &    0.5 &   21.3 &    8.3 &    0.2 &   50.1 &    0.8 &    0.0 &   50.3 \\
- k = 16        &  174.7 &    2.0 &   11.4 &   72.0 &    0.7 &    4.0 &   43.1 &    0.6 &   33.1 &   10.6 &    0.1 &   25.1 \\
- k = 18        &  124.8 &    1.2 &    0.8 &  119.3 &    1.2 &    4.2 &   47.0 &    0.5 &   12.2 &   24.7 &    0.3 &    4.0 \\
- k = 20        &  114.8 &    1.1 &    0.0 &   50.3 &    0.5 &    0.1 &   50.2 &    0.5 &    0.5 &   49.7 &    0.5 &    2.0 \\
- k = 22        &   50.4 &    0.5 &    0.0 &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.1 &   50.1 &    0.5 &    0.4 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent of spells where prenatal scan was initially used but birth is the result
-of pregnancy without prenatal scan.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Abortions and Change in Abortion Use by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_abortion_85}
-\begin{tabular}{@{} c D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} D{.}{.}{3.1} D{.}{.}{1.1} D{.}{.}{1.1} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 0.85 $ ) }                         \\ 
-               & \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p_s $)}                         \\ 
-               & \multicolumn{3}{c}{12}    & \multicolumn{3}{c}{16}    & \multicolumn{3}{c}{20}    & \multicolumn{3}{c}{24}    \\ \cmidrule(lr){2-4}  \cmidrule(lr){5-7}  \cmidrule(lr){8-10}  \cmidrule(lr){11-13}  
-                                      & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       & \mco{Abortions}  & \mco{Average}           &                       \\
-\multirow{2}{9mm}{Cost of\\children}  & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         & \mco{per 100}    & \mco{Spells}            & \mco{Percent}         \\
-                                      & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} & \mco{Women}      & \mco{w.\ Scan\tnote{a}} & \mco{Change\tnote{b}} \\
-\midrule
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
- k = 12        &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &    0.8 &    0.0 &   50.3 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 16        &    5.8 &    0.1 &   15.2 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 18        &   12.2 &    0.1 &    3.5 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 20        &   24.9 &    0.3 &    1.8 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 22        &   18.9 &    0.2 &    0.0 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
- k = 12        &    0.1 &    0.0 &   55.7 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &    2.4 &    0.0 &   43.7 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 16        &    6.3 &    0.1 &    1.9 &    5.2 &    0.1 &   28.9 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 18        &   23.7 &    0.3 &   12.0 &   12.2 &    0.1 &    3.5 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 20        &   25.3 &    0.3 &    0.2 &   24.9 &    0.3 &    1.8 &   12.6 &    0.3 &   50.4 &    0.0 &    0.0 &      . \\
- k = 22        &   50.3 &    0.5 &    0.2 &   49.1 &    0.5 &    3.2 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
- k = 12        &    0.6 &    0.0 &   54.8 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &   13.7 &    0.2 &   39.1 &    1.5 &    0.0 &   13.2 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 16        &   18.9 &    0.3 &   40.7 &    6.2 &    0.1 &    3.4 &    3.9 &    0.1 &   50.0 &    0.0 &    0.0 &      . \\
- k = 18        &   25.3 &    0.3 &    0.2 &   24.4 &    0.3 &    6.7 &   12.2 &    0.1 &    3.5 &    0.0 &    0.0 &      . \\
- k = 20        &   50.2 &    0.5 &    0.5 &   44.0 &    0.6 &   22.7 &   24.9 &    0.3 &    1.8 &   22.0 &    0.3 &   12.5 \\
- k = 22        &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.2 &   49.9 &    0.5 &    0.9 &   34.4 &    0.6 &   45.1 \\
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
- k = 12        &   10.3 &    0.1 &   24.3 &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . &    0.0 &    0.0 &      . \\
- k = 14        &   50.8 &    0.7 &   31.2 &    5.8 &    0.1 &   15.2 &    0.8 &    0.0 &   50.3 &    0.0 &    0.0 &      . \\
- k = 16        &   73.7 &    0.7 &    2.3 &   43.2 &    0.6 &   32.7 &    9.1 &    0.2 &   42.5 &    1.6 &    0.0 &   51.2 \\
- k = 18        &  123.8 &    1.2 &    1.5 &   44.0 &    0.6 &   22.7 &   24.7 &    0.3 &    4.0 &   11.8 &    0.1 &    6.4 \\
- k = 20        &   50.4 &    0.5 &    0.1 &   50.3 &    0.5 &    0.3 &   49.5 &    0.5 &    3.4 &   24.9 &    0.3 &    1.8 \\
- k = 22        &   50.4 &    0.5 &    0.0 &   50.3 &    0.5 &    0.1 &   50.3 &    0.5 &    0.2 &   49.9 &    0.5 &    0.9 \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-\item[a]Percent of spells where prenatal scan was initially used but birth is the result
-of pregnancy without prenatal scan.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Average and Maximum Spacing by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_spacing_r100_a05}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 1.0 $ ) }                         \\ 
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.5 $)}                         \\ 
-               & \mct{k = 12}              & \mct{k = 14}              & \mct{k = 16}              & \mct{k = 18}              & \mct{k = 20}              & \mct{k = 22}              \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11} \cmidrule(lr){12-13} 
-Parity         & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} \\ \midrule
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 12 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.50 &    10 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.25 &     7 &  1.50 &    10 &     . &     . \\
- 4             &  1.00 &     1 &  1.00 &     1 &  1.12 &     6 &  1.01 &     3 &     . &     . &     . &     . \\
- 5             &  1.00 &     1 &  1.00 &     1 &  1.03 &     3 &     . &     . &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.08 &     5 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.03 &     2 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.01 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.20 &     2 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 16 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.50 &     8 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.22 &     4 &  1.50 &     8 &     . &     . \\
- 4             &  1.00 &     1 &  1.00 &     1 &  1.09 &     3 &  1.10 &     4 &     . &     . &     . &     . \\
- 5             &  1.00 &     1 &  1.00 &     1 &  1.18 &     4 &     . &     . &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.06 &     3 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.10 &     2 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 20 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.49 &     6 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.13 &     2 &  1.49 &     6 &     . &     . \\
- 4             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.32 &     5 &     . &     . &     . &     . \\
- 5             &  1.00 &     1 &  1.00 &     1 &  1.44 &     4 &     . &     . &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.25 &     2 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 24 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.44 &     4 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.47 &     5 &     . &     . \\
- 4             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.43 &     4 &     . &     . &     . &     . \\
- 5             &  1.00 &     1 &  1.00 &     1 &  1.37 &     3 &     . &     . &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-% \item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Average and Maximum Spacing by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_spacing_r100_a055}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 1.0 $ ) }                         \\ 
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.55 $)}                         \\ 
-               & \mct{k = 12}              & \mct{k = 14}              & \mct{k = 16}              & \mct{k = 18}              & \mct{k = 20}              & \mct{k = 22}              \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11} \cmidrule(lr){12-13} 
-Parity         & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} \\ \midrule
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 12 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.38 &     3 &  1.50 &    10 &  1.50 &    12 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.24 &     6 &  1.06 &     8 &  1.00 &     2 &     . &     . \\
- 4             &  1.00 &     1 &  1.12 &     5 &  1.40 &     4 &  1.00 &     1 &     . &     . &     . &     . \\
- 5             &  1.03 &     2 &  1.21 &     3 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.01 &     3 &  1.10 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.04 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 16 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.49 &     7 &  1.50 &    10 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.19 &     3 &  1.25 &     8 &  1.02 &     4 &     . &     . \\
- 4             &  1.00 &     1 &  1.09 &     3 &  1.03 &     5 &  1.00 &     2 &     . &     . &     . &     . \\
- 5             &  1.00 &     1 &  1.01 &     2 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.18 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.01 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 20 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.47 &     5 &  1.50 &     9 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.25 &     7 &  1.06 &     5 &     . &     . \\
- 4             &  1.00 &     1 &  1.00 &     1 &  1.12 &     5 &  1.01 &     2 &     . &     . &     . &     . \\
- 5             &  1.00 &     1 &  1.03 &     2 &  1.03 &     2 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.03 &     3 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 24 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.38 &     3 &  1.50 &     8 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.24 &     5 &  1.20 &     6 &     . &     . \\
- 4             &  1.00 &     1 &  1.00 &     1 &  1.09 &     3 &  1.03 &     2 &     . &     . &     . &     . \\
- 5             &  1.00 &     1 &  1.00 &     1 &  1.16 &     3 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.04 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-% \item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Average and Maximum Spacing by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_spacing_r100_a06}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 1.0 $ ) }                         \\ 
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.6 $)}                         \\ 
-               & \mct{k = 12}              & \mct{k = 14}              & \mct{k = 16}              & \mct{k = 18}              & \mct{k = 20}              & \mct{k = 22}              \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11} \cmidrule(lr){12-13} 
-Parity         & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} \\ \midrule
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 12 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.49 &     6 &  1.50 &    10 &  1.50 &    12 &  1.50 &    13 \\
- 3             &  1.00 &     1 &  1.25 &     7 &  1.57 &     5 &  1.74 &     8 &  1.18 &     2 &  1.00 &     1 \\
- 4             &  1.12 &     5 &  1.47 &     6 &  1.27 &     5 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.25 &     4 &  1.47 &     4 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.17 &     2 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.06 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 16 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.44 &     4 &  1.50 &     8 &  1.50 &    11 &  1.50 &    12 \\
- 3             &  1.00 &     1 &  1.24 &     5 &  1.03 &     5 &  1.65 &     5 &  1.00 &     1 &  1.00 &     1 \\
- 4             &  1.09 &     3 &  1.32 &     3 &  1.36 &     6 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.01 &     2 &  1.06 &     3 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.10 &     3 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 20 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.25 &     2 &  1.49 &     6 &  1.50 &     9 &  1.50 &    11 \\
- 3             &  1.00 &     1 &  1.19 &     3 &  1.12 &     5 &  1.45 &     4 &  1.00 &     2 &  1.00 &     1 \\
- 4             &  1.00 &     1 &  1.02 &     3 &  1.33 &     4 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.03 &     2 &  1.16 &     3 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.01 &     2 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 24 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.44 &     4 &  1.50 &     8 &  1.50 &    10 \\
- 3             &  1.00 &     1 &  1.00 &     1 &  1.24 &     5 &  1.03 &     5 &  1.00 &     2 &  1.00 &     1 \\
- 4             &  1.00 &     1 &  1.09 &     3 &  1.19 &     2 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.00 &     1 &  1.01 &     2 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-% \item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-\begin{table}[!htp]
-\centering
-\scriptsize
-\begin{threeparttable}
-\caption{Average and Maximum Spacing by Cost of \protect\linebreak Children and prenatal Sex  Determination}
-\label{tab:simul_spacing_r100_a065}
-\begin{tabular}{@{} c D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} D{.}{.}{1.2} D{.}{.}{2.0} @{}}
-\toprule
-               & \multicolumn{12}{c}{Discount rate ( $ d = 1.0 $ ) }                         \\ 
-               &  \multicolumn{12}{c}{Son Preference ($\alpha = 0.65 $)}                         \\ 
-               & \mct{k = 12}              & \mct{k = 14}              & \mct{k = 16}              & \mct{k = 18}              & \mct{k = 20}              & \mct{k = 22}              \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9} \cmidrule(lr){10-11} \cmidrule(lr){12-13} 
-Parity         & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} & \mco{Average} & \mco{Max} \\ \midrule
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 12 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.99 &     8 \\
- 2             &  1.00 &     1 &  1.50 &     8 &  1.50 &    10 &  1.50 &    12 &  1.50 &    12 &  1.90 &     6 \\
- 3             &  1.25 &     7 &  1.72 &     7 &  1.75 &     9 &  1.75 &    10 &  1.91 &     7 &  1.00 &     1 \\
- 4             &  1.47 &     6 &  1.74 &     6 &  1.79 &     7 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.55 &     5 &  1.45 &     4 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 6             &  1.44 &     4 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 7             &  1.12 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 16 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.94 &     5 \\
- 2             &  1.00 &     1 &  1.49 &     7 &  1.50 &     9 &  1.50 &    11 &  1.50 &    12 &  1.53 &     8 \\
- 3             &  1.24 &     5 &  1.65 &     5 &  1.72 &     7 &  1.74 &     8 &  1.78 &     5 &  1.00 &     1 \\
- 4             &  1.40 &     4 &  1.41 &     3 &  1.66 &     5 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.37 &     3 &  1.14 &     3 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.07 &     2 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 20 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.50 &     2 \\
- 2             &  1.00 &     1 &  1.47 &     5 &  1.50 &     8 &  1.50 &     9 &  1.50 &    11 &  1.25 &    11 \\
- 3             &  1.22 &     4 &  1.45 &     3 &  1.64 &     5 &  1.72 &     7 &  1.50 &     3 &  1.00 &     1 \\
- 4             &  1.19 &     2 &  1.10 &     3 &  1.40 &     3 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.06 &     2 &  1.19 &     3 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.09 &     2 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-               &  \multicolumn{12}{c}{Cost of Prenatal Sex Determination ($ p = 24 $)}                         \\ 
- 1             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 \\
- 2             &  1.00 &     1 &  1.44 &     4 &  1.49 &     6 &  1.50 &     8 &  1.50 &    10 &  1.50 &    11 \\
- 3             &  1.13 &     2 &  1.27 &     2 &  1.57 &     4 &  1.65 &     5 &  1.00 &     1 &  1.00 &     1 \\
- 4             &  1.03 &     2 &  1.16 &     3 &  1.04 &     2 &  1.00 &     1 &  1.00 &     1 &     . &     . \\
- 5             &  1.09 &     2 &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . \\
- 6             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 7             &  1.00 &     1 &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . \\
- 8             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 9             &  1.00 &     1 &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . \\
- 10            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
- 11            &  1.00 &     1 &     . &     . &     . &     . &     . &     . &     . &     . &     . &     . \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Simulations based on  50,000 individuals, 15 periods, $ I = 200 $,
- and a probability of a son of 0.5.
-% \item[a]Percent boys is the percent boys of all births.
-\end{tablenotes}
-\end{threeparttable}
-\normalsize
-\end{table}
-
-
 % \begin{sidewaystable}
 \begin{table}[htp]
 \begin{center}
@@ -4691,170 +3240,6 @@ Quarters refer to number of 3 month periods observed.
 \end{center}
 \end{table}
 % \end{sidewaystable}
-
-
-\clearpage
-\newpage
-
-% \begin{figure}[h]
-% \begin{center}
-% \Treek{1.5}{  &&   &        &           &                       &       & \K[5.2]{n=0}\Bkk{5.2,0}{-5.2,0}{dlll}\Bkk{5.2,0}{5.2,0}{dd}\Bkk{5.2,0}{5.2,0}{drrrr} \\
-% \K[-6]{\emph{t=1}}              &&              & \K[5.2]{-S}\Bkk{5.2,0}{5.2,0}{dll}\Bkk{5.2,0}{5.2,0}{drr}  & &      & & & &      & & \K[5.2]{S}\Bkk{5.2,0}{5.2,0}{dll}\Bkk{5.2,0}{5.2,0}{drr}              \\
-%              & \K[5.2]{b (boy)}\bkl\bkd\bkr &   &  &                    &   \K[5.2]{g (girl)}\bkl\bkd\bkr & & \K[5.2]{0} &      & \K[5.2]{0 (no child)}\bkl\bkd\bkr & &&                   &  \K[5.2]{b (boy)}\bkl\bkd\bkr     \\
-% \K[-6]{\emph{t=2}}\K[5.2]{-S}\bkv\bkh&       & \K[5.2]{S}\bkv\bkh    & & \K[5.2]{-S}\bkv\bkh &    & \K[5.2]{S}\bkv\bkh &              &\K[5.2]{-S}\bkv\bkh&       & \K[5.2]{S}\bkv\bkh &  &\K[5.2]{-S}\bkv\bkh&   & \K[5.2]{S}\bkv\bkh  \\
-% \K{bb}             & \K{bg}  \K[5.2]{b}  & \K{b} & \K{bb}        & \K{gb}  &\K{gg} \K[5.2]{g}   & \K{g} & \K{gb}    & \K{g}  &\K{b} \K[5.2]{0}  & \K{0} & \K{b}    & \K{bb}  &\K{bg} \K[5.2]{b}  & \K{b} & \K{bb}     \\
-% }
-% \end{center}
-% \caption{Decision tree for a two period model with prenatal sex screening, where -S is no prenatal sex determination and S is sex determination}
-% \label{fig:tree}
-% \end{figure}
-
-
-\begin{figure}[htp]%
-\centering
-\includegraphics[width=0.9\textwidth]{des_fertility_35}
-% this graph is sex_ratio_marriage_2yrs_p1.pdf from andescribe.do
-\caption{Children ever born at age 35}
-\label{fig:fertility}
-\end{figure}
-
-\clearpage
-\newpage
-
-
-\begin{table}[htbp]
-\begin{center}
-\begin{scriptsize}
-\begin{threeparttable}
-\caption{Predicted Fertility Behavior, Sex Ratio, and \protect\linebreak
-Abortions for Women with No Education}
-\label{tab:predicted_low}
-\begin{tabular} {@{} l D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1}  D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1}  @{}} \toprule
-                 & \multicolumn{4}{c}{1972-1984}                                                               & \multicolumn{4}{c}{1985-1994}                                                               & \multicolumn{4}{c}{1995-2006} \\ \cmidrule(lr){2-5} \cmidrule(lr){6-9} \cmidrule(lr){10-13}
-                 & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      \\
-                 & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      \\
-\midrule
-\bf Urban        & \multicolumn{12}{c}{} \\                                                                    
-Spell 2          &       93.2   &  1.8    &  1.6    &  52.2   &       92.4   &  1.5    &  1.3    &  52.0   &       90.0   &  1.4    &  1.2    &  52.0   \\
-Spell 3          &       93.8   &  4.6    &  4.3    &  53.6   &       91.1   &  -1.2   &  -1.1   &  50.7   &       85.6   &  -4.7   &  -4.0   &  48.8   \\
-Spell 4          &       87.1   &  5.5    &  4.8    &  54.1   &       84.4   &  2.3    &  2.0    &  52.5   &       75.3   &  5.6    &  4.2    &  54.1   \\
-Overall\tnote{d} &       3.6    &  2.8    &  9.8    &  52.9   &       3.5    &  0.6    &  2.0    &  51.7   &       3.3    &  0.3    &  0.9    &  51.2   \\
-\addlinespace 
-\bf Rural        & \multicolumn{12}{c}{} \\                                                                                  
-Spell 2          &       94.5   &  1.7    &  1.6    &  52.1   &       93.7   &  1.0    &  1.0    &  51.7   &       92.9   &  3.4    &  3.2    &  53.0   \\
-Spell 3          &       95.1   &  1.5    &  1.4    &  52.0   &       93.4   &  1.9    &  1.7    &  52.2   &       91.3   &  -0.5   &  -0.5   &  51.0   \\
-Spell 4          &       91.1   &  3.4    &  3.1    &  52.9   &       87.3   &  0.1    &  0.1    &  51.3   &       83.3   &  0.1    &  0.1    &  51.3   \\
-Overall\tnote{d} &       3.7    &  1.6    &  5.7    &  52.3   &       3.6    &  0.7    &  2.7    &  51.7   &       3.5    &  0.8    &  2.8    &  51.5   \\
-\bottomrule
-\end{tabular}                        
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Predictions are based on estimates of equations 
-(\ref{eq:probability_boy}) and (\ref{eq:probability_girl}).
-The samples consist of all women from the data no education who
-married during the indicated period using the estimation results for that periods 
-and the women's characteristics at the start of their marriage. 
-All numbers presented are for women predicted to have one or more births.
-Birth/progression rates are based on the ratio of women predicted to have a birth 
-by the end of each spell.
-Abortion rates within each spell are based on the predicted number of abortions each
-woman would have if she went through the entire spell.
-To generate conditions such as sex composition and fecundity for second and higher spells 
-each woman is randomly assigned outcomes based on the estimation results and
-her characteristics as follows.
-For each quarter, her probabilities of having a boy, a girl, or no birth is calculated.
-She is assigned one of these outcomes based on a random draw from a uniform distribution.
-The first quarter where she has a draw that results in a birth she leaves the spell
-and the quarter reached is used to calculate her starting age for the subsequent spell.
-If she has no draw that result in a birth within a spell her childbearing stops and
-she does not enter the next spell.
-Results are averaged over 1,000 repetitions.
-\item[a] For individual spells the column shows the percent of women who started the
-spell and ended up with a birth by the end of the spell period covered.
-For the ``Overall'' row, the number is the expected number of children born per woman over 
-the first four spells, conditional on having at least one birth.
-\item[b] For individual spells the column shows the number of abortions per 100
-births predicted to take place by the end of the spell.
-For the ``Overall'' row, the number is the total number of abortion per 100 births 
-predicted to take place over all four spells.
-\item[c]  For individual spells the column shows the number of abortions 
-predicted to take place by the end of the spell per 100 women who started the spell .
-For the ``Overall'' row, the number is the total number of abortion 
-predicted to take place over all four spells per 100 women who had at least one child.
-\item[d] Covers first through fourth spells. 
-\end{tablenotes}
-\end{threeparttable}
-\end{scriptsize}
-\end{center}
-\end{table}
-
-
-\begin{table}[htbp]
-\begin{center}
-\begin{scriptsize}
-\begin{threeparttable}
-\caption{Predicted Fertility Behavior, Sex Ratio, and \protect\linebreak
-Abortions for Women with 1 to 7 Years of Education}
-\label{tab:predicted_med}
-\begin{tabular} {@{} l D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1}  D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1}  @{}} \toprule
-                 & \multicolumn{4}{c}{1972-1984}                                                               & \multicolumn{4}{c}{1985-1994}                                                               & \multicolumn{4}{c}{1995-2006} \\ \cmidrule(lr){2-5} \cmidrule(lr){6-9} \cmidrule(lr){10-13}
-                 & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      \\
-                 & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      \\
-\midrule
-\bf Urban        & \multicolumn{12}{c}{} \\                                                                    
-Spell 2          &       93.4   &  -2.1   &  -2.0   &  50.1   &       89.7   &  -0.1   &  -0.1   &  51.2   &       84.5   &  -0.9   &  -0.7   &  50.7   \\
-Spell 3          &       89.2   &  1.4    &  1.3    &  52.0   &       82.5   &  1.4    &  1.2    &  51.9   &       71.1   &  2.4    &  1.7    &  52.4   \\
-Spell 4          &       79.0   &  3.4    &  2.7    &  52.9   &       70.9   &  1.0    &  0.7    &  51.7   &       61.9   &  6.8    &  4.2    &  54.7   \\
-Overall\tnote{d} &       3.4    &  0.4    &  1.4    &  51.7   &       3.2    &  0.5    &  1.5    &  51.7   &       2.8    &  1.1    &  3.2    &  51.9   \\
-\addlinespace 
-\bf Rural        & \multicolumn{12}{c}{} \\                                                                                  
-Spell 2          &       94.6   &  -1.3   &  -1.2   &  50.5   &       93.0   &  0.4    &  0.4    &  51.4   &       91.6   &  2.2    &  2.0    &  52.3   \\
-Spell 3          &       92.8   &  0.6    &  0.6    &  51.5   &       88.0   &  1.0    &  0.8    &  51.7   &       80.7   &  3.5    &  2.8    &  53.0   \\
-Spell 4          &       86.2   &  -2.2   &  -1.9   &  50.1   &       80.3   &  4.5    &  3.6    &  53.5   &       68.0   &  3.6    &  2.5    &  53.1   \\
-Overall\tnote{d} &       3.6    &  -0.7   &  -2.4   &  51.0   &       3.4    &  1.2    &  4.1    &  51.6   &       3.2    &  2.0    &  6.4    &  52.1   \\
-\bottomrule
-\end{tabular}                        
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Predictions are based on estimates of equations 
-(\ref{eq:probability_boy}) and (\ref{eq:probability_girl}).
-The samples consist of all women from the data with 1 to 7 years of education who
-married during the indicated period using the estimation results for that periods 
-and the women's characteristics at the start of their marriage. 
-All numbers presented are for women predicted to have one or more births.
-Birth/progression rates are based on the ratio of women predicted to have a birth 
-by the end of each spell.
-Abortion rates within each spell are based on the predicted number of abortions each
-woman would have if she went through the entire spell.
-To generate conditions such as sex composition and fecundity for second and higher spells 
-each woman is randomly assigned outcomes based on the estimation results and
-her characteristics as follows.
-For each quarter, her probabilities of having a boy, a girl, or no birth is calculated.
-She is assigned one of these outcomes based on a random draw from a uniform distribution.
-The first quarter where she has a draw that results in a birth she leaves the spell
-and the quarter reached is used to calculate her starting age for the subsequent spell.
-If she has no draw that result in a birth within a spell her childbearing stops and
-she does not enter the next spell.
-Results are averaged over 1,000 repetitions.
-\item[a] For individual spells the column shows the percent of women who started the
-spell and ended up with a birth by the end of the spell period covered.
-For the ``Overall'' row, the number is the expected number of children born per woman over 
-the first four spells, conditional on having at least one birth.
-\item[b] For individual spells the column shows the number of abortions per 100
-births predicted to take place by the end of the spell.
-For the ``Overall'' row, the number is the total number of abortion per 100 births 
-predicted to take place over all four spells.
-\item[c]  For individual spells the column shows the number of abortions 
-predicted to take place by the end of the spell per 100 women who started the spell .
-For the ``Overall'' row, the number is the total number of abortion 
-predicted to take place over all four spells per 100 women who had at least one child.
-\item[d] Covers first through fourth spells. 
-\end{tablenotes}
-\end{threeparttable}
-\end{scriptsize}
-\end{center}
-\end{table}
-
-
-
 
 
 \end{document}
