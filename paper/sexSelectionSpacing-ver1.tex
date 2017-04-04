@@ -2,8 +2,8 @@
 
 % sex-selective Abortion
 % Begun originally: 01/11/02
-% Begun.: 2016-05-12
-% Edited: 2016-11-07
+% Begun.: 2017-04-03
+% Edited: 2017-04-03
 
 \documentclass[12pt,letterpaper]{article}
 
@@ -104,18 +104,18 @@ University of Washington.
 \graphicspath{{figures/}}
 \DeclareGraphicsExtensions{.jpg,.pdf,.mps,.png}
 
-% \setcounter{page}{-1}
-% \maketitle
+\setcounter{page}{-1}
+\maketitle
+\thispagestyle{empty}
+
+% \setcounter{page}{0}
+\newpage
+
+\doublespacing
+% \onehalfspacing
+
+
 % \thispagestyle{empty}
-% 
-% % \setcounter{page}{0}
-% \newpage
-% 
-% \doublespacing
-% % \onehalfspacing
-% 
-% 
-% % \thispagestyle{empty}
  
 \maketitle
 \thispagestyle{empty}
@@ -177,13 +177,6 @@ With fetus sex random, a statistically significant variable indicates an associa
 use of sex-selective abortions.
 Examples of studies that have used this approach are \cite{retherford03b},
 \cite{jha06}, and \cite{abrevaya09}. 
-% Poor nutritional and health status of women may lead to 
-% relatively more girls being born, probably as an evolutionary
-% response to maximise reproductive success \citep{trivers73,wells00}.
-% Empirical evidence from Ethiopia and from cross-country data supports
-% this hypothesis \citep{klasen02,gibson03}.
-% % , although acute under-nutrition may not have this effect \citep{stein04}.
-% See also the discussion for India in \citet{bhaskar07}.
 }
 Based on this simple method, we know that families with no sons are more likely to
 use sex selection the higher the parity;
@@ -313,35 +306,40 @@ before sex selection became available \citep{repetto72,arnold98,dreze01}.
 
 
 
+The method can better predict ``final'' sex ratios than the simple model
 
 
-\section{Theoretical Framework\label{sec:model}}
 
-[TK Calling this a model will be overkill - save the model for the fertility paper]
+\section{The Interaction between Son Preference and Birth Spacing\label{sec:model}}
+
+The extension of birth spacing that result from abortions as described above is 
+only one part of the interaction between son preference and birth spacing.
+
+
+- the decision on sex selection and spacing
+    - the mechanical extension
+    - the possibility of changing use of sex selection
+
+- what other factors might change birth spacing?
+    - increased use of contraceptives
+    - changes in labor force participation
+    
+
+
+
+\citep{Soest2012} for a recent example of spacing and son preference
+
+
 
 [TK find examples of the son preference spacing papers and look at what they did
 for "theory"]
 
-The model I present here serves two purposes.
-First, the model informs the empirical strategy presented below.
-Second, I show that there are cases where parents reconsider their decision to 
+I show that there are cases where parents reconsider their decision to 
 use sex selection between births, which underscores why 
 using only observed births may provide a biased view of how much
 sex selection takes place and what the final sex ratio will be.
 
-[move discussion of spacing from footnote above to here?]
 
-This is obviously a simplification and since the interaction
-between son preference and spacing is at the core of this paper,
-I first discuss factors that may affect spacing between birth.%
-\footnote{
-It is possible that parents care directly about the
-length of spacing between births, but 
-spacing outcomes are more likely the results of parents weighing many
-factors against each other.
-}
-
-One factor that might impact desired spacing is health.
 As discussed above, shorter spacing after the birth of a girl is 
 associated with worse health outcomes for both mother and children.%
 \footnote{
@@ -395,6 +393,7 @@ See also the discussion in \citet[p 315]{Hotz1997}
 and references therein.
 }
 
+[TK this needs to move to later]
 Finally, increased reliability of access and effectiveness of
 contraceptive can lead to shorter spacing between births 
 \citep{Keyfitz1971,Heckman1976}.
@@ -410,148 +409,7 @@ educated women than for less educated women, provided that
 knowledge and ability to use contraception differ
 across education groups \citep{Tulasidhar1993,Whitworth2002}.
 
-% "Solving" the model
 
-Instead of trying to model each of the factors that may affect
-spacing I instead set up a dynamic model with a discount rate.
-Parents maximize utility over a finite time horizon $T$
-\begin{equation}
-\max E \sum_{t=0}^T d^t [ 
-u(c_t) + \alpha u^b(b_t) + (1-\alpha) u^g(g_t) 
-],
-\label{eq:utility_1}
-\end{equation}
-where $E$ is the expectation operator,
-$c_t$ consumption in period $t$, 
-$b_t$ the stock of boys in period $t$,
-$g_t$ the stock of girls in period $t$, and
-$d$ the discount rate.
-For ease of analysis I assume that utility in each period is separable in 
-parental consumption, boys, and girls.
-I define son preference, $\alpha$, as higher marginal utility of next child 
-being a boy if parents have an equal number, possibly zero, of boys and girls.
-The utility function covers a variety of different preferences 
-from equal utility of boys and girls ($\alpha = 0.5$ provided
-$u^b(\cdot) = u^g(\cdot)$) to an extreme 
-son preference where there is no utility of having a daughter 
-($\alpha = 1$).%
-\footnote{
-Other ways of defining son preference, such as wanting at least one son 
-and not caring about sex composition after that, are possible but 
-will be explored here.
-The basic results remain as long as there is different
-utility of sons and daughters for at least some sex compositions.
-}
-The lower $d$ is the more parents prefer immediate utility relative
-to future utility.
-Hence, the discount factor is a convenient way to capture how patient parents 
-are and therefore how willing parents are to wait through multiple abortions 
-to ensure a son. 
-
-At the beginning of each period parents have 3 possible choices:
-no pregnancy, a pregnancy without a prenatal sex determination scan,
-or a pregnancy with a prenantal sex determination scan followed by an
-abortion if the fetus is female.
-The probability of conceiving a boy is $\pi$, which is
-the same for all parents and in all periods.
-There is no child mortality, so both
-$b$ and $g$ are non-decreasing over time.
-
-If a child is born parents incur a cost $p_k$ for
-that child in the period of birth and all subsequent periods
-until the end of the time horizon.%
-\footnote{
-Clearly boys and girls may carry different costs, but since 
-the model already assumes that
-parents have different preferences over boys and
-girls there is no reason to further complicate the model.
-Similarly, the cost of maintaining a child likely depend on 
-its age, but incorporating that would add little to 
-the conclusions.
-}
-If parents select a pregnancy with prenatal sex determination
-they pay $p_s$ and also $p_k$ if the fetus is a son
-and therefore carried to term.
-For two reasons the prenatal sex determination scan is best thought of as
-a bundled service that includes both the prenatal sex determination scan 
-\emph{and} the abortion if the fetus is female.
-First, it is more tractable than including additional steps in
-the decision process, especially since the only motivation for
-a prenatal scan in the model is sex selection, and a scan would
-therefore be ``wasted'' unless a female fetus was aborted.
-Second, I argue in the online Appendix that both parents and providers 
-may prefer a bundled service, where there is an upfront cost and the service 
-includes both the prenatal screening and the abortion---if needed---from the 
-same provider.
-The budget constraint for each period is then
-\begin{equation}
-I_t = c_t + p_k(b_t + g_t) + p_s s,
-\end{equation}
-where $I_t$ is income in period $t$
-and
-$s$ is an indicator variable for whether the 
-parents purchased prenatal sex determination.%
-\footnote{
-This assumes that there is no saving or borrowing
-across periods.
-This is a common assumption in this type of model.
-See, for example, 
-\citet{Heckman1976},
-\citet{wolpin84},
-\citet{rosenzweig85},
-\citet{Newman1988},
-and
-\citet{Leung1991}.
-That there are only two stock variables, the number
-of boys and the number of girls, greatly simplifies the analysis.
-}
-
-This maximization problem can be solved using dynamic programming, 
-but because the choice variable and the state variables (number of
-boys and girls) are discrete a closed-form solution
-is generally not available.
-% There are two discrete state variables (boys and girls) and one
-% choice variable with three potential choices (no pregnancy, pregnancy without prenatal sex 
-% determination, and pregnancy with prenatal sex determination).
-% Combined with the finite time horizon a problem of this type is especially suited for
-% simulation and the model is simulated using backward induction.
-This means that simulation is the best way to analyze the model,
-but before turning to simulations it is worthwhile illustrating
-how the model works.
-I begin with the possible utility outcomes in period $T$, the last period 
-in which parents make decisions on fertility.
-If parents decide on ``no pregnancy'' their utility in the final period will be
-\begin{equation}
-U_T^N =
-u(I - p_k(b_{T-1} + g_{T-1})) + \alpha u^b(b_{T-1}) + (1 - \alpha) u^g(g_{T-1}).
-\end{equation}
-If they instead decide to have a pregnancy without a prenatal scan 
-their expected utility will be 
-\begin{multline}
-U_T^B = 
-\pi [ 
-u(I - p_k(b_{T-1} + g_{T-1} + 1)) + \alpha u^b(b_{T-1}+1) + (1-\alpha) u^g(g_{T-1}) 
-]
-+\\
-(1-\pi) [ 
-u(I - p_k(b_{T-1} + g_{T-1} + 1)) + \alpha u^b(b_{T-1}) + (1-\alpha) u^g(g_{T-1}+1) 
-].
-\end{multline}
-Finally, if they decide to use prenatal sex determination their
-expected utility will be
-\begin{multline}
-U_T^S = 
-\pi [ 
-u(I - p_k(b_{T-1} + g_{T-1} + 1) - p_s) + \alpha u^b(b_{T-1}+1) + (1-\alpha) u^g(g_{T-1}) 
-]
-+ \\
-(1-\pi) [ 
-u(I - p_k(b_{T-1} + g_{T-1}) - p_s) + \alpha u^b(b_{T-1}) + (1-\alpha) u^g(g_{T-1}) 
-],
-\end{multline}
-since parents incur the cost of the scan, $p_s$, whether they conceive
-a male or a female fetus, but will not incur any additional childrearing costs
-if a girl is conceived.
 
 To illustrate how the decision process works, consider
 the decision in the final period on whether to use sex selection or not
@@ -565,13 +423,6 @@ if $U_T^B > U_T^S$, which leads to
 + (1-\pi) u(I - p_k(b_{T-1} + g_{T-1}) - p_s) \\
 - u(I - p_k(b_{T-1} + g_{T-1}+1)).
 \end{multline}
-% This can also be written as
-% \begin{multline} \label{eq:last_full}
-% (1-\pi)(1-\alpha) [ u^g(g_{T-1}+1) - u^g(g_{T-1}) ]
-% > \\
-% \pi [u(I - p_k(b_{T-1} + g_{T-1} + 1) - p_s) - u(I - p_k(b_{T-1} + g_{T-1}+1))] \\
-% + (1-\pi) [ u(I - p_k(b_{T-1} + g_{T-1}) - p_s) - u(I - p_k(b_{T-1} + g_{T-1}+1))].
-% \end{multline}
 Hence, parents choose a pregnancy without prenatal scan over
 a pregnancy with a prenatal scan in the final period if
 the additional utility of having an extra girl (the left-hand-side),
@@ -591,8 +442,6 @@ consumption and use of sex selection, matters.
 This is an artifact of the separability between consumption, number of
 boys, and number of girls in the utility function.
 }
-% With some abuse of language I will call this difference the 
-% marginal utility of a child, in this case a girl.
 
 If a son is conceived the money for a prenatal scan are ``wasted,''
 which means that the utility from consumption if they use prenatal scan
@@ -616,127 +465,6 @@ the lower the cost of prenatal sex determination is going to be
 relative to the cost of maintaining the child until the end of the time
 horizon.
 
-Finally, increasing the cost of children, $p_k$---as would happen 
-with higher education of mothers---increases the likelihood that sex 
-selection will be used at a given number of children.%
-\footnote{
-Higher education likely also increases household income, which
-makes it \emph{less} likely parents will choose a birth with prenantal 
-scan over a birth without a prenatal scan.
-Higher income means lower marginal utility from consumption, which makes the 
-whole right-hand side move toward zero.
-For a given number of girls, this makes it more likely 
-that the utility from an additional girl is sufficiently high that parents 
-will simply have a birth.
-Empirically, increasing education of mothers is, however, strongly associated 
-with lower fertility, which indicates that 
-the negative effect of higher opportunity cost more than outweighing 
-the positive effect of higher income \citep{schultz97}.
-}
-There are two reasons for this.
-First,  when the cost per child goes up the given number of children 
-translates into less income per period available for consumption.
-Second, the decline in consumption from having an additional
-child becomes larger.
-These combine to increase the marginal utility of consumption and thereby 
-make it more attractive to have a prenatal scan.
-
-% % Theory on whether reversal of use
-% A question of interest is when parents would pick
-% a scan in one period and no scan in the following period.
-% For this to happen parents must choose scan, conceive a girl, and then
-% have a birth without a scan.
-% The available choices in the second to last period are the same as in the last
-% period: no birth, pregnancy without a scan, and a pregnancy with a scan.
-% Let $V_T(B)$ be the expected utility of the optimal choice in the last
-% period if the outcome of the choice in period $T-1$ is a boy.
-% Similarly, $V_T(G)$ and $V_T(N)$ are the expected utilities from
-% having a girl and no birth in period $T-1$.
-% In period $T-1$ parents will choose to have a pregnancy without a scan
-% over a pregnancy with a scan if
-% \begin{multline}
-% (1-\pi)(1-\alpha) [ u^g(g_{T-2}+1) - u^g(g_{T-2}) ] 
-% > \\
-% \pi u(I - p_k(b_{T-2} + g_{T-2} + 1) - p_s) \\
-% + (1-\pi) [ u(I - p_k(b_{T-2} + g_{T-2}) - p_s) + d( V_T(N)- V_T(G))] \\
-% - u(I - p_k(b_{T-2} + g_{T-2} + 1)).
-% \end{multline}
-% As before the left-hand side is the marginal utility of
-% an additional daughter, but the right-hand side now also 
-% incorporates the discounted value of the difference between expected utility 
-% in the last period if no children are born in $T-1$ and expected utility in 
-% the last period if a girl is born in $T-1$.
-% 
-% For parents to change their decision on abortion it must be
-% the case that the right-hand side for $T-1$ is larger than 
-% the left-hand side \emph{and} the left-hand side need to 
-% be larger than the right-hand side without the discounted value
-% of the difference in expected utility.
-% Note that the left-hand side remains the same because with
-% a scan no girls are born and the parents therefore enter the
-% last period with the same number of girls as they exited
-% period $T-2$.%
-% \footnote{
-% This would not be the case if utility was not separable between
-% boys and girls.
-% }
-% This, in turn, requires that $V_T(N) - V_T(G)$ is positive.
-% Identifying when this holds becomes complicated and the
-% level of complication increases as we move towards to the
-% beginning of the time horizon. 
-
-% [Simulation of model]
-Although it is possible to examine how decisions are made in the last period,
-the absence of closed-form solutions means that I cannot directly 
-examine important questions such as whether parents will reverse their
-use of sex selection between births.
-I therefore now turn to simulation of the model for different parameters.
-Appendix Tables \ref{tab:simul_fertility_100}-\ref{tab:simul_fertility_85} 
-show the simulation results for average  fertility and the ratio of boys to births for 
-selected values of son preference ($\alpha$), cost of prenatal sex determination ($p_s$) 
-and cost of children ($k$).
-Appendix Tables \ref{tab:simul_abortion_100}-\ref{tab:simul_abortion_85}
-show the corresponding simulation results for number of abortions per 100 women, 
-average number of spells where prenatal scan has been used, 
-and the percent of spells where the choice is initially
-pregnancy \emph{with} a prenatal scan but the birth is from a pregnancy \emph{without}
-a prenatal scan.
-The latter captures the likelihood of changing the decision to use sex selection
-between births and I cover that separately below.
-Appendix Tables \ref{tab:simul_spacing_r100_a05}-\ref{tab:simul_spacing_r100_a065}
-show the average and maximum spacing between births by parity.
-
-The specification and parameter values are chosen to illustrate
-the effects of changing parameters, rather than to provide
-a realistic set of outcomes.
-The utility function used for the simulations is%
-\footnote{
-See \citet{leung94} for a discussion of potential utility
-functions with different preferences for sons and daughters.
-}
-\[
-U = 0.27\frac{(c-30)^{0.5}}{0.5} + \alpha \frac{b^{0.75}}{0.75} + (1-\alpha) \frac{g^{0.75}}{0.75}.
-\]
-The simulations presented in the tables assume 15 periods, a period income of 
-$I = 200$, and that the probability of a son is 0.5.
-The four parameters and their examined values are the cost of 
-children ($k \in 12, 14, 16, 18, 20, 22$), 
-cost of prenatal sex determination ($p \in 12, 16, 20, 24,  200$)---where 
-the last value is equivalent to no prenatal sex determination available,
-the degree of son preference ($\alpha \in 0.5, 0.55, 0.6, 0.65$),
-and the discount rate ($d \in 0.85, 0,9, 0.95, 1.0$).
-The optimal choice sets are applied to a sample of 50,000 ``individuals'', each 
-with 15 ``potential'' children, whose sex comes from a binomial distribution 
-with the probability above.%
-\footnote{
-I also ran simulations on an expanded set of parameter values.
-I use these results for regression analysis of the effect of parameters.
-These are available upon request.
-}
-
-
-
-% Access / cost of prenatal sex determination
 
 
 Lowering the cost of prenatal sex determination does, however, bias the overall sex 
@@ -751,22 +479,7 @@ In addition to increasing the overall sex ratio, lower cost of prenatal
 scan leads to use of sex selection at earlier parities.
 The result is that in some cases there is either no change or a \emph{decrease} 
 in average spacing for a given parity---although with a more than compensating 
-increase in an earlier parity.%
-\footnote{
-One example is the second parity for $k= 22$ and $\alpha = 0.65$
-when cost of prenatal scan decreases from 24 to 20.
-The average spacing for the second parity falls from 1.5 to 1.25,
-but the average spacing for the first parity goes from 1 (no
-use of sex selection) to 1.5.
-Another example is for $\alpha = 0.5$ when cost of prenatal scan falls 
-from 20 to 16 when cost of children is 16. 
-The average spacing for parity 5 births falls from 1.44 to 1.18, but
-the spacing for parity 4 births increases only from 1 to 1.09. 
-What this hides is, of course, that there are substantially more 
-parity 4 births than there are parity 5 births--and only a slight 
-decline in fertility from 4.16 to 4.11---and that the number of
-abortions per 100 woman doubles. 
-}
+increase in an earlier parity.
 Hence, it is possible for individual parities to show a \emph{decline}
 in sex selection at the same time as the overall use goes up.
 This is an important caution against over-interpreting
@@ -856,16 +569,7 @@ Lowering the cost of prenatal sex determination generally leads to
 a smaller percentage of parents who change their use of sex selection.
 But, the total number of spells with a change may still
 go up because lower cost of prenatal sex determination also
-increases the use of sex selection.%
-\footnote{
-An example of this is when the discount rate is 0.95, cost of
-children 14, cost preference of 0.6, and the cost of a prenatal scan falls 
-from 16 to 12, resulting in a decline in the probability of changing 
-from 38.1\% to 30.9\%.
-In this case the average number of spells with a change increases
-from 0.19 spells at the higher cost of prenatal scan 
-to 0.37 for the lower cost.
-}
+increases the use of sex selection.
 
 Another reason for parents to change their decision to use sex
 selection is that they get ``too close'' to the end of the time
@@ -880,26 +584,6 @@ there is strong incentive to use sex selection.%
 These results are available in the online Appendix.
 }
 
-Increasing the cost of children and the degree of son preference
-both tend to lower the likelihood that parents will change their
-decision to use sex selection.
-Working in the opposite direction is that some women with higher cost
-of children, for example because of higher education, are also likely 
-to marry later.
-The later marriage effectively shortens their reproductive time horizon
-and thereby makes it more likely that they will reverse their use of 
-sex selection between births.
-% Again, the caveat is that extensive use of sex selection
-% can lead parents close to the end of the time horizon, at which
-% point they may change their decision.
-
-% Hence, this shows that parents may reverse the use of sex selection, 
-% both when they use sex selection relatively infrequently and when they 
-% use it heavily.
-
-% Furthermore, the reversal of use of sex selection is 
-% often followed by a spell where sex selection is used again,
-% especially in the case when a girl is born.
 
 
 % What are the model highlights 
@@ -910,9 +594,6 @@ function chosen.
 If parents have a different utility function, like a preference
 for one son but otherwise no preference across boys and girls
 the results may look different.
-% As shown it still is possible, however, to get sex selection
-% for balance and for parents to change their decision on use
-% of sex selection between births.
 }
 The increased use of sex selection shows up both in the 
 proportion of boys among births and longer spacing between 
@@ -928,10 +609,6 @@ Reversal are more likely the more impatient parents are or the
 shorter time they have left in their reproductive horizon, which
 means that the longer the duration has been since the last birth
 the more likely they are to reverse their decision to use sex selection.
-% Furthermore, as the simulations show it is possible for son 
-% preference to decline while the sex ratios becoming more unequal 
-% provided the cost of prenatal scan decreases and/or cost of children 
-% increases sufficiently (or people become more patient).
 Finally, the model shows that son preference in the number of
 children is not required for an unequal sex ratio.
 As long as parents are only willing to abort female fetuses, declining
@@ -970,23 +647,15 @@ The theoretical model has three implications for fertility decisions with access
 sex-selective abortions: 
 a higher probability that next child is a son, 
 longer average time to next birth, 
-and that the use of prenatal sex determination may change between one observed birth and 
-the next.
+and that the use of prenatal sex determination may change between one observed 
+birth and the next.
 All three must be incorporated into the estimation strategy
 to provide unbiased and precise estimates of the use of sex-selective abortions.%
-\footnote{
-For comparison the online Appendix presents the estimation strategy 
-for the simple model.
-The online Appendix also shows how individual parity results compare 
-between the simple model and the model suggested here.
-As mentioned, the simple model cannot provide complete fertility 
-and total number of abortions predictions.
-}
 
 The empirical model is a discrete time non-proportional competing risk hazard model with 
 two exit states: either a boy or a girl is born.%
 \footnote{
-\cite{merli00} used a discrete hazard model to examine whether 
+\cite{Merli2000} used a discrete hazard model to examine whether 
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
@@ -1068,44 +737,18 @@ likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
 Hence, if the data are transformed so the unit of analysis is spell unit rather 
 than the individual woman, the model can be estimated using a standard multinomial logit model.%
 \footnote{
-% [problem with IIA assumption (independence of irrelevant alternatives]
 A potentially issue is that the multinomial model assumes that alternative 
 exit states are stochastically independent,
 also known as the Independence of Irrelevant Alternatives (IIA) assumption.
-% Even though boys and girls are not perfect substitutes they are 
-% very similar and this may present a problem for the IIA assumption.
 This assumption rules out any individual-specific unmeasured or 
 unobservable factors that affect both the hazard of having a girl and the 
 hazard of having a boy.
-% In other words, the assumption requires that the hazard of having a boy 
-% relative to not having a child is uncorrelated with the corresponding
-% hazard of having a girl relative to not having a child.
-% An important unobservable factor is fecundity.
-% Assume that a couple has low fecundity.
-% Even with a strong son preference, low fecundity  makes the couple less 
-% likely to engage in sex-selective abortions because they will have
-% difficulty conceiving again and having a girl might be preferable to having
-% no children.
-% This is exacerbated by the potential for a further lowering of fecundity
-% as a direct result of using abortions.
-% Fecundity therefore affect both the hazards of having children and the
-% relative likelihood of having a boy versus a girl.
 To address this issue the estimations include a proxy for fecundity
 discussed in Section \ref{sec:data}.
 In addition, the multivariate probit model can be used as an alternative
 to the multinomial logit because the IIA is not imposed \citep{han90}.
 The results are essentially identical between these two models and
 available upon request.
-% Finally, what is of interest here is the relationship between the covariates 
-% and the rate of occurrence of the different exit types rather than the interrelation between the failure
-% types or what would happen if one of the exit types were removed
-% making the independence assumption less problematic.%
-% \footnote{
-% As shown by \citet{kalbfleisch02} data with spell length, exit states and
-% fixed covariates does not allow one to distinguish between an independent 
-% competing risk model and an infinitude of dependent models that lead to the
-% same type-specific hazards.
-% }
 }
 In the reorganized data the outcome variable is zero if the
 woman does not have a child in a given period, one if she gives birth to a son in that period,
@@ -1281,8 +924,6 @@ Their sample consists of 133,738 births of which 38,177 were first
 born, 36,241 second born, and 23,756 were third born.
 The differences in results for first born children are discussed in the online 
 Appendix.
-% This is based on Table 1, p 212, and is only for births that took place in 1997.
-% Part of problem is the sex ratio on first birth
 }
 Finally, even if probing for missing births may not completely eliminate recall error,   
 the overlap in cohorts covered and the large sample size make it possible to establish 
@@ -1349,12 +990,6 @@ To ensure sufficient cell sizes the years are grouped in twos.
 \label{fig:sexRatioMarriage}
 \end{figure}
 
-% \begin{figure}[htp]%
-% \centering
-% \includegraphics[width=0.4\textwidth]{sex_ratio_marriage}
-% \caption{Ratio of boys in ``first'' births
-% \label{fig:sex_ratio_recall}}
-% \end{figure}
 
 Figure \ref{fig:sexRatioMarriage} clearly illustrates the systematic recall error
 problem.
@@ -1516,15 +1151,6 @@ In addition, it forces attention to how much data are really available to estima
 the determinants of sex-selective abortions.
 
 The remaining variables are expected to affect hazards proportionally.
-% Age of the mother is captured by her age in years at the beginning of
-% a the spell.
-% On one hand, an older woman might be less able to conceive and therefore less
-% likely to use sex-selective abortions.
-% On the other hand, for a given spell, a higher age might also be associated 
-% with more education or previous longer spells because of the use of sex selection.
-% The correlation between age and education is a potential downside to using
-% the three categories of education, but this is outweighed by the fact
-% that fewer assumptions are imposed on the baseline hazards.
 Although fecundity cannot be observed directly a suitable
 proxy is the duration from marriage until first birth.
 Most Indian women do not use contraception before the first birth
@@ -1536,14 +1162,6 @@ The expected effect of a longer first spell is to reduce sex-selective abortions
 For both this variable and the age of the mother at the beginning of the spell the squares are also included.
 The remaining variables are dummies for household ownership of land and membership
 of a scheduled caste or tribe.
-% All are assumed to affect the hazards proportionally.
-% The first round of the NFHS asked only about membership of either 
-% a scheduled caste or tribe but the later rounds also asked
-% about membership of other backward castes.
-% To ensure consistency the only two variables used are dummies for whether
-% a woman belongs to a scheduled caste or a scheduled tribe, respectively.
-% Unfortunately, there is no information on belonging to a higher caste, although
-% higher education is often related to higher status.
 
 
 \subsection{Descriptive Statistics}
@@ -1558,12 +1176,6 @@ there are only about 7,000 births to these women.
 Censoring becomes even more important for the third and fourth
 spells, where around 70 percent of the observations are censored.
 Generally, censoring increases with parity and time period.
-% %
-% \footnote{
-% The exception is for women without education where twelve percent of
-% the women who married in the 1972 to 1984 period did not have a first
-% birth at the time of the survey.
-% }
 This reflects a combination of factors: timing of the surveys
 relative to the periods of interest, later beginning of childbearing, 
 falling fertility, and the longer spells from sex-selective abortions.
@@ -1623,17 +1235,6 @@ all education levels and all areas of residence.
 
 \section{Results\label{sec:results}}
 
-% [NEW OUTLINE]
-% - Desired fertility analysis
-% - changes over time for well-educated women (spell 2 and 3)
-% - comparison across groups (no, some, high education, for spells 1, 2, and 3)
-
-% - 1st spell for all individuals (compare with other research)
-% - High education group for spell 2 and above
-% - Medium education group for spell 2 and above
-% - Low education group for spell 2 and above
-% - Predicted changes in fertility and number of abortion and comparison with standard model
-
 One of the main questions here is how fertility affects sex selection use.
 I start by showing the relationship between self-reported desired fertility and sex 
 selection, which also illustrates how to interpret the results.
@@ -1656,7 +1257,6 @@ the better-educated women.
 The results all show clear evidence of son preference in fertility and sex selection use, 
 but exactly what form son preference takes is important, so I next discuss what we can
 learn about son preference from the sex selection behavior.
-% [Then I compare my suggested model with the simple model previously used.]
 Finally, I predict lifetime fertility, number of abortions, and final sex ratios for
 the better-educated women.
 
@@ -1672,19 +1272,6 @@ comparison.
 Graphs for all groups and spells, even if not discussed here, are available in 
 the online Appendix.
 
-% % [Seems to be a repeat of what is in estimation strategy]
-% The survival curves show the estimated probability of not having had a birth
-% yet by length of the spell.
-% The survival curves are included for two reasons.
-% First, they show the progression to the next birth by quarter and how quickly it occurs,
-% if at all.
-% Second, they provide ``weighting'' for the associated percentage boys born.
-% The steeper the survival curve, the more weight a given spell period has because it is 
-% based on more births, whereas a flat survival curve means little weight because the 
-% percentage boys is based on few births.
-
-
-
 
 \subsection{Comparing the Hazard and Simple Models}
 
@@ -1694,11 +1281,6 @@ and sex ratios will be once women are done with childbearing.
 This cannot be done with the simple model because it does not predict fertility
 progression, does not take into account censoring, and cannot capture if parents
 change their use of sex selection within a spell.
-% This is possible because the hazard model approach uses both censored and 
-% uncensored observations, which, in turn, allows me to predict both how many 
-% women will have a next birth and the final sex ratio for that parity, under the 
-% assumption that the patterns of spacing and use of sex selection remain 
-% the same within a spell.
 We can, however, still compare differences in predicted sex ratios for 
 \emph{individual} parities.%
 \footnote{
@@ -1723,132 +1305,6 @@ similar results.
 This model is estimated on all observed births for a given parity in the relevant 
 period to ensure that the results are as close to the standard method of 
 examining sex selection \citep[see, for example, ][]{retherford03b,jha06,abrevaya09}.
-
-
-% Two factors determine the differences in the predicted sex ratio and number 
-% of abortions between the two models.
-% First, how many women have censored spells but will have a birth after the survey.
-% Second, how much use of sex selection changes within a spell.
-% % If there are few censored spells or the women with the censored spells have low likelihoods
-% % of having a next birth the two models produce similar predicted sex ratios and 
-% % number of abortions.
-% % If there is little change in the use of sex-selective abortions over a spell then the
-% % predicted sex ratio is going to be similar for the two models, although the predicted
-% % number of abortions will differ depending on how many censored observations there are
-% % and how likely they are to exit with a birth.
-% Consider four possible combinations of the two factors.
-% First, there are few censored birth spells and use of sex selection is constant over
-% the spell.
-% In that case, the predictions will be similar across the two models.
-% Second, there are many censored birth spells and use of sex selection is constant over
-% the spell.
-% The predicted sex ratios will be similar, but the simple model will predict a too low
-% number of abortions per woman and fertility will appear to be falling faster than it is.
-% Third, there are few censored birth spells and use of sex selection changes substantially
-% with spell length.
-% The sex ratios again are close to each other in the two models, but the estimated use of
-% abortions will be biased in the simple model because it cannot account for the changes
-% in use of sex selection over the spell.
-% Finally, there are many censored birth spells and use of sex selection changes substantially
-% with spell length.
-% In this case the predicted sex ratio based on the simple model will be biased.
-% Specifically, if use of sex selection declines over the spell, the simple model 
-% will predict a higher final sex ratio than the hazard model.
-% Similarly, the predicted number of abortions will also be biased. 
-% With sex selection and falling fertility censored spells become more and more likely,
-% but how much this matter is an empirical question.
-
-% To determine the predicted number of abortions I use the natural sex ratio.
-% On average, 105 boys should be born per 100 girls born, which corresponds exactly
-% with what we observe for first births in India as seen above.
-% Hence, if we observe $b$ boys, then we should expect to see $b\frac{100}{105}$ girls.
-% If we observe $g$ girls the number of abortions is therefore $b\frac{100}{105}-g$.
-% The standard approach is to use the observed sex ratio for a given parity and 
-% calculate the number of abortions using this formula.
-% For the hazard model it is, however, possible to calculate the number of predicted
-% abortions for each time period based on the predicted sex ratio and the 
-% number of women predicted to exit with a birth in that period using the same formula.
-% Summing across the entire period covered by the hazard model provides a predicted total 
-% number of abortions.%
-% \footnote{
-% There is no difference between the two method in the predicted number of abortions for 
-% those women for whom we observe the subsequent birth.
-% }
-
-% [NEED TO WORK THROUGH A MATH EXAMPLE OF THE FIRST FACTOR: IS THAT REALLY CORRECT?]
-% period 0: 100 births 65 boys 35 girls 26.90476191
-% period 1: 100 births 60 boys 40 girls 17.14285714
-% period 2: 100 births 55 boys 45 girls 7.380952381
-%                     180 boys 120 girls abortions: 51.42857143
-% 
-% period 0: 1000 women: 512 boys 400 girls , 88 abortions  87.61904762
-% period 1:   98 women: 50 boys 42 girls, 6 Abortions  5.619047619
-% period 1:    6 women: 3.073 boys 2.927 girls 0 abortions -0.000333333
-%                     562 boys 442 girls    93.23809524 93.2377619 93.23776191
-% 
-% [HOW TO CALCULATE NUMBER OF ABORTIONS HERE]
-%
-% In addition, the standard model does not provide any information about abortions
-% for those women for whom we do not observe a birth.
-% In contrast, the hazard model can be used to predict the number of abortions even for 
-% those women who have not yet had a birth at the parity of interest.
-% This number is the sum of two set of predictions.
-% First, the number of abortions that are predicted have occurred up to the time of the 
-% survey for women without a given parity birth.
-% Second, we can predict how many additional abortions will take in the future for these
-% women from the time of censoring until the end of the spell period used for the hazard
-% model.
-% This follows directly from the standard feature of hazard models where one can predict
-% the likelihood of future exits for those censored.
-% To the extent that people change their use of sex-selective abortions within a spell
-% the two numbers will be different.
-%
-% [TRYING TO WORK THROUGH THE SET-UP HERE]
-% 
-% For each women who had one birth we follow her until 24 quarters (6 years) after the 
-% birth of her first child. 
-% Contrary to the standard logit model we can predict two things: How likely it is that she
-% will have her second child during a particular quarter and what the sex ratio will be in 
-% that quarter.
-% In other words, by the end of the 24 quarter period we will know the probability of her
-% having had a child, which is what is shown by the survival curves in the graphs above,
-% and expected sex ratio for all women like her.
-% So, one women might have 73 percent probability of giving birth to a second child within
-% the 24 quarters with 58.3 percent probability of a boy and a 41.7 percent probability
-% of a girl, whereas another might only have a 29 percent probability of giving birth to a 
-% second child with a 55.4 percent probability of a son and a 44.6 percent probability of a
-% girl.
-% 
-% Summing across all women with specific characteristics, like being an urban woman with
-% a girl as her first child, we can then predict how many children will be born to these
-% women in the 6 years after the birth of their first child, together with information on
-% how many abortions will have taken place and the final sex ratio for those second-born
-% children.
-% 
-% The advantage of this is that it is not reliant just on observed births.
-% To the extent that the probability of using sex-selective abortions changes with time since
-% the last birth the results from the hazard model prediction will be different from the
-% Logit model prediction (which is just the sex ratio for birth observed in the 6 year 
-% period).
-% Furthermore, even if the probability of sex-selective abortions does not change substantially 
-% with duration since last birth, the hazard model provides an estimate of how many births
-% there will be and what the final sex ratio for a given parity birth will be.
-% The more censored observations there are the bigger the difference between the logit and
-% the hazard models are going to be.
-% This is important because that those numbers are an input into determining what the
-% population sex ratio will be.
-
-% [is there a way of understanding the difference between censored and uncensored women
-% using the hazard model?
-% One option would be to run everybody until they are censored and see if that fits with
-% the logit numbers.
-% that should presumably match the logit results except for picking up differences in use
-% of sex-selective abortions. 
-% This means that the births should be the same for the two methods.
-% 
-% For those censored we could then run the rest of the time. 
-% This would require that we started from one woman again, instead of continuing from the
-% censoring left off.
 
 
 \begin{table}[htbp]
@@ -1949,16 +1405,6 @@ hazard models' predicted number of births because the simple model is based
 on all births that occurred in the period---independently of when the prior birth
 occurred---whereas the hazard model uses only spells that began in the period. 
 
-%
-% We begin with women who had a girl as their first child.
-% Table \ref{tab:compare2} shows the number of women who enter the second spell,
-% the number of births by the end of the six year period following the first birth,  
-% observed in the case of the logit model and predicted in the case of the hazard model, 
-% predicted number of abortions, and the sex ratio.%
-% \footnote{
-% The two latter obviously captures the same information and is both presented for
-% the reader's convenience.
-% }
 
 
 
@@ -1997,104 +1443,6 @@ This is most clearly seen for the third births for urban women where
 the hazard model show a \emph{decline} is use of sex-selective abortions,
 consistent with the lower fertility as discussed in the main paper,
 while the simple model show a substantial increase. 
-
-
-% [CLOSING ARGUMENTS ON COMPARISON?]
-% [logit will tend to underestimate when sex-selective abortions is spreading/increasing
-% and overestimate when sex-selective abortions is declining.]
-
-% Urban
-% 0.566585492 hazard sex ratio for 1985
-% 0.592900726 hazard sex ratio for 1995
-% 
-% 0.554402294 logit sex ratio for 1985
-% 0.593989533 logit sex ratio for 1995
-% 
-% Rural
-% 0.544119243 hazard sex ratio for 1985
-% 0.579341591 hazard sex ratio for 1995
-% 
-% 0.530621491 logit sex ratio for 1985
-% 0.573022963 logit sex ratio for 1995
-
-
-
-
-
-
-% I begin with women who had a girl as their first child.
-% For rural women in the 1985--1994 period relatively few censored women are
-% predicted to go on to have a second birth (only 5 percent of the starting population
-% is predicted to have a second birth and have not yet had one).
-% In addition, there is only some evidence of sex-selective abortions.
-% Hence, the predicted sex ratios for the simple and hazard models are close. 
-% There are slightly more abortions for the hazard model, but the abortion rates (number
-% of abortions per birth) are fairly similar between the observed births and those predicted
-% to have a birth later.
-% 
-% Urban women in the same time period follow a similar pattern with relatively few 
-% censored women predicted to move on to a second birth (around 2 percent of starting 
-% population), but the abortion rate for those additional births is 8.1 abortions per 100 
-% births, whereas it is only 6.7 for the observed births, as we would expect from the 
-% increasing probability of having a son with increasing spell length seen in panel (b) in 
-% Figure \ref{fig:results_spell2_high_urban}.
-% Despite this the resulting difference in sex ratios is
-% relatively small because of the small number of censored women predicted to exit with a
-% birth.
-% 
-% 
-% Not surprisingly there are substantially more censored observations for the 1995--2006
-% period.
-% For urban women about 19 percent of the starting population are predicted to have a
-% second birth but have not yet had one and for rural women it is 23 percent.
-% This allows for potentially larger differences in predicted sex ratios and number of
-% abortions.
-% Despite the large number of censored observations for rural women there is relatively
-% little difference in the predicted sex ratio.
-% The more interesting difference is for urban women in the 1995--2006 period.
-% The hazard model predicts 100 more abortions by the end of the spell, but the simple 
-% model \emph{overestimates} the final sex ratio.
-% The simple model predicts 143.5 boys and the hazard model 141.3 boys per 100 girls.
-% This is consistent with the very high probability of having a son early on in the spell
-% followed by a somewhat lower probability for later births seen in panel (c) in 
-% Figure \ref{fig:results_spell2_high_urban}.
-% 
-% 
-% 
-% The lower two panels of Table \ref{tab:compare2} presents the predicted outcomes for urban
-% and rural women for the third spell, split by the sex composition of their first two 
-% children and when the spell began.%
-% \footnote{
-% There is no evidence of sex-selective abortions and very few births for women with two boys 
-% and those predictions are therefore not presented.
-% }
-% For urban women with two girls in the 1985--1994 period there are only 77 more births for 
-% the hazard model, but the difference in number of abortions is 15 with the hazard model 
-% predicting 266 abortions and the simple model 251.
-% The resulting sex ratio is 175.3 for the hazard model versus ``only'' 170.0 for
-% the simple model.
-% In other words, it appears that the simple model underestimates the spread of the use of
-% sex-selective abortions during the expansion of access to prenatal sex determination 
-% for this group of urban women.
-% As discussed in the paper, use of sex selection for urban women with two girls appears to  
-% have fallen from the 1985--1994 period to the 1995--2006 period, but this is mainly an 
-% indication that sex-selective abortions are being used more during the spell to second 
-% birth for this group of women for the 1995--2006 period.
-% The result is fewer women with two girls for their first two births and those who do are 
-% substantially less likely to have a third birth than they were before.
-% 
-% For rural women the main difference between the two models is for those with one boy
-% and one girl in the 1995--2006 period.
-% Only about 60\% of the birth predicted by the hazard model are observed in the simple
-% model, leading to substantial censoring.
-% Furthermore, use of sex-selective abortions is predicted to be substantial for those
-% remaining births resulting in a sex ratio of 129.8 for the hazard model and 124.6 for
-% the simple model. 
-% As discussed in the paper, this case is the exception to the rule that sex selection
-% does not appear to be used by families that already have one son.
-% Presumably the use by rural women in this case is an insurance against mortality. 
-
-
 
 
 \subsection{One Son or Many Sons?}
@@ -2192,9 +1540,6 @@ For the second spell the predicted sex ratios closely follow the natural sex
 ratio for both urban and rural women.
 Furthermore, the survival curves follow the expected pattern if no sex selection 
 is taking place.
-% As discussed above the likelihood of having a second birth if your first child is a son
-% is higher in rural than in urban areas, but even for urban women 65\% do have a second
-% child by the end of the second spell period.
 There is also no evidence of sex selection for the third spell for women with two sons;
 the sex ratios follow the natural sex ratio for both urban and rural women.
 Sample sizes are, however, less than \sfrac{1}{3} of the sample sizes for the second 
@@ -2218,14 +1563,6 @@ With the first part being to the natural sex ratio the end result is that there
 is little evidence for urban women using sex selection if they already have a son and
 a daughter.
 
-% Despite the larger sample size than for two sons, the results are based on only 
-% approximately 700 births.
-% urban: Based on about 700 births
-% The first flat part is about 10\% of women 
-% The dip below natural sex ratio accounts for close to 10\% of women
-% The high part from 11 quarter onward account for the last 10\% of women
-% That means that the dip and the high part approximately cancel each other out.
-
 For rural women, however, the dip and the associated number of births is not
 large enough to bring the overall sex ratio for the spell back to natural sex ratio.
 The sex ratio for the entire spell is therefore likely more male dominated
@@ -2238,8 +1575,6 @@ rather than only one.
 Second, mortality is higher in rural than urban areas and this higher mortality, either 
 experienced or anticipated, make rural women use sex selection to secure a second son, 
 essentially as an insurance.
-%  much as royal British families have been know to aim 
-% for an heir and a spare.
 Separating these two possible explanations is difficult, but the ``heir and a spare''
 explanation appears  more likely than difference in preferences given that urban women use 
 sex selection more than rural women for the second birth in the absence of a son.
@@ -2295,25 +1630,10 @@ Second, completed fertility and sex ratios are what matters when examining the f
 impacts of sex selection in areas such as the chance of finding a spouse, savings 
 behavior, and the potential problems associated with a surplus of bachelors 
 \citep{lancaster02,Ding2009,Wei2009,Edlund2013}.
-% In other words, this tells us both how much sex selection is used and what the final 
-% outcome will be.
-% [Final outcome is what matter for things like access to a spouse and associated 
-% problems - crime, etc]
 Finally, as I show in the online Appendix and discuss above, relying only on observed 
 sex ratios of recorded births is problematic because these are based on selection and 
 the observed sex ratio may be biased predictors of final sex ratio when people change 
 their use of sex selection during a spell.
-
-% 1. it tells us what fertility and the final sex ratio will be, which helps put the individual
-% spells and sex compositions in perspective.
-% 
-% 2. presumably what we care about is what the end result will be.
-% 
-% 3. Makes it easier to see whether use of sex selection is intensifying or easing over
-% time.
-% 
-% 4. "What actually happens" is based on a select sample. Maybe refer to the appendix
-% on comparing the simple and the hazard models here.
 
 Table \ref{tab:predicted} shows predicted birth progression rates, number of abortions, 
 sex ratios, and completed fertility for the three samples of women with 8 or more years 
@@ -2395,17 +1715,10 @@ predicted.
 Hence, in quarter 6 the predicted number of sons born is $ 0.0931 \times 65.88 = 6.13$, 
 the predicted number of daughters born is $ 0.0566 \times 65.88 = 3.73$, and 
 $0.0321 \times 65.88 = 2.11$ abortions must have taken place to reach these births.
-% From anSimulate_test for spell 4, line 44
-% If only given a percent and to find the number of abortions the formula is
-% abortions = (10,000-205*percent girls)/105.
-% This is because one less abortion would add an additional birth so that
-% (number of girls + abortions)/(100 + abortions) = 100 / 205
 }
 To account for random variation, the abortion rate is the sum over both positive 
 (more boys than the natural rate) and negative (more girls than the natural
 rate) values of the abortion calculation within the spell.
-% This sum is the predicted probability of having an abortion for a woman with the given
-% set of characteristics.
 Finally, the percentage of children born that are boys is based on the randomization of
 births described above.%
 \footnote{
@@ -2509,8 +1822,6 @@ Associated with the decline in completed fertility is an increase in sex selecti
 For urban women the predicted number of abortions per 100 women by the end of
 childbearing have gone up by over 17 percent between the last two cohorts (8.0 to 9.4) 
 and the number of abortions per 100 births have gone up by over 35 percent (3.4 to 4.6).
-% The reason the percentage change per birth is higher than per women is the
-% combination of falling fertility and more intense use of sex selection.
 For rural women, abortions per 100 women increased almost 55 percent (6.8 to 10.5), 
 while abortions per 100 births increased over 70 percent (2.4 to 4.1).%
 \footnote{
@@ -2571,11 +1882,6 @@ The use of sex selection on second and third spells indicates that one group of 
 women follows the high fertility route, whereas the other group follows the pattern of
 urban women and combine restricting fertility with use of sex selection.
 
-
-% how many even make it to spell 4? 39 percent for 1st period for urban. only 26 percent 
-% for second period (and more likely to have a boy by then).
-% compare to rural: 62 percent first period, 50 percent second period.
-
 Another way to see the spread of access to sex selection over time is to compare
 urban women in the first period with rural women in the last period.
 At 2.7 fertility is already relatively low for urban women in the 1972--1984 period and 
@@ -2587,12 +1893,6 @@ was more widespread access.
 Rural women in the 1995--2006 period had a fertility only slightly lower than that
 of urban women in the 1972--1984 periode, but the number of abortions both per birth and 
 per woman were twice as high.
-% For rural women, however, the overall sex ratio is the same as the natural for the
-% first period and predicted completed fertility is 3.2, which is likely a lower-bound
-% estimate since the estimates did not incorporate parities higher than 4.
-% In the last period, rural women have higher fertility than urban women and therefore need 
-% fewer sex-selective abortions to ensure a son, but given differences in fertility
-% the numbers of abortions for rural women are not far behind those of urban women.
 
 
 For comparison Appendix Tables \ref{tab:predicted_low} and \ref{tab:predicted_med}
@@ -2627,16 +1927,6 @@ The exception is for rural women in the last period where the overall sex ratio 
 52.1\% boys, although given the high fertility for this group and the small sample
 size for this education group it is unclear whether this simply reflects random variation.
 
-% [women in no education group:
-% I: 30,004 (25,486 rural)
-% II: 27,669 (23,360 rural)
-% III: 9,684 (7,922 rural)
-% 
-% check how many women in urban vs rural sample for 1-7 years of education group: 
-% I: 11,162 (7,496 rural)
-% II: 13,104 (9,000 rural)
-% III: 7,510 (5,208 rural)
-% ]
 
 The predictions discussed here provide further support for the idea that there are 
 two alternative strategies to ensure the birth of a son, either have many children 
@@ -2650,146 +1940,10 @@ further increases in the use of sex-selective abortions among those who already
 use sex selection, and among the groups who have not previously use sex selection
 we will see beginning use of sex-selective abortions.
 
-% \subsection{Regional Results}
-% 
-%      2 "Andhra Pradesh"
-%      3 "Assam"  
-%      4 "Bihar"
-%      5 "Goa"
-%      6 "Gujarat"
-%      7 "Haryana"
-%      8 "Himachal Pradesh"
-%      9 "Jammu"
-%     10 "Karnataka"
-%     11 "Kerala"
-%     12 "Madhya Pradesh"
-%     13 "Maharashtra"
-%     14 "Manipur"
-%     15 "Meghalaya"
-%     16 "Mizoram"
-%     17 "Nagaland"
-%     18 "Orissa"
-%     19 "Punjab"
-%     20 "Rajasthan"
-%     21 "Sikkim"
-%     22 "Tamil Nadu"
-%     23 "West Bengal"
-%     24 "Uttar Pradesh"
-%     30 "New Delhi"
-%     34 "ArunachalPradesh"
-%     35 "Tripura"
-% 
-% egen north = eqany(state), v(7 8 9 19 20 30)
-% egen central = eqany(state), v(12 24 4)
-% egen west = eqany(state), v(5 6 13)
-% egen east = eqany(state), v(18 23 3 14 15 16 17 21 34 35)
-% egen south = eqany(state), v(2 10 11 22)
-% 
-
 
 
 \section{Conclusion\label{sec:conclusion}}
 
-
-% 1. how to interpret stated son preference from survey data and especially whether son
-% preference is declining over time.
-% 
-% In NFHS, and DHSs in general, son preference is measured as part of the general fertility
-% questions, where the first question is how many children a woman would have if she
-% could choose exactly how many to have.
-% This if followed by the sex preference question:
-% ``How many of these children would you like to be boys, how many would you like to be girls 
-% and for how many would the sex not matter?''
-% The problem here is that if parents want one son, but will do pretty much anything to get
-% that son, this will not be captured by this question.
-% In that case, any changes over time in the answers to this question will only reflect 
-% a true change in son preference if the respondents answer something less than 1 for boys
-% and allocate all to ``either''.
-
-
-% 2. it affects how we think about future developments in sex ratios and use of 
-% sex selection as fertility falls further.
-% 
-% This is of more than theoretical interest.
-% If son preference is expressed as a very strong preference for having at least one
-% son then any further reductions in fertility will lead to a further increase in the use 
-% of sex selection.
-% This matter not only for well-educated rural women, who have higher fertility than 
-% urban women, but are catching up quickly.
-% The main concern is what happens when fertility fall below 4 for women with little or
-% no education. 
-% So far, there is little evidence for sex selection for these groups, but if they hold
-% similar preferences to the better-educated women and experience a reduction in 
-% desired fertility it is more than likely that they will begin using sex selection on 
-% a large scale.
-
-% 3. it is important when trying to understand what is behind son preference.
-% If it is only one boy the argument on dowry does not seem to make much sense.
-% Especially since sex-selective abortions are concentrated among the wealthy households.
-% 
-% An oft-repeated, but poorly substantiated, argument for why there is son preference and 
-% especially sex selection in India is the presence of dowry practices, where the bride's 
-% family pays the groom and/or the groom's family for taking their daughter in marriage.
-% This explanation, however, fits poorly with the observed behavior.
-% Sex selection is predominantly used by wealthier households and if only used to secure
-% one son there is little support for the dowry explanation.
-% If dowries were the main driver behind sex selection we would rather expect poorer
-% households to use sex selection and use it to achieve a higher number of sons than
-% daughters.
-% For example, a family with 1 son and 2 daughters should use sex selection on the next
-% birth to at least ensure a break-even in terms of dowry payments and receipts.
-% Similarly, we would expect at least some families to use sex selection to ensure that
-% they come out ahead as a family in terms of how much dowry they receive compared to
-% how much is being paid out.
-% 
-% This is important because banning dowries should have little influence on the use of
-% sex selection if sex selection is only used to ensure one son. 
-
-
-% \citet{clark00} p. 100 uses the number of sons, daughters, either question in her paper
-% as a dependent variable.
-% 
-% \citet{Jensen2009} QJE paper uses a question about the sex of the next child (if want
-% more children)
-% 
-% \citet{Hu2015} uses ratio of ideal number of son to ideal number of daughters
-
-% May make sense to change son preference question to be minimum number instead of ideal 
-% number: What is the minimum number of sons you would like? What is the minimum number of 
-% daughters you would like?
-% 
-% Might be a paper in this somewhere about changes in fertility and what exactly we can
-% learn from these son preference question.
-% Clark does argue that her calculated measure is a minimum proportion of sons 
-% desired, but, of course, this is neither here nor there if there is an absolute
-% minimum number of sons desired.
-% 
-
-% [future research - importance]
-% girls may now have a much longer space before their next sibling
-% 
-% fertility will look lower because of increased spacing
-% 
-% potentially better health for those girls that are followed by sex-selective abortions
-% because of the longer space (although these are also generally born into the 
-% wealthier families)
-% 
-% who the agents are
-% 
-% \cite{das_gupta09a}
-% 
-% \cite{Klasen02}
-
-% [Hence, the decline in fertility is an indicator that girls are not relatively more
-% expensive than boys.
-% 
-% only one boys also suggests that use of sex selection is not roted in the cost
-% of girls (dowries).]
-% 
-% 
-% [original from here]
-% [EXPAND ON MODEL AND ITS IMPORTANCE - MORE ON PROBLEMS WITH LOGIT AND NOT USING ALL INFORMATION 
-% SEE RETHERFORD AND ROY PAPER]
 
 If women have preferences over both the number of children they have \emph{and} the sex 
 composition of these children, they face a trade-off between the cost---both monetary 
@@ -2826,17 +1980,10 @@ their decision to use sex selection within a spell is important.
 As the theory shows an increase in the cost of prenatal sex determination 
 increases the likelihood of parents changing their decision to use sex selection.%
 \footnote{
-% This trade-off is also evident within spells.
 A feature of the new approach is that it allows for changes in the decision 
 to use sex selection within a spell.
 This is most clearly seen for better-educated urban women whose only child is a girl, 
 for whom the use of sex selection declines as the second spell becomes longer.
-% The result is that the simple model predicts a substantially higher percentage of boys
-% born than the hazard model, because the standard model cannot take into account
-% censoring and changes within spells.
-% The simple model also failed to fully captured the increased access to prenatal 
-% sex determination for urban women and therefore underestimated the final sex ratio for
-% third children in the period before the PNDT Act was passed.
 }
 
 
@@ -2866,9 +2013,6 @@ argued to show declining preference for sons.
 The culprit may be that parents want \emph{one} son and will use sex selection 
 intensively to get that son, but refrain from using sex selection to have more sons, 
 and our standard measure of son preference cannot captured that.
-% In fact, any changes over time in the answers to this question may only reflect 
-% a true change in son preference as it relates to sex selection if the respondents answer 
-% something less than 1 for boys and allocate all to ``either''.
 A better approach may be to directly ask if there is a minimum number of each sex that 
 respondents want, possibly in combination with ideal number questions.
 
@@ -2882,9 +2026,6 @@ than daughters as long as they only use abortion on female fetuses.
 A deeper understanding of exactly what type of son preference is responsible 
 for the increase use of sex selection is clearly an important question for
 future data collection and research.
-
-% The findings also have implications for our understanding of the relation between
-% the marriage market and sex selection.
 
 An often-repeated, but poorly substantiated, argument for why there is sex selection 
 in India is the dowry system.
@@ -2910,9 +2051,6 @@ See the discussion in Section \ref{sec:changes} for more detail.
 }
 Hence, banning dowries, as India has done, is unlikely to affect the use of sex 
 selection. 
-% Recent data with information on both birth histories and average dowries within 
-% areas allow for a direct test of this relationship, making this a worthwhile area for 
-% future research.
 
 The results presented here lead to a number of important questions for future research.
 One is whether marriage market sex ratios affect the use of sex selection.
@@ -2939,20 +2077,6 @@ driver of sex selection.
 A better understanding of who holds what preferences in the family would be a good 
 first step to disentangling who makes decisions about sex selection.
 
-% The implication is that the decision to use sex selection rest with the woman given the 
-% other constraints she faces, such as potentially a strong preference for a son in 
-% the rest of the family.
-
-
-% [METHOD CAN BE USED TO ESTIMATE EFFECT OF SSA ON CHILD OUTCOMES: 
-% PREDICT PROBABILITY THAT SSA HAS BEEN USED AND USE THIS PROBABILITY AS
-% AN EXPLANATORY VARIABLE IN CHILD OUTCOMES.
-% SINCE SSA MAINLY USED BY HIGHLY EDUCATED WOMEN WHO ARE ALSO LESS LIKELY
-% TO SUFFER CHILD MORTALITY THIS EFFECT IS LIKELY TO BE SMALL BUT WOULD BE
-% INTERESTING TO SHOW.
-% CAN ALSO BE EXTENDED SO THAT THE PREDICTED USED OF SSA IN AN AREA AMONG
-% THE well-educated CAN BE USED TO EXPLAIN CHILD OUTCOMES FOR OTHER GROUPS.]
-
 A third question is whether there are interactions between sex selection and child outcomes,
 such a survival and education.
 It has been argued that access to sex selection may benefit girls because those girls
@@ -2969,9 +2093,6 @@ beneficial for the girls who are born.
 It is unlikely, however, that a substantial mortality effect exists since sex 
 selection is mainly used by well-educated women, who tend to have lower mortality, 
 but there might be effects on education investments.
-% The method can, however, also be extended to other outcomes, such as education,
-% or the use of sex selection can be predicted for a geographical area and the 
-% predicted use for the area can then be used as an explanatory variable.
 
 % [developments in the future]
 In conclusion, the results provide strong clues to how sex selection use will change in the future.
@@ -2992,82 +2113,13 @@ once the less-educated women's fertility begins to drop to three---and even two-
 likely to see a substantially increased use of sex selection in India.
 
 
-% why interesting/important:
-% - prediction about future development
-% - effect of unequal sex ratio on individual child (survival, education, marriage)
-% - effect of unequal sex ratio on society
-% - morbidity/mortality from abortions
-% - secondary sterility, abandonment, remarriage
-
-% [to be added]
-% In summary, the purpose of this project is to develop an empirical 
-% method that can contribute to an understanding of the changing sex ratio at birth in India.
-% Beside being of intrinsic interest, this first step is likely to have a 
-% significant impact on future analyses in areas such as child health and
-% mortality, maternal mortality, female abandonment and changes in the marriage markets.
-% These are important areas for future research.
 
 
-% [MOVE TO CONCLUSION?]
-% A second issue is that the model estimates the progression from one birth to
-% the next and not the complete fertility path.
-% This ignores any potential sample selection problems that might
-% arise from not all women making it to a given parity.
-% With the exception of the first spell, a woman must have had enough children 
-% to be observed in a particular spell.
-% Women with long previous spells, possibly because of sex selection,
-% are therefore less likely to be observed.
-% One possible solution is to model the selection problem directly,
-% for example, by ``weighting'' observations by the inverse of the 
-% probability that the observation is observed.
-% This is an important area for future research.
-
-
-% Although solid data are generally not available the effects of abortions are 
-% likely to be worse in developing countries than developed countries, especially if 
-% the abortions are preformed outside the regular health care system or in the second trimester.
-% Both are a significant concern in this case.
-% Since sex-selective abortions are illegal it is entirely possible 
-% that many of the abortions take place illegally.
-% Furthermore, the use of ultrasound and amniocentesis means that the abortion
-% will not take place until the second trimester.
-% Understanding the impact of sex-selective abortions on the mother's health, subsequent
-% fecundity and pregnancy outcomes are important areas for future research both in
-% their own right and because of their impact on economic development.
-% All of these will have adverse effects on children, their health and their human
-% capital accumulation.
-% This may, for example, happen when women die or are abandoned as a result of
-% infertility.
-
-% Problem  for understanding mortality as well.
-% Selection problem will also affect analysis of mortality.
-% For those with stronger son preference we are less likely to observe their
-% children and those children born will be younger
-% and hence it is less likely that those children will die.
-% Same ideas as Pitt's articles on fertility selection for understanding mortality \citep{pitt97}.
-% This problem becomes more important the closer to the survey date one gets.
-% Hence, if ones want to examine a relatively recent change in policy this
-% is especially important.
-% This is even more so if the policy is prompted by increased use of sex-selective
-% abortions as is likely in India.
-% In other words, if the policy is implemented because sex-selective abortion is
-% a problem (or an increasing problem) the policy can appear effective even though
-% what is really happening is that we are not controlling for the fertility selection /
-% sample selection that comes from use of SSA.
-% Those with stronger son preference probably also have higher mortality of girls
-% relative to those with lower son preference.
-% reference to \citet{rosenblum09} paper on mortality that do not take account of
-% this problem and \citet{das_gupta09a}.
-% Also look for \citet{klasen02} to see what they do.
-% Also, a problem for looking at macro level sex ratios (same Das Gupta et al. paper)
 
 
 \newpage
 \onehalfspacing
-% \bibliographystyle{aea}
 \bibliographystyle{aer}
-% \bibliography{econ}
-% \bibliography{library}
 \bibliography{collection}
 
 \addcontentsline{toc}{section}{References}
