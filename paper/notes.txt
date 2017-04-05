@@ -1,0 +1,50 @@
+Notes and snippets:
+
+
+[How sex selection can happen in the absence of son preference - just because of balance]
+
+Son preference, however, manifests in two ways in this model.
+First, if $\alpha$ is larger than 0.5 parents gain more utility
+from having an additional son than from an additional daughter---provided
+the had the same number of sons and daughters before.
+Second, parents will never abort a male fetus, only a female one.
+This explains why even when parents have equal utility from an additional
+son or daughter sex ratios still increases as cost of children 
+increases and cost of prenatal scans decline.
+
+At $\alpha = 0.5$ parents prefer an equal number of boys and girls.
+The more children you have the less likely it is that you will
+resort to sex selection to ensure a balance between sons and daughters.
+First, the chances of having, for example, only boys or only
+girls, decreases with each additional child.%
+\footnote{
+For 2 children the likelihood of only boys or only girls
+is 50\%, but for 4 children it is 12.5\% (assuming equal probability
+of a boy or a girl).
+}
+Second, the more children you have the lower the marginal
+utility of having another, which means that, for a given price
+of prenatal scan, the less attractive it is to bear the cost of using
+prenatal scans to ensure a specific sex.
+As fertility fall to, say, two, however, those parents who had a girl as their 
+first child will now want to use prenatal sex determination to 
+ensure a balanced number of sons and daughters and this is why
+the sex ratio is so unbalanced as the cost of children increases.
+Parents who had a son as their first child would also want to
+use sex selection to ensure both a son \emph{and} a daughter, but since
+that option is not available here they have their
+second birth without scan.
+
+Stretching the interpretation of the model, think of $\alpha=0.5$ 
+as capturing parents treating sons and daughters equally once born.
+The use of sex selection to achieve balance---but only when the
+fetus is female---could be a potential explanation for the
+suggestion that sons and daughters are treated relatively equally and 
+we are still seeing an unequal sex ratio.
+What is relevant here it that there is no way to identify which 
+of these two different types of son preference affect sex ratios 
+from fertility data.
+This is a concern because the way we currently measure son preference
+allows us to capture only the distribution preference, and 
+the different types of son preference likely have different policy 
+implications.
