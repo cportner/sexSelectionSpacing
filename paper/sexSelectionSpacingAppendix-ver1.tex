@@ -1168,6 +1168,180 @@ sex-selective abortions.
 \clearpage
 \newpage
 
+\subsection{Comparing the Hazard and Simple Models}
+
+As detailed in the main paper, one of the main advantages of the hazard model 
+approach is that it can be used to predict what completed fertility, number of abortions, 
+and sex ratios will be once women are done with childbearing.
+This cannot be done with the simple model because it does not predict fertility
+progression, does not take into account censoring, and cannot capture if parents
+change their use of sex selection within a spell.
+We can, however, still compare differences in predicted sex ratios for 
+\emph{individual} parities.%
+\footnote{
+The simple model uses only observed births and the predicted sex ratio is 
+therefore simply what we observe for the relevant uncensored sample.
+}
+
+For each parity, the simple model is
+\begin{equation}
+Y_i = \gamma + \alpha' \mathbf{Z_i} + \beta' \mathbf{X}_{i} + \epsilon_i,
+\end{equation}
+where $Y$ is a dummy variable that takes the value 1 if the child born is a boy and zero 
+if it is a girl, and the vectors of explanatory variables, $\mathbf{Z}_{i}$ and 
+$\mathbf{X}_{i}$, are the same as for the proposed method, except that 
+$\mathbf{Z}_{i}$ obviously does not include the baseline hazard and that there are 
+no time dependence.%
+\footnote{
+To ease presentation, the indicator for parity number is not shown.
+}
+I estimate this using a logit model, although a linear probability model leads to
+similar results.
+This model is estimated on all observed births for a given parity in the relevant 
+period to ensure that the results are as close to the standard method of 
+examining sex selection \citep[see, for example, ][]{retherford03b,jha06,abrevaya09}.
+
+
+\begin{table}[htbp]
+\begin{center}
+\begin{footnotesize}
+\begin{threeparttable}
+\caption{Comparison of Hazard and Simple Models for  \protect\linebreak
+Women with 8 or More Years of Education}
+\label{tab:compare2}
+\begin{tabular} {@{} l D{.}{.}{5.2} D{.}{.}{5.2} D{.}{.}{5.2} D{.}{.}{5.2}   @{}} \toprule
+                                  &  \multicolumn{2}{c}{Urban}        & \multicolumn{2}{c}{Rural}         \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
+                                  & \mco{Simple}     &  \mco{Hazard}   &  \mco{Simple}    & \mco{Hazard}      \\   \midrule
+                                  & \multicolumn{4}{c}{1985--1994 - Second Birth} \\ \cmidrule(l){2-5}
+                                  & \multicolumn{4}{c}{1 girl} \\
+Number of women\tnote{a}          &             & 4,869   &         & 3,105   \\
+Births\tnote{b}                   &     3,848   & 3,926   & 2,417   & 2,795   \\
+Percentage boys                   &      54.0   &  54.7   &  52.6   &  53.5   \\
+Sex ratio (boys per 100 girls)    &     117.4   & 120.7   & 110.9   & 115.1   \\
+\addlinespace 
+                                  & \multicolumn{4}{c}{1985--1994 - Third Birth}  \\ \cmidrule(l){2-5}
+%                                   & \multicolumn{4}{c}{1 boy and 1 girl}        \\
+% Number of women\tnote{a}          &             & 3,460   &         & 1,987   \\
+% Births\tnote{c}                   &     1,431   & 1,558   & 1,107   & 1,336   \\
+% Percentage boys                   &      53.0   &  52.5   &  53.5   &  54.6   \\
+% Sex ratio (boys per 100 girls)    &     112.9   & 110.4   & 115.0   & 120.2   \\
+% \addlinespace
+                                  & \multicolumn{4}{c}{2 girls}        \\
+Number of women\tnote{a}          &             & 1,654   &         &   982   \\
+Births\tnote{c}                   &     1,034   & 1,092   &   682   &   853   \\
+Percentage boys                   &      60.8   &  63.7   &  54.7   &  57.4   \\
+Sex ratio (boys per 100 girls)    &     155.3   & 175.3   & 120.7   & 134.6   \\
+\addlinespace 
+                                  & \multicolumn{4}{c}{1995--2006 - Second Birth} \\ \cmidrule(l){2-5}
+                                  & \multicolumn{4}{c}{1 girl} \\                                                  
+Number of women\tnote{a}          &             & 3,774   &         & 2,823   \\
+Births\tnote{b}                   &     3,031   & 2,704   & 2,489   & 2,407   \\
+Percentage boys                   &      58.0   &  58.6   &  56.0   &  56.9   \\
+Sex ratio (boys per 100 girls)    &     138.1   & 141.3   & 127.1   & 132.2   \\
+\addlinespace 
+                                  & \multicolumn{4}{c}{1995--2006 - Third Birth}  \\ \cmidrule(l){2-5}
+%                                   & \multicolumn{4}{c}{1 boy and 1 girl}        \\
+% Number of women\tnote{a}          &             & 2,357   &         & 1,819   \\
+% Births\tnote{c}                   &       830   &   775   &   853   &   998   \\
+% Percentage boys                   &      53.9   &  52.9   &  55.5   &  56.5   \\
+% Sex ratio (boys per 100 girls)    &     116.7   & 112.1   & 124.5   & 129.8   \\
+% \addlinespace
+                                  & \multicolumn{4}{c}{2 girls}        \\
+Number of women\tnote{a}          &             & 1,000   &         &   863   \\
+Births\tnote{c}                   &       695   &   600   &   690   &   661   \\
+Percentage boys                   &      65.5   &  62.4   &  62.0   &  61.7   \\
+Sex ratio (boys per 100 girls)    &     189.6   & 166.0   & 163.4   & 161.0   \\
+\bottomrule
+\end{tabular}                        
+\begin{tablenotes} \tiny
+\item \hspace*{-0.5em} \textbf{Note.} 
+The simple models are estimated using logit on all births for a given parity that
+occurred during the relevant time period.
+The hazard models are estimated using all spells that began in the relevant time period.
+For the second birth the hazard model covers the period from beginning of spell to 6 
+years (24 quarters) after the birth of the first child.
+For the third birth it covers the period from beginning of spell to 7.25 years 
+(29 quarters) after the birth of the second child for the period 1985--1994 and from 
+beginning of spell to 5.75 years (23 quarters) after the birth of the second child for 
+the period 1995--2006.
+\item[a] Number of women in period who began the spell with given sex composition of prior 
+child/children in the relevant period.
+\item[b] For Logit model the number of women who are observed to have a second birth
+in the period. 
+For hazard model the predicted number of second births that will occur between beginning 
+of the spell and 6 years (24 quarters) after the birth of the first child.
+% \item[c] Number of women in period who had one boy and one girl as their first two children.
+\item[c] For Logit model the number of women who are observed to have a third birth
+in the period. 
+For hazard model the predicted number of third births that will occur between beginning of 
+the spell and 7.25 years (29 quarters) after the birth of the second child for the
+1985--1994 period and between beginning of the spell and 5.75 years (23 quarters) after 
+the birth of the second child for the 1995--2006 period.
+\end{tablenotes}
+\end{threeparttable}
+\end{footnotesize}
+\end{center}
+\end{table}
+
+I focus on those cases where there is evidence of sex-selective abortions: the spells
+from parity one to two and two to three for women with eight or more years of education.%
+\footnote{
+The results for the spell from parity three to four are available on request.
+They are not presented because the number of educated women who end up with three births 
+and the probability of having a fourth birth are small, which makes
+comparing the simple and hazard models with any precision difficult.
+}
+Table \ref{tab:compare2} shows the number of women who enter the second and third spells
+for the hazard model,
+the number of births, observed in the case of the simple model and predicted in the case 
+of the hazard model, predicted percent boys, and the associated predicted sex ratio.
+It is possible for the number of births used for the simple model to be larger than the
+hazard models' predicted number of births because the simple model is based
+on all births that occurred in the period---independently of when the prior birth
+occurred---whereas the hazard model uses only spells that began in the period. 
+
+
+
+
+For the 1985--1994 period---which is when sex selection become available---the 
+hazard model consistently predicts a higher sex ratio than the logit model.
+Furthermore, some of these differences are substantial.
+For urban women with 2 girls as their first two children, the hazard model
+predicts a sex ratio of 175 boys per 100 girls, whereas the simple method
+``only'' predicts 155 boys per 100 girls.
+The difference is smaller in rural areas but still 14 boys per 100 girls
+higher for the hazard model than for the simple model.
+A similar, if less pronounced pattern, show up for the second birth,
+where the hazard model predict 3 and 5 boys more per 100 girls for
+urban and rural women.
+
+For the latest period, 1995--2006, the hazard model still produces higher 
+predicted sex ratios for second birth and the differences are of a 
+similar magnitude to the 1985--1994 period.
+The predicted sex ratios for the third birth are, however, 
+higher for the simple model than for the hazard model.
+This difference is substantially for urban women where the difference 
+is 23 boys extra per 100 girls.  
+
+A possible explanation for these differences is that the simple model 
+fails to capture the move towards lower fertility and the subsequent 
+increase in the use of sex-selective abortions at earlier parities that 
+occurred over the periods.
+The results also suggest that the take-up of sex selection occurred 
+rapidly as the new methods became available and that this take-up
+is not fully captured by the simple model.
+More broadly, a possible interpretation of the differences is that
+the simple model will tend to underestimate when sex-selective abortions
+are initially spreading in use and overestimate when the spread of sex 
+selection is slowing.
+This is most clearly seen for the third births for urban women where
+the hazard model show a \emph{decline} is use of sex-selective abortions,
+consistent with the lower fertility as discussed in the main paper,
+while the simple model show a substantial increase. 
+
+\clearpage
+\newpage
+
 
 \section{Potential for Reverse Causation in Education?}
 

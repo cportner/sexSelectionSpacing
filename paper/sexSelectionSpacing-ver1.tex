@@ -179,6 +179,8 @@ Our understanding of the use of sex selection is, however, constrained by
 lack of information;
 there are no official data on sex selection, and the few surveys that ask about use of 
 sex selection show signs of serious under-reporting \citep{goodkind96}.
+
+
 With no direct information, researchers have relied on a simple method for establishing 
 factors that affect sex selection: use the sex of children born as the 
 dependent variable, and estimate the effects of variables on the probability of having a son.%
@@ -269,8 +271,7 @@ the likelihood of observing a boy or a girl.
 
 % using spacing itself to predict son preference becomes useless if
 % families have low desired fertility and access to sex-selective abortions!!!!
-Second,
-families may reverse their decision to use sex selection in-between births.
+Second, families may reverse their decision to use sex selection in-between births.
 A reversal could happen if they do not want the space between children to be 
 ``too long'', or if there are concerns about possible infertility as a result of 
 too many abortions in a row without a birth.
@@ -322,6 +323,21 @@ The method can better predict ``final'' sex ratios than the simple model
 
 
 \citep{Soest2012} for a recent example of spacing and son preference
+
+
+Recent research suggests that son preference in India, when measured as ideally having 
+more boys than girls, is decreasing over time and with higher education \citep{bhat03,pande07}.%
+\footnote{
+This measure of son preference is commonly used in the literature. 
+See, for example, \citet{clark00}, \citet{Jensen2009}, and \cite{Hu2015}.
+In NFHS, and Demographic and Health Surveys in general, son preference is measured as part 
+of the general fertility questions.
+The first question is how many children a woman would have if she could choose exactly how 
+many.
+This if followed by the sex preference question:
+``How many of these children would you like to be boys, how many would you like to be girls 
+and for how many would the sex not matter?''
+}
 
 
 \section{The Interaction between Son Preference and Birth Spacing\label{sec:model}}
@@ -420,9 +436,11 @@ This is an important caution against over-interpreting individual
 parity results.
 
 
-It also highlights the need to incorporate fertility progression into
-estimates, something the simple model is incapable of.
-
+Lowering the cost of prenatal sex determination generally leads to 
+a smaller percentage of parents who change their use of sex selection.
+But, the total number of spells with a change may still
+go up because lower cost of prenatal sex determination also
+increases the use of sex selection.
 
 
 
@@ -457,44 +475,8 @@ across education groups \citep{Tulasidhar1993,Whitworth2002}.
 
 
 
-% Highlights and tie into empirical model:
-
-An important question here is whether parents ever
-change their use of prenatal sex determination between
-two consecutive births.
-I capture this by the percent of spells where prenatal
-scans were initially used for one or more period, but the birth
-is the result of a pregnancy without a prenatal scan.
-Whether parents will consider the duration from last birth too long 
-depends mainly on the discount rate.
-On average, the more impatient parents are---the less they
-like long spells between births---the more likely they are to
-change their decision to use sex selection.%
-\footnote{
-Using only those situations where there are any abortions,
-regressing the discount rate against the percent spells where
-prenatal scan is initially used but not for the birth show
-a strong positive effect---higher number, more patient---holding
-all the other parameters constant.
-}
-Lowering the cost of prenatal sex determination generally leads to 
-a smaller percentage of parents who change their use of sex selection.
-But, the total number of spells with a change may still
-go up because lower cost of prenatal sex determination also
-increases the use of sex selection.
-
-
-
-
 % What are the model highlights 
-There are three main conclusions from the model.%
-\footnote{
-A caveat is that these results reflect the particular utility 
-function chosen.
-If parents have a different utility function, like a preference
-for one son but otherwise no preference across boys and girls
-the results may look different.
-}
+There are three main conclusions from the model.
 The increased use of sex selection shows up both in the 
 proportion of boys among births and longer spacing between 
 births---and the higher the parity the longer the duration between 
@@ -543,14 +525,19 @@ decision to use sex selection within a spell.
 
 \section{Estimation Strategy\label{sec:strategy}}
 
-The theoretical model has three implications for fertility decisions with access to 
-sex-selective abortions: 
+As the discussion above shows there are three main
+implications of the availability of sex-selective abortions
+combined with son preference:
 a higher probability that next child is a son, 
-longer average time to next birth, 
-and that the use of prenatal sex determination may change between one observed 
-birth and the next.
+longer spacing to next birth with use of sex selection, 
+and that the use of prenatal sex determination may change between 
+one observed birth and the next.
 All three must be incorporated into the estimation strategy
 to provide unbiased and precise estimates of the use of sex-selective abortions.%
+
+To understand son preference when sex selection is available,
+we need an empirical model that can jointly estimate the sex of
+children born and the spacing between birth. 
 
 The empirical model is a discrete time non-proportional competing risk hazard model with 
 two exit states: either a boy or a girl is born.%
@@ -559,8 +546,8 @@ two exit states: either a boy or a girl is born.%
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
-A woman's reproductive life is divided into spells which each covers the period between
-births (from marriage to first birth for the first spell).
+A woman's reproductive life is divided into spells which each covers 
+the period between births (from marriage to first birth for the first spell).
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$ and 
 the spell continues until time $t_i$ when either a birth occurs or the spell is censored.
 The time of censoring is assumed independent of the hazard rate,
@@ -733,6 +720,12 @@ S_{t}
 \right).
 \end{equation}
 
+[This need a much better explanation; the survival curve captures the spacing
+between births and how long it takes; may need to combine with and without
+sons to show differences in spacing over time; maybe it should also have
+predicted average/median spacing with some confidence intervals to test]
+
+
 The survival curves are presented for two reasons.
 First, they show progression to the next birth and how quickly 
 it occurs, if at all.
@@ -772,9 +765,6 @@ collected in 2000.
 }
 The International Institute for Population Sciences in Mumbai collected the data,
 which have nationwide coverage.
-% All are based on the Demographic and Health Survey Model B, with
-% NFHS-1 using the DHS II questionnaire while NFHS-2 and NFHS-3 using, 
-% respectively, the DHS III questionnaire and the Measure DHS questionnaire.
 The surveys are large: NFHS-1 covered 89,777 ever-married women 
 aged 13--49 from 88,562 households,
 NFHS-2 covered 90,303 ever-married women aged 15--49 from 92,486 households
@@ -955,8 +945,8 @@ The PNDT act made it a criminal offence to reveal the sex of the fetus and was
 followed by a campaign against the use of sex selection, although
 enforcement appears to be relatively lax.
 
-By dividing spells into these periods I can examine how fertility
-decisions and the use of sex selection have changed across the three different regimes.
+By dividing spells into these periods I can examine how the use of sex selection 
+has changed across the three different regimes.
 Note that the periods are based on the spells' beginning year, and some spells 
 will therefore cover two periods.
 A couple may, for example, be married in 1984, but not have their first child until 1986.
@@ -1173,186 +1163,14 @@ Graphs for all groups and spells, even if not discussed here, are available in
 the online Appendix.
 
 
-\subsection{Comparing the Hazard and Simple Models}
-
-As detailed in the main paper, one of the main advantages of the hazard model 
-approach is that it can be used to predict what completed fertility, number of abortions, 
-and sex ratios will be once women are done with childbearing.
-This cannot be done with the simple model because it does not predict fertility
-progression, does not take into account censoring, and cannot capture if parents
-change their use of sex selection within a spell.
-We can, however, still compare differences in predicted sex ratios for 
-\emph{individual} parities.%
-\footnote{
-The simple model uses only observed births and the predicted sex ratio is 
-therefore simply what we observe for the relevant uncensored sample.
-}
-
-For each parity, the simple model is
-\begin{equation}
-Y_i = \gamma + \alpha' \mathbf{Z_i} + \beta' \mathbf{X}_{i} + \epsilon_i,
-\end{equation}
-where $Y$ is a dummy variable that takes the value 1 if the child born is a boy and zero 
-if it is a girl, and the vectors of explanatory variables, $\mathbf{Z}_{i}$ and 
-$\mathbf{X}_{i}$, are the same as for the proposed method, except that 
-$\mathbf{Z}_{i}$ obviously does not include the baseline hazard and that there are 
-no time dependence.%
-\footnote{
-To ease presentation, the indicator for parity number is not shown.
-}
-I estimate this using a logit model, although a linear probability model leads to
-similar results.
-This model is estimated on all observed births for a given parity in the relevant 
-period to ensure that the results are as close to the standard method of 
-examining sex selection \citep[see, for example, ][]{retherford03b,jha06,abrevaya09}.
-
-
-\begin{table}[htbp]
-\begin{center}
-\begin{footnotesize}
-\begin{threeparttable}
-\caption{Comparison of Hazard and Simple Models for  \protect\linebreak
-Women with 8 or More Years of Education}
-\label{tab:compare2}
-\begin{tabular} {@{} l D{.}{.}{5.2} D{.}{.}{5.2} D{.}{.}{5.2} D{.}{.}{5.2}   @{}} \toprule
-                                  &  \multicolumn{2}{c}{Urban}        & \multicolumn{2}{c}{Rural}         \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5}
-                                  & \mco{Simple}     &  \mco{Hazard}   &  \mco{Simple}    & \mco{Hazard}      \\   \midrule
-                                  & \multicolumn{4}{c}{1985--1994 - Second Birth} \\ \cmidrule(l){2-5}
-                                  & \multicolumn{4}{c}{1 girl} \\
-Number of women\tnote{a}          &             & 4,869   &         & 3,105   \\
-Births\tnote{b}                   &     3,848   & 3,926   & 2,417   & 2,795   \\
-Percentage boys                   &      54.0   &  54.7   &  52.6   &  53.5   \\
-Sex ratio (boys per 100 girls)    &     117.4   & 120.7   & 110.9   & 115.1   \\
-\addlinespace 
-                                  & \multicolumn{4}{c}{1985--1994 - Third Birth}  \\ \cmidrule(l){2-5}
-%                                   & \multicolumn{4}{c}{1 boy and 1 girl}        \\
-% Number of women\tnote{a}          &             & 3,460   &         & 1,987   \\
-% Births\tnote{c}                   &     1,431   & 1,558   & 1,107   & 1,336   \\
-% Percentage boys                   &      53.0   &  52.5   &  53.5   &  54.6   \\
-% Sex ratio (boys per 100 girls)    &     112.9   & 110.4   & 115.0   & 120.2   \\
-% \addlinespace
-                                  & \multicolumn{4}{c}{2 girls}        \\
-Number of women\tnote{a}          &             & 1,654   &         &   982   \\
-Births\tnote{c}                   &     1,034   & 1,092   &   682   &   853   \\
-Percentage boys                   &      60.8   &  63.7   &  54.7   &  57.4   \\
-Sex ratio (boys per 100 girls)    &     155.3   & 175.3   & 120.7   & 134.6   \\
-\addlinespace 
-                                  & \multicolumn{4}{c}{1995--2006 - Second Birth} \\ \cmidrule(l){2-5}
-                                  & \multicolumn{4}{c}{1 girl} \\                                                  
-Number of women\tnote{a}          &             & 3,774   &         & 2,823   \\
-Births\tnote{b}                   &     3,031   & 2,704   & 2,489   & 2,407   \\
-Percentage boys                   &      58.0   &  58.6   &  56.0   &  56.9   \\
-Sex ratio (boys per 100 girls)    &     138.1   & 141.3   & 127.1   & 132.2   \\
-\addlinespace 
-                                  & \multicolumn{4}{c}{1995--2006 - Third Birth}  \\ \cmidrule(l){2-5}
-%                                   & \multicolumn{4}{c}{1 boy and 1 girl}        \\
-% Number of women\tnote{a}          &             & 2,357   &         & 1,819   \\
-% Births\tnote{c}                   &       830   &   775   &   853   &   998   \\
-% Percentage boys                   &      53.9   &  52.9   &  55.5   &  56.5   \\
-% Sex ratio (boys per 100 girls)    &     116.7   & 112.1   & 124.5   & 129.8   \\
-% \addlinespace
-                                  & \multicolumn{4}{c}{2 girls}        \\
-Number of women\tnote{a}          &             & 1,000   &         &   863   \\
-Births\tnote{c}                   &       695   &   600   &   690   &   661   \\
-Percentage boys                   &      65.5   &  62.4   &  62.0   &  61.7   \\
-Sex ratio (boys per 100 girls)    &     189.6   & 166.0   & 163.4   & 161.0   \\
-\bottomrule
-\end{tabular}                        
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} 
-The simple models are estimated using logit on all births for a given parity that
-occurred during the relevant time period.
-The hazard models are estimated using all spells that began in the relevant time period.
-For the second birth the hazard model covers the period from beginning of spell to 6 
-years (24 quarters) after the birth of the first child.
-For the third birth it covers the period from beginning of spell to 7.25 years 
-(29 quarters) after the birth of the second child for the period 1985--1994 and from 
-beginning of spell to 5.75 years (23 quarters) after the birth of the second child for 
-the period 1995--2006.
-\item[a] Number of women in period who began the spell with given sex composition of prior 
-child/children in the relevant period.
-\item[b] For Logit model the number of women who are observed to have a second birth
-in the period. 
-For hazard model the predicted number of second births that will occur between beginning 
-of the spell and 6 years (24 quarters) after the birth of the first child.
-% \item[c] Number of women in period who had one boy and one girl as their first two children.
-\item[c] For Logit model the number of women who are observed to have a third birth
-in the period. 
-For hazard model the predicted number of third births that will occur between beginning of 
-the spell and 7.25 years (29 quarters) after the birth of the second child for the
-1985--1994 period and between beginning of the spell and 5.75 years (23 quarters) after 
-the birth of the second child for the 1995--2006 period.
-\end{tablenotes}
-\end{threeparttable}
-\end{footnotesize}
-\end{center}
-\end{table}
-
-I focus on those cases where there is evidence of sex-selective abortions: the spells
-from parity one to two and two to three for women with eight or more years of education.%
-\footnote{
-The results for the spell from parity three to four are available on request.
-They are not presented because the number of educated women who end up with three births 
-and the probability of having a fourth birth are small, which makes
-comparing the simple and hazard models with any precision difficult.
-}
-Table \ref{tab:compare2} shows the number of women who enter the second and third spells
-for the hazard model,
-the number of births, observed in the case of the simple model and predicted in the case 
-of the hazard model, predicted percent boys, and the associated predicted sex ratio.
-It is possible for the number of births used for the simple model to be larger than the
-hazard models' predicted number of births because the simple model is based
-on all births that occurred in the period---independently of when the prior birth
-occurred---whereas the hazard model uses only spells that began in the period. 
-
-
-
-
-For the 1985--1994 period---which is when sex selection become available---the 
-hazard model consistently predicts a higher sex ratio than the logit model.
-Furthermore, some of these differences are substantial.
-For urban women with 2 girls as their first two children, the hazard model
-predicts a sex ratio of 175 boys per 100 girls, whereas the simple method
-``only'' predicts 155 boys per 100 girls.
-The difference is smaller in rural areas but still 14 boys per 100 girls
-higher for the hazard model than for the simple model.
-A similar, if less pronounced pattern, show up for the second birth,
-where the hazard model predict 3 and 5 boys more per 100 girls for
-urban and rural women.
-
-For the latest period, 1995--2006, the hazard model still produces higher 
-predicted sex ratios for second birth and the differences are of a 
-similar magnitude to the 1985--1994 period.
-The predicted sex ratios for the third birth are, however, 
-higher for the simple model than for the hazard model.
-This difference is substantially for urban women where the difference 
-is 23 boys extra per 100 girls.  
-
-A possible explanation for these differences is that the simple model 
-fails to capture the move towards lower fertility and the subsequent 
-increase in the use of sex-selective abortions at earlier parities that 
-occurred over the periods.
-The results also suggest that the take-up of sex selection occurred 
-rapidly as the new methods became available and that this take-up
-is not fully captured by the simple model.
-More broadly, a possible interpretation of the differences is that
-the simple model will tend to underestimate when sex-selective abortions
-are initially spreading in use and overestimate when the spread of sex 
-selection is slowing.
-This is most clearly seen for the third births for urban women where
-the hazard model show a \emph{decline} is use of sex-selective abortions,
-consistent with the lower fertility as discussed in the main paper,
-while the simple model show a substantial increase. 
-
-
 \subsection{One Son or Many Sons?}
 
-In the discussion of declining fertility I rely on sex selection not being used by 
-families that already has one son.
-The extent to which this holds is of interest for two reasons.
+The extent to which people use sex selection for different sex compositions
+of previous children is of interest for two reasons.
 First and foremost, it can help us understand what form son preference takes in India.
-This is important in itself, but especially as we try to predict what will happen to 
-fertility and sex selection use in the future.
+This is important in itself, but is especially important as we try to predict 
+what will happen to sex selection use in the future.
+[need an explanation of this based on what I have in the introduction]
 Second,
 if families use sex selection to reach two or more sons, progression rates for families 
 with one son may overestimate the decline in fertility.
@@ -1631,81 +1449,10 @@ On the other hand, mortality risk is higher for girls than for boy, which would 
 the sex ratio more male dominated.
 }
 
-
-\begin{table}[htbp]
-\begin{center}
-\begin{scriptsize}
-\begin{threeparttable}
-\caption{Predicted Fertility Behavior, Sex Ratio, and \protect\linebreak
-Abortions for Women with 8 or More Years of Education}
-\label{tab:predicted}
-\begin{tabular} {@{} l D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1}  D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1} D{.}{.}{2.1}  @{}} \toprule
-                 & \multicolumn{4}{c}{1972-1984}                                                               & \multicolumn{4}{c}{1985-1994}                                                               & \multicolumn{4}{c}{1995-2006} \\ \cmidrule(lr){2-5} \cmidrule(lr){6-9} \cmidrule(lr){10-13}
-                 & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      & \mco{Births (\%)}          & \mct{Abortions per 100}                      & \mco{Boys}      \\
-                 & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      & \mco{/ fertility\tnote{a}} & \mco{births\tnote{b}} & \mco{women\tnote{c}} & \mco{(\%)}      \\
-\midrule
-\bf Urban        & \multicolumn{12}{c}{} \\                                                                    
-Spell 2          &       85.9   &  2.0    &  1.8    &  52.3   &       78.2   &  4.7    &  3.7  &  53.7   &       68.0   &  8.0    &  5.4   &  55.3      \\
-Spell 3          &       64.4   &  5.1    &  3.3    &  53.9   &       49.9   &  9.8    &  4.9  &  56.2   &       38.6   &  7.8    &  3.0   &  55.3      \\
-Spell 4          &       57.0   &  2.8    &  1.6    &  52.6   &       44.8   &  2.6    &  1.1  &  52.6   &       33.7   &  21.8   &  7.3   &  62.3      \\
-Overall\tnote{d} &       2.7    &  2.0    &  5.5    &  52.3   &       2.3    &  3.4    &  8.0  &  53.1   &       2.0    &  4.6    &  9.4   &  53.7      \\
-\addlinespace 
-\bf Rural        & \multicolumn{12}{c}{} \\                                                                                  
-Spell 2          &       92.5   &  -1.4   &  -1.3   &  50.5   &       87.6   &  3.1    &  2.7  &  52.8   &       83.1   &  4.4    &  3.6   &  53.5      \\
-Spell 3          &       80.9   &  2.6    &  2.1    &  52.5   &       70.6   &  6.5    &  4.6  &  54.5   &       59.6   &  10.6   &  6.3   &  56.7      \\
-Spell 4          &       75.7   &  -3.1   &  -2.4   &  49.6   &       62.0   &  0.2    &  0.1  &  51.3   &       51.9   &  6.1    &  3.2   &  54.4      \\
-Overall\tnote{d} &       3.2    &  -0.3   &  -1.1   &  51.2   &       2.9    &  2.4    &  6.8  &  52.8   &       2.6    &  4.1    &  10.5  &  53.4      \\
-\bottomrule
-\end{tabular}                        
-\begin{tablenotes} \tiny
-\item \hspace*{-0.5em} \textbf{Note.} Predictions are based on estimates of equations 
-(\ref{eq:probability_boy}) and (\ref{eq:probability_girl}).
-The samples consist of all women from the data with 8 or more years of education who
-married during the indicated period using the estimation results for that periods 
-and the women's characteristics at the start of their marriage. 
-All numbers presented are for women predicted to have one or more births.
-Birth/progression rates are based on the ratio of women predicted to have a birth 
-by the end of each spell.
-Abortion rates within each spell are based on the predicted number of abortions each
-woman would have if she went through the entire spell.
-To generate conditions such as sex composition and fecundity for second and higher spells 
-each woman is randomly assigned outcomes based on the estimation results and
-her characteristics as follows.
-For each quarter, her probabilities of having a boy, a girl, or no birth is calculated.
-She is assigned one of these outcomes based on a random draw from a uniform distribution.
-The first quarter where she has a draw that results in a birth she leaves the spell
-and the quarter reached is used to calculate her starting age for the subsequent spell.
-If she has no draw that result in a birth within a spell her childbearing stops and
-she does not enter the next spell.
-Results are averaged over 1,000 repetitions.
-\item[a] For individual spells the column shows the percent of women who started the
-spell and ended up with a birth by the end of the spell period covered.
-For the ``Overall'' row, the number is the expected number of children born per woman over 
-the first four spells, conditional on having at least one birth.
-\item[b] For individual spells the column shows the number of abortions per 100
-births predicted to take place by the end of the spell.
-For the ``Overall'' row, the number is the total number of abortion per 100 births 
-predicted to take place over all four spells.
-\item[c]  For individual spells the column shows the number of abortions 
-predicted to take place by the end of the spell per 100 women who started the spell .
-For the ``Overall'' row, the number is the total number of abortion 
-predicted to take place over all four spells per 100 women who had at least one child.
-\item[d] Covers first through fourth spells. 
-\end{tablenotes}
-\end{threeparttable}
-\end{scriptsize}
-\end{center}
-\end{table}
-
+% Tables of predictions 
+\input{../tables/predictedFertility.tex}
 
 The results show a substantial reduction in fertility over time.
-% The percentage women with a birth by the end of each spell, conditional to making
-% it to the beginning of the spell, has decreased more than
-% 10 percentage points between the two periods.%
-% \footnote{
-% The exception is rural women's second spell, where the reductions between periods
-% were 4.9 and 4.5 percentage points.
-% }
 Predicted completed fertility went from 2.7 for urban women married in  
 the 1972--1984 period to just 2 for urban women married in the 1995--2006 period.
 Hence, urban fertility is now below replacement, especially considering that
@@ -2038,160 +1785,9 @@ likely to see a substantially increased use of sex selection in India.
 \renewcommand\thetable{\thesection.\arabic{table}}    
 \setcounter{table}{0}
   
+% Descriptive statistics tables
+\input{../tables/desStat.tex}
 
-% \begin{sidewaystable}
-\begin{table}[htp]
-\begin{center}
-\begin{scriptsize}
-\begin{threeparttable}
-% \caption{Descriptive Statistics by Education Level and Beginning of Spell for First and Second Spell}
-\caption{Descriptive Statistics by Education Level and Beginning of Spell}
-\label{tab:des_stat1}
-\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule
-                    &                     & \multicolumn{3}{c}{No Education}                                & \multicolumn{3}{c}{1--7 Years of Education}                      & \multicolumn{3}{c}{8+ Years of Education} \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
-                    &                     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     \\ % \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
-\midrule
-\multirow{16}{*}{\rotatebox{90}{First Spell}}                   
-                    &Boy born            &       0.467         &       0.438         &       0.363         &       0.476         &       0.447         &       0.368         &       0.483         &       0.453         &       0.377         \\
-                    &                    &     (0.499)         &     (0.496)         &     (0.481)         &     (0.499)         &     (0.497)         &     (0.482)         &     (0.500)         &     (0.498)         &     (0.485)         \\
-                    &Girl born           &       0.427         &       0.410         &       0.352         &       0.439         &       0.429         &       0.356         &       0.454         &       0.420         &       0.353         \\
-                    &                    &     (0.495)         &     (0.492)         &     (0.478)         &     (0.496)         &     (0.495)         &     (0.479)         &     (0.498)         &     (0.494)         &     (0.478)         \\
-                    &Censored            &       0.106         &       0.152         &       0.284         &       0.085         &       0.124         &       0.276         &       0.063         &       0.127         &       0.270         \\
-                    &                    &     (0.308)         &     (0.359)         &     (0.451)         &     (0.279)         &     (0.330)         &     (0.447)         &     (0.243)         &     (0.333)         &     (0.444)         \\
-                    &Urban               &       0.181         &       0.176         &       0.200         &       0.366         &       0.334         &       0.322         &       0.690         &       0.604         &       0.561         \\
-                    &                    &     (0.385)         &     (0.381)         &     (0.400)         &     (0.482)         &     (0.472)         &     (0.467)         &     (0.463)         &     (0.489)         &     (0.496)         \\
-                    &Age                 &      15.854         &      16.301         &      16.871         &      16.983         &      17.470         &      17.844         &      19.516         &      20.036         &      20.766         \\
-                    &                    &     (2.482)         &     (2.643)         &     (2.858)         &     (2.733)         &     (3.041)         &     (3.221)         &     (3.331)         &     (3.614)         &     (3.916)         \\
-                    &Owns land           &       0.589         &       0.578         &       0.540         &       0.500         &       0.497         &       0.482         &       0.321         &       0.387         &       0.414         \\
-                    &                    &     (0.492)         &     (0.494)         &     (0.498)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.467)         &     (0.487)         &     (0.493)         \\
-                    &Sched.\ caste/tribe &       0.357         &       0.395         &       0.441         &       0.170         &       0.227         &       0.318         &       0.071         &       0.119         &       0.175         \\
-                    &                    &     (0.479)         &     (0.489)         &     (0.497)         &     (0.376)         &     (0.419)         &     (0.466)         &     (0.257)         &     (0.324)         &     (0.380)         \\
-                    &Number of quarters  & \mco{  330,315         } & \mco{  257,757         } & \mco{   75,841         } & \mco{  108,463         } & \mco{  108,863         } & \mco{   54,704         } & \mco{  102,238         } & \mco{  154,582         } & \mco{  116,272         } \\
-                    &Number of women     & \mco{   30,004         } & \mco{   27,669         } & \mco{    9,684         } & \mco{   11,162         } & \mco{   13,104         } & \mco{    7,510         } & \mco{   11,271         } & \mco{   19,072         } & \mco{   16,620         } \\
-                    \addlinespace
-% \cmidrule(lr){1-2} \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
-\midrule
-\multirow{22}{*}{\rotatebox{90}{Second Spell}}
-                    & Boy born            &       0.490         &       0.444         &       0.359         &       0.477         &       0.437         &       0.338         &       0.457         &       0.399         &       0.285         \\
-                    &                     &     (0.500)         &     (0.497)         &     (0.480)         &     (0.500)         &     (0.496)         &     (0.473)         &     (0.498)         &     (0.490)         &     (0.451)         \\
-                    & Girl born           &       0.451         &       0.413         &       0.327         &       0.462         &       0.413         &       0.319         &       0.426         &       0.351         &       0.239         \\
-                    &                     &     (0.498)         &     (0.492)         &     (0.469)         &     (0.499)         &     (0.492)         &     (0.466)         &     (0.495)         &     (0.477)         &     (0.427)         \\
-                    & Censored            &       0.059         &       0.143         &       0.314         &       0.061         &       0.150         &       0.344         &       0.117         &       0.251         &       0.476         \\
-                    &                     &     (0.236)         &     (0.350)         &     (0.464)         &     (0.239)         &     (0.357)         &     (0.475)         &     (0.321)         &     (0.433)         &     (0.499)         \\
-                    & One boy             &       0.527         &       0.515         &       0.508         &       0.519         &       0.513         &       0.505         &       0.513         &       0.520         &       0.515         \\
-                    &                     &     (0.499)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         \\
-                    & One girl            &       0.473         &       0.485         &       0.492         &       0.481         &       0.487         &       0.495         &       0.487         &       0.480         &       0.485         \\
-                    &                     &     (0.499)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         \\
-                    & Urban               &       0.181         &       0.180         &       0.212         &       0.370         &       0.348         &       0.345         &       0.697         &       0.628         &       0.578         \\
-                    &                     &     (0.385)         &     (0.384)         &     (0.409)         &     (0.483)         &     (0.476)         &     (0.475)         &     (0.459)         &     (0.483)         &     (0.494)         \\
-                    & Age                 &      17.774         &      18.357         &      18.870         &      18.620         &      19.200         &      19.581         &      20.988         &      21.589         &      22.252         \\
-                    &                     &     (2.743)         &     (3.054)         &     (3.284)         &     (2.864)         &     (3.206)         &     (3.373)         &     (3.371)         &     (3.621)         &     (3.901)         \\
-                    & First spell length  &      25.630         &      29.145         &      29.133         &      21.924         &      24.513         &      24.787         &      20.608         &      22.154         &      22.217         \\
-                    &                     &    (20.345)         &    (25.044)         &    (27.216)         &    (18.142)         &    (22.027)         &    (23.204)         &    (15.371)         &    (18.651)         &    (19.176)         \\
-                    & Owns land           &       0.590         &       0.572         &       0.528         &       0.497         &       0.492         &       0.468         &       0.313         &       0.369         &       0.402         \\
-                    &                     &     (0.492)         &     (0.495)         &     (0.499)         &     (0.500)         &     (0.500)         &     (0.499)         &     (0.464)         &     (0.483)         &     (0.490)         \\
-                    & Sched.\ caste/tribe &       0.353         &       0.390         &       0.430         &       0.164         &       0.218         &       0.304         &       0.068         &       0.110         &       0.169         \\
-                    &                     &     (0.478)         &     (0.488)         &     (0.495)         &     (0.371)         &     (0.413)         &     (0.460)         &     (0.251)         &     (0.313)         &     (0.374)         \\
-                    & Number of quarters  & \mco{  176,227         } & \mco{  231,546         } & \mco{   68,455         } & \mco{   67,432         } & \mco{  103,656         } & \mco{   49,236         } & \mco{   77,416         } & \mco{  164,752         } & \mco{  119,864         } \\
-                    & Number of women     & \mco{   21,171         } & \mco{   28,251         } & \mco{    9,428         } & \mco{    8,209         } & \mco{   12,449         } & \mco{    6,542         } & \mco{    8,204         } & \mco{   16,601         } & \mco{   13,610         } \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-% \item \hspace*{-7pt} \textbf{Note.}
-\item \hspace*{-0.7em} \textbf{Note.}
-Means without parentheses and standard deviation in parentheses.
-Interactions between variables, baseline hazard dummies and squares not shown.
-Quarters refer to number of 3 month periods observed.
-\end{tablenotes}
-\end{threeparttable}
-\end{scriptsize}
-\end{center}
-\end{table}
-% \end{sidewaystable}
-
-\addtocounter{table}{-1}
-
-% \begin{sidewaystable}
-\begin{table}
-\begin{center}
-\begin{scriptsize}
-\begin{threeparttable}
-% \caption{Descriptive Statistics by Education Level and Beginning of Spell for Third and Fourth Spell}
-\caption{(Continued) Descriptive Statistics by Education Level and Beginning of Spell}
-% \label{tab:des_stat2}
-\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule
-                    &                     & \multicolumn{3}{c}{No Education}                                & \multicolumn{3}{c}{1-7 Years of Education}                      & \multicolumn{3}{c}{8+ Years of Education} \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
-                    &                     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     \\ % \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
-\midrule                    
-\multirow{24}{*}{\rotatebox{90}{Third Spell}}
-                    & Boy born            &       0.478         &       0.425         &       0.319         &       0.455         &       0.388         &       0.261         &       0.353         &       0.264         &       0.163         \\
-                    &                     &     (0.500)         &     (0.494)         &     (0.466)         &     (0.498)         &     (0.487)         &     (0.439)         &     (0.478)         &     (0.441)         &     (0.369)         \\
-                    & Girl born           &       0.442         &       0.393         &       0.306         &       0.423         &       0.357         &       0.239         &       0.313         &       0.214         &       0.128         \\
-                    &                     &     (0.497)         &     (0.488)         &     (0.461)         &     (0.494)         &     (0.479)         &     (0.426)         &     (0.464)         &     (0.410)         &     (0.334)         \\
-                    & Censored            &       0.080         &       0.182         &       0.376         &       0.121         &       0.255         &       0.500         &       0.334         &       0.521         &       0.709         \\
-                    &                     &     (0.271)         &     (0.386)         &     (0.484)         &     (0.326)         &     (0.436)         &     (0.500)         &     (0.472)         &     (0.500)         &     (0.454)         \\
-                    & Two boys            &       0.276         &       0.257         &       0.243         &       0.248         &       0.245         &       0.232         &       0.266         &       0.244         &       0.238         \\
-                    &                     &     (0.447)         &     (0.437)         &     (0.429)         &     (0.432)         &     (0.430)         &     (0.422)         &     (0.442)         &     (0.429)         &     (0.426)         \\
-                    & One boy, one girl   &       0.490         &       0.502         &       0.506         &       0.508         &       0.501         &       0.515         &       0.489         &       0.510         &       0.527         \\
-                    &                     &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.499)         \\
-                    & Two girls           &       0.234         &       0.241         &       0.252         &       0.243         &       0.254         &       0.253         &       0.245         &       0.247         &       0.235         \\
-                    &                     &     (0.424)         &     (0.428)         &     (0.434)         &     (0.429)         &     (0.435)         &     (0.435)         &     (0.430)         &     (0.431)         &     (0.424)         \\
-                    & Urban               &       0.179         &       0.182         &       0.208         &       0.378         &       0.354         &       0.343         &       0.693         &       0.646         &       0.568         \\
-                    &                     &     (0.383)         &     (0.386)         &     (0.406)         &     (0.485)         &     (0.478)         &     (0.475)         &     (0.461)         &     (0.478)         &     (0.495)         \\
-                    & Age                 &      19.978         &      20.693         &      21.278         &      20.794         &      21.453         &      21.998         &      22.963         &      23.825         &      24.548         \\
-                    &                     &     (2.895)         &     (3.196)         &     (3.551)         &     (2.937)         &     (3.239)         &     (3.618)         &     (3.405)         &     (3.748)         &     (4.067)         \\
-                    & First spell length  &      24.547         &      27.575         &      27.099         &      20.971         &      23.901         &      23.532         &      19.991         &      21.246         &      21.236         \\
-                    &                     &    (18.832)         &    (22.779)         &    (24.364)         &    (16.875)         &    (20.378)         &    (21.155)         &    (14.646)         &    (16.835)         &    (17.363)         \\
-                    & Owns land           &       0.602         &       0.575         &       0.538         &       0.503         &       0.503         &       0.490         &       0.320         &       0.369         &       0.421         \\
-                    &                     &     (0.490)         &     (0.494)         &     (0.499)         &     (0.500)         &     (0.500)         &     (0.500)         &     (0.467)         &     (0.483)         &     (0.494)         \\
-                    & Sched.\ caste/tribe &       0.344         &       0.392         &       0.432         &       0.159         &       0.218         &       0.298         &       0.067         &       0.107         &       0.169         \\
-                    &                     &     (0.475)         &     (0.488)         &     (0.495)         &     (0.366)         &     (0.413)         &     (0.457)         &     (0.251)         &     (0.310)         &     (0.375)         \\
-                    & Number of quarters  & \mco{  109,026         } & \mco{  206,988         } & \mco{   70,391         } & \mco{   43,434         } & \mco{   87,537         } & \mco{   41,400         } & \mco{   49,799         } & \mco{  126,733         } & \mco{   79,068         } \\
-                    & Number of women     & \mco{   13,196         } & \mco{   25,135         } & \mco{    9,355         } & \mco{    4,960         } & \mco{    9,775         } & \mco{    5,034         } & \mco{    4,316         } & \mco{   10,688         } & \mco{    7,927         } \\
-\addlinespace
-% \cmidrule(lr){1-2} \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
-\midrule
-\multirow{26}{*}{\rotatebox{90}{Fourth Spell}}
-                    & Boy born            &       0.463         &       0.384         &       0.291         &       0.403         &       0.347         &       0.233         &       0.310         &       0.227         &       0.170         \\
-                    &                     &     (0.499)         &     (0.486)         &     (0.454)         &     (0.491)         &     (0.476)         &     (0.423)         &     (0.462)         &     (0.419)         &     (0.376)         \\
-                    & Girl born           &       0.408         &       0.363         &       0.268         &       0.391         &       0.303         &       0.198         &       0.298         &       0.197         &       0.113         \\
-                    &                     &     (0.491)         &     (0.481)         &     (0.443)         &     (0.488)         &     (0.460)         &     (0.399)         &     (0.458)         &     (0.397)         &     (0.316)         \\
-                    & Censored            &       0.130         &       0.254         &       0.441         &       0.206         &       0.350         &       0.569         &       0.392         &       0.576         &       0.717         \\
-                    &                     &     (0.336)         &     (0.435)         &     (0.497)         &     (0.405)         &     (0.477)         &     (0.495)         &     (0.488)         &     (0.494)         &     (0.450)         \\
-                    & Three boys          &       0.134         &       0.124         &       0.111         &       0.107         &       0.105         &       0.102         &       0.106         &       0.101         &       0.082         \\
-                    &                     &     (0.341)         &     (0.329)         &     (0.315)         &     (0.309)         &     (0.307)         &     (0.303)         &     (0.308)         &     (0.302)         &     (0.275)         \\
-                    & Two boys, one girl  &       0.374         &       0.357         &       0.346         &       0.348         &       0.323         &       0.308         &       0.358         &       0.304         &       0.289         \\
-                    &                     &     (0.484)         &     (0.479)         &     (0.476)         &     (0.476)         &     (0.468)         &     (0.462)         &     (0.480)         &     (0.460)         &     (0.453)         \\
-                    & One boys, two girls &       0.362         &       0.389         &       0.400         &       0.400         &       0.413         &       0.423         &       0.393         &       0.439         &       0.469         \\
-                    &                     &     (0.481)         &     (0.488)         &     (0.490)         &     (0.490)         &     (0.492)         &     (0.494)         &     (0.489)         &     (0.496)         &     (0.499)         \\
-                    & Three girls         &       0.129         &       0.130         &       0.142         &       0.145         &       0.159         &       0.167         &       0.143         &       0.156         &       0.159         \\
-                    &                     &     (0.335)         &     (0.337)         &     (0.350)         &     (0.353)         &     (0.365)         &     (0.373)         &     (0.350)         &     (0.363)         &     (0.366)         \\
-                    & Urban               &       0.171         &       0.181         &       0.197         &       0.363         &       0.346         &       0.325         &       0.670         &       0.601         &       0.511         \\
-                    &                     &     (0.377)         &     (0.385)         &     (0.398)         &     (0.481)         &     (0.476)         &     (0.469)         &     (0.470)         &     (0.490)         &     (0.500)         \\
-                    & Age                 &      21.926         &      22.885         &      23.608         &      22.611         &      23.519         &      24.317         &      24.257         &      25.472         &      26.061         \\
-                    &                     &     (3.019)         &     (3.332)         &     (3.711)         &     (2.894)         &     (3.364)         &     (3.759)         &     (3.171)         &     (3.702)         &     (4.143)         \\
-                    & First spell length  &      23.281         &      26.609         &      26.460         &      20.495         &      23.069         &      24.215         &      19.106         &      20.826         &      21.423         \\
-                    &                     &    (17.481)         &    (21.556)         &    (23.272)         &    (15.546)         &    (19.078)         &    (21.244)         &    (13.991)         &    (16.277)         &    (16.585)         \\
-                    & Owns land           &       0.610         &       0.587         &       0.557         &       0.523         &       0.530         &       0.509         &       0.339         &       0.414         &       0.466         \\
-                    &                     &     (0.488)         &     (0.492)         &     (0.497)         &     (0.500)         &     (0.499)         &     (0.500)         &     (0.474)         &     (0.493)         &     (0.499)         \\
-                    & Sched.\ caste/tribe &       0.338         &       0.403         &       0.442         &       0.154         &       0.224         &       0.297         &       0.085         &       0.113         &       0.193         \\
-                    &                     &     (0.473)         &     (0.491)         &     (0.497)         &     (0.361)         &     (0.417)         &     (0.457)         &     (0.280)         &     (0.316)         &     (0.395)         \\
-                    & Number of quarters  & \mco{   54,446         } & \mco{  151,285         } & \mco{   56,756         } & \mco{   18,852         } & \mco{   49,108         } & \mco{   23,209         } & \mco{   14,287         } & \mco{   43,339         } & \mco{   23,586         } \\
-                    & Number of women     & \mco{    6,832         } & \mco{   18,436         } & \mco{    7,637         } & \mco{    2,201         } & \mco{    5,564         } & \mco{    2,768         } & \mco{    1,347         } & \mco{    3,933         } & \mco{    2,459         } \\
-\bottomrule
-\end{tabular}
-\begin{tablenotes} \tiny
-% \item \hspace*{-7pt} \textbf{Note.}
-\item \hspace*{-0.7em} \textbf{Note.}
-Means without parentheses and standard deviation in parentheses.
-Interactions between variables, baseline hazard dummies and squares not shown.
-Quarters refer to number of 3 month periods observed.
-\end{tablenotes}
-\end{threeparttable}
-\end{scriptsize}
-\end{center}
-\end{table}
-% \end{sidewaystable}
 
 
 \end{document}
