@@ -1,5 +1,105 @@
 Notes and snippets:
 
+[contribution]
+
+The main contribution of this paper is the introduction and application of a method that 
+incorporates the decisions about birth spacing, and sex-selective abortions.
+
+
+[health concerns and reversal]
+
+A reversal could happen if they do not want the space between children to be 
+``too long'', or if there are concerns about possible infertility as a result of 
+too many abortions in a row without a birth.%
+\footnote{
+Shorter spacing was likely less of a concern to begin with for
+better educated mothers---who are also the most likely to use 
+sex selection---since their children are substantially less likely 
+to be negatively affected by short spacing than children of less 
+educated mothers \citep{Whitworth2002}.
+}
+
+
+[Model highlights]
+
+% What are the model highlights 
+There are three main conclusions from the model.
+The increased use of sex selection shows up both in the 
+proportion of boys among births and longer spacing between 
+births---and the higher the parity the longer the duration between 
+births.
+The other factors, such as the price of sex selection, 
+discount factor, and son preference also affect the use
+of sex selection, but to a much smaller degree.
+Second, parents do reverse the use of sex selection, 
+both when they use sex selection relatively infrequently and when 
+they use it heavily.
+Reversal are more likely the more impatient parents are or the
+shorter time they have left in their reproductive horizon, which
+means that the longer the duration has been since the last birth
+the more likely they are to reverse their decision to use sex selection.
+Finally, the model shows that son preference in the number of
+children is not required for an unequal sex ratio.
+As long as parents are only willing to abort female fetuses, declining
+fertility will lead to increased use of sex selection to ensure 
+a balanced number of sons and daughters.
+
+
+[More model]
+% Empirical method
+The model highlights two major limitations of the simple 
+empirical method, which a better empirical approach needs to 
+allow for.
+First, increased use of sex selection leads to longer spacing which,
+everything else equal, reduces the number of births available for 
+estimation in the simple model and thereby lowers its precision
+because fewer parents will make it to a given parity by the time of the survey.
+Furthermore, the more intensively sex selection is used the larger 
+the decline in sample size.
+Second, by using only observed births the simple method cannot capture
+when parents change their decision on the use of sex selection;
+with a reversal the spell can still result in the birth of a girl.
+This last point is especially important when trying to establish whether 
+son preference has changed over time in a situation where the cost of prenatal 
+sex determination has likely \emph{increased} over time because of the PNDT act.
+As I show an increase the cost of prenatal sex determination does 
+decrease the sex ratio and lower the number of abortions, but 
+it also \emph{increases} the likelihood that parents change their initial
+decision to use sex selection within a spell.
+
+
+Lowering the cost of prenatal sex determination generally leads to 
+a smaller percentage of parents who change their use of sex selection.
+But, the total number of spells with a change may still
+go up because lower cost of prenatal sex determination also
+increases the use of sex selection.
+
+
+For a given sex composition of prior children, there are two main drivers 
+of sex selection: the degree of son preference and the cost of sex selection.
+The more parents care about having a son as their next child, the more
+likely they are to use sex selection and the less likely they are to
+reverse the decision once started.
+The result is an increased number of abortions, more spells where a
+prenatal scan is used, and the spacing between births is longer.
+
+Lowering the cost of sex selection bias the overall sex ratio further 
+towards boys.
+Correspondingly, both the number of abortions per woman and the
+number of spells where a prenatal scan is used should also increase,
+resulting in longer average spacing between births.
+This increase in spacing is, however, not likely to be uniform across parities.
+In addition to increasing the overall sex ratio, lower cost of prenatal 
+scan should also lead to use of sex selection at earlier parities.
+It is therefore possible to see either no change or a \emph{decrease} 
+in average spacing for a later parity---although with a more than compensating 
+increase in an earlier parity.
+In other words, it is possible for individual parities to show a \emph{decline}
+in sex selection at the same time as the overall use goes up.
+This is an important caution against over-interpreting individual 
+parity results.
+
+
 
 [How sex selection can happen in the absence of son preference - just because of balance]
 
