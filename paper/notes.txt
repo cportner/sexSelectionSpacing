@@ -18,16 +18,17 @@ See, for example,
 girls
 and 
 \citet{arnold98}, \citet{Whitworth2002}, \citet{Rutstein2005},
-and \citet{Conde-Agudelo2006} on association with worse health outcomes
-for girls.
+and \citet{Conde-Agudelo2006} on the association between shorter birth
+spacing and worse health outcomes for girls.
 Parents are also more likely to cease childbearing after the birth of 
 a son than after a daughter \citep{ben-porath76b,Das1987,Arnold1997,clark00}. 
 }
 
 What has not previously been appreciated is that the introduction 
 of prenatal sex determination substantially changed the relationship between 
-son preference and birth spacing because each sex-selective abortion  
-increases the duration between observed births by approximately a year.%
+son preference and birth spacing.
+The issue is that each sex-selective abortion increases the duration between 
+observed births by approximately a year.%
 \footnote{
 This increase consists of three parts starting from the time of the 
 abortion.
@@ -35,8 +36,7 @@ First, the uterus needs at least two menstrual cycles to recover
 before conception, because a less than three months space 
 between abortion and conception substantially increases the likelihood 
 of a spontaneous abortion \citep{zhou00b}.
-Secondly, the average expected time to conception, which I
-assume is about 6 months \citep{Wang2003}.
+Second, an average of 6 months to next conception \citep{Wang2003}.
 Finally, sex determination tests are generally reliable only from 3 months 
 of gestation onwards.
 These three parts add up to 12 months.
@@ -44,8 +44,8 @@ The waiting time to conception does vary by woman, but even if it is very
 short, say one  month, the additional space between births would still
 be 6 months per abortion.
 }
-We therefore now have a situation where the \emph{longest} spacing is 
-likely observed for families with the strongest son preference.
+We therefore now have a situation where families with the \emph{strongest} son 
+preference likely show the \emph{longest} spacing after the birth of a daughter.
 But, to further complicate matters, we may still observe short spacing 
 after the birth of daughter as a representation of son preference for 
 families who---for one reason or another---do not use prenatal sex selection.
@@ -57,10 +57,29 @@ sex selection.
 
 How spacing interacts with sex selection is important for two reasons.
 First, spacing, by itself, can no longer be used to predict son preference. 
-Spacing is still important and useful in understanding sex selection and son
-preference, but only if combined with the outcome of that spacing---in other words 
-the likelihood of observing a boy or a girl.
+Spacing is still important and useful in understanding son preference, but 
+only if combined with the likelihood of observing a boy or a girl.
+Short spacing after a girl is indicative of son preference if observed
+births are close to the natural sex ratio, where long spacing is indicative
+of son preference if observed births are more male biased.
+Second, the decision on sex selection may depend on the duration since the
+last birth.
+For example, as the duration from last birth becomes long enough, parents 
+may reverse their decision to use prenatal sex determination,
+and carry the next pregnancy to term whether male or female.
+This is a problem because, for a given parity, births to women with shorter 
+spacing are more likely to be surveyed.
 
+
+Hence, women for whom we do observe a birth may behave differently from 
+the sample of women who have not yet had a birth.
+
+
+
+Hence, if decisions on sex selection change with duration since last birth,
+the predicted sex ratio for a parity using the current method will be a 
+biased estimate of the final observed sex ratio for the parity when 
+childbearing is complete.
 
 
 
