@@ -20,7 +20,7 @@ and
 \citet{arnold98}, \citet{Whitworth2002}, \citet{Rutstein2005},
 and \citet{Conde-Agudelo2006} on the association between shorter birth
 spacing and worse health outcomes for girls.
-Parents are also more likely to cease childbearing after the birth of 
+Parents were also more likely to cease childbearing after the birth of 
 a son than after a daughter \citep{ben-porath76b,Das1987,Arnold1997,clark00}. 
 }
 
@@ -55,20 +55,46 @@ the likelihood of a son being born \emph{and} the duration between births.
 The method can be used to analyse both situations with and without prenatal
 sex selection.
 
-How spacing interacts with sex selection is important for two reasons.
+How spacing interacts with sex selection is an important methodological
+issues for two reasons.
 First, spacing, by itself, can no longer be used to predict son preference. 
 Spacing is still important and useful in understanding son preference, but 
 only if combined with the likelihood of observing a boy or a girl.
 Short spacing after a girl is indicative of son preference if observed
-births are close to the natural sex ratio, where long spacing is indicative
+births are close to the natural sex ratio, whereas long spacing is indicative
 of son preference if observed births are more male biased.
-Second, the decision on sex selection may depend on the duration since the
-last birth.
+
+Second, the current approach to estimating use of sex selection fails to 
+account for the role of spacing.
+The issue is that the decision on sex selection possibly depends on the 
+duration since the last birth.
 For example, as the duration from last birth becomes long enough, parents 
 may reverse their decision to use prenatal sex determination,
 and carry the next pregnancy to term whether male or female.
-This is a problem because, for a given parity, births to women with shorter 
-spacing are more likely to be surveyed.
+With no direct information on sex selection, one can use the sex ratio 
+of children \emph{born} as a measure of sex selection use, and therefore son 
+preference. 
+The idea is that, in the absence of any interventions, the probability of 
+having a son is approximately 0.512, which is independent of genetic 
+factors \citep{ben-porath76b,jacobsen99}.
+For a sufficient large sample size a higher than normal sex ratio at birth
+therefore indicates the use of sex selection.
+
+In the current approach to understanding the use of sex selection the
+outcome variable is the sex of a given parity child and this is
+associated
+
+and estimate the effects of variables on the 
+probability of having a son.
+With fetus sex random, a statistically significant coefficient therefore 
+indicates an association between the variable and use of sex-selective 
+abortions.
+
+
+
+
+This is potentially a problem because, for a given parity, births to women 
+with shorter spacing are more likely to be surveyed.
 
 
 Hence, women for whom we do observe a birth may behave differently from 
@@ -81,8 +107,87 @@ the predicted sex ratio for a parity using the current method will be a
 biased estimate of the final observed sex ratio for the parity when 
 childbearing is complete.
 
+[results from current method]
+
+Based on this simple method, we know that families with no sons are more likely to
+use sex selection the higher the parity;
+that use of sex selection increases with socioeconomic status, especially education;
+and that sex selection is more widespread in cities than in rural areas 
+\citep{retherford03b,jha06,abrevaya09}.%
+\footnote{
+There is substantial disagreement on whether sex-selective abortion is used for the 
+first birth \citep{retherford03b,jha06}.
+}
 
 
+Our understanding of sex selection usage is, however, constrained by a
+lack of information;
+there are no official data on sex selection, and the few surveys that ask 
+about use of sex selection show signs of serious under-reporting \citep{goodkind96}.
+
+[prior lit using observed sex rations - from appeal]
+
+For small set of published papers that also rely on fertility histories 
+to infer sex selection see
+% \citet{retherford03b},
+\citet{Jha06},
+\citet{Visaria2007},
+\citet{abrevaya09},
+\citet{Ebenstein2011},
+\citet{Jha2011},
+\citet{Nandi2013},
+\citet{Bongaarts2013},
+\citet{Hu2015},
+\citet{Bongaarts2015}, and 
+\citet{Kashyap2016}.
+% Furthermore, \citet{Jayachandran2017} rely on 
+These all use the traditional method of simply relying on the
+observed sex ratio at birth.
+As I mention above, the original point of the paper was to show that
+this approach is potentially biased and ignores that spacing
+becomes longer with use of sex selection.
+
+
+
+[Why change use of sex selection within spell - maybe move to data or estimation method]
+
+A number of factors make a reversal of the decision to use sex 
+selection between one birth and the next more likely, 
+everything else equal.
+First, the more concerned parents are about possible infertility 
+from repeated abortions or the closer they are to the end of their 
+reproductive period, they more likely they are to decide that a 
+child of any sex is better than not having a child at all.
+Second, the higher the parents' discount factor is---that is, the
+more the value present outcomes relative to future outcomes---the
+more likely they are to reverse their decision to sex selection.
+Third, economies of scale in childrearing---both in terms of time cost 
+and direct cost---are easier to take advantage of if births 
+are closer \citep[p 947]{Newman1984}.
+Hence, the stronger these economies of scale are, the more likely
+parents are to reverse their decision to use sex selection.
+Finally, if women's wages increase with age, parents prefer
+to have their children early and close together while 
+the opportunity cost of children is lower \citep{Heckman1976}.%
+\footnote{
+The time needed to care for young children can also impact 
+timing if skills depreciate when out of the labor market \citep{Happel1984}.
+Whether depreciation leads to longer or shorter spacing depends
+on the specification of the depreciation function.
+See also the discussion in \citet[p 315]{Hotz1997}
+and references therein.
+}
+The more pronounced the increase in wage is with age, the more 
+attractive it will be to reverse the decision to use sex selection.
+Although the latter two factor are most often associated with the literature
+on shorter spacing in middle- and  high-income countries, 
+the increasing education and wealth in India means that a growing 
+portion of the population is likely to behave in a similar manner.%
+\footnote{
+The possible exception is for the first birth, where the pressure to show 
+fecundity---which shortens the duration to the first birth---is potentially 
+an important factor in India \citep{dyson83,Sethuraman2007,Dommaraju2009}.
+}
 
 
 
