@@ -1,78 +1,6 @@
 Notes and snippets:
 
 
-[New introduction - 2017-05-22]
-
-
-Spacing between births has long been used as a measure of son preference 
-\citep{Leung1988}.
-Before prenatal sex determination became available, the only recourse for
-parents who wanted a son, but did not yet have one, was to have the 
-next birth sooner.
-The result was shorter average spacing after the births of girls than boys,
-and worse health outcomes for girls.%
-\footnote{
-See, for example, 
-\citet{Das1987}, \citet{Rahman1993}, \citet{Pong1994}, \citet{Haughton1996},
-\citet{Arnold1997}, and \citet{Soest2012} on shorter birth spacing after
-girls
-and 
-\citet{arnold98}, \citet{Whitworth2002}, \citet{Rutstein2005},
-and \citet{Conde-Agudelo2006} on the association between shorter birth
-spacing and worse health outcomes for girls.
-Parents were also more likely to cease childbearing after the birth of 
-a son than after a daughter 
-\citep{ben-porath76b,Das1987,Arnold1997,clark00,filmer09,Altindag2016}
-}
-
-What has not previously been appreciated is that the introduction 
-of prenatal sex determination substantially changed the relationship between 
-son preference and birth spacing.
-The issue is that each sex-selective abortion increases the duration between 
-observed births by approximately a year.%
-\footnote{
-This increase consists of three parts starting from the time of the 
-abortion.
-First, the uterus needs at least two menstrual cycles to recover 
-before conception, because a less than three months space 
-between abortion and conception substantially increases the likelihood 
-of a spontaneous abortion \citep{zhou00b}.
-Second, an average of 6 months to next conception \citep{Wang2003}.
-Finally, sex determination tests are generally reliable only from 3 months 
-of gestation onwards.
-These three parts add up to 12 months.
-The waiting time to conception does vary by woman, but even if it is very 
-short, say one  month, the additional space between births would still
-be 6 months per abortion.
-}
-We therefore now have a situation where families with the \emph{strongest} son 
-preference likely show the \emph{longest} spacing after the birth of a daughter.
-But, to further complicate matters, we may still observe short spacing 
-after the birth of daughter as a representation of son preference for 
-families who---for one reason or another---do not use prenatal sex selection.
-In this paper, I introduce and apply a novel method that
-directly incorporates the effects of sex-selective abortions on
-the likelihood of a son being born \emph{and} the duration between births.
-The method can be used to analyse both situations with and without prenatal
-sex selection.
-
-How spacing interacts with sex selection is important for two reasons.
-First, spacing, by itself, can no longer be used to measure son preference. 
-Spacing is still important and useful in understanding son preference, but 
-only if combined with the likelihood of observing a boy or a girl.
-Short spacing after a girl is indicative of son preference if observed
-births are close to the natural sex ratio, whereas long spacing is indicative
-of son preference if observed births are male biased.
-
-Second, the duration since last birth may affect the decision on sex selection.
-For example, as the duration from last birth becomes long enough, parents 
-may reverse their decision to use prenatal sex determination,
-and carry the next pregnancy to term whether male or female.
-Hence, by examining whether and how sex selection decisions change with
-spacing, we can draw a more nuanced picture of the degree of son preference.
-
-
-
 [The relation between current approach and my method - provided that I am right!]
 
 Second, the current approach to estimating use of sex selection fails to 
@@ -209,6 +137,17 @@ an important factor in India \citep{dyson83,Sethuraman2007,Dommaraju2009}.
 
 The main contribution of this paper is the introduction and application of a method that 
 incorporates the decisions about birth spacing, and sex-selective abortions.
+
+
+This approach has TK major advantages over the simple method 
+
+Secondly, by explicitly incorporating censoring of birth spacing, it addresses any 
+potential bias from ignoring how sex selection decisions may change with duration from 
+the previous birth.
+
+The method can better predict ``final'' sex ratios than the simple model
+
+None of these is possible using the simple method.
 
 
 [health concerns and reversal]
