@@ -21,7 +21,8 @@ and
 and \citet{Conde-Agudelo2006} on the association between shorter birth
 spacing and worse health outcomes for girls.
 Parents were also more likely to cease childbearing after the birth of 
-a son than after a daughter \citep{ben-porath76b,Das1987,Arnold1997,clark00}. 
+a son than after a daughter 
+\citep{ben-porath76b,Das1987,Arnold1997,clark00,filmer09,Altindag2016}
 }
 
 What has not previously been appreciated is that the introduction 
@@ -55,57 +56,68 @@ the likelihood of a son being born \emph{and} the duration between births.
 The method can be used to analyse both situations with and without prenatal
 sex selection.
 
-How spacing interacts with sex selection is an important methodological
-issues for two reasons.
-First, spacing, by itself, can no longer be used to predict son preference. 
+How spacing interacts with sex selection is important for two reasons.
+First, spacing, by itself, can no longer be used to measure son preference. 
 Spacing is still important and useful in understanding son preference, but 
 only if combined with the likelihood of observing a boy or a girl.
 Short spacing after a girl is indicative of son preference if observed
 births are close to the natural sex ratio, whereas long spacing is indicative
-of son preference if observed births are more male biased.
+of son preference if observed births are male biased.
+
+Second, the duration since last birth may affect the decision on sex selection.
+For example, as the duration from last birth becomes long enough, parents 
+may reverse their decision to use prenatal sex determination,
+and carry the next pregnancy to term whether male or female.
+Hence, by examining whether and how sex selection decisions change with
+spacing, we can draw a more nuanced picture of the degree of son preference.
+
+
+
+[The relation between current approach and my method - provided that I am right!]
 
 Second, the current approach to estimating use of sex selection fails to 
 account for the role of spacing.
-The issue is that the decision on sex selection possibly depends on the 
+The current approach uses the sex of children \emph{born} as the outcome
+variable in a regression and estimate its association with a set of 
+explanatory variables.%
+\footnote{
+See, for example, \citet{retherford03b}, \citet{jha06}, \citet{abrevaya09},
+\citet{Ebenstein2011}, \citet{Jha2011}, \citet{Nandi2013}, and \citet{Hu2015}.
+}
+In the absence of any prenatal interventions, the probability of having a 
+son is approximately 0.512, and this is independent of genetic factors 
+\citep{ben-porath76b,jacobsen99}.
+With fetus sex random, a statistically significant coefficient therefore 
+indicates an association between the variable and use of sex-selective 
+abortions.
+The problem is that the decision on sex selection possibly depends on the 
 duration since the last birth.
 For example, as the duration from last birth becomes long enough, parents 
 may reverse their decision to use prenatal sex determination,
 and carry the next pregnancy to term whether male or female.
-With no direct information on sex selection, one can use the sex ratio 
-of children \emph{born} as a measure of sex selection use, and therefore son 
-preference. 
-The idea is that, in the absence of any interventions, the probability of 
-having a son is approximately 0.512, which is independent of genetic 
-factors \citep{ben-porath76b,jacobsen99}.
-For a sufficient large sample size a higher than normal sex ratio at birth
-therefore indicates the use of sex selection.
-
-In the current approach to understanding the use of sex selection the
-outcome variable is the sex of a given parity child and this is
-associated
-
-and estimate the effects of variables on the 
-probability of having a son.
-With fetus sex random, a statistically significant coefficient therefore 
-indicates an association between the variable and use of sex-selective 
-abortions.
-
-
-
-
-This is potentially a problem because, for a given parity, births to women 
-with shorter spacing are more likely to be surveyed.
-
-
-Hence, women for whom we do observe a birth may behave differently from 
-the sample of women who have not yet had a birth.
-
-
-
-Hence, if decisions on sex selection change with duration since last birth,
-the predicted sex ratio for a parity using the current method will be a 
-biased estimate of the final observed sex ratio for the parity when 
+For a given parity, births to women with shorter spacing are more likely 
+to be captured in a survey, and, if the decision on sex selection
+changes with duration, the women for whom we do observe a birth may behave 
+differently from the sample of women who have not yet had a birth.
+In that case, the predicted sex ratio for a parity using the current method 
+will be a biased estimate of the final observed sex ratio for the parity when 
 childbearing is complete.
+
+
+does it make sense to think about a difference in son preference between
+two situations where one has a 0.71 sex ratio throughout the entire spell
+and one where the son preference results in a 0.71 sex ratio, but
+the use of sex selection is declining in spell length?
+
+If you control for age you will run into the problem of missing
+lower sex ratio for coming births.
+
+Retherford 2003 controls for age
+
+Does it matter whether a birth is captured by the time it occurs, or
+when the prior birth occurred?
+Maybe that can lead to potential bias.
+
 
 [results from current method]
 
