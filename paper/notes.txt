@@ -1,5 +1,19 @@
 Notes and snippets:
 
+[References on spacing]
+
+Check references in first paragraph
+Add the other Haughton reference
+
+
+[Possible text for conclusion]
+
+I use the method to show how spacing between births has changed with
+the introduction of prenatal sex determination and how birth spacing plays 
+an important role in our understanding of sex selection decisions and 
+son preferences.
+
+
 [Test for differences across survival curves]
 
 Works best for non-crossing survival curves
