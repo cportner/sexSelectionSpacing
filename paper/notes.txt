@@ -1,5 +1,22 @@
 Notes and snippets:
 
+[Test for differences across survival curves]
+
+Works best for non-crossing survival curves
+
+A potential complication is therefore the fact that for higher spells 
+there are substantial differences in the likelihood of ever seeing
+a next birth [reference to parity progression literature?].
+For example, for the third spell, a family with 2 sons will have a 
+low probability of having a third birth and they will likely have it
+soonish, but for a family with only daughters there is still a very
+high likelihood and the spacing may be substantial because of sex
+selection. 
+However, the fact that the probability of a third child is very high for 
+the only daughter family and low for the only sons family means that
+they will have to cross at one point.
+A formal test of differences in survival curves therefore has
+low power [?]
 
 [The relation between current approach and my method - provided that I am right!]
 
