@@ -1,23 +1,27 @@
 * Create base data set for NFHS-1
+* Did is based on my original work 
 * crbase1.do
-* begun.: 23/07/08
-* edited: 2015-03-16
+* begun.: 2017-06-01
+* edited: 2017-06-01
+
+
+// THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
+// THE MAIN README FILE AND THAT THE WORKING DIRECTORY IS "./code"
 
 clear
-version 8.2
-set mem 1G
+version 13.1
 set more off
 
-loc root "/net/proj/India_NFHS"
-*loc root "//marc/net-proj"
-
-loc data "`root'/data/stata"
-loc work "`root'/base"
+// Generic set of locations
+loc rawdata "../rawdata"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
 tempfile religion
 
 /*----------------------------------------------------------------------*/
-/* WOMEN'S RECODE 							*/
+/* WOMEN'S RECODE 		                            					*/
 /*----------------------------------------------------------------------*/
 
 use caseid v001-v012 v024 ///
@@ -28,18 +32,19 @@ use caseid v001-v012 v024 ///
    v603 v613 v616 v715 ///
    s108 s149-s151 s517b-s517e ///
    v104 s104 ///
-   using `data'/iair22rt
+   using `rawdata'/iair23fl
 des , short // for data description in paper
 drop v004 b6_* b8_* b9_* b10_* b13_* // not needed/in set
-keep if v135 == 1 // usual resident in hh
+keep if v135 == 1  // usual resident in hh
 drop if v104 == 96 // visitor to hh
-keep if v503 == 1 // only married once
-drop if v511 == 97 // inconsisten information on age 1st marriage
+keep if v503 == 1  // only married once
+drop if v511 == 97 // inconsistent information on age 1st marriage
 gen whhid = substr(caseid,1,12)
 drop caseid v135 v503
 sort whhid
-save `work'/temp1_women, replace
+save `data'/temp1_women, replace
 
+exit
 
 /*----------------------------------------------------------------------*/
 /* WEALTH INDEX 							*/
