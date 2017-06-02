@@ -30,3 +30,6 @@ view: $(TEX)/$(TEXFILE).pdf
 $(COD)/crBase1.do: $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
 	cd $(COD); stata-se -b crBase1.do 
     
+$(COD)/crBase2.do: $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RAW)/iahr42fl.dta
+	cd $(COD); stata-se -b crBase2.do 
+

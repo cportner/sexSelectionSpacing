@@ -1,18 +1,23 @@
 * Create base data set for NFHS-2
+* Is based on my original work
 * crbase2.do
-* begun.: 23/07/08
-* edited: 2015-03-16
+* begun.: 2017-06-02
+* edited: 2017-06-02
+
+
+// THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
+// THE MAIN README FILE AND THAT THE WORKING ECTORY IS "./code"
 
 clear
-version 8.2
-set mem 1G
+version 13.1
 set more off
 
-loc root "/net/proj/India_NFHS"
-*loc root "//marc/net-proj"
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
-loc data "`root'/data/stata"
-loc work "`root'/base"
 
 /*----------------------------------------------------------------------*/
 /* WOMEN'S RECODE 							*/
@@ -25,7 +30,7 @@ use caseid v001-v012 v024 ///
    v317 v501 v503 v509 ///
    v603 v613 v616 v627-v629 v715 ///
    v104 v105 ///
-   s119 ssdist using `data'/iair42rt
+   s119 ssdist using `rawdata'/iair42fl
 des, short // for data description in paper
 drop b14_* b15_* // not in NFHS-2 (nor in NFHS-1)
 drop v004 b6_* b8_* b9_* b10_* b13_* // not needed
@@ -38,51 +43,44 @@ gen whhid = reverse(temp1)
 drop temp temp1 caseid v135 v503
 sort whhid
 
-save `work'/temp2_women, replace
+save `data'/temp2_women, replace
 
 
 /*----------------------------------------------------------------------*/
 /* WEALTH INDEX                                                         */
 /*----------------------------------------------------------------------*/
 
-use `data'/iawi41
+use `rawdata'/iawi41fl
 sort whhid
-save `work'/temp2_wlth, replace
+save `data'/temp2_wlth, replace
 
 /*----------------------------------------------------------------------*/
 /* LAND OWNERSHIP                                                  */
 /*----------------------------------------------------------------------*/
 
-use `data'/iahr42rt
+use `rawdata'/iahr42fl
 keep hhid sh43-sh45
 ren hhid whhid
 sort whhid
-save `work'/temp2_land, replace
+save `data'/temp2_land, replace
 
 /*----------------------------------------------------------------------*/
 /* COMBINED DATA SETS                                                   */
 /*----------------------------------------------------------------------*/
 
 * wealth
-use `work'/temp2_women
-merge whhid using `work'/temp2_wlth
+use `data'/temp2_women
+merge m:1 whhid using `data'/temp2_wlth
 tab _merge
 drop if _merge != 3
 drop _merge 
 
 * land
 sort whhid
-merge whhid using `work'/temp2_land
+merge m:1 whhid using `data'/temp2_land
 tab _merge
 drop if _merge != 3
 drop _merge whhid
-
-* locale data
-sort v024 ssdist
-merge v024 ssdist using `work'/locale2
-tab _merge
-drop if _merge != 3
-drop _merge ssdist
 
 compress
 
@@ -177,5 +175,5 @@ ren v613 pref_fertility
 ren v616 pref_space
 
 compress
-save `work'/base2, replace
+save `data'/base2, replace
 
