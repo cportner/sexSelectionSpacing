@@ -8,25 +8,25 @@
 ### without leaving all the other files in the base directory
 
 TEXFILE = sexSelectionSpacing-ver1
-TEXDIR  = ./paper
-FIGDIR  = ./figures
-TABDIR  = ./tables
-CODDIR  = ./code
-RAWDIR  = ./rawData
+TEX  = ./paper
+FIG  = ./figures
+TAB  = ./tables
+COD  = ./code
+RAW  = ./rawData
 
 # need to add a bib file dependency to end of next line
-$(TEXDIR)/$(TEXFILE).pdf: $(TEXDIR)/$(TEXFILE).tex 
-	cd $(TEXDIR); pdflatex $(TEXFILE)
-	cd $(TEXDIR); bibtex $(TEXFILE)
-	cd $(TEXDIR); pdflatex $(TEXFILE)
-	cd $(TEXDIR); pdflatex $(TEXFILE)
+$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(COD)/crBase1.do
+	cd $(TEX); pdflatex $(TEXFILE)
+	cd $(TEX); bibtex $(TEXFILE)
+	cd $(TEX); pdflatex $(TEXFILE)
+	cd $(TEX); pdflatex $(TEXFILE)
 
-view: $(TEXDIR)/$(TEXFILE).pdf
-	open -a Skim $(TEXDIR)/$(TEXFILE).pdf & 
+view: $(TEX)/$(TEXFILE).pdf
+	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 
 
 ### Stata part         			                                ###
 
-$(CODDIR)/$crBase1.do: $(RAWDIR)/iair23fl.dta
-	cd $(CODDIR); stata-se -b crBase1.do 
+$(COD)/crBase1.do: $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
+	cd $(COD); stata-se -b crBase1.do 
     
