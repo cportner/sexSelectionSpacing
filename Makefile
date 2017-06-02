@@ -28,11 +28,13 @@ view: $(TEX)/$(TEXFILE).pdf
 
 ### Stata part         			                                ###
 
-$(COD)/crBase1.do: $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
+# Create base data set(s)
+# Need "end" file as outcome, here the base data sets for each survey
+$(DAT)/base1.dta: $(COD)/crBase1.do $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
 	cd $(COD); stata-se -b crBase1.do 
     
-$(COD)/crBase2.do: $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RAW)/iahr42fl.dta
+$(DAT)/base2.dta: $(COD)/crBase2.do $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RAW)/iahr42fl.dta
 	cd $(COD); stata-se -b crBase2.do 
 
-$(COD)/crBase3.do: $(RAW)/iair52fl.dta 
+$(DAT)/base3.dta: $(COD)/crBase3.do $(RAW)/iair52fl.dta 
 	cd $(COD); stata-se -b crBase3.do 
