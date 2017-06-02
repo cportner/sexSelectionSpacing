@@ -89,7 +89,6 @@ drop _merge
 
 compress
 
-exit
 
 /*----------------------------------------------------------------------*/
 /* ENSURE CONSISTENCY IN VARIABLES AND NAMES                            */
@@ -195,5 +194,5 @@ ren v613 pref_fertility
 ren v616 pref_space
 
 compress
-save `work'/base1, replace
+save `data'/base1, replace
 
