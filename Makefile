@@ -1,5 +1,4 @@
 ### Makefile for Sex Selection and Birth Spacing Project        ###
-### Still does not have any of the code             			###
 ### and tables are hardcoded into tex file          			###
 ### The non-generated figures are not included here 			###
 
@@ -14,6 +13,8 @@ TAB  = ./tables
 COD  = ./code
 RAW  = ./rawData
 DAT  = ./data
+
+### LaTeX part
 
 # need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(DAT)/base.dta
