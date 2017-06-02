@@ -1,7 +1,8 @@
 * Create base data set for NFHS - combine all surveys
-* crbase.do
-* begun.: 30/07/08
-* edited: 2015-03-17
+* Is based on my original work
+* crBase.do
+* begun.: 2017-06-02
+* edited: 2017-06-02
 
 // Revisions
 * 25/02/09 No longer deleting old obs (20 yrs +), but marking them
@@ -13,24 +14,24 @@
 * 2015-03-16 - dropping women divorced or not living together with husband
 * 2015-03-17 - dropped bad observation. Those normally dropped from analysis files anyway
 
-version 11
 clear all
-set mem 1G
+version 13.1
 set more off
 
-loc root "/net/proj/India_NFHS"
-*loc root "//marc/net-proj"
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
-loc data "`root'/data/stata"
-loc work "`root'/base"
 
 /*-------------------------------------------------------------------*/
 /* APPENDING DATA SETS                                               */
 /*-------------------------------------------------------------------*/
 
-use `work'/base2 // better - more labels
-append using `work'/base1
-append using `work'/base3
+use `data'/base2 // better - more labels
+append using `data'/base1
+append using `data'/base3
 
 des , short
 
@@ -237,5 +238,5 @@ count
 
 keep if hindu
 compress
-save `work'/base, replace
+save `data'/base, replace
 
