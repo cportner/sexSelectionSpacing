@@ -2,7 +2,7 @@
 * Did is based on my original work 
 * crbase1.do
 * begun.: 2017-06-01
-* edited: 2017-06-01
+* edited: 2017-06-02
 
 
 // THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
@@ -53,7 +53,6 @@ use `rawdata'/iawi22fl
 sort whhid
 save `data'/temp1_wlth, replace
 
-exit 
 
 /*----------------------------------------------------------------------*/
 /* RELIGION FROM RAW HH DATA						*/
@@ -61,14 +60,15 @@ exit
 
 tempvar db
 
-*use hhstate hhpsu hhnumber h032 using `data'/iahh21fl
-use  `data'/iahh21fl
+use  `rawdata'/iahh21fl
 gen v001 = hhstate * 1000 + hhpsu
 gen v002 = hhnumber
 sort v001 v002
 by v001: gen `db' = v002[_n] == v002[_n-1]
 drop if `db' == 1
 save `religion'
+
+exit
 
 /*----------------------------------------------------------------------*/
 /* COMBINED DATA SETS                                                   */
