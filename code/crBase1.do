@@ -6,7 +6,7 @@
 
 
 // THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
-// THE MAIN README FILE AND THAT THE WORKING DIRECTORY IS "./code"
+// THE MAIN README FILE AND THAT THE WORKING ECTORY IS "./code"
 
 clear
 version 13.1
@@ -44,15 +44,16 @@ drop caseid v135 v503
 sort whhid
 save `data'/temp1_women, replace
 
-exit
 
 /*----------------------------------------------------------------------*/
 /* WEALTH INDEX 							*/
 /*----------------------------------------------------------------------*/
 
-use `data'/iawi22
+use `rawdata'/iawi22fl
 sort whhid
-save `work'/temp1_wlth, replace
+save `data'/temp1_wlth, replace
+
+exit 
 
 /*----------------------------------------------------------------------*/
 /* RELIGION FROM RAW HH DATA						*/
