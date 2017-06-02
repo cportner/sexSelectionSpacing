@@ -13,6 +13,7 @@ FIG  = ./figures
 TAB  = ./tables
 COD  = ./code
 RAW  = ./rawData
+DAT  = ./data
 
 # need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(COD)/crBase1.do
@@ -33,3 +34,5 @@ $(COD)/crBase1.do: $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
 $(COD)/crBase2.do: $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RAW)/iahr42fl.dta
 	cd $(COD); stata-se -b crBase2.do 
 
+$(COD)/crBase3.do: $(RAW)/iair52fl.dta 
+	cd $(COD); stata-se -b crBase3.do 
