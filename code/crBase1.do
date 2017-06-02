@@ -68,34 +68,28 @@ by v001: gen `db' = v002[_n] == v002[_n-1]
 drop if `db' == 1
 save `religion'
 
-exit
 
 /*----------------------------------------------------------------------*/
 /* COMBINED DATA SETS                                                   */
 /*----------------------------------------------------------------------*/
 
 * wealth
-use `work'/temp1_women
-merge whhid using `work'/temp1_wlth
+use `data'/temp1_women
+merge m:1 whhid using `data'/temp1_wlth
 tab _merge
 drop if _merge != 3
 drop _merge whhid
 sort v001 v002
 
-* locale data
-merge v001 v002 using `work'/locale1
-tab _merge
-drop if _merge != 3
-drop _merge
-sort v001 v002
-
 * religion
-merge v001 v002 using `religion'
+merge m:1 v001 v002 using `religion'
 tab _merge
 drop if _merge != 3
 drop _merge
 
 compress
+
+exit
 
 /*----------------------------------------------------------------------*/
 /* ENSURE CONSISTENCY IN VARIABLES AND NAMES                            */
