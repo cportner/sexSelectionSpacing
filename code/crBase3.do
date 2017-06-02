@@ -1,6 +1,6 @@
 * Create base data set for NFHS-3
 * Is based on my original work
-* crbase3.do
+* crBase3.do
 * begun.: 2017-06-02
 * edited: 2017-06-02
 
