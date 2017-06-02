@@ -13,7 +13,7 @@ version 13.1
 set more off
 
 // Generic set of locations
-loc rawdata "../rawdata"
+loc rawdata "../rawData"
 loc data    "../data"
 loc figures "../figures"
 loc tables  "../tables"

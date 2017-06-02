@@ -11,8 +11,11 @@ TEXFILE = sexSelectionSpacing-ver1
 TEXDIR  = ./paper
 FIGDIR  = ./figures
 TABDIR  = ./tables
+CODDIR  = ./code
+RAWDIR  = ./rawData
 
-$(TEXDIR)/$(TEXFILE).pdf: $(TEXDIR)/$(TEXFILE).tex $(TEXDIR)/elasticities.bib  
+# need to add a bib file dependency to end of next line
+$(TEXDIR)/$(TEXFILE).pdf: $(TEXDIR)/$(TEXFILE).tex 
 	cd $(TEXDIR); pdflatex $(TEXFILE)
 	cd $(TEXDIR); bibtex $(TEXFILE)
 	cd $(TEXDIR); pdflatex $(TEXFILE)
@@ -24,3 +27,6 @@ view: $(TEXDIR)/$(TEXFILE).pdf
 
 ### Stata part         			                                ###
 
+$(CODDIR)/$crBase1.do: $(RAWDIR)/iair23fl.dta
+	cd $(CODDIR); stata-se -b crBase1.do 
+    
