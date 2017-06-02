@@ -1,18 +1,23 @@
 * Create base data set for NFHS-3
+* Is based on my original work
 * crbase3.do
-* begun.: 24/07/08
-* edited: 2015-03-16
+* begun.: 2017-06-02
+* edited: 2017-06-02
+
+
+// THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
+// THE MAIN README FILE AND THAT THE WORKING ECTORY IS "./code"
 
 clear
-version 8.2
-set mem 1G
+version 13.1
 set more off
 
-loc root "/net/proj/India_NFHS"
-*loc root "//marc/net-proj"
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
-loc data "`root'/data/stata"
-loc work "`root'/base"
 
 /*----------------------------------------------------------------------*/
 /* WOMEN'S RECODE 							*/
@@ -26,7 +31,7 @@ use v001-v012 v024 v026 ///
    v501 v503 v509 ///
    v603 v613 v616 v627-v629 v715 ///
    v104 v105 ///
-   s60 s61 s118  using `data'/iair51fl
+   s60 s61 s118  using `rawdata'/iair52fl
 des, short // for data description in paper
 drop b15_* b16_* // not in NFHS-2 (nor in NFHS-1)
 drop v004 b6_* b8_* b9_* b10_* b13_* v131 // not needed or na in survey
@@ -39,17 +44,18 @@ ren v191 wlthindf
 replace wlthindf = wlthindf/100000
 compress
 drop v135 v503
-save `work'/temp3_women, replace
+save `data'/temp3_women, replace
 
 /*----------------------------------------------------------------------*/
 /* COMBINE DATA SETS							*/
 /*----------------------------------------------------------------------*/
 
 sort v024 v026
-merge v024 v026 using `work'/locale3
-tab _merge
-keep if _merge == 3
-drop _merge v026
+// merge v024 v026 using `work'/locale3
+// tab _merge
+// keep if _merge == 3
+// drop _merge v026
+drop v026
 
 compress
 
@@ -171,5 +177,5 @@ ren v613 pref_fertility
 ren v616 pref_space
 
 compress
-save `work'/base3, replace
+save `data'/base3, replace
 
