@@ -38,3 +38,6 @@ $(DAT)/base2.dta: $(COD)/crBase2.do $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RA
 
 $(DAT)/base3.dta: $(COD)/crBase3.do $(RAW)/iair52fl.dta 
 	cd $(COD); stata-se -b crBase3.do 
+
+$(DAT)/base.dta: $(COD)/crBase.do  $(DAT)/base3.dta $(DAT)/base2.dta $(DAT)/base1.dta
+	cd $(COD); stata-se -b crBase.do 
