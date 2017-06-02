@@ -16,7 +16,7 @@ RAW  = ./rawData
 DAT  = ./data
 
 # need to add a bib file dependency to end of next line
-$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(COD)/crBase1.do
+$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(DAT)/base.dta
 	cd $(TEX); pdflatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); pdflatex $(TEXFILE)
