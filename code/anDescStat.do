@@ -1,21 +1,25 @@
 * Descriptive statistics for all 36 regressions
-* andes_stat.do
-* begun.: 07/05/10
-* edited: 2016-02-29
+* Based on original work
+* anDescStat.do
+* begun.: 2017-06-02
+* edited: 2017-06-03
 
 version 13.1
 clear all
+set more off
 
-loc work "/net/proj/India_NFHS/base"
-loc figdir "/net/proj/India_NFHS/graphs"
-// loc figdir "/net/home/cportner/data/sexselection/graphs"
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
 
 /*-------------------------------------------------------------------*/
 /* LOADING DATA AND CREATING NEW VARIABLES                           */
 /*-------------------------------------------------------------------*/
 
-use `work'/base
+use `data'/base
 
 keep if hindu 
 drop if observation_age_m >= 22 & round == 1
@@ -66,31 +70,58 @@ lab var girl    "Girl born"
 lab var b1_cen  "Censored"
 lab var urban   "Urban"
 lab var mom_age "Age"
-lab var scheduled_caste "Scheduled caste or tribe"
+lab var scheduled_caste "Sched.\ caste/tribe"
 
 tab fertility
 
+// LaTeX intro part for table
+file open stats using `tables'/des_stat.tex, write replace
+
+file write stats "\begin{table}[htp]" _n
+file write stats "\begin{center}" _n
+file write stats "\begin{scriptsize}" _n
+file write stats "\begin{threeparttable}" _n
+file write stats "\caption{Descriptive Statistics by Education Level and Beginning of Spell}" _n
+file write stats "\label{tab:des_stat1}" _n
+file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
+file write stats "                    &                     & \multicolumn{3}{c}{No Education}                                & \multicolumn{3}{c}{1--7 Years of Education}                      & \multicolumn{3}{c}{8+ Years of Education} \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
+file write stats "                    &                     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     \\ % \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
+file write stats "\midrule" _n
+file write stats "\multirow{16}{*}{\rotatebox{90}{First Spell}}" _n
+
+file close stats
+
 bysort edu_group group: eststo: estpost sum boy girl b1_cen urban mom_age land_own scheduled_caste
-esttab using `work'/des_stat.tex, ///
+esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
-    replace fragment nomtitles nonumber
+    fragment nomtitles nonumber append nolines begin("                    &")
 
-eststo clear
-bysort edu_group group: eststo: estpost sum b1_space
-lab var b1_space "Number of quarters"
-esttab using `work'/des_stat.tex , ///
-    main(sum %9.0fc ) not noobs label nogaps nolines nonotes ///
-    fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
+// Direct version of number of quarters and observations
+file open stats using `tables'/des_stat.tex, write append
+file write stats "                    & Number of quarters "
+forvalues edu = 1/3 {
+    forvalues per = 1/3 {
+        qui sum b1_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
+    }
+}
+file write stats " \\" _n 
 
-eststo clear
-lab var b1_space "Number of women"
-bysort edu_group group: eststo: estpost sum b1_space
-esttab using `work'/des_stat.tex , ///
-    main(count %9.0fc ) not noobs label nogaps nolines nonotes ///
-    fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
+file write stats "                    & Number of women    "
+forvalues edu = 1/3 {
+    forvalues per = 1/3 {
+        qui sum b1_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(N)') "}     "
+    }
+}
+file write stats " \\" _n 
+
+file close stats
+
 
 restore
 
+exit
 
 * SPELL 2
 
@@ -146,21 +177,21 @@ lab var scheduled_caste "Scheduled caste or tribe"
 eststo clear
 bysort edu_group group: eststo: estpost sum boy girl b2_cen ///
     b1_boy b1_girl urban mom_age b1_space land_own scheduled_caste
-esttab using `work'/des_stat.tex, ///
+esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
     append fragment nomtitles nonumber
 
 eststo clear
 bysort edu_group group: eststo: estpost sum b2_space
 lab var b2_space "Number of quarters"
-esttab using `work'/des_stat.tex , ///
+esttab using `tables'/des_stat.tex , ///
     main(sum %9.0fc ) not noobs label nogaps nolines nonotes ///
     fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
 
 eststo clear
 lab var b2_space "Number of women"
 bysort edu_group group: eststo: estpost sum b2_space
-esttab using `work'/des_stat.tex , ///
+esttab using `tables'/des_stat.tex , ///
     main(count %9.0fc ) not noobs label nogaps nolines nonotes ///
     fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
 
@@ -225,21 +256,21 @@ lab var scheduled_caste "Scheduled caste or tribe"
 eststo clear
 bysort edu_group group: eststo: estpost sum boy girl b3_cen ///
     b2_2b b2_1b1g b2_2g urban mom_age b1_space land_own scheduled_caste
-esttab using `work'/des_stat.tex, ///
+esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
     append fragment nomtitles nonumber
 
 eststo clear
 bysort edu_group group: eststo: estpost sum b3_space
 lab var b3_space "Number of quarters"
-esttab using `work'/des_stat.tex , ///
+esttab using `tables'/des_stat.tex , ///
     main(sum %9.0fc ) not noobs label nogaps nolines nonotes ///
     fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
 
 eststo clear
 lab var b3_space "Number of women"
 bysort edu_group group: eststo: estpost sum b3_space
-esttab using `work'/des_stat.tex , ///
+esttab using `tables'/des_stat.tex , ///
     main(count %9.0fc ) not noobs label nogaps nolines nonotes ///
     fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
 
@@ -308,21 +339,21 @@ lab var scheduled_caste "Scheduled caste or tribe"
 eststo clear
 bysort edu_group group: eststo: estpost sum boy girl b4_cen ///
     girl0-girl3 urban mom_age b1_space land_own scheduled_caste
-esttab using `work'/des_stat.tex, ///
+esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
     append fragment nomtitles nonumber
 
 eststo clear
 bysort edu_group group: eststo: estpost sum b4_space
 lab var b4_space "Number of quarters"
-esttab using `work'/des_stat.tex , ///
+esttab using `tables'/des_stat.tex , ///
     main(sum %9.0fc ) not noobs label nogaps nolines nonotes ///
     fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
 
 eststo clear
 lab var b4_space "Number of women"
 bysort edu_group group: eststo: estpost sum b4_space
-esttab using `work'/des_stat.tex , ///
+esttab using `tables'/des_stat.tex , ///
     main(count %9.0fc ) not noobs label nogaps nolines nonotes ///
     fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
 
