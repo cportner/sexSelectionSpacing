@@ -220,7 +220,6 @@ file close stats
 
 restore
 
-exit
 
 * SPELL 3
 
@@ -274,31 +273,60 @@ lab var b2_2g   "Two girls"
 lab var urban   "Urban"
 lab var b1_space "First spell length"
 lab var mom_age "Age"
-lab var scheduled_caste "Scheduled caste or tribe"
+lab var scheduled_caste "Sched.\ caste/tribe "
+
+// LaTeX intro part for table
+file open stats using `tables'/des_stat.tex, write append
+
+file write stats _n "\addtocounter{table}{-1}" _n
+file write stats "" _n
+file write stats "\begin{table}" _n
+file write stats "\begin{center}" _n
+file write stats "\begin{scriptsize}" _n
+file write stats "\begin{threeparttable}" _n
+file write stats "\caption{(Continued) Descriptive Statistics by Education Level and Beginning of Spell}" _n
+file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
+file write stats "                    &                     & \multicolumn{3}{c}{No Education}                                & \multicolumn{3}{c}{1-7 Years of Education}                      & \multicolumn{3}{c}{8+ Years of Education} \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
+file write stats "                    &                     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     \\ % \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
+file write stats "\midrule                    " _n
+file write stats "\multirow{24}{*}{\rotatebox{90}{Third Spell}}" _n
+
+file close stats
 
 eststo clear
 bysort edu_group group: eststo: estpost sum boy girl b3_cen ///
     b2_2b b2_1b1g b2_2g urban mom_age b1_space land_own scheduled_caste
 esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
-    append fragment nomtitles nonumber
+    fragment nomtitles nonumber append nolines begin("                    &")
 
-eststo clear
-bysort edu_group group: eststo: estpost sum b3_space
-lab var b3_space "Number of quarters"
-esttab using `tables'/des_stat.tex , ///
-    main(sum %9.0fc ) not noobs label nogaps nolines nonotes ///
-    fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
+// Direct version of number of quarters and observations
+file open stats using `tables'/des_stat.tex, write append
+file write stats "                    & Number of quarters "
+forvalues edu = 1/3 {
+    forvalues per = 1/3 {
+        qui sum b3_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
+    }
+}
+file write stats " \\" _n 
 
-eststo clear
-lab var b3_space "Number of women"
-bysort edu_group group: eststo: estpost sum b3_space
-esttab using `tables'/des_stat.tex , ///
-    main(count %9.0fc ) not noobs label nogaps nolines nonotes ///
-    fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
+file write stats "                    & Number of women    "
+forvalues edu = 1/3 {
+    forvalues per = 1/3 {
+        qui sum b3_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(N)') "}     "
+    }
+}
+file write stats " \\" _n 
+file write stats "\addlinespace" _n
+file write stats "\midrule" _n
+
+file close stats
 
 restore
 
+exit
 
 * SPELL 4
 
