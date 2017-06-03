@@ -326,8 +326,6 @@ file close stats
 
 restore
 
-exit
-
 * SPELL 4
 
 preserve
@@ -384,7 +382,11 @@ lab var girl3   "Three girls"
 lab var urban   "Urban"
 lab var b1_space "First spell length"
 lab var mom_age "Age"
-lab var scheduled_caste "Scheduled caste or tribe"
+lab var scheduled_caste "Sched.\ caste/tribe "
+
+file open stats using `tables'/des_stat.tex, write append
+file write stats "\multirow{26}{*}{\rotatebox{90}{Fourth Spell}}" _n
+file close stats
 
 
 eststo clear
@@ -392,21 +394,44 @@ bysort edu_group group: eststo: estpost sum boy girl b4_cen ///
     girl0-girl3 urban mom_age b1_space land_own scheduled_caste
 esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
-    append fragment nomtitles nonumber
+    fragment nomtitles nonumber append nolines begin("                    &")
 
-eststo clear
-bysort edu_group group: eststo: estpost sum b4_space
-lab var b4_space "Number of quarters"
-esttab using `tables'/des_stat.tex , ///
-    main(sum %9.0fc ) not noobs label nogaps nolines nonotes ///
-    fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
 
-eststo clear
-lab var b4_space "Number of women"
-bysort edu_group group: eststo: estpost sum b4_space
-esttab using `tables'/des_stat.tex , ///
-    main(count %9.0fc ) not noobs label nogaps nolines nonotes ///
-    fragment nomtitles nonumber append delimiter("} & \mco{" ) end("} \\") compress
+// Direct version of number of quarters and observations
+file open stats using `tables'/des_stat.tex, write append
+file write stats "                    & Number of quarters "
+forvalues edu = 1/3 {
+    forvalues per = 1/3 {
+        qui sum b4_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
+    }
+}
+file write stats " \\" _n 
+
+file write stats "                    & Number of women    "
+forvalues edu = 1/3 {
+    forvalues per = 1/3 {
+        qui sum b4_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(N)') "}     "
+    }
+}
+file write stats " \\" _n 
+
+// End of table
+file write stats "\bottomrule" _n
+file write stats "\end{tabular}" _n
+file write stats "\begin{tablenotes} \tiny" _n
+file write stats "\item \hspace*{-0.7em} \textbf{Note.}" _n
+file write stats "Means without parentheses and standard deviation in parentheses." _n
+file write stats "Interactions between variables, baseline hazard dummies and squares not shown." _n
+file write stats "Quarters refer to number of 3 month periods observed." _n
+file write stats "\end{tablenotes}" _n
+file write stats "\end{threeparttable}" _n
+file write stats "\end{scriptsize}" _n
+file write stats "\end{center}" _n
+file write stats "\end{table}" _n
+
+file close stats
 
 restore
 
