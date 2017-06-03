@@ -16,7 +16,7 @@ RAW  = ./rawData
 DAT  = ./data
 
 # need to add a bib file dependency to end of next line
-$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(DAT)/base.dta
+$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TAB)/des_stat.tex
 	cd $(TEX); pdflatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); pdflatex $(TEXFILE)
@@ -27,6 +27,9 @@ view: $(TEX)/$(TEXFILE).pdf
 
 
 ### Stata part         			                                ###
+
+# Descriptive statistics
+$(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
 
 # Create base data set(s)
 # Need "end" file as outcome, here the base data sets for each survey
