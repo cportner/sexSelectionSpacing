@@ -29,9 +29,6 @@ view: $(TEX)/$(TEXFILE).pdf
 
 ### Stata part         			                                ###
 
-# Descriptive statistics
-$(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
-
 # Create base data set(s)
 # Need "end" file as outcome, here the base data sets for each survey
 $(DAT)/base1.dta: $(COD)/crBase1.do $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
@@ -45,3 +42,7 @@ $(DAT)/base3.dta: $(COD)/crBase3.do $(RAW)/iair52fl.dta
 
 $(DAT)/base.dta: $(COD)/crBase.do  $(DAT)/base3.dta $(DAT)/base2.dta $(DAT)/base1.dta
 	cd $(COD); stata-se -b crBase.do 
+
+# Descriptive statistics
+$(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
+
