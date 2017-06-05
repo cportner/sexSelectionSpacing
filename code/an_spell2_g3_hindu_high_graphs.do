@@ -141,32 +141,42 @@ forvalues group = 3/3 {
 //             !a2ping `figdir'/spell2_g`group'_high_r`k'_rr.eps
 //         }
         
-        // "hazards" curves
-        bysort id (t): gen double h = 1-p0
-        lab var h "Hazard"
-        set scheme s1mono
-        loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-        forvalues k = 1/4 {
-            line h t if id == `k', sort `goptions'
-            graph export `figures'/spell2_g`group'_high_r`k'_h.eps, replace
-//             !a2ping `figdir'/spell2_g`group'_high_r`k'_h.eps
-        }
+//         // "hazards" curves
+//         bysort id (t): gen double h = 1-p0
+//         lab var h "Hazard"
+//         set scheme s1mono
+//         loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
+//         forvalues k = 1/4 {
+//             line h t if id == `k', sort `goptions'
+//             graph export `figures'/spell2_g`group'_high_r`k'_h.eps, replace
+// //             !a2ping `figdir'/spell2_g`group'_high_r`k'_h.eps
+//         }
 
         
         // survival curves
-        bysort id (t): gen double s = exp(sum(ln(p0))) // Original version without predict and therefore CIs
+//         bysort id (t): gen double s = exp(sum(ln(p0))) // Original version without predict and therefore CIs
+        // Predictnl does not allow by and sum, so have to hard code this
+        // using new variable by period and refer to prior S value
+        // Survival curve is simply p(0)_1 * p(0)_2 * p(0)_3..., where p(0) is 
+        // probability of no birth
         sort id t
         forvalues t = 1/21 {
             loc tm1 = `t' - 1
             if `t' == 1 {
-                predictnl double s_pred`t' = predict(outcome(0)) if t == `t'
+                predictnl double s_pred`t' = ///
+                    predict(outcome(0)) if t == `t', ///
+                    ci(ci`t'_l ci`t'_u)
                 }
             else {
-                predictnl double s_pred`t' = predict(outcome(0)) * s_pred`tm1'[_n-1] if t == `t'
+                predictnl double s_pred`t' = ///
+                    predict(outcome(0)) * s_pred`tm1'[_n-1] if t == `t', ///
+                    ci(ci`t'_l ci`t'_u)                    
                 }
             }
-        egen double s_new = rowfirst(s_pred*)        
-        drop s_pred*
+        egen double s_new  = rowfirst(s_pred*)        
+        egen double s_ci_l = rowfirst(ci*_l)
+        egen double s_ci_u = rowfirst(ci*_u)
+        drop s_pred* ci*_l ci*_u
 exit
 
         lab var s "Survival"
