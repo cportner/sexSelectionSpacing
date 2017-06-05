@@ -154,12 +154,26 @@ forvalues group = 3/3 {
 
         
         // survival curves
-        bysort id (t): gen double s = exp(sum(ln(p0)))
+        bysort id (t): gen double s = exp(sum(ln(p0))) // Original version without predict and therefore CIs
+        sort id t
+        forvalues t = 1/21 {
+            loc tm1 = `t' - 1
+            if `t' == 1 {
+                predictnl double s_pred`t' = predict(outcome(0)) if t == `t'
+                }
+            else {
+                predictnl double s_pred`t' = predict(outcome(0)) * s_pred`tm1'[_n-1] if t == `t'
+                }
+            }
+        egen double s_new = rowfirst(s_pred*)        
+        drop s_pred*
+exit
+
         lab var s "Survival"
         set scheme s1mono
         loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
         forvalues k = 1/4 {
-            line s t if id == `k', sort `goptions'
+            line s s_pred t if id == `k', sort `goptions'
             graph export `figures'/spell2_g`group'_high_r`k'_s.eps, replace
 //             !a2ping `figdir'/spell2_g`group'_high_r`k'_s.eps
         }
