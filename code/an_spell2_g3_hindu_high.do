@@ -2,8 +2,8 @@
 * Competing Discrete Hazard model
 * Second spell (from 1st to second birth)
 * an_spell2_g3_hindu_high.do
-* Begun.: 05/04/10
-* Edited: 2015-03-12
+* Begun.: 2017-06-04
+* Edited: 2017-06-04 
 
 
 // REVISIONS
@@ -11,9 +11,11 @@
 version 13.1
 clear all
 
-loc data "/net/proj/India_NFHS/base"
-loc work "/net/proj/India_NFHS/base/sampleMain"
-loc figdir "~/data/sexselection/graphs/sampleMain"
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
 
 /*-------------------------------------------------------------------*/
@@ -26,7 +28,7 @@ keep if edu_mother >= 8
 local edgroup = "high"
 
 // data manipulation
-do `work'/genSpell2
+do genSpell2
 
 // Group
 forvalues group = 3/3 {
@@ -40,9 +42,9 @@ forvalues group = 3/3 {
         count
         sum $parents $hh $caste 
         estpost tab gu_group
-        esttab using `figdir'/mainObs_spell2_g`group'_`edgroup'.tex, replace ///
-            cells("b(label(N))") ///
-            nonumber nomtitle noobs
+//         esttab using `figdir'/mainObs_spell2_g`group'_`edgroup'.tex, replace ///
+//             cells("b(label(N))") ///
+//             nonumber nomtitle noobs
         eststo clear
 
         // GENERATE TIME VARIABLES
@@ -104,7 +106,7 @@ forvalues group = 3/3 {
         local names : colfullnames e(b)
         estimates notes: `names'
         estimates notes: $lastm
-        estimates save `work'/results_spell2_g`group'_hindu_high, replace
+        estimates save `data'/results_spell2_g`group'_hindu_high, replace
 
 //         est store M2
         
@@ -113,35 +115,3 @@ forvalues group = 3/3 {
 //         restore
     
 }
-
-exit
-
-     2 "Andhra Pradesh"
-     3 "Assam"  
-     4 "Bihar"
-     5 "Goa"
-     6 "Gujarat"
-     7 "Haryana"
-     8 "Himachal Pradesh"
-     9 "Jammu"
-    10 "Karnataka"
-    11 "Kerala"
-    12 "Madhya Pradesh"
-    13 "Maharashtra"
-    14 "Manipur"
-    15 "Meghalaya"
-    16 "Mizoram"
-    17 "Nagaland"
-    18 "Orissa"
-    19 "Punjab"
-    20 "Rajasthan"
-    21 "Sikkim"
-    22 "Tamil Nadu"
-    23 "West Bengal"
-    24 "Uttar Pradesh"
-    30 "New Delhi"
-    34 "ArunachalPradesh"
-    35 "Tripura"
-
-
-
