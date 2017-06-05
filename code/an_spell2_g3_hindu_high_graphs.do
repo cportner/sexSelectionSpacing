@@ -141,19 +141,20 @@ forvalues group = 3/3 {
 //             !a2ping `figdir'/spell2_g`group'_high_r`k'_rr.eps
 //         }
         
-//         // "hazards" curves
-//         bysort id (t): gen double h = 1-p0
-//         lab var h "Hazard"
-//         set scheme s1mono
-//         loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-//         forvalues k = 1/4 {
-//             line h t if id == `k', sort `goptions'
-//             graph export `figures'/spell2_g`group'_high_r`k'_h.eps, replace
-// //             !a2ping `figdir'/spell2_g`group'_high_r`k'_h.eps
-//         }
+        // "hazards" curves
+        bysort id (t): gen double h = 1-p0
+        lab var h "Hazard"
+        set scheme s1mono
+        loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
+        forvalues k = 1/4 {
+            line h t if id == `k', sort `goptions'
+            graph export `figures'/spell2_g`group'_high_r`k'_h.eps, replace
+//             !a2ping `figdir'/spell2_g`group'_high_r`k'_h.eps
+        }
 
         
         // survival curves
+        
 //         bysort id (t): gen double s = exp(sum(ln(p0))) // Original version without predict and therefore CIs
         // Predictnl does not allow by and sum, so have to hard code this
         // using new variable by period and refer to prior S value
@@ -173,17 +174,22 @@ forvalues group = 3/3 {
                     ci(ci`t'_l ci`t'_u)                    
                 }
             }
-        egen double s_new  = rowfirst(s_pred*)        
+        egen double s      = rowfirst(s_pred*)        
         egen double s_ci_l = rowfirst(ci*_l)
         egen double s_ci_u = rowfirst(ci*_u)
         drop s_pred* ci*_l ci*_u
-exit
 
         lab var s "Survival"
         set scheme s1mono
         loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+        line s  if id == 2, clpattern("l" ) sort `goptions' ///
+            || line s  t if id == 4, clpattern("_" ) sort `goptions' 
+
+
+exit
+
         forvalues k = 1/4 {
-            line s s_pred t if id == `k', sort `goptions'
+            line s t if id == `k', sort `goptions'
             graph export `figures'/spell2_g`group'_high_r`k'_s.eps, replace
 //             !a2ping `figdir'/spell2_g`group'_high_r`k'_s.eps
         }
