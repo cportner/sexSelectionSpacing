@@ -32,17 +32,18 @@ view: $(TEX)/$(TEXFILE).pdf
 # Create base data set(s)
 # Need "end" file as outcome, here the base data sets for each survey
 $(DAT)/base1.dta: $(COD)/crBase1.do $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
-	cd $(COD); stata-se -b crBase1.do 
+	cd $(COD); stata-se -b -q crBase1.do 
     
 $(DAT)/base2.dta: $(COD)/crBase2.do $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RAW)/iahr42fl.dta
-	cd $(COD); stata-se -b crBase2.do 
+	cd $(COD); stata-se -b -q crBase2.do 
 
 $(DAT)/base3.dta: $(COD)/crBase3.do $(RAW)/iair52fl.dta 
-	cd $(COD); stata-se -b crBase3.do 
+	cd $(COD); stata-se -b -q crBase3.do 
 
 $(DAT)/base.dta: $(COD)/crBase.do  $(DAT)/base3.dta $(DAT)/base2.dta $(DAT)/base1.dta
-	cd $(COD); stata-se -b crBase.do 
+	cd $(COD); stata-se -b -q crBase.do 
 
 # Descriptive statistics
 $(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
+	cd $(COD); stata-se -b -q anDescStat.do
 
