@@ -31,3 +31,9 @@ to run in batch mode (Stata -> Install Terminal Utility).
 Make sure you do not have your profile automatically change
 working directory (something like cd ~/data for example).
 If you do, make will not run the Stata files correctly.
+
+The PDF of final paper is created using XeLaTeX with the TeX
+Gyre Pagella fonts.
+The fonts are freely available here:
+- [Math font](http://www.gust.org.pl/projects/e-foundry/tg-math/index_html)
+- [Text font](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella)

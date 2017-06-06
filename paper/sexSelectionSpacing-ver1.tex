@@ -7,13 +7,15 @@
 
 \documentclass[12pt,letterpaper]{article}
 
-\usepackage{mathpazo}
+\usepackage{fontspec}
+\setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+% \usepackage{mathpazo}
 \usepackage[title]{appendix}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[figuresleft]{rotating}
 \usepackage[longnamesfirst]{natbib}
-\usepackage{amssymb}
-\usepackage{amsmath}
 \usepackage{dcolumn}
 \usepackage{booktabs}
 \usepackage{multirow}
@@ -22,7 +24,7 @@
 \usepackage{xyling}
 \usepackage[justification=centering]{caption}
 \usepackage[font=scriptsize]{subfig}
-\usepackage[pdftex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\usepackage[xetex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
 \usepackage{adjustbox}
 \usepackage{xfrac}
 
@@ -101,7 +103,7 @@ University of Washington.
 
 
 \begin{document}
-\graphicspath{{figures/}}
+\graphicspath{{../figures/}}
 \DeclareGraphicsExtensions{.eps,.jpg,.pdf,.mps,.png}
 
 \setcounter{page}{-1}
@@ -109,21 +111,11 @@ University of Washington.
 \thispagestyle{empty}
 
 % \setcounter{page}{0}
+
+
 \newpage
-
-\doublespacing
-% \onehalfspacing
-
-
-% \thispagestyle{empty}
- 
-\maketitle
 \thispagestyle{empty}
-
-
-\newpage
 \doublespacing
-
 
 \begin{abstract}
 
@@ -1112,7 +1104,7 @@ the two sex compositions.
 Son preference can manifest itself through other channels than sex selection.
 Differential investments in education and health across boys and girls, resulting in
 lower education and higher mortality of girls relatively to boys, could be thought 
-of as evidence of son preference, although \cite{rosenzweig82} argue that both may 
+of as evidence of son preference, although \cite{rosenzweig1982a} argue that both may 
 represent parents' rational response to market opportunities rather than inherent 
 preferences of parents.
 Whatever way son preference presents itself, it appears that the dominant  
