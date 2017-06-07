@@ -4,7 +4,7 @@
 * Second spell (from 1st to second birth)
 * an_spell2_g3_hindu_high_graphs.do
 * Begun.: 2017-06-04
-* Edited: 2017-06-04
+* Edited: 2017-06-07
 
 // REVISIONS
 
@@ -186,7 +186,8 @@ forvalues group = 3/3 {
             || line s  t if id == 4, clpattern("_" ) sort lwidth(medthick) mlwidth(medthick..) ///
             || , `goptions'
         // this is not the correct numbering, but just need to check for running with xelatex
-        graph export `figures'/spell2_g3_high_r4_s.eps, replace
+        // To set export fontface for all graphs use "graph set eps fontface Palatino
+        graph export `figures'/spell2_g3_high_r4_s.eps, replace fontface(Palatino)
 
 
 exit
