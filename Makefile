@@ -23,6 +23,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TAB)/des_stat.tex $(FIG)/spell2_g
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
 
+.PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 
@@ -54,3 +55,19 @@ $(DAT)/results_spell2_g3_hindu_high.ster: $(DAT)/base.dta $(COD)/an_spell2_g3_hi
 $(FIG)/spell2_g3_high_r4_s.eps: $(DAT)/results_spell2_g3_hindu_high.ster $(COD)/an_spell2_g3_hindu_high_graphs.do 
 	cd $(COD); stata-se -b -q an_spell2_g3_hindu_high_graphs.do
 
+# Clean directories for (most) generated files
+# This does not clean generated data files; mainly because I am a chicken
+.PHONY: cleanall cleanfig cleantex cleancode
+cleanall: cleanfig cleantex cleancode
+	cd $(DAT); rm *.ster
+	cd $(TAB); rm *.tex
+	
+cleanfig:
+	cd $(FIG); rm *.eps
+	
+cleantex:
+	cd $(TEX); rm *.aux; rm *.bbl; rm *.blg; rm *.log; rm *.out; rm *.pdf; rm *.gz
+	
+cleancode:	
+	cd $(COD); rm *.log
+	
