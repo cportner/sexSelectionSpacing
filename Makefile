@@ -40,7 +40,7 @@ $(DAT)/base2.dta: $(COD)/crBase2.do $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RA
 $(DAT)/base3.dta: $(COD)/crBase3.do $(RAW)/iair52fl.dta 
 	cd $(COD); stata-se -b -q crBase3.do 
 
-$(DAT)/base.dta: $(COD)/crBase.do  $(DAT)/base3.dta $(DAT)/base2.dta $(DAT)/base1.dta
+$(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3.dta
 	cd $(COD); stata-se -b -q crBase.do 
 
 # Descriptive statistics
@@ -48,6 +48,9 @@ $(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
 	cd $(COD); stata-se -b -q anDescStat.do
 	
 # Graph example
-$(FIG)/spell2_g3_high_r4_s.eps: $(DAT)/base.dta $(COD)/an_spell2_g3_hindu_high_graphs.do $(COD)/an_spell2_g3_hindu_high.do
-	cd $(COD); stata-se -b -q an_spell2_g3_hindu_high.do; stata-se -b -q an_spell2_g3_hindu_high_graphs.do
+$(DAT)/results_spell2_g3_hindu_high.ster: $(DAT)/base.dta $(COD)/an_spell2_g3_hindu_high.do
+	cd $(COD); stata-se -b -q an_spell2_g3_hindu_high.do 
+
+$(FIG)/spell2_g3_high_r4_s.eps: $(DAT)/results_spell2_g3_hindu_high.ster $(COD)/an_spell2_g3_hindu_high_graphs.do 
+	cd $(COD); stata-se -b -q an_spell2_g3_hindu_high_graphs.do
 

@@ -181,9 +181,12 @@ forvalues group = 3/3 {
 
         lab var s "Survival"
         set scheme s1mono
-        loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
-        line s  if id == 2, clpattern("l" ) sort `goptions' ///
-            || line s  t if id == 4, clpattern("_" ) sort `goptions' 
+        loc goptions "xtitle(Quarter) ytitle("") legend(off)  ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+        line s t if id == 2, clpattern("l" ) sort lwidth(medthick) mlwidth(medthick..) ///
+            || line s  t if id == 4, clpattern("_" ) sort lwidth(medthick) mlwidth(medthick..) ///
+            || , `goptions'
+        // this is not the correct numbering, but just need to check for running with xelatex
+        graph export `figures'/spell2_g3_high_r4_s.eps, replace
 
 
 exit
