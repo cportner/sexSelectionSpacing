@@ -32,6 +32,21 @@ they will have to cross at one point.
 A formal test of differences in survival curves therefore has
 low power [?]
 
+Maybe it is possible to see whether the survival curves have changed
+**more** for girls (moved to the right more) than for boys.
+One possibility is to use the median duration among those who will 
+have a child by the end of the spell.
+It is not clear how I can set up an actual test for this, but maybe
+I can use predictnl for this "difference in difference". 
+This would be changes in "median" spacing for prior child a girl
+minus changes in "median" spacing for prior child a boy.
+
+
+
+Alternatively, I could use period dummies to directly test whether
+the curves move in different ways, although this is problematic because
+of the issues with interpreting multinomial logit results.
+
 [The relation between current approach and my method - provided that I am right!]
 
 Second, the current approach to estimating use of sex selection fails to 
