@@ -17,11 +17,11 @@ DAT  = ./data
 ### LaTeX part
 
 # need to add a bib file dependency to end of next line
-$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TAB)/des_stat.tex
-	cd $(TEX); pdflatex $(TEXFILE)
+$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TAB)/des_stat.tex $(FIG)/spell2_g3_high_r4_s.eps
+	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
-	cd $(TEX); pdflatex $(TEXFILE)
-	cd $(TEX); pdflatex $(TEXFILE)
+	cd $(TEX); xelatex $(TEXFILE)
+	cd $(TEX); xelatex $(TEXFILE)
 
 view: $(TEX)/$(TEXFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
@@ -46,4 +46,8 @@ $(DAT)/base.dta: $(COD)/crBase.do  $(DAT)/base3.dta $(DAT)/base2.dta $(DAT)/base
 # Descriptive statistics
 $(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
 	cd $(COD); stata-se -b -q anDescStat.do
+	
+# Graph example
+$(FIG)/spell2_g3_high_r4_s.eps: $(DAT)/base.dta $(COD)/an_spell2_g3_hindu_high_graphs.do $(COD)/an_spell2_g3_hindu_high.do
+	cd $(COD); stata-se -b -q an_spell2_g3_hindu_high.do; stata-se -b -q an_spell2_g3_hindu_high_graphs.do
 
