@@ -10,6 +10,7 @@
 
 version 13.1
 clear all
+set matsize 1000
 
 // Generic set of locations
 loc rawdata "../rawData"
