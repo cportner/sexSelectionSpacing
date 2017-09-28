@@ -100,17 +100,6 @@ predict double p0, pr outcome(0) // no child
 predict double p1, pr outcome(1) // boy
 predict double p2, pr outcome(2) // girl
 
-set scheme s1mono
-loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-forvalues k = 1/4 {
-    gen y`k'_b = p1 if id == `k'
-    gen y`k'_g = p2 if id == `k'
-    lab var y`k'_b "Exit: Boy"
-    lab var y`k'_g "Exit: Girl"
-    line y`k'_b y`k'_g t , sort `goptions'
-    graph export `figures'/spell2_g`group'_high_r`k'.eps , replace
-}
-
 // percentage 
 capture predictnl double pcbg = predict(outcome(1))/(predict(outcome(1)) + predict(outcome(2))) if p2 > 0.000001, ci(pcbg_l pcbg_u)
 set scheme s1mono
@@ -121,17 +110,6 @@ forvalues k = 1/4 {
     gen pc`k'_u = pcbg_u * 100 if id == `k'
     line pc`k' pc`k'_l pc`k'_u t, sort `goptions' ylabel(35(5)75)
     graph export `figures'/spell2_g`group'_high_r`k'_pc.eps, replace
-}
-
-
-// "hazards" curves
-bysort id (t): gen double h = 1-p0
-lab var h "Hazard"
-set scheme s1mono
-loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-forvalues k = 1/4 {
-    line h t if id == `k', sort `goptions'
-    graph export `figures'/spell2_g`group'_high_r`k'_h.eps, replace
 }
 
 

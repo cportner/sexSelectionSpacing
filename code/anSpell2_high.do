@@ -1,6 +1,7 @@
 * Women with high education (8+ years) for both urban and rural
 * Competing Discrete Hazard model
 * Second spell (from 1st to second birth) for all periods
+* Currently uses too narrow bands for piece-wise linear hazards
 * anSpell2_high.do
 * Begun.: 2017-06-07
 * Edited: 2017-06-08 
