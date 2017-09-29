@@ -98,7 +98,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Number of quarters "
+file write stats "                    & Quarters "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b1_space if edu_group == `edu' & group == `per'
@@ -107,7 +107,7 @@ forvalues edu = 1/3 {
 }
 file write stats " \\" _n 
 
-file write stats "                    & Number of women    "
+file write stats "                    & Women    "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b1_space if edu_group == `edu' & group == `per'
@@ -184,7 +184,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Number of quarters "
+file write stats "                    & Quarters "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b2_space if edu_group == `edu' & group == `per'
@@ -193,7 +193,7 @@ forvalues edu = 1/3 {
 }
 file write stats " \\" _n 
 
-file write stats "                    & Number of women    "
+file write stats "                    & Women    "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b2_space if edu_group == `edu' & group == `per'
@@ -302,7 +302,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Number of quarters "
+file write stats "                    & Quarters "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b3_space if edu_group == `edu' & group == `per'
@@ -311,7 +311,7 @@ forvalues edu = 1/3 {
 }
 file write stats " \\" _n 
 
-file write stats "                    & Number of women    "
+file write stats "                    & Women    "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b3_space if edu_group == `edu' & group == `per'
@@ -399,7 +399,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Number of quarters "
+file write stats "                    & Quarters "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b4_space if edu_group == `edu' & group == `per'
@@ -408,7 +408,7 @@ forvalues edu = 1/3 {
 }
 file write stats " \\" _n 
 
-file write stats "                    & Number of women    "
+file write stats "                    & Women    "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b4_space if edu_group == `edu' & group == `per'
