@@ -50,16 +50,32 @@ tab b2_space gu_group if birth == 1 | birth == 2
 tab t if b2_cen == 0
 
 // PIECE-WISE LINEAR HAZARDS
-tab t, gen(dur)
+// From group 3 in original version
+loc i = 1
+forvalues per = 1(3)3 { // originally 14
+    gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
+    loc i = `i' + 1
+}
+forvalues per = 4(2)6 { // originally 14
+    gen dur`i' = t >= `per' & t <= `per' + 1 // half years
+    loc i = `i' + 1
+}
+forvalues per = 8(4)11 { // originally 14
+    gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
+    loc i = `i' + 1
+}
+forvalues per = 12(5)17 { // originally 14
+    gen dur`i' = t >= `per' & t <= `per' + 4 // 3 quarter years
+    loc i = `i' + 1
+}
+loc --i // needed because the non-prop below uses `i'
 egen sumdur = rowtotal(dur*)
 assert sumdur == 1
 
 // NON-PROPORTIONALITY
-sum t
-loc maxT = `r(max)'
 foreach var of var ///
-girl urban girlXurban {
-    forval x = 1/`maxT' {
+    girl urban girlXurban {
+    forval x = 1/`i' {
         gen np`x'X`var'  = dur`x' * `var' 
     }
 }

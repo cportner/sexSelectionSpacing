@@ -100,17 +100,6 @@ forvalues group = 3/3 {
         predict double p1, pr outcome(1) // boy
         predict double p2, pr outcome(2) // girl
         
-        set scheme s1mono
-        loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-        forvalues k = 1/4 {
-            gen y`k'_b = p1 if id == `k'
-            gen y`k'_g = p2 if id == `k'
-            lab var y`k'_b "Exit: Boy"
-            lab var y`k'_g "Exit: Girl"
-            line y`k'_b y`k'_g t , sort `goptions'
-            graph export `figures'/spell2_g`group'_high_r`k'.eps , replace
-//             !a2ping `figdir'/spell2_g`group'_high_r`k'.eps
-        }
         
         // percentage 
         capture predictnl double pcbg = ///
@@ -127,31 +116,7 @@ forvalues group = 3/3 {
 //             !a2ping `figdir'/spell2_g`group'_high_r`k'_pc.eps
         }
         
-        // relative risk
-//         capture predictnl RRbg = predict(outcome(1))/predict(outcome(2)) if p2 > 0.000001, ci(RRbg_l RRbg_u)
-//         set scheme s1mono
-//         loc goptions "xtitle(Quarter) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(105, lstyle(foreground) extend) yline(140, lstyle(foreground) extend)"
-//         forvalues k = 1/4 {
-//             gen rr`k'   = RRbg * 100 if id == `k'
-//             gen rr`k'_l = RRbg_l * 100 if id == `k'
-//             gen rr`k'_u = RRbg_u * 100 if id == `k'
-// //             line rr`k' rr`k'_l rr`k'_u t, sort `goptions' ylabel(0.6(0.2)2.2)
-//             line rr`k' rr`k'_l rr`k'_u t, sort `goptions' 
-//             graph export `figdir'/spell2_g`group'_high_r`k'_rr.eps, replace
-//             !a2ping `figdir'/spell2_g`group'_high_r`k'_rr.eps
-//         }
         
-        // "hazards" curves
-        bysort id (t): gen double h = 1-p0
-        lab var h "Hazard"
-        set scheme s1mono
-        loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-        forvalues k = 1/4 {
-            line h t if id == `k', sort `goptions'
-            graph export `figures'/spell2_g`group'_high_r`k'_h.eps, replace
-//             !a2ping `figdir'/spell2_g`group'_high_r`k'_h.eps
-        }
-
         
         // survival curves
         
@@ -188,6 +153,14 @@ forvalues group = 3/3 {
         // this is not the correct numbering, but just need to check for running with xelatex
         // To set export fontface for all graphs use "graph set eps fontface Palatino
         graph export `figures'/spell2_g3_high_r4_s.eps, replace fontface(Palatino)
+
+        // survival curves conditional on parity progression
+        bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
+        
+        graph twoway (line pps t if id == 2 , sort `goptions' legend(label(1 "P1 - B"))) ///
+             (line pps t if id == 4 , sort `goptions' legend(label(2 "P1 - G")))
+        graph export `figures'/spell2_g3_high_pps.eps, replace fontface(Palatino) 
+
 
 
 exit
