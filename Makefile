@@ -17,7 +17,14 @@ DAT  = ./data
 ### LaTeX part
 
 # need to add a bib file dependency to end of next line
-$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TAB)/des_stat.tex $(FIG)/spell2_g3_high_r4_s.eps
+$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
+ $(TAB)/des_stat.tex \
+ $(FIG)/spell2_g1_low_pps_rural.eps $(FIG)/spell2_g1_low_pps_urban.eps \
+ $(FIG)/spell2_g2_low_pps_rural.eps $(FIG)/spell2_g2_low_pps_urban.eps \
+ $(FIG)/spell2_g3_low_pps_rural.eps $(FIG)/spell2_g3_low_pps_urban.eps \
+ $(FIG)/spell2_g1_high_pps_rural.eps $(FIG)/spell2_g1_high_pps_urban.eps \
+ $(FIG)/spell2_g2_high_pps_rural.eps $(FIG)/spell2_g2_high_pps_urban.eps \
+ $(FIG)/spell2_g3_high_pps_rural.eps $(FIG)/spell2_g3_high_pps_urban.eps 
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -49,25 +56,29 @@ $(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
 	cd $(COD); stata-se -b -q anDescStat.do
 	
 # Graph example
-$(DAT)/results_spell2_g3_hindu_high.ster: $(DAT)/base.dta $(COD)/an_spell2_g3_hindu_high.do
-	cd $(COD); stata-se -b -q an_spell2_g3_hindu_high.do 
 
-$(FIG)/spell2_g3_high_r4_s.eps: $(DAT)/results_spell2_g3_hindu_high.ster $(COD)/an_spell2_g3_hindu_high_graphs.do 
-	cd $(COD); stata-se -b -q an_spell2_g3_hindu_high_graphs.do
+$(DAT)/results_spell2_g%.ster: $(COD)/an_spell2_g%.do $(DAT)/base.dta 
+	cd $(COD); stata-se -b -q $(<F)
+
+$(FIG)/spell2_g%_pps_rural.eps $(FIG)/spell2_g%_pps_urban.eps: \
+ $(COD)/an_spell2_g%_graphs.do $(DAT)/results_spell2_g%.ster 
+	cd $(COD); stata-se -b -q $(<F)
+
 
 # Clean directories for (most) generated files
 # This does not clean generated data files; mainly because I am a chicken
+# The "-" in front prevents Make from stopping with an error if a file type does not exist
 .PHONY: cleanall cleanfig cleantex cleancode
 cleanall: cleanfig cleantex cleancode
-	cd $(DAT); rm *.ster
-	cd $(TAB); rm *.tex
+	-cd $(DAT); rm *.ster
+	-cd $(TAB); rm *.tex
 	
 cleanfig:
-	cd $(FIG); rm *.eps
+	-cd $(FIG); rm *.eps
 	
 cleantex:
-	cd $(TEX); rm *.aux; rm *.bbl; rm *.blg; rm *.log; rm *.out; rm *.pdf; rm *.gz
+	-cd $(TEX); rm *.aux; rm *.bbl; rm *.blg; rm *.log; rm *.out; rm *.pdf; rm *.gz
 	
 cleancode:	
-	cd $(COD); rm *.log
+	-cd $(COD); rm *.log
 	
