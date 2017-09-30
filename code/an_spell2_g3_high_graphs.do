@@ -2,7 +2,7 @@
 * Hindu with 8+ years of education, both urban and rural
 * Competing Discrete Hazard model
 * Second spell (from 1st to second birth)
-* an_spell2_g3_hindu_high_graphs.do
+* an_spell2_g3_high_graphs.do
 * Begun.: 2017-06-04
 * Edited: 2017-06-07
 
@@ -26,7 +26,7 @@ forvalues group = 3/3 {
         drop _all
         gen id = .
         // `e(estimates_note1)'
-        estimates use `data'/results_spell2_g`group'_hindu_high
+        estimates use `data'/results_spell2_g`group'_high
         
         // create fake obs for graphs
         loc newn = 0
@@ -113,14 +113,36 @@ forvalues group = 3/3 {
             gen pc`k'_u = pcbg_u * 100 if id == `k'
             line pc`k' pc`k'_l pc`k'_u t, sort `goptions' ylabel(35(5)75)
             graph export `figures'/spell2_g`group'_high_r`k'_pc.eps, replace
-//             !a2ping `figdir'/spell2_g`group'_high_r`k'_pc.eps
+        }        
+        
+        
+        // survival curves     
+        bysort id (t): gen double s = exp(sum(ln(p0))) // Original version without predict and therefore CIs
+        lab var s "Survival"
+        set scheme s1mono
+        loc goptions "xtitle(Quarter) ytitle("") legend(off)  ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+        forvalues k = 1/4 {
+            line s t if id == `k', sort `goptions'
+            graph export `figures'/spell2_g`group'_high_r`k'_s.eps, replace
         }
-        
-        
-        
-        // survival curves
-        
-//         bysort id (t): gen double s = exp(sum(ln(p0))) // Original version without predict and therefore CIs
+ 
+ 
+        // survival curves conditional on parity progression
+        bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
+        loc goptions "xtitle(Quarter) ytitle("") legend(ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
+        graph twoway (line pps t if id == 2 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
+             (line pps t if id == 4 , sort `goptions' legend(label(2 "First Child a Girl")))
+        graph export `figures'/spell2_g`group'_high_pps_urban.eps, replace fontface(Palatino) 
+
+        graph twoway (line pps t if id == 1 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
+             (line pps t if id == 3 , sort `goptions' legend(label(2 "First Child a Girl")))
+        graph export `figures'/spell2_g`group'_high_pps_rural.eps, replace fontface(Palatino) 
+
+}
+
+exit
+
+
         // Predictnl does not allow by and sum, so have to hard code this
         // using new variable by period and refer to prior S value
         // Survival curve is simply p(0)_1 * p(0)_2 * p(0)_3..., where p(0) is 
@@ -144,32 +166,16 @@ forvalues group = 3/3 {
         egen double s_ci_u = rowfirst(ci*_u)
         drop s_pred* ci*_l ci*_u
 
-        lab var s "Survival"
-        set scheme s1mono
-        loc goptions "xtitle(Quarter) ytitle("") legend(off)  ylabel(0.0(0.2)1.0, grid glw(medthick)) "
-        line s t if id == 2, clpattern("l" ) sort lwidth(medthick) mlwidth(medthick..) ///
+        
+       line s t if id == 2, clpattern("l" ) sort lwidth(medthick) mlwidth(medthick..) ///
             || line s  t if id == 4, clpattern("_" ) sort lwidth(medthick) mlwidth(medthick..) ///
             || , `goptions'
         // this is not the correct numbering, but just need to check for running with xelatex
         // To set export fontface for all graphs use "graph set eps fontface Palatino
-        graph export `figures'/spell2_g3_high_r4_s.eps, replace fontface(Palatino)
-
-        // survival curves conditional on parity progression
-        bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
+        graph export `figures'/spell2_g`group'_high_r4_s.eps, replace fontface(Palatino)
         
-        graph twoway (line pps t if id == 2 , sort `goptions' legend(label(1 "P1 - B"))) ///
-             (line pps t if id == 4 , sort `goptions' legend(label(2 "P1 - G")))
-        graph export `figures'/spell2_g3_high_pps.eps, replace fontface(Palatino) 
-
-
-
-exit
-
-        forvalues k = 1/4 {
-            line s t if id == `k', sort `goptions'
-            graph export `figures'/spell2_g`group'_high_r`k'_s.eps, replace
-//             !a2ping `figdir'/spell2_g`group'_high_r`k'_s.eps
-        }
+        
+        
 
         // Calculate sex ratios and number of abortions
         bysort id (t): gen double leave = s[_n-1] - s[_n]
@@ -194,9 +200,6 @@ exit
 
 }
 
-// cd `figdir'
-// !rm *.eps
-// cd `work'
 
 
 

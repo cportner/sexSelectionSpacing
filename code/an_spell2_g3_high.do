@@ -1,7 +1,7 @@
 * Women with high education (8+ years) for both urban and rural
 * Competing Discrete Hazard model
 * Second spell (from 1st to second birth)
-* an_spell2_g3_hindu_high.do
+* an_spell2_g3_high.do
 * Begun.: 2017-06-04
 * Edited: 2017-06-04 
 
@@ -42,7 +42,7 @@ forvalues group = 3/3 {
         count
         sum $parents $hh $caste 
         estpost tab gu_group
-//         esttab using `figdir'/mainObs_spell2_g`group'_`edgroup'.tex, replace ///
+//         esttab using `tables'/mainObs_spell2_g`group'_`edgroup'.tex, replace ///
 //             cells("b(label(N))") ///
 //             nonumber nomtitle noobs
         eststo clear
@@ -106,7 +106,7 @@ forvalues group = 3/3 {
         local names : colfullnames e(b)
         estimates notes: `names'
         estimates notes: $lastm
-        estimates save `data'/results_spell2_g`group'_hindu_high, replace
+        estimates save `data'/results_spell2_g`group'_high, replace
 
 //         est store M2
         
