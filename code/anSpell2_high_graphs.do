@@ -155,21 +155,21 @@ forvalues k = 1/4 {
 
 loc goptions "xtitle(Quarter) ytitle("") clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 
-graph twoway (line pps t if id == 2 & group == 1, sort `goptions' legend(label(1 "P1"))) ///
-             (line pps t if id == 2 & group == 2, sort `goptions' legend(label(2 "P2"))) ///
-             (line pps t if id == 2 & group == 3, sort `goptions' legend(label(3 "P3"))) 
+graph twoway (line pps t if id == 2 & group == 1, sort `goptions' legend(label(1 "First Child a P1"))) ///
+             (line pps t if id == 2 & group == 2, sort `goptions' legend(label(2 "First Child a P2"))) ///
+             (line pps t if id == 2 & group == 3, sort `goptions' legend(label(3 "First Child a P3"))) 
 
 
-graph twoway (line pps t if id == 4 & group == 1, sort `goptions' legend(label(1 "P1"))) ///
-             (line pps t if id == 4 & group == 2, sort `goptions' legend(label(2 "P2"))) ///
-             (line pps t if id == 4 & group == 3, sort `goptions' legend(label(3 "P3"))) 
+graph twoway (line pps t if id == 4 & group == 1, sort `goptions' legend(label(1 "First Child a P1"))) ///
+             (line pps t if id == 4 & group == 2, sort `goptions' legend(label(2 "First Child a P2"))) ///
+             (line pps t if id == 4 & group == 3, sort `goptions' legend(label(3 "First Child a P3"))) 
 
-graph twoway (line pps t if id == 2 & group == 1, sort `goptions' legend(label(1 "P1 - B"))) ///
-             (line pps t if id == 4 & group == 1, sort `goptions' legend(label(2 "P1 - G"))) 
+graph twoway (line pps t if id == 2 & group == 1, sort `goptions' legend(label(1 "First Child a P1 - B"))) ///
+             (line pps t if id == 4 & group == 1, sort `goptions' legend(label(2 "First Child a P1 - G"))) 
 
-graph twoway (line pps t if id == 2 & group == 2, sort `goptions' legend(label(1 "P1 - B"))) ///
-             (line pps t if id == 4 & group == 2, sort `goptions' legend(label(2 "P1 - G"))) 
+graph twoway (line pps t if id == 2 & group == 2, sort `goptions' legend(label(1 "First Child a P1 - B"))) ///
+             (line pps t if id == 4 & group == 2, sort `goptions' legend(label(2 "First Child a P1 - G"))) 
 
-graph twoway (line pps t if id == 2 & group == 3, sort `goptions' legend(label(1 "P1 - B"))) ///
-             (line pps t if id == 4 & group == 3, sort `goptions' legend(label(2 "P1 - G"))) 
+graph twoway (line pps t if id == 2 & group == 3, sort `goptions' legend(label(1 "First Child a P1 - B"))) ///
+             (line pps t if id == 4 & group == 3, sort `goptions' legend(label(2 "First Child a P1 - G"))) 
 graph export `figures'/combined_spell2_g3_high_pps.eps, replace 
