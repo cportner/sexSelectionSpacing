@@ -86,6 +86,9 @@ $(FIG)/spell3_g%_pps_rural.eps $(FIG)/spell3_g%_pps_urban.eps: \
 cleanall: cleanfig cleantex cleancode
 	-cd $(DAT); rm *.ster
 	-cd $(TAB); rm *.tex
+
+cleantab:
+	-cd $(TAB); rm *.tex	
 	
 cleanfig:
 	-cd $(FIG); rm *.eps
