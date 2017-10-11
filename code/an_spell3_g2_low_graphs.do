@@ -2,7 +2,7 @@
 * Hindu with 0 years of education, both urban and rural
 * Competing Discrete Hazard model
 * Third spell (from 2nd to 3rd birth)
-* an_spell3_g2_hindu_low_graphs.do
+* an_spell3_g2_low_graphs.do
 * Begun.: 07/04/10
 * Edited: 2015-03-12
 
@@ -26,7 +26,7 @@ forvalues group = 2/2 {
         drop _all
         gen id = .
         // `e(estimates_note1)'
-        estimates use `data'/results_spell3_g`group'_hindu_low
+        estimates use `data'/results_spell3_g`group'_low
         
         // create fake obs for graphs
         loc newn = 0

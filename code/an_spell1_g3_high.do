@@ -1,7 +1,7 @@
 * Women with high education (8+ years) for both urban and rural
 * Competing Discrete Hazard model
 * First spell (from marriage to first birth)
-* an_spell1_g3_hindu_high.do
+* an_spell1_g3_high.do
 * Begun.: 08/04/10
 * Edited: 2016-02-03
 
@@ -11,10 +11,11 @@
 version 13.1
 clear all
 
-loc data "/net/proj/India_NFHS/base"
-loc work "/net/proj/India_NFHS/base/sampleMain"
-loc figdir "~/data/sexselection/graphs/sampleMain"
-
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
 /*-------------------------------------------------------------------*/
 /* LOADING DATA AND CREATING NEW VARIABLES                           */
@@ -26,7 +27,7 @@ keep if edu_mother >= 8
 local edgroup = "high"
 
 // data manipulation
-do `work'/genSpell1
+do genSpell1
 
 // Group
 forvalues group = 3/3 {
@@ -38,11 +39,11 @@ forvalues group = 3/3 {
 //         preserve
         keep if group == `group'
         // need to save the sample for predictions
-        save `work'/predictSample_spell1_g3_hindu_high, replace 
+        // save `work'/predictSample_spell1_g3_high, replace 
         count
         sum $parents $hh $caste 
         estpost tab gu_group
-        esttab using `figdir'/mainObs_spell1_g`group'_`edgroup'.tex, replace ///
+        esttab using `tables'/mainObs_spell1_g`group'_`edgroup'.tex, replace ///
             cells("b(label(N))") ///
             nonumber nomtitle noobs
         eststo clear
@@ -105,7 +106,7 @@ forvalues group = 3/3 {
         local names : colfullnames e(b)
         estimates notes: `names'
         estimates notes: $lastm
-        estimates save `work'/results_spell1_g`group'_hindu_high, replace
+        estimates save `data'/results_spell1_g`group'_high, replace
 
 //         est store M2
         

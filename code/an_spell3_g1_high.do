@@ -1,7 +1,7 @@
 * Women with high education (8+ years) for both urban and rural
 * Competing Discrete Hazard model
 * Third spell (from 2nd to 3rd birth)
-* an_spell3_g1_hindu_high.do
+* an_spell3_g1_high.do
 * Begun.: 07/04/10
 * Edited: 2015-03-12
 
@@ -115,7 +115,7 @@ forvalues group = 1/1 {
         local names : colfullnames e(b)
         estimates notes: `names'
         estimates notes: $lastm
-        estimates save `data'/results_spell3_g`group'_hindu_high, replace
+        estimates save `data'/results_spell3_g`group'_high, replace
 
 //         est store M2
         

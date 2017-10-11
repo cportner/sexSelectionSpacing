@@ -1,7 +1,7 @@
 * Women with low education (0 years) for both urban and rural
 * Competing Discrete Hazard model
 * Third spell (from 2nd to 3rd birth)
-* an_spell3_g3_hindu_low.do
+* an_spell3_g3_low.do
 * Begun.: 07/04/10
 * Edited: 2015-03-12
 
@@ -96,7 +96,7 @@ forvalues group = 3/3 {
         local names : colfullnames e(b)
         estimates notes: `names'
         estimates notes: $lastm
-        estimates save `data'/results_spell3_g`group'_hindu_low, replace
+        estimates save `data'/results_spell3_g`group'_low, replace
 
 //         est store M2
         

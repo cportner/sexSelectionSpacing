@@ -1,7 +1,7 @@
 * Women with medium education (1-7 years) for both urban and rural
 * Competing Discrete Hazard model
 * Third spell (from 2nd to 3rd birth)
-* an_spell3_g2_hindu_med.do
+* an_spell3_g2_med.do
 * Begun.: 07/04/10
 * Edited: 2015-03-12
 
@@ -11,10 +11,11 @@
 version 13.1
 clear all
 
-loc data "/net/proj/India_NFHS/base"
-loc work "/net/proj/India_NFHS/base/sampleMain"
-loc figdir "~/data/sexselection/graphs/sampleMain"
-
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
 /*-------------------------------------------------------------------*/
 /* LOADING DATA AND CREATING NEW VARIABLES                           */
@@ -26,7 +27,7 @@ keep if edu_mother >= 1 & edu_mother < 8
 local edgroup = "med"
 
 // data manipulations
-do `work'/genSpell3.do
+do genSpell3.do
 
 // Group
 forvalues group = 2/2 {
@@ -40,7 +41,7 @@ forvalues group = 2/2 {
         count
         sum $parents $hh $caste 
         estpost tab gu_group
-        esttab using `figdir'/mainObs_spell3_g`group'_`edgroup'.tex, replace ///
+        esttab using `tables'/mainObs_spell3_g`group'_`edgroup'.tex, replace ///
             cells("b(label(N))") ///
             nonumber nomtitle noobs
         eststo clear
@@ -102,7 +103,7 @@ forvalues group = 2/2 {
 //         local names : colfullnames e(b)
 //         estimates notes: `names'
 //         estimates notes: $lastm
-//         estimates save `work'/results_spell2_g`group', replace
+//         estimates save `data'/results_spell2_g`group', replace
 
         eststo clear
 //         eststo: mlogit birth dur* $b1space ///
@@ -117,7 +118,7 @@ forvalues group = 2/2 {
         local names : colfullnames e(b)
         estimates notes: `names'
         estimates notes: $lastm
-        estimates save `work'/results_spell3_g`group'_hindu_med, replace
+        estimates save `data'/results_spell3_g`group'_med, replace
 
 //         est store M2
         
