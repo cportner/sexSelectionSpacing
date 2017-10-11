@@ -63,6 +63,13 @@ $(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
 	
 # Graphs
 
+$(DAT)/results_spell1_g%.ster: $(COD)/an_spell1_g%.do $(DAT)/base.dta 
+	cd $(COD); stata-se -b -q $(<F)
+
+$(FIG)/spell1_g%_pps_rural.eps $(FIG)/spell1_g%_pps_urban.eps: \
+ $(COD)/an_spell1_g%_graphs.do $(DAT)/results_spell1_g%.ster 
+	cd $(COD); stata-se -b -q $(<F)
+
 $(DAT)/results_spell2_g%.ster: $(COD)/an_spell2_g%.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
