@@ -24,7 +24,13 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
  $(FIG)/spell2_g3_low_pps_rural.eps $(FIG)/spell2_g3_low_pps_urban.eps \
  $(FIG)/spell2_g1_high_pps_rural.eps $(FIG)/spell2_g1_high_pps_urban.eps \
  $(FIG)/spell2_g2_high_pps_rural.eps $(FIG)/spell2_g2_high_pps_urban.eps \
- $(FIG)/spell2_g3_high_pps_rural.eps $(FIG)/spell2_g3_high_pps_urban.eps 
+ $(FIG)/spell2_g3_high_pps_rural.eps $(FIG)/spell2_g3_high_pps_urban.eps \
+ $(FIG)/spell3_g1_low_pps_rural.eps $(FIG)/spell3_g1_low_pps_urban.eps \
+ $(FIG)/spell3_g2_low_pps_rural.eps $(FIG)/spell3_g2_low_pps_urban.eps \
+ $(FIG)/spell3_g3_low_pps_rural.eps $(FIG)/spell3_g3_low_pps_urban.eps \
+ $(FIG)/spell3_g1_high_pps_rural.eps $(FIG)/spell3_g1_high_pps_urban.eps \
+ $(FIG)/spell3_g2_high_pps_rural.eps $(FIG)/spell3_g2_high_pps_urban.eps \
+ $(FIG)/spell3_g3_high_pps_rural.eps $(FIG)/spell3_g3_high_pps_urban.eps 
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -55,7 +61,7 @@ $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3
 $(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
 	cd $(COD); stata-se -b -q anDescStat.do
 	
-# Graph example
+# Graphs
 
 $(DAT)/results_spell2_g%.ster: $(COD)/an_spell2_g%.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
@@ -63,6 +69,14 @@ $(DAT)/results_spell2_g%.ster: $(COD)/an_spell2_g%.do $(DAT)/base.dta
 $(FIG)/spell2_g%_pps_rural.eps $(FIG)/spell2_g%_pps_urban.eps: \
  $(COD)/an_spell2_g%_graphs.do $(DAT)/results_spell2_g%.ster 
 	cd $(COD); stata-se -b -q $(<F)
+
+$(DAT)/results_spell3_g%.ster: $(COD)/an_spell3_g%.do $(DAT)/base.dta 
+	cd $(COD); stata-se -b -q $(<F)
+
+$(FIG)/spell3_g%_pps_rural.eps $(FIG)/spell3_g%_pps_urban.eps: \
+ $(COD)/an_spell3_g%_graphs.do $(DAT)/results_spell3_g%.ster 
+	cd $(COD); stata-se -b -q $(<F)
+
 
 
 # Clean directories for (most) generated files
@@ -72,6 +86,9 @@ $(FIG)/spell2_g%_pps_rural.eps $(FIG)/spell2_g%_pps_urban.eps: \
 cleanall: cleanfig cleantex cleancode
 	-cd $(DAT); rm *.ster
 	-cd $(TAB); rm *.tex
+
+cleantab:
+	-cd $(TAB); rm *.tex	
 	
 cleanfig:
 	-cd $(FIG); rm *.eps

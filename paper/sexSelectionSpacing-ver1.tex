@@ -63,7 +63,7 @@
 \title{Son Preference, Birth Spacing, and Sex-Selective Abortions%
 \protect\thanks{%
 I am grateful to Andrew Foster and Darryl Holman for discussions about the method.
-I owe thanks to three anonymous referees, Shelly Lundberg, Daniel Rees, David Ribar, 
+I owe thanks to Shelly Lundberg, Daniel Rees, David Ribar, 
 Hendrik Wolff, seminar participants at University of Copenhagen, University of Michigan, 
 University of Washington, University of Aarhus, the Fourth 
 Annual Conference on Population, Reproductive Health, 
@@ -89,14 +89,16 @@ University of Washington.
     Albers School of Business and Economics\\
     Seattle University, P.O. Box 222000\\
     Seattle, WA 98122\\
-    \href{mailto:cportner@seattleu.edu}{\texttt{cportner@seattleu.edu}}\\
+    \href{mailto:claus@clausportner.com}{\texttt{claus@clausportner.com}}\\
     \href{http://www.clausportner.com}{\texttt{www.clausportner.com}}\\
     \& \\
     Center for Studies in Demography and Ecology \\
     University of Washington\\ \vspace{2cm}
     }
 
-\date{April 2017}
+\date{October 2017\\
+\bigskip
+Preliminary}
 
 
 %------------------------------------------------------------------------
@@ -126,18 +128,12 @@ I introduce a statistical method that incorporates that sex-selective abortions
 affect both the likelihood of a son and spacing between births.
 Using India's National Family and Health Surveys,
 I show that use of sex selection leads to \emph{longer} spacing after a daughter 
-is born than after a son.
+than after a son, but for families that do not use sex selection
+duration to next birth is still shorter when no boys are present.
 Women with 8 or more years of education, both in urban and rural areas, are 
 the main users of sex-selective abortions, whereas women with less education 
 do not appear to use sex selection.
-Predicted lifetime fertility for high-education women declined more than 10\% 
-between 1985--1994, when sex selection was legal, and 1995--2006, when sex selection 
-was illegal.
-Abortions per woman increased almost 20\% for urban women and 50\%
-for rural women between the two periods, suggesting that making sex 
-selection illegal has not reversed its use.
-Finally, sex selection appears to be used to ensure one son rather 
-than multiple sons.
+
 
 \noindent JEL: J1, O12, I1
 \noindent Keywords: India, prenatal sex determination, censoring, competing risk
@@ -173,8 +169,8 @@ a son than after a daughter
 }
 
 What has not previously been appreciated is that the introduction 
-of prenatal sex determination fundamentally changed the relationship between 
-son preference and birth spacing.
+of prenatal sex determination fundamentally changed the relationship 
+between son preference and birth spacing.
 This is because each sex-selective abortion substantially increases the 
 spacing from last birth. 
 For every abortion a woman has we should expect the duration from last
@@ -265,24 +261,24 @@ sex ratios have changed with the introduction of prenatal sex determination,
 and whether the ban affected the relationship between birth spacing and sex 
 ratios.
 
-
+[Outline of findings here]
 
 
 % [EXPLAIN RESULTS HERE]
 % Main findings!
-There are three main findings.
-
-There is, however, still no evidence of sex selection being used on the first birth.
-
-Secondly, sex selection appears to be used for securing one son, rather than a large 
-number of sons.
-There is only limited use of sex-selective abortions for better-educated
-women with one or more sons.
-The exception is rural women with one son and one daughter, presumably to compensate for 
-the higher child mortality in rural areas.
-These results are in line with the differential stopping behavior observed in many studies
-before sex selection became available \citep{repetto72,arnold98,dreze01}.
-
+% There are three main findings.
+% 
+% There is, however, still no evidence of sex selection being used on the first birth.
+% 
+% Secondly, sex selection appears to be used for securing one son, rather than a large 
+% number of sons.
+% There is only limited use of sex-selective abortions for better-educated
+% women with one or more sons.
+% The exception is rural women with one son and one daughter, presumably to compensate for 
+% the higher child mortality in rural areas.
+% These results are in line with the differential stopping behavior observed in many studies
+% before sex selection became available \citep{repetto72,arnold98,dreze01}.
+% 
 
 
 
@@ -547,7 +543,7 @@ Hence, although they cannot by themselves show sex selection, the survival
 curves are a crucial complement to the estimated sex ratios by duration.
 
 
-[How to compare survival curves?]
+[The problem with comparing survival curves]
 
 In principle, in order to understand how birth spacing changes in response
 to the introduction of prenatal sex determination one could simply compare survival 
@@ -618,21 +614,16 @@ survival curves.
 This number can then be compared across sex compositions to 
 understand if the spell length for girl composition increases
 more than for boy composition with the introduction of sex selection.
-
-Obviously, this should be calculated for different percentages.
-Actually, it probably makes more sense to show this graphically
-instead. 
-All compositions would begin at 100\% and end at 0\% because
+Obviously, this should be calculated for different percentages
+and the easiest way to interpret the result is to graph survival
+conditional on parity progression occurring.
+All compositions therefore begin at 100\% and end at 0\% because
 we condition on having the next child.
-
-
 
 Note, this is not the same as simply calculating the average 
 \emph{observed} spell lengths among women who have a given parity
 child in the survey because that number does not take into account
 the censoring of some spells that will eventually lead to a birth.
-
-
 
 
 \section{Data\label{sec:data}}
@@ -752,12 +743,12 @@ the dashed lines indicate the 95 percent confidence interval
 and the horizontal line the natural sex ratio (approximately 0.512).
 To ensure sufficient cell sizes the years are grouped in twos.
 
-% \begin{figure}[htp]%
-% \centering
-% \includegraphics[width=0.9\textwidth]{sex_ratio_marriage}
-% \caption{Ratio of boys in ``first'' births}
-% \label{fig:sexRatioMarriage}
-% \end{figure}
+\begin{figure}[htp]%
+\centering
+\includegraphics[width=0.9\textwidth]{sex_ratio_marriage}
+\caption{Ratio of boys in ``first'' births}
+\label{fig:sexRatioMarriage}
+\end{figure}
 
 
 Figure \ref{fig:sexRatioMarriage} clearly illustrates the systematic recall error
@@ -1003,205 +994,7 @@ all education levels and all areas of residence.
 
 \section{Results\label{sec:results}}
 
-One of the main questions here is how fertility affects sex selection use.
-I start by showing the relationship between self-reported desired fertility and sex 
-selection, which also illustrates how to interpret the results.
-Although self-reported desired fertility is an imperfect proxy for actual
-fertility behavior, the analysis of desired fertility indicates that there is 
-a relationship between fertility decisions and the use of sex selection and motivates 
-examining the relationship more closely.
-
-Because of the desired fertility measure's potential shortcomings, I next examine the 
-relationship between actual fertility and use of sex selection for better-educated women.
-There are two steps in this process.
-First, I show how fertility has declined for better-educated women with one son---a group 
-unlikely to use sex selection, which means that sex selection will not affect the 
-progression rates to next birth for these women.
-Second, I show how, corresponding to the fertility decline, there is an increase in
-sex-selective abortions for better-educated women without a son.
-I next show how women with lower cost of children appear to follow a high fertility, low
-use of sex selection strategy compared to the low fertility, high use of sex selection of
-the better-educated women.
-The results all show clear evidence of son preference in fertility and sex selection use, 
-but exactly what form son preference takes is important, so I next discuss what we can
-learn about son preference from the sex selection behavior.
-Finally, I predict lifetime fertility, number of abortions, and final sex ratios for
-the better-educated women.
-
-Except for the predictions, results are presented using graphs of estimated percentage boys 
-born by quarter, the associated 95 percent confidence interval, and the survival curve for 
-a ``representative woman'' using the method detailed in Section \ref{sec:strategy}.
-The ``representative woman'' characteristics are based on means of continuous 
-explanatory variables and the majority category for categorical explanatory variables.
-Common to all ``representative women'' is that they do not own land and belong to neither 
-a scheduled caste nor a scheduled tribe.
-The graphs also show the expected natural rate of boys, approximately 51.2 percent, for
-comparison.
-Graphs for all groups and spells, even if not discussed here, are available in 
-the online Appendix.
-
-
-\subsection{One Son or Many Sons?}
-
-The extent to which people use sex selection for different sex compositions
-of previous children is of interest for two reasons.
-First and foremost, it can help us understand what form son preference takes in India.
-This is important in itself, but is especially important as we try to predict 
-what will happen to sex selection use in the future.
-[need an explanation of this based on what I have in the introduction]
-Second,
-if families use sex selection to reach two or more sons, progression rates for families 
-with one son may overestimate the decline in fertility.
-
-Women with 8 or more years of education is the group the most likely to use sex 
-selection if they have no son as shown above.
-Hence, if sex selection is also used to achieve more than one son, we should be
-most likely to find evidence for this group of women as well.
-Figure \ref{fig:boys_latest} therefore shows sex ratios and survival curves for 
-the 1995--2006 period for urban and rural women with 8 or more years of education, 
-conditional on having at least one son.
-The first column shows outcomes for the second spell if the first born is a son,
-the second column shows third spell when the first two children were a son and 
-a daughter, and the third column shows third spell when the first two children were sons.
-
-
-% \begin{figure}[htpb]
-% \centering
-% \caption*{Urban}
-% \setcounter{subfigure}{-2}
-% \subfloat[Spell 2 - 1 boy (N=3,969)]{
-%     \begin{minipage}{0.30\textwidth}
-%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r2_pc}}\\
-%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r2_s}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \setcounter{subfigure}{-1}
-% \subfloat[Spell 3 - 1 boy/1 girl (N=2,357)]{
-%     \begin{minipage}{0.30\textwidth}
-%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r4_pc}}\\
-%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r4_s}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \setcounter{subfigure}{0}
-% \subfloat[Spell 3 - 2 boys (N=1,098)]{
-%     \begin{minipage}{0.30\textwidth}
-%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r2_pc}}\\
-%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r2_s}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \caption*{Rural}
-% \setcounter{subfigure}{1}
-% \subfloat[Spell 2 - 1 boy (N=3,044)]{
-%     \begin{minipage}{0.30\textwidth}
-%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r1_pc}}\\
-%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r1_s}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \setcounter{subfigure}{2}
-% \subfloat[Spell 3 - 1 boy/1 girl (N=1,819)]{
-%     \begin{minipage}{0.30\textwidth}
-%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r3_pc}}\\
-%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r3_s}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \setcounter{subfigure}{3}
-% \subfloat[Spell 3 - 2 boys (N=790)]{
-%     \begin{minipage}{0.30\textwidth}
-%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r1_pc}}\\
-%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r1_s}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \caption{Predicted probability of having a boy and probability of
-% no birth by quarter (3 month period) for women with 8 or more years
-% of education for 1995--2006. 
-% N is number of women in the relevant group in the underlying samples.
-% }
-% \label{fig:boys_latest}
-% \end{figure}
-
-
-For the second spell the predicted sex ratios closely follow the natural sex 
-ratio for both urban and rural women.
-Furthermore, the survival curves follow the expected pattern if no sex selection 
-is taking place.
-There is also no evidence of sex selection for the third spell for women with two sons;
-the sex ratios follow the natural sex ratio for both urban and rural women.
-Sample sizes are, however, less than \sfrac{1}{3} of the sample sizes for the second 
-spell and the progression rate to a third birth is low at only 30\% for urban women and 
-55\% for rural women, resulting in wide confidence intervals.
-The survival curves are particularly flat for the first year, meaning that the apparent 
-deviations from the natural sex ratio in the beginning of the spell are based on very few births.
-
-% [Spell 3 - 1b/1g most interesting]
-
-Even though there is no evidence of using sex selection to have an additional son when the 
-previous children are all sons, it is possible that families want more sons than daughters 
-and therefore use sex selection for the third spell when they already have one of each.
-Urban women show little evidence of this being the case.
-Although the sex ratio is above the natural from quarter 11 until the end of the spell,
-only about \sfrac{1}{3} of the births occur in this interval.
-Furthermore, the dip below the natural sex ratio prior to this point also accounts for
-approximately \sfrac{1}{3} of the births.
-Hence, these two parts cancel each other out.
-With the first part being to the natural sex ratio the end result is that there
-is little evidence for urban women using sex selection if they already have a son and
-a daughter.
-
-For rural women, however, the dip and the associated number of births is not
-large enough to bring the overall sex ratio for the spell back to natural sex ratio.
-The sex ratio for the entire spell is therefore likely more male dominated
-than the natural rate, although it is only statistically significantly higher for two 
-individual quarters of the spell.
-There are two possible explanations for rural women appearing more likely than urban
-women to use sex selection on the third spell if they already have a son and a daughter.
-First, rural women could have a stronger son preference than urban women and want two sons 
-rather than only one.
-Second, mortality is higher in rural than urban areas and this higher mortality, either 
-experienced or anticipated, make rural women use sex selection to secure a second son, 
-essentially as an insurance.
-Separating these two possible explanations is difficult, but the ``heir and a spare''
-explanation appears  more likely than difference in preferences given that urban women use 
-sex selection more than rural women for the second birth in the absence of a son.
-An alternative explanation is that what we are observing is simply random variation.
-This would explain why we get see differences in sex ratios between urban and rural
-women with one son across the third and fourth spells as shown in the online Appendix.%
-\footnote{
-Urban women with a son and two daughters as their first 3 births show a sex ratio
-that is significantly higher than the natural, but no evidence of sex
-selection if they have two sons and a daughter as their first children.
-Rural women show only a marginally higher sex ratio with a son and two daughters and no 
-effect at all with two sons and a daughter.
-These results are, however, based on very small samples.
-There are 590 urban women with a son and two daughters, of which less than 40\% have a
-fourth child, 344 urban women with two sons and one daughter, and only 20\% of those
-have a fourth child.
-For rural women the numbers are 564, with 40\% having a fourth child, and 367 with
-approximately 30\% having a fourth birth.
-This comes to approximately 300 urban births and only slightly more for rural across
-the two sex compositions.
-}
-
-Son preference can manifest itself through other channels than sex selection.
-Differential investments in education and health across boys and girls, resulting in
-lower education and higher mortality of girls relatively to boys, could be thought 
-of as evidence of son preference, although \cite{rosenzweig1982a} argue that both may 
-represent parents' rational response to market opportunities rather than inherent 
-preferences of parents.
-Whatever way son preference presents itself, it appears that the dominant  
-preference---as expressed through use of sex selection---is for one son, rather 
-than multiple sons.
+[Only a subset of the planned analyses to demonstrate the method and interpretation]
 
 
 % High education
@@ -1275,79 +1068,62 @@ N indicates the number of women in the relevant group in the underlying samples.
 \label{fig:results_spell2_high_urban}
 \end{figure}
 
-
-\begin{figure}[htpb]
-\centering
-\caption*{First child a girl}
-\setcounter{subfigure}{-2}
-\subfloat[1972--1984 (N=1,305)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r3_pc}}\\
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r3_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-1}
-\subfloat[1985--1994 (N=3,105)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r3_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r3_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
+Figure \ref{fig:results_spell2_high_urban} 
+shows the predicted probabilities of having a boy and standard survival curves
+for the three periods for urban women with 8 or more years of education.%
+\footnote{
+The corresponding graphs for rural women and for women with no education are
+shown in Figures \ref{fig:results_spell2_high_rural}, \ref{fig:results_spell2_low_urban},
+and \ref{fig:results_spell2_low_rural}
 }
-\setcounter{subfigure}{0}
-\subfloat[1995--2006 (N=2,823)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
+Two main results stand out.
+First, women whose first child was a boy do not appear to use sex selection during
+the second spell.
+The predicted percent boys is consistently close to the natural level in all three
+panels (\ref{fig:results_spell2_high_urban}(d)-(f)).
+Second, as prenatal sex determination became available there is more and more
+evidence of sex selection affecting the sex ratio for women with a girl as their
+first child.
+In panel (a), which covers the period before sex selection became generally
+available, there is no significant evidence of a sex ratio biased towards males.
+Panel (b) shows a more male biased sex ratio but only a few of quarters show
+a statistically significant difference from the natural rate and the shallow 
+slope of the survival curve indicates that relatively few births took place
+during these quarters.
+Panel (c), however, shows clear evidence of the effect of access to prenatal
+sex determination with a male biased sex ratio for more of the two first years.%
+\footnote{
+Recall that quarter 0 is equivalent to 9 months (3 quarters) after the birth
+of the first child.
 }
-\caption*{First child a boy}
-\setcounter{subfigure}{1}
-\subfloat[1972--1984 (N=1,404)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r1_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r1_s}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{2}
-\subfloat[1985--1994 (N=3,381)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r1_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r1_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{3}
-\subfloat[1995--2006 (N=3,044)]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r1_pc}}\\
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r1_s}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Predicted probability of having a boy and probability of
-no birth yet from nine months after first birth for rural
-women with 8 or more years of education by quarter (3 month period). 
-Predictions based on age 22 at first birth.
-Left column shows results prior to sex selection available, middle column before
-sex selection illegal and right column after sex selection illegal.
-N indicates the number of women in the relevant group in the underlying samples.
-}
-\label{fig:results_spell2_high_rural}
-\end{figure}
 
 
 
 % Survival curves conditional on progression 
+
+Figures \ref{fig:results_spell2_low_pps} and \ref{fig:results_spell2_high_pps}
+show survival curves for the second spell (from first birth) for women with
+no education and women with 8 or more years of education.
+To allow for comparison these survival curves show the ratio of women who
+have not had a birth yet, given that they will eventually are predicted to
+have a birth.
+Women with no education show relatively similar survival curves whether their
+first child was a girl or a boy, but to the extent that a pattern is present
+it shows, as expected, shorter spacing a girl than a boy.
+Rural women with 8 or more years of education show essentially the same 
+pattern.
+The lack of clear results is not surprising given that all three groups of
+women are likely to have more than two children.
+
+The effect of sex selection on spacing first show up for urban women with
+8 or more years of education.
+Panel (a) in Figure \ref{fig:results_spell2_high_pps} show shorter spacing
+for the second spell when the first child is a girl than a boy, and this
+pattern is also present in Panel (b).
+Panel (c) on the other hand show first evidence of \emph{longer} spacing 
+after the birth of a girl than after a boy, consistent with the male-biased
+sex ratio in Panel (c) in Figure \ref{fig:fig:results_spell2_high_urban}.
+
 
 % Low education
 
@@ -1480,184 +1256,171 @@ N indicates the number of women in the relevant group in the underlying samples.
 \end{figure}
 
 
+% 3rd spell
 
+
+
+
+
+
+% Low education
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_pps_urban}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_pps_urban}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{1}
+\subfloat[1995--2006]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_pps_urban}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{2}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_pps_rural}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{3}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_pps_rural}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{4}
+\subfloat[1995--2006]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_pps_rural}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with no education by quarter (3 month period).
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell3_low_pps}
+\end{figure}
+
+
+
+
+
+% High education
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_pps_urban}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_pps_urban}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{1}
+\subfloat[1995--2006]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_pps_urban}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{2}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_pps_rural}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{3}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_pps_rural}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{4}
+\subfloat[1995--2006]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_pps_rural}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with 8 or more years of education by quarter (3 month period).
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell3_high_pps}
+\end{figure}
+
+The effect of sex selection on spacing is even more pronounced in
+Figure \ref{fig:results_spell3_high_pps}, which shows the conditional
+survival curves for the third spell (from second birth) for women with
+8 or more years of education.
+Before prenatal sex determination became available there is little difference
+in spacing pattern no matter the sex composition of the first two children.
+This changes after the introduction as shown in Panel (b), where the spacing
+is longer when the first two children are girls than either one boy/one girl
+or two boys.
+Even more substantial are the results from Panel (c), which shows much 
+longer spacing when the first two children are girls.
+These results are consistent with the biased sex ratios shown in 
+Figure \ref{fig:results_spell3_high_urban}.
+
+
+
+\clearpage
 
 \section{Conclusion\label{sec:conclusion}}
 
 
-If women have preferences over both the number of children they have \emph{and} the sex 
-composition of these children, they face a trade-off between the cost---both monetary 
-and psychological---of sex selection and the cost of children.
-This paper introduces a novel approach to understanding the relationship between
-fertility and use of sex selection, and how sex selection interact with birth spacing.
-The proposed method allows for joint estimation of fertility and sex-selective abortions 
-using a non-proportional, competing risk hazard model.
-
-Three results stand out.
-First, lower fertility is an important factor in the decision to use sex-selective abortions.
-% Women wanting more than two births did not use sex selection on the second birth, while
-% those who want two or fewer use sex selection intensively.
-In both urban and rural areas, only women with the lowest predicted fertility---those
-with 8 or more years of education---use sex selection, and as fertility falls they use it 
-for earlier parities.
-Women with less education instead follow a high fertility strategy to ensure they have
-a son and do not appear to use sex selection.
-Previous research was unable to explain why sex selection in India only occurred 
-among higher education women because it failed to tie the use of sex selection and the 
-fertility decision together.
-
-Second, the legal steps taken to combat sex-selective abortion have not been able
-to reverse the practice.
-The use of sex selection has been increasing over time and is higher now than before the
-PNDT Act was passed.
-The predicted number of sex-selective abortions per 100 women during their childbearing 
-years is now around 10 for women with 8 or more years of education in both urban and
-rural areas.
-This is especially interesting given that the cost of prenatal sex determination 
-has likely increased in response to the PNDT Act.
-This also emphasizes why accounting for the possibility that parents may change
-their decision to use sex selection within a spell is important. 
-As the theory shows an increase in the cost of prenatal sex determination 
-increases the likelihood of parents changing their decision to use sex selection.%
-\footnote{
-A feature of the new approach is that it allows for changes in the decision 
-to use sex selection within a spell.
-This is most clearly seen for better-educated urban women whose only child is a girl, 
-for whom the use of sex selection declines as the second spell becomes longer.
-}
-
-
-Third,  there is little evidence that women with one or more sons use sex selection,
-and their probability of another birth declines substantially once they have a son.
-The main exception is for rural women with one son and one daughter, presumably as an 
-insurance against mortality.
-Hence, parents appear to have a preference for one son rather than multiple sons.
-
-These results imply that the way we have been measuring son preference may not be useful
-for understanding how people make decisions on use of sex selection.
-Recent research suggests that son preference in India, when measured as ideally having 
-more boys than girls, is decreasing over time and with higher education \citep{bhat03,pande07}.%
-\footnote{
-This measure of son preference is commonly used in the literature. 
-See, for example, \citet{clark00}, \citet{Jensen2009}, and \cite{Hu2015}.
-In NFHS, and Demographic and Health Surveys in general, son preference is measured as part 
-of the general fertility questions.
-The first question is how many children a woman would have if she could choose exactly how 
-many.
-This if followed by the sex preference question:
-``How many of these children would you like to be boys, how many would you like to be girls 
-and for how many would the sex not matter?''
-}
-Despite this, use of sex selection has increased and for exactly the group 
-argued to show declining preference for sons.
-The culprit may be that parents want \emph{one} son and will use sex selection 
-intensively to get that son, but refrain from using sex selection to have more sons, 
-and our standard measure of son preference cannot captured that.
-A better approach may be to directly ask if there is a minimum number of each sex that 
-respondents want, possibly in combination with ideal number questions.
-
-This is of more than theoretical interest.
-If son preference is expressed as a very strong desire for having at least one
-son then reductions in fertility will lead to a further increase in the use of sex 
-selection across all groups that hold that preference.
-What is more, as shown in the theory section, it is possible to get increasingly
-unequal sex ratio when fertility falls even if parents do not want more sons
-than daughters as long as they only use abortion on female fetuses.
-A deeper understanding of exactly what type of son preference is responsible 
-for the increase use of sex selection is clearly an important question for
-future data collection and research.
-
-An often-repeated, but poorly substantiated, argument for why there is sex selection 
-in India is the dowry system.
-This explanation fits poorly with observed behavior.
-If true, dowries increase the cost of having girls relative to boys because you have to 
-pay to ensure your girls are married.
-This implies that poorer households should be the most likely to use sex selection, and 
-that the use of sex selection should increase the more girls they have.%
-\footnote{
-The exception would be if dowries increase more than proportionally with education level 
-and income, but there does not appear to be evidence of this.
-} 
-Similarly, for all households there would be a financial incentive to achieve a higher 
-number of sons than daughters.
-As shown here, however, sex selection is predominantly used by better educated and 
-therefore, on average, wealthier households and only to secure one son rather than multiple 
-sons.
-Finally, fertility's rapid decline after the introduction of prenatal sex 
-determination, combined with low cost of sex selection, suggests that parents'
-perceived costs of boys and girls are similar.%
-\footnote{
-See the discussion in Section \ref{sec:changes} for more detail.
-}
-Hence, banning dowries, as India has done, is unlikely to affect the use of sex 
-selection. 
-
-The results presented here lead to a number of important questions for future research.
-One is whether marriage market sex ratios affect the use of sex selection.
-Parents may care not only about the number and type of children they have but 
-also whether they will have grandchildren.
-If they care about grandchildren, then a boy could still be preferred over a girl, but a 
-married girl would be preferred over an unmarried boy \citep{Bhaskar2011}.
-The implication is that parents respond to changes in the expected sex ratio of their
-children's marriage market, even given their preference for a son.
-This hypothesis can be tested using measures of the observed distributions of
-boys and girls and the method proposed here.
-
-A second question for future research, which is especially important when designing 
-policies aimed at reducing the use of sex selection, is who the agents are in the decisions 
-to use sex selection.
-Here, I have treated the household as a single unit, but it is possible, and indeed likely, 
-that husband and wife have different preferences over both the factors that determine  
-use of sex selection and sex selection itself.
-Some of the popular press have assumed that the decision to use sex selection rests 
-with the husband.
-This, however, does not fit well with the general pattern that women, on average, prefer to 
-have fewer children than men do and that declining fertility appear to be the main
-driver of sex selection.
-A better understanding of who holds what preferences in the family would be a good 
-first step to disentangling who makes decisions about sex selection.
-
-A third question is whether there are interactions between sex selection and child outcomes,
-such a survival and education.
-It has been argued that access to sex selection may benefit girls because those girls
-who are born are more likely to be wanted by their parents.
-For mortality it is, however, possible that improvements are the result of a purely 
-mechanical effect.
-As I have shown, increased use of sex selection lengthens the birth spacing after a girl 
-and that by itself can improve her survival chances, even if she is no more wanted than before.
-The method suggested here can predict the likelihood of a woman using prenatal sex 
-determination for a given birth based on her characteristics.
-This predicted probability can then be used in estimations of the determinants
-of child health to directly test whether increasing use of sex selection is 
-beneficial for the girls who are born.
-It is unlikely, however, that a substantial mortality effect exists since sex 
-selection is mainly used by well-educated women, who tend to have lower mortality, 
-but there might be effects on education investments.
-
-% [developments in the future]
-In conclusion, the results provide strong clues to how sex selection use will change in the future.
-Because lower fertility is responsible for the increase in sex-selective abortions, 
-it is likely that we will see further increases in the practice as more families 
-want fewer children, either because of urbanization or because of increases in female 
-education.
-With already low fertility for better-educated urban women, a substantial future increase 
-in sex-selective abortions per woman is unlikely, 
-but a higher proportion of women will belong to this group in the future.
-For rural, better-educated women fertility is still falling.
-To the extent that it falls to the same level as for urban
-women, I expect a corresponding increase in sex selection.
-Finally, and most importantly, we are beginning to see evidence of lower fertility 
-for women with lower levels of education.
-If women with less education hold the same preference for one son as the better-educated,
-once the less-educated women's fertility begins to drop to three---and even two---we are 
-likely to see a substantially increased use of sex selection in India.
+[To be added]
 
 
 
 
+\clearpage
 
-
-\newpage
 \onehalfspacing
 \bibliographystyle{aer}
 \bibliography{collection}
@@ -1680,6 +1443,766 @@ likely to see a substantially increased use of sex selection in India.
   
 % Descriptive statistics tables
 \input{../tables/des_stat.tex}
+
+
+\clearpage
+
+\subsection{Second Spell}
+
+
+
+% SPELL 2 - URBAN - LOW
+\begin{figure}[h]
+\centering
+\caption*{First child a girl}
+\setcounter{subfigure}{-2}
+\subfloat[1972-1984 (N=1,596)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_low_r4_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_r4_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-1}
+\subfloat[1985-1994 (N=2,232)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_low_r4_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_r4_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[1995-2006 (N=952)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_low_r4_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_r4_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption*{First child a boy}
+\setcounter{subfigure}{1}
+\subfloat[1972-1984 (N=1,754)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_low_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_r2_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[1985-1994 (N=2,411)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_low_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_r2_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{3}
+\subfloat[1995-2006 (N=930)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_low_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_r2_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of
+no birth yet from nine months after first birth for urban 
+women with no education by quarter (3 month period). 
+Predictions based on age 18 at first birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell2_low_urban}
+\end{figure}
+
+
+% SPELL 2 - rural - LOW
+\begin{figure}
+\centering
+\caption*{First child a girl}
+\setcounter{subfigure}{-2}
+\subfloat[1972-1984 (N=8,426)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_low_r3_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_r3_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-1}
+\subfloat[1985-1994 (N=11,481)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_low_r3_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_r3_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[1995-2006 (N=3,686)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_low_r3_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_r3_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption*{First child a boy}
+\setcounter{subfigure}{1}
+\subfloat[1972-1984 (N=9,395)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_low_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_r1_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[1985-1994 (N=12,127)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_low_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{3}
+\subfloat[1995-2006 (N=3,860)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_low_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of
+no birth yet from nine months after first birth for rural 
+women with no education by quarter (3 month period). 
+Predictions based on age 18 at first birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell2_low_rural}
+\end{figure}
+
+
+
+
+
+
+
+% \begin{figure}[htpb]
+% \centering
+% \caption*{First child a girl}
+% \setcounter{subfigure}{-2}
+% \subfloat[1972--1984 (N=2,689)]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r4_pc}}\\
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r4_s}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-1}
+% \subfloat[1985--1994 (N=4,869)]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r4_pc}}\\
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r4_s}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{0}
+% \subfloat[1995--2006 (N=3,774)]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r4_pc}}\\
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r4_s}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{First child a boy}
+% \setcounter{subfigure}{1}
+% \subfloat[1972--1984 (N=2,806)]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r2_pc}}\\
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r2_s}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{2}
+% \subfloat[1985--1994 (N=5,246)]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r2_pc}}\\
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r2_s}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{3}
+% \subfloat[1995--2006 (N=3,969)]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r2_pc}}\\
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r2_s}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Predicted probability of having a boy and probability of
+% no birth yet from nine months after first birth for urban 
+% women with 8 or more years of education by quarter (3 month period). 
+% Predictions based on age 22 at first birth.
+% Left column shows results prior to sex selection available, middle column before
+% sex selection illegal and right column after sex selection illegal.
+% N indicates the number of women in the relevant group in the underlying samples.
+% }
+% \label{fig:results_spell2_high_urban}
+% \end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{First child a girl}
+\setcounter{subfigure}{-2}
+\subfloat[1972--1984 (N=1,305)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r3_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r3_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-1}
+\subfloat[1985--1994 (N=3,105)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r3_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{0}
+\subfloat[1995--2006 (N=2,823)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r3_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{First child a boy}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984 (N=1,404)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g1_high_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_r1_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[1985--1994 (N=3,381)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g2_high_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{3}
+\subfloat[1995--2006 (N=3,044)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of
+no birth yet from nine months after first birth for rural
+women with 8 or more years of education by quarter (3 month period). 
+Predictions based on age 22 at first birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell2_high_rural}
+\end{figure}
+
+
+
+
+\clearpage
+
+\subsection{Third Spell}
+
+
+% low education
+
+\begin{figure}[htpb]
+\centering
+\caption*{First two children girls}
+\setcounter{subfigure}{-2}
+\subfloat[1972--1984 (N=493)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_low_r6_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_r6_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-1}
+\subfloat[1985--1994 (N=996)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_low_r6_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_r6_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{0}
+\subfloat[1995--2006 (N=475)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r6_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r6_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{First two children one boy and one girl}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984 (N=1,083)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_low_r4_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_r4_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[1985--1994 (N=2,141)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_low_r4_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_r4_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{3}
+\subfloat[1995--2006 (N=950)]{
+    \begin{minipage}{0.26\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r4_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r4_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for urban 
+women with no of education by quarter (3 month period). 
+Predictions based on age 21 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell3_low_urban}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\ContinuedFloat
+\caption*{First two children boys}
+\setcounter{subfigure}{4}
+\subfloat[1972--1984 (N=569)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_low_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_r2_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{5}
+\subfloat[1985--1994 (N=1,124)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_low_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_r2_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[1995--2006 (N=426)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r2_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+% \label{fig:results_spell3_low_urban}
+\caption{(Continued) Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for urban 
+women with no of education by quarter (3 month period). 
+Predictions based on age 21 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{First two children girls}
+\setcounter{subfigure}{-2}
+\subfloat[1972--1984 (N=2,599)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_low_r5_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_r5_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-1}
+\subfloat[1985--1994 (N=5,062)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_low_r5_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_r5_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{0}
+\subfloat[1995--2006 (N=1,879)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r5_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r5_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{First two children one boy and one girl}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984 (N=5,382)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_low_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_r3_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[1985--1994 (N=10,473)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_low_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_r3_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{3}
+\subfloat[1995--2006 (N=3,779)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r3_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for rural
+women with no of education by quarter (3 month period). 
+Predictions based on age 21 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell3_low_rural}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\ContinuedFloat
+\centering
+\caption*{First two children boys}
+\setcounter{subfigure}{4}
+\subfloat[1972--1984 (N=3,070)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_low_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_r1_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{5}
+\subfloat[1985--1994 (N=5,339)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_low_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[1995--2006 (N=1,846)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_low_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{(Continued) Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for rural
+women with no of education by quarter (3 month period). 
+Predictions based on age 21 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+% \label{fig:results_spell3_low_rural}
+\end{figure}
+
+
+
+% High education
+
+\begin{figure}[htpb]
+\centering
+\caption*{First two children girls}
+\setcounter{subfigure}{-2}
+\subfloat[1972--1984 (N=709)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r6_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r6_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-1}
+\subfloat[1985--1994 (N=1,654)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r6_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r6_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{0}
+\subfloat[1995--2006 (N=1,000)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r6_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r6_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{First two children one boy and one girl}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984 (N=1,409)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r4_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r4_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[1985--1994 (N=3,460)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r4_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r4_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{3}
+\subfloat[1995--2006 (N=2,357)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r4_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r4_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for urban 
+women with 8 or more years of education by quarter (3 month period). 
+Predictions based on age 24 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell3_high_urban}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\ContinuedFloat
+\caption*{First two children boys}
+\setcounter{subfigure}{4}
+\subfloat[1972--1984 (N=780)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r2_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{5}
+\subfloat[1985--1994 (N=1,660)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r2_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[1995--2006 (N=1,098)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r2_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r2_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+% \label{fig:results_spell3_high_urban}
+\caption{(Continued) Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for urban 
+women with 8 or more years of education by quarter (3 month period). 
+Predictions based on age 24 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{First two children girls}
+\setcounter{subfigure}{-2}
+\subfloat[1972--1984 (N=348)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r5_pc}}\\
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r5_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-1}
+\subfloat[1985--1994 (N=982)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r5_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r5_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{0}
+\subfloat[1995--2006 (N=863)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r5_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r5_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{First two children one boy and one girl}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984 (N=700)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r3_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[1985--1994 (N=1,987)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r3_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{3}
+\subfloat[1995--2006 (N=1,819)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r3_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r3_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for rural
+women with 8 or more years of education by quarter (3 month period). 
+Predictions based on age 24 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+\label{fig:results_spell3_high_rural}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\ContinuedFloat
+\centering
+\caption*{First two children boys}
+\setcounter{subfigure}{4}
+\subfloat[1972--1984 (N=370)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g1_high_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_r1_s}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{5}
+\subfloat[1985--1994 (N=945)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g2_high_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[1995--2006 (N=790)]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_r1_pc}}\\
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_r1_s}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{(Continued) Predicted probability of having a boy and probability of
+no birth yet from nine months after second birth for rural
+women with 8 or more years of education by quarter (3 month period). 
+Predictions based on age 24 at second birth.
+Left column shows results prior to sex selection available, middle column before
+sex selection illegal and right column after sex selection illegal.
+N indicates the number of women in the relevant group in the underlying samples.
+}
+% \label{fig:results_spell3_high_rural}
+\end{figure}
+
+\clearpage
+\newpage
 
 
 

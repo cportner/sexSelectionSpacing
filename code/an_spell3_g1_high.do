@@ -11,9 +11,11 @@
 version 13.1
 clear all
 
-loc data "/net/proj/India_NFHS/base"
-loc work "/net/proj/India_NFHS/base/sampleMain"
-loc figdir "~/data/sexselection/graphs/sampleMain"
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
 
 /*-------------------------------------------------------------------*/
@@ -26,7 +28,7 @@ keep if edu_mother >= 8
 local edgroup = "high"
 
 // data manipulations
-do `work'/genSpell3.do
+do genSpell3.do
 
 // Group
 forvalues group = 1/1 {
@@ -40,7 +42,7 @@ forvalues group = 1/1 {
         count
         sum $parents $hh $caste 
         estpost tab gu_group
-        esttab using `figdir'/mainObs_spell3_g`group'_`edgroup'.tex, replace ///
+        esttab using `tables'/mainObs_spell3_g`group'_`edgroup'.tex, replace ///
             cells("b(label(N))") ///
             nonumber nomtitle noobs
         eststo clear
@@ -98,7 +100,7 @@ forvalues group = 1/1 {
 //         local names : colfullnames e(b)
 //         estimates notes: `names'
 //         estimates notes: $lastm
-//         estimates save `work'/results_spell2_g`group', replace
+//         estimates save `data'/results_spell2_g`group', replace
 
         eststo clear
 //         eststo: mlogit birth dur* $b1space ///
@@ -113,7 +115,7 @@ forvalues group = 1/1 {
         local names : colfullnames e(b)
         estimates notes: `names'
         estimates notes: $lastm
-        estimates save `work'/results_spell3_g`group'_hindu_high, replace
+        estimates save `data'/results_spell3_g`group'_hindu_high, replace
 
 //         est store M2
         

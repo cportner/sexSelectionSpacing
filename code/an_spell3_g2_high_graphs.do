@@ -11,9 +11,11 @@
 version 13.1
 clear all
 
-loc data "/net/proj/India_NFHS/base"
-loc work "/net/proj/India_NFHS/base/sampleMain"
-loc figdir "~/data/sexselection/graphs/sampleMain"
+// Generic set of locations
+loc rawdata "../rawData"
+loc data    "../data"
+loc figures "../figures"
+loc tables  "../tables"
 
 
 /*-------------------------------------------------------------------*/
@@ -24,7 +26,7 @@ forvalues group = 2/2 {
         drop _all
         gen id = .
         // `e(estimates_note1)'
-        estimates use `work'/results_spell3_g`group'_hindu_high
+        estimates use `data'/results_spell3_g`group'_hindu_high
         
         // create fake obs for graphs
         loc newn = 0
@@ -99,17 +101,7 @@ forvalues group = 2/2 {
         predict p1, pr outcome(1) // boy
         predict p2, pr outcome(2) // girl
         
-        set scheme s1mono
-        loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-        forvalues k = 1/6 {
-            gen y`k'_b = p1 if id == `k'
-            gen y`k'_g = p2 if id == `k'
-            lab var y`k'_b "Exit: Boy"
-            lab var y`k'_g "Exit: Girl"
-            line y`k'_b y`k'_g t , sort `goptions'
-            graph export `figdir'/spell3_g`group'_high_r`k'.eps , replace
-            !a2ping `figdir'/spell3_g`group'_high_r`k'.eps
-        }
+
         
         // percentage 
         capture predictnl pcbg = predict(outcome(1))/(predict(outcome(1)) + predict(outcome(2))) if p2 > 0.000001, ci(pcbg_l pcbg_u)
@@ -121,33 +113,7 @@ forvalues group = 2/2 {
             gen pc`k'_l = pcbg_l * 100 if id == `k'
             gen pc`k'_u = pcbg_u * 100 if id == `k'
             line pc`k' pc`k'_l pc`k'_u t, sort `goptions' ylabel(30(5)85)
-            graph export `figdir'/spell3_g`group'_high_r`k'_pc.eps, replace
-            !a2ping `figdir'/spell3_g`group'_high_r`k'_pc.eps
-        }
-        
-        // relative risk
-//         capture predictnl RRbg = predict(outcome(1))/predict(outcome(2)) if p2 > 0.000001, ci(RRbg_l RRbg_u)
-//         set scheme s1mono
-//         loc goptions "xtitle(Quarter) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(105, lstyle(foreground) extend) yline(140, lstyle(foreground) extend)"
-//         forvalues k = 1/6 {
-//             gen rr`k'   = RRbg * 100 if id == `k'
-//             gen rr`k'_l = RRbg_l * 100 if id == `k'
-//             gen rr`k'_u = RRbg_u * 100 if id == `k'
-// //             line rr`k' rr`k'_l rr`k'_u t, sort `goptions' ylabel(0.6(0.2)2.2)
-//             line rr`k' rr`k'_l rr`k'_u t, sort `goptions' 
-//             graph export `figdir'/spell3_g`group'_high_r`k'_rr.eps, replace
-//             !a2ping `figdir'/spell3_g`group'_high_r`k'_rr.eps
-//         }
-        
-        // "hazards" curves
-        bysort id (t): gen h = 1-p0
-        lab var h "Hazard"
-        set scheme s1mono
-        loc goptions "xtitle(Quarter) legend(off) clwidth(medthick..) mlwidth(medthick..) "
-        forvalues k = 1/6 {
-            line h t if id == `k', sort `goptions'
-            graph export `figdir'/spell3_g`group'_high_r`k'_h.eps, replace
-            !a2ping `figdir'/spell3_g`group'_high_r`k'_h.eps
+            graph export `figures'/spell3_g`group'_high_r`k'_pc.eps, replace
         }
 
         
@@ -158,14 +124,26 @@ forvalues group = 2/2 {
         loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
         forvalues k = 1/6 {
             line s t if id == `k', sort `goptions'
-            graph export `figdir'/spell3_g`group'_high_r`k'_s.eps, replace
-            !a2ping `figdir'/spell3_g`group'_high_r`k'_s.eps
+            graph export `figures'/spell3_g`group'_high_r`k'_s.eps, replace
         }
+
+
+        // survival curves conditional on parity progression
+        bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
+        loc goptions "xtitle(Quarter) ytitle("") legend(cols(1) ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
+        graph twoway (line pps t if id == 2 , sort `goptions' lpattern(solid) legend(label(1 "Two Boys"))) ///
+             (line pps t if id == 4 , sort `goptions' lpattern(dash) legend(label(2 "One Boy / One Girl"))) ///
+             (line pps t if id == 6 , sort `goptions' lpattern(shortdash) legend(label(3 "Two Girls")))
+        graph export `figures'/spell3_g`group'_high_pps_urban.eps, replace fontface(Palatino) 
+
+        graph twoway (line pps t if id == 1 , sort `goptions' lpattern(solid) legend(label(1 "Two Boys"))) ///
+             (line pps t if id == 3 , sort `goptions' lpattern(dash) legend(label(2 "One Boy / One Girl"))) ///
+             (line pps t if id == 5 , sort `goptions' lpattern(shortdash) legend(label(3 "Two Girls")))
+        graph export `figures'/spell3_g`group'_high_pps_rural.eps, replace fontface(Palatino) 
+
 }
 
-cd `figdir'
-!rm *.eps
-cd `work'
+
 
 
 
