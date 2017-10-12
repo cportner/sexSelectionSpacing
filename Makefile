@@ -7,7 +7,7 @@
 ### without leaving all the other files in the base directory
 
 TEXFILE = sexSelectionSpacing-ver1
-APPFILE = sexSelectionSpacingAppendix-ver1.tex
+APPFILE = sexSelectionSpacingAppendix-ver1
 TEX  = ./paper
 FIG  = ./figures
 TAB  = ./tables
@@ -21,7 +21,7 @@ AREAS   := rural urban
 EDUC    := low med high
 SPELLS  := 2 3
 
-DEPTEST := \
+DEPS := \
     $(foreach spell, $(SPELLS), \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
@@ -32,14 +32,15 @@ DEPTEST := \
 
 # !!need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
- $(TAB)/des_stat.tex $(DEPTEST)
+ $(TAB)/des_stat.tex $(DEPS)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
 
 # Appendix file	
-$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex 	
+$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
+ $(DEPS)	
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -48,6 +49,10 @@ $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
+
+.PHONY: app
+app: $(TEX)/$(APPFILE).pdf
+	open -a Skim $(TEX)/$(APPFILE).pdf & 
 
 .PHONY: all
 all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
