@@ -30,12 +30,7 @@ DEPTEST := \
 
 ### LaTeX part
 
-#.PHONY: all
-#all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
-#	open -a Skim $(TEX)/$(APPFILE).pdf & 
-#	open -a Skim $(TEX)/$(TEXFILE).pdf & 
-
-# need to add a bib file dependency to end of next line
+# !!need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
  $(TAB)/des_stat.tex $(DEPTEST)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -54,22 +49,27 @@ $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex
 view: $(TEX)/$(TEXFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 
+.PHONY: all
+all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
+	open -a Skim $(TEX)/$(APPFILE).pdf & 
+	open -a Skim $(TEX)/$(TEXFILE).pdf & 
+
 	
 ### Stata part         			                                ###
 
 # Create base data set(s)
 # Need "end" file as outcome, here the base data sets for each survey
 $(DAT)/base1.dta: $(COD)/crBase1.do $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
-	cd $(COD); stata-se -b -q crBase1.do 
+	cd $(COD); stata-se -b -q $(<F)
     
 $(DAT)/base2.dta: $(COD)/crBase2.do $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RAW)/iahr42fl.dta
-	cd $(COD); stata-se -b -q crBase2.do 
+	cd $(COD); stata-se -b -q $(<F)
 
 $(DAT)/base3.dta: $(COD)/crBase3.do $(RAW)/iair52fl.dta 
-	cd $(COD); stata-se -b -q crBase3.do 
+	cd $(COD); stata-se -b -q $(<F)
 
 $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3.dta
-	cd $(COD); stata-se -b -q crBase.do 
+	cd $(COD); stata-se -b -q $(<F)
 
 # Descriptive statistics
 $(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
@@ -95,11 +95,13 @@ $(FIG)/%_pps_rural.eps $(FIG)/%_pps_urban.eps: $(COD)/an_%_graphs.do $(DAT)/resu
 # Clean directories for (most) generated files
 # This does not clean generated data files; mainly because I am a chicken
 # The "-" in front prevents Make from stopping with an error if a file type does not exist
+
 .PHONY: cleanall cleantab cleanfig cleantex cleancode
 cleanall: cleanfig cleantab cleantex cleancode
+	-cd $(DAT); rm *.ster
 
 cleantab:
-	-cd $(TAB); rm *.tex	
+	-cd $(TAB); rm *.tex
 	
 cleanfig:
 	-cd $(FIG); rm *.eps
