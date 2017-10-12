@@ -7,6 +7,7 @@
 ### without leaving all the other files in the base directory
 
 TEXFILE = sexSelectionSpacing-ver1
+APPFILE = sexSelectionSpacingAppendix-ver1.tex
 TEX  = ./paper
 FIG  = ./figures
 TAB  = ./tables
@@ -14,33 +15,46 @@ COD  = ./code
 RAW  = ./rawData
 DAT  = ./data
 
+### Generate figure dependencies
+PERIODS := 1 2 3
+AREAS   := rural urban
+EDUC    := low med high
+SPELLS  := 2 3
+
+DEPTEST := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_pps_$(area).eps ) ) ) )
+
 ### LaTeX part
+
+#.PHONY: all
+#all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
+#	open -a Skim $(TEX)/$(APPFILE).pdf & 
+#	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 
 # need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
- $(TAB)/des_stat.tex \
- $(FIG)/spell2_g1_low_pps_rural.eps $(FIG)/spell2_g1_low_pps_urban.eps \
- $(FIG)/spell2_g2_low_pps_rural.eps $(FIG)/spell2_g2_low_pps_urban.eps \
- $(FIG)/spell2_g3_low_pps_rural.eps $(FIG)/spell2_g3_low_pps_urban.eps \
- $(FIG)/spell2_g1_high_pps_rural.eps $(FIG)/spell2_g1_high_pps_urban.eps \
- $(FIG)/spell2_g2_high_pps_rural.eps $(FIG)/spell2_g2_high_pps_urban.eps \
- $(FIG)/spell2_g3_high_pps_rural.eps $(FIG)/spell2_g3_high_pps_urban.eps \
- $(FIG)/spell3_g1_low_pps_rural.eps $(FIG)/spell3_g1_low_pps_urban.eps \
- $(FIG)/spell3_g2_low_pps_rural.eps $(FIG)/spell3_g2_low_pps_urban.eps \
- $(FIG)/spell3_g3_low_pps_rural.eps $(FIG)/spell3_g3_low_pps_urban.eps \
- $(FIG)/spell3_g1_high_pps_rural.eps $(FIG)/spell3_g1_high_pps_urban.eps \
- $(FIG)/spell3_g2_high_pps_rural.eps $(FIG)/spell3_g2_high_pps_urban.eps \
- $(FIG)/spell3_g3_high_pps_rural.eps $(FIG)/spell3_g3_high_pps_urban.eps 
+ $(TAB)/des_stat.tex $(DEPTEST)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
 
+# Appendix file	
+$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex 	
+	cd $(TEX); xelatex $(APPFILE)
+	cd $(TEX); bibtex $(APPFILE)
+	cd $(TEX); xelatex $(APPFILE)
+	cd $(TEX); xelatex $(APPFILE)
+	
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 
-
+	
 ### Stata part         			                                ###
 
 # Create base data set(s)
@@ -58,41 +72,31 @@ $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3
 	cd $(COD); stata-se -b -q crBase.do 
 
 # Descriptive statistics
-$(TAB)/des_stat.tex: $(DAT)/base.dta $(COD)/anDescStat.do
-	cd $(COD); stata-se -b -q anDescStat.do
+$(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
+	cd $(COD); stata-se -b -q $(<F)
+
+
+# Estimation results for graphs
+# Precious is needed because Make generates those through an implicit rule  and therefore
+# treats them as intermediate files and deletes them after running.
+
+.PRECIOUS: $(DAT)/results_%.ster
+
+$(DAT)/results_%.ster: $(COD)/an_%.do $(DAT)/base.dta 
+	cd $(COD); stata-se -b -q $(<F)
 	
+
 # Graphs
 
-$(DAT)/results_spell1_g%.ster: $(COD)/an_spell1_g%.do $(DAT)/base.dta 
+$(FIG)/%_pps_rural.eps $(FIG)/%_pps_urban.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
 	cd $(COD); stata-se -b -q $(<F)
-
-$(FIG)/spell1_g%_pps_rural.eps $(FIG)/spell1_g%_pps_urban.eps: \
- $(COD)/an_spell1_g%_graphs.do $(DAT)/results_spell1_g%.ster 
-	cd $(COD); stata-se -b -q $(<F)
-
-$(DAT)/results_spell2_g%.ster: $(COD)/an_spell2_g%.do $(DAT)/base.dta 
-	cd $(COD); stata-se -b -q $(<F)
-
-$(FIG)/spell2_g%_pps_rural.eps $(FIG)/spell2_g%_pps_urban.eps: \
- $(COD)/an_spell2_g%_graphs.do $(DAT)/results_spell2_g%.ster 
-	cd $(COD); stata-se -b -q $(<F)
-
-$(DAT)/results_spell3_g%.ster: $(COD)/an_spell3_g%.do $(DAT)/base.dta 
-	cd $(COD); stata-se -b -q $(<F)
-
-$(FIG)/spell3_g%_pps_rural.eps $(FIG)/spell3_g%_pps_urban.eps: \
- $(COD)/an_spell3_g%_graphs.do $(DAT)/results_spell3_g%.ster 
-	cd $(COD); stata-se -b -q $(<F)
-
 
 
 # Clean directories for (most) generated files
 # This does not clean generated data files; mainly because I am a chicken
 # The "-" in front prevents Make from stopping with an error if a file type does not exist
-.PHONY: cleanall cleanfig cleantex cleancode
-cleanall: cleanfig cleantex cleancode
-	-cd $(DAT); rm *.ster
-	-cd $(TAB); rm *.tex
+.PHONY: cleanall cleantab cleanfig cleantex cleancode
+cleanall: cleanfig cleantab cleantex cleancode
 
 cleantab:
 	-cd $(TAB); rm *.tex	
@@ -105,4 +109,3 @@ cleantex:
 	
 cleancode:	
 	-cd $(COD); rm *.log
-	
