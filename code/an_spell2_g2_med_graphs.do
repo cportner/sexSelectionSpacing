@@ -2,7 +2,7 @@
 * Hindu with 1-7 years of education, both urban and rural
 * Competing Discrete Hazard model
 * Second spell (from 1st to second birth)
-* an_spell2_g2_med_graphs.do
+* an_spell2_g2_`educ'_graphs.do
 * Begun.: 05/04/10
 * Edited: 2015-03-12
 
@@ -21,11 +21,13 @@ loc tables  "../tables"
 /* LOADING DATA AND CREATING NEW VARIABLES                           */
 /*-------------------------------------------------------------------*/
 
+loc educ "med"
+
 forvalues group = 2/2 {
         drop _all
         gen id = .
         // `e(estimates_note1)'
-        estimates use `data'/results_spell2_g`group'_med
+        estimates use `data'/results_spell2_g`group'_`educ'
         
         // create fake obs for graphs
         loc newn = 0
@@ -97,7 +99,7 @@ forvalues group = 2/2 {
             lab var y`k'_b "Exit: Boy"
             lab var y`k'_g "Exit: Girl"
             line y`k'_b y`k'_g t , sort `goptions'
-            graph export `figdir'/spell2_g`group'_med_r`k'.eps , replace
+            graph export `figures'/spell2_g`group'_`educ'_r`k'.eps , replace
         }
         
         // percentage 
@@ -110,7 +112,7 @@ forvalues group = 2/2 {
             gen pc`k'_l = pcbg_l * 100 if id == `k'
             gen pc`k'_u = pcbg_u * 100 if id == `k'
             line pc`k' pc`k'_l pc`k'_u t, sort `goptions' ylabel(35(5)75)
-            graph export `figdir'/spell2_g`group'_med_r`k'_pc.eps, replace
+            graph export `figures'/spell2_g`group'_`educ'_r`k'_pc.eps, replace
         }
         
                 
@@ -121,22 +123,20 @@ forvalues group = 2/2 {
         loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
         forvalues k = 1/4 {
             line s t if id == `k', sort `goptions'
-            graph export `figdir'/spell2_g`group'_med_r`k'_s.eps, replace
+            graph export `figures'/spell2_g`group'_`educ'_r`k'_s.eps, replace
         }
         
         
         // survival curves conditional on parity progression
         bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
-        loc goptions "xtitle(Quarter) ytitle("") legend(cols(1) ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
-        graph twoway (line pps t if id == 2 , sort `goptions' lpattern(solid) legend(label(1 "Two Boys"))) ///
-             (line pps t if id == 4 , sort `goptions' lpattern(dash) legend(label(2 "One Boy / One Girl"))) ///
-             (line pps t if id == 6 , sort `goptions' lpattern(shortdash) legend(label(3 "Two Girls")))
-        graph export `figures'/spell3_g`group'_med_pps_urban.eps, replace fontface(Palatino) 
+        loc goptions "xtitle(Quarter) ytitle("") legend(ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
+        graph twoway (line pps t if id == 2 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
+             (line pps t if id == 4 , sort `goptions' legend(label(2 "First Child a Girl")))
+        graph export `figures'/spell2_g`group'_`educ'_pps_urban.eps, replace fontface(Palatino) 
 
-        graph twoway (line pps t if id == 1 , sort `goptions' lpattern(solid) legend(label(1 "Two Boys"))) ///
-             (line pps t if id == 3 , sort `goptions' lpattern(dash) legend(label(2 "One Boy / One Girl"))) ///
-             (line pps t if id == 5 , sort `goptions' lpattern(shortdash) legend(label(3 "Two Girls")))
-        graph export `figures'/spell3_g`group'_med_pps_rural.eps, replace fontface(Palatino) 
+        graph twoway (line pps t if id == 1 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
+             (line pps t if id == 3 , sort `goptions' legend(label(2 "First Child a Girl")))
+        graph export `figures'/spell2_g`group'_`educ'_pps_rural.eps, replace fontface(Palatino) 
         
 }
 

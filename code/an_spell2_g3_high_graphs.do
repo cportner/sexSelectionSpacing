@@ -2,7 +2,7 @@
 * Hindu with 8+ years of education, both urban and rural
 * Competing Discrete Hazard model
 * Second spell (from 1st to second birth)
-* an_spell2_g3_high_graphs.do
+* an_spell2_g3_`educ'_graphs.do
 * Begun.: 2017-06-04
 * Edited: 2017-06-07
 
@@ -22,11 +22,13 @@ loc tables  "../tables"
 /* LOADING DATA AND CREATING NEW VARIABLES                           */
 /*-------------------------------------------------------------------*/
 
+loc educ "high"
+
 forvalues group = 3/3 {
         drop _all
         gen id = .
         // `e(estimates_note1)'
-        estimates use `data'/results_spell2_g`group'_high
+        estimates use `data'/results_spell2_g`group'_`educ'
         
         // create fake obs for graphs
         loc newn = 0
@@ -112,7 +114,7 @@ forvalues group = 3/3 {
             gen pc`k'_l = pcbg_l * 100 if id == `k'
             gen pc`k'_u = pcbg_u * 100 if id == `k'
             line pc`k' pc`k'_l pc`k'_u t, sort `goptions' ylabel(35(5)75)
-            graph export `figures'/spell2_g`group'_high_r`k'_pc.eps, replace
+            graph export `figures'/spell2_g`group'_`educ'_r`k'_pc.eps, replace
         }        
         
         
@@ -123,7 +125,7 @@ forvalues group = 3/3 {
         loc goptions "xtitle(Quarter) ytitle("") legend(off)  ylabel(0.0(0.2)1.0, grid glw(medthick)) "
         forvalues k = 1/4 {
             line s t if id == `k', sort `goptions'
-            graph export `figures'/spell2_g`group'_high_r`k'_s.eps, replace
+            graph export `figures'/spell2_g`group'_`educ'_r`k'_s.eps, replace
         }
  
  
@@ -132,11 +134,11 @@ forvalues group = 3/3 {
         loc goptions "xtitle(Quarter) ytitle("") legend(ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
         graph twoway (line pps t if id == 2 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
              (line pps t if id == 4 , sort `goptions' legend(label(2 "First Child a Girl")))
-        graph export `figures'/spell2_g`group'_high_pps_urban.eps, replace fontface(Palatino) 
+        graph export `figures'/spell2_g`group'_`educ'_pps_urban.eps, replace fontface(Palatino) 
 
         graph twoway (line pps t if id == 1 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
              (line pps t if id == 3 , sort `goptions' legend(label(2 "First Child a Girl")))
-        graph export `figures'/spell2_g`group'_high_pps_rural.eps, replace fontface(Palatino) 
+        graph export `figures'/spell2_g`group'_`educ'_pps_rural.eps, replace fontface(Palatino) 
 
 }
 
@@ -172,7 +174,7 @@ exit
             || , `goptions'
         // this is not the correct numbering, but just need to check for running with xelatex
         // To set export fontface for all graphs use "graph set eps fontface Palatino
-        graph export `figures'/spell2_g`group'_high_r4_s.eps, replace fontface(Palatino)
+        graph export `figures'/spell2_g`group'_`educ'_r4_s.eps, replace fontface(Palatino)
         
         
         

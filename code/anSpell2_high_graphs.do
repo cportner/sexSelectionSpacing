@@ -2,7 +2,7 @@
 * Hindu with 8+ years of education, both urban and rural
 * Competing Discrete Hazard model
 * Second spell (from 1st to second birth)
-* anSpell2_high_graphs.do
+* anSpell2_`educ'_graphs.do
 * Begun.: 2017-06-08
 * Edited: 2017-06-08
 
@@ -26,7 +26,7 @@ drop _all
 gen id = .
 gen group = .
 // `e(estimates_note1)'
-estimates use `data'/results_spell2_high
+estimates use `data'/results_spell2_`educ'
 
 // create fake obs for graphs
 loc newn = 0
@@ -129,7 +129,7 @@ forvalues k = 1/4 {
     gen pc`k'_l = pcbg_l * 100 if id == `k'
     gen pc`k'_u = pcbg_u * 100 if id == `k'
     line pc`k' pc`k'_l pc`k'_u t if group == `group', sort `goptions' ylabel(35(5)75)
-    graph export `figures'/spell2_g`group'_high_r`k'_pc.eps, replace
+    graph export `figures'/spell2_g`group'_`educ'_r`k'_pc.eps, replace
 }
 
 
@@ -140,7 +140,7 @@ set scheme s1mono
 loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 forvalues k = 1/4 {
     line s t if id == `k' & group == `group', sort `goptions'
-    graph export `figures'/spell2_g`group'_high_r`k'_s.eps, replace
+    graph export `figures'/spell2_g`group'_`educ'_r`k'_s.eps, replace
 }
 
 // survival curves conditional on parity progression
@@ -150,7 +150,7 @@ set scheme s1mono
 loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 forvalues k = 1/4 {
     line pps t if id == `k' & group == `group', sort `goptions'
-    graph export `figures'/spell2_g`group'_high_r`k'_pps.eps, replace
+    graph export `figures'/spell2_g`group'_`educ'_r`k'_pps.eps, replace
 }
 
 loc goptions "xtitle(Quarter) ytitle("") clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
@@ -172,4 +172,4 @@ graph twoway (line pps t if id == 2 & group == 2, sort `goptions' legend(label(1
 
 graph twoway (line pps t if id == 2 & group == 3, sort `goptions' legend(label(1 "First Child a P1 - B"))) ///
              (line pps t if id == 4 & group == 3, sort `goptions' legend(label(2 "First Child a P1 - G"))) 
-graph export `figures'/combined_spell2_g3_high_pps.eps, replace 
+graph export `figures'/combined_spell2_g3_`educ'_pps.eps, replace 
