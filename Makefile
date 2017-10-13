@@ -20,19 +20,28 @@ PERIODS := 1 2 3
 AREAS   := rural urban
 EDUC    := low med high
 SPELLS  := 2 3
+OUTCOME := 1 2 3 4
 
-DEPS := \
+PPSDEPS := \
     $(foreach spell, $(SPELLS), \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
     $(foreach area, $(AREAS), \
     $(FIG)/spell$(spell)_g$(per)_$(educ)_pps_$(area).eps ) ) ) )
+    
+    
+SPELL1 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(foreach ks, $(OUTCOME), \
+    $(FIG)/spell1_g$(per)_$(educ)_r$(ks)_s.eps ) ) ) 
+
 
 ### LaTeX part
 
 # !!need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
- $(TAB)/des_stat.tex $(DEPS)
+ $(TAB)/des_stat.tex $(PPSDEPS) $(SPELL1)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -40,7 +49,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
 
 # Appendix file	
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
- $(DEPS)	
+ $(PPSDEPS)	
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -93,7 +102,7 @@ $(DAT)/results_%.ster: $(COD)/an_%.do $(DAT)/base.dta
 
 # Graphs
 
-$(FIG)/%_pps_rural.eps $(FIG)/%_pps_urban.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
+$(FIG)/%_r1_s.eps $(FIG)/%_pps_rural.eps $(FIG)/%_pps_urban.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
 	cd $(COD); stata-se -b -q $(<F)
 
 
