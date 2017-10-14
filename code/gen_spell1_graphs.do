@@ -55,6 +55,8 @@ graph export `figures'/spell1_g`group'_`educ'_rural_s.eps, replace
 
 // survival curves conditional on parity progression
 bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
+gen period = `group'
+gen educ   = "`educ'"
 save `data'/spell1_g`group'_`educ' , replace
 
 

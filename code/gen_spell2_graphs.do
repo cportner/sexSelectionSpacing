@@ -83,5 +83,8 @@ graph twoway (line pps t if id == 1 , sort `goptions' legend(label(1 "First Chil
  (line pps t if id == 3 , sort `goptions' legend(label(2 "First Child a Girl")))
 graph export `figures'/spell2_g`group'_`educ'_rural_pps.eps, replace fontface(Palatino) 
 
+// Adding period and education variables for comparison of pps curves
+gen period = `group'
+gen educ   = "`educ'"
 save `data'/spell2_g`group'_`educ' , replace
 

@@ -99,4 +99,6 @@ graph twoway (line pps t if id == 1 , sort `goptions' lpattern(solid) legend(lab
      (line pps t if id == 5 , sort `goptions' lpattern(shortdash) legend(label(3 "Two Girls")))
 graph export `figures'/spell3_g`group'_`educ'_rural_pps.eps, replace fontface(Palatino) 
 
+gen period = `group'
+gen educ   = "`educ'"
 save `data'/spell3_g`group'_`educ' , replace
