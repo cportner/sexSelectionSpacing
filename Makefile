@@ -34,6 +34,11 @@ PPSDEPS := \
     $(foreach per, $(PERIODS), \
     $(foreach area, $(AREAS), \
     $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) ) )
+
+PPSDATA1 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/spell1_g$(per)_$(educ).dta ) )
     
 SPELL1 := \
     $(foreach educ, $(EDUC), \
@@ -88,7 +93,8 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
 # Appendix file	
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
  $(PPSDEPS)	\
- $(SPELL1) $(SPELL2) $(SPELL3)
+ $(SPELL1) $(SPELL2) $(SPELL3) \
+ $(FIG)/spell1_pps.eps
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -133,7 +139,7 @@ $(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta
 	cd $(COD); stata-se -b -q $(<F)
 
 #---------------------------------------------------------------------------------------#
-# Estimation results for graphs                                                         #
+# Estimation results and data for graphs                                                #
 # Precious is needed because Make generates those through an implicit rule  and         #
 # therefore treats them as intermediate files and deletes them after running.           #
 #---------------------------------------------------------------------------------------#
@@ -142,7 +148,10 @@ $(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta
 
 $(DAT)/results_%.ster: $(COD)/an_%.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
-	
+
+$(DAT)/%.dta: $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell1_graphs.do
+	cd $(COD); stata-se -b -q $(<F)
+		
 #--------------------#
 #      Graphs        #
 #--------------------#
@@ -158,7 +167,10 @@ $(TARGET3): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell3_graphs
 
 $(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
 	cd $(COD); stata-se -b -q $(<F)
-
+	
+$(FIG)/spell1_pps.eps: $(COD)/an_spell1_pps.do $(PPSDATA1)
+	cd $(COD); stata-se -b -q $(<F)
+	
 #---------------------------------------------------------------------------------------#
 # Clean directories for (most) generated files                                          #
 # This does not clean generated data files; mainly because I am a chicken               #
