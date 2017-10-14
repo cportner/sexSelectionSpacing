@@ -72,7 +72,7 @@ forvalues group = 1/1 {
         loc ++i
         gen dur`i' = t >= 18 & t <= 24
         
-        do gen_spell1_graphs
+        include gen_spell1_graphs
 }
 
 

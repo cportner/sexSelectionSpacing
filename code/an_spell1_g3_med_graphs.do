@@ -72,7 +72,9 @@ forvalues group = 3/3 {
 //         loc ++i
         gen dur`i' = t >= 15 & t <= 24
         
-                do gen_spell1_graphs
+        dis "i is `i'"
+        
+        include gen_spell1_graphs
 }
 
 

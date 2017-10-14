@@ -70,7 +70,7 @@ forvalues group = 3/3 {
         }
         gen dur`i' = t >= 17 & t <= 24
         
-        do gen_spell1_graphs
+        include gen_spell1_graphs
 }
 
 
