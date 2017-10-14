@@ -45,3 +45,11 @@ forvalues k = 1/2 {
     line s t if id == `k', sort `goptions'
     graph export `figures'/spell1_g`group'_`educ'_r`k'_s.eps, replace
 }
+
+// survival curves conditional on parity progression
+bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
+
+save `data'/spell1_g`group'_`educ' , replace
+
+
+
