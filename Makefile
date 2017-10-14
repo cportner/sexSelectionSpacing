@@ -20,14 +20,14 @@ PERIODS := 1 2 3
 AREAS   := rural urban
 EDUC    := low med high
 SPELLS  := 2 3
-OUTCOME := 1 2 3 4
+OUTCOME := 1 2
 
 PPSDEPS := \
     $(foreach spell, $(SPELLS), \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
     $(foreach area, $(AREAS), \
-    $(FIG)/spell$(spell)_g$(per)_$(educ)_pps_$(area).eps ) ) ) )
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) ) )
     
     
 SPELL1 := \
@@ -102,7 +102,10 @@ $(DAT)/results_%.ster: $(COD)/an_%.do $(DAT)/base.dta
 
 # Graphs
 
-$(FIG)/%_r1_s.eps $(FIG)/%_pps_rural.eps $(FIG)/%_pps_urban.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
+$(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
+	cd $(COD); stata-se -b -q $(<F)
+
+$(FIG)/%_r1_s.eps $(FIG)/%_r2_s.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell1_graphs.do
 	cd $(COD); stata-se -b -q $(<F)
 
 
