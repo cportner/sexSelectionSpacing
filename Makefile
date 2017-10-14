@@ -6,7 +6,7 @@
 ### in base directory and run LaTeX in the paper directory 
 ### without leaving all the other files in the base directory
 
-### If you are not used to Makefile this file might seem overwhelming.
+### If you are not used to Makefile this might seem overwhelming.
 ### The problem for this particular project is that it generates a
 ### very large number of figures and all of those need to go in
 ### dependencies and targets to ensure none are missing when running.
@@ -63,12 +63,12 @@ TARGET1 := \
     
 TARGET2 := \
     $(foreach area, $(AREAS), \
-    $(foreach sex, $COMP2, \
+    $(foreach sex, $(COMP2), \
     $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
 
-TARGET2 := \
+TARGET3 := \
     $(foreach area, $(AREAS), \
-    $(foreach sex, $COMP3, \
+    $(foreach sex, $(COMP3), \
     $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
     
     
@@ -106,6 +106,9 @@ app: $(TEX)/$(APPFILE).pdf
 all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
 	open -a Skim $(TEX)/$(APPFILE).pdf & 
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
+		
+.PHONY: results  # convenience function during development
+results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3)
 
 ###################################################################	
 ### Stata part         			                                ###
