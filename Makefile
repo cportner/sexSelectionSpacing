@@ -71,8 +71,10 @@ TARGET2 := \
     $(foreach sex, $COMP3, \
     $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
     
-
-### LaTeX part
+    
+###################################################################	
+### LaTeX part                                                  ###
+###################################################################	
 
 # !!need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
@@ -105,8 +107,9 @@ all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
 	open -a Skim $(TEX)/$(APPFILE).pdf & 
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 
-	
+###################################################################	
 ### Stata part         			                                ###
+###################################################################	
 
 # Create base data set(s)
 # Need "end" file as outcome, here the base data sets for each survey
@@ -126,10 +129,11 @@ $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3
 $(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
-
-# Estimation results for graphs
-# Precious is needed because Make generates those through an implicit rule  and therefore
-# treats them as intermediate files and deletes them after running.
+#---------------------------------------------------------------------------------------#
+# Estimation results for graphs                                                         #
+# Precious is needed because Make generates those through an implicit rule  and         #
+# therefore treats them as intermediate files and deletes them after running.           #
+#---------------------------------------------------------------------------------------#
 
 .PRECIOUS: $(DAT)/results_%.ster
 
@@ -152,9 +156,11 @@ $(TARGET3): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell3_graphs
 $(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
 	cd $(COD); stata-se -b -q $(<F)
 
-# Clean directories for (most) generated files
-# This does not clean generated data files; mainly because I am a chicken
-# The "-" in front prevents Make from stopping with an error if a file type does not exist
+#---------------------------------------------------------------------------------------#
+# Clean directories for (most) generated files                                          #
+# This does not clean generated data files; mainly because I am a chicken               #
+# The "-" prevents Make from stopping with an error if a file type does not exist       #
+#---------------------------------------------------------------------------------------#
 
 .PHONY: cleanall cleantab cleanfig cleantex cleancode
 cleanall: cleanfig cleantab cleantex cleancode
