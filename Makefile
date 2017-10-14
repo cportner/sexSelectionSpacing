@@ -6,6 +6,11 @@
 ### in base directory and run LaTeX in the paper directory 
 ### without leaving all the other files in the base directory
 
+### If you are not used to Makefile this file might seem overwhelming.
+### The problem for this particular project is that it generates a
+### very large number of figures and all of those need to go in
+### dependencies and targets to ensure none are missing when running.
+
 TEXFILE = sexSelectionSpacing-ver1
 APPFILE = sexSelectionSpacingAppendix-ver1
 TEX  = ./paper
@@ -20,7 +25,8 @@ PERIODS := 1 2 3
 AREAS   := rural urban
 EDUC    := low med high
 SPELLS  := 2 3
-OUTCOME := 1 2
+COMP2   := b g
+COMP3   := bb bg gg
 
 PPSDEPS := \
     $(foreach spell, $(SPELLS), \
@@ -29,19 +35,49 @@ PPSDEPS := \
     $(foreach area, $(AREAS), \
     $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) ) )
     
-    
 SPELL1 := \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
-    $(foreach ks, $(OUTCOME), \
-    $(FIG)/spell1_g$(per)_$(educ)_r$(ks)_s.eps ) ) ) 
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell1_g$(per)_$(educ)_$(area)_s.eps $(FIG)/spell1_g$(per)_$(educ)_$(area)_pc.eps ) ) ) 
 
+SPELL2 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(foreach area, $(AREAS), \
+    $(foreach sex, $(COMP2), \
+    $(FIG)/spell2_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell2_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
+
+SPELL3 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(foreach area, $(AREAS), \
+    $(foreach sex, $(COMP3), \
+    $(FIG)/spell3_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell3_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
+
+### Generate figure targets
+
+TARGET1 := \
+    $(foreach area, $(AREAS), \
+    $(FIG)/%_$(area)_s.eps $(FIG)/%_$(area)_pc.eps )
+    
+TARGET2 := \
+    $(foreach area, $(AREAS), \
+    $(foreach sex, $COMP2, \
+    $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
+
+TARGET2 := \
+    $(foreach area, $(AREAS), \
+    $(foreach sex, $COMP3, \
+    $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
+    
 
 ### LaTeX part
 
 # !!need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
- $(TAB)/des_stat.tex $(PPSDEPS) $(SPELL1)
+ $(TAB)/des_stat.tex $(PPSDEPS) \
+ $(SPELL1) $(SPELL2) $(SPELL3)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -49,7 +85,8 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
 
 # Appendix file	
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
- $(PPSDEPS)	
+ $(PPSDEPS)	\
+ $(SPELL1) $(SPELL2) $(SPELL3)
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -99,15 +136,21 @@ $(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta
 $(DAT)/results_%.ster: $(COD)/an_%.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 	
+#--------------------#
+#      Graphs        #
+#--------------------#
 
-# Graphs
+$(TARGET1): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell1_graphs.do
+	cd $(COD); stata-se -b -q $(<F)
+
+$(TARGET2): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell2_graphs.do
+	cd $(COD); stata-se -b -q $(<F)
+
+$(TARGET3): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell3_graphs.do
+	cd $(COD); stata-se -b -q $(<F)
 
 $(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
 	cd $(COD); stata-se -b -q $(<F)
-
-$(FIG)/%_r1_s.eps $(FIG)/%_r2_s.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell1_graphs.do
-	cd $(COD); stata-se -b -q $(<F)
-
 
 # Clean directories for (most) generated files
 # This does not clean generated data files; mainly because I am a chicken
