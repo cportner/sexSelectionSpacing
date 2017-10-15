@@ -76,6 +76,11 @@ TARGET3 := \
     $(foreach sex, $(COMP3), \
     $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
     
+TARGETPPS1 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell1_$(educ)_$(area)_pps.eps ) )
+        
     
 ###################################################################	
 ### LaTeX part                                                  ###
@@ -84,7 +89,8 @@ TARGET3 := \
 # !!need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
  $(TAB)/des_stat.tex $(PPSDEPS) \
- $(SPELL1) $(SPELL2) $(SPELL3)
+ $(SPELL1) $(SPELL2) $(SPELL3) \
+ $(TARGETPPS1) 
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -94,7 +100,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
  $(PPSDEPS)	\
  $(SPELL1) $(SPELL2) $(SPELL3) \
- $(FIG)/spell1_pps.eps
+ $(TARGETPPS1) 
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -168,7 +174,7 @@ $(TARGET3): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell3_graphs
 $(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
 	cd $(COD); stata-se -b -q $(<F)
 	
-$(FIG)/spell1_pps.eps: $(COD)/an_spell1_pps.do $(PPSDATA1)
+$(TARGETPPS1): $(COD)/an_spell1_pps.do $(PPSDATA1)
 	cd $(COD); stata-se -b -q $(<F)
 	
 #---------------------------------------------------------------------------------------#
