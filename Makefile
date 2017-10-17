@@ -145,7 +145,7 @@ all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
-results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4)
+results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) $(TARGETPPS1) $(TARGETPPS4)
 
 ###################################################################	
 ### Stata part         			                                ###
