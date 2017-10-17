@@ -40,6 +40,11 @@ PPSDATA1 := \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
     $(DAT)/spell1_g$(per)_$(educ).dta ) )
+
+PPSDATA4 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/spell4_g$(per)_$(educ).dta ) )
     
 SPELL1 := \
     $(foreach educ, $(EDUC), \
@@ -94,6 +99,12 @@ TARGETPPS1 := \
     $(foreach educ, $(EDUC), \
     $(foreach area, $(AREAS), \
     $(FIG)/spell1_$(educ)_$(area)_pps.eps ) )
+
+TARGETPPS4 := \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell4_g$(per)_$(educ)_$(area)_pps.eps ) ) )
         
     
 ###################################################################	
@@ -104,7 +115,7 @@ TARGETPPS1 := \
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
  $(TAB)/des_stat.tex $(PPSDEPS) \
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) 
+ $(TARGETPPS1) $(TARGETPPS4) 
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -114,7 +125,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
  $(PPSDEPS)	\
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) 
+ $(TARGETPPS1) $(TARGETPPS4)
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -169,8 +180,12 @@ $(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta
 $(DAT)/results_%.ster: $(COD)/an_%.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
-$(DAT)/%.dta: $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell1_graphs.do
+$(DAT)/spell1_%.dta: $(COD)/an_spell1_%_graphs.do $(DAT)/results_spell1_%.ster $(COD)/gen_spell1_graphs.do
 	cd $(COD); stata-se -b -q $(<F)
+
+$(DAT)/spell4_%.dta: $(COD)/an_spell4_%_graphs.do $(DAT)/results_spell4_%.ster $(COD)/gen_spell4_graphs.do
+	cd $(COD); stata-se -b -q $(<F)
+
 		
 #--------------------#
 #      Graphs        #
@@ -192,6 +207,9 @@ $(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/resu
 	cd $(COD); stata-se -b -q $(<F)
 	
 $(TARGETPPS1): $(COD)/an_spell1_pps.do $(PPSDATA1)
+	cd $(COD); stata-se -b -q $(<F)
+	
+$(TARGETPPS4): $(COD)/an_spell4_pps.do $(PPSDATA4)
 	cd $(COD); stata-se -b -q $(<F)
 	
 #---------------------------------------------------------------------------------------#
