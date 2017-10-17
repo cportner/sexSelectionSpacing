@@ -111,8 +111,8 @@ TARGETPPS4 := \
 ### LaTeX part                                                  ###
 ###################################################################	
 
-# !!need to add a bib file dependency to end of next line
-$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
+# Main paper
+$(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/des_stat.tex $(PPSDEPS) \
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
  $(TARGETPPS1) $(TARGETPPS4) 
@@ -122,7 +122,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
 	cd $(TEX); xelatex $(TEXFILE)
 
 # Appendix file	
-$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
+$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex sex_selection_spacing.bib \
  $(PPSDEPS)	\
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
  $(TARGETPPS1) $(TARGETPPS4)
