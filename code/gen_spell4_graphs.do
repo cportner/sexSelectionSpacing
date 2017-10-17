@@ -97,6 +97,8 @@ line s t if !urban & !girl1 & !girl2 & !girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_bbb_s.eps, replace
 
 
+// survival curves conditional on parity progression
+bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
 
 gen period = `group'
 gen educ   = "`educ'"
