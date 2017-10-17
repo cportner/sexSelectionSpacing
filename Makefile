@@ -27,6 +27,7 @@ EDUC    := low med high
 SPELLS  := 2 3
 COMP2   := b g
 COMP3   := bb bg gg
+COMP4   := bbb bbg bgg ggg
 
 PPSDEPS := \
     $(foreach spell, $(SPELLS), \
@@ -60,7 +61,15 @@ SPELL3 := \
     $(foreach sex, $(COMP3), \
     $(FIG)/spell3_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell3_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
 
-### Generate figure targets
+SPELL4 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(foreach area, $(AREAS), \
+    $(foreach sex, $(COMP4), \
+    $(FIG)/spell4_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell4_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
+
+
+### Generate figure targets for graphs
 
 TARGET1 := \
     $(foreach area, $(AREAS), \
@@ -74,6 +83,11 @@ TARGET2 := \
 TARGET3 := \
     $(foreach area, $(AREAS), \
     $(foreach sex, $(COMP3), \
+    $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
+
+TARGET4 := \
+    $(foreach area, $(AREAS), \
+    $(foreach sex, $(COMP4), \
     $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
     
 TARGETPPS1 := \
@@ -89,7 +103,7 @@ TARGETPPS1 := \
 # !!need to add a bib file dependency to end of next line
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
  $(TAB)/des_stat.tex $(PPSDEPS) \
- $(SPELL1) $(SPELL2) $(SPELL3) \
+ $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
  $(TARGETPPS1) 
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
@@ -99,7 +113,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex \
 # Appendix file	
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex \
  $(PPSDEPS)	\
- $(SPELL1) $(SPELL2) $(SPELL3) \
+ $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
  $(TARGETPPS1) 
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
@@ -120,7 +134,7 @@ all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
-results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3)
+results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4)
 
 ###################################################################	
 ### Stata part         			                                ###
@@ -169,6 +183,9 @@ $(TARGET2): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell2_graphs
 	cd $(COD); stata-se -b -q $(<F)
 
 $(TARGET3): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell3_graphs.do
+	cd $(COD); stata-se -b -q $(<F)
+
+$(TARGET4): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell4_graphs.do
 	cd $(COD); stata-se -b -q $(<F)
 
 $(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
