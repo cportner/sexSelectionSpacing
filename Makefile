@@ -122,7 +122,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
 	cd $(TEX); xelatex $(TEXFILE)
 
 # Appendix file	
-$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex sex_selection_spacing.bib \
+$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(PPSDEPS)	\
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
  $(TARGETPPS1) $(TARGETPPS4)
