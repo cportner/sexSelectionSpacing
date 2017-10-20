@@ -41,6 +41,16 @@ PPSDATA1 := \
     $(foreach per, $(PERIODS), \
     $(DAT)/spell1_g$(per)_$(educ).dta ) )
 
+PPSDATA2 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/spell2_g$(per)_$(educ).dta ) )
+
+PPSDATA3 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/spell3_g$(per)_$(educ).dta ) )
+
 PPSDATA4 := \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
@@ -115,7 +125,8 @@ TARGETPPS4 := \
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/des_stat.tex $(PPSDEPS) \
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) $(TARGETPPS4) 
+ $(TARGETPPS1) $(TARGETPPS4) \
+ $(TAB)/median_sex_ratio.tex
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -211,6 +222,14 @@ $(TARGETPPS1): $(COD)/an_spell1_pps.do $(PPSDATA1)
 	
 $(TARGETPPS4): $(COD)/an_spell4_pps.do $(PPSDATA4)
 	cd $(COD); stata-se -b -q $(<F)
+	
+#--------------------#
+#      Tables        #
+#--------------------#
+	
+$(TAB)/median_sex_ratio.tex: $(COD)/an_median_sex_ratio.do 	\
+ $(PPSDATA1) $(PPSDATA2) $(PPSDATA3) $(PPSDATA4)
+	cd $(COD); stata-se -b -q $(<F)	
 	
 #---------------------------------------------------------------------------------------#
 # Clean directories for (most) generated files                                          #
