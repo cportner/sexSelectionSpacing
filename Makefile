@@ -126,7 +126,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/des_stat.tex $(PPSDEPS) \
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
  $(TARGETPPS1) $(TARGETPPS4) \
- $(TAB)/median_sex_ratio.tex
+ $(TAB)/median_sex_ratio_low.tex  $(TAB)/median_sex_ratio_med.tex  $(TAB)/median_sex_ratio_high.tex
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -156,7 +156,9 @@ all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
-results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) $(TARGETPPS1) $(TARGETPPS4)
+results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
+ $(TARGETPPS1) $(TARGETPPS4) \
+ $(TAB)/median_sex_ratio_low.tex  $(TAB)/median_sex_ratio_med.tex  $(TAB)/median_sex_ratio_high.tex
 
 ###################################################################	
 ### Stata part         			                                ###
@@ -227,7 +229,7 @@ $(TARGETPPS4): $(COD)/an_spell4_pps.do $(PPSDATA4)
 #      Tables        #
 #--------------------#
 	
-$(TAB)/median_sex_ratio.tex: $(COD)/an_median_sex_ratio.do 	\
+$(TAB)/median_sex_ratio_low.tex  $(TAB)/median_sex_ratio_med.tex  $(TAB)/median_sex_ratio_high.tex: $(COD)/an_median_sex_ratio.do \
  $(PPSDATA1) $(PPSDATA2) $(PPSDATA3) $(PPSDATA4)
 	cd $(COD); stata-se -b -q $(<F)	
 	
