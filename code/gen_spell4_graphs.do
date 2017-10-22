@@ -40,62 +40,62 @@ gen pc_l = pcbg_l * 100
 gen pc_u = pcbg_u * 100
 
 set scheme s1mono
-loc goptions "xtitle(Months) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(25(5)90)"
+loc goptions "xtitle(Months) xlabel(0(6)54) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(25(5)90)"
 
 line pc pc_l pc_u months if urban & girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_ggg_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_ggg_pc.eps, replace fontface(Palatino) 
 
 line pc pc_l pc_u months if urban & girl2, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_bgg_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_bgg_pc.eps, replace fontface(Palatino) 
 
 line pc pc_l pc_u months if urban & girl1, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_bbg_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_bbg_pc.eps, replace fontface(Palatino) 
 
 line pc pc_l pc_u months if urban & !girl1 & !girl2 & !girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_bbb_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_bbb_pc.eps, replace fontface(Palatino) 
 
 line pc pc_l pc_u months if !urban & girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_ggg_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_ggg_pc.eps, replace fontface(Palatino) 
 
 line pc pc_l pc_u months if !urban & girl2, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_bgg_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_bgg_pc.eps, replace fontface(Palatino) 
 
 line pc pc_l pc_u months if !urban & girl1, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_bbg_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_bbg_pc.eps, replace fontface(Palatino) 
 
 line pc pc_l pc_u months if !urban & !girl1 & !girl2 & !girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_bbb_pc.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_bbb_pc.eps, replace fontface(Palatino) 
 
 
 
 // survival curves
 bysort id (t): gen s = exp(sum(ln(p0)))
 set scheme s1mono
-loc goptions "xtitle(Months) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+loc goptions "xtitle(Months) xlabel(0(6)54) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 
 line s months if urban & girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_ggg_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_ggg_s.eps, replace fontface(Palatino) 
 
 line s months if urban & girl2, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_bgg_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_bgg_s.eps, replace fontface(Palatino) 
 
 line s months if urban & girl1, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_bbg_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_bbg_s.eps, replace fontface(Palatino) 
 
 line s months if urban & !girl1 & !girl2 & !girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_urban_bbb_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_urban_bbb_s.eps, replace fontface(Palatino) 
 
 line s months if !urban & girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_ggg_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_ggg_s.eps, replace fontface(Palatino) 
 
 line s months if !urban & girl2, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_bgg_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_bgg_s.eps, replace fontface(Palatino) 
 
 line s months if !urban & girl1, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_bbg_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_bbg_s.eps, replace fontface(Palatino) 
 
 line s months if !urban & !girl1 & !girl2 & !girl3, sort `goptions'
-graph export `figures'/spell4_g`group'_`educ'_rural_bbb_s.eps, replace
+graph export `figures'/spell4_g`group'_`educ'_rural_bbb_s.eps, replace fontface(Palatino) 
 
 
 // survival curves conditional on parity progression
