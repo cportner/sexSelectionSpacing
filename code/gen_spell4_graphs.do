@@ -16,6 +16,7 @@ replace urban = 1 if id == 2 | id == 4 | id == 6 | id == 8
 gen girl1Xurban = girl1 * urban
 gen girl2Xurban = girl2 * urban
 gen girl3Xurban = girl3 * urban
+gen months = t * 3
 
 // NON-PROPORTIONALITY
 capture drop np*        
@@ -39,30 +40,30 @@ gen pc_l = pcbg_l * 100
 gen pc_u = pcbg_u * 100
 
 set scheme s1mono
-loc goptions "xtitle(Quarter) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(25(5)90)"
+loc goptions "xtitle(Months) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(25(5)90)"
 
-line pc pc_l pc_u t if urban & girl3, sort `goptions'
+line pc pc_l pc_u months if urban & girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_ggg_pc.eps, replace
 
-line pc pc_l pc_u t if urban & girl2, sort `goptions'
+line pc pc_l pc_u months if urban & girl2, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_bgg_pc.eps, replace
 
-line pc pc_l pc_u t if urban & girl1, sort `goptions'
+line pc pc_l pc_u months if urban & girl1, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_bbg_pc.eps, replace
 
-line pc pc_l pc_u t if urban & !girl1 & !girl2 & !girl3, sort `goptions'
+line pc pc_l pc_u months if urban & !girl1 & !girl2 & !girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_bbb_pc.eps, replace
 
-line pc pc_l pc_u t if !urban & girl3, sort `goptions'
+line pc pc_l pc_u months if !urban & girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_ggg_pc.eps, replace
 
-line pc pc_l pc_u t if !urban & girl2, sort `goptions'
+line pc pc_l pc_u months if !urban & girl2, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_bgg_pc.eps, replace
 
-line pc pc_l pc_u t if !urban & girl1, sort `goptions'
+line pc pc_l pc_u months if !urban & girl1, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_bbg_pc.eps, replace
 
-line pc pc_l pc_u t if !urban & !girl1 & !girl2 & !girl3, sort `goptions'
+line pc pc_l pc_u months if !urban & !girl1 & !girl2 & !girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_bbb_pc.eps, replace
 
 
@@ -70,30 +71,30 @@ graph export `figures'/spell4_g`group'_`educ'_rural_bbb_pc.eps, replace
 // survival curves
 bysort id (t): gen s = exp(sum(ln(p0)))
 set scheme s1mono
-loc goptions "xtitle(Quarter) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+loc goptions "xtitle(Months) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 
-line s t if urban & girl3, sort `goptions'
+line s months if urban & girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_ggg_s.eps, replace
 
-line s t if urban & girl2, sort `goptions'
+line s months if urban & girl2, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_bgg_s.eps, replace
 
-line s t if urban & girl1, sort `goptions'
+line s months if urban & girl1, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_bbg_s.eps, replace
 
-line s t if urban & !girl1 & !girl2 & !girl3, sort `goptions'
+line s months if urban & !girl1 & !girl2 & !girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_urban_bbb_s.eps, replace
 
-line s t if !urban & girl3, sort `goptions'
+line s months if !urban & girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_ggg_s.eps, replace
 
-line s t if !urban & girl2, sort `goptions'
+line s months if !urban & girl2, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_bgg_s.eps, replace
 
-line s t if !urban & girl1, sort `goptions'
+line s months if !urban & girl1, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_bbg_s.eps, replace
 
-line s t if !urban & !girl1 & !girl2 & !girl3, sort `goptions'
+line s months if !urban & !girl1 & !girl2 & !girl3, sort `goptions'
 graph export `figures'/spell4_g`group'_`educ'_rural_bbb_s.eps, replace
 
 
@@ -102,4 +103,8 @@ bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
 
 gen period = `group'
 gen educ   = "`educ'"
+// Merge in observation data
+merge m:1 girl1 girl2 girl3 urban using `data'/obs_spell4_`group'_`educ'
+sort id t
+drop _merge
 save `data'/spell4_g`group'_`educ' , replace

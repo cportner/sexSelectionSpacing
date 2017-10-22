@@ -25,7 +25,7 @@ loc tables  "../tables"
 use `data'/base
 
 keep if edu_mother >= 1 & edu_mother < 8
-local edgroup = "med"
+loc educ = "med"
 
 // data manipulation
 do genSpell4
@@ -42,7 +42,7 @@ forvalues group = 1/1 {
         count
         sum $parents $hh $caste 
         estpost tab gu_group
-        esttab using `tables'/mainObs_spell4_g`group'_`edgroup'.tex, replace ///
+        esttab using `tables'/mainObs_spell4_g`group'_`educ'.tex, replace ///
             cells("b(label(N))") ///
             nonumber nomtitle noobs
         eststo clear
@@ -61,6 +61,15 @@ forvalues group = 1/1 {
         tab b4_space if birth == 1 | birth == 2
         tab b4_space gu_group if birth == 1 | birth == 2
         tab t if b4_cen == 0
+
+        // Save number of observation data
+        preserve
+        bysort id (t): egen any_birth = max(birth)
+        bysort id (t): keep if _n == 1
+        gen had_birth = any_birth == 1 | any_birth == 2
+        collapse (count) num_obs = had_birth (sum) num_births = had_birth , by(girl1 girl2 girl3 urban) 
+        save `data'/obs_spell4_`group'_`educ', replace
+        restore
         
         // PIECE-WISE LINEAR HAZARDS
         loc i = 1

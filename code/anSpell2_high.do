@@ -27,7 +27,7 @@ loc tables  "../tables"
 use `data'/base
 
 keep if edu_mother >= 8
-local edgroup = "high"
+loc educ = "high"
 
 // data manipulation
 do genSpell2
