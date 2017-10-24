@@ -174,8 +174,7 @@ between son preference and birth spacing.
 This is because each sex-selective abortion substantially increases the 
 spacing from last birth. 
 For every abortion a woman has we should expect the duration from last
-birth to increase by approximately a year.%
-\footnote{
+birth to increase by approximately a year.
 This increase consists of three parts starting from the time of the 
 abortion.
 First, the uterus needs at least two menstrual cycles to recover 
@@ -185,11 +184,13 @@ of a spontaneous abortion \citep{zhou00b}.
 Second, an average of 6 months to next conception \citep{Wang2003}.
 Finally, sex determination tests are generally reliable only from 3 months 
 of gestation onwards.
-These three parts add up to 12 months.
+These three parts add up to 12 months.%
+\footnote{
 The waiting time to conception does vary by woman, but even if it is very 
 short, say one  month, the additional space between births would still
 be 6 months per abortion.
 }
+
 
 As a result, we now have a situation where families with the \emph{strongest} son 
 preference may show the \emph{longest} spacing after the birth of a daughter
@@ -431,7 +432,7 @@ In the reorganized data the outcome variable is zero if the
 woman does not have a child in a given period, one if she gives birth to a son 
 in that period, and two if she gives birth to a daughter in that period.
 
-The main downside of my approach is that direct interpretation of the estimated 
+The main downside of this approach is that direct interpretation of the estimated 
 coefficients for this model is challenging because of the competing risk setup.
 First, coefficients show the change in hazards relative to the base outcome, 
 no birth, rather than simply the hazard of an event.
@@ -776,11 +777,10 @@ women dropped because of recall error concerns.
 
 \subsection{Spell Definition\label{sec:spell_def}}
 
-Spell duration is measured in quarters of a year, that is 3 month periods, hereafter
-referred to as quarters.
-The first spell begins at the month of marriage rather than 9 months after because many 
+Spell duration is measured in months.
+The first spell begins at the month of marriage because many 
 women report giving birth less than 9 months after they were married.
-For women who began living with their husbands at too young an age to conceive the 
+For women who began living with their husbands at too young an age to conceive, the 
 starting point should ideally be first ovulation, when she becomes ``at risk'' for a 
 pregnancy, rather than month of marriage.
 Unfortunately, information on age of menarche is only available in NFHS-1.
@@ -797,8 +797,8 @@ Censoring can happen for three reasons:
 the survey takes place;
 the woman is sterilized;
 or the number of births observed becomes too sparse for the method to work.
-The timing of censoring because of too few births vary slightly by spell but is generally 
-21 quarters after the beginning of the spell.
+The timing of censoring because of too few births vary slightly by spell but 
+is generally 5 years or longer after the beginning of the spell.
 
 I group spells into three time periods based on spell start date:
 1972--1984, 1985--1994, and 1995--2006.
@@ -889,12 +889,13 @@ The cost of children is higher in urban areas than in rural and access to prenat
 sex determination is easier, and both are expected to be associated with
 greater use of sex-selective abortions in urban than in rural areas.
 Because of concerns about selective migration I use where the household was living
-at the end of each spell.%
-\footnote{
-As online Appendix Table D.1 shows there is little difference across
-education levels in migration patterns within each period and patterns across periods
-are also relatively stable.
-}
+at the end of each spell.
+% %
+% \footnote{
+% As online Appendix Table D.1 shows there is little difference across
+% education levels in migration patterns within each period and patterns across periods
+% are also relatively stable.
+% }
 
 The sex composition of children, area of residence, and the interactions between
 these are all interacted with the piece-wise linear baseline hazard dummies.
@@ -978,26 +979,58 @@ Among the high education group almost 70 percent lived in urban areas
 during the first period but this had fallen to less than 60 percent
 in the last period.
 
-The increase in urbanization and education is likely to exert downward pressure
-on fertility and the high censoring rates for the later periods are evidence of this.
-The average number of children born to women by the time they turn 35 illustrate how
-strong the decline in fertility has been.%
-\footnote{
-Figure \ref{fig:fertility} shows the full results.
-}
-Women born in the early 1940s had on average close to 5 children when 
-they reached 35, but women born in the early 1970s had only just over three children.
-The low number of children is especially remarkable because it combines
-all education levels and all areas of residence.
-% Hence, fertility in cities is likely substantially lower.
+% The increase in urbanization and education is likely to exert downward pressure
+% on fertility and the high censoring rates for the later periods are evidence of this.
+% The average number of children born to women by the time they turn 35 illustrate how
+% strong the decline in fertility has been.%
+% \footnote{
+% Figure \ref{fig:fertility} shows the full results.
+% }
+% Women born in the early 1940s had on average close to 5 children when 
+% they reached 35, but women born in the early 1970s had only just over three children.
+% The low number of children is especially remarkable because it combines
+% all education levels and all areas of residence.
+% % Hence, fertility in cities is likely substantially lower.
 
 
 \section{Results\label{sec:results}}
 
+The main question of interest here is how the duration between one
+birth and the next is related to son preference.
+The hypothese examined here is that in the absence of sex selection son 
+preference leads to shorter spacing after the birth of a girl than after the 
+birth of a boy, whereas son preference increases the spacing after the birth 
+of a girl relative to after the birth of a boy when prenatal sex selection is 
+used.
+We would still expect parents to \emph{begin} trying to conceive earlier
+after the birth of a girl than after a boy, but the abortions will automatically
+increase the length of the space, and may even lead to longer spacing after the
+birth of girls than after boys.
+
+To provide a first look at how the hypothese holds up, Tables 
+\ref{tab:median_sex_ratio_low},
+\ref{tab:median_sex_ratio_med}, and
+\ref{tab:median_sex_ratio_high}
+show predicted median duration and sex ratios for the three different
+education levels by spell, sex composition, and periods.
+These predictions are based on the estimation results employing the method 
+detailed in Section \ref{sec:strategy} and are calculated using the means of 
+the continuous explanatory variables and the majority category for categorical 
+explanatory variables.
+The median duration is the number of months it is predicted to take for
+half of the women who are predicted to have a birth by the end of spell length
+covered.
+For example, if 80\% of women with a given set of characteristics are predicted to
+have a birth by the end of the end of spell, the median duration is the number of
+months it would take for 40\% of women to have a birth.
+The sex ratio is the percent of births that result in a son, based on all the 
+births predicted to happen over the spell.
 
 
 % Median duration and sex ratio tables
 \input{../tables/median_sex_ratio_low.tex}
+
+
 
 
 \input{../tables/median_sex_ratio_med.tex}
@@ -1102,14 +1135,14 @@ evidence of sex selection affecting the sex ratio for women with a girl as their
 first child.
 In panel (a), which covers the period before sex selection became generally
 available, there is no significant evidence of a sex ratio biased towards males.
-Panel (b) shows a more male biased sex ratio but only a few of quarters show
+Panel (b) shows a more male biased sex ratio but only a few months show
 a statistically significant difference from the natural rate and the shallow 
 slope of the survival curve indicates that relatively few births took place
-during these quarters.
+during these months.
 Panel (c), however, shows clear evidence of the effect of access to prenatal
 sex determination with a male biased sex ratio for more of the two first years.%
 \footnote{
-Recall that quarter 0 is equivalent to 9 months (3 quarters) after the birth
+Recall that month 0 is equivalent to 9 months after the birth
 of the first child.
 }
 
