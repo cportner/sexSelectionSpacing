@@ -134,10 +134,16 @@ foreach educ in "low" "med" "high" {
                     // Add results to table
                     sum num_birth `sexcomp'
                     if `r(mean)' > 100 {
+                    	if `r(mean)' < 500 {
+                    		loc low "^{\dagger}"
+                    	}
+                    	else {
+                    		loc low "          "
+                    	}
                         sum median `sexcomp'
                         file write table "& " %2.0fc (`r(mean)') "      "
                         sum pct_sons `sexcomp'
-                        file write table "& " %3.1fc (`r(max)') "     "
+                        file write table "& " %3.1fc (`r(max)') "`low'     "
                     } 
                     else {
                         file write table "&    .    "
@@ -164,7 +170,8 @@ foreach educ in "low" "med" "high" {
     file write table "by the end of the spell, the median duration is the number of months it is predicted to take before 40 percent of women have had a child." _n
     file write table "Percent boys is the predicted percent of births that result in a son" _n
     file write table "for women with the given set of characteristics over the entire spell length used for estimations." _n
-    file write table "Predictions based on 100 or fewer births are not shown." _n
+    file write table "Predictions based on estimation of cells with 100 or fewer births are not shown." _n
+    file write table "\item[\dagger] Cell has less than 500 births in sample used for estimation. "
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
     file write table "\end{small}" _n
