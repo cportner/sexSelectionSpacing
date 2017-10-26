@@ -171,7 +171,7 @@ foreach educ in "low" "med" "high" {
     file write table "Percent boys is the predicted percent of births that result in a son" _n
     file write table "for women with the given set of characteristics over the entire spell length used for estimations." _n
     file write table "Predictions based on estimation of cells with 100 or fewer births are not shown." _n
-    file write table "\item[\dagger] Cell has 500 or fewer births in sample used for estimation. "
+    file write table "\item[$\dagger$] Cell has 500 or fewer births in sample used for estimation. "
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
     file write table "\end{small}" _n
