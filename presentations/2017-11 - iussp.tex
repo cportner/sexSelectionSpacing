@@ -1,0 +1,735 @@
+% IUSSP 2017 in Cape Town
+% 2017-11 - iussp.tex
+
+\documentclass[red]{beamer}
+
+\mode<presentation>
+{
+%   \usetheme{Madrid}
+%  \usetheme{Rochester} - very clean
+%    \usetheme{Singapore} - also nice 
+%    \usetheme{Warsaw}
+   \usetheme{Frankfurt}
+
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{dcolumn}
+% \usepackage{xyling}
+\usepackage{subfigure}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{amsmath}
+% \usepackage{caption}
+\usepackage{rotating}
+% \usepackage[pdftex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+
+\setbeamertemplate{navigation symbols}{}
+
+
+\newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\HRule}{\rule{\linewidth}{1mm}}
+\newcommand{\itt}{\intertext}
+\newcommand{\be}{\begin{itemize}}
+\newcommand{\ee}{\end{itemize}}
+\renewcommand\floatpagefraction{1}
+\renewcommand\textfraction{0}
+%\renewcommand{\familydefault}{cmss}
+\newcommand{\X}{$\times$ }
+\newcommand{\hs}{\hspace{15pt}}
+
+% Attempt to squeeze more floats in
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\renewcommand\subfigtopskip{0pt}
+\renewcommand\subfigcapskip{0pt}
+\renewcommand\subfigbottomskip{2pt}
+
+\setbeamerfont{largetablefont}{size=\footnotesize}
+\setbeamerfont{tablefont}{size=\scriptsize}
+\setbeamerfont{tinytablefont}{size=\tiny}
+
+\title[Son Preference and Birth Spacing]{Son Preference, Birth Spacing, and Sex-Selective Abortions}
+\author{Claus C P\"ortner}
+% \institute[University of Washington]{Department of Economics\\University of Washington}
+\date{November 2017}
+
+
+\begin{document}
+\graphicspath{{../figures/}}
+\DeclareGraphicsExtensions{.eps,.jpg,.pdf,.mps,.png}
+
+
+% Front matter
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+%-------------------------------------------------------------
+
+\section{Introduction}
+\subsection{}
+
+\begin{frame}{Introduction - Unequal Sex Ratio in India}
+
+Traditionally:
+\begin{itemize}
+ \item Strong son preference
+ \item Shorter spacing after girls
+ \item Excess mortality for girls
+\end{itemize}
+
+\onslide+<2->{
+\bigskip
+
+Abortions:
+\begin{itemize}
+ \item Abortion legal (from 1971)
+ \item Pre-natal sex determination from around 1985
+ \item Pre-Natal Diagnostic Techniques (PNDT) Act 1995
+\end{itemize}
+}
+
+\end{frame}
+
+
+\begin{frame}{Paper}
+
+Question:
+\begin{itemize}
+\item How did access to sex selection change birth spacing?
+\end{itemize}
+
+\onslide+<2->{
+\bigskip
+
+Additional spacing per abortion: $\sim$ 12 months
+\begin{itemize}
+ \item Infecund period after abortion: 3 months
+ \item Average waiting time to conception: 6 months
+ \item Gestation age for sex determination: 3 months
+\end{itemize}
+}
+
+
+\end{frame}
+
+\subsection{}
+
+
+
+\section{Method}
+\subsection{}
+
+\begin{frame}{Empirical Method}
+
+\begin{block}{Basic idea:}
+Jointly estimate spacing and sex of next child 
+\end{block}
+
+\bigskip
+Econometric model:
+\begin{itemize}
+ \item Competing risk discrete non-proportional hazard model
+ \item Spell unit is 3 months
+ \item Piece-wise linear hazard
+\end{itemize}
+
+\bigskip
+Advantages:
+\begin{itemize}
+ \item Accounts for censoring of spells
+ \item Incorporates parity progression and abortion decisions
+ \item Allows changes within a spell
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Set-up}
+
+Hazards likely vary across groups (non-proportionality):
+\begin{itemize}
+ \item Interact baseline hazards with area and sex composition
+ \item Separate regressions for education levels and time periods
+\end{itemize}
+
+\bigskip
+
+Use results to calculate:
+\begin{itemize}
+\item Percent boys and 95\% confidence intervals
+\item Standard survival curves
+\item Survival curves conditional on exit spell with birth
+\end{itemize}
+
+\end{frame}
+
+
+
+% \begin{frame}{Hazard model}
+% 
+% Two exit states: birth of a boy, $j=1$, or birth of a girl, $j=2$
+% 
+% \bigskip
+% 
+% Hazard rate:
+% \begin{equation}
+%  h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
+%  {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
+%  \label{eq:hazard}
+% \end{equation}
+% 
+% \bigskip
+% 
+% $D_{j}(t)$: piece-wise linear baseline hazard for outcome $j$, captured
+% by dummies and the associated coefficients,
+% \begin{equation}
+% D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
+% \end{equation}
+% where $D_m = 1$ if $t=m$ and zero otherwise.%
+% 
+% \end{frame}
+% 
+% \begin{frame}{Non-proportionality}
+% 
+% Non-proportional hazard:
+% \begin{itemize}
+%  \item Hazards important
+%  \item Vary across groups  
+% %  \item Interact baseline hazards with groups
+% %  \item Harder to find significance
+% \end{itemize}
+% 
+% \bigskip
+% 
+% Interact baseline with main explanatory variables and the interactions between them:
+% \begin{equation}
+%  \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2),
+% \end{equation}
+% where $\mathbf{Z}_1$ captures sex composition
+% of previous children, if any, and $Z_2$ area of residence.
+% 
+% \end{frame}
+% 
+% 
+% 
+% \begin{frame}{Specifications and intermediate outcomes}
+% 
+% Specification:
+% \begin{itemize}
+%  \item Separate regressions for education levels and time periods
+% \end{itemize}
+% 
+% \bigskip
+% 
+% Predicted probability of boy in quarter $t$ for given $\mathbf{Z}_k$ and $\mathbf{X}_k$:
+% \begin{equation}
+% P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt}, t ) 
+% =  
+% \frac{ \exp(D_j(t) + \alpha_{1t}' \mathbf{Z}_{kt} + \beta_1' \mathbf{X}_{k} )}
+% {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt} ' \mathbf{Z}_{kt} + \beta_l ' \mathbf{X}_{k})}
+% \end{equation}
+% Predicted probability of girl is
+% \begin{equation}
+% P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t ) 
+% =  
+% \frac{ \exp(D_j(t) + \alpha_{2t}'\mathbf{Z}_{kt} + \beta_2'\mathbf{X}_{k} )}
+% {1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}
+% \end{equation}
+% 
+% 
+% \end{frame}
+% 
+% \begin{frame}{Calculating main result}
+% 
+% Results: Percent boys and 95\% confidence intervals
+% 
+% \begin{equation}
+% \hat{Y}_t 
+% = 
+% \frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
+% { P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
+% \times 100
+% \end{equation}
+% 
+% \bigskip
+% Survival curve:
+% \begin{equation}
+% S_{t} 
+% = 
+% \prod_{d=1}^t
+% \left(
+% \frac{ 1 }
+% {1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{ld}'\mathbf{Z}_{kd} + \beta_l'\mathbf{X}_{k})}
+% \right)
+% \end{equation}
+% 
+% 
+% 
+% \end{frame}
+
+
+\section{Data}
+\subsection{}
+
+\begin{frame}{Data}
+
+National Family Health Survey (rounds 1, 2 and 3)
+    \be
+    \item NFHS-1 1992/93 (89,777 ever-married women)
+    \item NFHS-2 1998/99 + 2000 (90,303 every-married women)
+    \item NFHS-3 2005/06 (124,385 women)
+    \ee
+    
+\bigskip
+    
+Highlights:    
+\be    
+\item Focus on demographic variables
+\item Very detailed birth history
+\item Lacking in economic variables
+% \item NFHS-2 has abortion information (But!)
+% \item Possible secondary data
+\ee
+
+\bigskip
+
+Only Hindu used -- 115,210 women in sample
+
+\end{frame}
+
+\subsection{}
+
+% \begin{frame}{Recall Error -- Little Previous Attention}
+% 
+% Why recall error:
+% \begin{itemize}
+% \item Dead children a difficult topic
+% \item Son preference
+%     \begin{itemize}
+%     \item Girls have higher mortality
+%     \item Less likely to be remembered
+%     \end{itemize}
+% \end{itemize}
+% 
+% \bigskip
+% 
+% Problem of recall error:
+% \begin{itemize}
+% \item Upward bias of sex ratios
+% \item Spacing upward biased
+% \item Underestimation of spread of sex selective abortions
+% \end{itemize}
+% \end{frame}
+% 
+% \begin{frame}{Percent Boys for ``First'' Birth}
+% \begin{center}
+% \includegraphics[width=0.9\textwidth]{sex_ratio_marriage} 
+% \end{center}
+% \end{frame}
+
+
+\begin{frame}{Explanatory Variables}
+
+Education levels (wife): 0, 1-7 and 8+ years
+\smallskip
+
+Periods:
+\begin{itemize}
+    \item 1972-1984 (Before sex selection)
+    \item 1985-1994 (Before info on sex of fetus illegal )
+    \item 1995-2006 (Illegal to provide info on sex of fetus)
+\end{itemize}
+
+\smallskip
+Different baseline hazards (non-proportional):
+\begin{itemize}
+ \item Area of residence: Urban, rural
+ \item Sex composition
+\end{itemize}
+\smallskip
+Explanatory variables (proportional):
+\begin{itemize}
+ \item Age of mother at beginning of spell
+ \item Owns land
+ \item Scheduled caste/tribe
+ \item Length of first spell
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\section{Results}
+\subsection{}
+
+\begin{frame}{Median spacing - rural, no education}
+
+\begin{center}
+\usebeamerfont{tablefont}
+\begin{tabular}{@{} l D{.}{.}{2.0} D{.}{.}{2.1}  D{.}{.}{2.0} D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1}  @{}}
+\toprule
+                            & \mct{1972-1984}                 &\mct{1985-1994}                  & \mct{1995-2006}                         \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+ \mco{Prior}          & \mco{Duration}  & \mco{Percent} & \mco{Duration}  & \mco{Percent} & \mco{Duration}  & \mco{Percent}         \\ 
+ \mco{Children}       & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}            \\ \midrule
+                      & \multicolumn{6}{c}{Spell 2} \\
+ \mco{Girl}             & 18      & 50.6               & 19      & 51.7               & 20      & 54.9                \\
+ \mco{Boy}              & 19      & 52.4               & 19      & 50.9               & 20      & 53.5                \\
+\addlinespace 
+                        & \multicolumn{6}{c}{Spell 3} \\
+ \mco{2 girls}          & 19      & 50.2               & 21      & 54.9               & 23      & 51.8                \\
+ \mco{1 boy / 1 girl}   & 20      & 53.6               & 20      & 53.2               & 22      & 52.1                \\
+ \mco{2 boys}           & 20      & 52.1               & 22      & 52.4               & 25      & 50.3                \\
+\addlinespace 
+                        & \multicolumn{6}{c}{Spell 4} \\
+ \mco{3 girls}          & 18      & 53.9               & 19      & 49.7               & 21      & 50.4                \\
+ \mco{1 boy / 2 girls}  & 19      & 52.8               & 21      & 51.9               & 22      & 54.2                \\
+ \mco{2 boys / 1 girl}  & 19      & 52.9               & 21      & 49.3               & 22      & 51.2                \\
+ \mco{3 boys}           & 20      & 50.1               & 22      & 49.0               & 22      & 51.5^{\dagger}      \\
+\bottomrule    
+\end{tabular} 
+\normalfont
+\end{center}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Median spacing - urban, 8+ years of education}
+
+\begin{center}
+\usebeamerfont{tablefont}
+\begin{tabular}{@{} l D{.}{.}{2.0} D{.}{.}{2.1}  D{.}{.}{2.0} D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1}  @{}}
+\toprule
+                            & \mct{1972-1984}                 &\mct{1985-1994}                  & \mct{1995-2006}                         \\ \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+ \mco{Prior}          & \mco{Duration}  & \mco{Percent} & \mco{Duration}  & \mco{Percent} & \mco{Duration}  & \mco{Percent}         \\ 
+ \mco{Children}       & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}            \\ \midrule
+                      & \multicolumn{6}{c}{Spell 2} \\
+ \mco{Girl}             & 19      & 52.7               & 22      & 54.9               & 25      & 58.2                \\
+ \mco{Boy}              & 20      & 51.5               & 23      & 52.8               & 25      & 51.1                \\
+\addlinespace 
+                      & \multicolumn{6}{c}{Spell 3} \\
+ \mco{2 girls}          & 22      & 55.0               & 27      & 64.2               & 29      & 62.6^{\dagger}      \\
+ \mco{1 boy / 1 girl}   & 21      & 56.5               & 24      & 52.7               & 25      & 52.9^{\dagger}      \\
+ \mco{2 boys}           & 22      & 48.9^{\dagger}     & 25      & 53.9               & 23      & 49.5^{\dagger}      \\
+\addlinespace 
+                      & \multicolumn{6}{c}{Spell 4} \\
+ \mco{3 girls}          &    .    &    .     & 26      & 66.9^{\dagger}     &    .    &    .      \\
+ \mco{1 boy / 2 girls}  & 19      & 50.6^{\dagger}     & 22      & 55.8^{\dagger}     & 23      & 69.6^{\dagger}      \\
+ \mco{2 boys / 1 girl}  & 17      & 53.6^{\dagger}     & 21      & 47.5^{\dagger}     &    .    &    .      \\
+ \mco{3 boys}           &    .    &    .     &    .    &    .     &    .    &    .      \\
+\bottomrule    
+\end{tabular} 
+\normalfont
+\end{center}
+
+
+\end{frame}
+
+% \begin{frame}{Guide to results}
+% 
+% Graphs show expected natural rate of boys ($\sim$ 51.2 percent)
+% 
+% \bigskip
+% 
+% Percentage boys and percent female fetuses aborted:
+% \begin{itemize}
+% \item 55\%: $\sim$ 14 percent of female fetuses aborted
+% \item 60\%: $\sim$ 30 percent of female fetuses aborted
+% \item 65\%: $\sim$ 43 percent of female fetuses aborted
+% \end{itemize}
+% 
+% \end{frame}
+
+% \subsection{}
+
+
+% \subsection{}
+% \begin{frame}{Before 1985 - 2nd Spell - 8+ education - Urban }
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell2_g1_high_r4_pc}}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell2_g1_high_r2_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1 girl (N=2,791)]{\includegraphics[width=0.40\textwidth]{spell2_g1_high_r4_s}}
+% \subfigure[1 boy (N=2,877)]{\includegraphics[width=0.40\textwidth]{spell2_g1_high_r2_s}}\\
+% \end{center} 
+% \end{figure}
+% \end{frame}
+% 
+% 
+% 
+% \begin{frame}{1985-94 - 2nd Spell - 8+ education - Urban}
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell2_g2_high_r4_pc}}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell2_g2_high_r2_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1 girl (N=5,011)]{\includegraphics[width=0.40\textwidth]{spell2_g2_high_r4_s}}
+% \subfigure[1 boy (N=5,421)]{\includegraphics[width=0.40\textwidth]{spell2_g2_high_r2_s}}\\
+% \end{center}
+% \end{figure}
+% \end{frame}
+% 
+% 
+% \begin{frame}{1995-2006 - 2nd Spell - 8+ education - Urban}
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell2_g3_high_r4_pc}}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell2_g3_high_r2_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1 girl (N=3,827)]{\includegraphics[width=0.40\textwidth]{spell2_g3_high_r4_s}}
+% \subfigure[1 boy (N=4,015)]{\includegraphics[width=0.40\textwidth]{spell2_g3_high_r2_s}}\\
+% \end{center}
+% \end{figure}
+% \end{frame}
+% 
+% 
+% \begin{frame}{Boys (\%) - 1995-06 - 2nd Spell (8+ edu, 1 girl) - Urban }
+% \begin{center}
+% \includegraphics[width=0.9\textwidth]{spell2_g3_high_r4_pc} 
+% \end{center}
+% \end{frame}
+
+
+% \begin{frame}{Boys (\%) - 2nd Spell - 1 girl - Urban}
+% \begin{center}
+% \begin{figure}
+% \begin{center}
+% \subfigure[1-7 edu - 1985-94]{\includegraphics[width=0.36\textwidth]{spell2_g2_med_r4_pc}}
+% \subfigure[1-7 edu - 1995-06]{\includegraphics[width=0.36\textwidth]{spell2_g3_med_r4_pc}}\\
+% \subfigure[No edu - 1985-94]{\includegraphics[width=0.36\textwidth]{spell2_g2_low_r4_pc}}
+% \subfigure[No edu - 1995-06]{\includegraphics[width=0.36\textwidth]{spell2_g3_low_r4_pc}}
+% \end{center} 
+% \end{figure}
+% \end{center}
+% \setcounter{subfigure}{0}
+% \end{frame}
+
+\subsection{}
+
+% SPELL 3 - URBAN
+\begin{frame}{3rd Spell - 8+ education - 2 girls - Urban}
+\begin{center}
+\begin{figure}
+\begin{center}
+\subfigure{\includegraphics[width=0.40\textwidth]{spell3_g2_high_urban_gg_pc}}
+\subfigure{\includegraphics[width=0.40\textwidth]{spell3_g3_high_urban_gg_pc}}\\ \setcounter{subfigure}{0}
+\subfigure[1985-94 (N=1,681)]{\includegraphics[width=0.40\textwidth]{spell3_g2_high_urban_gg_s}}
+\subfigure[1995-06 (N=1,015)]{\includegraphics[width=0.40\textwidth]{spell3_g3_high_urban_gg_s}}
+\end{center} 
+\end{figure}
+\end{center}
+\setcounter{subfigure}{0}
+\end{frame}
+
+\begin{frame}{3rd Spell - 8+ education - 1 girl and 1 boy - Urban}
+\begin{center}
+\begin{figure}
+\begin{center}
+\subfigure{\includegraphics[width=0.40\textwidth]{spell3_g2_high_urban_bg_pc}}
+\subfigure{\includegraphics[width=0.40\textwidth]{spell3_g3_high_urban_bg_pc}}\\ \setcounter{subfigure}{0}
+\subfigure[1985-94 (N=3,506)]{\includegraphics[width=0.40\textwidth]{spell3_g2_high_urban_bg_s}}
+\subfigure[1995-06 (N=2,367)]{\includegraphics[width=0.40\textwidth]{spell3_g3_high_urban_bg_s}}
+\end{center} 
+\end{figure}
+\end{center}
+\setcounter{subfigure}{0}
+\end{frame}
+
+\subsection{}
+
+
+\begin{frame}{Conditional survival - Urban, 8+ education, spell 3, 1972-1984}
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{spell3_g1_high_urban_pps}
+\end{figure}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Conditional survival - Urban, 8+ education, spell 3, 1985-1994}
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{spell3_g2_high_urban_pps}
+\end{figure}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Conditional survival - Urban, 8+ education, spell 3, 1994-2006}
+
+\begin{center}
+\begin{figure}
+\includegraphics[width=0.9\textwidth]{spell3_g3_high_urban_pps}
+\end{figure}
+\end{center}
+\end{frame}
+
+
+
+% \begin{frame}{Boys (\%) - 3rd Spell - 2 boys - Urban}
+% \begin{center}
+% \begin{figure}
+% \begin{center}
+% \subfigure[1985-94]{\includegraphics[width=0.36\textwidth]{spell3_g2_high_r2_pc}}
+% \subfigure[1995-06]{\includegraphics[width=0.36\textwidth]{spell3_g3_high_r2_pc}}\\
+% \subfigure[1985-94]{\includegraphics[width=0.36\textwidth]{spell3_g2_high_r2_s}}
+% \subfigure[1995-06]{\includegraphics[width=0.36\textwidth]{spell3_g3_high_r2_s}}
+% \end{center} 
+% \end{figure}
+% \end{center}
+% \setcounter{subfigure}{0}
+% \end{frame}
+
+
+
+% % RURAL
+% \subsection{}
+% \begin{frame}{Before 1985 - 2nd Spell - 8+ education - Rural }
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.4\textwidth]{spell2_g1_high_r3_pc}}
+% \subfigure{\includegraphics[width=0.4\textwidth]{spell2_g1_high_r1_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1 girl (N=1,183)]{\includegraphics[width=0.4\textwidth]{spell2_g1_high_r3_s}}
+% \subfigure[1 boy (N=1,305)]{\includegraphics[width=0.4\textwidth]{spell2_g1_high_r1_s}}\\
+% \end{center} 
+% \end{figure}
+% \setcounter{subfigure}{0}
+% \end{frame}
+% 
+% \begin{frame}{1985-94 - 2nd Spell - 8+ education - Rural }
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.4\textwidth]{spell2_g2_high_r3_pc}}
+% \subfigure{\includegraphics[width=0.4\textwidth]{spell2_g2_high_r1_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1 girl (N=2,967)]{\includegraphics[width=0.4\textwidth]{spell2_g2_high_r3_s}}
+% \subfigure[1 boy (N=3,213)]{\includegraphics[width=0.4\textwidth]{spell2_g2_high_r1_s}}\\
+% \end{center}
+% \end{figure}
+% \end{frame}
+% 
+% \begin{frame}{1995-2006 - 2nd Spell -  8+ education - Rural }
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.4\textwidth]{spell2_g3_high_r3_pc}}
+% \subfigure{\includegraphics[width=0.4\textwidth]{spell2_g3_high_r1_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1 girl (N=2,740)]{\includegraphics[width=0.4\textwidth]{spell2_g3_high_r3_s}}
+% \subfigure[1 boy (N=2,945)]{\includegraphics[width=0.4\textwidth]{spell2_g3_high_r1_s}}\\
+% \end{center}
+% \end{figure}
+% \end{frame}
+
+
+% \begin{frame}{Boys (\%) - 2nd Spell - 1 girl - Rural}
+% \begin{center}
+% \begin{figure}
+% \begin{center}
+% \subfigure[1-7 edu - 1985-94]{\includegraphics[width=0.36\textwidth]{spell2_g2_med_r3_pc}}
+% \subfigure[1-7 edu - 1995-06]{\includegraphics[width=0.36\textwidth]{spell2_g3_med_r3_pc}}\\
+% \subfigure[No edu - 1985-94]{\includegraphics[width=0.36\textwidth]{spell2_g2_low_r3_pc}}
+% \subfigure[No edu - 1995-06]{\includegraphics[width=0.36\textwidth]{spell2_g3_low_r3_pc}}
+% \end{center} 
+% \end{figure}
+% \end{center}
+% \setcounter{subfigure}{0}
+% \end{frame}
+
+
+
+% \subsection{}
+% % SPELL 3 - RURAL
+% \begin{frame}{3rd Spell - 8+ education - 2 girls - Rural}
+% \begin{center}
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell3_g2_high_r5_pc}}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell3_g3_high_r5_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1985-94 (N=942)]{\includegraphics[width=0.40\textwidth]{spell3_g2_high_r5_s}}
+% \subfigure[1995-06 (N=842)]{\includegraphics[width=0.40\textwidth]{spell3_g3_high_r5_s}}
+% \end{center} 
+% \end{figure}
+% \end{center}
+% \setcounter{subfigure}{0}
+% \end{frame}
+% 
+% \begin{frame}{3rd Spell - 8+ education - 1 girl and 1 boy - Rural}
+% \begin{center}
+% \begin{figure}
+% \begin{center}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell3_g2_high_r3_pc}}
+% \subfigure{\includegraphics[width=0.40\textwidth]{spell3_g3_high_r3_pc}}\\ \setcounter{subfigure}{0}
+% \subfigure[1985-94 (N=1,909)]{\includegraphics[width=0.40\textwidth]{spell3_g2_high_r3_s}}
+% \subfigure[1995-06 (N=1,763)]{\includegraphics[width=0.40\textwidth]{spell3_g3_high_r3_s}}
+% \end{center} 
+% \end{figure}
+% \end{center}
+% \setcounter{subfigure}{0}
+% \end{frame}
+
+% \begin{frame}{Boys (\%) - 3rd Spell - 2 boys - Rural}
+% \begin{center}
+% \begin{figure}
+% \begin{center}
+% \subfigure[1985-94]{\includegraphics[width=0.36\textwidth]{spell3_g2_high_r1_pc}}
+% \subfigure[1995-06]{\includegraphics[width=0.36\textwidth]{spell3_g3_high_r1_pc}}\\
+% \subfigure[1985-94]{\includegraphics[width=0.36\textwidth]{spell3_g2_high_r1_s}}
+% \subfigure[1995-06]{\includegraphics[width=0.36\textwidth]{spell3_g3_high_r1_s}}
+% \end{center} 
+% \end{figure}
+% \end{center}
+% \setcounter{subfigure}{0}
+% \end{frame}
+
+
+% FERTILITY PREFERENCES 
+
+
+
+\section{Conclusion}
+\subsection{}
+
+\begin{frame}{Results}
+ 
+Overview:
+\begin{itemize}
+\item Increased use of sex selection
+\item Spacing changes substantially with sex selection
+\item Sex selection mainly used to achieve \emph{one} son 
+\item Rural areas lag urban, but not by much
+\end{itemize}
+
+\bigskip
+
+Method:
+\begin{itemize}
+\item Important to incorporate fertility/parity progression decisions
+\item Changes in the use of sex selection over a spell 
+\item Non-proportionality important
+\end{itemize}
+
+\end{frame}
+
+
+\end{document}

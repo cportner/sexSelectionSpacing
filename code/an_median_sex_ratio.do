@@ -30,7 +30,7 @@ foreach educ in "low" "med" "high" {
     }
 
     file open table using `tables'/median_sex_ratio_`educ'.tex, write replace
-    file write table "\begin{table}[htbp]" _n
+    file write table "\begin{table}[hp!]" _n
     file write table "\begin{center}" _n
     file write table "\begin{small}" _n
     file write table "\begin{threeparttable}" _n
