@@ -1,2 +1,2 @@
 * Generated files to ignore (not ignored through global
-/tables/des_stat.tex
+/tables/*.tex
