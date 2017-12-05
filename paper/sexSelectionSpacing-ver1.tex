@@ -1,10 +1,5 @@
 % Revamped version for Demography focusing on method
 
-% sex-selective Abortion
-% Begun originally: 01/11/02
-% Begun.: 2017-04-03
-% Edited: 2017-04-03
-
 \documentclass[12pt,letterpaper]{article}
 
 \usepackage{fontspec}
@@ -309,38 +304,40 @@ ratios.
 
 \section{Estimation Strategy\label{sec:strategy}}
 
+Although it might be tempting to simply examine how observed
+spacing has changed over time this is problematic.
 
-[TK this needs to move to later]
-Finally, increased reliability of access and effectiveness of
-contraceptive can lead to shorter spacing between births 
-\citep{Keyfitz1971,Heckman1976}.
-With less reliable contraception parents choose a higher level 
-of contraception---resulting in longer spacing---to avoid having 
-too many children by accident.
-But, as contraception becomes more effective parents can more
-easily avoid future births, allowing them to reduce the spacing 
-between births without having to worry about overshooting their 
-preferred number of children.
-This idea may also help explain shorter spacing for better 
-educated women than for less educated women, provided that   
-knowledge and ability to use contraception differ
-across education groups \citep{Tulasidhar1993,Whitworth2002}.
+Possible ways of doing this:
+- Only closed spells (where a birth is observed)
+    - can be split by the outcome (ending birth is either male or female)
+    - can be split by the sex composition of prior children
+- All spells (whether closed or not)
+    - can only be split by the sex composition of prior children
+    
+Problems:
+- Using closed spells only ignore that those families with the strongest
+  son preference are also likely to have the longest spacing and therefore be 
+  less likely to show up as a complete spell.
+- Because of the potential for changes in the use of sex selection within a spell
+  it is possible that parents go through multiple sex-selective abortions and still
+  end up with a girl
+- Some open spells may not result in a birth (childbearing finished with prior birth),
+  which is especially a problem for higher parities where sex composition of
+  prior children has a large effect on the probability of parity progression.
+  
+Need a method that accounts for censoring.
 
-
-To improve on the literature's current approaches to understanding 
-son preference, a new empirical method must be able to capture the 
-three main implications of the availability of sex-selective abortions
-combined with son preference:
+In addition to accounting for censoring, the empirical method must be able 
+to capture the three main implications of the availability of sex-selective 
+abortions combined with son preference:
 a higher probability that the next child is a son, 
 longer spacing to next birth with use of sex selection, 
 and that the use of prenatal sex determination may change between 
-one observed birth and the next.%
-\footnote{
+one observed birth and the next.
 In addition, it should be able to capture the shorter spacing between
 births observed in the absence of use or availability of prenatal 
 sex determination.
-}
-This means that we need an empirical model that can jointly estimate 
+This means an empirical model that can jointly estimate 
 the association between covariates and both the sex of children born 
 and the spacing from last birth. 
 My proposed model is a discrete time, non-proportional competing risk 
@@ -352,9 +349,9 @@ estimated separate waiting time regressions for boys and girls.
 }
 
 I divide a woman's reproductive life into spells that each covers 
-the period between births (from marriage to first birth for the first spell).
+the period between births (or from marriage to first birth for the first spell).
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$ and 
-the spell continues until time $t_i$ when either a birth occurs or the spell 
+the spell continues until time $t_i$, when either a birth occurs or the spell 
 is censored.%
 \footnote{
 The time of censoring is assumed independent of the hazard rate,
@@ -368,9 +365,8 @@ The discrete time hazard rate $h_{ijt}$ is
 \end{equation}
 where $T_i$ is a discrete random variable that captures when woman $i$'s birth occurs.
 To ease presentation the indicator for spell number is suppressed.
-The vectors of explanatory variable $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$ include 
-information about various individual, household, and community characteristics 
-discussed below.
+The explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, include 
+individual, household, and community characteristics discussed below.
 
 The hazard rate is specified as
 \begin{equation}
@@ -386,6 +382,13 @@ D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
 where $D_m = 1$ if $t=m$ and zero otherwise.
 This approach to modeling the baseline hazard is flexible and does not place 
 overly strong restrictions on the baseline hazard.
+
+The standard proportionality of hazards assumption does not work here.
+First, even in the absense of sex selection, it is unlikely that the shape of
+hazard functions are identical across groups.
+[sex composition]
+
+
 
 [TK I am not very satisfied with this explanation of the problems with
 proportionality and the associated bias; non-proportionality is required
@@ -646,6 +649,23 @@ Note, this is not the same as simply calculating the average
 \emph{observed} spell lengths among women who have a given parity
 child in the survey because that number does not take into account
 the censoring of some spells that will eventually lead to a birth.
+
+[TK not sure where to fit this into]
+Finally, increased reliability of access and effectiveness of
+contraceptive can lead to shorter spacing between births 
+\citep{Keyfitz1971,Heckman1976}.
+With less reliable contraception parents choose a higher level 
+of contraception---resulting in longer spacing---to avoid having 
+too many children by accident.
+But, as contraception becomes more effective parents can more
+easily avoid future births, allowing them to reduce the spacing 
+between births without having to worry about overshooting their 
+preferred number of children.
+This idea may also help explain shorter spacing for better 
+educated women than for less educated women, provided that   
+knowledge and ability to use contraception differ
+across education groups \citep{Tulasidhar1993,Whitworth2002}.
+
 
 
 \section{Data\label{sec:data}}
