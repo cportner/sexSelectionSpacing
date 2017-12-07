@@ -361,7 +361,7 @@ Because of these concerns I use a non-proportional specification.
 The use of a non-proportional specification also has the benefit 
 that it mitigates any potential effects of unobserved heterogeneity 
 when used in conjunction with a flexible baseline hazard \citep{Dolton1995}.
-My proposed model is a discrete time, non-proportional, competing risk 
+In summary, my proposed model is a discrete time, non-proportional, competing risk 
 hazard model with two exit states: either a boy or a girl is born.
 
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$ and 
@@ -396,8 +396,7 @@ D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
 where $D_m = 1$ if $t=m$ and zero otherwise.
 This approach to modeling the baseline hazard is flexible and does not place 
 overly strong restrictions on the baseline hazard.
-
-The $Z$ set of explanatory variable and the interactions between them 
+The explanatory variables in $\mathbf{Z}$ and the interactions between them 
 are the non-proportional part of the model, which means that they are
 interacted with the baseline hazard:
 \begin{equation}
@@ -407,15 +406,15 @@ where $D_j(t)$ is the piece-wise linear baseline hazard and $\mathbf{Z}_1$ captu
 composition of previous children, if any, and $Z_2$ captures area of residence.
 This allows the effects of the main explanatory variables on the probabilities 
 of having a boy, a girl, or no birth to vary over time within a spell.
-To further minimize any potential bias from assuming proportionality, estimations 
+The remaining explanatory variables, $\mathbf{X}$, enter proportionally,
+but to further minimize any potential bias from assuming proportionality, estimations 
 are done separately for different levels of mothers' education and for different 
 time periods.
-The remaining explanatory variables, $\mathbf{X}$, enter proportionally.
 % The exact specifications and the individual variables are described below.
 
 Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
-Hence, if the data are transformed so the unit of analysis is spell unit, in 
+Hence, if the data are transformed so the unit of analysis is a time period, in 
 this case 3 months periods, rather than the individual woman, the model can be 
 estimated using a standard multinomial logit model.%
 \footnote{
@@ -432,18 +431,18 @@ to the multinomial logit because the IIA is not imposed \citep{han90}.
 The results are essentially identical between these two models and
 available upon request.
 }
-In the reorganized data the outcome variable is zero if the
-woman does not have a child in a given period, one if she gives birth to a son 
-in that period, and two if she gives birth to a daughter in that period.
+In the reorganized data the outcome variable is 0 if the
+woman does not have a child in a given period (the base outcome), 1 if 
+she gives birth to a son in that period, and 2 if she gives birth to 
+a daughter in that period.
 
-The main downside is that direct interpretation of the estimated 
-coefficients is challenging because of the competing risk setup.
-First, coefficients show the change in hazards relative to the base outcome, 
-no birth, rather than simply the hazard of an event.
-Second, a, for example, positive coefficient does not necessarily imply that
-a higher variable value is associated with a higher event probability because the 
-probability of another event may increase even more \citep{thomas96}.
-
+The main downside of this set-up is that direct interpretation of the estimated 
+coefficients is challenging;
+the coefficients show the change in hazards relative to the base outcome, 
+here no birth, rather than simply the hazard of an event.
+Hence, a positive coefficient does not necessarily imply that the associated 
+exit state becomes likely as the explanatory variable increases because the 
+probability of the other exit state may increase even more \citep{thomas96}.
 It is, however, straightforward to calculate the predicted probabilities of 
 having a boy and of having a girl for each $t$ within a spell, conditional on 
 a set of explanatory variables and not having had a child before that period.
@@ -464,6 +463,13 @@ P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )
 {1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}.
 \label{eq:probability_girl}
 \end{equation}
+
+[survival curve here]
+
+
+
+
+
 With these two probabilities is it easy to calculate, for each $t$, the estimated
 percentage of children born that are boys, $\hat{Y}$, 
 \begin{equation}
