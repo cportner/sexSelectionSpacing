@@ -304,52 +304,64 @@ ratios.
 
 \section{Estimation Strategy\label{sec:strategy}}
 
-Although it might be tempting to simply examine how observed
-spacing has changed over time this is problematic.
+Requirements for method and the intuition behind each:  
+ - Account for censoring (hazard model)
+ - Work both with and without sex selection (competing risk part)
+ - Allow for changes in use of sex selection within spell (flexible specification of baseline hazard ?)
+ - Capture that the shape of the hazard function differ across groups
+   (non-proportionality); needs a better description, maybe using example
+   of shorter spacing and/or use of sex selection. Differences in parity
+   progression likelihood. 
 
-Possible ways of doing this:
-- Only closed spells (where a birth is observed)
-    - can be split by the outcome (ending birth is either male or female)
-    - can be split by the sex composition of prior children
-- All spells (whether closed or not)
-    - can only be split by the sex composition of prior children
-    
-Problems:
-- Using closed spells only ignore that those families with the strongest
-  son preference are also likely to have the longest spacing and therefore be 
-  less likely to show up as a complete spell.
-- Because of the potential for changes in the use of sex selection within a spell
-  it is possible that parents go through multiple sex-selective abortions and still
-  end up with a girl
-- Some open spells may not result in a birth (childbearing finished with prior birth),
-  which is especially a problem for higher parities where sex composition of
-  prior children has a large effect on the probability of parity progression.
-  
-Need a method that accounts for censoring.
 
-In addition to accounting for censoring, the empirical method must be able 
-to capture the three main implications of the availability of sex-selective 
-abortions combined with son preference:
-a higher probability that the next child is a son, 
-longer spacing to next birth with use of sex selection, 
-and that the use of prenatal sex determination may change between 
-one observed birth and the next.
-In addition, it should be able to capture the shorter spacing between
-births observed in the absence of use or availability of prenatal 
-sex determination.
-This means an empirical model that can jointly estimate 
-the association between covariates and both the sex of children born 
-and the spacing from last birth. 
-My proposed model is a discrete time, non-proportional competing risk 
-hazard model with two exit states: either a boy or a girl is born.%
+I divide a woman's reproductive life into one or more spells.
+Each spell covers the period from one birth, or marriage for the first spell,
+to the following birth; I define how the duration is measured in more 
+detail in Section \ref{sec:data}.
+A basic problem is that some spells' durations are censored, either
+because the survey took place before the end birth for the spell or because
+the couple has finished childbearing.
+The standard approach, which I follow here, is to use a hazard models to 
+address the censoring of spells.
+
+Prior research on birth spacing have used hazard models where the exit 
+state was the birth of a child. 
+This works when there is no sex selection---making the sex of the child 
+a random event---but not here because at least some couples use 
+sex selection. 
+To capture that the sex of children are no longer a random event, I instead
+use a competing risk framework with two possible exit states: either a boy 
+or a girl is born.%
 \footnote{
 \cite{Merli2000} used a discrete hazard model to examine whether 
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
 
-I divide a woman's reproductive life into spells that each covers 
-the period between births (or from marriage to first birth for the first spell).
+Proportional hazard models, where covariate have an multiplicative 
+effect on the hazard rate, are more efficient than non-proportional 
+models, but only provided that the proportionality assumption holds.
+The problem here is that a proportional hazard model does not allow covariates
+to have different sized effects at different times within a spell and therefore
+cannot capture differences in the shape of the hazard functions between 
+different groups, and if the proportionality assumption does not hold 
+the result is a potentially substantial bias in estimates.
+It is unlikely---even in the absence of prenatal sex 
+determination---that the effect of, for example, the sex composition
+of prior births have the same effect throughout the entire spell.
+[son preference and parity progression also leads to differences!]
+Furthermore, any bias from the proportionality assumption is likely 
+exacerbated by the introduction of prenatal sex determination.
+First, sex-selective abortions affects birth spacing and its use
+vary across groups.
+Second, the use of sex selection may vary within a spell, which means 
+that the effect of covariate may vary within the spell as well.
+Finally, the use of a non-proportional specification, together with a 
+flexible baseline hazard, also mitigates any potential effects of 
+unobserved heterogeneity \citep{Dolton1995}.
+My proposed model is a discrete time, non-proportional competing risk 
+hazard model with two exit states: either a boy or a girl is born.
+
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$ and 
 the spell continues until time $t_i$, when either a birth occurs or the spell 
 is censored.%
@@ -383,40 +395,9 @@ where $D_m = 1$ if $t=m$ and zero otherwise.
 This approach to modeling the baseline hazard is flexible and does not place 
 overly strong restrictions on the baseline hazard.
 
-The standard proportionality of hazards assumption does not work here.
-First, even in the absense of sex selection, it is unlikely that the shape of
-hazard functions are identical across groups.
-[sex composition]
-
-
-
-[TK I am not very satisfied with this explanation of the problems with
-proportionality and the associated bias; non-proportionality is required
-to capture changes in use of sex selection]
-
-In principle, specifying the model as a proportional hazard model, i.e.\ one 
-where covariates simply shift the hazard rates up or down independent of 
-spell length, is more efficient, but only provided that the proportionality 
-assumption holds.
-If the proportionality assumption does not hold, however, the result is
-a potentially substantial bias in estimates.
-The problem is that a proportional hazard model does not allow covariates
-to have different effects at different times within a spell and therefore
-cannot capture differences in the shape of the hazard functions between 
-different groups. 
-It is highly unlikely---even in the absence of prenatal sex determination---that 
-the baseline hazards are the same across education levels, areas of residence, 
-or sex composition of previous births.
-Any bias from the proportionality assumption is likely exacerbated by the 
-introduction of prenatal sex determination for two reasons.
-First, one of the main points of this paper is that use of sex-selective 
-abortions affects birth spacing, and use of sex selection differs across groups.
-Second, as discussed above, the use of sex selection may vary within a spell,
-depending on the length of the spell.
-
-I therefore use a non-proportional model where the main explanatory variables 
-and the interactions between them are interacted with the baseline hazards.
-This is captured by the $Z$ set of explanatory variables
+The $Z$ set of explanatory variable and the interactions between them 
+are the non-proportional part of the model, which means that they are
+interacted with the baseline hazard:
 \begin{equation}
  \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2),
 \end{equation}
@@ -424,20 +405,17 @@ where $D_j(t)$ is the piece-wise linear baseline hazard and $\mathbf{Z}_1$ captu
 composition of previous children, if any, and $Z_2$ captures area of residence.
 This allows the effects of the main explanatory variables on the probabilities 
 of having a boy, a girl, or no birth to vary over time within a spell.
-The use of a non-proportional specification, together with a flexible baseline hazard, 
-also mitigates any potential effects of unobserved heterogeneity \citep{Dolton1995}.
-
-The remaining explanatory variables, $\mathbf{X}$, enter proportionally.
 To further minimize any potential bias from assuming proportionality, estimations 
 are done separately for different levels of mothers' education and for different 
 time periods.
-The exact specifications and the individual variables are described below.
+The remaining explanatory variables, $\mathbf{X}$, enter proportionally.
+% The exact specifications and the individual variables are described below.
 
 Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
-Hence, if the data are transformed so the unit of analysis is spell unit rather 
-than the individual woman, the model can be estimated using a standard multinomial 
-logit model.%
+Hence, if the data are transformed so the unit of analysis is spell unit, in 
+this case 3 months periods, rather than the individual woman, the model can be 
+estimated using a standard multinomial logit model.%
 \footnote{
 A potentially issue is that the multinomial model assumes that alternative 
 exit states are stochastically independent,
@@ -456,12 +434,12 @@ In the reorganized data the outcome variable is zero if the
 woman does not have a child in a given period, one if she gives birth to a son 
 in that period, and two if she gives birth to a daughter in that period.
 
-The main downside of this approach is that direct interpretation of the estimated 
-coefficients for this model is challenging because of the competing risk setup.
+The main downside is that direct interpretation of the estimated 
+coefficients is challenging because of the competing risk setup.
 First, coefficients show the change in hazards relative to the base outcome, 
 no birth, rather than simply the hazard of an event.
-Second, a positive coefficient does not necessarily imply that an increase in a
-variable's value increases the probability of the associated event because the 
+Second, a, for example, positive coefficient does not necessarily imply that
+a higher variable value is associated with a higher event probability because the 
 probability of another event may increase even more \citep{thomas96}.
 
 It is, however, straightforward to calculate the predicted probabilities of 
@@ -518,9 +496,8 @@ over time; maybe it should also have predicted average/median spacing with some
 confidence intervals to test]
 
 
-The other important part of the model is the spacing between births.
-Spacing is captured by the survival curve, which shows the probability of not 
-having had a birth yet by spell duration.
+The distribution of spacing is captured by the survival curve, which shows 
+the probability of not having had a birth yet by spell duration.
 The survival curve at time $t$ is 
 \begin{equation}
 S_{t} 
@@ -543,29 +520,6 @@ S_{t}
 \right).
 \end{equation}
 
-In the absence of sex selection, I expect most parities to show an 
-``inverted s'' pattern, where there initially are relatively few births, 
-followed by a substantial number of births over a 1 to 2 year period, and then
-relatively few births thereafter.
-As sex selection becomes more widely used the associated
-longer spacing shows up by making the survival curve straighter,
-indicating that some of the births that would originally have taken place
-now take place later because of abortions.
-The use of sex selection is clearly not the only factor that can change the shape of
-the survival curves; factors such as the desired number of children and
-use of contraceptives may also shape the shape.
-To account for this it is best to compare survival curves for an individual
-parity between women who are likely to use sex selection and women who are
-not, for example because they already have one or more sons.
-
-In addition to information about spacing, the survival curves also provide 
-``weighting'' for the associated percentage boys born.
-The steeper the survival curve, the more weight should be assigned to a given
-spell period because it is based on more births, 
-whereas a period with a flat survival curve should be given little weight because the 
-percentage boys is based on few births.
-Hence, although they cannot by themselves show sex selection, the survival
-curves are a crucial complement to the estimated sex ratios by duration.
 
 
 [The problem with comparing survival curves]
@@ -649,23 +603,6 @@ Note, this is not the same as simply calculating the average
 \emph{observed} spell lengths among women who have a given parity
 child in the survey because that number does not take into account
 the censoring of some spells that will eventually lead to a birth.
-
-[TK not sure where to fit this into]
-Finally, increased reliability of access and effectiveness of
-contraceptive can lead to shorter spacing between births 
-\citep{Keyfitz1971,Heckman1976}.
-With less reliable contraception parents choose a higher level 
-of contraception---resulting in longer spacing---to avoid having 
-too many children by accident.
-But, as contraception becomes more effective parents can more
-easily avoid future births, allowing them to reduce the spacing 
-between births without having to worry about overshooting their 
-preferred number of children.
-This idea may also help explain shorter spacing for better 
-educated women than for less educated women, provided that   
-knowledge and ability to use contraception differ
-across education groups \citep{Tulasidhar1993,Whitworth2002}.
-
 
 
 \section{Data\label{sec:data}}
@@ -1035,6 +972,47 @@ in the last period.
 
 
 \section{Results\label{sec:results}}
+
+[TK not sure where to fit this into]
+Finally, increased reliability of access and effectiveness of
+contraceptive can lead to shorter spacing between births 
+\citep{Keyfitz1971,Heckman1976}.
+With less reliable contraception parents choose a higher level 
+of contraception---resulting in longer spacing---to avoid having 
+too many children by accident.
+But, as contraception becomes more effective parents can more
+easily avoid future births, allowing them to reduce the spacing 
+between births without having to worry about overshooting their 
+preferred number of children.
+This idea may also help explain shorter spacing for better 
+educated women than for less educated women, provided that   
+knowledge and ability to use contraception differ
+across education groups \citep{Tulasidhar1993,Whitworth2002}.
+
+[Moved from estimation strategy]
+In the absence of sex selection, I expect most parities to follow
+a pattern, where there initially are relatively few births, 
+followed by a substantial number of births over a 1 to 2 year period, and then
+relatively few births thereafter.
+As sex selection becomes more widely used the associated
+longer spacing shows up by making the survival curve straighter,
+indicating that some of the births that would originally have taken place
+now take place later because of abortions.
+The use of sex selection is clearly not the only factor that can change the shape of
+the survival curves; factors such as the desired number of children and
+use of contraceptives may also shape the shape.
+To account for this it is best to compare survival curves for an individual
+parity between women who are likely to use sex selection and women who are
+not, for example because they already have one or more sons.
+
+[Moved from estimation strategy]
+In addition to information about spacing, the survival curves also provide 
+``weighting'' for the associated percentage boys born.
+The steeper the survival curve, the more weight should be assigned to a given
+spell period because it is based on more births, 
+whereas a period with a flat survival curve should be given little weight because the 
+percentage boys is based on few births.
+
 
 [Difference in approach: use the sex composition of prior
 children, rather the sex of the last child.
