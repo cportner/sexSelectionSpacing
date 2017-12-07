@@ -304,62 +304,64 @@ ratios.
 
 \section{Estimation Strategy\label{sec:strategy}}
 
-Requirements for method and the intuition behind each:  
- - Account for censoring (hazard model)
- - Work both with and without sex selection (competing risk part)
- - Allow for changes in use of sex selection within spell (flexible specification of baseline hazard ?)
- - Capture that the shape of the hazard function differ across groups
-   (non-proportionality); needs a better description, maybe using example
-   of shorter spacing and/or use of sex selection. Differences in parity
-   progression likelihood. 
+% Requirements for method and the intuition behind each:  
+%  - Account for censoring (hazard model)
+%  - Work both with and without sex selection (competing risk part)
+%  - Allow for changes in use of sex selection within spell (flexible specification of baseline hazard ?)
+%  - Capture that the shape of the hazard function differ across groups
+%    (non-proportionality); needs a better description, maybe using example
+%    of shorter spacing and/or use of sex selection. Differences in parity
+%    progression likelihood. 
 
-
-I divide a woman's reproductive life into one or more spells.
-Each spell covers the period from one birth, or marriage for the first spell,
-to the following birth; I define how the duration is measured in more 
-detail in Section \ref{sec:data}.
-A basic problem is that some spells' durations are censored, either
-because the survey took place before the end birth for the spell or because
-the couple has finished childbearing.
+I divide women's reproductive lives into spells, which are the periods from 
+one birth, or marriage for the first spell, to the following birth
+(I define how spell duration is measured in Section \ref{sec:data}).
+A basic problem is that some spells' duration are censored, either
+because the survey took place before the birth that would end the spell 
+or because the couple has finished childbearing.
 The standard approach, which I follow here, is to use a hazard models to 
 address the censoring of spells.
 
-Prior research on birth spacing have used hazard models where the exit 
-state was the birth of a child. 
+Prior research on birth spacing have used hazard models where the only 
+exit state was the birth of a child. 
 This works when there is no sex selection---making the sex of the child 
 a random event---but not here because at least some couples use 
 sex selection. 
-To capture that the sex of children are no longer a random event, I instead
-use a competing risk framework with two possible exit states: either a boy 
-or a girl is born.%
+To capture that the sex of children are no longer necessarily a random event, 
+I instead use a competing risk framework with two possible exit states: 
+either a boy or a girl is born.%
 \footnote{
 \cite{Merli2000} used a discrete hazard model to examine whether 
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
 
-Proportional hazard models, where covariate have an multiplicative 
+Proportional hazard models, where covariates have an multiplicative 
 effect on the hazard rate, are more efficient than non-proportional 
 models, but only provided that the proportionality assumption holds.
-The problem here is that a proportional hazard model does not allow covariates
-to have different sized effects at different times within a spell and therefore
-cannot capture differences in the shape of the hazard functions between 
-different groups, and if the proportionality assumption does not hold 
-the result is a potentially substantial bias in estimates.
-It is unlikely---even in the absence of prenatal sex 
-determination---that the effect of, for example, the sex composition
-of prior births have the same effect throughout the entire spell.
-[son preference and parity progression also leads to differences!]
-Furthermore, any bias from the proportionality assumption is likely 
+Because proportional hazard models do not allow covariates to have 
+different sized effects at different times within a spell,
+they cannot capture differences in the shape of the hazard functions 
+between different groups, and if the proportionality assumption does 
+not hold the estimates may be biased.
+It is unlikely---even in the absence of prenatal sex determination---that 
+the effect of, for example, the sex composition of prior births have 
+the same effect throughout the entire spell.
+This is especially the case for later spells where different
+sex composition of prior births can lead to substantial difference 
+both in the likelihood of progressing to the next birth and
+how soon couples want their next child if they are going to have one.
+Any bias from the proportionality assumption is likely 
 exacerbated by the introduction of prenatal sex determination.
-First, sex-selective abortions affects birth spacing and its use
+First, sex-selective abortions affect birth spacing and use
 vary across groups.
 Second, the use of sex selection may vary within a spell, which means 
-that the effect of covariate may vary within the spell as well.
-Finally, the use of a non-proportional specification, together with a 
-flexible baseline hazard, also mitigates any potential effects of 
-unobserved heterogeneity \citep{Dolton1995}.
-My proposed model is a discrete time, non-proportional competing risk 
+that the effects of covariates vary within the spell as well.
+Because of these concerns I use a non-proportional specification.
+The use of a non-proportional specification also has the benefit 
+that it mitigates any potential effects of unobserved heterogeneity 
+when used in conjunction with a flexible baseline hazard \citep{Dolton1995}.
+My proposed model is a discrete time, non-proportional, competing risk 
 hazard model with two exit states: either a boy or a girl is born.
 
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$ and 
