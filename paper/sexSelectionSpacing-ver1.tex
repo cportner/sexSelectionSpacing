@@ -463,49 +463,12 @@ P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )
 {1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}.
 \label{eq:probability_girl}
 \end{equation}
-
-[survival curve here]
-
-
-
-
-
-With these two probabilities is it easy to calculate, for each $t$, the estimated
-percentage of children born that are boys, $\hat{Y}$, 
-\begin{equation}
-\hat{Y}_t 
-= 
-\frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
-{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
-\times 100,
-\label{eq:probability_son}
-\end{equation}
-together with the associated confidence interval for given values of explanatory 
-variables.%
-\footnote{
-Within each period $1-P(b_{t})-P(g_{t})$ is the probability of not having a birth in 
-period $t$.
-}
-
-For ease of exposition the procedure is presented here in two steps, but the actual
-calculation of the percent boys is done in one step with the 95 percent confidence 
-interval calculated using the Delta method.
-Results are presented as the estimated percent boys born by length of birth spacing
-using graphs.%
-\footnote{
-The parameter estimates are available on request.
-}
-For each graph, the extent to which the percent boys is statistically 
-significantly above the natural sex ratio indicates the use of sex selection.
-
-
-[TK  may need to combine with and without sons to show differences in spacing 
-over time; maybe it should also have predicted average/median spacing with some 
-confidence intervals to test]
-
+Within each period the probability of not having a birth in period $t$
+is $1-P(b_{t})-P(g_{t})$.
 
 The distribution of spacing is captured by the survival curve, which shows 
-the probability of not having had a birth yet by spell duration.
+the probability of not having had a birth yet by spell duration, for
+a given set of explanatory variables.
 The survival curve at time $t$ is 
 \begin{equation}
 S_{t} 
@@ -528,89 +491,56 @@ S_{t}
 \right).
 \end{equation}
 
+An important issue is that the probability of ever having a next birth varies 
+across groups.
+For example, as the parity progression literature shows, couples with stronger 
+son preference are less likely, for a given number of prior births, to ever have 
+a next birth if they already have one or more sons.
+Direct comparison of standard survival curves therefore tells us little 
+about how the spread of sex selection affect birth spacing across, for
+example, different sex compositions of prior children.
+To overcome this problem I condition on parity progression when examining
+birth spacing using the survival curves.
+This allows me to calculate measures, such as median spell duration, for
+the women with a given set of characteristics who will eventually give
+birth in a spell.%
+\footnote{
+It is important to note that this is not the same as simply calculating 
+the median \emph{observed} spell lengths among women who have a given 
+parity child in the survey because that number does not take into account
+the censoring of spells that will eventually lead to a birth.
+}
+This number can then be compared across groups to understand how birth
+spacing changes with the introduction of sex selection.
+Obviously, this approach only works if the spell length covered is 
+sufficiently long that only very few women would be likely to give
+birth later.
+In addition to calculating conditional spell length for different 
+percentages, I also present graphs of both standard survival curves and
+survival curves conditional on parity progression (which therefore
+begin at 100\% and end at 0\%).
 
 
-[The problem with comparing survival curves]
-
-In principle, in order to understand how birth spacing changes in response
-to the introduction of prenatal sex determination one could simply compare survival 
-curves between different sex compositions of prior births over time.
-If the idea that the availability of sex-selective abortion increases the
-spacing more after the birth of girls than after the birth of boys is 
-correct, we should see the two survival curves become closer to each other
-and we might even be able to directly observe that the survival curve for prior
-child being a girl is above the survival curve for prior child being a boy,
-instead of substantially below as was generally the case before prenatal
-sex determination become widely available.
-
-There are, however, two (interrelated) problems.
-First, the probability that a woman will progress to a next birth  
-is not the same across different sex compositions of prior children.
-Specifically, one of the ways that past research has tried to establish
-son preference in fertility behavior is to compare parity progression
-rates for different sex compositions [TK references - see footnote 1].
-The idea was that if there is son preference a couple would be less likely
-to progress to a next birth if they have one or more son already for a
-given number of prior births.
-
-The fact that the probability of having a next birth also depends on the
-sex composition complicates the comparison of survival curves. 
-A lower parity progression probability will naturally make the survival
-curve flatter.
-This means that the survival curve for a girl composition will be more
-likely to be below the boy composition.
-Even if the use of sex selection is substantial enough to move the
-survival curve for girl composition to the right of the boy
-composition the lower parity progression probability for boy 
-composition means that the survival curves would eventually have to
-cross.
-This makes it difficult---if not impossible---to design a direct test
-of how the survival curves compare.
-
-The problem of different parity progression rates across different
-sex composition is exacerbated by falling fertility over time.
-This is because there are now more parities where they may be a 
-substantial differences in parity progression rates and because
-the difference in parity progression for a given parity will 
-become larger if there is son preference.
-As the parity progression probability decreases it becomes impossible
-to capture the time until a certain survival point (like 0.5 of women
-having had a child; the survival curve may never actually reach this
-point).
-
-In addition, it is possible that falling fertility also generically 
-leads to longer spacing between births.
-This means that we have to separate out which part of the longer
-spacing comes from falling fertility (and therefore should also
-affect boy composition) and which parts comes from increased use
-of sex selection.
-
-[We should expect sex selection to be mainly used for the last---or close to
-last---birth that a couple expect to have because of the cost and risk
-of the procedures.]
-
-
-One solution to this problem is to condition on the parity progression
-rates.
-That is, instead of comparing say how long it takes for 50\% of women
-who began the spell to have the next birth across boy and girl composition, 
-which would work well if the next birth was nearly universal, we 
-could calculate how long it takes for 50\% of those women who will 
-eventually have a next child to have that child based on the estimated
-survival curves.
-This number can then be compared across sex compositions to 
-understand if the spell length for girl composition increases
-more than for boy composition with the introduction of sex selection.
-Obviously, this should be calculated for different percentages
-and the easiest way to interpret the result is to graph survival
-conditional on parity progression occurring.
-All compositions therefore begin at 100\% and end at 0\% because
-we condition on having the next child.
-
-Note, this is not the same as simply calculating the average 
-\emph{observed} spell lengths among women who have a given parity
-child in the survey because that number does not take into account
-the censoring of some spells that will eventually lead to a birth.
+Finally, with the predicted probabilities of having a boy and of having 
+a girl for each $t$ within a spell, is it easy to calculate the estimated 
+percentage of children born that are boys, $\hat{Y}$, at each $t$  
+\begin{equation}
+\hat{Y}_t 
+= 
+\frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
+{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
+\times 100.
+\label{eq:probability_son}
+\end{equation}
+Combining the percentage boys and the likelihood of exiting across all $t$ 
+gives the predicted percent boys born over the entire spell.
+In addition to the predicted percent boys over the entire spell, 
+I also present graphs of how the percentage boys born vary across time
+within a spell, together with the associated confidence interval for given 
+values of explanatory variables calculated using the Delta method.
+These are combined with standard survival curves which shows the ``weight''
+that each period should be given, or, in other words, how many births take
+place in each period.
 
 
 \section{Data\label{sec:data}}
@@ -980,6 +910,25 @@ in the last period.
 
 
 \section{Results\label{sec:results}}
+
+Results are presented as the estimated percent boys born by length of birth spacing
+using graphs.
+For each graph, the extent to which the percent boys is statistically 
+significantly above the natural sex ratio indicates the use of sex selection.
+
+
+[TK not sure where this fits in]
+In addition, it is possible that falling fertility also generically 
+leads to longer spacing between births.
+This means that we have to separate out which part of the longer
+spacing comes from falling fertility (and therefore should also
+affect boy composition) and which parts comes from increased use
+of sex selection.
+
+[We should expect sex selection to be mainly used for the last---or close to
+last---birth that a couple expect to have because of the cost and risk
+of the procedures.]
+
 
 [TK not sure where to fit this into]
 Finally, increased reliability of access and effectiveness of
