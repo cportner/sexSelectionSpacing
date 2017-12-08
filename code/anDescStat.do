@@ -1,8 +1,6 @@
 * Descriptive statistics for all 36 regressions
 * Based on original work
 * anDescStat.do
-* begun.: 2017-06-02
-* edited: 2017-06-03
 
 version 13.1
 clear all
@@ -98,7 +96,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Quarters "
+file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b1_space if edu_group == `edu' & group == `per'
@@ -184,7 +182,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Quarters "
+file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b2_space if edu_group == `edu' & group == `per'
@@ -209,7 +207,7 @@ file write stats "\begin{tablenotes} \tiny" _n
 file write stats "\item \hspace*{-0.7em} \textbf{Note.}" _n
 file write stats "Means without parentheses and standard deviation in parentheses." _n
 file write stats "Interactions between variables, baseline hazard dummies and squares not shown." _n
-file write stats "Quarters refer to number of 3 month periods observed." _n
+// file write stats "Quarters refer to number of 3 month periods observed." _n
 file write stats "\end{tablenotes}" _n
 file write stats "\end{threeparttable}" _n
 file write stats "\end{scriptsize}" _n
@@ -302,7 +300,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Quarters "
+file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b3_space if edu_group == `edu' & group == `per'
@@ -399,7 +397,7 @@ esttab using `tables'/des_stat.tex, ///
 
 // Direct version of number of quarters and observations
 file open stats using `tables'/des_stat.tex, write append
-file write stats "                    & Quarters "
+file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
     forvalues per = 1/3 {
         qui sum b4_space if edu_group == `edu' & group == `per'
@@ -424,7 +422,7 @@ file write stats "\begin{tablenotes} \tiny" _n
 file write stats "\item \hspace*{-0.7em} \textbf{Note.}" _n
 file write stats "Means without parentheses and standard deviation in parentheses." _n
 file write stats "Interactions between variables, baseline hazard dummies and squares not shown." _n
-file write stats "Quarters refer to number of 3 month periods observed." _n
+// file write stats "Quarters refer to number of 3 month periods observed." _n
 file write stats "\end{tablenotes}" _n
 file write stats "\end{threeparttable}" _n
 file write stats "\end{scriptsize}" _n
