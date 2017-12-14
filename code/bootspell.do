@@ -118,10 +118,10 @@ program bootspell, rclass
             } 
             if `spell' == 2 {
                 if `prior' == 1 {
-                    loc sexcomp " if girl & `area' "
+                    loc sexcomp " if girl1 & `area' "
                 }
                 if `prior' == 2 {
-                    loc sexcomp " if !girl & `area' "
+                    loc sexcomp " if !girl1 & `area' "
                 }    
             }
             if `spell' == 3 {
