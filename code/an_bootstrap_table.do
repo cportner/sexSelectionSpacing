@@ -22,7 +22,8 @@ save "`main'"
 
 // Restricting sample and data manipulations
 
-foreach educ in "low" "med" "high" {
+// foreach educ in "low" "med" "high" {
+foreach educ in  "high" {
 
     use "`main'", clear
 
@@ -58,7 +59,11 @@ foreach educ in "low" "med" "high" {
         foreach where in "urban" "rural" {
             forvalues prior = 1/`spell' {
                 loc girls = `spell' - `prior'
-                loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls') "
+                // Remember p is percent left!!
+                loc stats = "`stats' p75_`where'_g`girls' = r(p75_`where'_g`girls')"
+                loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls')"
+                loc stats = "`stats' p25_`where'_g`girls' = r(p25_`where'_g`girls')"
+                loc stats = "`stats' pct_`where'_g`girls' = r(pct_`where'_g`girls')"
             } 
         }
         forvalues group = 2/2 {
