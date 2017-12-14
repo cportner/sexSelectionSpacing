@@ -5,6 +5,8 @@ clear all
 
 capture program drop _all
 do bootspell.do
+do baseline_hazards/bh_low.do
+do baseline_hazards/bh_med.do
 do baseline_hazards/bh_high.do
 
 // Generic set of locations
@@ -15,43 +17,62 @@ loc tables  "../tables"
 
 use `data'/base
 
-// Restricting sample and data manipulations
-
-keep if edu_mother >= 8
-loc educ = "high"
-
-tempfile main
+tempfile main low med high
 save "`main'"
 
-forvalues spell = 2/2 {
-    use "`main'", clear
-    if `spell' == 1 {
-        global b1space ""
-        loc girlvar ""
-    } 
-    else {
-        loc girlvar " girl* "
-    }
-    run genSpell`spell'.do
-    // need to have a way of setting up the required statistics
-    loc stats = ""
-    foreach where in "urban" "rural" {
-        forvalues prior = 1/`spell' {
-            loc girls = `spell' - `prior'
-            loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls') "
-        } 
-    }
-    forvalues group = 1/3 {
-        preserve
-        keep if group == `group'
+// Restricting sample and data manipulations
 
-        keep id b`spell'_space b`spell'_sex b`spell'_cen `girlvar' ///
-            urban $b1space $parents $hh $caste // remove unnecessary variables to speed bootstrap
+foreach educ in "low" "med" "high" {
+
+    use "`main'", clear
+
+    // keep only those in education group
+    if "`educ'" == "low" {
+        keep if edu_mother == 0
+    }
+    else if "`educ'" == "med" {
+        keep if edu_mother >= 1 & edu_mother < 8
+    }
+    else if "`educ'" == "high" {
+        keep if edu_mother >= 8
+    }
+    else {
+        dis "Something went wrong with education level"
+        exit
+    }
+    
+    save "``educ''" // Need double ` because the name that comes from educ is itself a local variable
+
+    forvalues spell = 3/3 {
+        use "``educ''" , clear
+        if `spell' == 1 {
+            global b1space ""
+            loc girlvar ""
+        } 
+        else {
+            loc girlvar " girl* "
+        }
+        run genSpell`spell'.do
+        // need to have a way of setting up the required statistics
+        loc stats = ""
+        foreach where in "urban" "rural" {
+            forvalues prior = 1/`spell' {
+                loc girls = `spell' - `prior'
+                loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls') "
+            } 
+        }
+        forvalues group = 2/2 {
+            preserve
+            keep if group == `group'
+
+            keep id b`spell'_space b`spell'_sex b`spell'_cen `girlvar' ///
+                urban $b1space $parents $hh $caste // remove unnecessary variables to speed bootstrap
         
-        // Bootstrapping
-        bootstrap `stats' , reps(10) seed(100669) nowarn : bootspell `spell' `group' `educ'
+            // Bootstrapping
+            bootstrap `stats' , reps(5) seed(100669) nowarn : bootspell `spell' `group' `educ'
         
-        restore
+            restore
+        }
     }
 }
 
