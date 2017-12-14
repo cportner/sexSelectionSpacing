@@ -23,7 +23,7 @@ loc educ = "high"
 tempfile main
 save "`main'"
 
-forvalues spell = 1/3 {
+forvalues spell = 3/3 {
     use "`main'", clear
     if `spell' == 1 {
         global b1space ""
@@ -41,14 +41,12 @@ forvalues spell = 1/3 {
             loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls') "
         } 
     }
-    forvalues group = 1/3 {
+    forvalues group = 2/2 {
         preserve
         keep if group == `group'
 
         keep id b`spell'_space b`spell'_sex b`spell'_cen `girlvar' ///
             urban $b1space $parents $hh $caste // remove unnecessary variables to speed bootstrap
-        
-        des
         
         // Bootstrapping
         bootstrap `stats' , reps(10) seed(100669) nowarn : bootspell `spell' `group' `educ'

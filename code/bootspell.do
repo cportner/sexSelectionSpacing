@@ -37,7 +37,6 @@ program bootspell, rclass
     loc np "  np*X* "
 
     // ESTIMATION
-
     eststo: mlogit birth dur* $b1space ///
         $parents $hh $caste `np'  ///
         , baseoutcome(0) noconstant 
@@ -56,8 +55,6 @@ program bootspell, rclass
     bh_s`spell'_g`group'_`educ'
     loc i = `r(numPer)'
     
-    dis "number of periods: `r(numPer)'"
-
     // [THIS PART DEPENDS ON SPELL!]        
     loc npvar = "urban "
     loc spell_m1 = `spell'-1
