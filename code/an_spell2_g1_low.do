@@ -92,7 +92,7 @@ forvalues group = 1/1 {
         
         // NON-PROPORTIONALITY
         foreach var of var ///
-        girl urban girlXurban {
+        girl1 urban girl1Xurban {
             forval x = 1/`i' {
                 gen np`x'X`var'  = dur`x' * `var' 
             }

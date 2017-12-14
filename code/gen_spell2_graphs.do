@@ -11,7 +11,7 @@ replace b2_girls = 1 if id == 3 | id == 4
 gen urban = 0 if id == 1 | id == 3
 replace urban = 1 if id == 2 | id == 4
 gen girl = b2_girls
-gen girlXurban = girl * urban
+gen girl1Xurban = girl1 * urban
 gen months = t * 3
 
 
@@ -19,7 +19,7 @@ gen months = t * 3
 capture drop np*        
 
 foreach var of var ///
-girl urban girlXurban {
+girl1 urban girl1Xurban {
 forval x = 1/`i' {
     gen np`x'X`var'  = dur`x' * `var' 
 }

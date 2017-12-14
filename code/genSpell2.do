@@ -44,14 +44,14 @@ gen moved = (interview_year - placeYearLived) > endSpellYear  // has moved **aft
 replace urban = 0 if moved & placePrevious == 2 & urban == 1
 replace urban = 1 if moved & placePrevious == 1 & urban == 0
 
-replace b2_girls = b1_sex == 2 if b1_sex != .
-gen girl = b2_girls
-gen girlXurban = girl * urban
+// replace b2_girls = b1_sex == 2 if b1_sex != .
+gen girl1 = b1_sex == 2 if b1_sex != .
+gen girl1Xurban = girl1 * urban
 
-gen gu_group = 1 if !girl & !urban
-replace gu_group = 2 if girl & !urban
-replace gu_group = 3 if !girl & urban
-replace gu_group = 4 if girl & urban
+gen gu_group = 1 if !girl1 & !urban
+replace gu_group = 2 if girl1 & !urban
+replace gu_group = 3 if !girl1 & urban
+replace gu_group = 4 if girl1 & urban
 label def gu 1 "Rural, 1 boy" 2 "Rural, 1 girl" 3 "Urban, 1 boy" 4 "Urban, 1 girl"
 label val gu_group gu
 global spell = "2"
