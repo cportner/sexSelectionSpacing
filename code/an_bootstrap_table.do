@@ -23,7 +23,7 @@ loc educ = "high"
 tempfile main
 save "`main'"
 
-forvalues spell = 3/3 {
+forvalues spell = 2/2 {
     use "`main'", clear
     if `spell' == 1 {
         global b1space ""
@@ -41,7 +41,7 @@ forvalues spell = 3/3 {
             loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls') "
         } 
     }
-    forvalues group = 2/2 {
+    forvalues group = 1/3 {
         preserve
         keep if group == `group'
 
