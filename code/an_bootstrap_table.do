@@ -3,6 +3,9 @@
 version 13.1
 clear all
 
+loc num_reps = 3
+file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
+
 capture program drop _all
 do bootspell.do
 do baseline_hazards/bh_low.do
@@ -15,13 +18,12 @@ do baseline_hazards/bh_high.do
 // program that takes a matrix and a name and returns the column number
 program find_col, rclass
     version 13
-    args matrix name
-    local col_names : colfullnames A
+    args mat_name name
+    local col_names : colfullnames `mat_name'
     tokenize `col_names'
     local i = 1
     local found = 0
     while "``i''" != "" & `found' == 0 {
-        dis "`name'    ``i''  " 
         if "`name'" == "``i''" {
             return scalar col_num = `i' 
             local found = 1
@@ -87,7 +89,7 @@ foreach educ in  "high" {
                 loc stats = "`stats' pct_`where'_g`girls' = r(pct_`where'_g`girls')"
             } 
         }
-        forvalues group = 2/2 {
+        forvalues group = 1/3 {
             preserve
             keep if group == `group'
 
@@ -95,7 +97,7 @@ foreach educ in  "high" {
                 urban $b1space $parents $hh $caste // remove unnecessary variables to speed bootstrap
         
             // Bootstrapping
-            bootstrap `stats' , reps(5) seed(100669) nowarn : bootspell `spell' `group' `educ'
+            bootstrap `stats' , reps(`num_reps') seed(100669) nowarn : bootspell `spell' `group' `educ'
       
             // Relevant matrices to extract
             // point estimates e(b)
@@ -108,13 +110,14 @@ foreach educ in  "high" {
     }
 }
 
-exit
+
 
 // Table stuff here
 
 // Loop over education
 
-foreach educ in "low" "med" "high" {
+// foreach educ in "low" "med" "high" {
+foreach educ in "high" {
 
     if "`educ'" == "low" {
         loc char "No Education"
@@ -126,7 +129,7 @@ foreach educ in "low" "med" "high" {
         loc char "8 or More Years of Education"
     }
 
-    file open table using `tables'/median_sex_ratio_`educ'.tex, write replace
+    file open table using `tables'/bootstrap_duration_sex_ratio_`educ'.tex, write replace
     file write table "\begin{table}[hp!]" _n
     file write table "\begin{center}" _n
     file write table "\begin{small}" _n
@@ -145,101 +148,88 @@ foreach educ in "low" "med" "high" {
             loc area = "urban"
         }
         if "`where'" == "Rural" {
-            loc area = "!urban"
+            loc area = "rural"
         }
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-        forvalues spell = 1/4 {
+        forvalues spell = 3/3 {
 
+            // Need to double the lines here
             file write table "\multirow{`spell'}{*}{`spell'} "
 
             forvalues prior = 1/`spell' {
 
-                // Conditions for sex composition
+                // Conditions for sex composition to call matrix values
+                loc girls = `spell' - `prior'
+                loc part_col_name "_`area'_g`girls'"
                 if `spell' == 1 {
                     file write table _col(20)    "&                            "
-                    loc  sexcomp " if `area' "
+                    loc  part_col_name "_`area'"
                 } 
                 if `spell' == 2 {
                     if `prior' == 1 {
                         file write table _col(20) "& \mco{One girl}             "
-                        loc sexcomp " if girl & `area' "
                     }
                     if `prior' == 2 {
                         file write table _col(20) "& \mco{One boy}              "
-                        loc sexcomp " if !girl & `area' "
                     }    
                 }
                 if `spell' == 3 {
                     if `prior' == 1 {
                         file write table _col(20) "& \mco{Two girls}            "
-                        loc sexcomp " if girl2 & `area' "
                     }
                     if `prior' == 2 {
                         file write table _col(20) "& \mco{One boy / one girl}   "
-                        loc sexcomp " if girl1 & `area' "
                     }    
                     if `prior' == 3 {
                         file write table _col(20) "& \mco{Two boys}             "
-                        loc sexcomp " if !girl1 & !girl2 & `area' "
                     }    
                 }
                 if `spell' == 4 {
                     if `prior' == 1 {
                         file write table _col(20) "& \mco{Three girls}          "
-                        loc sexcomp " if girl3 & `area' "
                     }
                     if `prior' == 2 {
                         file write table _col(20) "& \mco{One boy / two girls}  "
-                        loc sexcomp " if girl2 & `area' "
                     }    
                     if `prior' == 3 {
                         file write table _col(20) "& \mco{Two boys / one girl}  "
-                        loc sexcomp " if girl1 & `area' "
                     }    
                     if `prior' == 4 {
                         file write table _col(20) "& \mco{Three boys}           "
-                        loc sexcomp " if !girl1 & !girl2 & !girl3 & `area' "
                     }    
                 }
 
 
+                // Need a loop over both estimates and standard errors - for now just get estimates to work
 
-            
-                // Loop over sex composition
+                // Loop over periods
                 forvalues period = 1/3 {
                 
-                
+                    // loop over statistics (p50 and pct here)
+                    foreach stats in p50 pct {
+                    
+                        // Format 
+                        if "`stats'" == "pct" {
+                            local stat_format = "%3.1fc"
+                        }
+                        else {
+                            local stat_format = "%3.1fc"                        
+                        }
 
-                    // Add results to table
-                    
-                    // Need a loop over both estimates and standard errors
-                    
-                    
-                    
-                    
-                    
-                    file write table "& " %2.0fc ()
-                    
-                    
-                    sum num_birth `sexcomp'
-                    if `r(mean)' > 100 {
-                    	if `r(mean)' <= 500 {
-                    		loc low "^{\dagger}"
-                    	}
-                    	else {
-                    		loc low "          "
-                    	}
-                        sum median `sexcomp'
-                        file write table "& " %2.0fc (`r(mean)') "      "
-                        sum pct_sons `sexcomp'
-                        file write table "& " %3.1fc (`r(max)') "`low'     "
-                    } 
-                    else {
-                        file write table "&    .    "
-                        file write table "&    .     "                    
+                        // Find column number for matrix 
+                        local full_name = "`stats'`part_col_name'"                    
+                        dis "Full name: `full_name'"
+                        find_col b_s`spell'_g`period'_`educ' `full_name'
+                        dis "Column number `r(col_num)'"
+                
+                        // Add results to table    
+                        dis "Matrix result: " b_s`spell'_g`period'_`educ'[1,`r(col_num)']
+                        file write table "& " `stat_format' (b_s`spell'_g`period'_`educ'[1,`r(col_num)']) "      "        
                     }
+                
                 }
+                dis "Do I ever make it here?"
                 file write table " \\" _n
             }
             file write table "\addlinespace " _n
