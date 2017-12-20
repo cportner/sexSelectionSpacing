@@ -154,14 +154,17 @@ foreach educ in "high" {
 
         forvalues spell = 3/3 {
 
-            // Need to double the lines here
-            file write table "\multirow{`spell'}{*}{`spell'} "
+            // Double the lines to allow for both statistics and standard errors
+            local double = 2 * `spell'
+            file write table "\multirow{`double'}{*}{`spell'} "
 
             forvalues prior = 1/`spell' {
 
-                // Conditions for sex composition to call matrix values
+                // Number of girls in prior spell and part of column name
                 loc girls = `spell' - `prior'
                 loc part_col_name "_`area'_g`girls'"
+                
+                // Conditions for sex composition to call matrix values
                 if `spell' == 1 {
                     file write table _col(20)    "&                            "
                     loc  part_col_name "_`area'"
@@ -201,40 +204,56 @@ foreach educ in "high" {
                 }
 
 
-                // Need a loop over both estimates and standard errors - for now just get estimates to work
-
-                // Loop over periods
-                forvalues period = 1/3 {
+                // Loop over both estimates and standard errors
+                foreach type in b se {
                 
-                    // loop over statistics (p50 and pct here)
-                    foreach stats in p50 pct {
-                    
-                        // Format 
-                        if "`stats'" == "pct" {
-                            local stat_format = "%3.1fc"
-                        }
-                        else {
-                            local stat_format = "%3.1fc"                        
-                        }
-
-                        // Find column number for matrix 
-                        local full_name = "`stats'`part_col_name'"                    
-                        dis "Full name: `full_name'"
-                        find_col b_s`spell'_g`period'_`educ' `full_name'
-                        dis "Column number `r(col_num)'"
-                
-                        // Add results to table    
-                        dis "Matrix result: " b_s`spell'_g`period'_`educ'[1,`r(col_num)']
-                        file write table "& " `stat_format' (b_s`spell'_g`period'_`educ'[1,`r(col_num)']) "      "        
+                    // move in enough to match up with first line
+                    if "`type'" == "se" {
+                        file write table _col(20) "&                            "
                     }
+                    
+                    // Loop over periods
+                    forvalues period = 1/3 {
                 
-                }
-                dis "Do I ever make it here?"
-                file write table " \\" _n
+                        // loop over statistics (p50 and pct here)
+                        foreach stats in p50 pct {
+                    
+                            // Format 
+                            if "`stats'" == "pct" {
+                                local stat_format = "%3.1fc"
+                            }
+                            else {
+                                local stat_format = "%3.1fc"                        
+                            }
+
+                            // Find column number for matrix 
+                            local full_name = "`stats'`part_col_name'"                    
+                            find_col `type'_s`spell'_g`period'_`educ' `full_name'
+                
+                            // Add results to table  
+                            file write table "&   " 
+                            if "`type'" == "se" {
+                                file write table " ("
+                            }
+                            else {
+                                file write table " "
+                            }
+                            file write table `stat_format' (`type'_s`spell'_g`period'_`educ'[1,`r(col_num)'])        
+                            if "`type'" == "se" {
+                                file write table ")"
+                            }
+                            else {
+                                file write table " "
+                            }
+                            file write table "      " 
+                        }
+                
+                    }
+                    file write table " \\" _n
+                }            
             }
             file write table "\addlinespace " _n
         }
-
     }
 
     // Table endnotes
@@ -242,6 +261,7 @@ foreach educ in "high" {
     file write table "\end{tabular}" _n
     file write table "\begin{tablenotes} \footnotesize" _n
     file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
+    file write table "All standard errors are calculated using bootstrapping with replacement and `num_reps' repetitions." _n
     file write table "Predictions are based on the characteristics detailed in the main text." _n
     file write table "Duration is the predicted median number of months it takes for a woman to have a child," _n
     file write table "starting at marriage for spell 1 or at 9 months after the birth of the prior child for all other spells." _n
