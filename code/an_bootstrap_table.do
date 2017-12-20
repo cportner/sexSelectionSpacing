@@ -3,7 +3,7 @@
 version 13.1
 clear all
 
-loc num_reps = 3
+loc num_reps = 10
 file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
 capture program drop _all
@@ -45,8 +45,7 @@ save "`main'"
 
 // Restricting sample and data manipulations
 
-// foreach educ in "low" "med" "high" {
-foreach educ in  "high" {
+foreach educ in "low" "med" "high" {
 
     use "`main'", clear
 
@@ -67,7 +66,7 @@ foreach educ in  "high" {
     
     save "``educ''" // Need double ` because the name that comes from educ is itself a local variable
 
-    forvalues spell = 3/3 {
+    forvalues spell = 1/4 {
         use "``educ''" , clear
         if `spell' == 1 {
             global b1space ""
@@ -116,8 +115,7 @@ foreach educ in  "high" {
 
 // Loop over education
 
-// foreach educ in "low" "med" "high" {
-foreach educ in "high" {
+foreach educ in "low" "med" "high" {
 
     if "`educ'" == "low" {
         loc char "No Education"
@@ -152,7 +150,7 @@ foreach educ in "high" {
         }
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-        forvalues spell = 3/3 {
+        forvalues spell = 1/4 {
 
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell'
@@ -166,8 +164,7 @@ foreach educ in "high" {
                 
                 // Conditions for sex composition to call matrix values
                 if `spell' == 1 {
-                    file write table _col(20)    "&                            "
-                    loc  part_col_name "_`area'"
+                        file write table _col(20) "&                            "
                 } 
                 if `spell' == 2 {
                     if `prior' == 1 {
@@ -261,7 +258,10 @@ foreach educ in "high" {
     file write table "\end{tabular}" _n
     file write table "\begin{tablenotes} \footnotesize" _n
     file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
-    file write table "All standard errors are calculated using bootstrapping with replacement and `num_reps' repetitions." _n
+    file write table "Each spell/period combination is a separated regression." _n
+    file write table "Standard errors in parenthese are calculated using bootstrapping with replacement." _n
+    file write table "The estimations are performed on the bootstrapped sample and the statistics are calculated." _n
+    file write table "This process is repeated `num_reps' times." _n
     file write table "Predictions are based on the characteristics detailed in the main text." _n
     file write table "Duration is the predicted median number of months it takes for a woman to have a child," _n
     file write table "starting at marriage for spell 1 or at 9 months after the birth of the prior child for all other spells." _n
