@@ -45,7 +45,8 @@ save "`main'"
 
 // Restricting sample and data manipulations
 
-foreach educ in "low" "med" "high" {
+// foreach educ in "low" "med" "high" {
+foreach educ in "high" {
 
     use "`main'", clear
 
@@ -66,7 +67,7 @@ foreach educ in "low" "med" "high" {
     
     save "``educ''" // Need double ` because the name that comes from educ is itself a local variable
 
-    forvalues spell = 1/4 {
+    forvalues spell = 1/1 {
         use "``educ''" , clear
         if `spell' == 1 {
             global b1space ""
@@ -109,9 +110,9 @@ foreach educ in "low" "med" "high" {
     }
 }
 
+exit
 
-
-// Table stuff here
+// Table stuff 
 
 // Loop over education
 
