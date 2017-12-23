@@ -37,7 +37,7 @@ program bootspell, rclass
     loc np "  np*X* "
 
     // ESTIMATION
-    eststo: mlogit birth dur* $b1space ///
+    mlogit birth dur* $b1space ///
         $parents $hh $caste `np'  ///
         , baseoutcome(0) noconstant 
 
