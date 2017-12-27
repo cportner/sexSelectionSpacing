@@ -35,9 +35,8 @@ loc tables  "../tables"
 
 
 // Load bootstrap results and create matrices.
-// foreach educ in "low" "med" "high" {
-foreach educ in "high" {
-    forvalues spell = 3/3 {
+foreach educ in "low" "med" "high" {
+    forvalues spell = 1/4 {
         forvalues period = 1/3 {
         
             // Load bootstrap generated data and call bstat to replay results
@@ -61,8 +60,7 @@ foreach educ in "high" {
 
 
 // Loop over education
-// foreach educ in "low" "med" "high" {
-foreach educ in "high" {
+foreach educ in "low" "med" "high" {
 
     if "`educ'" == "low" {
         loc char "No Education"
@@ -77,14 +75,14 @@ foreach educ in "high" {
     file open table using `tables'/bootstrap_duration_sex_ratio_`educ'.tex, write replace
     file write table "\begin{table}[hp!]" _n
     file write table "\begin{center}" _n
-    file write table "\begin{small}" _n
+    file write table "\begin{footnotesize}" _n
     file write table "\begin{threeparttable}" _n
     file write table "\caption{Estimated Median Duration and Sex Ratio for Women with `char'}" _n
     file write table "\label{tab:median_sex_ratio_`educ'}" _n
     file write table "\begin{tabular}{@{} l l D{.}{.}{2.0} D{.}{.}{2.1}  D{.}{.}{2.0} D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1}  @{}}" _n
     file write table "\toprule" _n
     file write table "                   &                            & \mct{1972-1984}                 &\mct{1985-1994}                  & \mct{1995-2006}                         \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8}" _n
-    file write table "                   & \mco{Composition of}       & \mco{Duration}  & \mco{Percent} & \mco{Duration}  & \mco{Percent} & \mco{Duration}  & \mco{Percent}         \\ " _n
+    file write table "                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}         \\ " _n
     file write table " \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}            \\ \midrule" _n
 
     // Loop over area
@@ -97,7 +95,7 @@ foreach educ in "high" {
         }
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-        forvalues spell = 3/3 {
+        forvalues spell = 1/4 {
             
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell'
@@ -203,7 +201,7 @@ foreach educ in "high" {
     // Table endnotes
     file write table "\bottomrule" _n
     file write table "\end{tabular}" _n
-    file write table "\begin{tablenotes} \footnotesize" _n
+    file write table "\begin{tablenotes} \scriptsize" _n
     file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
     file write table "The statistics for each spell/period combination are calculated based on the regression" _n
     file write table "model for that combination as described in the main text, using bootstrapping to find the " _n
@@ -212,6 +210,7 @@ foreach educ in "high" {
     file write table "resampled data, and the statistics calculated. " _n
     file write table "This process is repeated `num_reps' times and the standard errors calculated." _n
     
+    file write table "\item[a] " _n
     file write table "Median duration is calculated as follows." _n
     file write table "For each woman in a given spell/period combination sample, I calculate the time point" _n
     file write table "at which there is a 50\% chance that she will have given birth, conditional on the " _n
@@ -223,9 +222,15 @@ foreach educ in "high" {
     file write table "Duration begins at marriage for spell 1 or at 9 months after the birth of the prior child " _n
     file write table "for all other spells." _n
 
-// This still needs fixing
-    file write table "Percent boys is the predicted percent of births that result in a son" _n
-    file write table "for women with the given set of characteristics over the entire spell length used for estimations." _n
+    file write table "\item[b] " _n
+    file write table "Percent boys is calculated as follows." _n
+    file write table "For each woman in a given spell/period combination sample, I calculate the predicted" _n
+    file write table "percent boys for each month and sum this across the length of the spell using the" _n
+    file write table "likelihood of having a child in each month as the weight. " _n
+    file write table "The individual percent boys is then averaged across all women in the given sample." _n
+    file write table "The result is the predicted percent boys that will be born to women in the sample once " _n
+    file write table "child bearing for that spell is over." _n
+
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
     file write table "\end{small}" _n
