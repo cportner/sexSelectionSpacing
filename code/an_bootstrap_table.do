@@ -233,7 +233,7 @@ foreach educ in "low" "med" "high" {
 
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
-    file write table "\end{small}" _n
+    file write table "\end{footnotesize}" _n
     file write table "\end{center}" _n
     file write table "\end{table}" _n
 
