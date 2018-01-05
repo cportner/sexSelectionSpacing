@@ -67,7 +67,7 @@ forvalues group = 1/1 {
         bysort id (t): egen any_birth = max(birth)
         bysort id (t): keep if _n == 1
         gen had_birth = any_birth == 1 | any_birth == 2
-        collapse (count) num_obs = had_birth (sum) num_births = had_birth , by(girl urban) 
+        collapse (count) num_obs = had_birth (sum) num_births = had_birth , by(girl1 urban) 
         save `data'/obs_spell2_`group'_`educ', replace
         restore
         

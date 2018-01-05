@@ -10,7 +10,7 @@ gen b2_girls = 0 if id == 1 | id == 2
 replace b2_girls = 1 if id == 3 | id == 4 
 gen urban = 0 if id == 1 | id == 3
 replace urban = 1 if id == 2 | id == 4
-gen girl = b2_girls
+gen girl1 = b2_girls
 gen girl1Xurban = girl1 * urban
 gen months = t * 3
 
@@ -39,16 +39,16 @@ gen pc_u = pcbg_u * 100
 set scheme s1mono
 loc goptions "xtitle(Months)  xlabel(0(6)60) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(35(5)75)"
 
-line pc pc_l pc_u months if urban & girl, sort `goptions' 
+line pc pc_l pc_u months if urban & girl1, sort `goptions' 
 graph export `figures'/spell2_g`group'_`educ'_urban_g_pc.eps, replace fontface(Palatino) 
 
-line pc pc_l pc_u months if urban & !girl, sort `goptions'
+line pc pc_l pc_u months if urban & !girl1, sort `goptions'
 graph export `figures'/spell2_g`group'_`educ'_urban_b_pc.eps, replace fontface(Palatino) 
 
-line pc pc_l pc_u months if !urban & girl, sort `goptions'
+line pc pc_l pc_u months if !urban & girl1, sort `goptions'
 graph export `figures'/spell2_g`group'_`educ'_rural_g_pc.eps, replace fontface(Palatino) 
 
-line pc pc_l pc_u months if !urban & !girl, sort `goptions'
+line pc pc_l pc_u months if !urban & !girl1, sort `goptions'
 graph export `figures'/spell2_g`group'_`educ'_rural_b_pc.eps, replace fontface(Palatino) 
 
     
@@ -59,16 +59,16 @@ set scheme s1mono
 loc goptions "xtitle(Months) xlabel(0(6)60) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 
 
-line s months if urban & girl, sort `goptions'
+line s months if urban & girl1, sort `goptions'
 graph export `figures'/spell2_g`group'_`educ'_urban_g_s.eps, replace fontface(Palatino) 
 
-line s months if urban & !girl, sort `goptions'
+line s months if urban & !girl1, sort `goptions'
 graph export `figures'/spell2_g`group'_`educ'_urban_b_s.eps, replace fontface(Palatino) 
 
-line s months if !urban & girl, sort `goptions'
+line s months if !urban & girl1, sort `goptions'
 graph export `figures'/spell2_g`group'_`educ'_rural_g_s.eps, replace fontface(Palatino) 
 
-line s months if !urban & !girl, sort `goptions'
+line s months if !urban & !girl1, sort `goptions'
 graph export `figures'/spell2_g`group'_`educ'_rural_b_s.eps, replace fontface(Palatino) 
 
 
@@ -88,7 +88,7 @@ graph export `figures'/spell2_g`group'_`educ'_rural_pps.eps, replace fontface(Pa
 gen period = `group'
 gen educ   = "`educ'"
 // Merge in observation data
-merge m:1 girl urban using `data'/obs_spell2_`group'_`educ'
+merge m:1 girl1 urban using `data'/obs_spell2_`group'_`educ'
 sort id t
 drop _merge
 save `data'/spell2_g`group'_`educ' , replace
