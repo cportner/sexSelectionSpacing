@@ -24,18 +24,17 @@ DAT  = ./data
 PERIODS := 1 2 3
 AREAS   := rural urban
 EDUC    := low med high
-SPELLS  := 2 3
+SPELLS  := 1 2 3 4
 COMP2   := b g
 COMP3   := bb bg gg
 COMP4   := bbb bbg bgg ggg
 
-PPSDEPS := \
+BSDATA := \
     $(foreach spell, $(SPELLS), \
-    $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) ) )
-
+    $(foreach educ, $(EDUC), \
+    $(DAT)/bs_s$(spell)_g$(per)_$(educ).dta ) ) ) 
+    
 PPSDATA1 := \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
@@ -55,6 +54,8 @@ PPSDATA4 := \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
     $(DAT)/spell4_g$(per)_$(educ).dta ) )
+    
+### Survival and percentage graphs
     
 SPELL1 := \
     $(foreach educ, $(EDUC), \
@@ -83,6 +84,32 @@ SPELL4 := \
     $(foreach sex, $(COMP4), \
     $(FIG)/spell4_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell4_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
 
+### PPS graphs
+    
+TARGETPPS1 := \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell1_$(educ)_$(area)_pps.eps ) )
+
+TARGETPPS2 := \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell2_g$(per)_$(educ)_$(area)_pps.eps ) ) )
+
+TARGETPPS3 := \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell3_g$(per)_$(educ)_$(area)_pps.eps ) ) )
+
+
+TARGETPPS4 := \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/spell4_g$(per)_$(educ)_$(area)_pps.eps ) ) )
+
 
 ### Generate figure targets for graphs
 
@@ -105,17 +132,6 @@ TARGET4 := \
     $(foreach sex, $(COMP4), \
     $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
     
-TARGETPPS1 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell1_$(educ)_$(area)_pps.eps ) )
-
-TARGETPPS4 := \
-    $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell4_g$(per)_$(educ)_$(area)_pps.eps ) ) )
-        
     
 ###################################################################	
 ### LaTeX part                                                  ###
@@ -123,10 +139,10 @@ TARGETPPS4 := \
 
 # Main paper
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
- $(TAB)/des_stat.tex $(PPSDEPS) \
+ $(TAB)/des_stat.tex \
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) $(TARGETPPS4) \
- $(TAB)/median_sex_ratio_low.tex  $(TAB)/median_sex_ratio_med.tex  $(TAB)/median_sex_ratio_high.tex
+ $(TARGETPPS1) $(TARGETPPS2) $(TARGETPPS3) $(TARGETPPS4) \
+ $(TAB)/bootstrap_duration_sex_ratio_high.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -134,9 +150,8 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
 
 # Appendix file	
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex $(TEX)/sex_selection_spacing.bib \
- $(PPSDEPS)	\
  $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) $(TARGETPPS4)
+ $(TARGETPPS1) $(TARGETPPS2) $(TARGETPPS3) $(TARGETPPS4) 
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -156,9 +171,9 @@ all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
-results: $(PPSDEPS) $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) $(TARGETPPS4) \
- $(TAB)/median_sex_ratio_low.tex  $(TAB)/median_sex_ratio_med.tex  $(TAB)/median_sex_ratio_high.tex
+results: $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
+ $(TARGETPPS1) $(TARGETPPS2) $(TARGETPPS3) $(TARGETPPS4) \
+ $(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
 
 ###################################################################	
 ### Stata part         			                                ###
@@ -228,10 +243,19 @@ $(TARGETPPS4): $(COD)/an_spell4_pps.do $(PPSDATA4)
 #--------------------#
 #      Tables        #
 #--------------------#
-	
-$(TAB)/median_sex_ratio_low.tex  $(TAB)/median_sex_ratio_med.tex  $(TAB)/median_sex_ratio_high.tex: $(COD)/an_median_sex_ratio.do \
- $(PPSDATA1) $(PPSDATA2) $(PPSDATA3) $(PPSDATA4)
+
+# Bootstrap results
+$(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta \
+ $(COD)/bootspell.do $(COD)/baseline_hazards/bh_low.do \
+ $(COD)/baseline_hazards/bh_med.do $(COD)/baseline_hazards/bh_high.do
 	cd $(COD); stata-se -b -q $(<F)	
+
+# Bootstrap tables
+
+$(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex: $(COD)/an_bootstrap_table.do \
+ $(BSDATA)
+	cd $(COD); stata-se -b -q $(<F)	
+
 	
 #---------------------------------------------------------------------------------------#
 # Clean directories for (most) generated files                                          #
