@@ -20,7 +20,7 @@ COD  = ./code
 RAW  = ./rawData
 DAT  = ./data
 
-### Generate figure dependencies
+### Generate dependencies for ease of reading/writing
 PERIODS := 1 2 3
 AREAS   := rural urban
 EDUC    := low med high
@@ -29,12 +29,14 @@ COMP2   := b g
 COMP3   := bb bg gg
 COMP4   := bbb bbg bgg ggg
 
+# Data for bootstrapping
 BSDATA := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
     $(DAT)/bs_s$(spell)_g$(per)_$(educ).dta ) ) ) 
     
+# Data for parity progression conditioned figures     
 PPSDATA1 := \
     $(foreach educ, $(EDUC), \
     $(foreach per, $(PERIODS), \
@@ -111,7 +113,7 @@ TARGETPPS4 := \
     $(FIG)/spell4_g$(per)_$(educ)_$(area)_pps.eps ) ) )
 
 
-### Generate figure targets for graphs
+### Generate figure targets for survival and percentage boys graphs
 
 TARGET1 := \
     $(foreach area, $(AREAS), \
