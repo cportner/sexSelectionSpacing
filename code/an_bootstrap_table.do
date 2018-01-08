@@ -75,11 +75,11 @@ foreach educ in "low" "med" "high" {
     file open table using `tables'/bootstrap_duration_sex_ratio_`educ'.tex, write replace
     file write table "\begin{table}[hp!]" _n
     file write table "\begin{center}" _n
-    file write table "\begin{footnotesize}" _n
+    file write table "\begin{scriptsize}" _n
     file write table "\begin{threeparttable}" _n
     file write table "\caption{Estimated Median Duration and Sex Ratio for Women with `char'}" _n
     file write table "\label{tab:median_sex_ratio_`educ'}" _n
-    file write table "\begin{tabular}{@{} l l D{.}{.}{2.0} D{.}{.}{2.1}  D{.}{.}{2.0} D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1}  @{}}" _n
+    file write table "\begin{tabular}{@{} c l D{.}{.}{2.0} D{.}{.}{2.1}  D{.}{.}{2.0} D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1}  @{}}" _n
     file write table "\toprule" _n
     file write table "                   &                            & \mct{1972-1984}                 &\mct{1985-1994}                  & \mct{1995-2006}                         \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8}" _n
     file write table "                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}         \\ " _n
@@ -98,8 +98,11 @@ foreach educ in "low" "med" "high" {
         forvalues spell = 1/4 {
             
             // Double the lines to allow for both statistics and standard errors
-            local double = 2 * `spell'
-            file write table "\multirow{`double'}{*}{`spell'} "
+            local double = 2 * `spell' - 1
+            if `spell' == 1 {
+                local double = `double' + 1
+            }
+            file write table "\multirow[c]{`double'}{*}{`spell'} "
 
             forvalues prior = 1/`spell' {
 
@@ -201,7 +204,7 @@ foreach educ in "low" "med" "high" {
     // Table endnotes
     file write table "\bottomrule" _n
     file write table "\end{tabular}" _n
-    file write table "\begin{tablenotes} \scriptsize" _n
+    file write table "\begin{tablenotes} \tiny" _n
     file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
     file write table "The statistics for each spell/period combination are calculated based on the regression" _n
     file write table "model for that combination as described in the main text, using bootstrapping to find the " _n
@@ -233,7 +236,7 @@ foreach educ in "low" "med" "high" {
 
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
-    file write table "\end{footnotesize}" _n
+    file write table "\end{scriptsize}" _n
     file write table "\end{center}" _n
     file write table "\end{table}" _n
 
