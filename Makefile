@@ -105,7 +105,6 @@ TARGETPPS3 := \
     $(foreach area, $(AREAS), \
     $(FIG)/spell3_g$(per)_$(educ)_$(area)_pps.eps ) ) )
 
-
 TARGETPPS4 := \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
@@ -232,11 +231,14 @@ $(TARGET3): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell3_graphs
 
 $(TARGET4): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell4_graphs.do
 	cd $(COD); stata-se -b -q $(<F)
-
-$(FIG)/%_rural_pps.eps $(FIG)/%_urban_pps.eps: $(COD)/an_%_graphs.do $(DAT)/results_%.ster 
-	cd $(COD); stata-se -b -q $(<F)
 	
 $(TARGETPPS1): $(COD)/an_spell1_pps.do $(PPSDATA1)
+	cd $(COD); stata-se -b -q $(<F)
+
+$(TARGETPPS2): $(COD)/an_spell2_pps.do $(PPSDATA2)
+	cd $(COD); stata-se -b -q $(<F)
+
+$(TARGETPPS3): $(COD)/an_spell3_pps.do $(PPSDATA3)
 	cd $(COD); stata-se -b -q $(<F)
 	
 $(TARGETPPS4): $(COD)/an_spell4_pps.do $(PPSDATA4)
