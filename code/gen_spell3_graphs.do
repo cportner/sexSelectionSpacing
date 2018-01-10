@@ -86,20 +86,6 @@ line s months if !urban & !girl1 & !girl2, sort `goptions'
 graph export `figures'/spell3_g`group'_`educ'_rural_bb_s.eps, replace fontface(Palatino) 
 
 
-
-// survival curves conditional on parity progression
-bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
-loc goptions "xtitle(Months) xlabel(0(6)72) ytitle("") legend(cols(1) ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
-graph twoway (line pps months if id == 2 , sort `goptions' lpattern(solid) legend(label(1 "Two Boys"))) ///
-     (line pps months if id == 4 , sort `goptions' lpattern(dash) legend(label(2 "One Boy / One Girl"))) ///
-     (line pps months if id == 6 , sort `goptions' lpattern(shortdash) legend(label(3 "Two Girls")))
-graph export `figures'/spell3_g`group'_`educ'_urban_pps.eps, replace fontface(Palatino)  
-
-graph twoway (line pps months if id == 1 , sort `goptions' lpattern(solid) legend(label(1 "Two Boys"))) ///
-     (line pps months if id == 3 , sort `goptions' lpattern(dash) legend(label(2 "One Boy / One Girl"))) ///
-     (line pps months if id == 5 , sort `goptions' lpattern(shortdash) legend(label(3 "Two Girls")))
-graph export `figures'/spell3_g`group'_`educ'_rural_pps.eps, replace fontface(Palatino)   
-
 gen period = `group'
 gen educ   = "`educ'"
 // Merge in observation data

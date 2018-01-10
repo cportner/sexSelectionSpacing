@@ -73,17 +73,6 @@ graph export `figures'/spell2_g`group'_`educ'_rural_b_s.eps, replace fontface(Pa
 
 
 
-// survival curves conditional on parity progression
-bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
-loc goptions "xtitle(Months) xlabel(0(6)60) ytitle("") legend(ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
-graph twoway (line pps months if id == 2 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
- (line pps months if id == 4 , sort `goptions' legend(label(2 "First Child a Girl")))
-graph export `figures'/spell2_g`group'_`educ'_urban_pps.eps, replace fontface(Palatino) 
-
-graph twoway (line pps months if id == 1 , sort `goptions' legend(label(1 "First Child a Boy"))) ///
- (line pps months if id == 3 , sort `goptions' legend(label(2 "First Child a Girl")))
-graph export `figures'/spell2_g`group'_`educ'_rural_pps.eps, replace fontface(Palatino) 
-
 // Adding period and education variables for comparison of pps curves
 gen period = `group'
 gen educ   = "`educ'"
