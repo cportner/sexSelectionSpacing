@@ -85,6 +85,8 @@ graph export `figures'/spell3_g`group'_`educ'_rural_bg_s.eps, replace fontface(P
 line s months if !urban & !girl1 & !girl2, sort `goptions'
 graph export `figures'/spell3_g`group'_`educ'_rural_bb_s.eps, replace fontface(Palatino) 
 
+// survival curves conditional on parity progression
+bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])
 
 gen period = `group'
 gen educ   = "`educ'"
