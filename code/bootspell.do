@@ -97,17 +97,17 @@ program bootspell, rclass
     //----------------------------------------------------//
 
     gen below = pps < 0.5
-    gen median = int(months - ((0.5 - pps) / (pps[_n-1] - pps)) * 3) ///
+    gen median = (months - ((0.5 - pps) / (pps[_n-1] - pps)) * 3) ///
         if below & !below[_n-1] 
-        // Because each t is 3 months long, this creates a "weighted" average and then 
-        // rounds to get a month. All other obs are missing.
+        // Because each t is 3 months long, this creates a "weighted" average. 
+        // All other obs are missing.
 
     replace below = pps < 0.25
-    gen p25 = int(months - ((0.25 - pps) / (pps[_n-1] - pps)) * 3) ///
+    gen p25 = (months - ((0.25 - pps) / (pps[_n-1] - pps)) * 3) ///
         if below & !below[_n-1] 
 
     replace below = pps < 0.75
-    gen p75 = int(months - ((0.75 - pps) / (pps[_n-1] - pps)) * 3) ///
+    gen p75 = (months - ((0.75 - pps) / (pps[_n-1] - pps)) * 3) ///
         if below & !below[_n-1] 
     
     // This part depends on spell 
@@ -160,20 +160,20 @@ program bootspell, rclass
             }
 
             // Calculation for median at sex composition and area
-            sum median `sexcomp' [iw = prob_birth]
+            sum median `sexcomp'
             loc girls = `spell' - `prior' // means 0 girls (or boys) in first spell
             return scalar p50_`where'_g`girls' = `r(mean)'
 
             // 25 percentile spell length - remember 25% left!!
-            sum p25 `sexcomp' [iw = prob_birth]
+            sum p25 `sexcomp'
             return scalar p25_`where'_g`girls' = `r(mean)'
 
             // 75 percentile spell length - remember 75% left!!
-            sum p75 `sexcomp' [iw = prob_birth]
+            sum p75 `sexcomp'
             return scalar p75_`where'_g`girls' = `r(mean)'
 
             // Percent boys
-            sum pct_sons `sexcomp' [iw = prob_birth]
+            sum pct_sons `sexcomp'
             return scalar pct_`where'_g`girls' = `r(mean)'
             // can add more statistics here
         }
