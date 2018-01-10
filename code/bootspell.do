@@ -85,6 +85,7 @@ program bootspell, rclass
     // probability of kid
     gen     prob_kid = 1 - s if t == 1
     replace prob_kid = s[_n-1] - s[_n] if t != 1
+    bysort id (t): gen double prob_birth = s[_N] // probability of having a birth by end of spell
 
     // Sons born
     gen ratio_sons = pcbg * prob_kid
@@ -159,20 +160,20 @@ program bootspell, rclass
             }
 
             // Calculation for median at sex composition and area
-            sum median `sexcomp'
+            sum median `sexcomp' [iw = prob_birth]
             loc girls = `spell' - `prior' // means 0 girls (or boys) in first spell
             return scalar p50_`where'_g`girls' = `r(mean)'
 
             // 25 percentile spell length - remember 25% left!!
-            sum p25 `sexcomp'
+            sum p25 `sexcomp' [iw = prob_birth]
             return scalar p25_`where'_g`girls' = `r(mean)'
 
             // 75 percentile spell length - remember 75% left!!
-            sum p75 `sexcomp'
+            sum p75 `sexcomp' [iw = prob_birth]
             return scalar p75_`where'_g`girls' = `r(mean)'
 
             // Percent boys
-            sum pct_sons `sexcomp'
+            sum pct_sons `sexcomp' [iw = prob_birth]
             return scalar pct_`where'_g`girls' = `r(mean)'
             // can add more statistics here
         }
