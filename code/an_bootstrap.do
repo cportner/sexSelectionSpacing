@@ -70,6 +70,7 @@ foreach educ in "high" "med" "low" {
                     loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls')"
                     loc stats = "`stats' p25_`where'_g`girls' = r(p25_`where'_g`girls')"
                     loc stats = "`stats' pct_`where'_g`girls' = r(pct_`where'_g`girls')"
+                    loc stats = "`stats' any_`where'_g`girls' = r(any_`where'_g`girls')"
                 } 
             }
             
