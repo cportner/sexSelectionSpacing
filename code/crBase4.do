@@ -161,11 +161,10 @@ ren v613 pref_fertility
 ren v616 pref_space
 
 // Generate household id
-tempvar temp_id temp_id1
-gen `temp_id'  = reverse(caseid)
-gen `temp_id1' = substr(`temp_id',4,.)
-gen whhid = trim(reverse(`temp_id1'))
-drop `temp_id' `temp_id1'
+gen temp_id  = reverse(caseid)
+gen temp_id1 = substr(temp_id,4,.)
+gen whhid = trim(reverse(temp_id1))
+drop temp_id temp_id1
 sort whhid
 
 compress
