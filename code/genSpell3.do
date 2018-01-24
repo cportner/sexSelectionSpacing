@@ -21,11 +21,9 @@ gen b1space = b1_space
 gen b1space2 = b1space^2/100
 global b1space " b1space b1space2 "
 
-gen b2_born_year = int((b2_born_cmc-1)/12) 
-gen group = 1 if b2_born_year <= 84
-replace group = 2 if b2_born_year >= 85 & b2_born_year <= 94
-replace group = 3 if b2_born_year >= 95
-
+gen b2_born_year = int((b2_born_cmc-1)/12)
+create_groups b2_born_year
+ 
 drop if b3_space == .
 gen org_b3_space = b3_space
 replace b3_space = int((b3_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped

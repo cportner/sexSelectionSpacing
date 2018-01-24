@@ -16,9 +16,7 @@ lab var mom_age  "Wife's age at beginning of spell"
 lab var mom_age2 "Wife's age squared / 100"
 
 gen b0_born_year = int((marriage_cmc-1)/12) 
-gen group = 1 if b0_born_year <= 84
-replace group = 2 if b0_born_year >= 85 & b0_born_year <= 94
-replace group = 3 if b0_born_year >= 95
+create_groups b0_born_year
 
 gen org_b1_space = b1_space
 replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped

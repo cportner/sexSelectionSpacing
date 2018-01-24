@@ -22,9 +22,7 @@ gen b1space2 = b1space^2/100
 global b1space " b1space b1space2 "
 
 gen b3_born_year = int((b3_born_cmc-1)/12) 
-gen group = 1 if b3_born_year <= 84
-replace group = 2 if b3_born_year >= 85 & b3_born_year <= 94
-replace group = 3 if b3_born_year >= 95
+create_groups b3_born_year
 
 drop if b4_space == .
 gen org_b4_space = b4_space
