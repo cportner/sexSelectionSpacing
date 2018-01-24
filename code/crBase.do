@@ -2,7 +2,7 @@
 * Is based on my original work
 * crBase.do
 * begun.: 2017-06-02
-* edited: 2017-06-02
+* edited: 2018-01-23
 
 // Revisions
 * 25/02/09 No longer deleting old obs (20 yrs +), but marking them
@@ -32,6 +32,7 @@ loc tables  "../tables"
 use `data'/base2 // better - more labels
 append using `data'/base1
 append using `data'/base3
+append using `data'/base4
 
 des , short
 
