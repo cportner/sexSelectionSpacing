@@ -54,19 +54,19 @@ sort whhid
 save `data'/temp1_wlth, replace
 
 
-/*----------------------------------------------------------------------*/
-/* RELIGION FROM RAW HH DATA						*/
-/*----------------------------------------------------------------------*/
-
-tempvar db
-
-use  `rawdata'/iahh21fl
-gen v001 = hhstate * 1000 + hhpsu
-gen v002 = hhnumber
-sort v001 v002
-by v001: gen `db' = v002[_n] == v002[_n-1]
-drop if `db' == 1
-save `religion'
+// /*----------------------------------------------------------------------*/
+// /* RELIGION FROM RAW HH DATA						*/
+// /*----------------------------------------------------------------------*/
+// 
+// tempvar db
+// 
+// use  `rawdata'/iahh21fl
+// gen v001 = hhstate * 1000 + hhpsu
+// gen v002 = hhnumber
+// sort v001 v002
+// by v001: gen db = v002[_n] == v002[_n-1]
+// drop if db == 1
+// save `religion'
 
 
 /*----------------------------------------------------------------------*/
@@ -81,11 +81,11 @@ drop if _merge != 3
 drop _merge whhid
 sort v001 v002
 
-* religion
-merge m:1 v001 v002 using `religion'
-tab _merge
-drop if _merge != 3
-drop _merge
+// * religion
+// merge m:1 v001 v002 using `religion'
+// tab _merge
+// drop if _merge != 3
+// drop _merge
 
 compress
 
@@ -98,23 +98,23 @@ gen state = v024 // have to redefine in NFHS-3
 drop v024
 
 // religion
-*gen hindu = v130 == 0
-*gen muslim = v130 == 1
-*gen christian = v130 == 2
-*gen sikh = v130 == 3
-*gen buddhist = 0 // no option in NFHS-1
-*gen jain = 0 // no option in NFHS-1
-*gen other = v130 == 4
+gen hindu = v130 == 0
+gen muslim = v130 == 1
+gen christian = v130 == 2
+gen sikh = v130 == 3
+// gen buddhist = 0 // no option in NFHS-1
+// gen jain = 0 // no option in NFHS-1
+gen other = v130 == 4
 drop v130
-// religion - from raw hh
-gen hindu = h032 == 1
-gen muslim = h032 == 7
-gen christian = h032 == 4
-gen sikh = h032 == 2
-gen buddhist = h032 == 3
-gen jain = h032 == 5
-gen other = h032 == 6 | h032 >= 8 | h032 == . 
-drop h032
+// // religion - from raw hh
+// gen hindu = h032 == 1
+// gen muslim = h032 == 7
+// gen christian = h032 == 4
+// gen sikh = h032 == 2
+// gen buddhist = h032 == 3
+// gen jain = h032 == 5
+// gen other = h032 == 6 | h032 >= 8 | h032 == . 
+// drop h032
 
 // ethnicity
 gen scheduled_caste = v131 == 0
