@@ -40,7 +40,6 @@ replace group = 3 if b0_born_year >= 95
 
 drop if b1_mom_age < 12 
 drop if edu_mother == .
-drop if edu_father == . | edu_father > 30
 drop if b1_space == .
 drop if land_own == .
 gen mom_age    = b1_mom_age
@@ -129,7 +128,6 @@ replace group = 3 if b1_born_year >= 95
 
 drop if b2_mom_age < 12
 drop if edu_mother == .
-drop if edu_father == . | edu_father > 30
 drop if b1_space == .
 drop if b2_space == .
 drop if b2_space <= 8
@@ -229,7 +227,6 @@ replace group = 3 if b2_born_year >= 95
 
 drop if b2_mom_age < 12 | b3_mom_age < 14
 drop if edu_mother == .
-drop if edu_father == . | edu_father > 30
 drop if b1_space == .
 drop if b2_space == .
 drop if b2_space <= 8
@@ -334,7 +331,6 @@ replace group = 3 if b3_born_year >= 95
 
 drop if b2_mom_age < 12 | b3_mom_age < 14 | b4_mom_age < 15
 drop if edu_mother == .
-drop if edu_father == . | edu_father > 30
 drop if b1_space == .
 drop if b2_space == .
 drop if b2_space <= 8
