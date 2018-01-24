@@ -6,6 +6,11 @@ version 13.1
 clear all
 set more off
 
+// Load helper functions
+capture program drop _all
+do fun_helpers.do
+
+
 // Generic set of locations
 loc rawdata "../rawData"
 loc data    "../data"
@@ -34,9 +39,7 @@ gen b3_born_year = int((b3_born_cmc-1)/12) if fertility >= 3
 
 * SPELL 1
 preserve
-gen group = 1 if b0_born_year <= 84
-replace group = 2 if b0_born_year >= 85 & b0_born_year <= 94
-replace group = 3 if b0_born_year >= 95
+create_groups b0_born_year
 
 drop if b1_mom_age < 12 
 drop if edu_mother == .
@@ -76,13 +79,14 @@ file open stats using `tables'/des_stat.tex, write replace
 
 file write stats "\begin{table}[htp]" _n
 file write stats "\begin{center}" _n
-file write stats "\begin{scriptsize}" _n
+file write stats "\begin{tiny}" _n
 file write stats "\begin{threeparttable}" _n
 file write stats "\caption{Descriptive Statistics by Education Level and Beginning of Spell}" _n
 file write stats "\label{tab:des_stat1}" _n
-file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
-file write stats "                    &                     & \multicolumn{3}{c}{No Education}                                & \multicolumn{3}{c}{1--7 Years of Education}                      & \multicolumn{3}{c}{8+ Years of Education} \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
-file write stats "                    &                     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     \\ % \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
+file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3}  D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
+file write stats "                    &                     & \multicolumn{4}{c}{No Education}                                            & \multicolumn{4}{c}{1--7 Years of Education}                                 & \multicolumn{4}{c}{8+ Years of Education}                                 \\ \cmidrule(lr){3-6} \cmidrule(lr){7-10} \cmidrule(lr){11-14}" _n
+file write stats "                    &                     & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--}  \\ " _n
+file write stats "                    &                     & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}    \\ " _n
 file write stats "\midrule" _n
 file write stats "\multirow{16}{*}{\rotatebox{90}{First Spell}}" _n
 
@@ -97,7 +101,7 @@ esttab using `tables'/des_stat.tex, ///
 file open stats using `tables'/des_stat.tex, write append
 file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b1_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
     }
@@ -106,7 +110,7 @@ file write stats " \\" _n
 
 file write stats "                    & Women    "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b1_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(N)') "}     "
     }
@@ -122,9 +126,7 @@ restore
 
 preserve
 keep if fertility >= 1
-gen group = 1 if b1_born_year <= 84
-replace group = 2 if b1_born_year >= 85 & b1_born_year <= 94
-replace group = 3 if b1_born_year >= 95
+create_groups b1_born_year
 
 drop if b2_mom_age < 12
 drop if edu_mother == .
@@ -182,7 +184,7 @@ esttab using `tables'/des_stat.tex, ///
 file open stats using `tables'/des_stat.tex, write append
 file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b2_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
     }
@@ -191,7 +193,7 @@ file write stats " \\" _n
 
 file write stats "                    & Women    "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b2_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(N)') "}     "
     }
@@ -208,7 +210,7 @@ file write stats "Interactions between variables, baseline hazard dummies and sq
 // file write stats "Quarters refer to number of 3 month periods observed." _n
 file write stats "\end{tablenotes}" _n
 file write stats "\end{threeparttable}" _n
-file write stats "\end{scriptsize}" _n
+file write stats "\end{tiny}" _n
 file write stats "\end{center}" _n
 file write stats "\end{table}" _n
 
@@ -216,14 +218,14 @@ file close stats
 
 restore
 
+// Second table
+
 
 * SPELL 3
 
 preserve
 keep if fertility >= 2
-gen group = 1 if b2_born_year <= 84
-replace group = 2 if b2_born_year >= 85 & b2_born_year <= 94
-replace group = 3 if b2_born_year >= 95
+create_groups b2_born_year
 
 drop if b2_mom_age < 12 | b3_mom_age < 14
 drop if edu_mother == .
@@ -277,12 +279,13 @@ file write stats _n "\addtocounter{table}{-1}" _n
 file write stats "" _n
 file write stats "\begin{table}" _n
 file write stats "\begin{center}" _n
-file write stats "\begin{scriptsize}" _n
+file write stats "\begin{tiny}" _n
 file write stats "\begin{threeparttable}" _n
 file write stats "\caption{(Continued) Descriptive Statistics by Education Level and Beginning of Spell}" _n
-file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
-file write stats "                    &                     & \multicolumn{3}{c}{No Education}                                & \multicolumn{3}{c}{1-7 Years of Education}                      & \multicolumn{3}{c}{8+ Years of Education} \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
-file write stats "                    &                     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     & \mco{1972--1984}     & \mco{1985--1994}     & \mco{1995--2006}     \\ % \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}" _n
+file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3}  D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
+file write stats "                    &                     & \multicolumn{4}{c}{No Education}                                            & \multicolumn{4}{c}{1--7 Years of Education}                                 & \multicolumn{4}{c}{8+ Years of Education}                                 \\ \cmidrule(lr){3-6} \cmidrule(lr){7-10} \cmidrule(lr){11-14}" _n
+file write stats "                    &                     & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--}  \\ " _n
+file write stats "                    &                     & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}    \\ " _n
 file write stats "\midrule                    " _n
 file write stats "\multirow{24}{*}{\rotatebox{90}{Third Spell}}" _n
 
@@ -299,7 +302,7 @@ esttab using `tables'/des_stat.tex, ///
 file open stats using `tables'/des_stat.tex, write append
 file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b3_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
     }
@@ -308,7 +311,7 @@ file write stats " \\" _n
 
 file write stats "                    & Women    "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b3_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(N)') "}     "
     }
@@ -325,9 +328,7 @@ restore
 
 preserve
 keep if fertility >= 3
-gen group = 1 if b3_born_year <= 84
-replace group = 2 if b3_born_year >= 85 & b3_born_year <= 94
-replace group = 3 if b3_born_year >= 95
+create_groups b3_born_year
 
 drop if b2_mom_age < 12 | b3_mom_age < 14 | b4_mom_age < 15
 drop if edu_mother == .
@@ -395,7 +396,7 @@ esttab using `tables'/des_stat.tex, ///
 file open stats using `tables'/des_stat.tex, write append
 file write stats "                    & 3 months periods "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b4_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
     }
@@ -404,7 +405,7 @@ file write stats " \\" _n
 
 file write stats "                    & Women    "
 forvalues edu = 1/3 {
-    forvalues per = 1/3 {
+    forvalues per = 1/4 {
         qui sum b4_space if edu_group == `edu' & group == `per'
         file write stats "& \mco{" %9.0fc (`r(N)') "}     "
     }
@@ -421,7 +422,7 @@ file write stats "Interactions between variables, baseline hazard dummies and sq
 // file write stats "Quarters refer to number of 3 month periods observed." _n
 file write stats "\end{tablenotes}" _n
 file write stats "\end{threeparttable}" _n
-file write stats "\end{scriptsize}" _n
+file write stats "\end{tiny}" _n
 file write stats "\end{center}" _n
 file write stats "\end{table}" _n
 
