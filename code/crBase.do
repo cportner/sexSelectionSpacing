@@ -90,6 +90,7 @@ replace interview_year = interview_year + 1900 if interview_year < 2000
 gen round  = 1 if interview_year == 1992 | interview_year == 1993
 replace round = 2 if interview_year == 1998 | interview_year == 1999 | interview_year == 2000
 replace round = 3 if interview_year == 2005 | interview_year == 2006
+replace round = 4 if interview_year == 2015 | interview_year == 2016
 
 /*--------------------------------------------------------------------*/
 /* CREATING BIRTH AND SPACING VARIABLES                               */
@@ -225,7 +226,7 @@ lab var rural        "Rural"
 
 drop if b1_mom_age < 12 | b2_mom_age < 12 | b3_mom_age < 14 | b4_mom_age < 15
 drop if edu_mother == .
-drop if edu_father == . | edu_father > 30
+// drop if edu_father == . | edu_father > 30 // not needed since father's edu not used
 drop if b1_space == .
 drop if land_own == .
 // drop if b2_space <= 8
