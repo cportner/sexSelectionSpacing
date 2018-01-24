@@ -1,7 +1,8 @@
 # Raw Data
 
-All data downloaded from https://dhsprogram.com/ on 2017-05-31
-Files were renamed to lower-case; no other changes
+NFHS-1 through 3 data downloaded from https://dhsprogram.com/ on 2017-05-31.
+NFHS-4 downloaded from https://dhsprogram.com/ on 2018-01-23.
+Files were renamed to lower-case; no other changes.
 
 To reproduce results the following files are needed.
 
@@ -22,4 +23,8 @@ iair42fl.dta - individual recode (women)
 
 iair52fl.dta - individual recode (women)
 
+## NFHS-4
+
+iair71fl.dta - individual recode (women)
+iahr71fl.dta - household recode
 
