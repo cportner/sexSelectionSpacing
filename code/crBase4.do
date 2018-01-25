@@ -21,7 +21,17 @@ loc tables  "../tables"
 // Whether irrigated or not is not used in analysis, so only load land own.
 // Caste has moved from s118 to s116; otherwise coding the same.
 
-// v026 (de facto place of residence) is na and part therefore removed.
+// v026 (de facto place of residence split into different size urban areas) 
+// is not available and therefore removed. I use urban/rural anyway, so
+// this will not matter for analysis.
+
+// There is no longer any information on where the respondent previously
+// lived (v105 in prior survey). There is still information on how long
+// the respondent has lived in the current place of residence (v104).
+// The exclusion of v105 makes it impossible to examine whether prior
+// fertility decisions were made in an urban or rural area as I did for
+// the prior survey. For those I used type of area at the time of the
+// beginning of spell rather than current area.
 
 /*----------------------------------------------------------------------*/
 /* WOMEN'S RECODE 							                            */
