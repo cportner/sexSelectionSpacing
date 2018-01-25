@@ -5,23 +5,7 @@
 * Begun.: 08/04/10
 * Edited: 2016-09-07
 
-
-// REVISIONS
-
-version 13.1
-clear all
-
-// Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
-
-/*-------------------------------------------------------------------*/
-/* LOADING DATA AND CREATING NEW VARIABLES                           */
-/*-------------------------------------------------------------------*/
-
-use `data'/base
+include common
 
 keep if edu_mother == 0
 loc educ = "low"

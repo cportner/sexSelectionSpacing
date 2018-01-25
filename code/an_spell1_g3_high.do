@@ -5,23 +5,7 @@
 * Begun.: 08/04/10
 * Edited: 2016-02-03
 
-
-// REVISIONS
-
-version 13.1
-clear all
-
-// Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
-
-/*-------------------------------------------------------------------*/
-/* LOADING DATA AND CREATING NEW VARIABLES                           */
-/*-------------------------------------------------------------------*/
-
-use `data'/base
+include common
 
 keep if edu_mother >= 8
 loc educ = "high"
