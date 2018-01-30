@@ -10,10 +10,6 @@ do baseline_hazards/bh_low.do
 do baseline_hazards/bh_med.do
 do baseline_hazards/bh_high.do
 
-// Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
+include directories
 
 use `data'/base
