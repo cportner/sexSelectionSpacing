@@ -8,9 +8,6 @@ file close _all // easier, in case something went wrong with last file write (St
 
 capture program drop _all
 do bootspell.do
-do baseline_hazards/bh_low.do
-do baseline_hazards/bh_med.do
-do baseline_hazards/bh_high.do
 
 // Generic set of locations
 loc rawdata "../rawData"
