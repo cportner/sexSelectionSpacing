@@ -18,7 +18,7 @@ program bootspell, rclass
 
     // PIECE-WISE LINEAR HAZARDS
         
-    bh_s`spell'_g`group'_`educ'
+    bh_`educ' `spell' `group'
     loc i = `r(numPer)'
 
     // [THIS PART DEPENDS ON SPELL!]        
@@ -52,7 +52,7 @@ program bootspell, rclass
     gen months = t * 3
 
     // PIECE-WISE LINEAR HAZARDS
-    bh_s`spell'_g`group'_`educ'
+    bh_`educ' `spell' `group'
     loc i = `r(numPer)'
     
     // [THIS PART DEPENDS ON SPELL!]        
