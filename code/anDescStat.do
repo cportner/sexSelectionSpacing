@@ -6,16 +6,7 @@ version 13.1
 clear all
 set more off
 
-// Load helper functions
-capture program drop _all
-do fun_helpers.do
-
-
-// Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
+include directories
 
 
 /*-------------------------------------------------------------------*/
