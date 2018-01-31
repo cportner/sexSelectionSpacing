@@ -133,7 +133,7 @@ program bh_med, rclass
     }            
 
     // Baseline hazard for spell 2, g4, medium
-    if `spell' == 2 & `period' == 2 {
+    if `spell' == 2 & `period' == 4 {
     
         forvalues per = 1(2)7 { // originally 14
             gen dur`i' = t >= `per' & t <= `per' + 1 // half years
