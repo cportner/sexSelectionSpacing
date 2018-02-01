@@ -3,11 +3,7 @@
 version 13.1
 clear all
 
-// Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
+include directories
 
 set obs 0
 
