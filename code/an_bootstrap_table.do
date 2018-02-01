@@ -27,17 +27,12 @@ program find_col, rclass
     }
 end
 
-// Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
-
+include directories
 
 // Load bootstrap results and create matrices.
 foreach educ in "low" "med" "high" {
     forvalues spell = 1/4 {
-        forvalues period = 1/3 {
+        forvalues period = 1/4 {
         
             // Load bootstrap generated data and call bstat to replay results
             clear results // Stupid Stata - calling bstat after using the data does not clear old bstat
@@ -79,11 +74,11 @@ foreach educ in "low" "med" "high" {
     file write table "\begin{threeparttable}" _n
     file write table "\caption{Estimated Median Duration and Sex Ratio for Women with `char'}" _n
     file write table "\label{tab:median_sex_ratio_`educ'}" _n
-    file write table "\begin{tabular}{@{} c l D{.}{.}{2.0} D{.}{.}{2.1}  D{.}{.}{2.0} D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1}  @{}}" _n
+    file write table "\begin{tabular}{@{} c l D{.}{.}{2.0} D{.}{.}{2.1}  D{.}{.}{2.0} D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1} D{.}{.}{2.0}  D{.}{.}{2.1}  @{}}" _n
     file write table "\toprule" _n
-    file write table "                   &                            & \mct{1972-1984}                 &\mct{1985-1994}                  & \mct{1995-2006}                         \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8}" _n
-    file write table "                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}         \\ " _n
-    file write table " \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}    & \mco{(Months)}  & \mco{Boys}            \\ \midrule" _n
+    file write table "                   &                            & \mct{1972--1984}                                    &\mct{1985--1994}                                   & \mct{1995--2004}                                      & \mct{2005--2016}                                      \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10}" _n
+    file write table "                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     \\ " _n
+    file write table " \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                      & \mco{(Months)}  & \mco{Boys}                          & \mco{(Months)}  & \mco{Boys}                          \\ \midrule" _n
 
     // Loop over area
     foreach where in "Urban" "Rural" {
@@ -158,7 +153,7 @@ foreach educ in "low" "med" "high" {
                     }
                     
                     // Loop over periods
-                    forvalues period = 1/3 {
+                    forvalues period = 1/4 {
                                        
                         // loop over statistics (p50 and pct here)
                         foreach stats in p50 pct {

@@ -9,11 +9,7 @@ file close _all // easier, in case something went wrong with last file write (St
 capture program drop _all
 do bootspell.do
 
-// Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
+include directories
 
 use `data'/base
 
@@ -45,7 +41,7 @@ foreach educ in "high" "med" "low" {
 
     forvalues spell = 1/4 {
 
-        forvalues group = 1/3 {
+        forvalues group = 1/4 {
             
             use "``educ''" , clear
             if `spell' == 1 {
