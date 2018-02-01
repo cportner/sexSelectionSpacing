@@ -1,2 +1,4 @@
 * Generated files to ignore (not ignored through global
 /tables/*.tex
+/figures/*.tex
+
