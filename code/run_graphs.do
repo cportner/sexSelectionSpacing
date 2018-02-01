@@ -45,23 +45,59 @@ program run_graphs
         gen girl`j' = 0
     }
     if `spell' == 1 {
-        replace mom_age = 20
+        if "`educ'" == "low" {
+            replace mom_age = 16
+        }
+        else if "`educ'" == "med" {
+            replace mom_age = 17      
+        }
+        else if "`educ'" == "high" {        
+            replace mom_age = 20
+        }
     }
     else {
         replace b1space = 16
         replace b1space2 = b1space^2/100   
         replace girl1 = 1 if id == 3 | id == 4
-        replace girl2 = 1 if id == 5 | id == 6
-        replace girl3 = 1 if id == 7 | id == 8
+        if `spell' > 2 {
+            replace girl2 = 1 if id == 5 | id == 6
+            if `spell' > 3 {
+                replace girl3 = 1 if id == 7 | id == 8
+            }
+        }
     
         if `spell' == 2 {
-            replace mom_age = 22    
+            if "`educ'" == "low" {
+                replace mom_age = 18
+            }
+            else if "`educ'" == "med" {
+                replace mom_age = 19      
+            }
+            else if "`educ'" == "high" {        
+                replace mom_age = 22
+            }
         }
         else if `spell' == 3 {
-            replace mom_age = 24    
+            if "`educ'" == "low" {
+                replace mom_age = 20
+            }
+            else if "`educ'" == "med" {
+                replace mom_age = 21      
+            }
+            else if "`educ'" == "high" {        
+                replace mom_age = 24
+            }
         }
         else if `spell' == 4 {
-            replace mom_age = 25
+            if "`educ'" == "low" {
+                replace mom_age = 23
+            }
+            else if "`educ'" == "med" {
+                replace mom_age = 24      
+            }
+            else if "`educ'" == "high" {        
+                replace mom_age = 25
+            }
         }
         else {
             dis "Something went wrong with representative women variables"
