@@ -1,8 +1,7 @@
 ### Makefile for Sex Selection and Birth Spacing Project        ###
-### and tables are hardcoded into tex file          			###
 ### The non-generated figures are not included here 			###
 
-### The reason for the weird set-up is to have Makefile 
+### The reason for the weird directory set-up is to have Makefile 
 ### in base directory and run LaTeX in the paper directory 
 ### without leaving all the other files in the base directory
 
@@ -21,117 +20,56 @@ RAW  = ./rawData
 DAT  = ./data
 
 ### Generate dependencies for ease of reading/writing
-PERIODS := 1 2 3
+PERIODS := 1 2 3 4
 AREAS   := rural urban
 EDUC    := low med high
 SPELLS  := 1 2 3 4
-COMP2   := b g
-COMP3   := bb bg gg
-COMP4   := bbb bbg bgg ggg
+COMP1   := _
+COMP2   := _b_ _g_
+COMP3   := _bb_ _bg_ _gg_
+COMP4   := _bbb_ _bbg_ _bgg_ _ggg_
 
-# Data for bootstrapping
+### Regression analyses
+ANALYSISTARGET := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(DAT)/results_spell$(spell)_g$(per)_$(educ).ster ) ) )
+
+### Percentage boys and standard survival graphs
+GRAPHTARGET := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS),\
+    $(foreach comp, $(COMP$(spell)),\
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)pc.eps $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)s.eps) ) ) ) )
+
+### PPS graphs
+### Spell 1 is different; it is combined across periods into one graph
+PPSTARGET := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(if $(filter $(spell),1), \
+    $(FIG)/spell$(spell)_$(educ)_$(area)_pps.eps , \
+    $(foreach per, $(PERIODS), \
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) \
+    ) ) )
+
+### Data for bootstrapping
 BSDATA := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
     $(DAT)/bs_s$(spell)_g$(per)_$(educ).dta ) ) ) 
     
-# Data for parity progression conditioned figures     
-PPSDATA1 := \
+### Appendix graphs LaTeX code
+APPGRAPHS := \
+    $(foreach spell, $(SPELLS), \
     $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(DAT)/spell1_g$(per)_$(educ).dta ) )
-
-PPSDATA2 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(DAT)/spell2_g$(per)_$(educ).dta ) )
-
-PPSDATA3 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(DAT)/spell3_g$(per)_$(educ).dta ) )
-
-PPSDATA4 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(DAT)/spell4_g$(per)_$(educ).dta ) )
-    
-### Survival and percentage graphs
-    
-SPELL1 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell1_g$(per)_$(educ)_$(area)_s.eps $(FIG)/spell1_g$(per)_$(educ)_$(area)_pc.eps ) ) ) 
-
-SPELL2 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(foreach area, $(AREAS), \
-    $(foreach sex, $(COMP2), \
-    $(FIG)/spell2_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell2_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
-
-SPELL3 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(foreach area, $(AREAS), \
-    $(foreach sex, $(COMP3), \
-    $(FIG)/spell3_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell3_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
-
-SPELL4 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach per, $(PERIODS), \
-    $(foreach area, $(AREAS), \
-    $(foreach sex, $(COMP4), \
-    $(FIG)/spell4_g$(per)_$(educ)_$(area)_$(sex)_s.eps $(FIG)/spell4_g$(per)_$(educ)_$(area)_$(sex)_pc.eps ) ) ) )
-
-### PPS graphs
-    
-TARGETPPS1 := \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell1_$(educ)_$(area)_pps.eps ) )
-
-TARGETPPS2 := \
-    $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell2_g$(per)_$(educ)_$(area)_pps.eps ) ) )
-
-TARGETPPS3 := \
-    $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell3_g$(per)_$(educ)_$(area)_pps.eps ) ) )
-
-TARGETPPS4 := \
-    $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS), \
-    $(FIG)/spell4_g$(per)_$(educ)_$(area)_pps.eps ) ) )
-
-
-### Generate figure targets for survival and percentage boys graphs
-
-TARGET1 := \
-    $(foreach area, $(AREAS), \
-    $(FIG)/%_$(area)_s.eps $(FIG)/%_$(area)_pc.eps )
-    
-TARGET2 := \
-    $(foreach area, $(AREAS), \
-    $(foreach sex, $(COMP2), \
-    $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
-
-TARGET3 := \
-    $(foreach area, $(AREAS), \
-    $(foreach sex, $(COMP3), \
-    $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
-
-TARGET4 := \
-    $(foreach area, $(AREAS), \
-    $(foreach sex, $(COMP4), \
-    $(FIG)/%_$(area)_$(sex)_s.eps $(FIG)/%_$(area)_$(sex)_pc.eps ) )
+    $(FIG)/appendix_spell$(spell)_$(educ).tex \
+    ))    
     
     
 ###################################################################	
@@ -141,8 +79,7 @@ TARGET4 := \
 # Main paper
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/des_stat.tex \
- $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) $(TARGETPPS2) $(TARGETPPS3) $(TARGETPPS4) \
+ $(GRAPHTARGET) $(PPSTARGET) \
  $(TAB)/bootstrap_duration_sex_ratio_high.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
@@ -151,8 +88,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
 
 # Appendix file	
 $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex $(TEX)/sex_selection_spacing.bib \
- $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) $(TARGETPPS2) $(TARGETPPS3) $(TARGETPPS4) 
+ $(GRAPHTARGET) $(PPSTARGET) $(APPGRAPHS)
 	cd $(TEX); xelatex $(APPFILE)
 	cd $(TEX); bibtex $(APPFILE)
 	cd $(TEX); xelatex $(APPFILE)
@@ -172,9 +108,9 @@ all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
 	open -a Skim $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
-results: $(SPELL1) $(SPELL2) $(SPELL3) $(SPELL4) \
- $(TARGETPPS1) $(TARGETPPS2) $(TARGETPPS3) $(TARGETPPS4) \
+results: $(GRAPHTARGET) $(PPSTARGET) \
  $(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
+
 
 ###################################################################	
 ### Stata part         			                                ###
@@ -197,55 +133,87 @@ $(DAT)/base4.dta: $(COD)/crBase4.do $(RAW)/iair71fl.dta $(RAW)/iahr71fl.dta
 $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3.dta $(DAT)/base4.dta
 	cd $(COD); stata-se -b -q $(<F)
 
-# Descriptive statistics
+
+#---------------------------------------------------------------------------------------#
+# Descriptive statistics                                                                #
+#---------------------------------------------------------------------------------------#
+
 $(TAB)/des_stat.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
+
 #---------------------------------------------------------------------------------------#
-# Estimation results and data for graphs                                                #
-# Precious is needed because Make generates those through an implicit rule  and         #
-# therefore treats them as intermediate files and deletes them after running.           #
+# Estimation results                                                                    #
 #---------------------------------------------------------------------------------------#
 
-.PRECIOUS: $(DAT)/results_%.ster
+.PHONY: run_analysis
+run_analysis: $(ANALYSISTARGET)
 
-$(DAT)/results_%.ster: $(COD)/an_%.do $(DAT)/base.dta 
-	cd $(COD); stata-se -b -q $(<F)
+# Use basename because run_analysis is an ado file
+define analysis-rule
+$(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis.ado $(DAT)/base.dta $(COD)/bh_$(3).ado
+	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
+endef
 
-$(DAT)/spell1_%.dta: $(COD)/an_spell1_%_graphs.do $(DAT)/results_spell1_%.ster $(COD)/gen_spell1_graphs.do
-	cd $(COD); stata-se -b -q $(<F)
-
-$(DAT)/spell4_%.dta: $(COD)/an_spell4_%_graphs.do $(DAT)/results_spell4_%.ster $(COD)/gen_spell4_graphs.do
-	cd $(COD); stata-se -b -q $(<F)
+$(foreach spell, $(SPELLS), \
+$(foreach per, $(PERIODS), \
+$(foreach educ, $(EDUC), \
+$(eval $(call analysis-rule,$(spell),$(per),$(educ))) ) ) )
 
 		
-#--------------------#
-#      Graphs        #
-#--------------------#
+#---------------------------------------------------------------------------------------#
+# Percentage boys and survival graphs                                                   #
+#---------------------------------------------------------------------------------------#
 
-$(TARGET1): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell1_graphs.do
+.PHONY: run_graphs
+run_graphs: $(GRAPHTARGET)
+
+define graph-rule
+$(DAT)/spell$(1)_g$(2)_$(3).dta \
+$(foreach area, $(AREAS),\
+$(foreach comp, $(COMP$(1)),\
+$(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)pc.eps $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)s.eps)) : $(COD)/run_graphs.ado \
+ $(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster $(COD)/bh_$(3).ado
+	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
+endef
+
+$(foreach spell, $(SPELLS), \
+$(foreach per, $(PERIODS), \
+$(foreach educ, $(EDUC), \
+$(eval $(call graph-rule,$(spell),$(per),$(educ))))))
+
+# Generate LaTeX code for appendix graphs
+$(APPGRAPHS) : $(COD)/gen_appendix_graphs.do $(GRAPHTARGET)
 	cd $(COD); stata-se -b -q $(<F)
 
-$(TARGET2): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell2_graphs.do
-	cd $(COD); stata-se -b -q $(<F)
+#---------------------------------------------------------------------------------------#
+# Parity progression survival graphs                                                    #
+# The rule is more complicated because the graphs for spell 1 are combined over periods,#
+# while they are separated by period for spell 2 and above.                             #
+#---------------------------------------------------------------------------------------#
 
-$(TARGET3): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell3_graphs.do
-	cd $(COD); stata-se -b -q $(<F)
-
-$(TARGET4): $(COD)/an_%_graphs.do $(DAT)/results_%.ster $(COD)/gen_spell4_graphs.do
-	cd $(COD); stata-se -b -q $(<F)
+.PHONY: run_pps
+run_pps: $(PPSTARGET)
 	
-$(TARGETPPS1): $(COD)/an_spell1_pps.do $(PPSDATA1)
-	cd $(COD); stata-se -b -q $(<F)
+define pps-rule
+$(foreach educ, $(EDUC), \
+$(foreach area, $(AREAS), \
+$(if $(filter $(spell),1), \
+ $(FIG)/spell$(1)_$(educ)_$(area)_pps.eps , \
+ $(foreach per, $(PERIODS), \
+ $(FIG)/spell$(1)_g$(per)_$(educ)_$(area)_pps.eps ) \
+) ) ) \
+: $(COD)/an_spell$(1)_pps.do \
+ $(foreach per, $(PERIODS), \
+ $(foreach educ, $(EDUC), \
+ $(DAT)/spell$(1)_g$(per)_$(educ).dta))
+	cd $(COD); stata-se -b -q $$(<F)
+endef
 
-$(TARGETPPS2): $(COD)/an_spell2_pps.do $(PPSDATA2)
-	cd $(COD); stata-se -b -q $(<F)
-
-$(TARGETPPS3): $(COD)/an_spell3_pps.do $(PPSDATA3)
-	cd $(COD); stata-se -b -q $(<F)
+$(foreach spell, $(SPELLS), \
+ $(eval $(call pps-rule,$(spell))) \
+)
 	
-$(TARGETPPS4): $(COD)/an_spell4_pps.do $(PPSDATA4)
-	cd $(COD); stata-se -b -q $(<F)
 	
 #--------------------#
 #      Tables        #
@@ -253,8 +221,8 @@ $(TARGETPPS4): $(COD)/an_spell4_pps.do $(PPSDATA4)
 
 # Bootstrap results
 $(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta \
- $(COD)/bootspell.do $(COD)/baseline_hazards/bh_low.do \
- $(COD)/baseline_hazards/bh_med.do $(COD)/baseline_hazards/bh_high.do
+ $(COD)/bootspell.do $(COD)/bh_low.ado \
+ $(COD)/bh_med.ado $(COD)/bh_high.ado
 	cd $(COD); stata-se -b -q $(<F)	
 
 # Bootstrap tables
