@@ -9,15 +9,15 @@ program bh_low, rclass
     // Baseline hazard for spell 1, g1, low
     if `spell' == 1 & `period' == 1 {
     
-        forvalues per = 1/4 { // check end number originally 9
-            gen dur`i' = t == `per'  // quarters
+        forvalues per = 1/4 { 
+            gen dur`i' = t == `per'  
             loc i = `i' + 1
         }
-        forvalues per = 5(3)17 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
+        forvalues per = 5(3)14 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 20 & t <= 24
+        gen dur`i' = t >= 17 & t <= 24
         
     }
     
@@ -25,12 +25,12 @@ program bh_low, rclass
     // Baseline hazard for spell 1, g2, low
     if `spell' == 1 & `period' == 2 {
     
-        forvalues per = 1/4 { // check end number originally 9
-            gen dur`i' = t == `per'  // quarters
+        forvalues per = 1/4 { 
+            gen dur`i' = t == `per'  
             loc i = `i' + 1
         }
-        forvalues per = 5(3)17 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
+        forvalues per = 5(3)17 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 20 & t <= 24
@@ -43,12 +43,12 @@ program bh_low, rclass
     
         gen dur`i' = t >= 1 & t<= 2
         loc ++i
-        forvalues per = 3/4 { // check end number originally 9
-            gen dur`i' = t == `per'  // quarters
+        forvalues per = 3/4 { 
+            gen dur`i' = t == `per'  
             loc i = `i' + 1
         }
-        forvalues per = 5(3)14 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
+        forvalues per = 5(3)14 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 17 & t <= 24
@@ -58,15 +58,15 @@ program bh_low, rclass
     // Baseline hazard for spell 1, g4, low
     if `spell' == 1 & `period' == 4 {
     
-        forvalues per = 1/4 { // check end number originally 9
-            gen dur`i' = t == `per'  // quarters
+        gen dur`i' = t >= 1 & t<= 4
+        loc ++i
+        forvalues per = 5(3)11 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 5(3)17 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
-            loc i = `i' + 1
-        }
-        gen dur`i' = t >= 20 & t <= 24
+        gen dur`i' = t >= 11 & t <= 15
+        loc ++i 
+        gen dur`i' = t >= 16 & t <= 24
                  
     }
 
@@ -75,33 +75,25 @@ program bh_low, rclass
     // Baseline hazard for spell 2, g1, low
     if `spell' == 2 & `period' == 1 {
     
-        forvalues per = 1(2)2 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 1 // half years
+        forvalues per = 1(3)12 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 3(3)11 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
-            loc i = `i' + 1
-        }
-        forvalues per = 12(4)13 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
-            loc i = `i' + 1
-        }
-        gen dur`i' = t >= 16 & t <= 21
+        gen dur`i' = t >= 13 & t <= 21
                    
     }        
 
     // Baseline hazard for spell 2, g2, low
     if `spell' == 2 & `period' == 2 {
     
-        gen dur`i' = t == 1  // quarters
+        gen dur`i' = t == 1  
         loc i = `i' + 1
-        forvalues per = 2(2)6 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 1 // half years
+        forvalues per = 2(2)6 { 
+            gen dur`i' = t >= `per' & t <= `per' + 1 
             loc i = `i' + 1
         }
-        forvalues per = 8(3)16 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
+        forvalues per = 8(3)16 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 17 & t <= 21
@@ -112,16 +104,16 @@ program bh_low, rclass
     // Baseline hazard for spell 2, g3, low
     if `spell' == 2 & `period' == 3 {
     
-        forvalues per = 1(2)5 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 1 // half years
+        forvalues per = 1(2)5 { 
+            gen dur`i' = t >= `per' & t <= `per' + 1 
             loc i = `i' + 1
         }
-        forvalues per = 7(3)9 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
+        forvalues per = 7(3)9 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 10(4)12 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
+        forvalues per = 10(4)12 { 
+            gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 14 & t <= 21
@@ -131,19 +123,11 @@ program bh_low, rclass
     // Baseline hazard for spell 2, g4, low
     if `spell' == 2 & `period' == 4 {
     
-        forvalues per = 1(2)5 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 1 // half years
+        forvalues per = 1(3)12 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 7(3)9 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
-            loc i = `i' + 1
-        }
-        forvalues per = 10(4)12 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
-            loc i = `i' + 1
-        }
-        gen dur`i' = t >= 14 & t <= 21
+        gen dur`i' = t >= 13 & t <= 21
 
     }            
 
@@ -152,12 +136,12 @@ program bh_low, rclass
     // Baseline hazard for spell 3, g1, low
     if `spell' == 3 & `period' == 1 {
     
-        forvalues per = 1(3)7 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // half years
+        forvalues per = 1(3)7 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 10(4)13 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
+        forvalues per = 10(4)13 { 
+            gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 14 & t <= 24
@@ -168,12 +152,12 @@ program bh_low, rclass
     // Baseline hazard for spell 3, g2, low
     if `spell' == 3 & `period' == 2 {
     
-        forvalues per = 1(2)9 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 1 // half years
+        forvalues per = 1(2)9 { 
+            gen dur`i' = t >= `per' & t <= `per' + 1 
             loc i = `i' + 1
         }
-        forvalues per = 11(3)14 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
+        forvalues per = 11(3)14 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 17 & t <= 24
@@ -184,12 +168,12 @@ program bh_low, rclass
     // Baseline hazard for spell 3, g3, low
     if `spell' == 3 & `period' == 3 {
     
-        forvalues per = 1(3)7 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // half years
+        forvalues per = 1(3)7 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 10(4)13 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
+        forvalues per = 10(4)13 { 
+            gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 14 & t <= 24
@@ -199,15 +183,11 @@ program bh_low, rclass
     // Baseline hazard for spell 3, g4, low
     if `spell' == 3 & `period' == 4 {
     
-        forvalues per = 1(2)9 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 1 // half years
+        forvalues per = 1(3)15 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 11(3)14 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
-            loc i = `i' + 1
-        }
-        gen dur`i' = t >= 17 & t <= 24
+        gen dur`i' = t >= 16 & t <= 24
 
     }    
 
@@ -216,15 +196,11 @@ program bh_low, rclass
     // Baseline hazard for spell 4, g1, low
     if `spell' == 4 & `period' == 1 {
     
-        forvalues per = 1(3)2 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // half years
+        forvalues per = 1(5)10 { 
+            gen dur`i' = t >= `per' & t <= `per' + 4 
             loc i = `i' + 1
         }
-        forvalues per = 4(4)8 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // half years
-            loc i = `i' + 1
-        }
-        gen dur`i' = t >= 12 & t <= 19
+        gen dur`i' = t >= 11 & t <= 19
 
     }    
 
@@ -232,12 +208,12 @@ program bh_low, rclass
     // Baseline hazard for spell 4, g2, low
     if `spell' == 4 & `period' == 2 {
     
-        forvalues per = 1(3)2 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // half years
+        forvalues per = 1(3)2 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 4(4)8 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // half years
+        forvalues per = 4(4)8 { 
+            gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 12 & t <= 19
@@ -248,12 +224,12 @@ program bh_low, rclass
     // Baseline hazard for spell 4, g3, low
     if `spell' == 4 & `period' == 3 {
     
-        forvalues per = 1(3)2 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // half years
+        forvalues per = 1(3)2 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 4(4)8 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // half years
+        forvalues per = 4(4)8 { 
+            gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 12 & t <= 19
@@ -263,12 +239,12 @@ program bh_low, rclass
     // Baseline hazard for spell 4, g4, low
     if `spell' == 4 & `period' == 4 {
     
-        forvalues per = 1(3)2 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 2 // half years
+        forvalues per = 1(3)2 { 
+            gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        forvalues per = 4(4)8 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 3 // half years
+        forvalues per = 4(4)8 { 
+            gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
         gen dur`i' = t >= 12 & t <= 19
