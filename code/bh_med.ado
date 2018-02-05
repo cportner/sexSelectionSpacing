@@ -192,11 +192,11 @@ program bh_med, rclass
     // Baseline hazard for spell 4, g1, medium
     if `spell' == 4 & `period' == 1 {
     
-        forvalues per = 1(5)10 { 
-            gen dur`i' = t >= `per' & t <= `per' + 4 
+        forvalues per = 1(7)7 { 
+            gen dur`i' = t >= `per' & t <= `per' + 6
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 11 & t <= 19
+        gen dur`i' = t >= 8 & t <= 19
 
     }    
 
@@ -234,16 +234,12 @@ program bh_med, rclass
     
     // Baseline hazard for spell 4, g4, medium
     if `spell' == 4 & `period' == 4 {
-    
-        forvalues per = 1(3)2 { 
-            gen dur`i' = t >= `per' & t <= `per' + 2 
-            loc i = `i' + 1
-        }
-        forvalues per = 4(4)8 { 
-            gen dur`i' = t >= `per' & t <= `per' + 3 
-            loc i = `i' + 1
-        }
-        gen dur`i' = t >= 12 & t <= 19
+
+        gen dur`i' = t >= 1 & t <= 5 
+        loc ++ i
+        gen dur`i' = t >= 6 & t <= 10
+        loc ++ i
+        gen dur`i' = t >= 11 & t <= 19
 
     }    
     

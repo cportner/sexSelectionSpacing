@@ -58,14 +58,16 @@ program bh_low, rclass
     // Baseline hazard for spell 1, g4, low
     if `spell' == 1 & `period' == 4 {
     
-        gen dur`i' = t >= 1 & t<= 4
+        gen dur`i' = t >= 1 & t<= 3
         loc ++i
-        forvalues per = 5(3)11 { 
-            gen dur`i' = t >= `per' & t <= `per' + 2 
+        gen dur`i' = t == 4
+        loc ++ i
+        forvalues per = 5(2)12 { 
+            gen dur`i' = t >= `per' & t <= `per' + 1
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 11 & t <= 15
-        loc ++i 
+        gen dur`i' = t >= 13 & t <= 15
+        loc ++ i        
         gen dur`i' = t >= 16 & t <= 24
                  
     }
@@ -183,11 +185,15 @@ program bh_low, rclass
     // Baseline hazard for spell 3, g4, low
     if `spell' == 3 & `period' == 4 {
     
-        forvalues per = 1(3)15 { 
+        forvalues per = 1(3)6 { 
             gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 16 & t <= 24
+        forvalues per = 7(5)11 { 
+            gen dur`i' = t >= `per' & t <= `per' + 4 
+            loc i = `i' + 1
+        }
+        gen dur`i' = t >= 12 & t <= 24
 
     }    
 
@@ -196,11 +202,11 @@ program bh_low, rclass
     // Baseline hazard for spell 4, g1, low
     if `spell' == 4 & `period' == 1 {
     
-        forvalues per = 1(5)10 { 
-            gen dur`i' = t >= `per' & t <= `per' + 4 
+        forvalues per = 1(7)7 { 
+            gen dur`i' = t >= `per' & t <= `per' + 6 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 11 & t <= 19
+        gen dur`i' = t >= 8 & t <= 19
 
     }    
 
