@@ -18,7 +18,7 @@ program comb_boot
     // These should depend on arguments passed to program
     loc group1 = 1
     loc group2 = 2
-    loc spell = 2
+    loc spell = 3
     loc educ  = "high"
 
     keep if edu_mother >= 8
