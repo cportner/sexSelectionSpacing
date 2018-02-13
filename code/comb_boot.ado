@@ -4,6 +4,7 @@
 
 program comb_boot
     version 13.1
+    args spell group1 group2 educ
     clear all
 
     set matsize 1000
@@ -15,13 +16,20 @@ program comb_boot
 
     use `data'/base
 
-    // These should depend on arguments passed to program
-    loc group1 = 3
-    loc group2 = 4
-    loc spell = 4
-    loc educ  = "low"
-
-    keep if edu_mother >= 8
+    // keep only those in education group
+    if "`educ'" == "low" {
+        keep if edu_mother == 0
+    }
+    else if "`educ'" == "med" {
+        keep if edu_mother >= 1 & edu_mother < 8
+    }
+    else if "`educ'" == "high" {
+        keep if edu_mother >= 8
+    }
+    else {
+        dis "Something went wrong with education level"
+        exit
+    }
 
     if `spell' == 1 {
         global b1space ""
