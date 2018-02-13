@@ -16,10 +16,10 @@ program comb_boot
     use `data'/base
 
     // These should depend on arguments passed to program
-    loc group1 = 1
-    loc group2 = 2
-    loc spell = 3
-    loc educ  = "high"
+    loc group1 = 3
+    loc group2 = 4
+    loc spell = 4
+    loc educ  = "low"
 
     keep if edu_mother >= 8
 
@@ -57,7 +57,7 @@ program comb_boot
 
     // Bootstrapping
     bootstrap `stats' , ///
-        reps(`num_reps') seed(100669) nowarn ///
+        reps(`num_reps') seed(100) nowarn ///
         : comb_analysis `spell' `group1' `group2' `educ'
 
 end
