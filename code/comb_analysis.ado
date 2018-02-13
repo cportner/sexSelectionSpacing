@@ -16,20 +16,23 @@ program comb_analysis, rclass
     bysort id (t): replace birth = 2 if b`spell'_sex == 2 & b`spell'_cen == 0 & _n == _N // exit with a daugther
 
     // PIECE-WISE LINEAR HAZARDS
-    // Because no graphs are needed I can simply use dummies for each 3-months period
+    // Because no graphs are needed I can in principle simply use dummies for each 3-months period
     // Furthermore, all within a spell have the same pre-set duration covered.
     // For example, all spell 1 have 24 3-months periods from marriage (72 months or 6 years)  
     // One complication is that for some spell/group combinations the multinomial logit
-    // is not concave. Therefore need to group 3-months periods until it run without
-    // problems. The process take advantage of the possibility of limiting the number
-    // of iteration and the return of a convergence code from mlogit (e(converged)).  
-
+    // is not concave. 
+    
     create_duration `spell' `group1' `group2'
 
     // ESTIMATION
     mlogit birth dur* $b1space ///
         $parents $hh $caste np*X* per2X* ///
-        , baseoutcome(0) noconstant iterate(20)
+        , baseoutcome(0) noconstant iterate(15)
+        
+    if `e(converged)' == 0 {
+        dis "Multinomial logit did not converge!"
+        exit
+    }
 
     // PREDICTIONS BASED ON SAMPLE
     // 25, 50, and 75% spacing, sex ratio, and parity progression likelihood
@@ -45,6 +48,7 @@ program comb_analysis, rclass
     // Because no graphs are needed I can simply use dummies for each 3-months period
     // Furthermore, all within a spell have the same pre-set duration covered.
     // For example, all spell 1 have 24 3-months periods from marriage (72 months or 6 years)    
+    
     
     create_duration `spell' `group1' `group2'
 
@@ -175,8 +179,20 @@ program create_duration
     version 13
     args spell group1 group2
     
-    tab t, gen(dur)
-    loc i = $lastm    
+    // The number of grouped 3-months periods depends on spell
+    
+    if `spell' == 1 | `spell' == 2 | `spell' == 2 {
+        tab t, gen(dur)
+        loc i = $lastm    
+    }
+    else if `spell' == 4 {
+        loc i = 1
+        gen dur`i' = t >= 1 & t <= 5
+        loc ++i
+        gen dur`i' = t >= 6 & t <= 10
+        loc ++i
+        gen dur`i' = t >= 11
+    }
     
     
     loc npvar = "urban "
@@ -190,7 +206,6 @@ program create_duration
             gen np`x'X`var'  = dur`x' * `var' 
         }
     }
-    dis "I got to here"
     
     loc np "  np*X* "
         
