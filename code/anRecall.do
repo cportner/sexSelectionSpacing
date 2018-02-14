@@ -1,32 +1,18 @@
-* Recall error estimations
-* anRecall.do
-* begun.: 09/08/07
-* edited: 2015-01-22
-
-// Notes:
-// Part of this is based on andescribe.do
+// Recall error estimations
 
 version 13.1
 clear all
 
-loc root "/net/proj"
-loc work "`root'/India_NFHS/base"
-loc graphs "`root'/India_NFHS/graphs"
-loc results "~/data/india/sexSelection/results"
-// loc results "`root'/India_NFHS/base" // for testing purposes
+include directories
 
 /*-------------------------------------------------------------------*/
 /* LOADING DATA AND CREATING NEW VARIABLES                           */
 /*-------------------------------------------------------------------*/
 
-use `work'/base
-
-keep if hindu
+use `data'/base
 
 // survey information
-gen survey  = 1 if interview_year == 1992 | interview_year == 1993
-replace survey = 2 if interview_year == 1998 | interview_year == 1999 | interview_year == 2000
-replace survey = 3 if interview_year == 2005 | interview_year == 2006
+gen survey = round // Round is now calculated in crBase.do
 
 loc i = 88
 forvalues k = 1/3 {
@@ -36,13 +22,10 @@ forvalues k = 1/3 {
     gen b`k'_after`i' = b`k'_born_year > `i'
     gen b`k'_mom_age_2 = b`k'_mom_age^2 / 100
 }
-gen edu_mother_2 = edu_mother^2 / 10
-gen edu_father_2 = edu_father^2 / 10
 gen mar_year = int((marriage_cmc-1)/12)+1900
 gen mar_after`i' = mar_year > `i'
 
 // local variables
-loc religion "hindu muslim sikh buddhist jain other "
 loc caste    "scheduled_caste scheduled_tribe "
 loc hh       "land_irr land_nir resid_large resid_small resid_town "
 loc parents  "edu_mother* edu_father* "
@@ -65,8 +48,8 @@ recode b_sex (2=0)
 
 // generate categorical variable for 5 year groups
 // first obs is born in 1954
-egen yearGroupBirth = cut(born_year) , at(1950,1960(5)2000, 2007) 
-egen yearGroupMarriage = cut(mar_year) , at(1950,1960(5)2000, 2007) 
+egen yearGroupBirth = cut(born_year) , at(1950,1960(5)2010, 2017) 
+egen yearGroupMarriage = cut(mar_year) , at(1950,1960(5)2010, 2017) 
 
 label define years ///
     1950 "1950--1959" ///
@@ -78,7 +61,9 @@ label define years ///
     1985 "1985--1989" ///
     1990 "1990--1994" ///
     1995 "1995--1999" ///
-    2000 "2000--2006" 
+    2000 "2000--2004" ///
+    2005 "2005--2009" ///
+    2010 "2010--2016"
     
 label values yearGroupBirth yearGroupMarriage years
 
@@ -106,12 +91,12 @@ capture program drop sexRatioTest
 program sexRatioTest
     args fileName groupVar birthOrderCond
     file open tmpFile using "`fileName'.tex", write text replace
-    forvalues year = 1960(5)2000 {
+    forvalues year = 1960(5)2010 {
         local value : label (`groupVar') `year'
         local cohortCompare = ""
         // Descriptive stats and test for sex ratio higher than expected
-        forvalue survey = 1/3 {
-            capture noisily bitest b_sex == 106/206 if (survey == `survey') & bo `birthOrderCond' & `groupVar' == `year', detail
+        forvalue survey = 1/4 {
+            capture noisily bitest b_sex == 105/205 if (survey == `survey') & bo `birthOrderCond' & `groupVar' == `year', detail
             if _rc == 0 { // need this because some cells do not have any observations in them
                 loc sexRatio`survey' = `r(k)'/`r(N)'
                 loc pVal`survey'     = `r(p_u)' // use this for testing if sex ratio higher than expected
@@ -163,18 +148,18 @@ program sexRatioTest
         }
         // write out results
         file write tmpFile "`value'" 
-        forvalues survey = 1/3 {
+        forvalues survey = 1/4 {
             local where = 20 * `survey'
             file write tmpFile _column(`where') "& " %6.4f  (`sexRatio`survey'') "\sym{`stars`survey''}"
         }
         file write tmpFile _column(80) "& `cohortCompare'"
         file write tmpFile _column(90) "\\"  _n
-        forvalues survey = 1/3 {
+        forvalues survey = 1/4 {
             local where = 20 * `survey'
             file write tmpFile _column(`where') "& (" %6.4f  (`pVal`survey'') ")"
         }
         file write tmpFile _column(80) "&" _column(90) "\\"  _n
-        forvalues survey = 1/3 {
+        forvalues survey = 1/4 {
             local where = 20 * `survey'
             file write tmpFile _column(`where') "& \mco{[`numObs`survey'']}"
         }
@@ -182,7 +167,6 @@ program sexRatioTest
     }
     file close tmpFile
 end
-
 
 
 // Making tables of results for paper
@@ -198,7 +182,7 @@ drop if yearGroupBirth == 1950
 replace yearGroupBirth = 1965 if yearGroupBirth == 1960 & survey == 2
 replace yearGroupBirth = 1970 if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if yearGroupBirth == 2000 & survey == 2
-sexRatioTest `results'/recallBirthBO1 yearGroupBirth "== 1"
+sexRatioTest `tables'/recallBirthBO1 yearGroupBirth "== 1"
 restore
 
 // parity 1, year of marriage 
@@ -208,7 +192,7 @@ drop if yearGroupMarriage == 2000 & survey == 2
 replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage == 1965 & survey == 3
-sexRatioTest `results'/recallMarriageBO1 yearGroupMarriage "== 1"
+sexRatioTest `tables'/recallMarriageBO1 yearGroupMarriage "== 1"
 restore
 
 // parity 2, year of birth 
@@ -217,7 +201,7 @@ drop if yearGroupBirth == 1950
 drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
-sexRatioTest `results'/recallBirthBO2 yearGroupBirth "== 2"
+sexRatioTest `tables'/recallBirthBO2 yearGroupBirth "== 2"
 restore
 
 // parity 2, year of marriage 
@@ -226,7 +210,7 @@ drop if yearGroupMarriage == 1960 & survey == 3
 replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage == 1965 & survey == 3
-sexRatioTest `results'/recallMarriageBO2 yearGroupMarriage "== 2"
+sexRatioTest `tables'/recallMarriageBO2 yearGroupMarriage "== 2"
 restore
 
 // parity 1-4, year of birth
@@ -235,7 +219,7 @@ drop if yearGroupBirth == 1950
 drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
-sexRatioTest `results'/recallBirthBO4less yearGroupBirth "< 4"
+sexRatioTest `tables'/recallBirthBO4less yearGroupBirth "< 4"
 restore
 
 // parity 1-4, year of marriage
@@ -245,7 +229,7 @@ drop if yearGroupMarriage == 2000 & survey == 2
 replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage <= 1965 & survey == 3
-sexRatioTest `results'/recallMarriageBO4less yearGroupMarriage "< 4"
+sexRatioTest `tables'/recallMarriageBO4less yearGroupMarriage "< 4"
 restore
 
 
