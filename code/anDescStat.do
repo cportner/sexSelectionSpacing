@@ -38,12 +38,11 @@ drop if b1_space == .
 drop if land_own == .
 gen mom_age    = b1_mom_age
 
-replace b1_space = int((b1_space)/3) + 1 // 1-3 first quarter, 4-6 second etc
+replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
 loc lastm = 4*6 //
 replace b1_cen = 1 if b1_space > `lastm' // cut off 
 replace b1_space = `lastm' if b1_space > `lastm'
-// replace b1_space = b1_space - 3 // start when pregnancy can occur - oops that was a mistake on 1st spell
-loc lastm = `lastm'-3
+global lastm = `lastm'
 drop if b1_space < 1
 
 gen boy = b1_sex == 1 & !b1_cen
@@ -130,12 +129,13 @@ gen mom_age    = b2_mom_age
 
 gen b1space = b1_space
 
-replace b2_space = int((b2_space)/3) + 1 // 1-3 first quarter, 4-6 second etc
-loc lastm = 4*6 //
+drop if b2_space == .
+replace b2_space = int((b2_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
+loc lastm = 4*6+3 //
 replace b2_cen = 1 if b2_space > `lastm' // cut off 
 replace b2_space = `lastm' if b2_space > `lastm'
 replace b2_space = b2_space - 3 // start when pregnancy can occur
-loc lastm = `lastm'-3
+global lastm = `lastm'-3
 drop if b2_space < 1
 
 gen boy = b2_sex == 1 & !b2_cen
@@ -230,12 +230,13 @@ drop if land_own == .
 gen mom_age    = b3_mom_age
 gen b1space = b1_space
 
-replace b3_space = int((b3_space)/3) + 1 // 1-3 first quarter, 4-6 second etc
-loc lastm = 4*6 //
+drop if b3_space == .
+replace b3_space = int((b3_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
+loc lastm = 4*6+3 //
 replace b3_cen = 1 if b3_space > `lastm' // cut off 
 replace b3_space = `lastm' if b3_space > `lastm'
 replace b3_space = b3_space - 3 // start when pregnancy can occur
-loc lastm = `lastm'-3
+global lastm = `lastm'-3
 drop if b3_space < 1
 
 gen boy = b3_sex == 1 & !b3_cen
@@ -335,12 +336,13 @@ drop if land_own == .
 gen mom_age    = b4_mom_age
 gen b1space = b1_space
 
-replace b4_space = int((b4_space)/3) + 1 // 1-3 first quarter, 4-6 second etc
-loc lastm = 19+3 //
+drop if b4_space == .
+replace b4_space = int((b4_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
+loc lastm = 19+3
 replace b4_cen = 1 if b4_space > `lastm' // cut off 
 replace b4_space = `lastm' if b4_space > `lastm'
 replace b4_space = b4_space - 3 // start when pregnancy can occur
-loc lastm = `lastm'-3
+global lastm = `lastm'-3
 drop if b4_space < 1
 
 gen boy = b4_sex == 1 & !b4_cen
