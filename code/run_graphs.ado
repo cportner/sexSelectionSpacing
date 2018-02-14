@@ -196,7 +196,7 @@ program graph_spell2
     include directories
 
     set scheme s1mono
-    loc goptions "xtitle(Months)  xlabel(0(6)60) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(35(5)75)"
+    loc goptions "xtitle(Months)  xlabel(0(6)72) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(35(5)75)"
 
     line pc pc_l pc_u months if urban & girl1, sort `goptions' 
     graph export `figures'/spell2_g`period'_`educ'_urban_g_pc.eps, replace fontface(Palatino) 
@@ -215,7 +215,7 @@ program graph_spell2
     // survival curves
     bysort id (t): gen s = exp(sum(ln(p0)))
     set scheme s1mono
-    loc goptions "xtitle(Months) xlabel(0(6)60) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+    loc goptions "xtitle(Months) xlabel(0(6)72) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 
 
     line s months if urban & girl1, sort `goptions'

@@ -28,8 +28,8 @@ drop if b2_space == .
 gen org_b2_space = b2_space
 replace b2_space = int((b2_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
 loc lastm = 4*6+3 //
-loc lastm = 4*6+4 //
-loc lastm = 4*6 //
+// loc lastm = 4*6+4 //
+// loc lastm = 4*6 //
 replace b2_cen = 1 if b2_space > `lastm' // cut off 
 replace b2_space = `lastm' if b2_space > `lastm'
 replace b2_space = b2_space - 3 // start when pregnancy can occur

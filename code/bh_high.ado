@@ -85,7 +85,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 15 & t <= 21
+        gen dur`i' = t >= 15 & t <= 24
                    
     }        
 
@@ -100,7 +100,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 16 & t <= 21
+        gen dur`i' = t >= 16 & t <= 24
 
     }
             
@@ -120,11 +120,11 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
             loc i = `i' + 1
         }
-        forvalues per = 12(5)17 { // originally 14
+        forvalues per = 12(5)16 { // originally 14
             gen dur`i' = t >= `per' & t <= `per' + 4 // 3 quarter years
             loc i = `i' + 1
         }
-        loc --i // needed because the non-prop below uses `i'
+        gen dur`i' = t >= 17 & t <= 24
 
     }            
 
@@ -140,7 +140,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 16 & t <= 21
+        gen dur`i' = t >= 16 & t <= 24
 
     }
 
