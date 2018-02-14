@@ -151,7 +151,8 @@ run_analysis: $(ANALYSISTARGET)
 
 # Use basename because run_analysis is an ado file
 define analysis-rule
-$(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis.ado $(DAT)/base.dta $(COD)/bh_$(3).ado
+$(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis.ado \
+ $(DAT)/base.dta $(COD)/bh_$(3).ado $(COD)/genSpell$(1).do
 	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
 endef
 
@@ -222,7 +223,8 @@ $(foreach spell, $(SPELLS), \
 # Bootstrap results
 $(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta \
  $(COD)/bootspell.do $(COD)/bh_low.ado \
- $(COD)/bh_med.ado $(COD)/bh_high.ado
+ $(COD)/bh_med.ado $(COD)/bh_high.ado \
+ $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
 	cd $(COD); stata-se -b -q $(<F)	
 
 # Bootstrap tables
