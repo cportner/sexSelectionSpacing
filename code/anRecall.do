@@ -126,7 +126,7 @@ program sexRatioTest
             }  
         }
         // Test for whether sex ratio differ across surveys for same cohort
-        // need three comparisons 1 vs 2, 1 vs 3, 2 vs 3 
+        // need six comparisons 1 vs 2, 1 vs 3, 1 vs 4, 2 vs 3, 2 vs 4, 3 vs 4
         loc level = 0.10
         if `N1' != . & `N2' != . {  // check whether missing
             prtesti `N1' `sexRatio1' `N2' `sexRatio2'
@@ -140,30 +140,49 @@ program sexRatioTest
                 loc cohortCompare = "`cohortCompare'" + "B"
             }
         }
-        if `N2' != . & `N3' != . {  // check whether missing
-            prtesti `N2' `sexRatio2' `N3' `sexRatio3'
+        if `N1' != . & `N4' != . {  // check whether missing
+            prtesti `N1' `sexRatio1' `N4' `sexRatio4'
             if normal(`r(z)') < `level' {
                 loc cohortCompare = "`cohortCompare'" + "C"
             }
         }
+        if `N2' != . & `N3' != . {  // check whether missing
+            prtesti `N2' `sexRatio2' `N3' `sexRatio3'
+            if normal(`r(z)') < `level' {
+                loc cohortCompare = "`cohortCompare'" + "D"
+            }
+        }
+        if `N2' != . & `N4' != . {  // check whether missing
+            prtesti `N2' `sexRatio2' `N4' `sexRatio4'
+            if normal(`r(z)') < `level' {
+                loc cohortCompare = "`cohortCompare'" + "E"
+            }
+        }
+        if `N3' != . & `N4' != . {  // check whether missing
+            prtesti `N3' `sexRatio3' `N4' `sexRatio4'
+            if normal(`r(z)') < `level' {
+                loc cohortCompare = "`cohortCompare'" + "F"
+            }
+        }
+            
         // write out results
         file write tmpFile "`value'" 
         forvalues survey = 1/4 {
             local where = 20 * `survey'
             file write tmpFile _column(`where') "& " %6.4f  (`sexRatio`survey'') "\sym{`stars`survey''}"
         }
-        file write tmpFile _column(80) "& `cohortCompare'"
-        file write tmpFile _column(90) "\\"  _n
+        file write tmpFile _column(100) "& `cohortCompare'"
+        file write tmpFile _column(110) "\\"  _n
         forvalues survey = 1/4 {
             local where = 20 * `survey'
             file write tmpFile _column(`where') "& (" %6.4f  (`pVal`survey'') ")"
         }
-        file write tmpFile _column(80) "&" _column(90) "\\"  _n
+        file write tmpFile _column(100) "&" _column(110) "\\"  _n
         forvalues survey = 1/4 {
             local where = 20 * `survey'
             file write tmpFile _column(`where') "& \mco{[`numObs`survey'']}"
         }
-        file write tmpFile _column(80) "&" _column(90) "\\"  _n
+        file write tmpFile _column(100) "&" _column(110) "\\"  _n
     }
     file close tmpFile
 end
@@ -182,16 +201,20 @@ drop if yearGroupBirth == 1950
 replace yearGroupBirth = 1965 if yearGroupBirth == 1960 & survey == 2
 replace yearGroupBirth = 1970 if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if yearGroupBirth == 2000 & survey == 2
+replace yearGroupBirth = 1980 if yearGroupBirth == 1975 & survey == 4
 sexRatioTest `tables'/recallBirthBO1 yearGroupBirth "== 1"
 restore
 
 // parity 1, year of marriage 
 preserve 
-drop if yearGroupMarriage == 1960 & survey == 3
+drop if yearGroupMarriage == 1960 & (survey == 3 | survey == 4)
+drop if yearGroupMarriage == 1965 & survey == 4
 drop if yearGroupMarriage == 2000 & survey == 2
 replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage == 1965 & survey == 3
+replace yearGroupMarriage = 2000 if yearGroupMarriage == 2005 & survey == 3
+replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
 sexRatioTest `tables'/recallMarriageBO1 yearGroupMarriage "== 1"
 restore
 
@@ -201,34 +224,41 @@ drop if yearGroupBirth == 1950
 drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
+replace yearGroupBirth = 1980 if survey == 4 & yearGroupBirth == 1975
 sexRatioTest `tables'/recallBirthBO2 yearGroupBirth "== 2"
 restore
 
 // parity 2, year of marriage 
 preserve 
 drop if yearGroupMarriage == 1960 & survey == 3
+drop if (yearGroupMarriage == 1960 | yearGroupMarriage == 1965) & survey == 4
 replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage == 1965 & survey == 3
+replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
 sexRatioTest `tables'/recallMarriageBO2 yearGroupMarriage "== 2"
 restore
 
-// parity 1-4, year of birth
+// parity 1-3, year of birth
 preserve
 drop if yearGroupBirth == 1950
 drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
+replace yearGroupBirth = 1980 if yearGroupBirth == 1975 & survey == 4
 sexRatioTest `tables'/recallBirthBO4less yearGroupBirth "< 4"
 restore
 
-// parity 1-4, year of marriage
+// parity 1-3, year of marriage
 preserve 
+drop if (yearGroupMarriage == 1960 | yearGroupMarriage == 1965) & survey == 4
 drop if yearGroupMarriage == 1960 & survey == 3
 drop if yearGroupMarriage == 2000 & survey == 2
 replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage <= 1965 & survey == 3
+replace yearGroupMarriage = 2000 if yearGroupMarriage == 2005 & survey == 3
+replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
 sexRatioTest `tables'/recallMarriageBO4less yearGroupMarriage "< 4"
 restore
 
@@ -241,34 +271,3 @@ exit
 // - test of differences - DONE
 - graph of results
 
-
-
-
-exit
-
-     2 "Andhra Pradesh"
-     3 "Assam"
-     4 "Bihar"
-     5 "Goa"
-     6 "Gujarat"
-     7 "Haryana"
-     8 "Himachal Pradesh"
-     9 "Jammu"
-    10 "Karnataka"
-    11 "Kerala"
-    12 "Madhya Pradesh"
-    13 "Maharashtra"
-    14 "Manipur"
-    15 "Meghalaya"
-    16 "Mizoram"
-    17 "Nagaland"
-    18 "Orissa"
-    19 "Punjab"
-    20 "Rajasthan"
-    21 "Sikkim"
-    22 "Tamil Nadu"
-    23 "West Bengal"
-    24 "Uttar Pradesh"
-    30 "New Delhi"
-    34 "ArunachalPradesh"
-    35 "Tripura"
