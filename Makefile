@@ -2,7 +2,7 @@
 ### The non-generated figures are not included here 			###
 
 ### The reason for the weird directory set-up is to have Makefile 
-### in base directory and run LaTeX in the paper directory 
+### in base directory and run XeLaTeX in the paper directory 
 ### without leaving all the other files in the base directory
 
 ### If you are not used to Makefile this might seem overwhelming.

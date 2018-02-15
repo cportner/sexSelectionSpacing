@@ -27,9 +27,12 @@ See the "Makefile" in the base directory for more information
 on what files are included.
 
 All code assume that you have Stata-SE installed and ready
-to run in batch mode (Stata -> Install Terminal Utility).
+to run in batch mode (Stata -> Install Terminal Utility if you
+are on Mac or Windows; if you are on Unix type system ensure 
+that `stata-se` is in your path).
+Stata has to be version 13 or better.
 Make sure you do not have your profile automatically change
-working directory (something like cd ~/data for example).
+working directory (to something like cd ~/data for example).
 If you do, make will not run the Stata files correctly.
 
 The PDF of final paper is created using XeLaTeX with the TeX
