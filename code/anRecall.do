@@ -204,7 +204,7 @@ program sexRatioTest
     file write tmpFile "\begin{tablenotes} \scriptsize" _n
     file write tmpFile "\item \hspace*{-0.6em} \textbf{Note.} " _n
     file write tmpFile "Sample consists of Hindu women only." _n
-    file write tmpFile "First number in cell is ratio of boys to girls. " _n
+    file write tmpFile "First number in cell is ratio of boys to children. " _n
     file write tmpFile "Second number in parentheses is p-value for the hypothesis that observed sex ratio is " _n
     file write tmpFile "greater than 105/205 using a binomial probability test (bitest in Stata 13)" _n
     file write tmpFile "with asterisks indicating significance as follows: " _n
@@ -267,7 +267,7 @@ drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
 replace yearGroupBirth = 1980 if survey == 4 & yearGroupBirth == 1975
-sexRatioTest recallBirthBO2 yearGroupBirth "== 2"
+sexRatioTest recallBirthBO2 yearGroupBirth "== 2" "Children Listed as Second-born by Year of Birth"
 restore
 
 // parity 2, year of marriage 
@@ -278,7 +278,7 @@ replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage == 1965 & survey == 3
 replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
-sexRatioTest recallMarriageBO2 yearGroupMarriage "== 2"
+sexRatioTest recallMarriageBO2 yearGroupMarriage "== 2" "Children Listed as Second-born by Year of Parents' Marriage'"
 restore
 
 // parity 1-3, year of birth
@@ -288,7 +288,7 @@ drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
 replace yearGroupBirth = 1980 if yearGroupBirth == 1975 & survey == 4
-sexRatioTest recallBirthBO4less yearGroupBirth "< 4"
+sexRatioTest recallBirthBO4less yearGroupBirth "< 4" "Children Listed as First-, Second-, or Third-born by Year of Birth"
 restore
 
 // parity 1-3, year of marriage
@@ -301,7 +301,7 @@ replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage <= 1965 & survey == 3
 replace yearGroupMarriage = 2000 if yearGroupMarriage == 2005 & survey == 3
 replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
-sexRatioTest recallMarriageBO4less yearGroupMarriage "< 4"
+sexRatioTest recallMarriageBO4less yearGroupMarriage "< 4" "Children Listed as First-, Second-, or Third-born by Year of Parents' Marriage"
 restore
 
 
