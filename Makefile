@@ -99,11 +99,11 @@ $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex $(TEX)/sex_selection_spacing.bib \
 	
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
-    ifeq ($(OS),Darwin)
-        open -a Skim $(TEX)/$(TEXFILE).pdf & 
-    else
-        evince $(TEX)/$(TEXFILE).pdf &
-    endif
+	ifeq ($(OS),Darwin)
+	    open -a Skim $(TEX)/$(TEXFILE).pdf & 
+	else
+	    evince $(TEX)/$(TEXFILE).pdf &
+	endif
 
 .PHONY: app
 app: $(TEX)/$(APPFILE).pdf
