@@ -89,8 +89,21 @@ tabulate yearGroupMarriage survey if bo < 4, sum(b_sex)
 //                  2. whether sex ratios across survey for same cohorts is different (higher?)
 capture program drop sexRatioTest
 program sexRatioTest
-    args fileName groupVar birthOrderCond
-    file open tmpFile using "`fileName'.tex", write text replace
+    args fileName groupVar birthOrderCond title_describe 
+    include directories
+    file open tmpFile using "`tables'/`fileName'.tex", write text replace
+    
+    // Write LaTeX table header
+    file write tmpFile "\begin{table}[htbp]" _n 
+    file write tmpFile "\begin{center}" _n
+    file write tmpFile "\begin{small}" _n
+    file write tmpFile "\begin{threeparttable}" _n
+    file write tmpFile "\caption{Observed Sex Ratios for `title_describe' in Five-Year Cohorts}" _n
+    file write tmpFile "\label{tab:`fileName'}" _n
+    file write tmpFile "\begin{tabular} {@{} l D{.}{.}{1.6} D{.}{.}{1.6} D{.}{.}{1.6} l D{.}{.}{1.6} l  @{}} \toprule " _n
+    file write tmpFile "                   & \mco{NFHS-1}      & \mco{NFHS-2}      & \mco{NFHS-3}      & \mco{NFHS-4}      & Diff.          \\" _n
+    file write tmpFile "                   & \mco{1992--1993}  & \mco{1998--1999}  & \mco{2005--2006}  & \mco{2015--2016}  & test\tnote{a}  \\ \midrule" _n
+    
     forvalues year = 1960(5)2010 {
         local value : label (`groupVar') `year'
         local cohortCompare = ""
@@ -184,6 +197,35 @@ program sexRatioTest
         }
         file write tmpFile _column(100) "&" _column(110) "\\"  _n
     }
+    
+    // Latex table footer
+    file write tmpFile "\bottomrule" _n
+    file write tmpFile "\end{tabular}" _n
+    file write tmpFile "\begin{tablenotes} \scriptsize" _n
+    file write tmpFile "\item \hspace*{-0.6em} \textbf{Note.} " _n
+    file write tmpFile "Sample consists of Hindu women only." _n
+    file write tmpFile "First number in cell is ratio of boys to girls. " _n
+    file write tmpFile "Second number in parentheses is p-value for the hypothesis that observed sex ratio is " _n
+    file write tmpFile "greater than 105/205 using a binomial probability test (bitest in Stata 13)" _n
+    file write tmpFile "with asterisks indicating significance as follows: " _n
+    file write tmpFile "* sign.\ at 10\%; ** sign.\ at 5\%; *** sign.\ at 1\%." _n
+    file write tmpFile "Third number in square brackets is number of observations." _n
+    file write tmpFile "\item[a] " _n
+    file write tmpFile "Test (prtest in Stata 13) whether recall error increases " _n
+    file write tmpFile "with time passed, which would manifest itself in a higher sex ratio for a more recent" _n
+    file write tmpFile "survey than an earlier for the same cohort." _n
+    file write tmpFile "A: Cohort sex ratio significantly larger in NFHS-2 than NFHS-1 at the 10 percent level. " _n
+    file write tmpFile "B: Cohort sex ratio significantly larger in NFHS-3 than NFHS-1 at the 10 percent level. " _n
+    file write tmpFile "C: Cohort sex ratio significantly larger in NFHS-4 than NFHS-1 at the 10 percent level. " _n
+    file write tmpFile "D: Cohort sex ratio significantly larger in NFHS-3 than NFHS-2 at the 10 percent level. " _n
+    file write tmpFile "E: Cohort sex ratio significantly larger in NFHS-4 than NFHS-2 at the 10 percent level. " _n
+    file write tmpFile "F: Cohort sex ratio significantly larger in NFHS-4 than NFHS-3 at the 10 percent level. " _n
+    file write tmpFile "\end{tablenotes}" _n
+    file write tmpFile "\end{threeparttable}" _n
+    file write tmpFile "\end{small}" _n
+    file write tmpFile "\end{center}" _n
+    file write tmpFile "\end{table}" _n
+    
     file close tmpFile
 end
 
@@ -202,7 +244,7 @@ replace yearGroupBirth = 1965 if yearGroupBirth == 1960 & survey == 2
 replace yearGroupBirth = 1970 if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if yearGroupBirth == 2000 & survey == 2
 replace yearGroupBirth = 1980 if yearGroupBirth == 1975 & survey == 4
-sexRatioTest `tables'/recallBirthBO1 yearGroupBirth "== 1"
+sexRatioTest recallBirthBO1 yearGroupBirth "== 1" "Children Listed as First-born by Year of Birth" 
 restore
 
 // parity 1, year of marriage 
@@ -215,7 +257,7 @@ replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage == 1965 & survey == 3
 replace yearGroupMarriage = 2000 if yearGroupMarriage == 2005 & survey == 3
 replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
-sexRatioTest `tables'/recallMarriageBO1 yearGroupMarriage "== 1"
+sexRatioTest recallMarriageBO1 yearGroupMarriage "== 1" "Children Listed as First-born by Year of Parents' Marriage" 
 restore
 
 // parity 2, year of birth 
@@ -225,7 +267,7 @@ drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
 replace yearGroupBirth = 1980 if survey == 4 & yearGroupBirth == 1975
-sexRatioTest `tables'/recallBirthBO2 yearGroupBirth "== 2"
+sexRatioTest recallBirthBO2 yearGroupBirth "== 2"
 restore
 
 // parity 2, year of marriage 
@@ -236,7 +278,7 @@ replace yearGroupMarriage = 1960 if yearGroupMarriage == 1950 & survey == 1
 replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage == 1965 & survey == 3
 replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
-sexRatioTest `tables'/recallMarriageBO2 yearGroupMarriage "== 2"
+sexRatioTest recallMarriageBO2 yearGroupMarriage "== 2"
 restore
 
 // parity 1-3, year of birth
@@ -246,7 +288,7 @@ drop if yearGroupBirth == 1960 & survey == 2
 drop if yearGroupBirth == 1965 & survey == 3
 replace yearGroupBirth = 1995 if survey == 2 & yearGroupBirth == 2000
 replace yearGroupBirth = 1980 if yearGroupBirth == 1975 & survey == 4
-sexRatioTest `tables'/recallBirthBO4less yearGroupBirth "< 4"
+sexRatioTest recallBirthBO4less yearGroupBirth "< 4"
 restore
 
 // parity 1-3, year of marriage
@@ -259,7 +301,7 @@ replace yearGroupMarriage = 1965 if yearGroupMarriage == 1960 & survey == 2
 replace yearGroupMarriage = 1970 if yearGroupMarriage <= 1965 & survey == 3
 replace yearGroupMarriage = 2000 if yearGroupMarriage == 2005 & survey == 3
 replace yearGroupMarriage = 1975 if yearGroupMarriage == 1970 & survey == 4
-sexRatioTest `tables'/recallMarriageBO4less yearGroupMarriage "< 4"
+sexRatioTest recallMarriageBO4less yearGroupMarriage "< 4"
 restore
 
 
