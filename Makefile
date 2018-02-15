@@ -20,7 +20,14 @@ RAW  = ./rawData
 DAT  = ./data
 
 ### To run on Mac and Linux
-OS:= $(shell uname)
+### If you want to run this on Windows you will have to figure out how to call a pdf viewer
+OS := $(shell uname)
+ifeq ($(OS),Darwin)
+PDFAPP := open -a Skim
+else
+PDFAPP := evince 
+endif
+
 
 ### Generate dependencies for ease of reading/writing
 PERIODS := 1 2 3 4
@@ -99,20 +106,16 @@ $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex $(TEX)/sex_selection_spacing.bib \
 	
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
-	ifeq ($(OS),Darwin)
-	    open -a Skim $(TEX)/$(TEXFILE).pdf & 
-	else
-	    evince $(TEX)/$(TEXFILE).pdf &
-	endif
+	$(PDFAPP) $(TEX)/$(TEXFILE).pdf & 
 
 .PHONY: app
 app: $(TEX)/$(APPFILE).pdf
-	open -a Skim $(TEX)/$(APPFILE).pdf & 
+	$(PDFAPP) $(TEX)/$(APPFILE).pdf & 
 
 .PHONY: all
 all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
-	open -a Skim $(TEX)/$(APPFILE).pdf & 
-	open -a Skim $(TEX)/$(TEXFILE).pdf & 
+	$(PDFAPP) $(TEX)/$(APPFILE).pdf & 
+	$(PDFAPP) $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
 results: $(GRAPHTARGET) $(PPSTARGET) \
