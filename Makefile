@@ -19,6 +19,9 @@ COD  = ./code
 RAW  = ./rawData
 DAT  = ./data
 
+### To run on Mac and Linux
+OS:= $(shell uname)
+
 ### Generate dependencies for ease of reading/writing
 PERIODS := 1 2 3 4
 AREAS   := rural urban
@@ -96,7 +99,11 @@ $(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex $(TEX)/sex_selection_spacing.bib \
 	
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
-	open -a Skim $(TEX)/$(TEXFILE).pdf & 
+    ifeq ($(OS),Darwin)
+        open -a Skim $(TEX)/$(TEXFILE).pdf & 
+    else
+        evince $(TEX)/$(TEXFILE).pdf &
+    endif
 
 .PHONY: app
 app: $(TEX)/$(APPFILE).pdf
