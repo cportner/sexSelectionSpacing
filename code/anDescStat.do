@@ -5,6 +5,7 @@
 version 13.1
 clear all
 set more off
+file close _all
 
 include directories
 
@@ -29,30 +30,25 @@ gen b2_born_year = int((b2_born_cmc-1)/12) if fertility >= 2
 gen b3_born_year = int((b3_born_cmc-1)/12) if fertility >= 3
 
 // Total sample for paper
-preserve
-drop if 
-drop if edu_mother == .
-drop if b1_space == .
-drop if land_own == .
-drop if b1_mom_age < 12 
-drop if b1_space < 1 // Drop if birth before marriage
-drop if b2_space < 9 & fertility > 1
-drop if b3_space < 9 & fertility > 2
-drop if b4_space < 9 & fertility > 3
+count
+loc num = `r(N)'
 
+loc births = 0
+forvalues fer = 1/3 {
+    count if fertility == `fer'
+    loc births = `births' + `r(N)' * `fer'
+}
+count if fertility >= 4
+loc births = `births' + `r(N)' * 4
 
-
-restore
-
+file open num_women using `tables'/num_women.tex, write replace
+file write num_women  %9.0fc (`num') " women, with " %9.0fc (`births') " parity one through four births."
+file close num_women
 
 * SPELL 1
 preserve
 create_groups b0_born_year
 
-drop if b1_mom_age < 12 
-drop if edu_mother == .
-drop if b1_space == .
-drop if land_own == .
 gen mom_age    = b1_mom_age
 
 replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
@@ -60,7 +56,6 @@ loc lastm = 4*6 //
 replace b1_cen = 1 if b1_space > `lastm' // cut off 
 replace b1_space = `lastm' if b1_space > `lastm'
 global lastm = `lastm'
-drop if b1_space < 1
 
 gen boy = b1_sex == 1 & !b1_cen
 gen girl = b1_sex == 2 & !b1_cen
@@ -135,12 +130,6 @@ preserve
 keep if fertility >= 1
 create_groups b1_born_year
 
-drop if b2_mom_age < 12
-drop if edu_mother == .
-drop if b1_space == .
-drop if b2_space == .
-drop if b2_space <= 8
-drop if land_own == .
 
 gen mom_age    = b2_mom_age
 
@@ -234,15 +223,6 @@ restore
 preserve
 keep if fertility >= 2
 create_groups b2_born_year
-
-drop if b2_mom_age < 12 | b3_mom_age < 14
-drop if edu_mother == .
-drop if b1_space == .
-drop if b2_space == .
-drop if b2_space <= 8
-drop if b3_space == .
-drop if b3_space <= 8
-drop if land_own == .
 
 gen mom_age    = b3_mom_age
 gen b1space = b1_space
@@ -338,17 +318,6 @@ restore
 preserve
 keep if fertility >= 3
 create_groups b3_born_year
-
-drop if b2_mom_age < 12 | b3_mom_age < 14 | b4_mom_age < 15
-drop if edu_mother == .
-drop if b1_space == .
-drop if b2_space == .
-drop if b2_space <= 8
-drop if b3_space == .
-drop if b3_space <= 8
-drop if b4_space == .
-drop if b4_space <= 8
-drop if land_own == .
 
 gen mom_age    = b4_mom_age
 gen b1space = b1_space
