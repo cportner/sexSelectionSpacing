@@ -548,34 +548,37 @@ place in each period.
 
 \section{Data\label{sec:data}}
 
-The data come from the three rounds of the National Family Health Survey 
-(NFHS-1, NFHS-2 and NFHS-3),
-collected in 1992--93, 1998--99, and 2005--2006.%
+The data come from the four rounds of the National Family Health Survey 
+(NFHS-1, NFHS-2, NFHS-3, and NFHS-4),
+collected in 1992--93, 1998--99, 2005--2006, and 2015--2016.%
 \footnote{
 A delay in the survey for Tripura means that NFHS-2 has a small number of observation 
 collected in 2000.
 }
 The surveys are large: NFHS-1 covered 89,777 ever-married women 
 aged 13--49 from 88,562 households,
-NFHS-2 covered 90,303 ever-married women aged 15--49 from 92,486 households
-and NFHS-3 covered 124,385 never-married and ever-married women aged 
-15--49 from 109,041 households.
+NFHS-2 covered 90,303 ever-married women aged 15--49 from 92,486 households,
+NFHS-3 covered 124,385 never-married and ever-married women aged 
+15--49 from 109,041 households,
+and 
+NFHS-4 covered 699,686 never-married and ever-married women aged
+15--49 from 601,509 households surveyed.
 
 I exclude visitors to the household, as well as
 women married more than once, divorced, or not living with their husband,
 women with inconsistent information on age of marriage,
 and those with missing information on education.
-Women interviewed in NFHS-3 who were never married or where gauna had not
-been performed were also dropped.
+Women interviewed in NFHS-3 or NFHS-4 who were never married or where gauna 
+had not been performed were also dropped.
 The same goes for women who had at least one multiple birth,
 reported having a birth before age 12, had a birth before marriage, or
 a duration between births less than 9 months.
 Women who reported less than 9 months between marriage and first birth
 remain in the sample---unless they are dropped for another reason---because 
-10 to 20 percent fall into this category across the 3 surveys.
+10 to 20 percent fall into this category across the 4 surveys.
 Although it is possible that some of these births are premature, the high number of
-women who report a birth less than 6 months after marriage indicates that conception
-likely occurred before marriage in most cases.
+women who report a birth less than 6 months after marriage indicates that for
+a majority conception likely occurred before marriage.
 
 Finally, I restrict the sample to Hindus,
 who constitute about 80 percent of India's population.
@@ -583,15 +586,15 @@ If use of sex selection differ between Hindu and other religions, such
 as Sikhs, assuming that the baseline hazard is the same would lead to bias.
 The other groups are each so small relative to Hindus that it is not
 possible to estimate different baseline hazards for each group.
-Furthermore, the groups are so different in terms of background and son preference
-that combining them into one group would not make sense.
+Furthermore, the other groups are so different in terms of background and son 
+preference that combining them into one group would not make sense.
 
 There are four advantages to using the NFHS.
 First, surveys enumerators pay careful attention to spacing between births and
 probe for ``missed'' births.
 Second, no other surveys cover as long a period in the same amount of detail.
-The three NFHS rounds allow me to show the development in spacing and 
-sex ratio from before sex-selective abortions were available until 2006.
+The four NFHS rounds allow me to show the development in spacing and 
+sex ratio from before sex-selective abortions were available until 2016.
 Third, NFHS has birth histories for a large number of women.%
 \footnote{
 The Special Fertility and Mortality Survey appears to cover a much large number of households
@@ -623,8 +626,8 @@ that procedure is unlikely to pick up all missed children.
 As I argue in the online Appendix, recall error is heavily dependent on the duration
 between marriage and survey, and I therefore drop women married 22 years or more 
 for NFHS-1, with the corresponding cut-off points 23 years for NFHS-2, 
-and 26 years for NFHS-3.
-The final sample consists of 146,096 women, with 332,951 parity one through four births.
+and 25 years for NFHS-3 and NFHS-4.
+The final sample consists of TK women, with TK parity one through four births.
 
 
 % %
@@ -636,7 +639,6 @@ The final sample consists of 146,096 women, with 332,951 parity one through four
 
 \subsection{Spell Definition\label{sec:spell_def}}
 
-Spell duration is measured in 
 As mentioned above, 10 to 20 percent of women gave birth less than 9 months
 after they were married.
 The first spell therefore begins at the month of marriage.
@@ -652,12 +654,13 @@ Censoring can happen for three reasons:
 the survey takes place;
 the woman is sterilized;
 or too few births are observed for the method to work.
-The timing of censoring because of too few births vary slightly by spell but 
-is generally 5 years or longer after the beginning of the spell.
+For spell 1 I set censoring at 72 months after marriage,
+while for spells 2 and 3 censoring is at 72 months and for spell 4
+57 months after a birth can occur. 
 
 To examine how the use of sex selection has changed over time,
 I group spells into three time periods based on spell start date:
-1972--1984, 1985--1994, and 1995--2006.
+1972--1984, 1985--1994, 1995--2004, and 2005--2016.
 These years follow the important changes in availability and legality of 
 prenatal sex determination discussed in the Introduction.
 Note that the periods are based on the spells' beginning year, and some spells 
