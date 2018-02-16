@@ -49,10 +49,12 @@ label val b5_20 B5
 /* DROPPING PROBLEMATIC VARIABLES/OBSERVATIONS                        */
 /*--------------------------------------------------------------------*/
 
-drop if fertility > 12 // only one observation
-drop *_13 *_14 *_15 *_16 *_17 *_18 *_19 *_20
+// Do not ever use the high birth order children here
+// drop *_13 *_14 *_15 *_16 *_17 *_18 *_19 *_20
 
-// drop women with too short birth intervals
+// drop women with too short preceding birth intervals
+// b11_** is only included if there is a birth after.
+// For example, b11_01 is the preceding birth spacing for second births
 egen tooshort = anymatch(b11_*), val(0 1 2 3 4 5 6 7 8)
 drop if tooshort
 drop tooshort
@@ -75,8 +77,7 @@ drop if marital_status == 4 | marital_status == 5
 /* IDENTIFYING OLD OBSERVATIONS                                       */
 /*--------------------------------------------------------------------*/
 
-// all women who had their first (recorded) birth 20 year prior to survey
-//drop if first_cmc < interview_cmc - 20*12 // to counter recall problems
+// Calculate how long ago first recorded birth and how long since married
 gen observation_age   = int((interview_cmc - first_cmc) / 12)
 gen observation_age_m = int((interview_cmc - marriage_cmc) / 12)
 
@@ -108,7 +109,7 @@ gen b1_space = space_0_1
 gen b1_sex = .
 gen b1_dead_cmc = .
 gen b1_born_cmc = .
-forvalues i = 1/12 {
+forvalues i = 1/20 {
     if `i' < 10 {
         loc var = "0`i'"
     } 
@@ -127,7 +128,7 @@ replace b1_space = sterilisation - start_cmc if fertility == 0 & sterilisation !
 replace b1_mom_age = 12 if b1_mom_age < 12
 
 // second and higher spacing
-forvalues bo = 2/12 {
+forvalues bo = 2/20 {
     loc bom1 = `bo'-1
     gen b`bo'_cen = fertility == `bo'-1
     gen b`bo'_space = space_last_int if b`bo'_cen // censored
@@ -136,7 +137,7 @@ forvalues bo = 2/12 {
     gen b`bo'_dead_cmc = .
     gen b`bo'_born_cmc = .
     gen b`bo'_mom_age = .
-    forvalues i = 1/12 {
+    forvalues i = 1/20 {
         if `i' < 10 {
             loc var = "0`i'"
         }
@@ -154,7 +155,7 @@ forvalues bo = 2/12 {
 }
 
 // drop if negative spacing
-forvalues i = 1/12 {
+forvalues i = 1/20 {
     drop if b`i'_space < 0
 }
 
@@ -224,14 +225,12 @@ lab var rural        "Rural"
 /* DROP BAD OBSERVATIONS                                              */
 /*--------------------------------------------------------------------*/
 
-drop if b1_mom_age < 12 | b2_mom_age < 12 | b3_mom_age < 14 | b4_mom_age < 15
+drop if b1_mom_age < 12 
+drop if b2_mom_age < 12 | b3_mom_age < 14 | b4_mom_age < 15
 drop if edu_mother == .
 // drop if edu_father == . | edu_father > 30 // not needed since father's edu not used
 drop if b1_space == .
 drop if land_own == .
-// drop if b2_space <= 8
-// drop if b3_space <= 8
-// drop if b4_space <= 8
 count
 
 /*--------------------------------------------------------------------*/

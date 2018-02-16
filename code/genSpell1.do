@@ -23,7 +23,6 @@ loc lastm = 4*6 //
 replace b1_cen = 1 if b1_space > `lastm' // cut off 
 replace b1_space = `lastm' if b1_space > `lastm'
 global lastm = `lastm'
-drop if b1_space < 1
 
 // Changing area of residence to residence at end of spell
 gen endSpellYear = int((marriage_cmc+org_b1_space-1)/12)+1900
