@@ -18,7 +18,8 @@ use `data'/base
 keep if hindu 
 drop if observation_age_m >= 22 & round == 1
 drop if observation_age_m >= 23 & round == 2
-drop if observation_age_m >= 26 & round == 3
+drop if observation_age_m >= 25 & round == 3
+drop if observation_age_m >= 25 & round == 4
 
 lab var land_own "Owns land"
 

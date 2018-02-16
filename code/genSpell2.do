@@ -6,11 +6,10 @@
 keep if fertility >= 1
 
 // dropping those with too much recall error
-// the combined graphs looks like < 18 should be kept, but that might mask actual abortions
 drop if observation_age_m >= 22 & round == 1
 drop if observation_age_m >= 23 & round == 2
-drop if observation_age_m >= 26 & round == 3
-// drop if observation_age_m >= 20
+drop if observation_age_m >= 25 & round == 3
+drop if observation_age_m >= 25 & round == 4
 
 gen mom_age    = b2_mom_age
 gen mom_age2   = mom_age^2/100
@@ -28,8 +27,6 @@ drop if b2_space == .
 gen org_b2_space = b2_space
 replace b2_space = int((b2_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
 loc lastm = 4*6+3 //
-// loc lastm = 4*6+4 //
-// loc lastm = 4*6 //
 replace b2_cen = 1 if b2_space > `lastm' // cut off 
 replace b2_space = `lastm' if b2_space > `lastm'
 replace b2_space = b2_space - 3 // start when pregnancy can occur
