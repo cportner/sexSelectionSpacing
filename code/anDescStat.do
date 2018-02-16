@@ -28,6 +28,22 @@ gen b1_born_year = int((b1_born_cmc-1)/12) if fertility >= 1
 gen b2_born_year = int((b2_born_cmc-1)/12) if fertility >= 2
 gen b3_born_year = int((b3_born_cmc-1)/12) if fertility >= 3
 
+// Total sample for paper
+preserve
+drop if 
+drop if edu_mother == .
+drop if b1_space == .
+drop if land_own == .
+drop if b1_mom_age < 12 
+drop if b1_space < 1 // Drop if birth before marriage
+drop if b2_space < 9 & fertility > 1
+drop if b3_space < 9 & fertility > 2
+drop if b4_space < 9 & fertility > 3
+
+
+
+restore
+
 
 * SPELL 1
 preserve
