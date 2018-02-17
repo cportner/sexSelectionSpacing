@@ -17,17 +17,36 @@ program bootspell, rclass
     bysort id (t): replace birth = 2 if b`spell'_sex == 2 & b`spell'_cen == 0 & _n == _N // exit with a daugther
 
     // PIECE-WISE LINEAR HAZARDS
-        
-    bh_`educ' `spell' `group'
-    loc i = `r(numPer)'
+    if `spell' == 1 | `spell' == 2  {
+        tab t, gen(dur)
+        loc i = $lastm    
+    }
+    else if `spell' == 3 {
+        loc i = 1
+        forvalues per = 1/14 {
+            gen dur`i' = t >= `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 15 & t <= 19
+        loc ++i
+        gen dur`i' = t >= 20 & t <= 24
+    }
+    else if `spell' == 4 {
+        loc i = 1
+        gen dur`i' = t >= 1 & t <= 5
+        loc ++i
+        gen dur`i' = t >= 6 & t <= 10
+        loc ++i
+        gen dur`i' = t >= 11
+    }
 
-    // [THIS PART DEPENDS ON SPELL!]        
+
+    // NON-PROPORTIONALITY
     loc npvar = "urban "
     loc spell_m1 = `spell'-1
     forvalues j = 1/`spell_m1' {
         loc npvar = "`npvar' girl`j' girl`j'Xurban "
     }
-    // NON-PROPORTIONALITY
     foreach var of var `npvar' {
         forval x = 1/`i' {
             gen np`x'X`var'  = dur`x' * `var' 
@@ -39,8 +58,13 @@ program bootspell, rclass
     // ESTIMATION
     mlogit birth dur* $b1space ///
         $parents $hh $caste `np'  ///
-        , baseoutcome(0) noconstant 
-
+        , baseoutcome(0) noconstant iterate(15)
+        
+    if `e(converged)' == 0 {
+        dis "Multinomial logit did not converge!"
+        exit
+    }
+        
     // PREDICTIONS BASED ON SAMPLE
     // 25, 50, and 75% spacing, sex ratio, and parity progression likelihood
     
@@ -52,8 +76,28 @@ program bootspell, rclass
     gen months = t * 3
 
     // PIECE-WISE LINEAR HAZARDS
-    bh_`educ' `spell' `group'
-    loc i = `r(numPer)'
+    if `spell' == 1 | `spell' == 2  {
+        tab t, gen(dur)
+        loc i = $lastm    
+    }
+    else if `spell' == 3 {
+        loc i = 1
+        forvalues per = 1/14 {
+            gen dur`i' = t >= `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 15 & t <= 19
+        loc ++i
+        gen dur`i' = t >= 20 & t <= 24
+    }
+    else if `spell' == 4 {
+        loc i = 1
+        gen dur`i' = t >= 1 & t <= 5
+        loc ++i
+        gen dur`i' = t >= 6 & t <= 10
+        loc ++i
+        gen dur`i' = t >= 11
+    }
     
     // [THIS PART DEPENDS ON SPELL!]        
     loc npvar = "urban "
