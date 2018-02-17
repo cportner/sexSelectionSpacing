@@ -17,9 +17,19 @@ program bootspell, rclass
     bysort id (t): replace birth = 2 if b`spell'_sex == 2 & b`spell'_cen == 0 & _n == _N // exit with a daugther
 
     // PIECE-WISE LINEAR HAZARDS
-    if `spell' == 1 | `spell' == 2 | `spell' == 3 {
+    if `spell' == 1 | `spell' == 2  {
         tab t, gen(dur)
         loc i = $lastm    
+    }
+    else if `spell' == 3 {
+        loc i = 1
+        forvalues per = 1/14 {
+            gen dur`i' = t >= `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 15 & t <= 19
+        loc ++i
+        gen dur`i' = t >= 20 & t <= 24
     }
     else if `spell' == 4 {
         loc i = 1
@@ -66,9 +76,19 @@ program bootspell, rclass
     gen months = t * 3
 
     // PIECE-WISE LINEAR HAZARDS
-    if `spell' == 1 | `spell' == 2 | `spell' == 3 {
+    if `spell' == 1 | `spell' == 2  {
         tab t, gen(dur)
         loc i = $lastm    
+    }
+    else if `spell' == 3 {
+        loc i = 1
+        forvalues per = 1/14 {
+            gen dur`i' = t >= `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 15 & t <= 19
+        loc ++i
+        gen dur`i' = t >= 20 & t <= 24
     }
     else if `spell' == 4 {
         loc i = 1
