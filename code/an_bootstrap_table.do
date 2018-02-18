@@ -225,7 +225,8 @@ foreach educ in "low" "med" "high" {
     file write table "For each woman in a given spell/period combination sample, I calculate the predicted" _n
     file write table "percent boys for each month and sum this across the length of the spell using the" _n
     file write table "likelihood of having a child in each month as the weight. " _n
-    file write table "The individual percent boys is then averaged across all women in the given sample." _n
+    file write table "The percent boys is then averaged across all women in the given sample using the " _n
+    file write table "individual predicted probabilities of having had a birth by the end of the spell as weights." _n
     file write table "The result is the predicted percent boys that will be born to women in the sample once " _n
     file write table "child bearing for that spell is over." _n
 
