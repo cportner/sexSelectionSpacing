@@ -64,6 +64,14 @@ foreach educ in "high" "med" "low" {
                     loc stats = "`stats' p25_`where'_g`girls' = r(p25_`where'_g`girls')"
                     loc stats = "`stats' pct_`where'_g`girls' = r(pct_`where'_g`girls')"
                     loc stats = "`stats' any_`where'_g`girls' = r(any_`where'_g`girls')"
+                }
+                // Differences for testing - only girls against each of the other sex compositions
+                loc all_girls = `spell' - 1
+                loc end = `spell' - 2
+                forvalues comp = 0 / `end' {
+                    foreach per of numlist 25 50 75 {
+                        loc stats = "`stats' diff_p`per'_`where'_g`all_girls'_vs_g`comp' = r(diff_p`per'_`where'_g`all_girls'_vs_g`comp')"
+                    } 
                 } 
             }
             

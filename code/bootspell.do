@@ -208,15 +208,18 @@ program bootspell, rclass
             
             // Median spell length at sex composition and area
             sum median `sexcomp' [iweight = prob_any_birth]
-            return scalar p50_`where'_g`girls' = `r(mean)'
+            local p50_`where'_g`girls' = `r(mean)'
+            return scalar p50_`where'_g`girls' = `p50_`where'_g`girls''
 
             // 25 percentile spell length - remember 25% left!!
             sum p25 `sexcomp' [iweight = prob_any_birth]
-            return scalar p25_`where'_g`girls' = `r(mean)'
+            local p25_`where'_g`girls' = `r(mean)'
+            return scalar p25_`where'_g`girls' = `p25_`where'_g`girls''
 
             // 75 percentile spell length - remember 75% left!!
             sum p75 `sexcomp' [iweight = prob_any_birth]
-            return scalar p75_`where'_g`girls' = `r(mean)'
+            local p75_`where'_g`girls' = `r(mean)'
+            return scalar p75_`where'_g`girls' = `p75_`where'_g`girls''
 
             // Percent boys
             sum pct_sons `sexcomp' [iweight = prob_any_birth]
@@ -225,9 +228,19 @@ program bootspell, rclass
             // Likelihood of birth by spell end
             sum prob_any_birth `sexcomp'
             return scalar any_`where'_g`girls' = `r(mean)'
-            
+                        
             // can add more statistics here
         }
+
+        // Differences for testing - only girls against each of the other sex compositions
+        loc all_girls = `spell' - 1
+        loc end = `spell' - 2
+        forvalues comp = 0 / `end' {
+            foreach per of numlist 25 50 75 {
+                return scalar diff_p`per'_`where'_g`all_girls'_vs_g`comp' = `p`per'_`where'_g`all_girls'' - `p`per'_`where'_g`comp''
+            } 
+        }
+
     }
 
     restore
