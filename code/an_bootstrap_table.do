@@ -216,8 +216,22 @@ foreach educ in "low" "med" "high" {
                                     test_bs b_s`spell'_g`period'_`educ'[1,`r(col_num)'] se_s`spell'_g`period'_`educ'[1,`r(col_num)'] `nat_percent'
                                     significance_stars table `r(p_value)'
                                 }
+                                else if "`stats'" == "p50" {
+                                    // Testing duration against all girls duration
+                                    loc all_girls = `spell' - 1
+                                    if `girls' < `all_girls' {
+                                        find_col `type'_s`spell'_g`period'_`educ' diff_`stats'_`area'_g`all_girls'_vs_g`girls'
+                                        local which_column = `r(col_num)'
+                                        test_bs b_s`spell'_g`period'_`educ'[1,`which_column'] se_s`spell'_g`period'_`educ'[1,`which_column'] 0
+                                        significance_stars table `r(p_value)'
+                                    }
+                                    else {
+                                        file write table "       "
+                                    }
+                                }
                                 else {
-                                    file write table "       "
+                                    display "Something went wrong with table generation"                                    
+                                    exit
                                 } 
                             }
                         }
