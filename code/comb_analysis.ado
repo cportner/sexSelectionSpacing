@@ -149,15 +149,18 @@ program comb_analysis, rclass
             
                 // Median spell length at sex composition and area
                 sum median `sexcomp' [iweight = prob_any_birth]
-                return scalar p50_`where'_g`girls'_p`period' = `r(mean)'
+                local p50_`where'_g`girls' = `r(mean)'
+                return scalar p50_`where'_g`girls'_p`period' = `p50_`where'_g`girls''
 
                 // 25 percentile spell length - remember 25% left!!
                 sum p25 `sexcomp' [iweight = prob_any_birth]
-                return scalar p25_`where'_g`girls'_p`period' = `r(mean)'
+                local p25_`where'_g`girls' = `r(mean)'                
+                return scalar p25_`where'_g`girls'_p`period' = `p25_`where'_g`girls''
 
                 // 75 percentile spell length - remember 75% left!!
                 sum p75 `sexcomp' [iweight = prob_any_birth]
-                return scalar p75_`where'_g`girls'_p`period' = `r(mean)'
+                local p75_`where'_g`girls' = `r(mean)'                
+                return scalar p75_`where'_g`girls'_p`period' = `p75_`where'_g`girls''
 
                 // Percent boys
                 sum pct_sons `sexcomp' [iweight = prob_any_birth]
