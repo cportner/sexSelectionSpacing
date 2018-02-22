@@ -27,6 +27,34 @@ program find_col, rclass
     }
 end
 
+program test_bs, rclass
+    args b se value
+    if "`value'" == "" {
+        loc value = 0
+    }
+    loc p = (1 - normal((abs(`b'-`value'))/`se')) * 2
+    return scalar p_value = `p'
+end
+
+program significance_stars
+    args handle p_value
+    if `p_value' < 0.1 {
+        file write `handle' "^{*"                                        
+        if `p_value' < 0.01 {
+            file write `handle' "**} "
+        }
+        else if `p_value' < 0.05 & `p_value' >= 0.01 {
+            file write `handle' "*}  "
+        }
+        else {                                        
+            file write `handle' "}   "
+        }
+    }
+    else {
+        file write `handle' "       "
+    }    
+end
+
 include directories
 
 // Load bootstrap results and create matrices.
@@ -107,39 +135,39 @@ foreach educ in "low" "med" "high" {
                 
                 // Conditions for sex composition to call matrix values
                 if `spell' == 1 {
-                        file write table _col(20) "&                            "
+                        file write table _col(23) "&                            "
                 } 
                 if `spell' == 2 {
                     if `prior' == 1 {
-                        file write table _col(20) "& \mco{One girl}             "
+                        file write table _col(23) "& \mco{One girl}             "
                     }
                     if `prior' == 2 {
-                        file write table _col(20) "& \mco{One boy}              "
+                        file write table _col(23) "& \mco{One boy}              "
                     }    
                 }
                 if `spell' == 3 {
                     if `prior' == 1 {
-                        file write table _col(20) "& \mco{Two girls}            "
+                        file write table _col(23) "& \mco{Two girls}            "
                     }
                     if `prior' == 2 {
-                        file write table _col(20) "& \mco{One boy / one girl}   "
+                        file write table _col(23) "& \mco{One boy / one girl}   "
                     }    
                     if `prior' == 3 {
-                        file write table _col(20) "& \mco{Two boys}             "
+                        file write table _col(23) "& \mco{Two boys}             "
                     }    
                 }
                 if `spell' == 4 {
                     if `prior' == 1 {
-                        file write table _col(20) "& \mco{Three girls}          "
+                        file write table _col(23) "& \mco{Three girls}          "
                     }
                     if `prior' == 2 {
-                        file write table _col(20) "& \mco{One boy / two girls}  "
+                        file write table _col(23) "& \mco{One boy / two girls}  "
                     }    
                     if `prior' == 3 {
-                        file write table _col(20) "& \mco{Two boys / one girl}  "
+                        file write table _col(23) "& \mco{Two boys / one girl}  "
                     }    
                     if `prior' == 4 {
-                        file write table _col(20) "& \mco{Three boys}           "
+                        file write table _col(23) "& \mco{Three boys}           "
                     }    
                 }
 
@@ -149,7 +177,7 @@ foreach educ in "low" "med" "high" {
                 
                     // move in enough to match up with first line
                     if "`type'" == "se" {
-                        file write table _col(20) "&                            "
+                        file write table _col(23) "&                            "
                     }
                     
                     // Loop over periods
@@ -180,12 +208,18 @@ foreach educ in "low" "med" "high" {
                             }
                             file write table `stat_format' (`type'_s`spell'_g`period'_`educ'[1,`r(col_num)'])        
                             if "`type'" == "se" {
-                                file write table ")"
+                                file write table ")      "
                             }
                             else {
-                                file write table " "
+                                if "`stats'" == "pct" {
+                                    loc nat_percent = (105/205) * 100
+                                    test_bs b_s`spell'_g`period'_`educ'[1,`r(col_num)'] se_s`spell'_g`period'_`educ'[1,`r(col_num)'] `nat_percent'
+                                    significance_stars table `r(p_value)'
+                                }
+                                else {
+                                    file write table "       "
+                                } 
                             }
-                            file write table "      " 
                         }
                 
                     }
@@ -229,6 +263,9 @@ foreach educ in "low" "med" "high" {
     file write table "individual predicted probabilities of having had a birth by the end of the spell as weights." _n
     file write table "The result is the predicted percent boys that will be born to women in the sample once " _n
     file write table "child bearing for that spell is over." _n
+    file write table "The predicted percent boys is tested against the natural percentage boys, 105 boys per " _n
+    file write table "100 girls, with *** indicating significantly different at the 1\% level, ** at the 5\% level, " _n
+    file write table "and * at 10\% level."
 
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
