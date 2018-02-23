@@ -1,6 +1,8 @@
 program comb_analysis, rclass   
     version 13
     args spell group1 group2 educ
+    // Assume that group1 < group2 for testing
+    
     preserve
     
     // Need to generate a new id because of sampling with replacement and use that id instead
@@ -149,18 +151,18 @@ program comb_analysis, rclass
             
                 // Median spell length at sex composition and area
                 sum median `sexcomp' [iweight = prob_any_birth]
-                local p50_`where'_g`girls' = `r(mean)'
-                return scalar p50_`where'_g`girls'_p`period' = `p50_`where'_g`girls''
+                local p50_`where'_g`girls'_p`period' = `r(mean)'
+                return scalar p50_`where'_g`girls'_p`period' = `p50_`where'_g`girls'_p`period''
 
                 // 25 percentile spell length - remember 25% left!!
                 sum p25 `sexcomp' [iweight = prob_any_birth]
-                local p25_`where'_g`girls' = `r(mean)'                
-                return scalar p25_`where'_g`girls'_p`period' = `p25_`where'_g`girls''
+                local p25_`where'_g`girls'_p`period' = `r(mean)'                
+                return scalar p25_`where'_g`girls'_p`period' = `p25_`where'_g`girls'_p`period''
 
                 // 75 percentile spell length - remember 75% left!!
                 sum p75 `sexcomp' [iweight = prob_any_birth]
-                local p75_`where'_g`girls' = `r(mean)'                
-                return scalar p75_`where'_g`girls'_p`period' = `p75_`where'_g`girls''
+                local p75_`where'_g`girls'_p`period' = `r(mean)'                
+                return scalar p75_`where'_g`girls'_p`period' = `p75_`where'_g`girls'_p`period''
 
                 // Percent boys
                 sum pct_sons `sexcomp' [iweight = prob_any_birth]
@@ -175,6 +177,21 @@ program comb_analysis, rclass
         }
     }
 
+    // Differences-in-difference testing 
+    // How does all-girls duration change compared to each of the other sex compositions
+    foreach where in "urban" "rural" {
+        loc all_girls = `spell' - 1
+        loc end = `spell' - 2
+        forvalues comp = 0 / `end' {
+            foreach per of numlist 25 50 75 {
+                return scalar diff_p`per'_`where'_g`all_girls'_vs_g`comp' = ///
+                    (`p`per'_`where'_g`all_girls'_p`group2'' - `p`per'_`where'_g`all_girls'_p`group1'') ///
+                   -(`p`per'_`where'_g`comp'_p`group2''      - `p`per'_`where'_g`comp'_p`group1'') 
+            } 
+        }    
+    }
+    
+    
     restore
 end
 

@@ -56,6 +56,18 @@ program comb_boot
                 loc stats = "`stats' p25_`where'_g`girls'_p`period' = r(p25_`where'_g`girls'_p`period')"
                 loc stats = "`stats' pct_`where'_g`girls'_p`period' = r(pct_`where'_g`girls'_p`period')"
                 loc stats = "`stats' any_`where'_g`girls'_p`period' = r(any_`where'_g`girls'_p`period')"
+            }
+        }
+    }
+    // Differences for testing - only girls against each of the other sex compositions
+    // No direct information on periods covered since only difference worth including here
+    // are between the two groups called for
+    loc all_girls = `spell' - 1
+    loc end = `spell' - 2
+    foreach where in "urban" "rural" {
+        forvalues comp = 0 / `end' {
+            foreach per of numlist 25 50 75 {
+                loc stats = "`stats' diff_p`per'_`where'_g`all_girls'_vs_g`comp' = r(diff_p`per'_`where'_g`all_girls'_vs_g`comp')"
             } 
         }
     }
