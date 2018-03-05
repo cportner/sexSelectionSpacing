@@ -79,9 +79,9 @@ tab fertility
 // LaTeX intro part for table
 file open stats using `tables'/des_stat.tex, write replace
 
-file write stats "\begin{table}[htp]" _n
+file write stats "\begin{sidewaystable}[htp]" _n
 file write stats "\begin{center}" _n
-file write stats "\begin{tiny}" _n
+file write stats "\begin{scriptsize}" _n
 file write stats "\begin{threeparttable}" _n
 file write stats "\caption{Descriptive Statistics by Education Level and Beginning of Spell}" _n
 file write stats "\label{tab:des_stat1}" _n
@@ -207,9 +207,9 @@ file write stats "Interactions between variables, baseline hazard dummies and sq
 // file write stats "Quarters refer to number of 3 month periods observed." _n
 file write stats "\end{tablenotes}" _n
 file write stats "\end{threeparttable}" _n
-file write stats "\end{tiny}" _n
+file write stats "\end{scriptsize}" _n
 file write stats "\end{center}" _n
-file write stats "\end{table}" _n
+file write stats "\end{sidewaystable}" _n
 
 file close stats
 
@@ -266,9 +266,9 @@ file open stats using `tables'/des_stat.tex, write append
 
 file write stats _n "\addtocounter{table}{-1}" _n
 file write stats "" _n
-file write stats "\begin{table}" _n
+file write stats "\begin{sidewaystable}" _n
 file write stats "\begin{center}" _n
-file write stats "\begin{tiny}" _n
+file write stats "\begin{scriptsize}" _n
 file write stats "\begin{threeparttable}" _n
 file write stats "\caption{(Continued) Descriptive Statistics by Education Level and Beginning of Spell}" _n
 file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3}  D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
@@ -401,9 +401,9 @@ file write stats "Interactions between variables, baseline hazard dummies and sq
 // file write stats "Quarters refer to number of 3 month periods observed." _n
 file write stats "\end{tablenotes}" _n
 file write stats "\end{threeparttable}" _n
-file write stats "\end{tiny}" _n
+file write stats "\end{scriptsize}" _n
 file write stats "\end{center}" _n
-file write stats "\end{table}" _n
+file write stats "\end{sidewaystable}" _n
 
 file close stats
 
