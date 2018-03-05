@@ -33,11 +33,11 @@ replace b4_space = b4_space - 3 // start when pregnancy can occur
 global lastm = `lastm'-3
 drop if b4_space < 1
 
-// Changing area of residence to residence at end of spell
-gen endSpellYear = int((b3_born_cmc+org_b4_space-1)/12)+1900
-gen moved = (interview_year - placeYearLived) > endSpellYear  // has moved **after** end of spell and therefore has "wrong" area for that spell
-replace urban = 0 if moved & placePrevious == 2 & urban == 1
-replace urban = 1 if moved & placePrevious == 1 & urban == 0
+// // Changing area of residence to residence at end of spell
+// gen endSpellYear = int((b3_born_cmc+org_b4_space-1)/12)+1900
+// gen moved = (interview_year - placeYearLived) > endSpellYear  // has moved **after** end of spell and therefore has "wrong" area for that spell
+// replace urban = 0 if moved & placePrevious == 2 & urban == 1
+// replace urban = 1 if moved & placePrevious == 1 & urban == 0
 
 egen numgirls = anycount(b1_sex b2_sex b3_sex), v(2)
 gen girl1 = numgirls == 1 if b1_sex != . & b2_sex != . & b3_sex != .
