@@ -816,7 +816,11 @@ spacing between births and how strong their son preference is.
 Tables \ref{tab:median_sex_ratio_low}, \ref{tab:median_sex_ratio_med}, and
 \ref{tab:median_sex_ratio_high}
 show predicted median duration and sex ratios by period, spell, and sex 
-composition for the three different education levels separated by area of residence. 
+composition for the three different education levels separated by area of residence.%
+\footnote{
+Appendix Tables \ref{tab:p25_p75_low}, \ref{tab:p25_p75_med}, and 
+\ref{tab:p25_p75_low} show 25th and 75th percentiles durations.
+} 
 The predictions are based on the estimation method described in 
 Section \ref{sec:strategy}.
 The standard errors for both measures are based on bootstrapping, where the 
@@ -845,16 +849,14 @@ differences are used to calculate the standard error and the level of
 significance for the difference in the original sample.
  
 The cleanest test is comparing durations after only boys with durations after
-only girls.
-However, because of falling fertility the number of births to women with 
-only sons becomes small in the later periods, especially for the third and 
-fourth spell.
+only girls, but the number of births to women with only sons becomes small 
+in the later periods because of falling fertility.
 Hence, it is possible to have substantial differences in spacing that are
-not statistically significant because of low power.
-Furthermore, it is, in principle, possible to estimate the model taking 
-into account the ordering of children.
-This would, however, further lower the power of the test, by leading to 
-one extra group for the third spell and four extra groups for the fourth spell.
+not statistically significant because of low power, especially for the third 
+and fourth spell.
+It is, in principle, possible to estimate the model taking into account the 
+ordering of children, but this would further lower the power of the test, by 
+adding one extra group for the third spell and four extra groups for the fourth spell.
 
 The predicted sex ratio is the weighted average over the women in the sample's 
 individual predicted sex ratios, using the individual probabilities of a birth by 
@@ -873,35 +875,70 @@ This woman' percentage boys is then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$.
 The predicted sex ratio captures the percent boys that will be born to women 
 in the sample once child bearing for that spell is over.
 
-Each cell's predicted precent boys is tested against the natural percentage 
+Each predicted precent boys is tested against the natural percentage 
 boys using the bootstrapped standard errors.
 The natural sex ratio is approximately 105 boys to 100 girls or
 51.2\% \citep{ben-porath76b,jacobsen99,Portner2015b}.
-It is possible for the predicted percentage boys to be different from 
-the natural rate either because of natural variation, any remaining
-recall error, or sex selection. 
+The predicted percentage boys may differ from the natural rate because of 
+natural variation, any remaining recall error not corrected for, or 
+sex selection. 
 
 
-% Median duration and sex ratio tables
 \input{../tables/bootstrap_duration_sex_ratio_low.tex}
 
-Table \ref{tab:median_sex_ratio_low} shows the predictions for women 
-with no education.
-Overall, spacing is shorter the fewer boys a couple has, but the
-differences in median duration are never more than 3 months and most
-are only one or two months
-(the exceptions to this pattern are mostly for small cells).
-Furthermore, although the median duration generally increases over 
-time---with the exception of the first spell---there is little 
-change in the relative pattern of durations across sex compositions
-over time.
-These results point to an absence of sex-selective abortions for 
-this group of women, which is supported by predicted sex ratios
-that mostly close to the natural sex ratio.%
-\footnote{
-I return to whether there are statistically significant 
-differences below when examining sex ratios within spells.
-}
+Women with no education follow a pattern consistent with son
+preference with shorter spacing when they have only girls compared 
+to when they have one or more sons, and the differences are often statistically 
+significant as shown in Table \ref{tab:median_sex_ratio_low}.
+Most of the women without education live in rural areas,
+while there are relatively few urban women with no education.
+There are especially very few urban women to based the third
+and fourth spell results on, and I therefore focus on rural women.
+
+Predicted median duration has generally increased over time within
+each sex composition.
+The exception is for the first spell, where there is little
+change, and possibly even a small decline.
+This decline may be the result of a combination of lower recall
+error, increasing age at marriage, and better health.
+
+The differences in duration across sex compositions are more 
+pronounced with higher-order spells.
+For the second spell, the difference in median duration between
+having a girl or a boy as the first-born are mostly between 0.5 and 1 
+month, although it varies from a low of 0.2 months for rural women 
+in 1995--2004 period to a high of 1.5 months
+for urban women in the 1985--1994 period.
+Focusing on rural women for the third spell, the difference is,
+on average, slightly over 1 months between only girls and only boys 
+and the differences are statistically significant in all periods.
+For rural women the differences for the fourth spell are just below
+2 months, with the exception of the 1972--1984 period, which is
+also the only period where the difference is not statistically significant.
+
+It is possible that remaining recall error is behind some of the
+smaller differences in duration.
+One example is the second spell in the 1995--2004 period, where there 
+are only 0.2 months difference between duration after one girl and 
+duration after one boy.
+Similarly, the small difference for the fourth spell in the 1972--1984
+period may be the result of recall error with a very high 
+percentage boys for women with three girls, despite no availability
+of sex selection.
+
+There are no clear time trends in the differences in median duration
+across sex compositions or the predicted sex ratios across the four periods.
+Despite some sex ratios that are statistically significantly higher 
+than the natural sex ratio there is therefore little consistent evidence 
+for the use of sex selection for women without education.
+There has, for example, been relatively little change in the length
+of spacing for rural women with two girls in the third spell and 
+the predicted sex ratio was higher in the 1985--1994 period
+than in the 2005--2016 period.
+The possible exception is the fourth spell, where both duration 
+and sex ratio has increased for women with three girls, although
+the \emph{difference} across sex compositions has remained almost
+the same.
 
 
 \input{../tables/bootstrap_duration_sex_ratio_med.tex}
@@ -1498,6 +1535,16 @@ Figure \ref{fig:results_spell3_high_urban}.
 % Descriptive statistics tables
 \input{../tables/des_stat.tex}
 
+
+\clearpage
+
+\subsection{Additional Duration Results}
+
+\input{../tables/bootstrap_duration_p25_p75_low.tex}
+
+\input{../tables/bootstrap_duration_p25_p75_med.tex}
+
+\input{../tables/bootstrap_duration_p25_p75_high.tex}
 
 \clearpage
 
