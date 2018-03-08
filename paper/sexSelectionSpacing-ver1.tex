@@ -427,6 +427,7 @@ here no birth, rather than the hazard of an event.
 Hence, a positive coefficient does not necessarily imply that the associated 
 exit state becomes more likely as the explanatory variable increases because the 
 probability of the other exit state may increase even more \citep{thomas96}.
+
 It is, however, straightforward to calculate the predicted probabilities of 
 having a boy and of having a girl for each $t$ within a spell, conditional on 
 a set of explanatory variables and not having had a child before that period.
@@ -525,9 +526,6 @@ In addition to the predicted percent boys over the entire spell,
 I also present graphs of how the percentage boys born vary across time
 within a spell, together with the associated confidence interval for given 
 values of explanatory variables calculated using the Delta method.
-Finally, I include standard survival curves, which shows the ``weight''
-that each period has, or, in other words, how many births take place in
-each period.
 
 
 \section{Data\label{sec:data}}
@@ -776,107 +774,112 @@ four periods.
 
 \section{Results\label{sec:results}}
 
-Results are presented as the estimated percent boys born by length of birth spacing
-using graphs.
-For each graph, the extent to which the percent boys is statistically 
-significantly above the natural sex ratio indicates the use of sex selection.
+% [Hypotheses / questions]
 
+The overall hypothesis is that spacing patterns significantly changed 
+as prenatal sex determination became available.
+To address this, I examine three questions in order of importance.
 
-[TK not sure where this fits in]
-In addition, it is possible that falling fertility also generically 
-leads to longer spacing between births.
-This means that we have to separate out which part of the longer
-spacing comes from falling fertility (and therefore should also
-affect boy composition) and which parts comes from increased use
-of sex selection.
-
-[We should expect sex selection to be mainly used for the last---or close to
-last---birth that a couple expect to have because of the cost and risk
-of the procedures.]
-
-
-[TK not sure where to fit this into]
-Finally, increased reliability of access and effectiveness of
-contraceptive can lead to shorter spacing between births 
-\citep{Keyfitz1971,Heckman1976}.
-With less reliable contraception parents choose a higher level 
-of contraception---resulting in longer spacing---to avoid having 
-too many children by accident.
-But, as contraception becomes more effective parents can more
-easily avoid future births, allowing them to reduce the spacing 
-between births without having to worry about overshooting their 
-preferred number of children.
-This idea may also help explain shorter spacing for better 
-educated women than for less educated women, provided that   
-knowledge and ability to use contraception differ
-across education groups \citep{Tulasidhar1993,Whitworth2002}.
-
-[Moved from estimation strategy]
-In the absence of sex selection, I expect most parities to follow
-a pattern, where there initially are relatively few births, 
-followed by a substantial number of births over a 1 to 2 year period, and then
-relatively few births thereafter.
-As sex selection becomes more widely used the associated
-longer spacing shows up by making the survival curve straighter,
-indicating that some of the births that would originally have taken place
-now take place later because of abortions.
-The use of sex selection is clearly not the only factor that can change the shape of
-the survival curves; factors such as the desired number of children and
-use of contraceptives may also shape the shape.
-To account for this it is best to compare survival curves for an individual
-parity between women who are likely to use sex selection and women who are
-not, for example because they already have one or more sons.
-
-[Moved from estimation strategy]
-In addition to information about spacing, the survival curves also provide 
-``weighting'' for the associated percentage boys born.
-The steeper the survival curve, the more weight should be assigned to a given
-spell period because it is based on more births, 
-whereas a period with a flat survival curve should be given little weight because the 
-percentage boys is based on few births.
-
-
-[Difference in approach: use the sex composition of prior
-children, rather the sex of the last child.
-Problem is that the cell sizes become too small if we further split up
-the higher spell cells.
-
-Define cell]
-
-
-The main question of interest here is how the duration between one
-birth and the next is related to son preference.
-The hypothese examined here is that in the absence of sex selection son 
+First, did the spacing after girls increase relative to the spacing
+after boys?
+The underlying hypothese is that in the absence of sex selection son 
 preference leads to shorter spacing after the birth of a girl than after the 
 birth of a boy, whereas son preference increases the spacing after the birth 
 of a girl relative to after the birth of a boy when prenatal sex selection is 
 used.
-We would still expect parents to \emph{begin} trying to conceive earlier
-after the birth of a girl than after a boy, but the abortions will automatically
-increase the length of the space, and may even lead to longer spacing after the
+We would still expect parents to \emph{try} to conceive earlier after the birth 
+of a girl than after a boy, but the abortions will increase the 
+length of the space, and may even lead to longer spacing after the
 birth of girls than after boys.
+[TK something on general changes in spacing? Or hold off until discussing the
+results]
 
-To provide a first look at how the hypothese holds up, Tables 
-\ref{tab:median_sex_ratio_low},
-\ref{tab:median_sex_ratio_med}, and
+Second, do the shapes of survival curves differ across sex compositions 
+within a spell?
+The shapes of the survival curves provides clues to whether parents are
+still trying to conceive earlier after girls than boys.
+I expect this to be the case if there is still a strong preference for
+boys, and, as discussed above, this behavior may even become more pronounced
+with access to sex selection.
+At a more technical level, the shapes of the survival curve serve as an
+indicator for the presence of non-proportionality.
+
+Finally, do parents change their decision on sex selection within a spell?
+There are two reasons why this is interesting.
+If parents change their mind the standard method of observing sex ratios 
+will not capture the full extent of the use of sex selection.
+Furthermore, it tells us something about parents' preferences for ideal
+spacing between births and how strong their son preference is.
+
+
+% [How to read tables]
+Tables \ref{tab:median_sex_ratio_low}, \ref{tab:median_sex_ratio_med}, and
 \ref{tab:median_sex_ratio_high}
-show predicted median duration and sex ratios for the three different
-education levels by spell, sex composition, and periods.
-These predictions are based on the estimation results employing the method 
-detailed in Section \ref{sec:strategy} and are calculated using the means of 
-the continuous explanatory variables and the majority category for categorical 
-explanatory variables.
-The median duration is the number of months it is predicted to take for
-half of the women who are predicted to have a birth by the end of spell length
-covered.
-For example, if 80\% of women with a given set of characteristics are predicted to
-have a birth by the end of the end of spell, the median duration is the number of
-months it would take for 40\% of women to have a birth.
-The sex ratio is the percent of births that result in a son, based on all the 
-births predicted to happen over the spell.
-If the estimations are based on 100 or fewer births in a cell the predictions
-for that cell are not presented.
-Furthermore, those cells with 500 or fewer births are marked.
+show predicted median duration and sex ratios by period, spell, and sex 
+composition for the three different education levels separated by area of residence. 
+The predictions are based on the estimation method described in 
+Section \ref{sec:strategy}.
+The standard errors for both measures are based on bootstrapping, where the 
+original sample is resampled with replacement and the method is applied to 
+the new sample.
+
+The predicted median duration shown is the weighted average over the women in the 
+sample's predicted median durations, using the individual probabilities of a birth 
+as weights.
+For each woman in a sample, I calculate her probability of ending the spell 
+with a birth, and her contribution to median spacing is how long it will take
+from the beginning of the spell to where she is predicted to reach half of that probability.
+For example, if a woman has a 80\% probability of having a birth by the end of 
+the spell, her median duration is the number of months it takes to reach
+40\% probability of having exited with a birth (equivalent to the 60\% point
+in a standard survival curve because that captures how many have not yet
+exited).
+
+For second through fourth spell I show whether durations for sex composition
+other than only girls are statistically significantly different from the
+duration with only girls.
+The statistical significance is based on the bootstrapped differences in
+durations across sex compositions.
+For each new sample the difference in duration is calculated and these
+differences are used to calculate the standard error and the level of
+significance for the difference in the original sample.
+ 
+The cleanest test is comparing durations after only boys with durations after
+only girls.
+However, because of falling fertility the number of births to women with 
+only sons becomes small in the later periods, especially for the third and 
+fourth spell.
+Hence, it is possible to have substantial differences in spacing that are
+not statistically significant because of low power.
+Furthermore, it is, in principle, possible to estimate the model taking 
+into account the ordering of children.
+This would, however, further lower the power of the test, by leading to 
+one extra group for the third spell and four extra groups for the fourth spell.
+
+The predicted sex ratio is the weighted average over the women in the sample's 
+individual predicted sex ratios, using the individual probabilities of a birth by 
+the end of the spell as weights.
+Each woman's predicted sex ratio is the weighted average of the predicted
+percentage boys over the months in the spell calculated using equation 
+(\ref{eq:probability_son}) and the probability of giving birth in each month 
+as weights.%
+\footnote{
+Imagine a spell has two periods and that the estimated percentage boys for a
+woman are 54\% and 66\% and that the likelihood of exiting the spell is 20\% and 40\%
+(in other words, there is 40\% chance that she does not have a birth by the end of 
+the spell).
+This woman' percentage boys is then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$.
+}
+The predicted sex ratio captures the percent boys that will be born to women 
+in the sample once child bearing for that spell is over.
+
+Each cell's predicted precent boys is tested against the natural percentage 
+boys using the bootstrapped standard errors.
+The natural sex ratio is approximately 105 boys to 100 girls or
+51.2\% \citep{ben-porath76b,jacobsen99,Portner2015b}.
+It is possible for the predicted percentage boys to be different from 
+the natural rate either because of natural variation, any remaining
+recall error, or sex selection. 
 
 
 % Median duration and sex ratio tables
@@ -926,11 +929,63 @@ across periods.
 \input{../tables/bootstrap_duration_sex_ratio_high.tex}
 
 
+\subsection{Differences in Survival Curves Across Sex Compositions}
 
-\clearpage
+[Moved from estimation strategy]
+In the absence of sex selection, I expect most parities to follow
+a pattern, where there initially are relatively few births, 
+followed by a substantial number of births over a 1 to 2 year period, and then
+relatively few births thereafter.
+As sex selection becomes more widely used the associated
+longer spacing shows up by making the survival curve straighter,
+indicating that some of the births that would originally have taken place
+now take place later because of abortions.
+The use of sex selection is clearly not the only factor that can change the shape of
+the survival curves; factors such as the desired number of children and
+use of contraceptives may also shape the shape.
+To account for this it is best to compare survival curves for an individual
+parity between women who are likely to use sex selection and women who are
+not, for example because they already have one or more sons.
 
-\subsection{[Specific spell/education/area combinations of special interest]}
-[Only a subset of the planned analyses to demonstrate the method and interpretation]
+
+
+
+\subsection{Does Sex Selection Change within Spells?}
+
+
+\section{Discussion}
+
+[TK not sure where this fits in]
+In addition, it is possible that falling fertility also generically 
+leads to longer spacing between births.
+This means that we have to separate out which part of the longer
+spacing comes from falling fertility (and therefore should also
+affect boy composition) and which parts comes from increased use
+of sex selection.
+
+[We should expect sex selection to be mainly used for the last---or close to
+last---birth that a couple expect to have because of the cost and risk
+of the procedures.]
+
+
+[TK not sure where to fit this into]
+Finally, increased reliability of access and effectiveness of
+contraceptive can lead to shorter spacing between births 
+\citep{Keyfitz1971,Heckman1976}.
+With less reliable contraception parents choose a higher level 
+of contraception---resulting in longer spacing---to avoid having 
+too many children by accident.
+But, as contraception becomes more effective parents can more
+easily avoid future births, allowing them to reduce the spacing 
+between births without having to worry about overshooting their 
+preferred number of children.
+This idea may also help explain shorter spacing for better 
+educated women than for less educated women, provided that   
+knowledge and ability to use contraception differ
+across education groups \citep{Tulasidhar1993,Whitworth2002}.
+
+
+
 
 
 Figure \ref{fig:results_spell2_high_urban} 
