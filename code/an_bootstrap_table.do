@@ -273,10 +273,10 @@ foreach educ in "low" "med" "high" {
     file write table "individual predicted probabilities of having had a birth by the end of the spell as weights." _n
     file write table "Duration begins at marriage for spell 1 or at 9 months after the birth of the prior child " _n
     file write table "for all other spells." _n
-    file write table "For spells 2 and higher duration for prior sex compositions other than all girls are " _n
+    file write table "For spells two and higher duration sex compositions other than all girls are " _n
     file write table "tested against the duration for all girls, "
     file write table "with *** indicating significantly different at the 1\% level, ** at the 5\% level, " _n
-    file write table "and * at 10\% level."
+    file write table "and * at the 10\% level."
 
     file write table "\item[b] " _n
     file write table "Percent boys is calculated as follows." _n
@@ -474,10 +474,10 @@ foreach educ in "low" "med" "high" {
     file write table "individual predicted probabilities of having had a birth by the end of the spell as weights." _n
     file write table "Duration begins at marriage for spell 1 or at 9 months after the birth of the prior child " _n
     file write table "for all other spells." _n
-    file write table "For spells 2 and higher duration for prior sex compositions other than all girls are " _n
+    file write table "For spells 2 and higher duration sex compositions other than all girls are " _n
     file write table "tested against the duration for all girls, "
     file write table "with *** indicating significantly different at the 1\% level, ** at the 5\% level, " _n
-    file write table "and * at 10\% level."
+    file write table "and * at the 10\% level."
 
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
