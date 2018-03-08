@@ -297,9 +297,13 @@ foreach educ in "low" "med" "high" {
     file write table "\end{center}" _n
     file write table "\end{table}" _n
 
+    file close table
+
     //----------------------------------//
     // p75 and p25 table                //
     //----------------------------------//
+
+    file open table using `tables'/bootstrap_duration_p25_p75_`educ'.tex, write replace
     
     file write table "\begin{table}[hp!]" _n
     file write table "\begin{center}" _n
@@ -484,7 +488,6 @@ foreach educ in "low" "med" "high" {
     file write table "\end{scriptsize}" _n
     file write table "\end{center}" _n
     file write table "\end{table}" _n
-
 
     file close table
 
