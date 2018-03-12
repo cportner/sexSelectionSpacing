@@ -6,7 +6,6 @@
 \setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
 \usepackage{unicode-math}
 \setmathfont{TeX Gyre Pagella Math}
-% \usepackage{mathpazo}
 \usepackage[title]{appendix}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[figuresleft]{rotating}
@@ -16,7 +15,6 @@
 \usepackage{multirow}
 \usepackage[flushleft]{threeparttable}
 \usepackage{setspace}
-% \usepackage{xyling}
 \usepackage[justification=centering]{caption}
 \usepackage[font=scriptsize]{subfig}
 \usepackage[xetex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
@@ -884,6 +882,7 @@ The predicted percentage boys may differ from the natural rate because of
 natural variation, any remaining recall error not corrected for, or 
 sex selection. 
 
+\subsection{No Education Women}
 
 \input{../tables/bootstrap_duration_sex_ratio_low.tex}
 
@@ -941,6 +940,7 @@ and sex ratio has increased for women with three girls, although
 the \emph{difference} across sex compositions has remained almost
 the same.
 
+\subsection{Middle Education Women}
 
 \input{../tables/bootstrap_duration_sex_ratio_med.tex}
 
@@ -984,6 +984,7 @@ have begun to use sex selection at higher-order spells.
 This is also consistent with the falling fertility for both
 urban and rural women shown below.
 
+\subsection{High Education Women}
 
 \input{../tables/bootstrap_duration_sex_ratio_high.tex}
 
@@ -1074,25 +1075,174 @@ First, NFHS-4 is substantially larger than the three prior surveys.
 Hence, it is possible that the effects have been there all along, but 
 we simply did not have the power to detect them.
 Second, it is possible that, at least, the first-born results are an
-artifact of any remaining recall error not captured by the data restrictions.
+artifact of any recall error not captured by the data restrictions.
 Certain types of recall error would also explain why the sex ratio for
-the second spell is statistically significantly \emph{below} the
-natural sex ratio [TK cite my recall paper].
-
-
-
-
-
-
-
-
-
-
-
-
+the second spell and one boy is statistically significantly \emph{below} 
+the natural sex ratio [TK cite my recall paper].
 
 
 \subsection{Differences in Survival Curves Across Sex Compositions}
+
+
+% First spell for low and high education women
+% Might not fit very well here - maybe main point to discussion above and refer to Appendix
+
+\begin{figure}[htpb]
+\centering
+\setcounter{subfigure}{-1}
+\subfloat[Rural Women with No Education]{
+    \begin{minipage}{0.48\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_low_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[Urban Women with 8 or More Years of Education]{
+    \begin{minipage}{0.48\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on progression to first birth; start point is time of marriage.
+}
+\label{fig:pps_spell1}
+\end{figure}
+
+
+
+
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{Second Spell}}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Third Spell}}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Fourth Spell}}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on progression to TK
+}
+\label{fig:pps_low}
+\end{figure}
+
+
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{Second Spell}}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Third Spell}}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Third Spell}}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on progression to TK
+}
+\label{fig:pps_high}
+\end{figure}
+
+
+
+
+\subsection{Does Sex Selection Change within Spells?}
 
 [Moved from estimation strategy]
 In the absence of sex selection, I expect most parities to follow
@@ -1109,11 +1259,6 @@ use of contraceptives may also shape the shape.
 To account for this it is best to compare survival curves for an individual
 parity between women who are likely to use sex selection and women who are
 not, for example because they already have one or more sons.
-
-
-
-
-\subsection{Does Sex Selection Change within Spells?}
 
 
 \section{Discussion}
@@ -1282,82 +1427,6 @@ sex ratio in Panel (c) in Figure \ref{fig:results_spell2_high_urban}.
 
 
 % Low education
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2006]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[1995--2006]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2006]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[1995--2006]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with no education by month beginning 9 months after prior birth.
-Left column shows results prior to sex selection available, middle column before
-sex selection illegal and right column after sex selection illegal.
-}
-\label{fig:results_spell2_low_pps}
-\end{figure}
 
 
 
