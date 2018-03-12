@@ -201,10 +201,20 @@ program create_duration
     
     // The number of grouped 3-months periods depends on spell
     
-    if `spell' == 1 | `spell' == 2 | `spell' == 3 {
+    if `spell' == 1 | `spell' == 2  {
         tab t, gen(dur)
         loc i = $lastm    
     }
+    else if `spell' == 3 {
+        loc i = 1
+        forvalues per = 1/14 {
+            gen dur`i' = t >= `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 15 & t <= 19
+        loc ++i
+        gen dur`i' = t >= 20 & t <= 24
+    }    
     else if `spell' == 4 {
         loc i = 1
         gen dur`i' = t >= 1 & t <= 5

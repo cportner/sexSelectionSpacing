@@ -9,7 +9,7 @@ program comb_boot
 
     set matsize 1000
 
-    loc num_reps = 3
+    loc num_reps = 100
     file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
     include directories
