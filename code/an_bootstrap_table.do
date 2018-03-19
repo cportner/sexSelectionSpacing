@@ -3,7 +3,7 @@
 version 13.1
 clear all
 
-loc num_reps = 10
+
 file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
 // Weird Stata behavior; you can write my_matrix[1,2], but not my_matrix[1,"var_name"]
