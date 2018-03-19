@@ -284,7 +284,7 @@ foreach educ in "low" "med" "high" {
                 else if "`sex'" == "boys" {
                     file write grph "\caption{(Continued) Predicted probability of having a boy and probability of " _n
                 }
-                file write grph "no birth yet from nine months after first birth for `area' women with `char' " _n
+                file write grph "no birth yet from nine months after second birth for `area' women with `char' " _n
                 file write grph "by month beginning at 9 months after prior birth.  " _n
                 file write grph "Predictions based on age `age' at second birth. " _n
                 file write grph "Left column shows results prior to sex selection available, middle column before " _n
@@ -401,7 +401,7 @@ foreach educ in "low" "med" "high" {
                 else if "`sex'" == "boys" {
                     file write grph "\caption{(Continued) Predicted probability of having a boy and probability of " _n
                 }
-                file write grph "no birth yet from nine months after first birth for `area' women with `char' " _n
+                file write grph "no birth yet from nine months after third birth for `area' women with `char' " _n
                 file write grph "by month beginning at 9 months after prior birth.  " _n
                 file write grph "Predictions based on age `age' at third birth. " _n
                 file write grph "Left column shows results prior to sex selection available, middle column before " _n
