@@ -137,7 +137,7 @@ $(DAT)/base2.dta: $(COD)/crBase2.do $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RA
 $(DAT)/base3.dta: $(COD)/crBase3.do $(RAW)/iair52fl.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
-$(DAT)/base4.dta: $(COD)/crBase4.do $(RAW)/iair71fl.dta $(RAW)/iahr71fl.dta 
+$(DAT)/base4.dta: $(COD)/crBase4.do $(RAW)/iair72fl.dta $(RAW)/iahr71fl.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
 $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3.dta $(DAT)/base4.dta
