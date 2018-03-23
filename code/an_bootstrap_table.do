@@ -491,6 +491,202 @@ foreach educ in "low" "med" "high" {
 
     file close table
 
+    //----------------------------------//
+    // any birth and sex ratio          //
+    //----------------------------------//
+
+    file open table using `tables'/bootstrap_any_sex_ratio_`educ'.tex, write replace
+    
+    file write table "\begin{table}[hp!]" _n
+    file write table "\begin{center}" _n
+    file write table "\begin{scriptsize}" _n
+    file write table "\begin{threeparttable}" _n
+    file write table "\caption{Estimated Probability of Birth and Sex Ratio for Women with `char'}" _n
+    file write table "\label{tab:any_birth_sex_ratio_`educ'}" _n
+    file write table "\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3}  @{}}" _n
+    file write table "\toprule" _n
+    file write table "                   &                            & \mct{1972--1984}                                    &\mct{1985--1994}                                   & \mct{1995--2004}                                  & \mct{2005--2016}                                      \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10}" _n
+    file write table "                   & \mco{Composition of}       & \mco{Prob\tnote{a}}  & \mco{Percent\tnote{b}}       & \mco{Prob\tnote{a}}  & \mco{Percent\tnote{b}}     & \mco{Prob\tnote{a}}  & \mco{Percent\tnote{b}}     & \mco{Prob\tnote{a}}  & \mco{Percent\tnote{b}}     \\ " _n
+    file write table " \mco{Spell}       & \mco{Prior Children}       & \mco{birth}          & \mco{Boys}                   & \mco{bith}           & \mco{Boys}                 & \mco{birth}          & \mco{Boys}                 & \mco{birth}  & \mco{Boys}                          \\ \midrule" _n
+
+    // Loop over area
+    foreach where in "Urban" "Rural" {
+        if "`where'" == "Urban" {
+            loc area = "urban"
+        }
+        if "`where'" == "Rural" {
+            loc area = "rural"
+        }
+        file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
+
+        forvalues spell = 1/4 {
+            
+            // Double the lines to allow for both statistics and standard errors
+            local double = 2 * `spell' - 1
+            if `spell' == 1 {
+                local double = `double' + 1
+            }
+            file write table "\multirow[c]{`double'}{*}{`spell'} "
+
+            forvalues prior = 1/`spell' {
+
+                // Number of girls in prior spell and part of column name
+                loc girls = `spell' - `prior'
+                loc part_col_name "_`area'_g`girls'"
+                
+                // Conditions for sex composition to call matrix values
+                if `spell' == 1 {
+                        file write table _col(23) "&                            "
+                } 
+                if `spell' == 2 {
+                    if `prior' == 1 {
+                        file write table _col(23) "& \mco{One girl}             "
+                    }
+                    if `prior' == 2 {
+                        file write table _col(23) "& \mco{One boy}              "
+                    }    
+                }
+                if `spell' == 3 {
+                    if `prior' == 1 {
+                        file write table _col(23) "& \mco{Two girls}            "
+                    }
+                    if `prior' == 2 {
+                        file write table _col(23) "& \mco{One boy / one girl}   "
+                    }    
+                    if `prior' == 3 {
+                        file write table _col(23) "& \mco{Two boys}             "
+                    }    
+                }
+                if `spell' == 4 {
+                    if `prior' == 1 {
+                        file write table _col(23) "& \mco{Three girls}          "
+                    }
+                    if `prior' == 2 {
+                        file write table _col(23) "& \mco{One boy / two girls}  "
+                    }    
+                    if `prior' == 3 {
+                        file write table _col(23) "& \mco{Two boys / one girl}  "
+                    }    
+                    if `prior' == 4 {
+                        file write table _col(23) "& \mco{Three boys}           "
+                    }    
+                }
+
+
+                // Loop over both estimates and standard errors
+                foreach type in b se {
+                
+                    // move in enough to match up with first line
+                    if "`type'" == "se" {
+                        file write table _col(23) "&                            "
+                    }
+                    
+                    // Loop over periods
+                    forvalues period = 1/4 {
+                                       
+                        // loop over statistics (p50 and pct here)
+                        foreach stats in any pct {
+                    
+                            // Format 
+                            if "`stats'" == "pct" {
+                                local stat_format = "%4.2fc"
+                            }
+                            else if "`stats'" == "any" {
+                                local stat_format = "%5.4fc"
+                            }
+                            else {
+                                local stat_format = "%3.1fc"                        
+                            }
+
+                            // Find column number for matrix 
+                            local full_name = "`stats'`part_col_name'"                    
+                            find_col `type'_s`spell'_g`period'_`educ' `full_name'
+                
+                            // Add results to table  
+                            file write table "&   " 
+                            if "`type'" == "se" {
+                                file write table " ("
+                            }
+                            else {
+                                file write table " "
+                            }
+                            file write table `stat_format' (`type'_s`spell'_g`period'_`educ'[1,`r(col_num)'])        
+                            if "`type'" == "se" {
+                                file write table ")      "
+                            }
+                            else {
+                                if "`stats'" == "pct" {
+                                    loc nat_percent = (105/205) * 100
+                                    test_bs b_s`spell'_g`period'_`educ'[1,`r(col_num)'] se_s`spell'_g`period'_`educ'[1,`r(col_num)'] `nat_percent'
+                                    significance_stars table `r(p_value)'
+                                }
+                                else if "`stats'" == "p50" {
+                                    // Testing duration against all girls duration
+                                    loc all_girls = `spell' - 1
+                                    if `girls' < `all_girls' {
+                                        find_col `type'_s`spell'_g`period'_`educ' diff_`stats'_`area'_g`all_girls'_vs_g`girls'
+                                        local which_column = `r(col_num)'
+                                        test_bs b_s`spell'_g`period'_`educ'[1,`which_column'] se_s`spell'_g`period'_`educ'[1,`which_column'] 0
+                                        significance_stars table `r(p_value)'
+                                    }
+                                    else {
+                                        file write table "       "
+                                    }
+                                }
+                                else if "`stats'" == "any" {
+                                    file write table "        "
+                                }
+                                else {
+                                    display "Something went wrong with table generation"                                    
+                                    exit
+                                } 
+                            }
+                        }
+                
+                    }
+                    file write table " \\" _n
+                }            
+            }
+            file write table "\addlinespace " _n
+        }
+    }
+
+    // Table endnotes
+    file write table "\bottomrule" _n
+    file write table "\end{tabular}" _n
+    file write table "\begin{tablenotes} \tiny" _n
+    file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
+    file write table "The statistics for each spell/period combination are calculated based on the regression" _n
+    file write table "model for that combination as described in the main text, using bootstrapping to find the " _n
+    file write table "standard errors shown in parentheses. " _n
+    file write table "For bootstrapping, the original sample is resampled, the regression model run on the " _n
+    file write table "resampled data, and the statistics calculated. " _n
+    file write table "This process is repeated `num_reps' times and the standard errors calculated." _n
+    
+    file write table "\item[a] " _n
+    file write table "Probability of giving birth by the end of the spell period." _n
+
+    file write table "\item[b] " _n
+    file write table "Percent boys is calculated as follows." _n
+    file write table "For each woman in a given spell/period combination sample, I calculate the predicted" _n
+    file write table "percent boys for each month and sum this across the length of the spell using the" _n
+    file write table "likelihood of having a child in each month as the weight. " _n
+    file write table "The percent boys is then averaged across all women in the given sample using the " _n
+    file write table "individual predicted probabilities of having had a birth by the end of the spell as weights." _n
+    file write table "The result is the predicted percent boys that will be born to women in the sample once " _n
+    file write table "child bearing for that spell is over." _n
+    file write table "The predicted percent boys is tested against the natural percentage boys, 105 boys per 100 girls," _n
+    file write table "with *** indicating significantly different at the 1\% level, ** at the 5\% level, " _n
+    file write table "and * at 10\% level."
+
+    file write table "\end{tablenotes}" _n
+    file write table "\end{threeparttable}" _n
+    file write table "\end{scriptsize}" _n
+    file write table "\end{center}" _n
+    file write table "\end{table}" _n
+
+    file close table
+
 }
 
 
