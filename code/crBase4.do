@@ -44,7 +44,7 @@ use caseid v001-v012 v024 ///
    v312 v317 ///
    v501 v503 v509 ///
    v603 v613 v616 v627-v629 v715 ///
-   s116 using `rawdata'/iair71fl
+   s116 using `rawdata'/iair72fl
 des, short // for data description in paper
 drop b15_* b16_* // not in NFHS-2 (nor in NFHS-1)
 drop v004 b6_* b8_* b9_* b10_* b13_* v131 // not needed or na in survey
