@@ -51,14 +51,19 @@ create_groups b0_born_year
 
 gen mom_age    = b1_mom_age
 
+tab b1_space if b1_sex != .
+
 replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
-loc lastm = 4*6 //
+loc lastm = 4*9 //
 replace b1_cen = 1 if b1_space > `lastm' // cut off 
 replace b1_space = `lastm' if b1_space > `lastm'
 global lastm = `lastm'
 
 gen boy = b1_sex == 1 & !b1_cen
 gen girl = b1_sex == 2 & !b1_cen
+
+// Censoring
+tab b1_cen b1_sex, col
 
 gen edu_group = 1 if edu_mother == 0
 replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
@@ -137,7 +142,7 @@ gen b1space = b1_space
 
 drop if b2_space == .
 replace b2_space = int((b2_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
-loc lastm = 4*6+3 //
+loc lastm = 4*8+3 //
 replace b2_cen = 1 if b2_space > `lastm' // cut off 
 replace b2_space = `lastm' if b2_space > `lastm'
 replace b2_space = b2_space - 3 // start when pregnancy can occur
@@ -146,6 +151,9 @@ drop if b2_space < 1
 
 gen boy = b2_sex == 1 & !b2_cen
 gen girl = b2_sex == 2 & !b2_cen
+
+// Censoring
+tab b2_cen b2_sex, col
 
 gen b1_girl = b1_sex == 2 if b1_sex != .
 gen b1_boy  = b1_sex == 1 if b1_sex != .
@@ -229,7 +237,7 @@ gen b1space = b1_space
 
 drop if b3_space == .
 replace b3_space = int((b3_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
-loc lastm = 4*6+3 //
+loc lastm = 4*8+3 //
 replace b3_cen = 1 if b3_space > `lastm' // cut off 
 replace b3_space = `lastm' if b3_space > `lastm'
 replace b3_space = b3_space - 3 // start when pregnancy can occur
@@ -238,6 +246,9 @@ drop if b3_space < 1
 
 gen boy = b3_sex == 1 & !b3_cen
 gen girl = b3_sex == 2 & !b3_cen
+
+// Censoring
+tab b3_cen b3_sex, col
 
 egen numgirls = anycount(b1_sex b2_sex) if b1_sex != . & b2_sex != ., v(2)
 gen b2_2b   = numgirls == 0
@@ -324,7 +335,7 @@ gen b1space = b1_space
 
 drop if b4_space == .
 replace b4_space = int((b4_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
-loc lastm = 19+3
+loc lastm = 4*6+3
 replace b4_cen = 1 if b4_space > `lastm' // cut off 
 replace b4_space = `lastm' if b4_space > `lastm'
 replace b4_space = b4_space - 3 // start when pregnancy can occur
@@ -333,6 +344,9 @@ drop if b4_space < 1
 
 gen boy = b4_sex == 1 & !b4_cen
 gen girl = b4_sex == 2 & !b4_cen
+
+// Censoring
+tab b4_cen b4_sex, col  
 
 egen numgirls = anycount(b1_sex b2_sex b3_sex) if b1_sex != . & b2_sex != . & b3_sex != ., v(2)
 gen girl0 = numgirls == 0 if b1_sex != . & b2_sex != . & b3_sex != .

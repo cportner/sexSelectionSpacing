@@ -22,6 +22,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 20 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
         
     }
     
@@ -40,6 +42,8 @@ program bh_high, rclass
         gen dur`i' = t >= 14 & t <= 18
         loc ++i
         gen dur`i' = t >= 19 & t <= 24   
+        loc ++i
+        gen dur`i' = t >= 25
                  
     }
 
@@ -56,6 +60,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 12 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }                    
 
@@ -69,6 +75,8 @@ program bh_high, rclass
         gen dur`i' = t >= 13 & t <= 18
         loc ++i
         gen dur`i' = t >= 19 & t <= 24   
+        loc ++i
+        gen dur`i' = t >= 25
                  
     }
 
@@ -86,6 +94,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 15 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
                    
     }        
 
@@ -101,6 +111,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 16 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }
             
@@ -125,6 +137,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 17 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }            
 
@@ -141,6 +155,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 16 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }
 
@@ -154,6 +170,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 13 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }            
 
@@ -170,6 +188,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 15 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }    
 
@@ -186,6 +206,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 11 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }    
 
@@ -201,6 +223,8 @@ program bh_high, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 11 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }    
 
@@ -211,7 +235,7 @@ program bh_high, rclass
     
         gen dur`i' = t >= 1 & t <= 7
         loc i = `i' + 1    
-        gen dur`i' = t >= 8 & t <= 19
+        gen dur`i' = t >= 8 
 
     }    
 
@@ -227,7 +251,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 4 // half years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 11 & t <= 19
+        gen dur`i' = t >= 11 
 
     }    
 
@@ -239,7 +263,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 6 // half years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 8 & t <= 19
+        gen dur`i' = t >= 8 
 
     }
 
@@ -251,7 +275,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 6 // half years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 8 & t <= 19
+        gen dur`i' = t >= 8 
 
     }
 

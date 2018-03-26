@@ -22,6 +22,8 @@ program bh_med, rclass
         gen dur`i' = t >= 13 & t <= 16
         loc ++i
         gen dur`i' = t >= 17 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
         
     }
     
@@ -42,6 +44,8 @@ program bh_med, rclass
         gen dur`i' = t >= 13 & t <= 17
         loc ++i
         gen dur`i' = t >= 18 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
                  
     }
 
@@ -60,6 +64,8 @@ program bh_med, rclass
         gen dur`i' = t >= 8 & t <= 14
         loc ++i    
         gen dur`i' = t >= 15 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }                    
 
@@ -73,6 +79,8 @@ program bh_med, rclass
         gen dur`i' = t >= 11 & t <= 16
         loc ++i
         gen dur`i' = t >= 17 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
                  
     }
 
@@ -86,6 +94,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 13 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
                    
     }        
 
@@ -101,6 +111,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 15 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }
             
@@ -117,6 +129,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 11 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }            
 
@@ -132,6 +146,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 15 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }
 
@@ -145,6 +161,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 13 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }            
 
@@ -161,6 +179,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 15 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }    
 
@@ -173,6 +193,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 13 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }    
 
@@ -184,6 +206,8 @@ program bh_med, rclass
             loc i = `i' + 1
         }
         gen dur`i' = t >= 13 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
 
     }    
 
@@ -196,7 +220,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 6
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 8 & t <= 19
+        gen dur`i' = t >= 8 
 
     }    
 
@@ -212,7 +236,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 12 & t <= 19
+        gen dur`i' = t >= 12 
 
     }    
 
@@ -228,7 +252,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 4 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 10 & t <= 19
+        gen dur`i' = t >= 10 
 
     }
     
@@ -239,7 +263,7 @@ program bh_med, rclass
         loc ++ i
         gen dur`i' = t >= 6 & t <= 10
         loc ++ i
-        gen dur`i' = t >= 11 & t <= 19
+        gen dur`i' = t >= 11 
 
     }    
     

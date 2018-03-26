@@ -29,7 +29,7 @@ program bootspell, rclass
         }
         gen dur`i' = t >= 15 & t <= 19
         loc ++i
-        gen dur`i' = t >= 20 & t <= 24
+        gen dur`i' = t >= 20 
     }
     else if `spell' == 4 {
         loc i = 1
