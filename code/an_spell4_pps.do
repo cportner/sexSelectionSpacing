@@ -15,7 +15,7 @@ foreach per of numlist 1/4 {
 
 
 // survival curves conditional on parity progression
-loc goptions "xtitle(Months) xlabel(0(6)72) ytitle("") legend(cols(1) ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
+loc goptions "xtitle(Months) xlabel(0(6)96) ytitle("") legend(cols(1) ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "        
 foreach per of numlist 1/4 {
     foreach educ in low med high {
         set scheme s1mono

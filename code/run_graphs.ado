@@ -157,7 +157,7 @@ program graph_spell1
     include directories
 
     set scheme s1mono
-    loc goptions "xtitle(Months) xlabel(0(6)108) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend)"
+    loc goptions "xtitle(Months) xlabel(0(6)120) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend)"
 
     line pc pc_l pc_u months if urban, sort `goptions' ylabel(40(5)75)
     graph export `figures'/spell1_g`period'_`educ'_urban_pc.eps, replace fontface(Palatino) 
@@ -169,7 +169,7 @@ program graph_spell1
     // survival curves
     bysort id (t): gen s = exp(sum(ln(p0)))
     set scheme s1mono
-    loc goptions "xtitle(Months) xlabel(0(6)108) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+    loc goptions "xtitle(Months) xlabel(0(6)120) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 
     line s months if urban, sort `goptions'
     graph export `figures'/spell1_g`period'_`educ'_urban_s.eps, replace fontface(Palatino) 
@@ -310,7 +310,7 @@ program graph_spell4
     include directories
 
     set scheme s1mono
-    loc goptions "xtitle(Months) xlabel(0(6)72) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(25(5)90)"
+    loc goptions "xtitle(Months) xlabel(0(6)96) clpattern("l" "-" "-") legend(off) clwidth(medthick..) mlwidth(medthick..) yline(51.2 , lstyle(foreground) extend) ylabel(25(5)90)"
 
     line pc pc_l pc_u months if urban & girl3, sort `goptions'
     graph export `figures'/spell4_g`period'_`educ'_urban_ggg_pc.eps, replace fontface(Palatino) 
@@ -341,7 +341,7 @@ program graph_spell4
     // survival curves
     bysort id (t): gen s = exp(sum(ln(p0)))
     set scheme s1mono
-    loc goptions "xtitle(Months) xlabel(0(6)72) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
+    loc goptions "xtitle(Months) xlabel(0(6)96) ytitle("") legend(off) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) "
 
     line s months if urban & girl3, sort `goptions'
     graph export `figures'/spell4_g`period'_`educ'_urban_ggg_s.eps, replace fontface(Palatino) 

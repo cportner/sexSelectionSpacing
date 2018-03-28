@@ -54,7 +54,7 @@ gen mom_age    = b1_mom_age
 tab b1_space if b1_sex != .
 
 replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
-loc lastm = 4*9 //
+loc lastm = 4*10 //
 replace b1_cen = 1 if b1_space > `lastm' // cut off 
 replace b1_space = `lastm' if b1_space > `lastm'
 global lastm = `lastm'
@@ -137,6 +137,8 @@ create_groups b1_born_year
 
 
 gen mom_age    = b2_mom_age
+
+tab b2_space if b2_sex != .
 
 gen b1space = b1_space
 
@@ -234,6 +236,8 @@ create_groups b2_born_year
 
 gen mom_age    = b3_mom_age
 gen b1space = b1_space
+
+tab b3_space if b3_sex != .
 
 drop if b3_space == .
 replace b3_space = int((b3_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
@@ -333,9 +337,11 @@ create_groups b3_born_year
 gen mom_age    = b4_mom_age
 gen b1space = b1_space
 
+tab b4_space if b4_sex != .
+
 drop if b4_space == .
 replace b4_space = int((b4_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
-loc lastm = 4*6+3
+loc lastm = 4*8+3
 replace b4_cen = 1 if b4_space > `lastm' // cut off 
 replace b4_space = `lastm' if b4_space > `lastm'
 replace b4_space = b4_space - 3 // start when pregnancy can occur

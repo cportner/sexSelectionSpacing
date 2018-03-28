@@ -19,7 +19,7 @@ create_groups b0_born_year
 
 gen org_b1_space = b1_space
 replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
-loc lastm = 4*9 // 9 years after marriage (rather than 6 in original version)
+loc lastm = 4*10 // 10 years after marriage (rather than 6 in original version)
 replace b1_cen = 1 if b1_space > `lastm' // cut off 
 replace b1_space = `lastm' if b1_space > `lastm'
 global lastm = `lastm'
