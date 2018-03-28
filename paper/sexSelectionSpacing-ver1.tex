@@ -508,8 +508,7 @@ Median durations can then be averaged across women with different
 characteristics using the probabilities of ending a spell with a child
 as weights.
 How well this approach works depends on whether the spell length covered is 
-sufficiently long that only very few women would be likely to give
-birth later.
+sufficiently long that few women would be likely to give birth later.
 I discuss the choice of spell length below.
 In addition to calculating conditional spell length for different 
 percentages, I also present graphs of both standard survival curves and
@@ -566,13 +565,13 @@ reported having a birth before age 12, had a birth before marriage, or
 duration between births of less than nine months.
 Women who reported less than nine months between marriage and first birth
 remain in the sample---unless they are dropped for another reason---because 
-10 to 20 percent fall into this category across the four surveys.
+8.5\% fall into this category across the four surveys.
 Although it is possible that some of these births are premature, the high number of
 women who report a birth less than six months after their marriage indicates that for
 a majority conception likely occurred before marriage.
 
 Finally, I restrict the sample to Hindus,
-who constitute about 80 percent of India's population.
+who constitute about 80\% of India's population.
 If the use of sex selection differ between Hindu and other religions, such 
 as Sikhs, assuming that the baseline hazard is the same would lead to bias.
 The other groups are each so small relative to Hindus that it is not
@@ -627,7 +626,7 @@ The final sample consists of
 
 \subsection{Spell Definition\label{sec:spell_def}}
 
-As mentioned above, 10 to 20 percent of women gave birth less than nine months
+As mentioned above, 8.5\% of women gave birth less than nine months
 after they were married, and the first spell, therefore, begins at the 
 month of marriage.
 The exception is for women married very young, where I use the month they 
@@ -642,13 +641,12 @@ Censoring can happen for three reasons:
 the survey takes place;
 sterilization of the woman or her husband;
 or too few births are observed for the method to work.
-For the first spell I set censoring at 72 months (six years) after marriage,
-while for the second and third spells censoring is at 72 months and 
-for the fourth spell 57 months after a birth can occur.
-With nine month between the previous birth and the beginning of
-the next spell, the maximum durations between births I consider are
-6.75 years for the second and third spells and 5.5 years for the 
-fourth spell.
+For the first spell I set censoring at 108 months (nine years) after marriage,
+while for the second, third, and fourth spells censoring is at 96 months 
+(eight years) after a birth can occur.
+TK number of births observed after these periods.
+With these cut-offs, less than one percent of observed occur after
+the spell cut-off.
 
 I group spells into four periods based on the year of marriage
 or year of the previous birth:
@@ -742,7 +740,7 @@ There is a substantial number of censored observations.
 As an example, for highly educated women who had their first child in the 2005--2016
 period, more than 40\% did not have their second child by the time of the survey.
 Censoring becomes even more important for the third and fourth
-spells, with more than 70 percent of the observations censored.
+spells, with more than 70\% of the observations censored.
 The level of censoring also increases with parity and time period,
 which reflects a combination of factors: timing of the surveys
 relative to the periods of interest, later beginning of childbearing, 
@@ -760,7 +758,7 @@ Hence, there are relatively more urban women, but fewer show up in the
 sample because they are not yet married.
 
 The population has become substantially better educated over time.
-Women with no education constituted almost 60 percent 
+Women with no education constituted almost 60\% 
 in the first period, but less than twenty percent in the last period.
 Correspondingly, in the first period just over twenty percent had eight or more 
 years of education, whereas in the last period more than 60\% did.
@@ -807,7 +805,7 @@ results]
 
 Second, do the shapes of survival curves differ across sex compositions 
 within a spell?
-The shapes of the survival curves provides clues to whether parents are
+The shapes of the survival curves provide clues to whether parents are
 still trying to conceive earlier after girls than boys.
 I expect this to be the case if there is still a strong preference for
 boys, and, as discussed above, this behavior may even become more pronounced
@@ -817,11 +815,11 @@ indicator for the presence of non-proportionality.
 
 Finally, does the sex ratio change within a spell?
 There are two reasons why this is interesting.
-First, if the sex ratio changes within a spell simply using the observed sex
+First, if the sex ratio changes within a spell, relying on the observed sex
 ratio at birth---as is standard practice in the literature---will not provide
-correct estimates of the use of sex selection or the sex ratio when child
-bearing is completed.
-Second, the development in the sex ratio within a spell provides clues
+correct estimates of the use of sex selection or the sex ratio when 
+childbearing is completed.
+Second, any changes in the sex ratio within a spell provides clues
 to parents' preferences over the ideal spacing between births and the
 distribution of son preference in the sample.
 
@@ -842,23 +840,22 @@ original sample is resampled with replacement and the method is applied to
 the new sample.
 
 The predicted median duration shown is the weighted average over the women in the 
-sample's predicted median durations, using the individual probabilities of a birth 
-as weights.
+sample's predicted median durations, using the individual probabilities of 
+giving birth as weights.
 For each woman in a sample, I calculate her probability of ending the spell 
 with a birth, and her contribution to median spacing is how long it will take
 from the beginning of the spell to where she is predicted to reach half of that probability.
-For example, if a woman has a 80\% probability of having a birth by the end of 
+For example, if a woman has an 80\% probability of having a birth by the end of 
 the spell, her median duration is the number of months it takes to reach
-40\% probability of having exited with a birth (equivalent to the 60\% point
-in a standard survival curve because that captures how many have not yet
-exited).
+40\% probability of having exited with a birth.
+The 40\% is equivalent to the 60\% point in a standard survival curve because that 
+captures how many have not yet exited.
 
 For second through fourth spell I show whether durations for sex composition
 other than only girls are statistically significantly different from the
 duration with only girls.
-The statistical significance is based on the bootstrapped differences in
-durations across sex compositions.
-For each new sample the difference in duration is calculated and these
+I use bootstrapping to calculate the level of statistical significance.
+For each new sample, I calculate the difference in duration and these
 differences are used to calculate the standard error and the level of
 significance for the difference in the original sample.
  
@@ -870,26 +867,27 @@ not statistically significant because of low power, especially for the third
 and fourth spell.
 It is, in principle, possible to estimate the model taking into account the 
 ordering of children, but this would further lower the power of the test, by 
-adding one extra group for the third spell and four extra groups for the fourth spell.
+adding one additional group for the third spell and four additional groups for the fourth spell.
 
 The predicted sex ratio is the weighted average over the women in the sample's 
-individual predicted sex ratios, using the individual probabilities of a birth by 
-the end of the spell as weights.
+individual predicted sex ratios, using the individual probabilities of having
+given birth by the end of the spell as weights.
 Each woman's predicted sex ratio is the weighted average of the predicted
 percentage boys over the months in the spell calculated using equation 
 (\ref{eq:probability_son}) and the probability of giving birth in each month 
 as weights.%
 \footnote{
 Imagine a spell has two periods and that the estimated percentage boys for a
-woman are 54\% and 66\% and that the likelihood of having a birth is 20\% and 40\%
-(measured as the change in the survival curve; in other words, there is 
-40\% chance that she does not have a birth by the end of this spell).
+woman are 54\% and 66\% and that the likelihood of having a birth is 20\% and 40\%.
+The likelihood of having a birth is the change in the survival curve; 
+in other words, there is 40\% chance that she will not have given birth by the end of 
+this spell.
 This woman's percentage boys is then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$.
 }
 The predicted sex ratio captures the percent boys that will be born to women 
-in the sample once child bearing for that spell is over.
+in the sample once childbearing for that spell is over.
 
-Each predicted precent boys is tested against the natural percentage 
+Each predicted percent boys is tested against the natural percentage 
 boys using the bootstrapped standard errors.
 The natural sex ratio is approximately 105 boys to 100 girls or
 51.2\% \citep{ben-porath76b,jacobsen99,Portner2015b}.
@@ -910,35 +908,35 @@ while there are relatively few urban women with no education.
 There are especially very few urban women to based the third
 and fourth spell results on, and I therefore focus on rural women.
 
-Predicted median duration has generally increased over time within
+Predicted median duration has increased over time within
 each sex composition.
 The exception is for the first spell, where there is little
 change, and possibly even a small decline.
 This decline may be the result of a combination of lower recall
 error, increasing age at marriage, and better health.
 
-The differences in duration across sex compositions are more 
-pronounced with higher-order spells.
+The differences in duration across sex compositions increase with 
+spell number.
 For the second spell, the difference in median duration between
 having a girl or a boy as the first-born are mostly between 0.5 and 1 
 month, although it varies from a low of 0.2 months for rural women 
 in 1995--2004 period to a high of 1.5 months
 for urban women in the 1985--1994 period.
-Focusing on rural women for the third spell, the difference is,
-on average, slightly over one months between only girls and only boys 
+Focusing on rural women for the third spell, the difference is in
+duration, on average, slightly over one month between only girls and only boys 
 and the differences are statistically significant in all periods.
-For rural women the differences for the fourth spell are just below
-2 months, with the exception of the 1972--1984 period, which is
+For rural women, the differences for the fourth spell are just below
+two months, except for the 1972--1984 period, which is
 also the only period where the difference is not statistically significant.
 
 It is possible that remaining recall error is behind some of the
 smaller differences in duration.
 One example is the second spell in the 1995--2004 period, where there 
-are only 0.2 months difference between duration after one girl and 
+is only 0.2 months difference between duration after one girl and 
 duration after one boy.
 Similarly, the small difference for the fourth spell in the 1972--1984
 period may be the result of recall error with a very high 
-percentage boys for women with three girls, despite no availability
+percentage of boys for women with three girls, despite no availability
 of sex selection.
 
 There are no clear time trends in the differences in median duration
@@ -962,14 +960,13 @@ the same.
 Women with one to seven years of education follow a pattern
 broadly similar to those with no education as 
 Table \ref{tab:median_sex_ratio_med} shows.
-There is a more equal distribution in the number of women
-across urban and rural for this education group than for the
-no education women.
-As a result, the only spell where there are few women to base 
+The distribution across urban and rural is more even for this education
+group than for the no education women.
+As a result, the only spells where there are few women to base 
 results on are for the fourth spell for urban women and the first 
 period of the fourth spell for rural women.
 
-Spacing between births increased over the four decades.
+The spacing between births increased over the four decades.
 On average, the increase is approximately two months.
 The exception is again the first spell, where the time from
 marriage to first birth remained the same or fell slightly.
@@ -977,11 +974,10 @@ marriage to first birth remained the same or fell slightly.
 In the period before sex selection became available, 1972--1985,
 the differences in spacing between only girls and only boys
 increase with spell number.
-For both urban and rural women the difference in duration
-is just over a month for the second spell, but for the
-third spell it is 1.4 and 2.3 months for urban and rural
-women, respectively.
-In the three later periods there is no clear pattern
+For both urban and rural women, the difference in duration is just over
+a month for the second spell, but it is 1.4 and 2.3 months for urban and
+rural women, respectively, for the third spell.
+In the three later periods, there is no clear pattern
 in the differences across sex compositions.
 
 The differences in duration between only girls and only boys 
@@ -993,11 +989,11 @@ with the second-to-last period.
 The decreases in differences are accompanied by increases
 in predicted sex ratios, some of which are statistically 
 significantly different from the natural sex ratio.
-Hence, even though the evidence is not strong, it does
+Hence, even though the evidence is not substantial, it does
 appear that women with one to seven years of education 
 have begun to use sex selection at higher-order spells.
-This is also consistent with the falling fertility for both
-urban and rural women shown below.
+An emerging use of sex selection is also consistent with the falling
+fertility for both urban and rural women shown below.
 
 \subsection{High Education Women}
 
@@ -1009,7 +1005,7 @@ compared to only boys before sex selection became available as
 Table \ref{tab:median_sex_ratio_high} shows.
 Part of the problem may be that there are few women with that level
 of education for the 1972--1984 period.
-This means that only the results for the first and second spells in 
+Hence, only the results for the first and second spells in 
 both urban and rural areas are likely to be reliable.
 Furthermore, there are relatively few women with three boys who
 go on to having a fourth birth, both in urban and rural areas.
@@ -1020,7 +1016,7 @@ Urban women show an increase in median duration of between a quarter
 and three-quarters of a year, whereas the increase for rural women is 
 around a quarter of a year.
 The spacing between marriage and the first birth is still the
-exception, and for this group of women there is a decline of
+exception, and for this group of women, there is a decline of
 about a month for both urban and rural areas.
 
 In urban areas, the increase in spacing with only girls is so 
@@ -1028,41 +1024,39 @@ substantial that women with only girls have longer spacing to the
 next birth than any of the other sex compositions from 1985 onward.%
 \footnote{
 The exception is the second spell for the 1985--1994 period, where women
-with one girl has 0.4 months longer spacing the women with one boy.
+with one girl have 0.4 months longer spacing the women with one boy.
 }
-This reversal in the standard spacing pattern when there is strong
-son preference is substantial, especially for the third and fourth 
-spells.
-For the latest period the difference between only girls than the
-other sex compositions are between 3.4 and 5.4 months for the third
+This reversal in the standard spacing pattern is substantial, 
+especially for the third and fourth spells.
+For the latest period, the difference between only girls than the
+other sex compositions is between 3.4 and 5.4 months for the third
 and fourth spell.
 Furthermore, the differences are statistically significant, except
 for only boys for the fourth spell because few women have a fourth
 birth if they have three boys already.
 
-Rural women also show a reversal of the normal spacing pattern,
+Rural women also show a reversal of the typical spacing pattern,
 although the changes are less pronounced than for urban women.
-The third spell show increasingly longer spacing with only
-girls compare to the other two sex compositions over time with
-most differences statistically significant, but the differences
-are smaller than for urban women.
-For the second spell there is little difference in spacing with
-one girl and with one boy and there are few rural women to 
-based the fourth spell results on.
+The third spell shows that spacing for women with only girls become
+increasing longer compared to the other two sex compositions.
+Most of the differences are statistically significant, although they are 
+smaller than for urban women.
+For the second spell, there is little difference in spacing for
+women with one girl and women with one boy.
 
 The predicted sex ratios at the end of the spells show that
 the reversal in spacing patterns is not the result of a declining son
-preference but rather corresponds to a substantially more male-biased 
+preference but instead corresponds to a substantially more male-biased 
 sex ratio.
-For urban women the predicted sex ratio with only girls 
+For urban women, the predicted sex ratio with only girls 
 is consistently above 60\% boys for the third and fourth spells.
-For rural women the predicted sex ratios are lower than for urban
-women, but stil substantial and statistically significant at close 
+For rural women, the predicted sex ratios are lower than for urban
+women but still substantial and statistically significant at close 
 to 60\%.
 The high predicted sex ratios are presumably the result of increased 
 use of sex selection.
 
-When trying to understand the strength of son preference it is interesting
+When trying to understand the strength of son preference, it is interesting
 that the sex ratio is also statistically significantly different
 from the natural rate in the case where women already have one
 son for the third and fourth spells.
@@ -1076,7 +1070,7 @@ or expected mortality of the first son born.
 
 It also appears that there is a slightly elevated sex ratio among 
 first-born for urban women. 
-There is, however, no corresponding increase in spacing; rather
+There is, however, no corresponding increase in spacing; instead,
 the median duration has fallen over time and is the lowest among
 the three education groups.
 Hence, unless duration between marriage and first birth has decreased 
@@ -1086,9 +1080,9 @@ among first-borns as evidence for sex selection among first-borns.
 
 Both of the last two results are different from prior studies using NFHS data.
 There are two potential explanations.
-First, NFHS-4 is substantially larger than the three prior surveys.
+First, the NFHS-4 is substantially larger than the three prior surveys.
 Hence, it is possible that the effects have been there all along, but 
-we simply did not have the power to detect them.
+we did not have the power to detect them.
 Second, it is possible that, at least, the first-born results are an
 artifact of any recall error not captured by the data restrictions.
 Certain types of recall error would also explain why the sex ratio for
@@ -1098,39 +1092,40 @@ the natural sex ratio \citep{Portner2018b}.
 
 \subsection{Distribution of Birth Spacing Across Sex Compositions and Time}
 
-Median spacing is a convenient way to understand the major developments,
-but may hide important changes in the distribution of spacing.
-This section therefore provides more detail on how spacing is distributed
-over time and over sex compositions using a graphical approach.
+Median spacing is a convenient way to understand the overall changes but
+may hide important differences in the distribution of spacing.
+This section, therefore, provides more detail on how spacing is distributed
+over time and sex compositions using a graphical approach.
 
 I show survival curves conditional on parity progression rather than
 standard survival curves. 
 The advantage of this approach is that it is possible to directly compare 
-the distribution of spacing to next birth, independently of differences in
-how likely the next birth is across groups.
-In other words, these results reflect the spacing we should observe once
-all childbearing is over for the women in the sample.
+the distribution of spacing to next birth across groups, independently of 
+differences in how likely the next birth is.
+It does, however, depend on covering a long enough spell period
+to ensure that only relatively few births are likely to take place after the
+censoring date as discussed above.
 Because the conditional survival curves are independent of the likelihood
-of parity they all begin at 100\% and end at 0\%.
+of final parity progression, they all begin at 100\% and end at 0\%.
 
 Instead of averaging across the entire sample, I calculate the conditional
-survival curves for a representative woman using the method detailed in 
+survival curves for an average woman using the method detailed in 
 Section \ref{sec:strategy}.
-The representative woman characteristics are the means of continuous explanatory 
+The average woman characteristics are the means of continuous explanatory 
 variables and the majority category for categorical explanatory variables.
-Common to all representative women is that they do not own land and belong to neither 
+Common to all is that they do not own land and belong to neither 
 a scheduled caste nor a scheduled tribe.
 
 In the interest of brevity, I discuss only a representative subset.
-Figure \ref{fig:pps_spell1} shows spacing within the first spell across the
-four periods for rural women with no education and for urban women with 
+Figure \ref{fig:pps_spell1} shows spacing for the first spell across the
+four periods for rural women with no education and urban women with 
 eight or more years of education.
 Figures \ref{fig:pps_low} and \ref{fig:pps_high} show spacing across sex
 compositions for the second, third, and fourth spells for the first period, 
 1972--1984, and the last period, 2005--2016, for rural women with no 
 education and urban women with eight or more years of education.
-Standard and conditional survival curves for all groups and time periods 
-are shown in the Appendix, and I discuss some examples of standard survival
+The Appendix shows standard and conditional survival curves for all groups and 
+time periods, and I discuss some examples of standard survival
 curves in the following section.
 
 % First spell for low and high education women
@@ -1163,7 +1158,7 @@ The duration from marriage to first birth is only affected by son preferences if
 people use sex selection to achieve a son as their first-born.
 As I discuss above, the biased sex ratio for the first spell for the most educated 
 women does suggest that there might be sex selection on the first birth.
-I therefore begin by comparing in Figure \ref{fig:pss_spell1} how the distribution 
+I, therefore, begin by comparing in Figure \ref{fig:pss_spell1} how the distribution 
 of spacing has changed over time for rural women with no education and urban women 
 with eight or more years of education.
 What is most striking is how similar the distribution of spacing is across the
@@ -1171,27 +1166,28 @@ two groups.
 
 Both groups show little change in median spacing, but that masks a substantial
 compression of when most of the births occur.
-In the 1972--1984 period the middle 80\% of births for women with no education 
+In the 1972--1984 period, the middle 80\% of births for women with no education 
 are predicted to occur between approximately 6 and 52 months, whereas in the 
 2005--2016 period it is between 12 and 46 months.
-This is equivalent to a compression of a full year.
+Hence, the compression is equivalent to a full year.
 Women with eight or more years of education show a slightly smaller compression:
-in the 1972--1984 period the middle 80\% of births are predicted to occur between
+in the 1972--1984 period, the middle 80\% of births are predicted to occur between
 approximately 6 and 44 months, whereas in the 2005--2016 period it is between
 9 and 40 months, or a compression of seven months.
 
 The pattern for both groups shows us that women are less likely to conceive 
 before marriage in the later time periods than earlier.
-In the first two periods there was a relatively smooth decline in number of
+In the first two periods there was a relatively smooth decline in the number of
 women without a birth starting at the time of marriage, but in the last two
-periods there is now few women exiting early after marriage and instead a 
-substantial dip between 9 and 12 months after marriage.
+periods, there are now few women who exit early after marriage and
+instead there is a substantial dip between 9 and 12 months after
+marriage.
 
 It is likely that the compressed spacing, beginning at nine months
 after marriage in the later periods, is associated with better health
 and higher age at marriage.
 The descriptive statistics above show, for example, that women without 
-education has seen an increase in the average age at marriage from below 
+education have seen an increase in the average age at marriage from below 
 16 to 18.5 from the first period to the last while women with the most 
 education increased from 19.5 to 20.4.
 
@@ -1258,20 +1254,20 @@ education; start point for each spell is nine months after prior birth
 \label{fig:pps_low}
 \end{figure}
 
-For women with no education Figure \ref{fig:pps_low} shows that the median results
+For women with no education, Figure \ref{fig:pps_low} shows that the median results
 above are consistent with the distribution of spacing within a spell with spacing 
 after only girls consistently shorter than after only boys.
 There are slight variations in how strong this effect is across the three spells.
-On the one had, for the second spell the difference in spacing between first child a girl 
-versus first child a boy as first-born remains almost the same across the four
-decades.
+On the one hand, for the second spell the difference in spacing between
+when the first child is a girl versus when the first child is a boy as
+first-born remains almost the same across the four decades.
 On the other hand, for the third spell the differences between two girls and 
 the other sex compositions become more pronounced over time, and especially
 the difference between two girls and two boys have become substantially larger.
-The fourth spell results are based on relatively few observations, but do indicate
-that only girls and two girls and one boy is associated with shorter spacing than
-only boys or one girl and two boys.
-Although the evidence is not overly strong, it does appear that there is a slight
+The fourth spell results are based on relatively few observations but do
+indicate that women with either only girls or two girls and one boy have
+shorter spacing than women with only boys or one girl and two boys.
+Although the evidence is not substantial, it does appear that there is a slight
 preference for two boys in the sense that spacing becomes longer once the couple
 has at least two boys than for the other sex compositions.
 
@@ -1343,7 +1339,7 @@ The distribution of spacing, shown in Figure \ref{fig:pps_high}, for the second 
 conditional survival curve for urban women with eight or more years of education 
 is almost indistinguishable from that of rural women with no education 
 for the 1972--1984 period.
-This points to these two very different groups of women behaving in a similar fashion
+The small difference points to these two very different groups of women behaving similarly
 in response to son preference in a situation where there was little access to
 prenatal sex determination or little incentive to use it early even for those 
 who might have had access.
@@ -1353,9 +1349,9 @@ the high education women show a rightward shift if the spacing pattern when
 the first child is a girl.
 The result is that the spacing patterns are close to identical after first-born 
 girls and after first-born boys.
-Given the elevated predicted percentage boys show in Table 
-\ref{tab:median_sex_ratio_high} this change is consistent with use of 
-sex selection for women with a girl as their first child.
+Given the elevated predicted percentage boys in Table \ref{tab:median_sex_ratio_high},
+this change is consistent with the use of sex selection for women with a girl 
+as their first child.
 
 The hypothesized correlation between use of sex selection and reversal of 
 the standard spacing pattern show up clearly in the 2005--2016 period for the 
@@ -1363,29 +1359,30 @@ third spell with spacing to the third child consistently longer with two girls
 than with either two girls or one boy and one girl.
 The rightward movement for only girls from the, mostly, standard pattern in 
 the 1972--1984 period to the new pattern in the 2005--2016 period is substantial.
-There is also indications that the spacing distribution has moved rightward
+There are also indications that the spacing distribution has moved rightward
 for women with one boy and one girl relatively to women with two boys, which
-provides some evidence for use of sex selection for this group.
-The caveat is that the 1972--1985 period also had an biased sex ratio, which
+provides some evidence for the use of sex selection for this group.
+The caveat is that the 1972--1985 period also had a biased sex ratio, which
 points to uncorrected recall error for this group.
 
-There is a even more pronounced rightward shift for spacing after only girls
-in the fourth spell, although these results are based on fewer births, especially
-for women with two or more sons.%
+There is an even more pronounced rightward shift for spacing after only
+girls in the fourth spell for the first years of the spell. 
+The caveat is that there are few births to base the results on,
+especially for women with two or more sons.%
 \footnote{
 As mentioned, it is possible that some women had access to sex selection even
 in the first period.
 I would expect well educated urban women with more children to be the
 most likely to know about and use this early access to prenatal sex determination.
 }
-Furthermore, the differences are large across most of the distribution.
+Furthermore, the differences are substantial across most of the distribution.
 Twelve months after the beginning of the spell there is an approximately ten 
 percentage points difference in the conditional survival curves for only girls
 and only boys.
 That is, of the women who are predicted to have a fourth child just over 30\%
 of women with three boys have had their fourth child, while less than 20\% of
 those with three girls have had theirs.
-Even at three years after the spell there is a more than five percentage
+Even at three years after the spell, there is a more than five percentage
 points difference.
 
 As discussed above there is some evidence of a two-son preference with
@@ -1394,7 +1391,7 @@ two boys and one girl.
 The conditional survival curve for women with one boy and two girls is
 consistently above those with two or more son, but below those with
 three girls.
-This fit the predicted sex ratios shown above where the highest
+The pattern fit the predicted sex ratios shown above where the highest
 predicted sex ratio is for women with only girls, followed by those
 with one son and two girls, and those with two or more boys having
 almost the same sex ratio.
@@ -1408,7 +1405,7 @@ more for women with only girls than for other sex compositions
 as sex ratios became more male-biased, presumably because
 of increased use of sex selection.
 Neither the median spacing or the conditional survival curves,
-however, can tell us whether sex selection vary \emph{within}
+however, can tell us whether sex selection varies \emph{within}
 a spell or provide any information about the likelihood of
 exiting a spell with a birth.
 To understand both, I now turn to the standard survival curves
@@ -1520,22 +1517,22 @@ least, two reasons.
 First, parents may stop using prenatal sex determination within
 a spell once the duration from the previous birth becomes long enough.
 The desire for short spacing could, for example, arise from 
-economies of scale in childbearing and rearing that would be lost 
+economies of scale in childbearing and rearing that parents lose 
 if children were born too far apart \citep[p 374]{schultz97}. 
 In this case we should observe the predicted sex ratio decline
 with spell length.
 
-Second, if the degree of son preference vary across women within 
-the sample but behavior is not affected by duration from the 
+Second, if the degree of son preference varies across women within 
+the sample, but their behavior is not affected by duration from the 
 previous birth, we should observe an increasing share of births come from 
-parents with stronger son preference as duration from the
+parents with stronger son preference as the duration from the
 previous birth increases.
 Whereas the early births are a combination of births to
 people with lower son preference and those with stronger son
 preference who conceived a son in the first or second pregnancy,
-later births are then predominately from those with stronger
+births later in the spell are then predominately from those with stronger
 son preference who have not yet conceived a son.
-In this case we should see an increase in the sex ratio 
+In this case, we should see an increase in the sex ratio 
 as duration increases.
 
 
@@ -1558,18 +1555,20 @@ with two boys as their first two children as shown in Figure TK.
 Within the second spell, both urban and rural women show a declining
 sex ratio as duration increases for the 1995--2004 period, whereas there
 is little change, or possibly a small increase, with duration for the 
-2005-2016 period.
+2005--2016 period.
 These results are consistent with a situation where fertility is declining
 over time leaving less room for a change in the decision to use sex selection.
-Fertility decline is not immediately obvious from the second spell 
-results, but the third spell show that the likelihood of progressing from
+Fertility decline is not immediately apparent from the second spell 
+results, but the third spell shows that the likelihood of progressing from
 two to third children declines by approximately 15 percentage points if
-the woman has given birth to a boy, and, as the Appendix shows, only about 
-25\% of urban women with two boys have a third child in the 2005--2016 period, 
+the woman has given birth to a boy.
+Furthermore, as the Appendix shows, only about 25\% of urban women with 
+two boys have a third child in the 2005--2016 period, 
 down from close to 40\% in the 1995--2004 period. 
 Furthermore, it is unlikely that a substantial number of births will take
-place after the end of the spell period, which is equal to six year in
+place after the end of the spell period, which is equal to eight year, in
 addition to the nine months from the previous birth to the start of the spell.
+TK check these numbers with new spell lengths.
 
 The third spell figures show a very different situation with almost no 
 change in sex ratios with duration for women with two girls, but substantial 
@@ -1580,7 +1579,7 @@ similarly to the situation for the second spell as shown in
 Figure \ref{fig:decreasing_sex_ratio} (b) and (d).
 
 The increase in sex ratio with duration for women who already have
-given birth to a boy likely illustrates the case where there are a
+given birth to a boy likely illustrates the case where there is a
 combination of degrees of son preference.
 Say that one group wants one son and after that will not use sex
 selection, whereas another group has a strong preference for two
@@ -1593,7 +1592,7 @@ we observe, especially given the declining fertility over time.
 \section{Conclusion\label{sec:conclusion}}
 
 
-The main question addressed here is the extent to which spacing patterns 
+The central question addressed here is the extent to which spacing patterns 
 significantly changed as prenatal sex determination became available.
 Specifically, did the spacing after girls increase relative to the spacing
 after boys?
@@ -1602,64 +1601,63 @@ preference leads to shorter spacing after the birth of a girl than after the
 birth of a boy, whereas son preference increases the spacing after the birth 
 of a girl relative to after the birth of a boy when prenatal sex selection is 
 available.
-I introduce a new method that simultaneously account for spacing between
-births and the potential use of sex selection and apply the method
-to over four decades of data from India's NFHS.
+I introduce a new method that simultaneously accounts for spacing
+between births and the potential use of sex selection. 
+I apply the method to over four decades of data from India's NFHS.
 The results show two very different approaches to son preference.
 
 At one extreme, women without education mostly follow the standard 
 pattern of shorter spacing when a woman does not have the desired number of 
 son and with limited evidence of biased sex ratios and the increases in
 spacing that should follow from the use of sex selection.
-The situations where there are elevated sex ratios for women without
-education---which, by itself, should indicate use of sex selection---the
-spacing patterns are too close to the ones without sex selection that 
-it is difficult to conclude that the changes in sex ratios indicate
-sex selection rather than normal variation or problems with recall errors.
+ In the situations where there are elevated sex ratios for women without
+education, the spacing patterns are close to those with more regular sex
+ratios. 
+Hence, it is difficult to conclude that the changes in sex
+ratios indicate sex selection rather than normal variation or problems
+with recall errors.
 
 At the other extreme, women with eight or more years of education have
 experienced an almost complete reversal of their spacing patterns.
 Rather than having the next birth sooner as they mostly did before 
 sex selection became available, women with either no or one son now 
 have substantially longer spacing than if they have two or more sons.
-These changes are likely due to increased use of sex selection 
-rather than changes in son preference as shown by the increasingly
-significant deviations in the sex ratio from the natural sex ratio.
-This also suggests that banning prenatal sex determination has 
-not been able to reverse the use, although it is possible that it
-has slowed the rate of increase.
+As shown by the increasingly significant deviations in the sex ratio
+from the natural sex ratio, these changes are likely due to increased
+use of sex selection rather than changes in son preference. 
+Banning prenatal sex determination has therefore not been able to
+reverse the use, although it is possible that it has slowed the rate 
+of increase.
 
-Over the last 40 years there has been a general increase in median
+Over the last 40 years, there has been a general increase in median
 spacing for all education groups, but especially for the most 
 educated women.
 The exception is for the spacing between marriage and first birth
 where there are two counteracting forces: women have become more likely 
-to conceive after marriage and there has been a substantial compression 
+to conceive after marriage, and there has been a substantial compression 
 in the variation.
-The end result is that median spacing from marriage to first birth
-that has changed little or even declined for the best educated women.
+The result is that median spacing from marriage to first birth
+that has changed little or even declined for the best-educated women.
 
 The empirical model is designed to allow for the effects of covariates
-to change within the spell.
-This is important because the use of sex selection is likely to vary
-within a spell, either because preferences for spacing between births
-that is not too long override the preference for sons or because
-of selection where the women who remain in a spell are those with
-the strongest son preference who have been through multiple 
-pregnancies that were aborted because the fetus was female.
-Because these move in opposite directions it is difficult to 
-establish the extent to which they affect the results.
-Both are, however, clearly present as can be seen from the
-cases where there is either a decline in sex ratio with spell
-duration or a substantial increase with spell duration.
-The first case is more likely at lower parities where there
-is still less pressure to ensure a son, which allows any
-preference for shorter spacing to play more of a role.
-The second is on the other hand more likely to have an effect
-for higher parities where the desire to limit further
-childbearing and ensure a son dominates any preferences for
-shorter spacing.
+to change within the spell. Non-proportionality is essential because the
+use of sex selection may vary within a spell. The use of sex selection
+may change either because preferences for not too long spacing between
+births override the preference for sons or because of selection, where
+the women who remain in a spell are those with the strongest son
+preference who have been through multiple pregnancies because the
+fetuses were female. Because these move in opposite directions, I cannot
+directly establish the extent to which they affect the results. Both
+are, however, present, as can be seen from the cases where there is
+either a decline in sex ratio with spell duration or a substantial
+increase with spell duration. The first case is more likely at lower
+parities where there is still less pressure to ensure a son, which
+allows any preference for shorter spacing to play more of a role. The
+second is on the other hand more likely to have an effect for higher
+parities where the desire to limit further childbearing and ensure a son
+dominates any preferences for shorter spacing.
 
+TK check these numbers
 The potential for changes in sex ratio within a spell means
 that censoring is an important issue when trying to understand the development
 in sex ratio.
@@ -1678,7 +1676,7 @@ changes little if I split by area of residence.
 I chose the 2014 cut-off to ensure that both groups cover 
 five years, even though NFHS-4 took place in 2015 and 2016.
 }
-It would therefore appear that the use of sex selection for
+It would, therefore, appear that the use of sex selection for
 this spell is slightly decreasing over time.
 This interpretation, however, ignores the role of censoring.
 If we use the estimation results to predict final sex ratio
@@ -1691,20 +1689,17 @@ of a predicted 7,451 total number of births, we would
 only have observed 3,348 births out of a predicted 8,842
 for the 2010--2014 group.
 
-Although it is not possible to directly observe whether the
-unequal sex ratio and the longer spacing patterns are caused
-by sex selection the results are consistent with a general
-increase in sex selection over time.
-The increase in apparent use of sex selection is mainly found
-among women with more education and more so in urban than in
-rural areas, although the differences between urban and rural
-areas are relatively minor.
-Compared to previous research one result stands out.
-It appears that the use of sex selection is spreading to 
-women with lower levels of education, so that even women
-with one to seven years of education show unequal sex ratios
-and longer spacing for their higher-order spells.
-
+Although it is not possible to directly observe whether sex selection
+causes the unequal sex ratio and longer spacing the results are
+consistent with a general increase in sex selection over time. 
+The apparent increase in the use of sex selection is mainly found among
+women with more education and more so in urban than in rural areas,
+although the differences between urban and rural areas are relatively
+minor. 
+Compared to previous research one result stands out. 
+It appears that the use of sex selection is spreading to women with lower 
+levels of education so that even women with one to seven years of 
+education show unequal sex ratios and longer spacing for their higher-order spells.
 
 The results here point to two important, interconnected, questions 
 for future research:
@@ -1713,26 +1708,26 @@ use of sex selection and is the use of sex selection increasing
 or decreasing over time?
 It is clear that fertility has been declining over time in India,
 although it is important to note that the decline might be
-overstated exactly because of an increased use of sex selection and
+overstated precisely because of increased use of sex selection and
 the resulting longer spacing between births makes it less likely 
 that we will observe births to women, even though they eventually
 will happen.
-The facts that biased sex ratio occur at earlier spells over
-time and starting to show up for women with less education 
+The fact that biased sex ratio occurs at lower-order spells over
+time and is starting to show up for women with less education 
 all indicate that lower fertility and use of sex selection are
 related, but a more detailed analysis is needed.
 Furthermore, although examining spells separately, as done here, is a useful
 first step in understanding how sex selection changes over time,
 it does not lend itself easily to examine the degree to which
 sex selection changes over time.
-For that a combined model that incorporates the full fertility
+For that, a combined model that incorporates the full fertility
 history of women would be more appropriate.
 A model of this type would allow us to jointly model fertility
 and sex selection and help address both questions.
 
 
 The results here also lead to a set of broader questions that
-need to be addressed in future research.
+future research should address.
 First, to what extent are the improvements in health for girls
 relative to boys the result of selection, longer spacing between
 births, or changing son preference?
