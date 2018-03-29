@@ -18,13 +18,19 @@ program bootspell, rclass
 
     // PIECE-WISE LINEAR HAZARDS
     if `spell' == 1 | `spell' == 2  {
-        tab t, gen(dur)
-        loc i = $lastm    
+        loc i = 1
+        forvalues per = 1/19 {
+            gen dur`i' = t == `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 20 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
     }
     else if `spell' == 3 {
         loc i = 1
         forvalues per = 1/14 {
-            gen dur`i' = t >= `per'
+            gen dur`i' = t == `per'
             loc ++i
         }
         gen dur`i' = t >= 15 & t <= 19
