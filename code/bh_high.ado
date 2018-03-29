@@ -21,9 +21,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 20 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 20 
         
     }
     
@@ -93,9 +91,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 15 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 15 
                    
     }        
 
@@ -110,9 +106,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 // 3 quarter years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 16 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 16 
 
     }
             
@@ -169,9 +163,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 // 3 quarter years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 13 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 13 
 
     }            
 
@@ -187,9 +179,7 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 15 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 15 
 
     }    
 
@@ -205,9 +195,9 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 // half years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 11 & t <= 24
+        gen dur`i' = t >= 11 & t <= 18
         loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 19
 
     }    
 
@@ -222,9 +212,9 @@ program bh_high, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 // half years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 11 & t <= 24
+        gen dur`i' = t >= 11 & t <= 18
         loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 19
 
     }    
 
@@ -271,11 +261,13 @@ program bh_high, rclass
     // Baseline hazard for spell 4, g4, high
     if `spell' == 4 & `period' == 4 {
     
-        forvalues per = 1(7)7 { // originally 14
-            gen dur`i' = t >= `per' & t <= `per' + 6 // half years
+        forvalues per = 1(8)8 { // originally 14
+            gen dur`i' = t >= `per' & t <= `per' + 7 // half years
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 8 
+        gen dur`i' = t >= 9 & t <= 18
+        loc ++i
+        gen dur`i' = t >= 19
 
     }
 

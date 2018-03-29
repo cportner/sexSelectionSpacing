@@ -21,9 +21,7 @@ program bh_med, rclass
         loc ++i    
         gen dur`i' = t >= 13 & t <= 16
         loc ++i
-        gen dur`i' = t >= 17 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 17 
         
     }
     
@@ -43,9 +41,7 @@ program bh_med, rclass
         loc ++i    
         gen dur`i' = t >= 13 & t <= 17
         loc ++i
-        gen dur`i' = t >= 18 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 18 
                  
     }
 
@@ -78,9 +74,7 @@ program bh_med, rclass
         }
         gen dur`i' = t >= 11 & t <= 16
         loc ++i
-        gen dur`i' = t >= 17 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 17 
                  
     }
 
@@ -93,9 +87,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 13 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 13 
                    
     }        
 
@@ -110,9 +102,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 15 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 15 
 
     }
             
@@ -124,13 +114,11 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 1 
             loc i = `i' + 1
         }
-        forvalues per = 5(3)8 { 
+        forvalues per = 5(3)11 { 
             gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 11 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 14 
 
     }            
 
@@ -145,9 +133,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 15 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 15 
 
     }
 
@@ -160,9 +146,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 13 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 13 
 
     }            
 
@@ -178,9 +162,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 15 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 15 
 
     }    
 
@@ -192,9 +174,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 3 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 13 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 13 
 
     }    
 
@@ -205,9 +185,7 @@ program bh_med, rclass
             gen dur`i' = t >= `per' & t <= `per' + 2 
             loc i = `i' + 1
         }
-        gen dur`i' = t >= 13 & t <= 24
-        loc ++i
-        gen dur`i' = t >= 25
+        gen dur`i' = t >= 13 
 
     }    
 
@@ -228,15 +206,11 @@ program bh_med, rclass
     // Baseline hazard for spell 4, g2, medium
     if `spell' == 4 & `period' == 2 {
     
-        forvalues per = 1(3)2 { 
-            gen dur`i' = t >= `per' & t <= `per' + 2 
+        forvalues per = 1(5)10 { 
+            gen dur`i' = t >= `per' & t <= `per' + 4 
             loc i = `i' + 1
         }
-        forvalues per = 4(4)8 { 
-            gen dur`i' = t >= `per' & t <= `per' + 3 
-            loc i = `i' + 1
-        }
-        gen dur`i' = t >= 12 
+        gen dur`i' = t >= 11 
 
     }    
 
