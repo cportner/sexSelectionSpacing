@@ -41,9 +41,18 @@ forvalues fer = 1/3 {
 count if fertility >= 4
 loc births = `births' + `r(N)' * 4
 
+// Automatically generated text for sample size (~ line 650 in tex file)
 file open num_women using `tables'/num_women.tex, write replace
 file write num_women  %9.0fc (`num') " women, with " %9.0fc (`births') " parity one through four births."
 file close num_women
+
+// Automatically generated footnote text for excluded observed births for 
+// spell period (~ line 680 in tex file)
+file open num_missed using `tables'/num_missed.tex, write replace
+file write num_missed "The cut-offs are determined not by the total number of births," _n
+file write num_missed "but by how many that occur in each three months period." _n
+file write num_missed "If there are too few births, the multinomial logit estimations will not converge." _n
+file close num_missed
 
 * SPELL 1
 preserve
@@ -51,8 +60,12 @@ create_groups b0_born_year
 
 gen mom_age    = b1_mom_age
 
+// Distribution of births
 tab b1_space if b1_sex != .
+sum b1_space if b1_sex != .
+loc max_month = `r(max)'
 
+// Converting to 3 months intervals
 replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
 loc lastm = 4*10 //
 replace b1_cen = 1 if b1_space > `lastm' // cut off 
@@ -64,6 +77,16 @@ gen girl = b1_sex == 2 & !b1_cen
 
 // Censoring
 tab b1_cen b1_sex, col
+sum b1_cen if b1_sex != .
+loc percent = `r(mean)' * 100
+loc total = `r(N)'
+count if b1_cen & b1_sex != .
+loc missed = `r(N)'
+file open num_missed using `tables'/num_missed.tex, write append
+file write num_missed "For spell 1, " %9.2fc (`percent') "\%, or " %9.0fc (`missed') " births," _n
+file write num_missed "of a total of " %9.0fc (`total') " births are observed after 120 months from the month of marriage, " _n
+file write num_missed "with the highest observed duration " %9.0fc (`max_month') " months." _n
+file close num_missed
 
 gen edu_group = 1 if edu_mother == 0
 replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
@@ -138,10 +161,14 @@ create_groups b1_born_year
 
 gen mom_age    = b2_mom_age
 
+// Distribution of births
 tab b2_space if b2_sex != .
+sum b2_space if b2_sex != .
+loc max_month = `r(max)'
 
 gen b1space = b1_space
 
+// Converting to 3 months intervals
 drop if b2_space == .
 replace b2_space = int((b2_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
 loc lastm = 4*8+3 //
@@ -156,6 +183,17 @@ gen girl = b2_sex == 2 & !b2_cen
 
 // Censoring
 tab b2_cen b2_sex, col
+sum b2_cen if b2_sex != .
+loc percent = `r(mean)' * 100
+loc total = `r(N)'
+count if b2_cen & b2_sex != .
+loc missed = `r(N)'
+file open num_missed using `tables'/num_missed.tex, write append
+file write num_missed "For spell 2, " %9.2fc (`percent') "\%, or " %9.0fc (`missed') " births," _n
+file write num_missed "of a total of " %9.0fc (`total') " births are observed after 105 months from the first birth, " _n
+file write num_missed "with the highest observed duration " %9.0fc (`max_month') " months." _n
+file close num_missed
+
 
 gen b1_girl = b1_sex == 2 if b1_sex != .
 gen b1_boy  = b1_sex == 1 if b1_sex != .
@@ -237,8 +275,12 @@ create_groups b2_born_year
 gen mom_age    = b3_mom_age
 gen b1space = b1_space
 
+// Distribution of births
 tab b3_space if b3_sex != .
+sum b3_space if b3_sex != .
+loc max_month = `r(max)'
 
+// Converting to 3 months intervals
 drop if b3_space == .
 replace b3_space = int((b3_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
 loc lastm = 4*8+3 //
@@ -253,6 +295,17 @@ gen girl = b3_sex == 2 & !b3_cen
 
 // Censoring
 tab b3_cen b3_sex, col
+sum b3_cen if b3_sex != .
+loc percent = `r(mean)' * 100
+loc total = `r(N)'
+count if b3_cen & b3_sex != .
+loc missed = `r(N)'
+file open num_missed using `tables'/num_missed.tex, write append
+file write num_missed "For spell 3, " %9.2fc (`percent') "\%, or " %9.0fc (`missed') " births," _n
+file write num_missed "of a total of " %9.0fc (`total') " births are observed after 105 months from the second birth, " _n
+file write num_missed "with the highest observed duration " %9.0fc (`max_month') " months." _n
+file close num_missed
+
 
 egen numgirls = anycount(b1_sex b2_sex) if b1_sex != . & b2_sex != ., v(2)
 gen b2_2b   = numgirls == 0
@@ -337,8 +390,12 @@ create_groups b3_born_year
 gen mom_age    = b4_mom_age
 gen b1space = b1_space
 
+// Distribution of births
 tab b4_space if b4_sex != .
+sum b4_space if b4_sex != .
+loc max_month = `r(max)'
 
+// Converting to 3 months intervals
 drop if b4_space == .
 replace b4_space = int((b4_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
 loc lastm = 4*8+3
@@ -353,6 +410,17 @@ gen girl = b4_sex == 2 & !b4_cen
 
 // Censoring
 tab b4_cen b4_sex, col  
+sum b4_cen if b4_sex != .
+loc percent = `r(mean)' * 100
+loc total = `r(N)'
+count if b4_cen & b4_sex != .
+loc missed = `r(N)'
+file open num_missed using `tables'/num_missed.tex, write append
+file write num_missed "For spell 4, " %9.2fc (`percent') "\%, or " %9.0fc (`missed') " births," _n
+file write num_missed "of a total of " %9.0fc (`total') " births are observed after 105 months from the third birth, " _n
+file write num_missed "with the highest observed duration " %9.0fc (`max_month') " months." _n
+file close num_missed
+
 
 egen numgirls = anycount(b1_sex b2_sex b3_sex) if b1_sex != . & b2_sex != . & b3_sex != ., v(2)
 gen girl0 = numgirls == 0 if b1_sex != . & b2_sex != . & b3_sex != .

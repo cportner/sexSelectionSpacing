@@ -88,7 +88,7 @@ APPGRAPHS := \
 
 # Main paper
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
- $(TAB)/des_stat.tex $(TAB)/num_women.tex \
+ $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex \
  $(GRAPHTARGET) $(PPSTARGET) \
  $(TAB)/bootstrap_duration_sex_ratio_high.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
 	cd $(TEX); xelatex $(TEXFILE)
@@ -148,7 +148,7 @@ $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3
 # Descriptive statistics                                                                #
 #---------------------------------------------------------------------------------------#
 
-$(TAB)/des_stat.tex $(TAB)/num_women.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
+$(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
 
