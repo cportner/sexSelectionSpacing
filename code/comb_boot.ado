@@ -9,7 +9,7 @@ program comb_boot
 
     set matsize 1000
 
-    loc num_reps = 100
+    loc num_reps = 4
     file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
     include directories
@@ -59,16 +59,19 @@ program comb_boot
             }
         }
     }
-    // Differences for testing - only girls against each of the other sex compositions
+    // Differences for testing 
     // No direct information on periods covered since only difference worth including here
     // are between the two groups called for
-    loc all_girls = `spell' - 1
-    loc end = `spell' - 2
     foreach where in "urban" "rural" {
-        forvalues comp = 0 / `end' {
-            foreach per of numlist 25 50 75 {
-                loc stats = "`stats' diff_p`per'_`where'_g`all_girls'_vs_g`comp' = r(diff_p`per'_`where'_g`all_girls'_vs_g`comp')"
-            } 
+        loc more_girls  = `spell' - 1
+        loc fewer_girls = `spell' - 2
+        forvalues fg = 0 / `fewer_girls' {
+            loc start = `fg' + 1
+            forvalues mg = `start' / `more_girls' {             
+                foreach per of numlist 25 50 75 {
+                    loc stats = "`stats' diff_p`per'_`where'_g`mg'_vs_g`fg' = r(diff_p`per'_`where'_g`mg'_vs_g`fg')"
+                } 
+            }
         }
     }
 

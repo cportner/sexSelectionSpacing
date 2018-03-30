@@ -180,17 +180,20 @@ program comb_analysis, rclass
     // Differences-in-difference testing 
     // How does all-girls duration change compared to each of the other sex compositions
     foreach where in "urban" "rural" {
-        loc all_girls = `spell' - 1
-        loc end = `spell' - 2
-        forvalues comp = 0 / `end' {
-            foreach per of numlist 25 50 75 {
-                return scalar diff_p`per'_`where'_g`all_girls'_vs_g`comp' = ///
-                    (`p`per'_`where'_g`all_girls'_p`group2'' - `p`per'_`where'_g`all_girls'_p`group1'') ///
-                   -(`p`per'_`where'_g`comp'_p`group2''      - `p`per'_`where'_g`comp'_p`group1'') 
+        loc more_girls  = `spell' - 1
+        loc fewer_girls = `spell' - 2
+        forvalues fg = 0 / `fewer_girls' {
+            loc start = `fg' + 1
+            forvalues mg = `start' / `more_girls' {             
+                foreach per of numlist 25 50 75 {
+                    return scalar diff_p`per'_`where'_g`mg'_vs_g`fg' = ///
+                        (`p`per'_`where'_g`mg'_p`group2'' - `p`per'_`where'_g`mg'_p`group1'') ///
+                       -(`p`per'_`where'_g`fg'_p`group2'' - `p`per'_`where'_g`fg'_p`group1'') 
+                }
             } 
         }    
     }
-    
+
     
     restore
 end
@@ -202,19 +205,25 @@ program create_duration
     // The number of grouped 3-months periods depends on spell
     
     if `spell' == 1 | `spell' == 2  {
-        tab t, gen(dur)
-        loc i = $lastm    
+        loc i = 1
+        forvalues per = 1/19 {
+            gen dur`i' = t == `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 20 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
     }
     else if `spell' == 3 {
         loc i = 1
         forvalues per = 1/14 {
-            gen dur`i' = t >= `per'
+            gen dur`i' = t == `per'
             loc ++i
         }
         gen dur`i' = t >= 15 & t <= 19
         loc ++i
-        gen dur`i' = t >= 20 & t <= 24
-    }    
+        gen dur`i' = t >= 20 
+    }
     else if `spell' == 4 {
         loc i = 1
         gen dur`i' = t >= 1 & t <= 5
