@@ -16,7 +16,7 @@ program bootspell, rclass
     bysort id (t): replace birth = 1 if b`spell'_sex == 1 & b`spell'_cen == 0 & _n == _N // exit with a son
     bysort id (t): replace birth = 2 if b`spell'_sex == 2 & b`spell'_cen == 0 & _n == _N // exit with a daugther
 
-    // PIECE-WISE LINEAR HAZARDS
+    // PIECE-WISE LINEAR HAZARDS - REMEMBER TO CHANGE BELOW IF ANY CHANGES HERE!
     if `spell' == 1 | `spell' == 2  {
         loc i = 1
         forvalues per = 1/19 {
@@ -83,18 +83,24 @@ program bootspell, rclass
 
     // PIECE-WISE LINEAR HAZARDS
     if `spell' == 1 | `spell' == 2  {
-        tab t, gen(dur)
-        loc i = $lastm    
+        loc i = 1
+        forvalues per = 1/19 {
+            gen dur`i' = t == `per'
+            loc ++i
+        }
+        gen dur`i' = t >= 20 & t <= 24
+        loc ++i
+        gen dur`i' = t >= 25
     }
     else if `spell' == 3 {
         loc i = 1
         forvalues per = 1/14 {
-            gen dur`i' = t >= `per'
+            gen dur`i' = t == `per'
             loc ++i
         }
         gen dur`i' = t >= 15 & t <= 19
         loc ++i
-        gen dur`i' = t >= 20 & t <= 24
+        gen dur`i' = t >= 20 
     }
     else if `spell' == 4 {
         loc i = 1
