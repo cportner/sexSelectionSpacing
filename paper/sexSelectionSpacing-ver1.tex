@@ -727,6 +727,10 @@ I capture sex composition with dummy variables for the
 possible combinations for the specific spell, ignoring the ordering of births.
 As an example, for the third spell, three groups are used: Two boys,
 one girl and one boy, and two girls.
+It is, in principle, possible to estimate the model taking into account
+the ordering of children, but this would further lower the power of the
+test, by adding one additional group for the third spell and four
+additional groups for the fourth spell. 
 As discussed, the sex composition of previous children affects both the timing
 of births and the use of sex-selective abortions.
 
@@ -823,27 +827,25 @@ of a girl relative to after the birth of a boy when prenatal sex selection is
 available.
 I still expect parents to \emph{try} to conceive earlier after the birth 
 of a girl than after a boy, but the abortions will increase the 
-length of the space, and may even lead to longer spacing after the
+duration between births, and may even lead to longer spacing after the
 birth of girls than after boys.
 
 
 Second, have the shapes of the survival curves changed?
-The shapes of the survival curves provide clues both to general
-changes in birth spacing and to whether parents are
+The shapes of the survival curves provide information both on general
+changes in birth spacing and whether parents are
 still trying to conceive earlier after girls than boys.
 I expect this to be the case if there is still a strong preference for
 boys, and, as discussed above, this behavior may even become more pronounced
 with access to sex selection.
-At a technical level, the shapes of the survival curve serve as an
-indicator for the presence of non-proportionality.
 
 
 Finally, does the sex ratio change within a spell?
 There are two reasons why this is interesting.
 First, if the sex ratio changes within a spell, relying on the observed sex
 ratio at birth---as is standard practice in the literature---will not provide
-correct estimates of the use of sex selection or the sex ratio when 
-childbearing is completed.
+correct estimates of the use of sex selection or the sex ratio at
+the conclusion of childbearing.
 Second, any changes in the sex ratio within a spell provides clues
 to parents' preferences over the ideal spacing between births and the
 distribution of son preference in the sample.
@@ -852,47 +854,42 @@ distribution of son preference in the sample.
 % [How to read tables]
 Tables \ref{tab:median_sex_ratio_low}, \ref{tab:median_sex_ratio_med}, and
 \ref{tab:median_sex_ratio_high}
-show predicted median duration and sex ratios by period, spell, and sex 
-composition for the three different education levels separated by area of residence.%
+show the predicted median duration and sex ratios by period, spell, and sex 
+composition for the three education levels separated by area of residence.%
 \footnote{
 Appendix Tables \ref{tab:p25_p75_low}, \ref{tab:p25_p75_med}, and 
 \ref{tab:p25_p75_high} show 25th and 75th percentiles durations.
 } 
-The predictions are based on the estimation method described in 
-Section \ref{sec:strategy}.
-The standard errors for both measures are based on bootstrapping, where the 
-original sample is resampled with replacement and the method is applied to 
-the new sample.
+For each subsample, I first estimate the model described in Section 
+\ref{sec:strategy} and then use the estimated coefficients to predict 
+median duration and sex ratio.
+For the standard errors, I use bootstrapping for both measures,
+where the model is repeatedly estimated using resampling with replacement.
 
-The predicted median duration shown is the weighted average over the women in the 
-sample's predicted median durations, using the individual probabilities of 
-giving birth as weights.
+
+The predicted median duration is the weighted average over the women in the 
+subsample, using the individual probabilities of giving birth as weights.
 For each woman in a sample, I calculate her probability of ending the spell 
 with a birth, and her contribution to median spacing is how long it will take
 from the beginning of the spell to where she is predicted to reach half of that probability.
 For example, if a woman has an 80\% probability of having a birth by the end of 
 the spell, her median duration is the number of months it takes to reach
 40\% probability of having exited with a birth.
-The 40\% is equivalent to the 60\% point in a standard survival curve because that 
+The 40\% is equivalent to the 60\% point on a standard survival curve because that 
 captures how many have not yet exited.
 
-For second through fourth spell I show whether durations for sex composition
-other than only girls are statistically significantly different from the
-duration with only girls.
-I use bootstrapping to calculate the level of statistical significance.
-For each new sample, I calculate the difference in duration and these
-differences are used to calculate the standard error and the level of
-significance for the difference in the original sample.
+For the second through the fourth spell, I show whether durations for sex 
+composition other than only girls are statistically significantly different 
+from the duration with only girls.
+To calculate the level of statistical significance, I bootstrap the
+difference in spacing.
  
 The cleanest test is comparing durations after only boys with durations after
 only girls, but the number of births to women with only sons becomes small 
-in the later periods because of falling fertility.
+in the later periods.
 Hence, it is possible to have substantial differences in spacing that are
 not statistically significant because of low power, especially for the third 
 and fourth spell.
-It is, in principle, possible to estimate the model taking into account the 
-ordering of children, but this would further lower the power of the test, by 
-adding one additional group for the third spell and four additional groups for the fourth spell.
 
 The predicted sex ratio is the weighted average over the women in the sample's 
 individual predicted sex ratios, using the individual probabilities of having
@@ -909,8 +906,8 @@ in other words, there is 40\% chance that she will not have given birth by the e
 this spell.
 This woman's percentage boys is then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$.
 }
-The predicted sex ratio captures the percent boys that will be born to women 
-in the sample once childbearing for that spell is over.
+The predicted sex ratio captures the percent boys that will have been born to women 
+in the sample when childbearing for that spell is over.
 
 Each predicted percent boys is tested against the natural percentage 
 boys using the bootstrapped standard errors.
