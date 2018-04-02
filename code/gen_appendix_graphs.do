@@ -82,8 +82,6 @@ foreach educ in "low" "med" "high" {
     file write grph "\caption{Predicted probability of having a boy and probability of " _n
     file write grph "no birth yet from time of marriage for women with `char' by month beginning at marriage.  " _n
     file write grph "Predictions based on age `age' at marriage. " _n
-    file write grph "Left column shows results prior to sex selection available, middle column before " _n
-    file write grph "sex selection illegal and right column after sex selection illegal. " _n
     file write grph "N indicates the number of women in the relevant group in the underlying samples. " _n
     file write grph "} " _n
     file write grph "\label{fig:results_spell1_`educ'} " _n
@@ -178,8 +176,6 @@ foreach educ in "low" "med" "high" {
         file write grph "no birth yet from nine months after first birth for `area' women with `char' " _n
         file write grph "by month beginning at 9 months after prior birth.  " _n
         file write grph "Predictions based on age `age' at first birth. " _n
-        file write grph "Left column shows results prior to sex selection available, middle column before " _n
-        file write grph "sex selection illegal and right column after sex selection illegal. " _n
         file write grph "N indicates the number of women in the relevant group in the underlying samples. " _n
         file write grph "} " _n
         file write grph "\label{fig:results_spell2_`educ'_`area'} " _n
@@ -287,8 +283,6 @@ foreach educ in "low" "med" "high" {
                 file write grph "no birth yet from nine months after second birth for `area' women with `char' " _n
                 file write grph "by month beginning at 9 months after prior birth.  " _n
                 file write grph "Predictions based on age `age' at second birth. " _n
-                file write grph "Left column shows results prior to sex selection available, middle column before " _n
-                file write grph "sex selection illegal and right column after sex selection illegal. " _n
                 file write grph "N indicates the number of women in the relevant group in the underlying samples. " _n
                 file write grph "} " _n
                 if "`sex'" == "girls" {
@@ -404,8 +398,6 @@ foreach educ in "low" "med" "high" {
                 file write grph "no birth yet from nine months after third birth for `area' women with `char' " _n
                 file write grph "by month beginning at 9 months after prior birth.  " _n
                 file write grph "Predictions based on age `age' at third birth. " _n
-                file write grph "Left column shows results prior to sex selection available, middle column before " _n
-                file write grph "sex selection illegal and right column after sex selection illegal. " _n
                 file write grph "N indicates the number of women in the relevant group in the underlying samples. " _n
                 file write grph "} " _n
                 if "`sex'" == "girls" {
