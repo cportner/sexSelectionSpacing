@@ -1,0 +1,2622 @@
+% Revamped version for Demography focusing on method
+
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{fontspec}
+\setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[title]{appendix}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[figuresleft]{rotating}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[flushleft]{threeparttable}
+\usepackage{setspace}
+\usepackage[justification=centering]{caption}
+\usepackage[font=scriptsize]{subfig}
+\usepackage[xetex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\usepackage{adjustbox}
+\usepackage{xfrac}
+
+
+% \bibpunct{(}{)}{;}{a}{}{,}
+\newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\X}{$\times$ }
+\newcommand{\hs}{\hspace{15pt}}
+
+% Attempt to squeeze more floats in
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+
+%------------------------------------------------------------------------
+
+
+\title{Birth Spacing in the Presence of Son Preference and Sex-Selective Abortions:
+India's Experience over Four Decades%
+% \protect\thanks{%
+% I am grateful to Andrew Foster and Darryl Holman for discussions about the method.
+% I owe thanks to Shelly Lundberg, Daniel Rees, David Ribar, 
+% Hendrik Wolff, seminar participants at University of Copenhagen, University of Michigan, 
+% University of Washington, University of Aarhus, the Fourth 
+% Annual Conference on Population, Reproductive Health, 
+% and Economic Development, and the Economic Demography Workshop for helpful 
+% suggestions and comments.
+% I would also like to thank Nalina Varanasi for research assistance.
+% Support for development of the method from the University of Washington Royalty 
+% Research Fund and the Development Research Group of the World Bank is gratefully 
+% acknowledged.
+% The views and findings expressed here are those of the author and
+% should not be attributed to the World Bank or any of its member countries.
+% Partial support for this research came from a Eunice Kennedy Shriver National
+% Institute of Child Health and Human Development research infrastructure grant,
+% 5R24HD042828, to the Center for Studies in Demography and Ecology at the
+% University of Washington.
+% }
+}
+
+\author{}
+% \author{Claus C P\"ortner\\
+%     Department of Economics\\
+%     Albers School of Business and Economics\\
+%     Seattle University, P.O. Box 222000\\
+%     Seattle, WA 98122\\
+%     \href{mailto:claus@clausportner.com}{\texttt{claus@clausportner.com}}\\
+%     \href{http://www.clausportner.com}{\texttt{www.clausportner.com}}\\
+%     \& \\
+%     Center for Studies in Demography and Ecology \\
+%     University of Washington\\ \vspace{2cm}
+%     }
+
+\date{April 2018}
+
+
+%------------------------------------------------------------------------
+
+
+\begin{document}
+\graphicspath{{../figures/}}
+\DeclareGraphicsExtensions{.eps,.jpg,.pdf,.mps,.png}
+
+\setcounter{page}{-1}
+\maketitle
+\thispagestyle{empty}
+
+% \setcounter{page}{0}
+
+
+% \newpage
+\thispagestyle{empty}
+\doublespacing
+
+\begin{abstract}
+
+% Demography abstract
+\noindent 
+
+Strong son preference is typically associated with shorter birth spacing
+in the absence of sons, but access to sex selection has the potential to
+reverse this pattern because each abortion extends spacing by six to
+twelve months. 
+I introduce a statistical method that simultaneously
+accounts for how sex selection increases the spacing between 
+births and the likelihood of a son. 
+Using four rounds of India's National
+Family and Health Surveys, I show that, except for first births,
+the spacing between births increased substantially over the last four
+decades, with the most substantial increases among women most 
+likely to use sex selection.
+Specifically, well-educated women with no boys now
+exhibit significantly longer spacing and more male-biased sex ratios
+than similar women with boys. 
+Women with no education still follow the standard
+pattern of short spacing when they have girls and little evidence of sex
+selection, with medium-educated women showing mixed results. 
+Finally,
+sex ratios are more likely to decline within spells at lower parities,
+where there is less pressure to ensure a son, and more likely to
+increase or remain consistently high for higher-order spells, where the
+pressure to provide a son is high.
+
+
+\noindent JEL: J1, O12, I1
+\noindent Keywords: India, prenatal sex determination, censoring, competing risk
+\end{abstract}
+
+\newpage
+
+
+%------------------------------------------------------------------------
+
+\section{Introduction\label{sec:intro}}
+
+Parents' spacing of births has long served as a measure of son preference 
+\citep{Leung1988}.
+Before prenatal sex determination became available, the only recourse for 
+parents who wanted a son---but did not yet have one---was to have the next 
+birth sooner.
+Son preference is therefore often associated with shorter spacing after the 
+births of girls than boys 
+\citep{Das1987,Rahman1993,Pong1994,Haughton1996,Arnold1997,Soest2012,Rossi2015}.
+Shorter spacing is, in turn, associated with worse health outcomes for girls 
+and mothers 
+\citep{arnold98,Conde-Agudelo2000,Whitworth2002,Razzaque2005,Rutstein2005,Conde-Agudelo2006}.%
+\footnote{
+Parents are also more likely to cease childbearing after the birth of 
+a son than after a daughter 
+\citep{repetto72,ben-porath76b,Das1987,Arnold1997,arnold98,clark00,dreze01,filmer09,Basu2010,Altindag2016}.
+}
+
+However, the introduction of prenatal sex determination fundamentally changed the 
+relationship between son preference and birth spacing.
+Couples, who had shorter birth spacing before because of son preference,
+now have access to prenatal sex determination and sex-selective abortions,
+and each abortion increases birth spacing by six months to a year.
+The increase consists of three parts.
+First, starting from the time of the abortion, the uterus needs at 
+least two menstrual cycles to recover;  otherwise, the likelihood 
+of spontaneous abortion increases substantially \citep{zhou00b}.
+The second part is the waiting time to conception, which is between 
+one and six months \citep{Wang2003}.
+Finally, sex determination tests are reliable only from three months 
+of gestation onwards.
+
+As a result, we now have a situation where we may observer \emph{longer} spacing
+for families with daughters than for families with sons, precisely because
+strong son preference leads them to use sex selection.
+Working in the opposite direction, couples with strong son preference
+will likely still try to conceive earlier in the absence of sons. 
+They may even shorten the time until conception, knowing that they might
+have to go through multiple pregnancies and abortions before they
+conceive a son.
+To further complicate matters, we can still observe shorter birth spacing 
+after the births of daughters as a representation of son preference for 
+families who---for one reason or another---do not use prenatal sex selection.
+
+Spacing, by itself, can therefore no longer be used as a direct measure of 
+son preference, but understanding birth spacing remains a critical undertaking.
+First, 
+birth spacing is still useful in understanding son preference, 
+if combined with the likelihood of observing a boy or a girl.
+Second, 
+the duration between births may be an important factor in parents' 
+decisions, either for preference or economic reasons.
+It is, for example, possible that even parents with strong son preference 
+may reverse their decision to use prenatal sex determination---and carry 
+the next pregnancy to term whether male or female---as the duration from 
+the previous birth becomes sufficiently long.
+
+At a broader level, we know less about what determines spacing behavior in 
+developing countries than in developed countries.%
+\footnote{
+Even the effects of access to contraceptive on spacing are uncertain.
+On the one hand, access to contraceptives allows women to avoid too 
+short spacing between birth, which would increase birth spacing.
+On the other hand, increased reliability of access and effectiveness of
+contraceptives can lead to shorter spacing between births 
+\citep{Keyfitz1971,Heckman1976}.
+With less reliable contraception parents choose a higher level 
+of contraception, which results in longer spacing, to avoid having 
+too many children by accident.
+But, as contraception becomes more effective parents can more
+easily avoid future births, allowing them to reduce the spacing 
+between births without having to worry about overshooting their 
+preferred number of children.
+This idea may explain why better-educated women have
+shorter spacing than less educated women in some instances
+ \citep{Tulasidhar1993,Whitworth2002}.
+These two counteracting effects may explain why finding statistically 
+significant effects of contraception use on birth spacing is 
+difficult \citep{Yeakey2009}.
+}
+With increasing numbers of women entering the labor force in developing
+countries, understanding how couples make timing decisions will be necessary
+for the design of suitable policies \citep{Portner2018}.
+Furthermore, if spacing does affect health outcomes for mother and children, it is 
+essential to understand what drives changes in spacing.
+We know, for example, that health outcomes for girls appear to improve
+in the presence of sex selection \citep{Lin2014,Hu2015}.
+It is possible that these improvements are an unintended side-effect of
+the longer spacing that arises from sex-selective abortions, rather than
+because the smaller number of girls makes them more valued as is often
+assumed.
+
+
+In this paper, I introduce and apply a novel empirical method that directly incorporates 
+the effects of sex-selective abortions on 
+the duration between births
+\emph{and} 
+the likelihood of a son. 
+The method can be used to analyze both situations with and without prenatal
+sex selection.
+My proposed method allows for the time since the previous 
+birth to affect the decision on sex selection.
+By examining under what circumstances sex selection decisions change with 
+spacing, we can draw a more nuanced picture of the degree of son preference.
+
+% [Why India?]
+I apply the method to birth histories of Hindu women, using data from 
+India's National Family and Health Surveys (NFHS), covering the period 
+1972 to 2016. 
+India is a particularly compelling case.
+On the one hand, India has seen dramatic increases in the males-to-females ratio 
+at birth over the last three decades as access to prenatal sex determination 
+expanded 
+\citep{das_gupta97,Sudha1999,Arnold2002,retherford03b,jha06}.%
+\footnote{
+India is not alone; both China and South Korea saw
+significant changes in the sex ratio at birth over the same period 
+\citep{Yi1993,park95}.
+}
+On the other hand, research suggests that son preference in 
+India, when measured as ideally having more boys than girls, is decreasing 
+over time and with higher education \citep{bhat03,pande07}.
+% %
+% \footnote{
+% This measure of son preference is commonly used in the literature. 
+% See, for example, \citet{clark00}, \citet{Jensen2009}, and \cite{Hu2015}.
+% }
+
+There have also been substantial changes in access and legality of
+prenatal sex determination in India over the period covered.
+Abortion has been legal in India since 1971 and still is.
+The first reports of sex determination appeared around 
+1982--83 \citep{Sudha1999,bhat06,Grover2006}.
+The number of clinics quickly increased, and knowledge about sex selection 
+became widespread after a senior government official's wife aborted a 
+fetus that turned out to be male \citep[p.\ 598]{Sudha1999}.
+In 1994, the Central Government passed the Prenatal Diagnostic Techniques 
+(PNDT) Act, making determining and communicating the sex of a fetus illegal.%
+\footnote{
+Details about the act are at \href{http://pndt.gov.in/}{http://pndt.gov.in/}.
+The number of convictions has been low.
+It took until January 2008 for the first state, Haryana, to reach five convictions.
+Hence, private clinics apparently operate with little risk of legal action 
+\citep{Sudha1999}.
+Furthermore, there is little evidence that bans like this significantly
+affect sex ratios \citep{Das-Gupta2016}.
+}
+% Hence, the data make it possible to show how the spacing between births and
+% sex ratios have changed with the introduction of prenatal sex determination,
+% and whether the ban affected the relationship between birth spacing and sex 
+% ratios.
+
+
+% [Results]
+There are four main results.
+First, there has been a general increase in the length of spacing between births
+over the four decades covered by the data.
+The exception is for first births, where the median duration has either
+remained the same or slightly declined, although this hides a
+significant compression of the variation in spell length.
+Second, the most substantial increase in spacing is for the women who
+are most likely to use sex selection.
+Specifically, among the best-educated women, those with no boys now has 
+significantly longer spacing---and a more male-biased sex ratio---than 
+similar women with boys.
+Third, women with no education still follow the standard pattern of
+short spacing when they have girls and little evidence of the use of sex
+selection.
+In other words, these women adhere to a strategy where they achieve a
+son through higher fertility rather than the use of sex selection.
+Finally, sex ratios are the most likely to decline within spells at
+lower-order spells, where the pressure to provide a son is smaller, and
+are more likely to increase or remain consistently high for higher-order
+spells, where the pressure to ensure a son is high.
+
+
+
+%------------------------------------------------------------------------------------
+
+
+\section{Estimation Strategy\label{sec:strategy}}
+
+% Requirements for method and the intuition behind each:  
+%  - Account for censoring (hazard model)
+%  - Work both with and without sex selection (competing risk part)
+%  - Allow for changes in use of sex selection within spell (flexible specification of baseline hazard ?)
+%  - Capture that the shape of the hazard function differ across groups
+%    (non-proportionality); needs a better description, maybe using example
+%    of shorter spacing and/or use of sex selection. Differences in parity
+%    progression likelihood. 
+
+The unit of analysis is a spell, the period from one birth, or marriage for
+the first spell, to the next.
+For some spells, the duration is censored, for example, because the survey
+took place before the birth that would end the spell or because the couple
+has finished childbearing.
+The standard approach to address the censoring of spells, which I follow here, is 
+to use a hazard model.
+To capture the effects of sex selection, I extend the standard hazard model 
+to allow for multiple exit states and a non-proportional hazard specification.
+
+First, I use a competing risk framework with two possible exit states, either a boy
+or a girl is born, because access to prenatal sex determination means that
+parents can choose the sex of children born.
+Prior research on birth spacing, in contrast, relied on single
+exit state hazard models.%
+\footnote{
+\cite{Merli2000} used a discrete hazard model to examine whether 
+there were under-reporting of births in rural China, although they 
+estimated separate waiting time regressions for boys and girls.
+}
+Having only one exit state works when there is no sex selection---making the 
+sex of the child a random event---but not here since at least some couples use 
+sex selection.
+
+Second, I use a non-proportional hazard specification because
+sex composition and the use of sex selection are likely to affect 
+the shape of the hazard functions across groups.
+The use of a non-proportional specification also mitigates any potential 
+effects of unobserved heterogeneity when used in conjunction with a 
+flexible baseline hazard \citep{Dolton1995}.
+Proportional hazard models, where covariates have a multiplicative 
+effect on the hazard rate, are more efficient than non-proportional 
+models, but only provided that the proportionality assumption hold.
+If the proportionality assumption does not hold, the estimates
+are biased.
+
+It is unlikely---even in the absence of prenatal sex determination---that 
+the effect of, for example, the sex composition of previous births have 
+the same effect throughout the entire spell.
+Assuming that the effect of sex composition is the same throughout a spell
+is especially problematic for higher-order spells where different
+sex composition of previous births can lead to substantial differences 
+both in the likelihood of progressing to the next birth and
+how soon couples want their next child if they are going to have one.
+
+The introduction of prenatal sex determination is likely to exacerbate 
+any bias from the proportionality assumption.
+First, sex-selective abortions affect birth spacing, and use
+varies across groups.
+Second, the use of sex selection may vary within a spell, which means 
+that the effects of covariates vary within the spell as well.
+
+In summary, my proposed model is a discrete time, non-proportional, competing risk 
+hazard model with two exit states: either a boy or a girl is born.
+For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
+the spell continues until time $t_i$, when either a birth occurs or the spell 
+is censored.%
+\footnote{
+The time of censoring is assumed independent of the hazard rate,
+as is standard in the literature.
+}
+There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
+$J_i$ is a random variable indicating which event took place.
+The discrete time hazard rate $h_{ijt}$ is
+\begin{equation}
+ h_{ijt} = \Pr (T_i=t, J_i=j \mid T_i \geq t; \mathbf{Z}_{it},\mathbf{X}_{i} ),
+\end{equation}
+where $T_i$ is a discrete random variable that captures when woman $i$'s birth occurs.
+To ease presentation the indicator for spell number is suppressed.
+The explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, include 
+individual, household, and community characteristics discussed below.
+
+The hazard rate is specified as
+\begin{equation}
+ h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
+ {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
+ \label{eq:hazard}
+\end{equation}
+where $D_{j}(t)$ is the piece-wise linear baseline hazard for outcome $j$, captured
+by dummies and the associated coefficients,
+\begin{equation}
+D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
+\end{equation}
+where $D_m = 1$ if $t=m$ and zero otherwise.
+This approach to modeling the baseline hazard is flexible and does not place 
+overly strong restrictions on the baseline hazard.
+
+The explanatory variables in $\mathbf{Z}$ and the interactions between them 
+are the non-proportional part of the model, which means that they are
+interacted with the baseline hazard:
+\begin{equation}
+ \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2),
+\end{equation}
+where $D_j(t)$ is the piece-wise linear baseline hazard and $\mathbf{Z}_1$ captures sex 
+composition of previous children, if any, and $Z_2$ captures area of residence.
+The non-proportionality allows the effects of the main explanatory variables on the probabilities 
+of having a boy, a girl, or no birth to vary over time within a spell.
+The remaining explanatory variables, $\mathbf{X}$, enter proportionally,
+but to further minimize any potential bias from assuming proportionality, estimations 
+are done separately for different levels of mothers' education and for different 
+time periods.
+% The exact specifications and the individual variables are described below.
+
+Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
+likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
+Hence, transforming the data, so each observation is an interval---here equal
+to three months---the model can be estimated using a standard multinomial logit model.%
+\footnote{
+A potential issue is that the multinomial model assumes that alternative 
+exit states are stochastically independent,
+also known as the Independence of Irrelevant Alternatives (IIA) assumption.
+This assumption rules out any individual-specific unmeasured or 
+unobservable factors that affect both the hazard of having a girl and the 
+hazard of having a boy.
+I, therefore, include a proxy for fecundity discussed in Section \ref{sec:data}.
+Also, the multivariate probit model can be used as an alternative
+to the multinomial logit because the IIA is not imposed \citep{han90}.
+The results are substantially identical between these two models and
+available upon request.
+}
+In the reorganized data the outcome variable is 0 if the
+woman does not have a child in a given interval (the base outcome), 1 if 
+she gives birth to a son in that interval, and 2 if she gives birth to 
+a daughter in that interval.
+
+The main downside of this set-up is that interpretation of the estimated 
+coefficients is challenging;
+the coefficients show the change in hazards relative to the base outcome, 
+here no birth, rather than the hazard of an event.
+Hence, a positive coefficient does not necessarily imply that the associated 
+exit state becomes more likely as the explanatory variable increases because the 
+probability of the other exit state may increase even more \citep{thomas96}.
+
+It is, however, straightforward to calculate the predicted probabilities of 
+having a boy and of having a girl for each $t$ within a spell, conditional on 
+a set of explanatory variables and not having had a child before that period.
+The predicted probability of having a boy in period $t$ for a given set of 
+explanatory variable values, $\mathbf{Z}_k$ and $\mathbf{X}_k$, is
+\begin{equation}
+P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt}, t ) 
+=  
+\frac{ \exp(D_j(t) + \alpha_{1t}' \mathbf{Z}_{kt} + \beta_1' \mathbf{X}_{k} )}
+{1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt} ' \mathbf{Z}_{kt} + \beta_l ' \mathbf{X}_{k})},
+\label{eq:probability_boy}
+\end{equation}
+and the predicted probability of having a girl is
+\begin{equation}
+P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t ) 
+=  
+\frac{ \exp(D_j(t) + \alpha_{2t}'\mathbf{Z}_{kt} + \beta_2'\mathbf{X}_{k} )}
+{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}.
+\label{eq:probability_girl}
+\end{equation}
+Within each period the probability of not having a birth in period $t$
+is $1-P(b_{t})-P(g_{t})$.
+
+The distribution of spacing is captured by the survival curve, which shows 
+the probability of not having had a birth yet by spell duration, for
+a given set of explanatory variables.
+The survival curve at time $t$ is 
+\begin{equation}
+S_{t} 
+= 
+\prod_{d=1}^t 
+\left( 
+	1- \left(P(b_{d} | \mathbf{X}_{k}, \mathbf{Z}_{kd}, d) 
+	+ P(g_{d} | \mathbf{X}_{k}, \mathbf{Z}_{kd}, d) \right) 
+\right),
+ \label{eq:survival}
+\end{equation}
+or equivalently
+\begin{equation}
+S_{t} 
+= 
+\prod_{d=1}^t
+\left(
+\frac{ 1 }
+{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{ld}'\mathbf{Z}_{kd} + \beta_l'\mathbf{X}_{k})}
+\right).
+\end{equation}
+
+An important issue is that the probability of ever having a next birth varies 
+across groups.
+For example, as the parity progression literature shows, couples with stronger 
+son preference are less likely, for a given number of prior births, to ever have 
+a next birth if they already have one or more sons.
+Direct comparison of standard survival curves, therefore, tells us little 
+about how the spread of sex selection affects birth spacing across groups.
+
+
+To overcome this problem, I condition on the predicted likelihood of parity 
+progression when examining birth spacing measures, such as the median duration 
+to a birth.
+How well this approach works depends on whether the spell length covered is 
+sufficiently long that few women are likely to give birth after the spell cut-off.
+I discuss the choice of spell length below.
+It is important to note that the approach is not the same as merely calculating 
+the birth spacing measures for women who already have a given 
+parity child in the survey because that number does not take into account
+the censoring of spells that will eventually lead to a birth.
+In addition to calculating conditional birth spacing measures for different 
+percentages, I also present graphs of both standard survival curves and
+survival curves conditional on parity progression (which therefore
+begin at 100\% and end at 0\%).
+
+
+Finally, given the predicted probabilities of having a boy and of having 
+a girl for each $t$ within a spell, is it easy to calculate the estimated 
+percentage of children born that are boys, $\hat{Y}$, at each $t$  
+\begin{equation}
+\hat{Y}_t 
+= 
+\frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
+{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
+\times 100.
+\label{eq:probability_son}
+\end{equation}
+Combining the percentage boys and the likelihood of exiting the spell 
+across all $t$ gives the predicted percent boys born over the entire spell.
+In addition to the predicted percent boys over the entire spell, 
+I also present graphs of how the percentage boys born vary across time
+within a spell, together with the associated confidence interval for given 
+values of explanatory variables calculated using the Delta method.
+
+
+\section{Data\label{sec:data}}
+
+The data come from the four rounds of the National Family Health Survey 
+(NFHS-1, NFHS-2, NFHS-3, and NFHS-4),
+collected in 1992--1993, 1998--1999, 2005--2006, and 2015--2016.%
+\footnote{
+A delay in the survey for Tripura means that NFHS-2 has some observation 
+collected in 2000.
+}
+The surveys are large: NFHS-1 covered 89,777 ever-married women 
+aged 13--49 from 88,562 households;
+NFHS-2 covered 90,303 ever-married women aged 15--49 from 92,486 households;
+NFHS-3 covered 124,385 never-married and ever-married women aged 
+15--49 from 109,041 households;
+and 
+NFHS-4 covered 699,686 never-married and ever-married women aged
+15--49 from 601,509 households surveyed.
+
+I exclude visitors to the household, as well as
+women who have been married more than once, divorced, or who are 
+not living with their husband,
+women with inconsistent age at marriage,
+and those with missing information on education.
+Women interviewed in NFHS-3 or NFHS-4 who were never married or where Gauna 
+had not yet been performed were also dropped.
+The same goes for women who had at least one multiple births,
+reported having a birth before age 12, had a birth before marriage, or
+duration between births of less than nine months.
+Women who reported less than nine months between marriage and first birth
+remain in the sample---unless they are dropped for another reason---because 
+8.5\% fall into this category across the four surveys.
+Although it is possible that some of these births are premature, the high number of
+women who report a birth less than six months after their marriage indicates that for
+a majority conception likely occurred before marriage.
+
+Finally, I restrict the sample to Hindus,
+who constitute about 80\% of India's population.
+If the use of sex selection differ between Hindu and other religions, such 
+as Sikhs, assuming that the baseline hazard is the same would lead to bias.
+The other groups are each so small relative to Hindus that it is not
+possible to estimate different baseline hazards for each group.
+Furthermore, the other groups are so different in background and son 
+preference that combining them into one group would not make sense.
+
+There are four advantages to using the NFHS.
+First, surveys enumerators pay careful attention to spacing between births and
+probe for ``missed'' births.
+Second, no other surveys cover as extended a period in the same amount of detail.
+The four NFHS rounds allow me to show how spacing and 
+sex ratio changed from before sex-selective abortions were available until 2016.
+Third, NFHS has birth histories for a large number of women.
+% %
+% \footnote{
+% The Special Fertility and Mortality Survey appears to cover a much large number of households
+% than the three rounds of the NFHS combined, but \citet{jha06} only use the births that 
+% took place in 1997 making their sample sizes by parity smaller than here.
+% Their sample consists of 133,738 births of which 38,177 were first-born, 
+% 36,241 second-born, and 23,756 were third-born.
+% }
+Finally, even if probing for missing births does not eliminate recall error,   
+the overlap in cohorts covered and the large sample size makes it possible 
+to establish where recall error remains a problem.
+
+Recall error arises mainly from child mortality when respondents are 
+reluctant to discuss deceased children.
+Systematic recall error, where the likelihood of reporting a deceased 
+child depends on the sex of the child, is especially problematic because 
+it biases both spacing and sex ratios.
+Probing catches many missed births, but systematic recall error is 
+still a potentially substantial problem.
+
+Three factors contribute to the problem here.
+First, girls have significantly higher mortality risk than boys.
+Second, son preference may increase the probability that parents recall boys 
+more readily than girls.
+Finally, in NFHS-1 and NFHS-2 enumerators probed only for a missed birth if the
+initially reported birth interval was four calendar years or more,
+but, given short durations between births, especially after the birth of a girl,
+that procedure is unlikely to pick up all missed children.
+
+Recall error is heavily dependent on how long ago a woman was married 
+\citep{Portner2018b}.
+I, therefore, drop women married 22 years or more 
+for NFHS-1, with the corresponding cut-off points 23 years for NFHS-2, 
+and 25 years for NFHS-3 and NFHS-4.
+The final sample consists of 
+\input{../tables/num_women.tex}
+% [number] women, with [number] parity one through four births.
+
+
+\subsection{Spell Definition\label{sec:spell_def}}
+
+As mentioned above, 8.5\% of women gave birth less than nine months
+after they were married, and the first spell, therefore, begins at the 
+month of marriage.
+The exception is for women married very young, where I use the month they 
+turned 12.
+The second and subsequent spells begin nine months after the previous birth 
+because that is the earliest we should expect to observe a new birth.
+A few women report births that occurred less than nine months 
+after the previous birth; I drop those women from the sample as mentioned above.
+
+All spells continue until either a child is born or censoring occurs.
+Censoring can happen for three reasons:
+the survey takes place;
+sterilization of the woman or her husband;
+or too few births are observed for the method to work.
+For the first spell I set censoring because of too few births to 108 months 
+(nine years) after marriage,
+while for the second, third, and fourth spells censoring is at 96 months 
+(eight years) after a birth can occur.
+With these cut-offs, less than one percent of observed births occur after
+the spell cut-off.%
+\footnote{
+\input{../tables/num_missed.tex}
+Recall also that these numbers are totals across all 36 separate regressions.
+}
+
+
+I group spells into four periods based on the year of marriage
+or year of the previous birth:
+1972--1984, 1985--1994, 1995--2004, and 2005--2016.
+The periods follow the main changes in availability and legality of 
+prenatal sex determination discussed in the Introduction.
+The allocation into periods is determined by when conception and therefore 
+decisions on sex selection can begin, even if we do not observe
+any births until nine months later.
+
+The allocation into periods means that some spells cover two periods.
+A couple may, for example, be married in 1984, but not have their first 
+child until 1986.
+That couple's first spell will be in the 1972--1984 period, even though 
+most of the interval falls in the 1985--1994 period.
+Hence, prenatal sex determination was likely available when some
+children from spells that began in the 1972--1984 period were conceived,
+which could result in evidence of sex-selective abortions even for this
+period.
+Similarly, a spell that started in the 1985--1994 period may have been partly 
+or mostly under the PDNT act.
+The effect is a downward bias in the differences between the periods.
+
+\subsection{Explanatory Variables}
+
+I divide the explanatory variables into two groups.
+The first group consists of variables expected to affect the shape of the hazard function
+(the $\mathbf{Z}$ variables): 
+mother's education, sex composition of previous children, and area of residence.
+I chose these variables because the prior literature shows that they affect 
+spacing choices and correlate with sex selection.
+Increasing the number of variables interacted with the baseline hazard would
+further lower the risk of bias but at the cost of requiring more data to 
+precisely estimate.
+
+I divide women into three groups based on education attainment: no
+education, one to seven years of education, and eight and more years of education.
+The models are estimated separately for each education level to reduce
+the potential problem of including other variables as proportional.
+Increasing education of mothers correlates closely with lower fertility 
+\citep{schultz97}, and 
+we should expect lower fertility to lead to more use of sex selection.%
+\footnote{
+Fathers' education has two opposite predicted effects: the associated higher income
+should increase fertility and therefore lower the pressure to use sex selection, but
+the higher income also makes the use of sex selection cheaper.
+In practice, fathers' education had little effect on the hazards and the use of 
+sex-selective abortions, and I, therefore, do not include it.
+}
+
+I capture sex composition with dummy variables for the
+possible combinations for the specific spell, ignoring the ordering of births.
+As an example, for the third spell, three groups are used: Two boys,
+one girl and one boy, and two girls.
+It is, in principle, possible to estimate the model taking into account
+the ordering of children, but this would further lower the power of the
+test, by adding one additional group for the third spell and four
+additional groups for the fourth spell. 
+As discussed, the sex composition of previous children affects both the timing
+of births and the use of sex-selective abortions.
+
+Area of residence is a dummy variable for the household living in
+an urban area.
+The cost of children is higher in urban areas than in rural areas, and 
+there is easier access to prenatal sex determination in urban areas.
+Both factors are likely to lead to higher use of sex-selective abortions
+in urban than in rural areas.
+
+The second group of variables consists of those expected to have an 
+approximately proportional effect on the hazard.
+These include the length of the first spell 
+(for the second and higher-order spells to capture fecundity), 
+the age of the mother at the beginning of the spell, 
+whether the household owns any land, 
+and whether the household belongs to a scheduled tribe or caste.
+We cannot observe fecundity directly, but the time from marriage until 
+first birth is a suitable proxy because most Indian women do not use 
+contraception before the first birth and there is pressure to show that 
+a newly married woman can conceive \citep{dyson83,Sethuraman2007,Dommaraju2009}.
+The absence of contraception before the first birth is confirmed below by the 
+very short spells between marriage and first birth, even among the most educated.
+Hence, a long spell between marriage and first birth is likely due to low fecundity.
+For both duration from marriage to first birth and the age of the mother at the 
+beginning of the spell, I also include their squares.
+The remaining variables are dummies for household ownership of land and membership
+of a scheduled caste or tribe.
+
+
+\subsection{Descriptive Statistics}
+
+Appendix Table \ref{tab:des_stat1} presents descriptive statistics for
+the spells by education level and period they began.
+There is a substantial number of censored observations.
+As an example, for highly educated women who had their first child in the 2005--2016
+period, more than 40\% did not have their second child by the time of the survey.
+Censoring becomes even more important for the third and fourth
+spells, with around 70\% of the observations censored.
+The level of censoring also increases with parity and time,
+which reflects a combination of factors: timing of the surveys
+relative to the periods of interest, later beginning of childbearing, 
+falling fertility, and the increase in spell lengths from 
+sex-selective abortions.
+
+The share of urban women in the sample has fallen slightly over the
+periods, even though India's population has become progressively more urbanized.
+For the first and second periods, over 32\% of the women 
+entering the first spell lived in urban areas, falling to 
+30\% for the third period and 26\% in the last period.
+The most likely explanation is that the age of marriage has increased
+faster in urban areas than in rural areas.
+Hence, there are relatively more urban women, but fewer show up in the
+sample because they are not yet married.
+
+The population has become substantially better educated over time.
+Women with no education constituted almost 60\% 
+in the first period, but less than twenty percent in the last period.
+Correspondingly, in the first period just over twenty percent had eight or more 
+years of education, whereas in the last period more than 60\% did.
+These changes are an underestimate of the increase in female
+education overall because many of the younger women with more education
+have not yet married than therefore are not in the sample.%
+\footnote{
+Women with eight or more years of education accounted for 65.9\% of
+unmarried women in NFHS-3 and 82.8\% of unmarried women in NFHS-4.
+See \citet[p 56]{International-Institute-for-Population-Sciences-IIPS2007}
+and \citet[p 61]{International-Institute-for-Population-Sciences-IIPS2017}
+for more information.
+ }
+
+Age at marriage increased over time across all three education groups.
+The most substantial increase was for women without any education, where
+the average went from below 16 years of age to 18.5.
+The smallest change is for the most educated women where the average age
+at marriage went up by less than a year---from 19.6 to 20.4---across the 
+four periods.
+
+
+\section{Results\label{sec:results}}
+
+% [Hypotheses / questions]
+
+The overall hypothesis is that spacing patterns significantly changed 
+as prenatal sex determination became available.
+To address this, I examine three questions in order of importance.
+
+First, did the spacing after girls increase relative to the spacing
+after boys?
+The underlying hypothesis is that in the absence of sex selection son 
+preference leads to shorter spacing after the birth of a girl than after the 
+birth of a boy, whereas son preference increases the spacing after the birth 
+of a girl relative to after the birth of a boy when prenatal sex selection is 
+available.
+I still expect parents to \emph{try} to conceive earlier after the birth 
+of a girl than after a boy, but the abortions will increase the 
+duration between births, and may even lead to longer spacing after the
+birth of girls than after boys.
+
+
+Second, have the shapes of the survival curves changed?
+The shapes of the survival curves provide information both on general
+changes in birth spacing and whether parents are
+still trying to conceive earlier after girls than boys.
+I expect this to be the case if there is still a strong preference for
+boys, and, as discussed above, this behavior may even become more pronounced
+with access to sex selection.
+
+
+Finally, does the sex ratio change within a spell?
+There are two reasons why this is interesting.
+First, if the sex ratio changes within a spell, relying on the observed sex
+ratio at birth---as is standard practice in the literature---will not provide
+correct estimates of the use of sex selection or the sex ratio at
+the conclusion of childbearing.
+Second, any changes in the sex ratio within a spell provides clues
+to parents' preferences over the ideal spacing between births and the
+distribution of son preference in the sample.
+
+
+% [How to read tables]
+Tables \ref{tab:median_sex_ratio_low}, \ref{tab:median_sex_ratio_med}, and
+\ref{tab:median_sex_ratio_high}
+show the predicted median duration and sex ratios by period, spell, and sex 
+composition for the three education levels separated by area of residence.%
+\footnote{
+Appendix Tables \ref{tab:p25_p75_low}, \ref{tab:p25_p75_med}, and 
+\ref{tab:p25_p75_high} show 25th and 75th percentiles durations.
+} 
+For each subsample, I first estimate the model described in Section 
+\ref{sec:strategy} and then use the estimated coefficients to predict 
+median duration and sex ratio.
+For the standard errors, I use bootstrapping for both measures,
+where the model is repeatedly estimated using resampling with replacement.
+
+
+The predicted median duration is the weighted average over the women in the 
+subsample, using the individual probabilities of giving birth as weights.
+For each woman in a sample, I calculate her probability of ending the spell 
+with a birth, and her contribution to median spacing is how long it will take
+from the beginning of the spell to where she is predicted to reach half of that probability.
+For example, if a woman has an 80\% probability of having a birth by the end of 
+the spell, her median duration is the number of months it takes to reach
+40\% probability of having exited with a birth.
+The 40\% is equivalent to the 60\% point on a standard survival curve because that 
+captures how many have not yet exited.
+
+For the second through the fourth spell, I show whether durations for sex 
+composition other than only girls are statistically significantly different 
+from the duration with only girls.
+To calculate the level of statistical significance, I bootstrap the
+difference in spacing.
+ 
+The cleanest test is comparing durations after only boys with durations after
+only girls, but the number of births to women with only sons becomes small 
+in the later periods.
+Hence, it is possible to have substantial differences in spacing that are
+not statistically significant because of low power, especially for the third 
+and fourth spell.
+
+The predicted sex ratio is the weighted average over the women in the sample's 
+individual predicted sex ratios, using the individual probabilities of having
+given birth by the end of the spell as weights.
+Each woman's predicted sex ratio is the weighted average of the predicted
+percentage boys over the months in the spell calculated using equation 
+(\ref{eq:probability_son}) and the probability of giving birth in each month 
+as weights.%
+\footnote{
+Imagine a spell has two periods and that the estimated percentage boys for a
+woman are 54\% and 66\% and that the likelihood of having a birth is 20\% and 40\%.
+The likelihood of having a birth is the change in the survival curve; 
+in other words, there is 40\% chance that she will not have given birth by the end of 
+this spell.
+This woman's percentage boys is then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$.
+}
+The predicted sex ratio captures the percent boys that will have been born to women 
+in the sample when childbearing for that spell is over.
+
+Each predicted percent boys is tested against the natural percentage 
+boys using the bootstrapped standard errors.
+The natural sex ratio is approximately 105 boys to 100 girls or
+51.2\% \citep{ben-porath76b,jacobsen99,Portner2015b}.
+The predicted percentage boys may differ from the natural rate because of 
+natural variation, any remaining recall error not corrected for, or 
+sex selection. 
+
+\subsection{No Education Women}
+
+\input{../tables/bootstrap_duration_sex_ratio_low.tex}
+
+Women with no education follow a pattern consistent with son
+preference with shorter spacing when they have only girls compared 
+to when they have one or more sons, and the differences are often 
+statistically significant as shown in Table \ref{tab:median_sex_ratio_low}.
+Most of the women without education live in rural areas,
+whereas there are relatively few urban women with no education.
+There are especially very few urban women to based the third
+and fourth spell results on, and I therefore focus on rural women.
+
+Predicted median duration has increased over time within
+each sex composition.
+The exception is for the first spell, where there is little
+change, and possibly even a small decline.
+
+The differences in duration across sex compositions increase with 
+spell number.
+For the second spell, the difference in median duration between
+having a girl or a boy as the first-born are mostly between a half
+and one month.
+For the third spell, the difference in duration between only girls 
+and only boys is, on average, slightly over one month and statistically 
+significant in all periods.
+The differences for the fourth spell are between two and three months, 
+except for the 1972--1984 period, which is also the only period where 
+the difference is not statistically significant.
+
+There are no clear time trends in the differences in median duration
+across sex compositions or the predicted sex ratios across the four periods.
+Despite that some sex ratios are statistically significantly higher 
+than the natural sex ratio there is therefore little consistent evidence 
+for the use of sex selection for women without education.
+There has, for example, been relatively little change in the length
+of spacing for rural women with two girls in the third spell and 
+the predicted sex ratio was higher in the 1985--1994 period
+than in the 2005--2016 period.
+The possible exception is the fourth spell, where both duration 
+and sex ratio has increased for women with three girls, although
+the \emph{difference} across sex compositions has remained almost
+the same.
+
+\subsection{Middle Education Women}
+
+\input{../tables/bootstrap_duration_sex_ratio_med.tex}
+
+Women with one to seven years of education follow a pattern
+broadly similar to those with no education as 
+Table \ref{tab:median_sex_ratio_med} shows.
+The sample size is more evenly distributed across urban and rural 
+for this education group than for the no education women.
+As a result, the only spells where there are few women to base 
+results on are for the fourth spell for urban women and the first 
+period of the fourth spell for rural women.
+
+The spacing between births increased over the four decades.
+On average, the increase is approximately three to four months.
+The exception is again the first spell, where the time from
+marriage to first birth remained the same or fell slightly.
+
+In the period before sex selection became available, 1972--1985,
+the differences in spacing between only girls and only boys
+increase with between the second and third spell.
+For both urban and rural women, the difference in duration is just over
+a month for the second spell, but it is 1.4 and 2.8 months for urban and
+rural women, respectively, for the third spell.
+In the three later periods, there is no clear pattern
+in the differences across sex compositions.
+
+The differences in duration between only girls and only boys 
+appear to decrease over time.
+The exception is for the two later periods where the
+differences are slightly larger in the last period compared
+with the second-to-last period. 
+
+The decreases in differences are accompanied by increases
+in predicted sex ratios, some of which are statistically 
+significantly different from the natural sex ratio.
+Hence, even though the evidence is not substantial, it does
+appear that women with one to seven years of education 
+have begun to use sex selection at higher-order spells.
+
+\subsection{High Education Women}
+
+\input{../tables/bootstrap_duration_sex_ratio_high.tex}
+
+Women with eight or more year of education mostly followed 
+the traditional spacing pattern before sex selection became 
+available as shown in Table \ref{tab:median_sex_ratio_high}.
+Compared to the two other education groups there are,
+however, more situations where the pattern is less clear.
+Part of the problem may be that there are few women in
+this group for the 1972--1984 period, and, hence, only 
+the results for the first and second spells in both urban 
+and rural areas are likely reliable.
+
+
+Birth spacing increases substantially over time, 
+especially for urban women. 
+The median duration for urban women increases between a half
+and a full year, whereas the increase for rural women 
+is between a quarter and half a year.
+The spacing between marriage and the first birth is still the
+exception, and for this group of women, there is a decline of
+about a month for both urban and rural areas.
+
+
+In urban areas, the increase in spacing with only girls is so 
+substantial that women with only girls have longer spacing to the 
+next birth than any of the other sex compositions from 1985 onward.%
+\footnote{
+The exception is the second spell for the 1985--1994 period, where women
+with one girl have 0.1 months shorter spacing the women with one boy.
+}
+This reversal in the standard spacing pattern is substantial, 
+especially for the third and fourth spells.
+For the latest period, the difference between only girls than the
+other sex compositions is between 4.8 and 9.1 months for the third
+and fourth spell.
+Furthermore, the differences are statistically significant, except
+for only boys for the fourth spell because few women have a fourth
+birth if they have three boys already.
+
+
+Rural women also show a reversal of the typical spacing pattern,
+although the changes are less pronounced than for urban women.
+The third spell shows that spacing for women with only girls become
+increasing longer compared to the other two sex compositions.
+Most of the differences are statistically significant, although they are 
+smaller than for urban women.
+For the second spell, there is little difference in spacing for
+women with one girl and women with one boy.
+
+The predicted sex ratios at the end of the spells show that
+the reversal in spacing patterns is not the result of a declining son
+preference but instead corresponds to a substantially more male-biased 
+sex ratio.
+For urban women, the predicted sex ratio with only girls 
+is consistently above 60\% boys for the third and fourth spells.
+For rural women, the predicted sex ratios are lower than for urban
+women but still substantial and statistically significant at close 
+to 60\%.
+The high predicted sex ratios are presumably the result of increased 
+use of sex selection.
+
+When trying to understand the strength of son preference, it is interesting
+that the sex ratio is also statistically significantly different
+from the natural rate in the case where women already have one
+son for the third and fourth spells.
+Again, the sex ratio in the presence of one son for the third and
+fourth spells are higher in urban areas than rural areas, although
+the difference is less than for women with only girls.
+Hence, it is possible that women are still willing to use sex selection
+even after giving birth to one, although this behavior may also 
+be in response to either experienced
+or expected mortality of the first son born.
+
+It also appears that there is a slightly elevated sex ratio among 
+first-born for urban women. 
+There is, however, no corresponding increase in spacing; instead,
+the median duration has fallen over time and is the lowest among
+the three education groups.
+Hence, unless duration between marriage and first birth has decreased 
+substantially by itself, for example, because of improved health, it
+is not clear how much stock to place on the increased sex ratio
+among first-borns as evidence for sex selection among first-borns.
+
+Both of the last two results are different from prior studies using NFHS data.
+There are two potential explanations.
+First, the NFHS-4 is substantially larger than the three prior surveys.
+Hence, it is possible that the effects have been there all along, but 
+we did not have the power to detect them.
+Second, it is possible that at least the first-born results are an
+artifact of any recall error not captured by the data restrictions.
+Certain types of recall error would also explain why the sex ratio for
+the second spell and one boy is statistically significantly \emph{below} 
+the natural sex ratio \citep{Portner2018b}.
+
+
+\subsection{Distribution of Birth Spacing Across Sex Compositions and Time}
+
+Median spacing is a convenient way to understand the overall changes but
+may hide important differences in the distribution of spacing.
+This section, therefore, provides more detail on how spacing is distributed
+over time and sex compositions using a graphical approach.
+
+I show survival curves conditional on predicted parity progression rather than
+standard survival curves. 
+The advantage of this approach is that it is possible to directly compare 
+the distribution of spacing to next birth across groups, independently of 
+differences in how likely the next birth is.
+Because the conditional survival curves are independent of the likelihood
+of final parity progression, they all begin at 100\% and end at 0\%.
+
+Instead of averaging across the entire sample, I calculate the conditional
+survival curves for an average woman using the method detailed in 
+Section \ref{sec:strategy}.
+For each combination of education and spell, I use values based on the
+average age at the start of the spell and, for the second and higher
+spells, the average duration of the first spell.
+Furthermore, I use the majority categories for the categorical explanatory 
+variables, which means no ownership of land and not in a scheduled caste or 
+tribe.
+The characteristics used do not change across period to ensure that 
+composition effects do not drive the changes.
+
+In the interest of brevity, I discuss only a select set of subsamples.
+Figure \ref{fig:pps_spell1} shows spacing for the first spell across the
+four periods for rural women with no education and urban women with 
+eight or more years of education.
+Figures \ref{fig:pps_low} and \ref{fig:pps_high} show spacing across sex
+compositions for the second, third, and fourth spells for the first period, 
+1972--1984, and the last period, 2005--2016, for rural women with no 
+education and for urban women with eight or more years of education.
+The Appendix shows standard and conditional survival curves for all groups and 
+time periods, and I discuss some examples of standard survival
+curves in the following section.%
+\footnote{
+To ease legibility of the graphs some three months intervals are combined
+into longer ones when there are few births available in the sample.
+}
+
+% First spell for low and high education women
+
+\begin{figure}[htpb]
+\centering
+\setcounter{subfigure}{-1}
+\subfloat[Rural Women with No Education]{
+    \begin{minipage}{0.48\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_low_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[Urban Women with 8 or More Years of Education]{
+    \begin{minipage}{0.48\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on progression to first birth; start point is month of marriage
+}
+\label{fig:pps_spell1}
+\end{figure}
+
+The biased sex ratio for the first spell for the most educated 
+women suggests that there might be sex selection on the first birth.
+I, therefore, begin by comparing in Figure \ref{fig:pps_spell1} how the distribution 
+of spacing has changed over time for rural women with no education and urban women 
+with eight or more years of education.
+What is most striking is how similar the distribution of spacing is across the
+two groups.
+
+Both groups show little change in median spacing, but that masks a substantial
+compression of when most of the births occur.
+In the 1972--1984 period, the middle 80\% of births for women with no education 
+are predicted to occur between approximately 6 and 64 months, whereas in the 
+2005--2016 period it is between 12 and 54 months.
+Hence, the compression is equivalent to more than a full year.
+Women with eight or more years of education show a slightly smaller compression:
+in the 1972--1984 period, the middle 80\% of births are predicted to occur between
+approximately 6 and 48 months, whereas in the 2005--2016 period it is between
+12 and 46 months.
+Hence, the compression is eight months.
+
+Women became less likely to conceive before marriage over time.
+In the first two periods there was a relatively smooth decline in the number of
+women without a birth starting at the time of marriage, but in the last two
+periods, there are few women who exit early after marriage and
+instead there is a substantial dip between 9 and 12 months after
+marriage.
+
+It is likely that the compressed spacing, beginning at nine months
+after marriage in the later periods, is associated with better health
+and higher age at marriage.
+For example, women without education have seen an increase in the average 
+age at marriage from below 16 to 18.5 from the first period to the last 
+while women with the most education increased from 19.5 to 20.4.
+
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{Second Spell}}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Third Spell}}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Fourth Spell}}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on progression to next birth for rural women without
+education; start point for each spell is nine months after prior birth
+}
+\label{fig:pps_low}
+\end{figure}
+
+For women with no education, Figure \ref{fig:pps_low} shows that the median results
+above are consistent with the distribution of spacing within a spell with spacing 
+after only girls consistently shorter than after only boys.
+There are slight variations in how strong this effect is across the three spells.
+On the one hand, for the second spell the difference in spacing between
+when the first child is a girl versus when the first child is a boy as
+first-born remains almost the same across the four decades.
+On the other hand, for the third spell the differences between two girls and 
+the other sex compositions become more pronounced over time, and especially
+the difference between two girls and two boys have become substantially larger.
+The fourth spell results are based on relatively few observations but do
+indicate that women with either only girls or two girls and one boy have
+shorter spacing than women with only boys or one girl and two boys.
+Although the evidence is not substantial, it does appear that there is a slight
+preference for two boys in the sense that spacing becomes longer once the couple
+has at least two boys than for the other sex compositions.
+
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{Second Spell}}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Third Spell}}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Fourth Spell}}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.46\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on progression to next birth for urban women with eight or
+more years of education; start point is nine months after prior birth
+}
+\label{fig:pps_high}
+\end{figure}
+
+
+The distribution of spacing for the second spell is almost indistinguishable 
+between urban women with eight or more years of education and rural women 
+with no education for the 1972--1984 period, as shown in Figure \ref{fig:pps_high}.
+The small difference points to these two very different groups of women behaving similarly
+in response to son preference in a situation where there was little access to
+prenatal sex determination or little incentive to use it early even for those 
+who might have had access.
+
+Whereas the no education group show almost no change across the four decades,
+the high education women show a rightward shift if the spacing pattern when
+the first child is a girl.
+The result is that the spacing patterns are close to identical after first-born 
+girls and after first-born boys.
+Given the elevated predicted percentage boys in Table \ref{tab:median_sex_ratio_high},
+this change is consistent with the use of sex selection for women with a girl 
+as their first child.
+
+The hypothesized correlation between use of sex selection and reversal of 
+the standard spacing pattern show up clearly in the 2005--2016 period for the 
+third spell with spacing to the third child consistently longer with two girls 
+than with either two girls or one boy and one girl.
+The rightward movement for only girls from the, mostly, standard pattern in 
+the 1972--1984 period to the new pattern in the 2005--2016 period is substantial.
+There are also indications that the spacing distribution has moved rightward
+for women with one boy and one girl relatively to women with two boys, which
+provides some evidence for the use of sex selection for this group.
+The caveat is that the 1972--1985 period also had a biased sex ratio, which
+points to uncorrected recall error for this group.
+
+There is an even more pronounced rightward shift for spacing after only
+girls in the fourth spell for the first years of the spell. 
+The caveat is that there are few births to base the results on,
+especially for women with two or more sons.%
+\footnote{
+As mentioned, it is possible that some women had access to sex selection even
+in the first period.
+I would expect well educated urban women with more children to be the
+most likely to know about and use this early access to prenatal sex determination.
+}
+Furthermore, the differences are substantial across most of the distribution.
+Twelve months after the beginning of the spell there is a more than ten 
+percentage points difference in the conditional survival curves for only girls
+and only boys.
+That is, of the women who are predicted to have a fourth child just over 30\%
+of women with three boys have had their fourth child, while less than 20\% of
+those with three girls have had theirs.
+Even at three years after the beginning of the spell, there is a more than 
+five percentage points difference.
+
+As discussed above there is some evidence of a two-son preference with
+the spacing pattern almost the same for women with three boys and with
+two boys and one girl.
+The conditional survival curve for women with one boy and two girls is
+consistently above those for women with two or more son, but below those 
+with three girls.
+The pattern fit the predicted sex ratios shown above where the highest
+predicted sex ratio is for women with only girls, followed by those
+with one son and two girls, and those with two or more boys having
+almost the same sex ratio.
+
+
+
+\subsection{Does Sex Selection Change within Spells?}
+
+The above results show that length of birth spacing increased 
+more for women with only girls than for other sex compositions
+as sex ratios became more male-biased, presumably because
+of increased use of sex selection.
+Neither the median spacing or the conditional survival curves,
+however, can tell us whether sex selection varies \emph{within}
+a spell or provide any information about the likelihood of
+exiting a spell with a birth.
+To understand both, I now turn to the standard survival curves
+and predicted sex ratios by spell duration.
+
+
+\begin{figure}[htpb!]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{Urban}}
+\setcounter{subfigure}{-2}
+\subfloat[1995--2004]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_urban_g_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_urban_g_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+}
+\setcounter{subfigure}{-1}
+\subfloat[2005--2016]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_g_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_g_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Rural}}
+\setcounter{subfigure}{0}
+\subfloat[1995--2004]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_rural_g_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_rural_g_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+}
+\setcounter{subfigure}{1}
+\subfloat[2005--2016]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g4_high_rural_g_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_rural_g_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of 
+no birth yet from nine months after first birth for women with a girl
+as their first child and eight or more years of education 
+for the 1995--2004 and 2005--2016 periods
+} 
+\label{fig:decreasing_sex_ratio} 
+\end{figure}
+
+
+
+\begin{figure}[htpb!]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{First children 2 girls}}
+\setcounter{subfigure}{-2}
+\subfloat[1995--2004]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_gg_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_gg_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+}
+\setcounter{subfigure}{-1}
+\subfloat[2005--2016]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_gg_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_gg_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{First children 1 boy and 1 girl}}
+\setcounter{subfigure}{0}
+\subfloat[1995--2004]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_bg_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_bg_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+}
+\setcounter{subfigure}{1}
+\subfloat[2005--2016]{
+   \begin{minipage}{0.39\textwidth}
+       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_bg_pc}}\\
+       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_bg_s}}
+       \captionsetup[subfigure]{labelformat=parens}
+   \end{minipage}
+}
+\caption{Predicted probability of having a boy and probability of 
+no birth yet from nine months after second birth for urban women with
+eight or more years of education 
+for the 1995--2004 and 2005--2016 periods
+} 
+\label{fig:increasing_sex_ratio} 
+\end{figure}
+
+The predicted sex ratio may change within a spell for, at
+least, two reasons.
+First, parents may stop using prenatal sex determination within
+a spell once the duration from the previous birth becomes long enough.
+The desire for short spacing could, for example, arise from 
+economies of scale in childbearing and rearing that parents lose 
+if children are born too far apart \citep[p 374]{schultz97}. 
+In this case, we should observe the predicted sex ratio decline
+with spell length.
+
+Second, if the degree of son preference varies across women within 
+the sample, but their behavior is not affected by duration from the 
+previous birth, we should observe an increasing share of births come from 
+parents with stronger son preference as the duration from the
+previous birth increases.
+Whereas the early births are a combination of births to
+people with lower son preference and those with stronger son
+preference who conceived a son in the first or second pregnancy,
+births later in the spell are then predominately from those with stronger
+son preference who have not yet conceived a son.
+In this case, we should see an increase in the sex ratio 
+as duration increases.
+
+
+Figures \ref{fig:decreasing_sex_ratio} and \ref{fig:increasing_sex_ratio} show
+examples of how sex ratio behave within spells.
+Both are for women with eight or more education since the results above indicate
+that they are the most likely to use sex selection or other means of achieving 
+an unequal sex ratio.
+Figure \ref{fig:decreasing_sex_ratio} shows results for the second spell for
+the 1995--2004 and 2005--2016 periods for women with a girl as their first
+child by area of residence.
+Figure \ref{fig:increasing_sex_ratio} shows results for the third spell for
+the same two periods for urban women with either two girls or one boy and one
+girl as their first two children.
+
+Within the second spell, both urban and rural women show a declining
+sex ratio as duration increases for the 1995--2004 period, whereas there
+is little change, or possibly a small increase, with duration for the 
+2005--2016 period.
+These results are consistent with a situation where fertility is declining
+over time leaving less room for a change in the decision to use sex selection.
+Fertility decline is not immediately apparent from the second spell 
+results, but the third spell shows that the likelihood of progressing from
+two to third children declines by approximately 15 percentage points if
+the woman has given birth to a boy.
+
+The third spell figures show a very different situation with substantial 
+increases in sex ratios.
+The high sex ratio for women with two girls is likely 
+motivated by the combined desire to limit fertility and ensure a son;
+similarly to the situation for the second spell as shown in 
+Figure \ref{fig:decreasing_sex_ratio} (b) and (d).
+
+The increase in sex ratio with duration for women who already have
+given birth to a boy likely illustrates the case where there is a
+combination of degrees of son preference.
+Say that one group wants one son and after that will not use sex
+selection, whereas another group has a strong preference for two
+sons (or either have or expect to lose the boy they already have)
+and that the two groups conceive at the same rate.
+In that case, we should expect precisely the increasing sex ratios
+we observe, especially given the declining fertility over time.
+
+
+\section{Conclusion\label{sec:conclusion}}
+
+
+The central question addressed here is the extent to which spacing patterns 
+significantly changed as prenatal sex determination became available.
+Specifically, did the spacing after girls increase relative to the spacing
+after boys?
+The underlying idea is that in the absence of sex selection son 
+preference leads to shorter spacing after the birth of a girl than after the 
+birth of a boy, whereas son preference increases the spacing after the birth 
+of a girl relative to after the birth of a boy when prenatal sex selection is 
+available.
+I introduce a new method that simultaneously accounts for spacing
+between births and the potential use of sex selection. 
+I apply the method to over four decades of data from India's NFHS.
+The results show two very different approaches to son preference.
+
+At one extreme, women without education mostly follow the standard 
+pattern of shorter spacing when a woman does not have the desired number of 
+sons.
+There is also limited evidence of biased sex ratios and the increases in
+spacing that should follow from the use of sex selection.
+ In the situations where there are elevated sex ratios for women without
+education, the spacing patterns are close to those with more regular sex
+ratios. 
+Hence, it is difficult to conclude that the changes in sex
+ratios indicate sex selection rather than normal variation or problems
+with recall errors.
+
+At the other extreme, women with eight or more years of education have
+experienced an almost complete reversal of the traditional spacing patterns.
+Rather than having the next birth sooner as they mostly did before 
+sex selection became available, women with either no or one son now 
+have substantially longer spacing than if they have two or more sons.
+As shown by the increasingly significant deviations in the sex ratio
+from the natural sex ratio, these changes are likely due to increased
+use of sex selection rather than changes in son preference. 
+Banning prenatal sex determination has not been able to
+reverse the use, although it is possible that it has slowed the rate 
+of increase.
+
+Over the last 40 years, there has been a general increase in median
+spacing for all education groups, but especially for the most 
+educated women.
+The exception is for the spacing between marriage and first birth
+where there are two counteracting forces: women have become less likely 
+to conceive before marriage, and there has been a substantial compression 
+in the variation of spacing.
+The result is that median spacing from marriage to first birth
+has changed little or even declined for the best-educated women.
+Both the decrease for the first spell and the increase for higher-order
+spells are consistent with increased access to contraceptives over
+time \citep{Yeakey2009}.
+
+The empirical model allows for the effects of covariates
+to vary within the spell. 
+Non-proportionality is essential because the use of sex selection may 
+vary within a spell. 
+The use of sex selection may change either because preferences for not 
+too long spacing between births override the preference for sons or 
+because of selection, where
+the women who remain in a spell are those with the strongest son
+preference who have been through multiple pregnancies because the
+fetuses were female. 
+Because these move in opposite directions, I cannot
+directly establish the extent to which they affect the results. 
+Both are, however, present, as can be seen from the cases where there is
+either a decline in sex ratio with spell duration or a substantial
+increase with spell duration. 
+The first case is most likely at lower
+parities where there is still less pressure to ensure a son, which
+allows any preference for shorter spacing to play more of a role. 
+The second is most likely for higher
+parities where the desire to limit further childbearing and ensure a son
+dominates any preferences for shorter spacing.
+
+
+The potential for changes in sex ratio within a spell means that
+censoring is an important issue when trying to understand how the sex
+ratio changes over time, and especially when it comes to establishing
+whether the use of sex selection is increasing or decreasing.
+Take, for example, the case of women with eight or more years of
+education in the last period. 
+If we look at women who started their third spell in either the
+2005--2009 or the 2010--2014 periods and we treat end of 2015
+as the cut-off point, then the observed sex ratio for the 2005--2009
+women is 55.99\% boys while it is 55.38\% for women who started 
+in the 2010--2014 period.%
+\footnote{
+The calculations combines urban and rural women; the basis result 
+changes little if I split by area of residence.
+I chose the 2014 cut-off to ensure that both groups cover 
+five years, even though NFHS-4 took place in 2015 and 2016.
+}
+It would, therefore, appear that the use of sex selection for
+this spell is slightly decreasing over time.
+This interpretation, however, ignores the role of censoring.
+If we use the estimation results to predict final sex ratio
+once childbearing for the third spell is over, the predicted
+sex ratios are 56.10\% boys and 56.08\% boys for the 
+2005--2009 and the 2010--2015 starts, which indicates
+virtually no change over time.
+The reason for the difference is that while we would have 
+observed 7,134 birth out of a predicted 7,451 total number 
+of births for the 2005--2009 start, we would only have observed 
+3,348 births out of a predicted 8,842 for the 2010--2014 group.
+
+
+Although it is not possible to directly observe whether sex selection
+causes the unequal sex ratio and longer spacing the results are
+consistent with a general increase in sex selection over time. 
+The apparent increase in the use of sex selection is mainly found among
+women with more education and more so in urban than in rural areas,
+although the differences between urban and rural areas are relatively
+minor. 
+Compared to previous research one result stands out. 
+It appears that the use of sex selection is spreading to women with lower 
+levels of education.
+Even women with one to seven years of education show unequal sex ratios 
+and longer spacing for their higher-order spells.
+
+The results here point to two important, interconnected, questions 
+for future research:
+What is the connection between falling fertility and the 
+use of sex selection and is the use of sex selection increasing 
+or decreasing over time?
+It is clear that fertility has been declining over time in India,
+although it is important to note that the decline might be
+overstated precisely because of increased use of sex selection and
+the resulting longer spacing between births makes it less likely 
+that we will observe births to women, even though they eventually
+will happen.
+The fact that biased sex ratio occurs at lower-order spells over
+time and is starting to show up for women with less education 
+all indicate that lower fertility and use of sex selection are
+related, but a more detailed analysis is needed.
+Furthermore, although examining spells separately, as done here, is a useful
+first step in understanding how sex selection changes over time,
+it does not lend itself easily to examine the degree to which
+sex selection changes over time.
+For both, a combined model that incorporates the full fertility
+history of women would be more appropriate.
+
+
+The results here also lead to a set of broader questions that
+future research should address.
+First, to what extent are the improvements in health for girls
+relative to boys the result of selection, the longer spacing between
+births, or changing son preference?
+There is some early evidence that sample selection can make it appear that
+girls are healthier, even though the underlying cause is a combination
+of sex selection and higher mortality together with recall 
+error \citep{Portner2018a}. 
+Understanding what role these factors play in better health for
+girls is especially important when evaluating policies that 
+aim to directly limit the use of sex selection rather than 
+changing preferences or incentives.
+If the better health outcomes for girls are, for example, an unintended 
+side-effect of the longer spacing that arises from sex-selective 
+abortions, then an effective ban on sex selection may, at least
+temporarily, worsen health outcomes for girls.
+
+
+Second, we need to understand how female labor force participation
+interacts with the use of sex selection.
+Increased autonomy for women, arising, for example, from better opportunities
+for working outside the home, has been suggested as a way to increase
+women's status and thereby lower the use of sex selection \citep{Das-Gupta2016}.
+This may, however, be a double-edged sword.
+On the one hand, it is a clear benefit to the women who gain  
+bargaining power, and it increases the cost of repeated 
+sex-selective abortions because the increased duration between births
+would cause a stronger disruption in labor market participation.
+On the other hand, it may further lower desired fertility, and 
+that may, everything else equal, lead to higher use of sex selection.
+Understanding the trade-off between long-term benefits from improvements in
+women's labor force participation and short-term costs from potential 
+increases in sex selection is of paramount importance.
+
+
+\clearpage
+
+\onehalfspacing
+\bibliographystyle{aer}
+\bibliography{sex_selection_spacing}
+
+\addcontentsline{toc}{section}{References}
+
+
+
+\clearpage
+\newpage
+
+\appendix
+
+% CHANGING NUMBERING OF FIGURES AND TABLES FOR APPENDIX
+\renewcommand\thefigure{\thesection.\arabic{figure}}    
+\renewcommand\thetable{\thesection.\arabic{table}}    
+
+\section*{Appendices for Online Publication}
+
+These appendices are intended for online publication.
+They provide the descriptive statistics, additional
+estimated duration tables, and graphs for all 
+education groups and spells.
+
+
+\clearpage
+\newpage
+
+\section{Descriptive Statistics}
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+
+% Descriptive statistics tables
+\input{../tables/des_stat.tex}
+
+\clearpage
+\newpage
+
+\section{Additional Duration Results}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\vspace*{-0.51cm}
+
+\input{../tables/bootstrap_duration_p25_p75_low.tex}
+
+\input{../tables/bootstrap_duration_p25_p75_med.tex}
+
+\input{../tables/bootstrap_duration_p25_p75_high.tex}
+
+\clearpage
+
+\section{Graphs for All Education and Spell Groups}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+
+% [FIRST SPELL]
+
+\subsection{First Spell}
+
+\input{../figures/appendix_spell1_low.tex}
+
+\input{../figures/appendix_spell1_med.tex}
+
+\input{../figures/appendix_spell1_high.tex}
+
+\begin{figure}[htpb]
+\centering
+\caption*{No Education}
+\subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_low_urban_pps}} 
+\subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_low_rural_pps}} \\
+\caption*{1-7 Years of Education}
+\subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_med_urban_pps}} 
+\subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_med_rural_pps}} \\
+\caption*{8 or more Years of Education}
+\subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_high_urban_pps}} 
+\subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_high_rural_pps}} 
+\caption{Survival curves conditional on progression to first birth; start point is month of marriage}
+\label{fig:results_spell1_pps}
+\end{figure}
+
+
+\clearpage
+\newpage
+
+\subsection{Second Spell}
+
+
+\input{../figures/appendix_spell2_low.tex}
+
+
+% PARITY PROGRESSION SURVIVAL CURVES - Low
+
+% Low education
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2005]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with no education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell2_low_pps}
+\end{figure}
+
+
+
+
+% SPELL 2 - URBAN - MEDIUM
+
+\input{../figures/appendix_spell2_med.tex}
+
+% PARITY PROGRESSION SURVIVAL - MEDIUM
+
+
+% Low education
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_med_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_med_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.32\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with 1-7 years of education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell2_med_pps}
+\end{figure}
+
+
+
+% High education
+
+\input{../figures/appendix_spell2_high.tex}
+
+% PARITY PROGRESSION SURVIVAL - High education
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with 8 or more years of education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell2_high_pps}
+\end{figure}
+
+
+\clearpage
+\newpage
+
+\subsection{Third Spell}
+
+% low education
+\input{../figures/appendix_spell3_low.tex}
+
+% PARITY PROGRESSION SURVIVAL - LOW
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with no education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell3_low_pps}
+\end{figure}
+
+
+
+
+% Medium education
+
+\input{../figures/appendix_spell3_med.tex}
+
+% PARITY PROGRESSION SURVIVAL - MEDIUM
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_med_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_med_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with 1 to 7 years of education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell3_med_pps}
+\end{figure}
+
+
+
+
+% High education
+
+\input{../figures/appendix_spell3_high.tex}
+
+% PARITY PROGRESSION SURVIVAL - high
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with 8 or more years of education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell3_high_pps}
+\end{figure}
+
+
+
+
+\clearpage
+\newpage
+
+\subsection{Fourth Spell}
+
+% low education
+
+\input{../figures/appendix_spell4_low.tex}
+
+% PARITY PROGRESSION SURVIVAL - LOW
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with no education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell4_low_pps}
+\end{figure}
+
+
+
+
+% Medium education
+
+\input{../figures/appendix_spell4_med.tex}
+
+% PARITY PROGRESSION SURVIVAL - MEDIUM
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_med_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_med_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_med_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_med_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with 1 to 7 years of education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell4_med_pps}
+\end{figure}
+
+
+
+% High education
+
+\input{../figures/appendix_spell4_high.tex}
+
+% PARITY PROGRESSION SURVIVAL - high
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{-0}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{1}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_urban_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption*{Rural}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[1985--1994]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} \\
+\setcounter{subfigure}{5}
+\subfloat[1995--2004]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\setcounter{subfigure}{6}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.31\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_rural_pps}}
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+}
+\caption{Survival curves conditional on parity progression
+for women with 8 or more years of education by month beginning 9 months after prior birth.
+}
+\label{fig:results_spell4_high_pps}
+\end{figure}
+
+
+
+
+\end{document}
+
+
+
