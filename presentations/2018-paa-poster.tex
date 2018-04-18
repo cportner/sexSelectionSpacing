@@ -31,12 +31,61 @@
 \begin{column}{.3\linewidth}
 
 
-\begin{block}{\LARGE Introduction}
+\begin{block}{\LARGE Background}
 
-Some text that goes in a block.
+The central question addressed here is the extent to which spacing patterns 
+significantly changed as prenatal sex determination became available.
+Specifically, did the spacing after girls increase relative to the spacing
+after boys?
+The underlying idea is that in the absence of sex selection son 
+preference leads to shorter spacing after the birth of a girl than after the 
+birth of a boy, whereas son preference increases the spacing after the birth 
+of a girl relative to after the birth of a boy when prenatal sex selection is 
+available.
+I introduce a new method that simultaneously accounts for spacing
+between births and the potential use of sex selection. 
+I apply the method to over four decades of data from India's NFHS.
+
 
 \end{block}
 
+\begin{block}{Objectives}
+
+\end{block}
+
+
+\begin{block}{Methods}
+
+
+The model is a discrete time, non-proportional, competing risk 
+hazard model with two exit states: either a boy or a girl is born.
+\begin{itemize}
+\item the competing risk framework captures that access to prenatal 
+sex determination means that parents can choose the sex of children born.
+\item the non-proportional hazard specification captures that  
+sex composition and the use of sex selection are likely to affect 
+the shape of the hazard functions across groups.
+\end{itemize}
+
+
+The probability of ever having a next birth varies across groups.
+Direct comparison of standard survival curves, therefore, tells us little 
+about how the spread of sex selection affects birth spacing across groups.
+I therefore condition on the predicted likelihood of parity 
+progression when examining birth spacing measures.
+
+In addition to calculating conditional birth spacing measures for different 
+percentages, I also present graphs of both standard survival curves and
+survival curves conditional on parity progression (which therefore
+begin at 100\% and end at 0\%).
+
+Finally, I calculate the predicted percent boys born over the entire spell.
+
+
+\end{block}
+
+
+
 \end{column}
 
 
@@ -44,8 +93,54 @@ Some text that goes in a block.
 
 \begin{column}{.3\linewidth}
 
+\begin{block}{Data}
 
-more text
+The data come from the four rounds of the National Family Health Survey.
+
+I exclude visitors to the household, as well as
+women who have never been married or married more than once, divorced, or who are 
+not living with their husband,
+women with inconsistent age at marriage,
+and those with missing information on education.
+The same goes for women who had at least one multiple births,
+reported having a birth before age 12, had a birth before marriage, or
+duration between births of less than nine months.
+Finally, I restrict the sample to Hindus,
+who constitute about 80\% of India's population.
+
+Recall error is heavily dependent on how long ago a woman was married.
+I, therefore, drop women married 22 years or more 
+for NFHS-1, with the corresponding cut-off points 23 years for NFHS-2, 
+and 25 years for NFHS-3 and NFHS-4.
+The final sample consists of 
+\input{../tables/num_women.tex}
+% [number] women, with [number] parity one through four births.
+
+\end{block}
+
+\begin{block}{Spell Definition}
+
+The first spell begins at the month of marriage.
+
+The second and subsequent spells begin nine months after the previous birth 
+because that is the earliest we should expect to observe a new birth.
+
+All spells continue until either a child is born or censoring occurs.
+Censoring can happen for three reasons:
+the survey takes place;
+sterilization of the woman or her husband;
+or too few births are observed for the method to work.
+
+I group spells into four periods based on the year of marriage
+or year of the previous birth:
+1972--1984, 1985--1994, 1995--2004, and 2005--2016.
+
+\end{block}
+
+\begin{block}{Results}
+
+\end{block}
+
 
 \end{column}
 
@@ -53,7 +148,60 @@ more text
 
 \begin{column}{.3\linewidth}
 
-even more text
+\begin{block}{Conclusion}
+
+
+The results show two very different approaches to son preference.
+
+\bigskip
+
+At one extreme, women without education mostly follow the standard 
+pattern of shorter spacing when a woman does not have the desired number of 
+sons.
+
+\bigskip
+
+At the other extreme, women with eight or more years of education have
+experienced a reversal of the traditional spacing patterns.
+Women with either no or one son now have substantially longer spacing 
+than if they have two or more sons.
+
+\bigskip
+
+Although it is not possible to directly observe whether sex selection
+causes the unequal sex ratio and longer spacing the results are
+consistent with a general increase in sex selection over time. 
+
+\bigskip
+
+Compared to previous research one result stands out: 
+the use of sex selection is spreading to women with lower levels of education.
+
+
+
+\end{block}
+
+\begin{block}{Future Research}
+
+Two important, interconnected, questions:
+What is the connection between falling fertility and the 
+use of sex selection and is the use of sex selection increasing 
+or decreasing over time?
+
+\bigskip
+
+Broader questions:
+\begin{itemize}
+\item To what extent are improvements in health for girls
+relative to boys the result of selection, the longer spacing between
+births, or changing son preference?
+\item What is the interaction between female labor force participation
+and the use of sex selection?
+\end{itemize}
+
+\end{block}
+
+
 
 
 \end{column}
