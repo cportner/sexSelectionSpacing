@@ -101,13 +101,56 @@ after boys?
 
 The model is a discrete time, non-proportional, competing risk 
 hazard model with two exit states: either a boy or a girl is born.
-\begin{itemize}
-\item the competing risk framework captures that access to prenatal 
-sex determination means that parents can choose the sex of children born.
-\item the non-proportional hazard specification captures that  
-sex composition and the use of sex selection are likely to affect 
-the shape of the hazard functions across groups.
-\end{itemize}
+\begin{description}
+\item[Competing risk] captures that
+parents can choose the sex of children born with access to prenatal 
+sex determination.
+\item[Non-proportional hazard] captures that sex composition and 
+the use of sex selection likely affect the shape of the hazard 
+functions across groups.
+\end{description}
+
+\end{block}
+
+\begin{block}{Data}
+
+The data come from the four rounds of the National Family Health Survey.
+Sample is restricted to Hindu women who are married and regular residents of
+the household and where all needed information are available.
+Because of recall error, I drop women married 22 years or more 
+for NFHS-1, with the corresponding cut-off points 23 years for NFHS-2, 
+and 25 years for NFHS-3 and NFHS-4.
+The final sample consists of 
+\input{../tables/num_women.tex}
+% [number] women, with [number] parity one through four births.
+
+\end{block}
+
+
+
+\end{column}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{column}{\twocolwid}
+
+
+\begin{block}{Spell Definition}
+
+The first spell begins at the month of marriage, whereas the second and 
+subsequent spells begin nine months after the previous birth.
+All spells continue until either a child is born or censoring occurs.
+
+\vskip3ex
+
+I group spells into four periods based on the year of marriage
+or year of the previous birth:
+1972--1984, 1985--1994, 1995--2004, and 2005--2016.
+
+\end{block}
+
+\begin{block}{Results}
 
 
 The probability of ever having a next birth varies across groups.
@@ -127,70 +170,13 @@ Finally, I calculate the predicted percent boys born over the entire spell.
 \end{block}
 
 
-
-\end{column}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{column}{\twocolwid}
-
-\begin{block}{Data}
-
-The data come from the four rounds of the National Family Health Survey.
-
-I exclude visitors to the household, as well as
-women who have never been married or married more than once, divorced, or who are 
-not living with their husband,
-women with inconsistent age at marriage,
-and those with missing information on education.
-The same goes for women who had at least one multiple births,
-reported having a birth before age 12, had a birth before marriage, or
-duration between births of less than nine months.
-Finally, I restrict the sample to Hindus,
-who constitute about 80\% of India's population.
-
-Recall error is heavily dependent on how long ago a woman was married.
-I, therefore, drop women married 22 years or more 
-for NFHS-1, with the corresponding cut-off points 23 years for NFHS-2, 
-and 25 years for NFHS-3 and NFHS-4.
-The final sample consists of 
-\input{../tables/num_women.tex}
-% [number] women, with [number] parity one through four births.
-
-\end{block}
-
-\begin{block}{Spell Definition}
-
-The first spell begins at the month of marriage.
-
-The second and subsequent spells begin nine months after the previous birth 
-because that is the earliest we should expect to observe a new birth.
-
-All spells continue until either a child is born or censoring occurs.
-Censoring can happen for three reasons:
-the survey takes place;
-sterilization of the woman or her husband;
-or too few births are observed for the method to work.
-
-I group spells into four periods based on the year of marriage
-or year of the previous birth:
-1972--1984, 1985--1994, 1995--2004, and 2005--2016.
-
-\end{block}
-
-\begin{block}{Results}
-
-\end{block}
-
-
 \end{column}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{column}{\onecolwid}
 
-\begin{block}{Conclusion}
+\begin{alertblock}{Conclusion}
 
 \begin{enumerate}
 \item there has been a general increase in the length of spacing between births
@@ -217,10 +203,8 @@ are more likely to increase or remain consistently high for higher-order
 spells, where the pressure to ensure a son is high.
 
 \end{enumerate}
- 
 
-
-\end{block}
+\end{alertblock}
 
 \begin{block}{Future Research}
 
