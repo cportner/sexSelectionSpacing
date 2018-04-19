@@ -43,6 +43,10 @@
 % set colors for alerted text
 \setbeamercolor{alerted text}{fg=SU_red}
 
+% set colors for alerted blocks (blocks with frame)
+\setbeamercolor{block alerted title}{fg=white,bg=SU_red}
+\setbeamercolor{block alerted body}{fg=SU_black,bg=SU_red!10}
+
 % Header
 \setbeamercolor{headline}{bg=SU_red}
 \setbeamercolor{title in headline}{fg=white}
@@ -82,19 +86,74 @@
 % Normal Block
 %==============================================================================
 
-\setbeamertemplate{block begin}{
-  \vskip3ex
-  \begin{beamercolorbox}[leftskip=1cm,colsep*=.75ex]{block title}%
-    \usebeamerfont*{block title}\insertblocktitle
-  \end{beamercolorbox}%
-  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
-  \usebeamerfont{block body}%
-  \begin{beamercolorbox}[colsep*=.75ex,sep=.75ex,vmode]{block body}%
-    \ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
-  }
-  \setbeamertemplate{block end}{
+\setbeamertemplate{block begin}
+{
+  \par\vskip\medskipamount
+  \begin{beamercolorbox}[colsep*=.5ex,dp={2ex},center]{block title}
+    \vskip-0.25cm
+    \usebeamerfont{block title}\large\insertblocktitle
+    \begin{flushleft}
+    \vskip-1cm
+    \begin{tikzpicture}[remember picture,overlay]
+      \shade [inner color=SU_forest_green,outer color=SU_yellow_tint]
+      (0,0) rectangle (\textwidth,0.3cm);
+    \end{tikzpicture}
+    \end{flushleft}
   \end{beamercolorbox}
+  {\parskip0pt\par}
+  \ifbeamercolorempty[bg]{block title}
+  {}
+  {\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}
+  \usebeamerfont{block body}
+  \vskip-0.5cm
+  \begin{beamercolorbox}[colsep*=.5ex,vmode]{block body}
+  \justifying
 }
+
+\setbeamertemplate{block end}
+{
+  \end{beamercolorbox}
+  \vskip\smallskipamount
+}
+
+%==============================================================================
+% Alert block definition (with frame)
+%==============================================================================
+
+\setbeamertemplate{block alerted begin}
+{
+  \par\vskip\medskipamount
+  \begin{beamercolorbox}[sep=0ex,rounded=true,center,dp={2ex}]{block alerted title}
+    \vskip0.01cm
+    \usebeamerfont{block title}\large\insertblocktitle
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \usebeamerfont{block body}
+  \vskip-0.8cm
+  \begin{beamercolorbox}[sep=.5cm, rounded=true,center]{block alerted title}
+  \setlength{\inboxwd}{\linewidth}
+  \addtolength{\inboxwd}{-1cm}
+  \begin{beamercolorbox}[rounded=true,wd={\inboxwd},center]{block alerted body}
+  \setlength{\iinboxwd}{\inboxwd}
+  \setlength{\inboxrule}{\inboxwd}
+  \addtolength{\iinboxwd}{-0.5cm}
+  \addtolength{\inboxrule}{0.5cm}
+  \begin{center}
+  \begin{minipage}{\iinboxwd}
+  \justifying
+}
+
+\setbeamertemplate{block alerted end}
+{
+  \end{minipage}
+  \end{center}
+  \end{beamercolorbox}
+  \end{beamercolorbox}
+  \vskip\smallskipamount
+}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{  
