@@ -14,6 +14,16 @@
 \setsansfont[Ligatures=TeX]{Gandhi Sans}
 % \usepackage{unicode-math}
 % \setmathfont{TeX Gyre Pagella Math}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[flushleft]{threeparttable}
+
+\newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\X}{$\times$ }
+\newcommand{\hs}{\hspace{15pt}}
+
 
 \newlength{\sepwid}
 \newlength{\onecolwid}
@@ -100,7 +110,7 @@ after boys?
 
 
 The model is a discrete time, non-proportional, competing risk 
-hazard model with two exit states: either a boy or a girl is born.
+hazard model with two  exit states: either a boy or a girl is born.
 \begin{description}
 \item[Competing risk] captures that
 parents can choose the sex of children born with access to prenatal 
@@ -168,8 +178,54 @@ begin at 100\% and end at 0\%).
 Finally, I calculate the predicted percent boys born over the entire spell.
 
 
-\end{block}
+        
+\begin{table}[hp!]
+\begin{center}
+\begin{scriptsize}
+\begin{threeparttable}
+\caption{Estimated Median Duration and Sex Ratio for Rural Women with No Education}
+\label{tab:median_sex_ratio_low}
+\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} @{}}
+\toprule
+                   &                            & \mct{1972--1984}                                    & \mct{2005--2016}                                      \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} 
+                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     \\ 
+ \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                          \\ \midrule
+\multirow[c]{2}{*}{1} &                            &    26.2       &    52.1^{**}  &    24.4       &    51.5        \\
+                      &                            &    (0.2)      &    (0.3)      &    (0.1)      &    (0.4)       \\
+\addlinespace 
+\multirow[c]{3}{*}{2} & \mco{One girl}             &    18.5       &    51.1       &    19.7       &    51.8        \\
+                      &                            &    (0.2)      &    (0.6)      &    (0.2)      &    (0.6)       \\
+                      & \mco{One boy}              &    19.6^{***} &    52.7^{**}  &    20.1^{*}   &    52.2^{*}    \\
+                      &                            &    (0.1)      &    (0.7)      &    (0.2)      &    (0.5)       \\
+\addlinespace 
+\multirow[c]{5}{*}{3} & \mco{Two girls}            &    17.9       &    49.4^{*}   &    20.3       &    52.9^{**}   \\
+                      &                            &    (0.3)      &    (1.0)      &    (0.2)      &    (0.7)       \\
+                      & \mco{One boy / one girl}   &    19.1^{***} &    53.0^{**}  &    21.1^{***} &    51.8        \\
+                      &                            &    (0.2)      &    (0.7)      &    (0.2)      &    (0.6)       \\
+                      & \mco{Two boys}             &    19.1^{***} &    51.4       &    22.0^{***} &    50.9        \\
+                      &                            &    (0.2)      &    (0.9)      &    (0.3)      &    (0.8)       \\
+\addlinespace 
+\bottomrule
+\end{tabular}
+\begin{tablenotes} 
+\tiny
+\item \hspace*{-0.5em} \textbf{Note.}
+Bootstrapped standard errors shown in parentheses.
+\item[a] For spells two and higher duration sex compositions other than all girls are 
+tested against the duration for all girls, with *** indicating significantly different 
+at the 1\% level, ** at the 5\% level, and * at the 10\% level, based on bootstrapped
+differences.
+\item[b] The predicted percent boys is tested against the natural percentage boys, 105 boys per 100 girls,
+with *** indicating significantly different at the 1\% level, ** at the 5\% level, 
+and * at 10\% level.
+\end{tablenotes}
+\end{threeparttable}
+\end{scriptsize}
+\end{center}
+\end{table}
 
+    \end{block}
+    
 
 \end{column}
 
@@ -180,25 +236,25 @@ Finally, I calculate the predicted percent boys born over the entire spell.
 \begin{alertblock}{Conclusion}
 
 \begin{enumerate}
-\item there has been a general increase in the length of spacing between births
+\item There has been a general increase in the length of spacing between births
 over the four decades covered by the data.
 The exception is for first births, where the median duration has either
 remained the same or slightly declined, although this hides a
 significant compression of the variation in spell length.
 
-\item the most substantial increase in spacing is for the women who
+\item The most substantial increase in spacing is for the women who
 are most likely to use sex selection.
 Among the best-educated women, those with no boys now has 
 significantly longer spacing---and a more male-biased sex ratio---than 
 similar women with boys.
 
-\item women with no education still follow the standard pattern of
+\item Women with no education still follow the standard pattern of
 short spacing when they have girls and little evidence of the use of sex
 selection.
 In other words, these women adhere to a strategy where they achieve a
 son through higher fertility rather than the use of sex selection.
 
-\item sex ratios are the most likely to decline within spells at
+\item Sex ratios are the most likely to decline within spells at
 lower-order spells, where the pressure to provide a son is smaller, and
 are more likely to increase or remain consistently high for higher-order
 spells, where the pressure to ensure a son is high.
