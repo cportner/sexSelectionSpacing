@@ -50,7 +50,6 @@
 % Header
 \setbeamercolor{headline}{bg=SU_red}
 \setbeamercolor{title in headline}{fg=white}
-
 \setbeamercolor{author in headline}{fg=SU_yellow}
 \setbeamercolor{institute in headline}{fg=SU_yellow}
 
@@ -59,6 +58,9 @@
 % Footline
 \setbeamercolor{footline}{fg=SU_yellow,bg=SU_red}
 \setbeamerfont{footline}{size=\large,series=\tt}
+
+\setbeamercolor{author in head/foot}{fg=SU_yellow,bg=SU_red}
+\setbeamercolor{title in head/foot}{fg=SU_yellow,bg=SU_red}
 
 % body colors and fonts
 \setbeamercolor*{normal text}{fg=SU_black,bg=SU_yellow_tint} % background
@@ -153,22 +155,20 @@
 }
 
 
+%==============================================================================
+% Header
+%==============================================================================
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{headline}{  
-  \leavevmode
 
+  \leavevmode%
   \begin{beamercolorbox}[wd=\paperwidth]{headline}
+  
   \begin{columns}[T]
-  
-  \begin{column}{0.02\paperwidth}
-  
-  \end{column}
-
-  \begin{column}{0.76\paperwidth}
-    \vspace{4ex}
-    \raggedright
+  \hspace{3cm}%
+  \begin{column}{0.74\paperwidth}
+    \vspace{6ex}%
+    \raggedright%
     \usebeamercolor{title in headline}{\color{fg}\textbf{\huge{\inserttitle}}\\[3ex]}
     \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\}
     \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\}
@@ -176,43 +176,48 @@
    \end{column}
    
    % Logo on right
-   \begin{column}{0.20\paperwidth}
-   \vspace{4ex}
+   \begin{column}{0.24\paperwidth}
+   \vspace{4ex}%
    \begin{center}
    \includegraphics[width=.7\linewidth]{SU_Typeface_Stacked_BlackBackground.eps}
    \end{center}
    \vspace{4ex}  
    \end{column}
 
-  \begin{column}{0.02\paperwidth}
-  
-  \end{column}
-
-
   \end{columns}
   \end{beamercolorbox}
  
   
   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
-    \rule{0pt}{2pt}
+    \rule{0pt}{3pt}
   \end{beamercolorbox}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%==============================================================================
+% Footer
+%==============================================================================
+
 \setbeamertemplate{footline}{
+ 
   \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
-    \rule{0pt}{2pt}
+    \rule{0pt}{3pt}
   \end{beamercolorbox}
   
-  \begin{beamercolorbox}[ht=7ex,leftskip=1cm,rightskip=5cm]{footline}%
-    \hfill \raisebox{-0.4cm}{\insertfooter}
+  \leavevmode%
+  \begin{beamercolorbox}[ht=4.5ex,leftskip=2.5cm,rightskip=2.5cm]{author in head/foot}%
+    \conference
+    \hfill 
+    \yourEmail
     \vskip1ex
   \end{beamercolorbox}
-
+ 
+  \vskip0pt%
   \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
-    \rule{0pt}{2pt}
+    \rule{0pt}{3pt}
   \end{beamercolorbox}
+
 }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mode<all>
 
