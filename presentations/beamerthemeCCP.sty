@@ -166,23 +166,26 @@
   
   \begin{columns}[T]
   \hspace{3cm}%
-  \begin{column}{0.74\paperwidth}
+  \begin{column}{0.665\paperwidth}
     \vspace{6ex}%
     \raggedright%
     \usebeamercolor{title in headline}{\color{fg}\textbf{\huge{\inserttitle}}\\[3ex]}
     \usebeamercolor{author in headline}{\color{fg}\large{\insertauthor}\\}
-    \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\}
-    \vspace{4ex}
+    \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\}%
+    \vspace{5ex}
    \end{column}
    
    % Logo on right
-   \begin{column}{0.24\paperwidth}
-   \vspace{4ex}%
-   \begin{center}
-   \includegraphics[width=.7\linewidth]{SU_Typeface_Stacked_BlackBackground.eps}
-   \end{center}
-   \vspace{4ex}  
+   \begin{column}{0.17\paperwidth}
+   \vspace{6ex}%
+   \includegraphics[height=3in]{SU_Typeface_Stacked_BlackBackground.eps} 
    \end{column}
+
+   \begin{column}{0.1\paperwidth}
+   \vspace{6ex}%
+   \includegraphics[height=3in]{LOGO600-V2-Transparent-500px.png} 
+   \end{column}
+
 
   \end{columns}
   \end{beamercolorbox}
@@ -204,7 +207,7 @@
   \end{beamercolorbox}
   
   \leavevmode%
-  \begin{beamercolorbox}[ht=4.5ex,leftskip=2.5cm,rightskip=2.5cm]{author in head/foot}%
+  \begin{beamercolorbox}[ht=4.5ex,leftskip=3.5cm,rightskip=5cm]{author in head/foot}%
     \conference
     \hfill 
     \yourEmail
@@ -217,6 +220,11 @@
   \end{beamercolorbox}
 
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a grid to help align images ... and it looks nice with this color scheme
+% \beamertemplategridbackground[1cm]
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mode<all>
