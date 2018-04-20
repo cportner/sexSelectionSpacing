@@ -18,12 +18,16 @@
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage[flushleft]{threeparttable}
+\usepackage{caption}
 
 \newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
 \newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
 \newcommand{\X}{$\times$ }
 \newcommand{\hs}{\hspace{15pt}}
 
+% Beamer thinks no table numbers and small text
+\setbeamertemplate{caption}[numbered]
+\captionsetup{font=large,labelfont=large}
 
 \newlength{\sepwid}
 \newlength{\onecolwid}
@@ -73,11 +77,11 @@ increases birth spacing by six months to a year.
 We may therefore now observe \alert{longer} spacing after daughters than sons, 
 precisely because strong son preference leads to the use of sex selection.
 
-\vskip3ex
-
-To complicate matters, shorter birth spacing after daughters may still 
-be a representation of son preference for 
-families who do not use prenatal sex selection.
+\vskip2ex
+% 
+% To complicate matters, shorter birth spacing after daughters may still 
+% be a representation of son preference for 
+% families who do not use prenatal sex selection.
 
 
 \end{block}
@@ -135,8 +139,21 @@ The final sample consists of
 \input{../tables/num_women.tex}
 % [number] women, with [number] parity one through four births.
 
-\end{block}
+% \end{block}
+% 
+% \begin{block}{Spell Definition}
 
+\vskip3ex
+
+
+The first spell begins at the month of marriage, whereas the second and 
+subsequent spells begin nine months after the previous birth.
+All spells continue until either a child is born or censoring occurs.
+I group spells into four periods based on the year of marriage
+or year of the previous birth:
+1972--1984, 1985--1994, 1995--2004, and 2005--2016.
+
+\end{block}
 
 
 \end{column}
@@ -147,19 +164,6 @@ The final sample consists of
 \begin{column}{\twocolwid}
 
 
-\begin{block}{Spell Definition}
-
-The first spell begins at the month of marriage, whereas the second and 
-subsequent spells begin nine months after the previous birth.
-All spells continue until either a child is born or censoring occurs.
-
-\vskip3ex
-
-I group spells into four periods based on the year of marriage
-or year of the previous birth:
-1972--1984, 1985--1994, 1995--2004, and 2005--2016.
-
-\end{block}
 
 \begin{block}{Results}
 
@@ -180,30 +184,30 @@ Finally, I calculate the predicted percent boys born over the entire spell.
 
         
 \begin{table}[hp!]
-\begin{center}
-\begin{scriptsize}
+\centering
 \begin{threeparttable}
-\caption{Estimated Median Duration and Sex Ratio for Rural Women with No Education}
+\caption{Estimated Median Duration and Sex Ratio}
 \label{tab:median_sex_ratio_low}
-\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} @{}}
+\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} p{2ex} D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} @{}}
 \toprule
-                   &                            & \mct{1972--1984}                                    & \mct{2005--2016}                                      \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} 
-                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     \\ 
- \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                          \\ \midrule
-\multirow[c]{2}{*}{1} &                            &    26.2       &    52.1^{**}  &    24.4       &    51.5        \\
-                      &                            &    (0.2)      &    (0.3)      &    (0.1)      &    (0.4)       \\
+                   &                            & \multicolumn{4}{c}{Rural Women -- No Education}                                                            & & \multicolumn{4}{c}{Urban Women -- 8+ Years of Education} \\  \cmidrule(lr){3-6} \cmidrule(lr){8-11}
+                   &                            & \mct{1972--1984}                                    & \mct{2005--2016}                                     & & \mct{1972--1984}                                    & \mct{2005--2016}                                      \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){8-9} \cmidrule(lr){10-11} 
+                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}    & & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     \\ 
+ \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                         & & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                          \\ \midrule
+\multirow[c]{2}{*}{1} &                            &    26.2       &    52.1^{**}  &    24.4       &    51.5        &&    19.4       &    51.2       &    18.3       &    52.6^{***}  \\
+                      &                            &    (0.2)      &    (0.3)      &    (0.1)      &    (0.4)       &&    (0.2)      &    (0.7)      &    (0.1)      &    (0.2)       \\
 \addlinespace 
-\multirow[c]{3}{*}{2} & \mco{One girl}             &    18.5       &    51.1       &    19.7       &    51.8        \\
-                      &                            &    (0.2)      &    (0.6)      &    (0.2)      &    (0.6)       \\
-                      & \mco{One boy}              &    19.6^{***} &    52.7^{**}  &    20.1^{*}   &    52.2^{*}    \\
-                      &                            &    (0.1)      &    (0.7)      &    (0.2)      &    (0.5)       \\
+\multirow[c]{3}{*}{2} & \mco{One girl}             &    18.5       &    51.1       &    19.7       &    51.8        &&    19.2       &    52.1       &    27.1       &    56.1^{***}  \\
+                      &                            &    (0.2)      &    (0.6)      &    (0.2)      &    (0.6)       &&    (0.2)      &    (1.4)      &    (0.3)      &    (0.9)       \\
+                      & \mco{One boy}              &    19.6^{***} &    52.7^{**}  &    20.1^{*}   &    52.2^{*}    &&    20.1^{**}  &    52.0       &    26.6^{*}   &    49.9^{**}   \\
+                      &                            &    (0.1)      &    (0.7)      &    (0.2)      &    (0.5)       &&    (0.5)      &    (1.0)      &    (0.3)      &    (0.6)       \\
 \addlinespace 
-\multirow[c]{5}{*}{3} & \mco{Two girls}            &    17.9       &    49.4^{*}   &    20.3       &    52.9^{**}   \\
-                      &                            &    (0.3)      &    (1.0)      &    (0.2)      &    (0.7)       \\
-                      & \mco{One boy / one girl}   &    19.1^{***} &    53.0^{**}  &    21.1^{***} &    51.8        \\
-                      &                            &    (0.2)      &    (0.7)      &    (0.2)      &    (0.6)       \\
-                      & \mco{Two boys}             &    19.1^{***} &    51.4       &    22.0^{***} &    50.9        \\
-                      &                            &    (0.2)      &    (0.9)      &    (0.3)      &    (0.8)       \\
+\multirow[c]{5}{*}{3} & \mco{Two girls}            &    17.9       &    49.4^{*}   &    20.3       &    52.9^{**}   &&    20.7       &    54.5       &    29.1       &    65.6^{***}  \\
+                      &                            &    (0.3)      &    (1.0)      &    (0.2)      &    (0.7)       &&    (0.7)      &    (4.2)      &    (0.7)      &    (1.3)       \\
+                      & \mco{One boy / one girl}   &    19.1^{***} &    53.0^{**}  &    21.1^{***} &    51.8        &&    19.7       &    55.5^{**}  &    24.6^{***} &    55.8^{***}  \\
+                      &                            &    (0.2)      &    (0.7)      &    (0.2)      &    (0.6)       &&    (0.4)      &    (1.7)      &    (0.9)      &    (0.6)       \\
+                      & \mco{Two boys}             &    19.1^{***} &    51.4       &    22.0^{***} &    50.9        &&    20.3       &    49.3^{**}  &    25.5^{***} &    48.5        \\
+                      &                            &    (0.2)      &    (0.9)      &    (0.3)      &    (0.8)       &&    (1.2)      &    (0.8)      &    (1.0)      &    (2.7)       \\
 \addlinespace 
 \bottomrule
 \end{tabular}
@@ -220,8 +224,6 @@ with *** indicating significantly different at the 1\% level, ** at the 5\% leve
 and * at 10\% level.
 \end{tablenotes}
 \end{threeparttable}
-\end{scriptsize}
-\end{center}
 \end{table}
 
     \end{block}
