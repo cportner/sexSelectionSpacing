@@ -19,6 +19,8 @@
 \usepackage{multirow}
 \usepackage[flushleft]{threeparttable}
 \usepackage{caption}
+\usepackage[font=scriptsize,labelfont=scriptsize]{subfig}
+
 
 \newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
 \newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
@@ -39,7 +41,7 @@
 \setlength{\threecolwid}{0.19\paperwidth}
 
 
-\title{Birth Spacing in the Presence of Son Preference and Sex-Selective \\ Abortions: India's Experience over Four Decades}
+\title{Birth Spacing in the Presence of Son Preference and Sex-Selective Abortions:\\ India's Experience over Four Decades}
 \author{Claus P\"ortner}
 \institute{Albers School of Business and Economics, Seattle University, \& Center for Studies in Demography and Ecology, University of Washington}
 
@@ -52,12 +54,17 @@
 
 \begin{document}
 
+\graphicspath{{../figures/}}
+\DeclareGraphicsExtensions{.eps,.jpg,.pdf,.mps,.png}
+
+
 \begin{frame}{}
 \begin{columns}[t]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\hspace{1cm}%
 \begin{column}{\onecolwid}
 
 
@@ -66,18 +73,18 @@
 Son preference has been associated with shorter spacing after the 
 births of girls than boys.
 
-\vskip3ex
+\vskip1ex
 
 Access to prenatal sex determination fundamentally changed the 
 relationship between son preference and birth spacing because each abortion 
 increases birth spacing by six months to a year.
 
-\vskip3ex
+\vskip1ex
 
 We may therefore now observe \alert{longer} spacing after daughters than sons, 
 precisely because strong son preference leads to the use of sex selection.
 
-\vskip2ex
+\vskip1ex
 % 
 % To complicate matters, shorter birth spacing after daughters may still 
 % be a representation of son preference for 
@@ -87,9 +94,9 @@ precisely because strong son preference leads to the use of sex selection.
 \end{block}
 
 \begin{alertblock}{Contributions}
-
+\vskip1ex
 \begin{description}
-
+\setlength{\itemsep}{2ex}
 \item[Main idea:]  in the absence of sex selection son preference leads to shorter 
 spacing after the birth of a girl than after the birth of a boy, whereas 
 son preference increases the spacing after the birth of a girl relative 
@@ -101,20 +108,21 @@ the duration between births
 \emph{and} 
 the likelihood of a son. 
 
-\item[Central question:] how did spacing patterns changed with access
-to prenatal sex determination became available?
+\item[Central questions:] how did spacing patterns change with access
+to prenatal sex determination?
 Specifically, did the spacing after girls increase relative to the spacing
 after boys?
 \end{description}
-
+\vskip1ex
 \end{alertblock}
 
-
+\vskip1ex
 \begin{block}{Methods}
 
 
 The model is a discrete time, non-proportional, competing risk 
 hazard model with two  exit states: either a boy or a girl is born.
+\vskip1ex
 \begin{description}
 \item[Competing risk] captures that
 parents can choose the sex of children born with access to prenatal 
@@ -126,10 +134,10 @@ within a spell.
 \end{description}
 
 \end{block}
-
+\vskip1ex
 \begin{block}{Data}
 
-The data come from the four rounds of the National Family Health Survey.
+The data come from the four rounds of the National Family Health Survey (NFHS).
 Sample is restricted to Hindu women who are married and regular residents of
 the household and where all needed information are available.
 Because of recall error, I drop women married 22 years or more 
@@ -143,14 +151,13 @@ The final sample consists of
 % 
 % \begin{block}{Spell Definition}
 
-\vskip3ex
+\vskip2ex
 
 
 The first spell begins at the month of marriage, whereas the second and 
 subsequent spells begin nine months after the previous birth.
 All spells continue until either a child is born or censoring occurs.
-I group spells into four periods based on the year of marriage
-or year of the previous birth:
+Spells are grouped into four periods based on start of spell:
 1972--1984, 1985--1994, 1995--2004, and 2005--2016.
 
 \end{block}
@@ -167,21 +174,6 @@ or year of the previous birth:
 
 \begin{block}{Results}
 
-
-The probability of ever having a next birth varies across groups.
-Direct comparison of standard survival curves, therefore, tells us little 
-about how the spread of sex selection affects birth spacing across groups.
-I therefore condition on the predicted likelihood of parity 
-progression when examining birth spacing measures.
-
-In addition to calculating conditional birth spacing measures for different 
-percentages, I also present graphs of both standard survival curves and
-survival curves conditional on parity progression (which therefore
-begin at 100\% and end at 0\%).
-
-Finally, I calculate the predicted percent boys born over the entire spell.
-
-
         
 \begin{table}[hp!]
 \centering
@@ -194,28 +186,28 @@ Finally, I calculate the predicted percent boys born over the entire spell.
                    &                            & \mct{1972--1984}                                    & \mct{2005--2016}                                     & & \mct{1972--1984}                                    & \mct{2005--2016}                                      \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){8-9} \cmidrule(lr){10-11} 
                    & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}    & & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     \\ 
  \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                         & & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                          \\ \midrule
-\multirow[c]{2}{*}{1} &                            &    26.2       &    52.1^{**}  &    24.4       &    51.5        &&    19.4       &    51.2       &    18.3       &    52.6^{***}  \\
-                      &                            &    (0.2)      &    (0.3)      &    (0.1)      &    (0.4)       &&    (0.2)      &    (0.7)      &    (0.1)      &    (0.2)       \\
+\multirow[c]{2}{*}{1} &                            &    26.2       &    52.1^{**}  &    24.4       &    51.5        &&    19.1       &    52.8^{***} &    18.8       &    52.7^{***}  \\
+                      &                            &    (0.2)      &    (0.3)      &    (0.1)      &    (0.4)       &&    (0.1)      &    (0.3)      &    (0.1)      &    (0.3)       \\
 \addlinespace 
-\multirow[c]{3}{*}{2} & \mco{One girl}             &    18.5       &    51.1       &    19.7       &    51.8        &&    19.2       &    52.1       &    27.1       &    56.1^{***}  \\
-                      &                            &    (0.2)      &    (0.6)      &    (0.2)      &    (0.6)       &&    (0.2)      &    (1.4)      &    (0.3)      &    (0.9)       \\
-                      & \mco{One boy}              &    19.6^{***} &    52.7^{**}  &    20.1^{*}   &    52.2^{*}    &&    20.1^{**}  &    52.0       &    26.6^{*}   &    49.9^{**}   \\
-                      &                            &    (0.1)      &    (0.7)      &    (0.2)      &    (0.5)       &&    (0.5)      &    (1.0)      &    (0.3)      &    (0.6)       \\
+\multirow[c]{3}{*}{2} & \mco{One girl}             &    18.5       &    51.1       &    19.7       &    51.8        &&    25.9       &    58.1^{***} &    29.0       &    56.1^{***}  \\
+                      &                            &    (0.2)      &    (0.6)      &    (0.2)      &    (0.6)       &&    (0.2)      &    (0.5)      &    (0.4)      &    (0.7)       \\
+                      & \mco{One boy}              &    19.6^{***} &    52.7^{**}  &    20.1^{*}   &    52.2^{*}    &&    25.6       &    50.1^{**}  &    29.0       &    49.6^{***}  \\
+                      &                            &    (0.1)      &    (0.7)      &    (0.2)      &    (0.5)       &&    (0.2)      &    (0.6)      &    (0.4)      &    (0.6)       \\
 \addlinespace 
-\multirow[c]{5}{*}{3} & \mco{Two girls}            &    17.9       &    49.4^{*}   &    20.3       &    52.9^{**}   &&    20.7       &    54.5       &    29.1       &    65.6^{***}  \\
-                      &                            &    (0.3)      &    (1.0)      &    (0.2)      &    (0.7)       &&    (0.7)      &    (4.2)      &    (0.7)      &    (1.3)       \\
-                      & \mco{One boy / one girl}   &    19.1^{***} &    53.0^{**}  &    21.1^{***} &    51.8        &&    19.7       &    55.5^{**}  &    24.6^{***} &    55.8^{***}  \\
-                      &                            &    (0.2)      &    (0.7)      &    (0.2)      &    (0.6)       &&    (0.4)      &    (1.7)      &    (0.9)      &    (0.6)       \\
-                      & \mco{Two boys}             &    19.1^{***} &    51.4       &    22.0^{***} &    50.9        &&    20.3       &    49.3^{**}  &    25.5^{***} &    48.5        \\
-                      &                            &    (0.2)      &    (0.9)      &    (0.3)      &    (0.8)       &&    (1.2)      &    (0.8)      &    (1.0)      &    (2.7)       \\
+\multirow[c]{5}{*}{3} & \mco{Two girls}            &    17.9       &    49.4^{*}   &    20.3       &    52.9^{**}   &&    28.6       &    65.8^{***} &    33.2       &    66.3^{***}  \\
+                      &                            &    (0.3)      &    (1.0)      &    (0.2)      &    (0.7)       &&    (0.7)      &    (1.1)      &    (0.9)      &    (1.5)       \\
+                      & \mco{One boy / one girl}   &    19.1^{***} &    53.0^{**}  &    21.1^{***} &    51.8        &&    24.0^{***} &    53.5^{**}  &    26.7^{***} &    55.6^{***}  \\
+                      &                            &    (0.2)      &    (0.7)      &    (0.2)      &    (0.6)       &&    (0.5)      &    (1.0)      &    (0.9)      &    (1.4)       \\
+                      & \mco{Two boys}             &    19.1^{***} &    51.4       &    22.0^{***} &    50.9        &&    24.2^{***} &    46.6^{***} &    28.2^{***} &    48.8        \\
+                      &                            &    (0.2)      &    (0.9)      &    (0.3)      &    (0.8)       &&    (0.8)      &    (1.4)      &    (1.3)      &    (2.3)       \\
 \addlinespace 
 \bottomrule
 \end{tabular}
 \begin{tablenotes} 
-\tiny
+\footnotesize
 \item \hspace*{-0.5em} \textbf{Note.}
 Bootstrapped standard errors shown in parentheses.
-\item[a] For spells two and higher duration sex compositions other than all girls are 
+\item[a] For spells two and higher duration for sex compositions other than all girls are 
 tested against the duration for all girls, with *** indicating significantly different 
 at the 1\% level, ** at the 5\% level, and * at the 10\% level, based on bootstrapped
 differences.
@@ -226,22 +218,168 @@ and * at 10\% level.
 \end{threeparttable}
 \end{table}
 
-    \end{block}
-    
+\end{block}    
+
+\begin{columns}[t,totalwidth=\twocolwid]
+
+\begin{column}{\threecolwid}
+
+\begin{block}{Rural -- No Education}
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{Second Spell}}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Third Spell}}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Fourth Spell}}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_rural_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on predicted progression to next birth
+}
+\label{fig:pps_low}
+\end{figure}
+
+\end{block}     
+     
+     
+\end{column}
+
+\begin{column}{\threecolwid}
+
+\begin{block}{Urban -- 8+ Years of Education}
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\footnotesize{Second Spell}}
+\setcounter{subfigure}{-1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{0}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Third Spell}}
+\setcounter{subfigure}{1}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{2}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\footnotesize{Fourth Spell}}
+\setcounter{subfigure}{3}
+\subfloat[1972--1984]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\setcounter{subfigure}{4}
+\subfloat[2005--2016]{
+    \begin{minipage}{0.45\textwidth}
+        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_urban_pps}} 
+        \captionsetup[subfigure]{labelformat=parens}
+    \end{minipage}
+} 
+\caption{
+Survival curves conditional on predicted progression to next birth
+}
+\label{fig:pps_high}
+\end{figure}
+
+
+\end{block}     
+
+     
+\end{column}    
+
+\end{columns}
 
 \end{column}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{column}{\onecolwid}
 
-\begin{alertblock}{Conclusion}
-
+\begin{alertblock}{Conclusions}
+\vskip1ex
 \begin{enumerate}
+\setlength{\itemsep}{2ex}
 \item There has been a general increase in the length of spacing between births
-over the four decades covered by the data.
+over the four decades.
 The exception is for first births, where the median duration has either
-remained the same or slightly declined, although this hides a
+remained the same or declined slightly, although this hides a
 significant compression of the variation in spell length.
 
 \item The most substantial increase in spacing is for the women who
@@ -253,7 +391,7 @@ similar women with boys.
 \item Women with no education still follow the standard pattern of
 short spacing when they have girls and little evidence of the use of sex
 selection.
-In other words, these women adhere to a strategy where they achieve a
+In other words, they adhere to a strategy where they achieve a
 son through higher fertility rather than the use of sex selection.
 
 \item Sex ratios are the most likely to decline within spells at
@@ -262,8 +400,10 @@ are more likely to increase or remain consistently high for higher-order
 spells, where the pressure to ensure a son is high.
 
 \end{enumerate}
-
+\vskip1ex
 \end{alertblock}
+
+\vskip1ex
 
 \begin{block}{Future Research}
 
@@ -283,16 +423,20 @@ with fewer of them around?
 \item What is the interaction between female labor force participation
 and the use of sex selection?
 \end{itemize}
-
+\vskip1ex
 \end{block}
+
 
 \begin{block}{Acknowledgements}
 
-Support for development of the method from the University of Washington Royalty 
-Research Fund and the Development Research Group of the World Bank is gratefully 
-acknowledged.
+Support from the University of Washington Royalty Research Fund and the 
+Development Research Group of the World Bank
+for development of the method is gratefully acknowledged.
 The views and findings expressed here are those of the author and
 should not be attributed to the World Bank or any of its member countries.
+
+\vskip1ex
+
 Partial support for this research came from a Eunice Kennedy Shriver National
 Institute of Child Health and Human Development research infrastructure grant,
 5R24HD042828, to the Center for Studies in Demography and Ecology at the
