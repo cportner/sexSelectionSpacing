@@ -10,8 +10,8 @@
 ### very large number of figures and all of those need to go in
 ### dependencies and targets to ensure none are missing when running.
 
-TEXFILE = sexSelectionSpacing-ver1
-APPFILE = sexSelectionSpacingAppendix-ver1
+TEXFILE = sex_selection_spacing-ver2
+APPFILE = sex_selection_spacing_appendix-ver2
 TEX  = ./paper
 FIG  = ./figures
 TAB  = ./tables
