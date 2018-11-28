@@ -3,7 +3,8 @@
 version 13.1
 clear all
 
-loc num_reps = 100
+// loc num_reps = 100
+loc num_reps = 5
 file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
 capture program drop _all
