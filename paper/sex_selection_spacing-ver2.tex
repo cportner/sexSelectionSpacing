@@ -328,60 +328,41 @@ spells, where the pressure to ensure a son is high.
 %    of shorter spacing and/or use of sex selection. Differences in parity
 %    progression likelihood. 
 
-The unit of analysis is a spell, the period from one birth, or marriage for
-the first spell, to the next.
-For some spells, the duration is censored, for example, because the survey
-took place before the birth that would end the spell or because the couple
-has finished childbearing.
-The standard approach to address the censoring of spells, which I follow here, is 
-to use a hazard model.
-To capture the effects of sex selection, I extend the standard hazard model 
-to allow for multiple exit states and a non-proportional hazard specification.
-
-First, I use a competing risk framework with two possible exit states, either a boy
-or a girl is born, because access to prenatal sex determination means that
-parents can choose the sex of children born.
-Prior research on birth spacing, in contrast, relied on single
-exit state hazard models.%
+The unit of analysis is a spell, the period from one birth---or for the first spell from 
+marriage---to the next birth.
+The model is a discrete time, non-proportional, competing risk hazard model with two exit 
+states: either a boy or a girl is born.
+The standard approach in the spacing literature is to use a single-exit model, but
+access to sex selection means that the sex of the next child born is not random 
+and that the spacing to girls and boys depends on parents' choices.
+Both the non-randomness and differential spacing can be captured with a competing risk set 
+up.%
 \footnote{
 \cite{Merli2000} used a discrete hazard model to examine whether 
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
-Having only one exit state works when there is no sex selection---making the 
-sex of the child a random event---but not here since at least some couples use 
-sex selection.
 
-Second, I use a non-proportional hazard specification because
-sex composition and the use of sex selection are likely to affect 
-the shape of the hazard functions across groups.
-The use of a non-proportional specification also mitigates any potential 
-effects of unobserved heterogeneity when used in conjunction with a 
-flexible baseline hazard \citep{Dolton1995}.
-Proportional hazard models, where covariates have a multiplicative 
-effect on the hazard rate, are more efficient than non-proportional 
-models, but only provided that the proportionality assumption hold.
-If the proportionality assumption does not hold, the estimates
-are biased.
-
-It is unlikely---even in the absence of prenatal sex determination---that 
-the effect of, for example, the sex composition of previous births have 
-the same effect throughout the entire spell.
-Assuming that the effect of sex composition is the same throughout a spell
-is especially problematic for higher-order spells where different
-sex composition of previous births can lead to substantial differences 
-both in the likelihood of progressing to the next birth and
+I use a non-proportional hazard specification, which allows the shape of the hazard 
+functions to vary across groups, rather than the standard proportional hazard function 
+for three reasons.
+First, it is unlikely---even in the absence of prenatal sex determination---that the 
+effect of household characteristics such as the sex composition of previous births have 
+the same effect throughout the entire spell.%
+\footnote{
+Assuming that the effect of sex composition is the same throughout a spell is especially 
+problematic for higher-order spells where different sex composition of previous births can 
+lead to substantial differences both in the likelihood of progressing to the next birth and
 how soon couples want their next child if they are going to have one.
+}
+Second, the introduction of prenatal sex determination likely exacerbates any bias 
+from the proportionality assumption since sex-selective abortion use varies across groups
+and affects birth spacing, and because a household's use of sex selection may vary 
+within a spell, which means that the effects of covariates vary within the spell as well.
+Finally, the use of a non-proportional specification also mitigates any potential effects 
+of unobserved heterogeneity when used in conjunction with a flexible baseline hazard 
+\citep{Dolton1995}.
 
-The introduction of prenatal sex determination is likely to exacerbate 
-any bias from the proportionality assumption.
-First, sex-selective abortions affect birth spacing, and use
-varies across groups.
-Second, the use of sex selection may vary within a spell, which means 
-that the effects of covariates vary within the spell as well.
-
-In summary, my proposed model is a discrete time, non-proportional, competing risk 
-hazard model with two exit states: either a boy or a girl is born.
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
 the spell continues until time $t_i$, when either a birth occurs or the spell 
 is censored.%
@@ -391,27 +372,20 @@ as is standard in the literature.
 }
 There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
 $J_i$ is a random variable indicating which event took place.
-The discrete time hazard rate $h_{ijt}$ is
-\begin{equation}
- h_{ijt} = \Pr (T_i=t, J_i=j \mid T_i \geq t; \mathbf{Z}_{it},\mathbf{X}_{i} ),
-\end{equation}
-where $T_i$ is a discrete random variable that captures when woman $i$'s birth occurs.
-To ease presentation the indicator for spell number is suppressed.
-The explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, include 
-individual, household, and community characteristics discussed below.
-
-The hazard rate is specified as
+The discrete time hazard rate $h_{ijt}$ is specified as
 \begin{equation}
  h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
  {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
  \label{eq:hazard}
 \end{equation}
-where $D_{j}(t)$ is the piece-wise linear baseline hazard for outcome $j$, captured
+where the explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, include 
+individual, household, and community characteristics discussed below,
+and $D_{j}(t)$ is the piece-wise linear baseline hazard for outcome $j$, captured
 by dummies and the associated coefficients,
 \begin{equation}
 D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
 \end{equation}
-where $D_m = 1$ if $t=m$ and zero otherwise.
+with $D_m = 1$ if $t=m$ and zero otherwise.
 This approach to modeling the baseline hazard is flexible and does not place 
 overly strong restrictions on the baseline hazard.
 
@@ -423,45 +397,65 @@ interacted with the baseline hazard:
 \end{equation}
 where $D_j(t)$ is the piece-wise linear baseline hazard and $\mathbf{Z}_1$ captures sex 
 composition of previous children, if any, and $Z_2$ captures area of residence.
-The non-proportionality allows the effects of the main explanatory variables on the probabilities 
-of having a boy, a girl, or no birth to vary over time within a spell.
 The remaining explanatory variables, $\mathbf{X}$, enter proportionally,
 but to further minimize any potential bias from assuming proportionality, estimations 
 are done separately for different levels of mothers' education and for different 
 time periods.
-% The exact specifications and the individual variables are described below.
 
 Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
 Hence, transforming the data, so each observation is an interval---here equal
 to three months---the model can be estimated using a standard multinomial logit model.%
 \footnote{
-A potential issue is that the multinomial model assumes that alternative 
-exit states are stochastically independent,
-also known as the Independence of Irrelevant Alternatives (IIA) assumption.
-This assumption rules out any individual-specific unmeasured or 
-unobservable factors that affect both the hazard of having a girl and the 
+The multinomial model assumes that alternative exit states are stochastically independent
+(Independence of Irrelevant Alternatives or IIA), which rules out any individual-specific 
+unmeasured or unobservable factors that affect both the hazard of having a girl and the 
 hazard of having a boy.
 I, therefore, include a proxy for fecundity discussed in Section \ref{sec:data}.
-Also, the multivariate probit model can be used as an alternative
-to the multinomial logit because the IIA is not imposed \citep{han90}.
+Also, the multivariate probit model can be used as an alternative because the IIA is not 
+imposed \citep{han90}.
 The results are substantially identical between these two models and
 available upon request.
 }
-In the reorganized data the outcome variable is 0 if the
-woman does not have a child in a given interval (the base outcome), 1 if 
-she gives birth to a son in that interval, and 2 if she gives birth to 
-a daughter in that interval.
+In the reorganized data the outcome variable is 0 if the woman does not have a child in a 
+given interval (the base outcome), 1 if she gives birth to a son in that interval, and 2 
+if she gives birth to a daughter in that interval.
 
-The main downside of this set-up is that interpretation of the estimated 
-coefficients is challenging;
-the coefficients show the change in hazards relative to the base outcome, 
-here no birth, rather than the hazard of an event.
-Hence, a positive coefficient does not necessarily imply that the associated 
-exit state becomes more likely as the explanatory variable increases because the 
-probability of the other exit state may increase even more \citep{thomas96}.
+The distribution of spacing is captured by the survival curve, which shows the probability 
+of not having had a birth yet by spell duration, for a given set of explanatory variables.
+The survival curve at time $t$ is 
+\begin{equation}
+\label{eq:survival}
+S_{t} 
+= 
+\prod_{d=1}^t
+\left(
+\frac{ 1 }
+{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{ld}'\mathbf{Z}_{kd} + \beta_l'\mathbf{X}_{k})}
+\right).
+\end{equation}
 
-It is, however, straightforward to calculate the predicted probabilities of 
+Because the probability of ever having a next birth likely varies across groups, a direct 
+comparison of standard survival curves tells us little about how the spread of sex selection 
+affects birth spacing across groups.
+I, therefore, condition on the predicted likelihood of parity progression when examining 
+birth spacing measures, such as the median duration to a birth.
+The reliability of this approach depends on whether the spell length covered is 
+sufficiently long that few women are likely to give birth after the spell cut-off.
+I discuss the choice of spell length below.%
+\footnote{
+It is important to note that the approach is not the same as merely calculating 
+the birth spacing measures for women who already have a given 
+parity child in the survey because that number does not take into account
+the censoring of spells that will eventually lead to a birth.
+}
+In addition to calculating conditional birth spacing measures for different 
+percentages, I also present graphs of both standard survival curves and
+survival curves conditional on parity progression (which therefore
+begin at 100\% and end at 0\%).
+
+Interpretation of the model coefficients is challenging \citep{thomas96}.
+It is, however, possible to calculate the predicted probabilities of 
 having a boy and of having a girl for each $t$ within a spell, conditional on 
 a set of explanatory variables and not having had a child before that period.
 The predicted probability of having a boy in period $t$ for a given set of 
@@ -484,59 +478,9 @@ P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )
 Within each period the probability of not having a birth in period $t$
 is $1-P(b_{t})-P(g_{t})$.
 
-The distribution of spacing is captured by the survival curve, which shows 
-the probability of not having had a birth yet by spell duration, for
-a given set of explanatory variables.
-The survival curve at time $t$ is 
-\begin{equation}
-S_{t} 
-= 
-\prod_{d=1}^t 
-\left( 
-	1- \left(P(b_{d} | \mathbf{X}_{k}, \mathbf{Z}_{kd}, d) 
-	+ P(g_{d} | \mathbf{X}_{k}, \mathbf{Z}_{kd}, d) \right) 
-\right),
- \label{eq:survival}
-\end{equation}
-or equivalently
-\begin{equation}
-S_{t} 
-= 
-\prod_{d=1}^t
-\left(
-\frac{ 1 }
-{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{ld}'\mathbf{Z}_{kd} + \beta_l'\mathbf{X}_{k})}
-\right).
-\end{equation}
-
-An important issue is that the probability of ever having a next birth varies 
-across groups.
-For example, as the parity progression literature shows, couples with stronger 
-son preference are less likely, for a given number of prior births, to ever have 
-a next birth if they already have one or more sons.
-Direct comparison of standard survival curves, therefore, tells us little 
-about how the spread of sex selection affects birth spacing across groups.
-
-
-To overcome this problem, I condition on the predicted likelihood of parity 
-progression when examining birth spacing measures, such as the median duration 
-to a birth.
-How well this approach works depends on whether the spell length covered is 
-sufficiently long that few women are likely to give birth after the spell cut-off.
-I discuss the choice of spell length below.
-It is important to note that the approach is not the same as merely calculating 
-the birth spacing measures for women who already have a given 
-parity child in the survey because that number does not take into account
-the censoring of spells that will eventually lead to a birth.
-In addition to calculating conditional birth spacing measures for different 
-percentages, I also present graphs of both standard survival curves and
-survival curves conditional on parity progression (which therefore
-begin at 100\% and end at 0\%).
-
-
-Finally, given the predicted probabilities of having a boy and of having 
-a girl for each $t$ within a spell, is it easy to calculate the estimated 
-percentage of children born that are boys, $\hat{Y}$, at each $t$  
+Given the predicted probabilities of having a boy and of having a girl for each 
+$t$ within a spell, is it easy to calculate the estimated percentage of children born that 
+are boys, $\hat{Y}$, at each $t$  
 \begin{equation}
 \hat{Y}_t 
 = 
