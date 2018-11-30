@@ -6,6 +6,7 @@
 \setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
 \usepackage{unicode-math}
 \setmathfont{TeX Gyre Pagella Math}
+\usepackage{amsmath}
 \usepackage[title]{appendix}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[figuresleft]{rotating}
@@ -332,16 +333,16 @@ The unit of analysis is a spell, the period from one birth---or for the first sp
 marriage---to the next birth.
 The model is a discrete time, non-proportional, competing risk hazard model with two exit 
 states: either a boy or a girl is born.
-The standard approach in the spacing literature is to use a single-exit model, but
-access to sex selection means that the sex of the next child born is not random 
-and that the spacing to girls and boys depends on parents' choices.
-Both the non-randomness and differential spacing can be captured with a competing risk set 
-up.%
+The standard approach in the spacing literature is to use a single-exit model, but with
+access to sex selection the sex of the next child is not random and parents' choices 
+will impact the spacing to a girl or a boy differentially.%
 \footnote{
 \cite{Merli2000} used a discrete hazard model to examine whether 
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
+Both the non-randomness and differential spacing can be captured with a competing risk set 
+up.
 
 I use a non-proportional hazard specification, which allows the shape of the hazard 
 functions to vary across groups, rather than the standard proportional hazard function 
@@ -356,10 +357,10 @@ lead to substantial differences both in the likelihood of progressing to the nex
 how soon couples want their next child if they are going to have one.
 }
 Second, the introduction of prenatal sex determination likely exacerbates any bias 
-from the proportionality assumption since sex-selective abortion use varies across groups
-and affects birth spacing, and because a household's use of sex selection may vary 
+from the proportionality assumption since sex-selective abortion use varies across groups,
+which affects birth spacing, and because a household's use of sex selection may vary 
 within a spell, which means that the effects of covariates vary within the spell as well.
-Finally, the use of a non-proportional specification also mitigates any potential effects 
+Finally, the use of a non-proportional specification mitigates any potential effects 
 of unobserved heterogeneity when used in conjunction with a flexible baseline hazard 
 \citep{Dolton1995}.
 
@@ -378,7 +379,7 @@ The discrete time hazard rate $h_{ijt}$ is specified as
  {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
  \label{eq:hazard}
 \end{equation}
-where the explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, include 
+where the explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, capture 
 individual, household, and community characteristics discussed below,
 and $D_{j}(t)$ is the piece-wise linear baseline hazard for outcome $j$, captured
 by dummies and the associated coefficients,
@@ -449,38 +450,28 @@ the birth spacing measures for women who already have a given
 parity child in the survey because that number does not take into account
 the censoring of spells that will eventually lead to a birth.
 }
-In addition to calculating conditional birth spacing measures for different 
-percentages, I also present graphs of both standard survival curves and
+In addition, I also present graphs of both standard survival curves and
 survival curves conditional on parity progression (which therefore
 begin at 100\% and end at 0\%).
 
 Interpretation of the model coefficients is challenging \citep{thomas96}.
 It is, however, possible to calculate the predicted probabilities of 
-having a boy and of having a girl for each $t$ within a spell, conditional on 
-a set of explanatory variables and not having had a child before that period.
-The predicted probability of having a boy in period $t$ for a given set of 
-explanatory variable values, $\mathbf{Z}_k$ and $\mathbf{X}_k$, is
-\begin{equation}
+having a boy, $b$, and of having a girl, $g$, in period $t$, conditional on 
+a set of explanatory variables and not having had a child before that period, as
+\begin{align}
 P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt}, t ) 
-=  
+& =  
 \frac{ \exp(D_j(t) + \alpha_{1t}' \mathbf{Z}_{kt} + \beta_1' \mathbf{X}_{k} )}
-{1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt} ' \mathbf{Z}_{kt} + \beta_l ' \mathbf{X}_{k})},
-\label{eq:probability_boy}
-\end{equation}
-and the predicted probability of having a girl is
-\begin{equation}
+{1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt} ' \mathbf{Z}_{kt} + \beta_l ' \mathbf{X}_{k})}
+\label{eq:probability_boy} \\
 P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t ) 
-=  
+& =  
 \frac{ \exp(D_j(t) + \alpha_{2t}'\mathbf{Z}_{kt} + \beta_2'\mathbf{X}_{k} )}
-{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}.
+{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}
 \label{eq:probability_girl}
-\end{equation}
-Within each period the probability of not having a birth in period $t$
-is $1-P(b_{t})-P(g_{t})$.
-
-Given the predicted probabilities of having a boy and of having a girl for each 
-$t$ within a spell, is it easy to calculate the estimated percentage of children born that 
-are boys, $\hat{Y}$, at each $t$  
+\end{align}
+It is then straightforward to calculate the estimated percentage of children born that 
+are boys, $\hat{Y}$, at each $t$:  
 \begin{equation}
 \hat{Y}_t 
 = 
