@@ -98,11 +98,11 @@ program sexRatioTest
     file write tmpFile "\begin{center}" _n
     file write tmpFile "\begin{small}" _n
     file write tmpFile "\begin{threeparttable}" _n
-    file write tmpFile "\caption{Observed Sex Ratios for `title_describe' in Five-Year Cohorts}" _n
+    file write tmpFile "\caption{Observed Ratio of Boys for `title_describe' in Five-Year Cohorts}" _n
     file write tmpFile "\label{tab:`fileName'}" _n
-    file write tmpFile "\begin{tabular} {@{} l D{.}{.}{1.6} D{.}{.}{1.6} D{.}{.}{1.6} l D{.}{.}{1.6} l  @{}} \toprule " _n
-    file write tmpFile "                   & \mco{NFHS-1}      & \mco{NFHS-2}      & \mco{NFHS-3}      & \mco{NFHS-4}      & Diff.          \\" _n
-    file write tmpFile "                   & \mco{1992--1993}  & \mco{1998--1999}  & \mco{2005--2006}  & \mco{2015--2016}  & test\tnote{a}  \\ \midrule" _n
+    file write tmpFile "\begin{tabular} {@{} l D{.}{.}{1.6} D{.}{.}{1.6} D{.}{.}{1.6} l D{.}{.}{1.6} c  @{}} \toprule " _n
+    file write tmpFile "                   & \mco{NFHS-1}      & \mco{NFHS-2}      & \mco{NFHS-3}      & \mco{NFHS-4}      & \mco{Diff.}          \\" _n
+    file write tmpFile "                   & \mco{1992--1993}  & \mco{1998--1999}  & \mco{2005--2006}  & \mco{2015--2016}  & \mco{test\tnote{a}}  \\ \midrule" _n
     
     forvalues year = 1960(5)2010 {
         local value : label (`groupVar') `year'
@@ -182,7 +182,7 @@ program sexRatioTest
         file write tmpFile "`value'" 
         forvalues survey = 1/4 {
             local where = 20 * `survey'
-            file write tmpFile _column(`where') "& " %6.4f  (`sexRatio`survey'') "\sym{`stars`survey''}"
+            file write tmpFile _column(`where') "& " %6.4f  (`sexRatio`survey'') "^{`stars`survey''}"
         }
         file write tmpFile _column(100) "& `cohortCompare'"
         file write tmpFile _column(110) "\\"  _n
@@ -205,11 +205,11 @@ program sexRatioTest
     file write tmpFile "\item \hspace*{-0.6em} \textbf{Note.} " _n
     file write tmpFile "Sample consists of Hindu women only." _n
     file write tmpFile "First number in cell is ratio of boys to children. " _n
-    file write tmpFile "Second number in parentheses is p-value for the hypothesis that observed sex ratio is " _n
+    file write tmpFile "Second number, in parentheses, is p-value for the hypothesis that observed sex ratio is " _n
     file write tmpFile "greater than 105/205 using a binomial probability test (bitest in Stata 13)" _n
-    file write tmpFile "with asterisks indicating significance as follows: " _n
+    file write tmpFile "with significance levels: " _n
     file write tmpFile "* sign.\ at 10\%; ** sign.\ at 5\%; *** sign.\ at 1\%." _n
-    file write tmpFile "Third number in square brackets is number of observations." _n
+    file write tmpFile "Third number, in square brackets, is number of observations." _n
     file write tmpFile "\item[a] " _n
     file write tmpFile "Test (prtest in Stata 13) whether recall error increases " _n
     file write tmpFile "with time passed, which would manifest itself in a higher sex ratio for a more recent" _n
