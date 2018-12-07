@@ -89,6 +89,7 @@ APPGRAPHS := \
 # Main paper
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex \
+ $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(GRAPHTARGET) $(PPSTARGET) \
  $(TAB)/bootstrap_duration_sex_ratio_high.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
 	cd $(TEX); xelatex $(TEXFILE)
@@ -141,6 +142,13 @@ $(DAT)/base4.dta: $(COD)/crBase4.do $(RAW)/iair72fl.dta $(RAW)/iahr71fl.dta
 	cd $(COD); stata-se -b -q $(<F)
 
 $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3.dta $(DAT)/base4.dta
+	cd $(COD); stata-se -b -q $(<F)
+
+#---------------------------------------------------------------------------------------#
+# Recall error analysis                                                                 #
+#---------------------------------------------------------------------------------------#
+
+$(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex: $(COD)/anRecall.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
 
