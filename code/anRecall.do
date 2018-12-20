@@ -100,7 +100,7 @@ program sexRatioTest
     file write tmpFile "\begin{threeparttable}" _n
     file write tmpFile "\caption{Observed Ratio of Boys for `title_describe' in Five-Year Cohorts}" _n
     file write tmpFile "\label{tab:`fileName'}" _n
-    file write tmpFile "\begin{tabular} {@{} l D{.}{.}{1.6} D{.}{.}{1.6} D{.}{.}{1.6} l D{.}{.}{1.6} c  @{}} \toprule " _n
+    file write tmpFile "\begin{tabular} {@{} l D{.}{.}{1.6} D{.}{.}{1.6} D{.}{.}{1.6} D{.}{.}{1.6} c  @{}} \toprule " _n
     file write tmpFile "                   & \mco{NFHS-1}      & \mco{NFHS-2}      & \mco{NFHS-3}      & \mco{NFHS-4}      & \mco{Diff.}          \\" _n
     file write tmpFile "                   & \mco{1992--1993}  & \mco{1998--1999}  & \mco{2005--2006}  & \mco{2015--2016}  & \mco{test\tnote{a}}  \\ \midrule" _n
     
