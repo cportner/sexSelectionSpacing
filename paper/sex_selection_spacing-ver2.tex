@@ -2,11 +2,11 @@
 
 \documentclass[12pt,letterpaper]{article}
 
+\usepackage{amsmath}
 \usepackage{fontspec}
 \setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
 \usepackage{unicode-math}
 \setmathfont{TeX Gyre Pagella Math}
-\usepackage{amsmath}
 \usepackage[title]{appendix}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[figuresleft]{rotating}
@@ -1857,18 +1857,13 @@ and the horizontal line the natural sex ratio (approximately 0.512).
 To ensure sufficient cell sizes the years are grouped in twos.
 In line with the results from Tables \ref{tab:recallMarriageBO1} and 
 \ref{tab:recallMarriageBO2}, the observed ratio of boys 
-is increasingly above the expected value the longer ago the parents were married.%
-\footnote{
-The graph for second births shows a similar pattern with the
-likelihood of the second child being a boy going up with increasing marriage duration.
-The graphs for the second births and the individual survey rounds are available upon request.
-}
+is increasingly above the expected value the longer ago the parents were married.
 
 \begin{figure}[htp]%
 \centering
 \includegraphics[width=0.9\textwidth]{sex_ratio_marriage}
 \caption{Sex ratio of ``first'' births by duration of marriage}
-\label{fig:sexRatioMarriage}}
+\label{fig:sexRatioMarriage}
 \end{figure}
 
 The increasingly unequal sex ratio with increasing marriage duration suggests that
@@ -1899,14 +1894,15 @@ Hence, for NFHS-1 women who were married 22 years or more before the survey date
 were dropped and for NFHS-2 women who were married 23 year or more before the survey date 
 were dropped.
 
-% \begin{figure}
-% \centering
-% \subfloat[NFHS-1]{\includegraphics[width=.49\textwidth]{des_b1_m_age_r1}}
-% \subfloat[NFHS-2]{\includegraphics[width=.49\textwidth]{des_b1_m_age_r2}} \\
-% \subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{des_b1_m_age_r3}} 
-% \caption{Ratio of Boys for ``First'' Births by Survey Round}
-% \label{fig:sex_ratio_recall_rounds}
-% \end{figure}
+\begin{figure}
+\centering
+\subfloat[NFHS-1]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_1}}
+\subfloat[NFHS-2]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_2}} \\
+\subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_3}} 
+\subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_4}} 
+\caption{Ratio of Boys for ``First'' Births by Survey Round}
+\label{fig:sex_ratio_recall_rounds}
+\end{figure}
 
 
 
