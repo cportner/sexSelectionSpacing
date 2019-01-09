@@ -88,6 +88,44 @@ graph export `figures'/recall_sex_ratio_marriage_cohort.eps, replace fontface(Pa
 restore
 
 
+// "Second-born" by survey
+preserve
+keep if bo == 2
+drop if round == 1 &  mar_2yr_cohort > 14
+drop if round == 2 & (mar_2yr_cohort < 4 | mar_2yr_cohort > 17)
+drop if round == 3 & (mar_2yr_cohort < 7 | mar_2yr_cohort > 21)
+drop if round == 4 & (mar_2yr_cohort < 10 | mar_2yr_cohort > 26)
+
+gen prc_boys = .
+gen ub = .
+gen lb = .
+
+forvalues round = 1/4 {
+    sum mar_2yr_cohort if round == `round'
+    loc max_yr = `r(max)'
+    loc min_yr = `r(min)'
+    forvalue i = `min_yr'/`max_yr' {
+        ci b_sex if mar_2yr_cohort == `i' & round == `round' , binomial
+        replace prc_boys = `r(mean)' if mar_2yr_cohort == `i' & round == `round'
+        replace ub = `r(ub)' if mar_2yr_cohort == `i' & round == `round'
+        replace lb = `r(lb)' if mar_2yr_cohort == `i' & round == `round'
+    }
+}
+
+bysort round mar_year: keep if _n == 1
+
+set scheme s1mono
+twoway line prc_boys mar_year if round == 1, legend(label(1 "NFHS-1")) lpattern(solid) lwidth(medthick..) lcolor(black) ///
+    || line prc_boys mar_year if round == 2, legend(label(2 "NFHS-2")) lpattern(dash) lwidth(medthick..) lcolor(black) ///
+    || line prc_boys mar_year if round == 3, legend(label(3 "NFHS-3")) lpattern(shortdash) lwidth(medthick..) lcolor(black) ///
+    || line prc_boys mar_year if round == 4, legend(label(4 "NFHS-4")) lpattern(dash_dot) lwidth(medthick..) lcolor(black) ///
+    || , xlabel(1960(5)2015)  yline(0.51219512, lstyle(foreground) extend) ///
+    ylabel(0.48(0.02)0.6) legend(ring(0) bplacement(neast)) ///
+    ytitle("") xtitle("Year of Marriage")
+graph export `figures'/recall_sex_ratio_marriage_cohort_bo2.eps, replace fontface(Palatino)
+restore
+
+
 
 /*-------------------------------------------------------------------*/
 /* DEVELOPMENT IN SEX RATIOS BY DURATION OF MARRIAGE				 */
