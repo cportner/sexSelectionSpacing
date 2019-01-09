@@ -79,7 +79,12 @@ APPGRAPHS := \
     $(foreach spell, $(SPELLS), \
     $(foreach educ, $(EDUC), \
     $(FIG)/appendix_spell$(spell)_$(educ).tex \
-    ))    
+    ))
+    
+### Recall error graphs
+RECALLGRAPHS := \
+    $(foreach round, $(PERIODS), \
+    $(FIG)/recall_sex_ratio_marriage_round_$(round).eps $(FIG)/recall_sex_ratio_marriage_round_$(round)_bo2.eps )  
     
     
 ###################################################################	
@@ -90,6 +95,7 @@ APPGRAPHS := \
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
+ $(RECALLGRAPHS) \
  $(GRAPHTARGET) $(PPSTARGET) \
  $(TAB)/bootstrap_duration_sex_ratio_high.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
 	cd $(TEX); xelatex $(TEXFILE)
@@ -151,6 +157,8 @@ $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3
 $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex: $(COD)/anRecall.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
+$(RECALLGRAPHS) : $(COD)/an_recall_graph.do $(DAT)/base.dta
+	cd $(COD); stata-se -b -q $(<F)
 
 #---------------------------------------------------------------------------------------#
 # Descriptive statistics                                                                #
