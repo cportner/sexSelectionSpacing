@@ -1743,10 +1743,10 @@ This section assesses the degree of recall error across the surveys and discusse
 to address it.
 
 NFHS enumerators probe for any missed births, although the method depends on the survey.
-NFHS-1 probe for each calendar birth interval that is 4 or more years.
+NFHS-1 probe for each calendar birth interval that is four or more years.
 NFHS-2 asked for stillbirths, spontaneous and induced abortions and also probed 
-for each calendar birth interval 4 or more years.
-NFHS-3 and NFHS-4 did not directly use birth intervals, but asked whether were there any 
+for each calendar birth interval four or more years.
+NFHS-3 and NFHS-4 did not directly use birth intervals, but asked whether there were any 
 other live births between (name of previous birth) and (name), including any children who 
 died after birth, and asked for births before the birth listed as first birth and
 after the last birth listed as the last birth.
@@ -1818,81 +1818,36 @@ The exception is that comparisons involving NFHS-4 are mostly statistically sign
 since the number of surveyed households in NFHS-4 were much larger than in prior surveys.
 
 The problem with the above approach is that the year of birth is affected by recall error; 
-for example, a second born child listed as first-born is born later than the real 
-first born child.
-Recorded year of marriage should, however, be affected neither by parental recall error 
+a second born child listed as first-born is born later than the real first born child.
+Year of marriage should, however, be affected neither by parental recall error 
 nor the use of sex-selective abortions.
 Tables \ref{tab:recallMarriageBO1} and \ref{tab:recallMarriageBO2}, therefore, shows sex 
 ratios of children recorded as first-born and second-born by year of parents' marriage, 
 together with tests for whether the observed sex ratio is significantly higher than the 
 natural sex ratio and whether more recent surveys show a higher sex ratio for the cohort 
 than earlier surveys.
-
-The basic recall error pattern remains with women married longer ago more
+The basic recall error pattern remains, with women married longer ago more
 likely to report that their first-born is a boy.
-If anything the pattern is more consistent when using year of marriage than 
-year of birth. 
-Before the introduction of sex selection there are only two instances  across the two 
-parities where the observed sex ratio is lower for women married longer ago than for women 
-married closer to the survey date.%
-\footnote{
-For first-borns it is between 1970--1974 and 1975-1979 for NFHS-3 and for second-borns
-it is between 1975--1979 and 1980--1984 for NFHS-1.
-}
 Similarly, comparing women married in the same five-year period across surveys shows
 that women married longer ago are more likely to report having a son.
+
 
 \input{../tables/recallMarriageBO1.tex}
 
 \input{../tables/recallMarriageBO2.tex}
 
+
 The relationship between length of marriage and recall error can also seen in 
-Figure \ref{fig:sexRatioMarriage}, which shows the observed sex ratio for children reported
-as first born as a function of duration of marriage at the time of the survey combining 
-all four surveys.
-The solid line is the sex ratio of children reported 
-as first born by the number of years between the survey and marriage, 
-the dashed lines indicate the 95 percent confidence interval 
-and the horizontal line the natural sex ratio (approximately 0.512).
+Figures \ref{fig:sex_ratio_recall_rounds_bo1} and \ref{fig:sex_ratio_recall_rounds_bo2}, 
+which show the observed sex ratio for children reported as first born as a function of 
+duration of marriage at the time of the survey.
+The solid line is the sex ratio of children reported as first born by the number of years 
+between the survey and marriage, the dashed lines indicate the 95 percent confidence 
+interval and the horizontal line the natural sex ratio (approximately 0.512).
 To ensure sufficient cell sizes the years are grouped in twos.
 In line with the results from Tables \ref{tab:recallMarriageBO1} and 
-\ref{tab:recallMarriageBO2}, the observed ratio of boys 
-is increasingly above the expected value the longer ago the parents were married.
-
-\begin{figure}[htp]%
-\centering
-\includegraphics[width=0.9\textwidth]{recall_sex_ratio_marriage}
-\caption{Sex ratio of ``first'' births by duration of marriage}
-\label{fig:sexRatioMarriage}
-\end{figure}
-
-The increasingly unequal sex ratio with increasing marriage duration suggests that
-a solution to the recall error problem is to drop observations for 
-women who were married ``too far'' from the survey year.
-The main problem is establishing what the best cut-off point should be.
-As Tables \ref{tab:recallMarriageBO1} and \ref{tab:recallMarriageBO2} shows there are 
-differences in recall error across the three surveys and between parities.
-One possibility is simply to drop all women married in cohorts where the observed
-sex ratio is substantially higher than the natural sex ratio, but even this is not
-straightforward.
-For ``first'' born this would imply dropping all women married before 1980, but
-for ``second'' born it would be imply dropping all married before 1970 for NFHS-1, before 1975 
-for NFHS-2, and before 1980 NFHS-3.
-Because of the differences between ``first'' and ``second'' born in the different surveys
-I vary the cut-off point by survey round.
-
-NFHS-3 is the most straightforward in that the implied cut-off point is the same for
-both first and second born.
-Based on Tables \ref{tab:recallMarriageBO1} and \ref{tab:recallMarriageBO2}, women in 
-NFHS-3 who were married 26 years or
-more before the survey date are dropped.
-For NFHS-1 and NFHS-2 the trade-off is between ensuring enough information and not bias 
-the results unduly.
-Given that sex selective abortions are more likely in higher parity birth I base the
-cut-off point on the second births instead of the first births.
-Hence, for NFHS-1 women who were married 22 years or more before the survey date 
-were dropped and for NFHS-2 women who were married 23 year or more before the survey date 
-were dropped.
+\ref{tab:recallMarriageBO2}, the observed ratio of boys is increasingly above the expected 
+value the longer ago the parents were married.
 
 \begin{figure}
 \centering
@@ -1914,6 +1869,20 @@ were dropped.
 \label{fig:sex_ratio_recall_rounds_bo2}
 \end{figure}
 
+
+The increasingly unequal sex ratio with increasing marriage duration suggests that
+a solution to the recall error problem is to drop observations for 
+women who were married ``too far'' from the survey year.
+The main problem is establishing what the best cut-off point should be, with the
+trade-off between retaining enough observations and the correctness of the information.
+As Tables \ref{tab:recallMarriageBO1} and \ref{tab:recallMarriageBO2} show, there are 
+differences in recall error across the three surveys and between parities, although
+this may simply be the result of differences in number of observations across surveys.
+Furthermore, the recall error pattern is not entirely consistent across observed birth 
+orders.
+Since most of the surveys start showing significantly biased sex ratio from around 22
+years of marriage on, I drop all observations where the marriage took place 22 years
+or more.
 
 
 \clearpage
