@@ -61,36 +61,76 @@ drop v135 v503
 /* ENSURE CONSISTENTY IN VARIABLES AND NAMES                            */
 /*----------------------------------------------------------------------*/
 
-// This changed from NFHS-3
-// Commented out for now since I never use state
-// recode v024   ///
-//        (28 =  2 "Andhra Pradesh") ///
-//        (18 =  3 Assam) ///
-//        (10 20 =  4 Bihar) ///
-//        (30 =  5 Goa) ///
-//        (24 =  6 Gujarat) ///
-//        ( 6 =  7 Haryana) ///
-//        ( 2 =  8 "Himachal Pradesh") ///
-//        ( 1 =  9 Jammu) ///
-//        (29 = 10 Karnataka) ///
-//        (32 = 11 Kerala) ///
-//        (22 23 = 12 "Madhya Pradesh") ///
-//        (27 = 13 Maharashtra) ///
-//        (14 = 14 Manipur) ///
-//        (17 = 15 Meghalaya) ///
-//        (15 = 16 Mizoram) ///
-//        (13 = 17 Nagaland) ///
-//        (21 = 18 Orissa) ///
-//        ( 3 = 19 Punjab) ///
-//        ( 8 = 20 Rajasthan) ///
-//        (11 = 21 Sikkim) ///
-//        (33 = 22 "Tamil Nadu") ///
-//        (19 = 23 "West Bengal") ///
-//        (5 9 = 24 "Uttar Pradesh") ///
-//        ( 7 = 30 "New Delhi") ///
-//        (12 = 34 "Arunachal Pradesh") ///
-//        (16 = 35 Tripura) ///
-//        , gen(state)
+// NFHS-4 state codes - different from NFHS-3 and prior surveys
+// 1 Andaman and Nicobar Islands
+// 2 Andhra Pradesh
+// 3 Arunachal Pradesh
+// 4 Assam
+// 5 Bihar
+// 6 Chandigarh
+// 7 Chhattisgarh
+// 8 Dadra and Nagar Haveli
+// 9 Daman and Diu
+// 10 Goa
+// 11 Gujarat
+// 12 Haryana
+// 13 Himachal Pradesh
+// 14 Jammu and Kashmir
+// 15 Jharkhand
+// 16 Karnataka
+// 17 Kerala
+// 18 Lakshadweep
+// 19 Madhya Pradesh
+// 20 Maharashtra
+// 21 Manipur
+// 22 Meghalaya
+// 23 Mizoram
+// 24 Nagaland
+// 25 Delhi
+// 26 Odisha
+// 27 Puducherry
+// 28 Punjab
+// 29 Rajasthan
+// 30 Sikkim
+// 31 Tamil Nadu
+// 32 Tripura
+// 33 Uttar Pradesh
+// 34 Uttarakhand
+// 35 West Bengal
+// 36 Telangana
+
+drop if v024 == 1 // Andaman and Nicobar Islands (not in other surveys)
+drop if v024 == 18 // Lakshadweep a small island chain
+// Puducherry (27) is assigned to Tamil Nadu, but has four locations, two in Tamil Nadu
+// and one in Andhra Pradesh and one in Kerala
+recode v024   ///
+       ( 2 36 =  2 "Andhra Pradesh") ///
+       ( 4 =  3 Assam) ///
+       ( 5 15 =  4 Bihar) ///
+       (10 =  5 Goa) ///
+       (11 8 9 =  6 Gujarat) ///
+       (6 12 =  7 Haryana) ///
+       (13 =  8 "Himachal Pradesh") ///
+       (14 =  9 Jammu) ///
+       (16 = 10 Karnataka) ///
+       (17 = 11 Kerala) ///
+       (19 7 = 12 "Madhya Pradesh") ///
+       (20 = 13 Maharashtra) ///
+       (21 = 14 Manipur) ///
+       (22 = 15 Meghalaya) ///
+       (23 = 16 Mizoram) ///
+       (24 = 17 Nagaland) ///
+       (26 = 18 Orissa) ///
+       (28 = 19 Punjab) ///
+       (29 = 20 Rajasthan) ///
+       (30 = 21 Sikkim) ///
+       (31 27 = 22 "Tamil Nadu") ///
+       (35 = 23 "West Bengal") ///
+       (33 34 = 24 "Uttar Pradesh") ///
+       (25 = 30 Delhi) ///
+       (3  = 34 "Arunachal Pradesh") ///
+       (32 = 35 Tripura) ///
+       , gen(state)
 drop v024
 
 // religion

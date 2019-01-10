@@ -87,7 +87,7 @@ recode v024   ///
        (33 = 22 "Tamil Nadu") ///
        (19 = 23 "West Bengal") ///
        (5 9 = 24 "Uttar Pradesh") ///
-       ( 7 = 30 "New Delhi") ///
+       ( 7 = 30 Delhi) ///
        (12 = 34 "Arunachal Pradesh") ///
        (16 = 35 Tripura) ///
        , gen(state)

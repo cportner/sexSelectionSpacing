@@ -203,6 +203,12 @@ gen edu_father2 = edu_father^2 / 10
 gen city = resid_large
 gen town = resid_small + resid_town
 
+egen region1 = anymatch(state), values(7 19 6 30 13 8 5 9 20) // High sex selection
+egen region2 = anymatch(state), values(24 4 12) // High fertility, high son preference
+egen region3 = anymatch(state), values(3 18 23 34 15 23 16 14 17 35 21) // Moderate son preference
+egen region4 = anymatch(state), values(11 10 22 2) // Low son preference
+assert region1 + region2 + region3 + region4 == 1
+
 lab var edu_mother   "Wife's education"
 lab var edu_mother2  "Wife's education$^2$/10"
 lab var edu_father   "Husband's education"
