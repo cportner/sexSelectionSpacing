@@ -16,3 +16,7 @@
 - an_bootstrap.do: Loop to run bootstrapping for predictions
 - an_bootstrap_table.do: Outputs tables based on bootstrap results
 - bootspell.do: Function for analysis of bootstrap sample passed to it
+
+## LaTeX generation files
+
+- gen_appendix_graphs.do: Generates LaTeX code for holding graphs
