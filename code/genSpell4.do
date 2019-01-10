@@ -7,9 +7,9 @@ keep if fertility >= 3
 
 // dropping those with too much recall error
 drop if observation_age_m >= 22 & round == 1
-drop if observation_age_m >= 23 & round == 2
-drop if observation_age_m >= 25 & round == 3
-drop if observation_age_m >= 25 & round == 4
+drop if observation_age_m >= 22 & round == 2
+drop if observation_age_m >= 22 & round == 3
+drop if observation_age_m >= 22 & round == 4
 
 gen mom_age    = b4_mom_age
 gen mom_age2   = mom_age^2/100
