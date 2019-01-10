@@ -11,7 +11,6 @@
 ### dependencies and targets to ensure none are missing when running.
 
 TEXFILE = sex_selection_spacing-ver2
-APPFILE = sex_selection_spacing_appendix-ver2
 TEX  = ./paper
 FIG  = ./figures
 TAB  = ./tables
@@ -102,14 +101,6 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
-
-# Appendix file	
-$(TEX)/$(APPFILE).pdf: $(TEX)/$(APPFILE).tex $(TEX)/sex_selection_spacing.bib \
- $(GRAPHTARGET) $(PPSTARGET) $(APPGRAPHS)
-	cd $(TEX); xelatex $(APPFILE)
-	cd $(TEX); bibtex $(APPFILE)
-	cd $(TEX); xelatex $(APPFILE)
-	cd $(TEX); xelatex $(APPFILE)
 	
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
@@ -267,7 +258,7 @@ $(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio
 #---------------------------------------------------------------------------------------#
 
 .PHONY: cleanall cleantab cleanfig cleantex cleancode
-cleanall: cleanfig cleantab cleantex cleancode
+clean: cleanfig cleantab cleantex cleancode
 	-cd $(DAT); rm *.ster
 
 cleantab:
