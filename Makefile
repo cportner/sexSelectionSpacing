@@ -32,6 +32,7 @@ endif
 PERIODS := 1 2 3 4
 AREAS   := rural urban
 EDUC    := low med high
+REGIONS := 1 2 3 4
 SPELLS  := 1 2 3 4
 COMP1   := _
 COMP2   := _b_ _g_
@@ -43,7 +44,8 @@ ANALYSISTARGET := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
-    $(DAT)/results_spell$(spell)_g$(per)_$(educ).ster ) ) )
+    $(foreach region, $(REGIONS), \
+    $(DAT)/results_spell$(spell)_g$(per)_$(educ)_r$(region).ster ) ) ) )
 
 ### Percentage boys and standard survival graphs
 GRAPHTARGET := \
@@ -105,15 +107,6 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
 	$(PDFAPP) $(TEX)/$(TEXFILE).pdf & 
-
-.PHONY: app
-app: $(TEX)/$(APPFILE).pdf
-	$(PDFAPP) $(TEX)/$(APPFILE).pdf & 
-
-.PHONY: all
-all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
-	$(PDFAPP) $(TEX)/$(APPFILE).pdf & 
-	$(PDFAPP) $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
 results: $(GRAPHTARGET) $(PPSTARGET) \
@@ -168,15 +161,16 @@ run_analysis: $(ANALYSISTARGET)
 
 # Use basename because run_analysis is an ado file
 define analysis-rule
-$(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis.ado \
+$(DAT)/obs_spell$(1)_g$(2)_$(3)_r$(4).dta $(DAT)/results_spell$(1)_g$(2)_$(3)_r$(4).ster: $(COD)/run_analysis.ado \
  $(DAT)/base.dta $(COD)/bh_$(3).ado $(COD)/genSpell$(1).do
-	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
+	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
 endef
 
 $(foreach spell, $(SPELLS), \
 $(foreach per, $(PERIODS), \
 $(foreach educ, $(EDUC), \
-$(eval $(call analysis-rule,$(spell),$(per),$(educ))) ) ) )
+$(foreach region, $(REGIONS), \
+$(eval $(call analysis-rule,$(spell),$(per),$(educ),$(region))) ) ) ) )
 
 		
 #---------------------------------------------------------------------------------------#
@@ -252,14 +246,12 @@ $(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio
 
 	
 #---------------------------------------------------------------------------------------#
-# Clean directories for (most) generated files                                          #
-# This does not clean generated data files; mainly because I am a chicken               #
+# Clean directories for generated files                                                 #
 # The "-" prevents Make from stopping with an error if a file type does not exist       #
 #---------------------------------------------------------------------------------------#
 
-.PHONY: cleanall cleantab cleanfig cleantex cleancode
-clean: cleanfig cleantab cleantex cleancode
-	-cd $(DAT); rm *.ster
+.PHONY: cleanall cleantab cleanfig cleantex cleancode cleandata
+clean: cleanfig cleantab cleantex cleancode cleandata
 
 cleantab:
 	-cd $(TAB); rm *.tex
@@ -272,3 +264,6 @@ cleantex:
 	
 cleancode:	
 	-cd $(COD); rm *.log
+
+cleandata:	
+	-cd $(DAT); rm *.dta; rm *.ster
