@@ -232,9 +232,7 @@ $(foreach spell, $(SPELLS), \
 #--------------------#
 
 # Bootstrap results
-$(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta \
- $(COD)/bootspell.do $(COD)/bh_low.ado \
- $(COD)/bh_med.ado $(COD)/bh_high.ado \
+$(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta $(COD)/bootspell.do \
  $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
 	cd $(COD); nice stata-se -b -q $(<F)	
 
