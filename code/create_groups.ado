@@ -2,7 +2,7 @@
 
 // Creates a variable ("group") split into time periods
 program create_groups 
-    version 13
+    version 15.1
     args born_year
     gen     group = 1 if `born_year' <= 84
     replace group = 2 if `born_year' >= 85  & `born_year' <= 94
