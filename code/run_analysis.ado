@@ -64,7 +64,7 @@ program run_analysis
     bysort id (t): keep if _n == 1
     gen had_birth = any_birth == 1 | any_birth == 2 // gave birth to a boy or a girl
     collapse (count) num_obs = had_birth (sum) num_births = had_birth , by(`girlvar' urban) 
-    save `data'/obs_spell`spell'_`period'_`educ'_r`region', replace
+    save `data'/obs_spell`spell'_g`period'_`educ'_r`region', replace
     restore
     
     // PIECE-WISE LINEAR HAZARDS
