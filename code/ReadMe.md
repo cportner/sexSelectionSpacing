@@ -11,7 +11,7 @@
 ## Analysis files
 
 - anDescStat.do: Creates descriptive statistics LaTeX file des_stat.tex
-- run_analysis.ado: Runs regression model for spell, period, and education passed to it
+- run_analysis.ado: Runs regression model for spell, period, education, and region values passed to it
 - run_graphs.ado: Creates graphs for spell, period, and education passed to it
 - an_bootstrap.do: Loop to run bootstrapping for predictions
 - an_bootstrap_table.do: Outputs tables based on bootstrap results
