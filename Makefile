@@ -248,14 +248,14 @@ $(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio
 # The "-" prevents Make from stopping with an error if a file type does not exist       #
 #---------------------------------------------------------------------------------------#
 
-.PHONY: cleanall cleantab cleanfig cleantex cleancode cleandata
-clean: cleanfig cleantab cleantex cleancode cleandata
+.PHONY: clean cleantab cleanfig cleantex cleancode cleandata
+clean: cleantab cleanfig cleantex cleancode cleandata
 
 cleantab:
 	-cd $(TAB); rm *.tex
 	
 cleanfig:
-	-cd $(FIG); rm *.eps
+	-cd $(FIG); rm *.eps; rm *.tex
 	
 cleantex:
 	-cd $(TEX); rm *.aux; rm *.bbl; rm *.blg; rm *.log; rm *.out; rm *.pdf; rm *.gz
