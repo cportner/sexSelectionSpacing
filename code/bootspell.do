@@ -1,7 +1,7 @@
 
 program bootspell, rclass
     version 13
-    args spell group educ
+    args spell  
     preserve
     
     // Need to generate a new id because of sampling with replacement and use that id instead

@@ -84,7 +84,7 @@ foreach educ in "high" "med" "low" {
             // Bootstrapping
             bootstrap `stats' , ///
                 reps(`num_reps') seed(100669) nowarn saving(`data'/bs_s`spell'_g`group'_`educ', replace) ///
-                : bootspell `spell' `group' `educ'
+                : bootspell `spell' 
             
         }
     }
