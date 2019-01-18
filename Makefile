@@ -73,7 +73,8 @@ BSDATA := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
-    $(DAT)/bs_s$(spell)_g$(per)_$(educ).dta ) ) ) 
+    $(foreach region, $(REGIONS), \
+    $(DAT)/bs_s$(spell)_g$(per)_$(educ)_r$(region).dta ) ) ) )
     
 ### Appendix graphs LaTeX code
 APPGRAPHS := \
@@ -232,6 +233,9 @@ $(foreach spell, $(SPELLS), \
 #--------------------#
 
 # Bootstrap results
+.PHONY: run_boot
+run_boot: $(BSDATA)
+
 $(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta $(COD)/bootspell.do \
  $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
 	cd $(COD); nice stata-se -b -q $(<F)	
