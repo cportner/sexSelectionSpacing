@@ -1,10 +1,10 @@
 // Table of spell lengths with bootstrapped standard errors
 
-version 13.1
+version 15.1
 clear all
 
 // loc num_reps = 100
-loc num_reps = 5
+loc num_reps = 4
 file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
 capture program drop _all
@@ -14,7 +14,8 @@ include directories
 
 use `data'/base
 
-tempfile main low med high
+tempfile main reduced
+compress
 save "`main'"
 
 // Restricting sample and data manipulations
@@ -38,13 +39,15 @@ foreach educ in "high" "med" "low" {
         exit
     }
     
-    save "``educ''" // Need double ` because the name that comes from educ is itself a local variable
+    // No need to load all data again since loop below is for same education level
+    compress
+    save "`reduced'", replace 
 
     forvalues spell = 1/4 {
 
         forvalues group = 1/4 {
             
-            use "``educ''" , clear
+            use "`reduced'" , clear
             if `spell' == 1 {
                 global b1space ""
                 loc girlvar ""
