@@ -1,6 +1,6 @@
 // Table of spell lengths with bootstrapped standard errors
 
-version 13.1
+version 15.1
 clear all
 
 
