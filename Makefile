@@ -75,6 +75,13 @@ BSDATA := \
     $(foreach educ, $(EDUC), \
     $(foreach region, $(REGIONS), \
     $(DAT)/bs_s$(spell)_g$(per)_$(educ)_r$(region).dta ) ) ) )
+
+### Tables of bootstrapping results
+BSTABLE := \
+    $(foreach educ, $(EDUC), \
+    $(foreach region, $(REGIONS), \
+    $(TAB)/bootstrap_duration_sex_ratio_$(educ)_r$(region).tex $(TAB)/bootstrap_duration_p25_p75_$(educ)_r$(region).tex $(TAB)/bootstrap_any_sex_ratio_$(educ)_r$(region).tex ) )
+
     
 ### Appendix graphs LaTeX code
 APPGRAPHS := \
@@ -228,9 +235,9 @@ $(foreach spell, $(SPELLS), \
 )
 	
 	
-#--------------------#
-#      Tables        #
-#--------------------#
+#---------------------------#
+#      Bootstrapping        #
+#---------------------------#
 
 # Bootstrap results
 .PHONY: run_boot
@@ -241,10 +248,13 @@ $(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta $(COD)/bootspell.do \
 	cd $(COD); nice stata-se -b -q $(<F)	
 
 # Bootstrap tables
-
-$(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex: $(COD)/an_bootstrap_table.do \
+.PHONY: run_boot_table
+run_boot_table: $(BSTABLE)
+$(BSTABLE): $(COD)/an_bootstrap_table.do \
  $(BSDATA)
 	cd $(COD); stata-se -b -q $(<F)	
+
+# Bootstrap graphs
 
 	
 #---------------------------------------------------------------------------------------#
