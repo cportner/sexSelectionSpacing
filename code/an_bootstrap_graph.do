@@ -28,8 +28,10 @@ end
 include directories
 
 // Load bootstrap results and create matrices.
-foreach educ in "low" "med" "high" {
-    forvalues region = 1/4 {
+// foreach educ in "low" "med" "high" {
+foreach educ in "high" {
+//     forvalues region = 1/4 {
+    forvalues region = 1/1 {
         forvalues spell = 1/4 {
             forvalues period = 1/4 {
         
@@ -57,15 +59,55 @@ foreach educ in "low" "med" "high" {
 
 set scheme s1mono
 
-clear // Needed because we are generating new data sets based on matrices in svmat below
 
 // Matrix of results by period 
+clear // Needed because we are generating new data sets based on matrices in svmat below
 matrix r1_s4_high = (1, b_s4_g1_high_r1 \ 2, b_s4_g2_high_r1 \ 3, b_s4_g3_high_r1 \  4, b_s4_g4_high_r1)
 svmat r1_s4_high, names( col )
 
-twoway line p50_urban_g3 c1, sort  legend(label(1 "3 girls")) lpattern(solid) lwidth(medthick..) lcolor(black) ///
-    || line p50_urban_g2 c1, sort  legend(label(2 "2 girls")) lpattern(dash) lwidth(medthick..) lcolor(black) ///
-    || line p50_urban_g1 c1, sort  legend(label(3 "1 girl")) lpattern(shortdash) lwidth(medthick..) lcolor(black) ///
-    || line p50_urban_g0 c1, sort  legend(label(4 "0 girls")) lpattern(dash_dot) lwidth(medthick..) lcolor(black) 
+clear // Needed because we are generating new data sets based on matrices in svmat below
+matrix r1_s3_high = (1, b_s3_g1_high_r1 \ 2, b_s3_g2_high_r1 \ 3, b_s3_g3_high_r1 \  4, b_s3_g4_high_r1)
+svmat r1_s3_high, names( col )
+
+
+// Design choices:
+// More likely to use sex selection -> more solid line
+// Hence, 
+// all girls: solid line, 
+// one girl less: long dash
+// two girls less: dash
+// three girls less: short dash
+// Always start with solid line, so if no children the line is solid
+// All three graphs have same legend
+// Only bottom graph (likelihood of next birth) have an x axis
+// There are no confidence intervals in graphs (refer to tables for those)
+ 
+
+twoway line p50_urban_g2 p50_urban_g1 p50_urban_g0 c1, sort  ///
+    lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
+    legend(off) plotregion(style(none)) xscale(off) ///
+    ytitle("Median Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
+    name(s3_p50, replace)  fysize(80)
+
+twoway line pct_urban_g2 pct_urban_g1 pct_urban_g0 c1, sort ///
+    lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
+    legend(off) plotregion(style(none)) xscale(off) ///
+    ytitle("Sex Ratio" "(Percent Boys)") yscale(r(45 75)) ylabel(45(10)75, grid) ///
+    yline(51.2195122) ///
+    name(s3_pct, replace) fysize(80)
+
+twoway line any_urban_g2 any_urban_g1 any_urban_g0 c1, sort ///
+    lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
+    legend(off) plotregion(style(none)) ///
+    xtitle("") ///
+    xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
+    ytitle("Probability of" "a Next Birth") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
+    name(s3_any, replace) fysize(100)
+
+
+gr combine s3_p50 s3_pct s3_any , ///
+    iscale(1.7) col(1) xcommon imargin(0 2 1 1) ysize(12) 
+    
+graph export `figures'/bs_spell3_high_urban.eps, replace fontface(Palatino) 
 
 
