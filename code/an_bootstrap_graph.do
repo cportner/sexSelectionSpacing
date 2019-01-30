@@ -28,10 +28,8 @@ end
 include directories
 
 // Load bootstrap results and create matrices.
-// foreach educ in "low" "med" "high" {
-foreach educ in "high" {
-//     forvalues region = 1/4 {
-    forvalues region = 1/1 {
+foreach educ in "low" "med" "high" {
+    forvalues region = 1/4 {
         forvalues spell = 1/4 {
             forvalues period = 1/4 {
         
@@ -56,18 +54,17 @@ foreach educ in "high" {
 }
 
 
-
 set scheme s1mono
 
 
-// Matrix of results by period 
-clear // Needed because we are generating new data sets based on matrices in svmat below
-matrix r1_s4_high = (1, b_s4_g1_high_r1 \ 2, b_s4_g2_high_r1 \ 3, b_s4_g3_high_r1 \  4, b_s4_g4_high_r1)
-svmat r1_s4_high, names( col )
-
-clear // Needed because we are generating new data sets based on matrices in svmat below
-matrix r1_s3_high = (1, b_s3_g1_high_r1 \ 2, b_s3_g2_high_r1 \ 3, b_s3_g3_high_r1 \  4, b_s3_g4_high_r1)
-svmat r1_s3_high, names( col )
+// // Matrix of results by period 
+// clear // Needed because we are generating new data sets based on matrices in svmat below
+// matrix r1_s4_high = (1, b_s4_g1_high_r1 \ 2, b_s4_g2_high_r1 \ 3, b_s4_g3_high_r1 \  4, b_s4_g4_high_r1)
+// svmat r1_s4_high, names( col )
+// 
+// clear // Needed because we are generating new data sets based on matrices in svmat below
+// matrix r1_s3_high = (1, b_s3_g1_high_r1 \ 2, b_s3_g2_high_r1 \ 3, b_s3_g3_high_r1 \  4, b_s3_g4_high_r1)
+// svmat r1_s3_high, names( col )
 
 
 // Design choices:
@@ -83,31 +80,88 @@ svmat r1_s3_high, names( col )
 // There are no confidence intervals in graphs (refer to tables for those)
  
 
-twoway line p50_urban_g2 p50_urban_g1 p50_urban_g0 c1, sort  ///
-    lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
-    legend(off) plotregion(style(none)) xscale(off) ///
-    ytitle("Median Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
-    name(s3_p50, replace)  fysize(80)
+// twoway line p50_urban_g2 p50_urban_g1 p50_urban_g0 c1, sort  ///
+//     lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
+//     legend(off) plotregion(style(none)) xscale(off) ///
+//     ytitle("Median Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
+//     name(s3_p50, replace)  fysize(80)
+// 
+// twoway line pct_urban_g2 pct_urban_g1 pct_urban_g0 c1, sort ///
+//     lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
+//     legend(off) plotregion(style(none)) xscale(off) ///
+//     ytitle("Sex Ratio" "(Percent Boys)") yscale(r(45 75)) ylabel(45(10)75, grid) ///
+//     yline(51.2195122) ///
+//     name(s3_pct, replace) fysize(80)
+// 
+// twoway line any_urban_g2 any_urban_g1 any_urban_g0 c1, sort ///
+//     lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
+//     legend(off) plotregion(style(none)) ///
+//     xtitle("") ///
+//     xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
+//     ytitle("Probability of" "a Next Birth") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
+//     name(s3_any, replace) fysize(100)
+// 
+// 
+// gr combine s3_p50 s3_pct s3_any , ///
+//     iscale(1.7) col(1) xcommon imargin(0 2 1 1) ysize(12) 
+//     
+// graph export `figures'/bs_spell3_high_urban.eps, replace fontface(Palatino) 
 
-twoway line pct_urban_g2 pct_urban_g1 pct_urban_g0 c1, sort ///
-    lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
-    legend(off) plotregion(style(none)) xscale(off) ///
-    ytitle("Sex Ratio" "(Percent Boys)") yscale(r(45 75)) ylabel(45(10)75, grid) ///
-    yline(51.2195122) ///
-    name(s3_pct, replace) fysize(80)
+foreach educ in "low" "med" "high" {
+    forvalues region = 1/4 {
+        forvalues spell = 1/4 {
 
-twoway line any_urban_g2 any_urban_g1 any_urban_g0 c1, sort ///
-    lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
-    legend(off) plotregion(style(none)) ///
-    xtitle("") ///
-    xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-    ytitle("Probability of" "a Next Birth") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
-    name(s3_any, replace) fysize(100)
+            // Set up data from matrix
+            clear // Needed because we are generating new data sets based on matrices in svmat below
+            matrix tmp_mat = (1, b_s`spell'_g1_`educ'_r`region' \ 2, b_s`spell'_g2_`educ'_r`region' \ 3, b_s`spell'_g3_`educ'_r`region' \  4, b_s`spell'_g4_`educ'_r`region')
+            svmat tmp_mat, names( col )
+            
+            foreach where in "urban" "rural" {
+                // Generate y variables in reverse order to match line pattern
+                foreach stat in "p50" "pct" "any" {
+                    loc `stat' = ""
+                    forval i = `spell'(-1)1 {
+                        loc g = `i' - 1
+                        loc `stat' = "``stat'' `stat'_`where'_g`g' "
+                    }
+                }
+                // Generate line patterns
+                loc pattern = ""                
+                forval i = 1/`spell' {
+                    if `i' == 1 loc pattern = "solid"
+                    if `i' == 2 loc pattern = "`pattern' longdash"
+                    if `i' == 3 loc pattern = "`pattern' dash"
+                    if `i' == 4 loc pattern = "`pattern' shortdash"
+                }
+                
+                twoway line `p50' c1, sort  ///
+                    lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                    legend(off) plotregion(style(none)) xscale(off) ///
+                    ytitle("Median Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
+                    name(p50, replace)  fysize(80)
 
+                twoway line `pct' c1, sort ///
+                    lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                    legend(off) plotregion(style(none)) xscale(off) ///
+                    ytitle("Sex Ratio" "(Percent Boys)") yscale(r(45 75)) ylabel(45(10)75, grid) ///
+                    yline(51.2195122) ///
+                    name(pct, replace) fysize(80)
 
-gr combine s3_p50 s3_pct s3_any , ///
-    iscale(1.7) col(1) xcommon imargin(0 2 1 1) ysize(12) 
-    
-graph export `figures'/bs_spell3_high_urban.eps, replace fontface(Palatino) 
+                twoway line `any' c1, sort ///
+                    lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                    legend(off) plotregion(style(none)) ///
+                    xtitle("") ///
+                    xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
+                    ytitle("Probability of" "a Next Birth") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
+                    name(any, replace) fysize(100)
 
+                gr combine p50 pct any , ///
+                    iscale(1.7) col(1) xcommon imargin(0 2 1 1) ysize(12) 
+ 
+                graph export `figures'/bs_spell`spell'_`educ'_`where'_r`region'.eps, replace fontface(Palatino) 
 
+            }
+            
+        }
+    }
+}
