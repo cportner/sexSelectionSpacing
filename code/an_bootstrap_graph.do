@@ -56,17 +56,6 @@ foreach educ in "low" "med" "high" {
 
 set scheme s1mono
 
-
-// // Matrix of results by period 
-// clear // Needed because we are generating new data sets based on matrices in svmat below
-// matrix r1_s4_high = (1, b_s4_g1_high_r1 \ 2, b_s4_g2_high_r1 \ 3, b_s4_g3_high_r1 \  4, b_s4_g4_high_r1)
-// svmat r1_s4_high, names( col )
-// 
-// clear // Needed because we are generating new data sets based on matrices in svmat below
-// matrix r1_s3_high = (1, b_s3_g1_high_r1 \ 2, b_s3_g2_high_r1 \ 3, b_s3_g3_high_r1 \  4, b_s3_g4_high_r1)
-// svmat r1_s3_high, names( col )
-
-
 // Design choices:
 // More likely to use sex selection -> more solid line
 // Hence, 
@@ -80,6 +69,10 @@ set scheme s1mono
 // There are no confidence intervals in graphs (refer to tables for those)
  
 
+// // Trial version of graphs
+// clear // Needed because we are generating new data sets based on matrices in svmat below
+// matrix r1_s3_high = (1, b_s3_g1_high_r1 \ 2, b_s3_g2_high_r1 \ 3, b_s3_g3_high_r1 \  4, b_s3_g4_high_r1)
+// svmat r1_s3_high, names( col )
 // twoway line p50_urban_g2 p50_urban_g1 p50_urban_g0 c1, sort  ///
 //     lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
 //     legend(off) plotregion(style(none)) xscale(off) ///
@@ -125,7 +118,7 @@ foreach educ in "low" "med" "high" {
                         loc `stat' = "``stat'' `stat'_`where'_g`g' "
                     }
                 }
-                // Generate line patterns
+                // Generate line patterns - more solid to less solid as likelihood of ssa declines
                 loc pattern = ""                
                 forval i = 1/`spell' {
                     if `i' == 1 loc pattern = "solid"
