@@ -113,7 +113,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
  $(GRAPHTARGET) $(PPSTARGET) \
- $(TAB)/bootstrap_duration_sex_ratio_high.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
+ $(BSTABLE) $(BSGRAPH)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -125,7 +125,7 @@ view: $(TEX)/$(TEXFILE).pdf
 		
 .PHONY: results  # convenience function during development
 results: $(GRAPHTARGET) $(PPSTARGET) \
- $(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
+ $(BSTABLE) $(BSGRAPH)
 
 
 ###################################################################	
