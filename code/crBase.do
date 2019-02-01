@@ -208,6 +208,11 @@ egen region2 = anymatch(state), values(24 4 12) // High fertility, high son pref
 egen region3 = anymatch(state), values(3 18 23 34 15 23 16 14 17 35 21) // Moderate son preference
 egen region4 = anymatch(state), values(11 10 22 2) // Low son preference
 assert region1 + region2 + region3 + region4 == 1
+gen region = .
+forvalues r = 1/4 {
+    replace region = `r' if region`r' == 1
+}
+assert region == 1 | region == 2 | region == 3 | region == 4
 
 lab var edu_mother   "Wife's education"
 lab var edu_mother2  "Wife's education$^2$/10"

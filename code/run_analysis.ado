@@ -2,7 +2,7 @@
 
 program run_analysis
     version 13
-    args spell period educ
+    args spell period educ region
     
     include directories
 
@@ -24,6 +24,10 @@ program run_analysis
         exit
     }
 
+    // keep only those in region
+    assert `region' == 1 | `region' == 2 | `region' == 3 | `region' == 4
+    keep if region == `region'
+
     // data manipulation
     if `spell' == 1 {
         global b1space ""
@@ -38,7 +42,7 @@ program run_analysis
     count
     sum $parents $hh $caste 
     estpost tab gu_group
-    esttab using `tables'/mainObs_spell`spell'_g`period'_`educ'.tex, replace ///
+    esttab using `tables'/mainObs_spell`spell'_g`period'_`educ'_r`region'.tex, replace ///
         cells("b(label(N))") ///
         nonumber nomtitle noobs
     eststo clear
@@ -60,7 +64,7 @@ program run_analysis
     bysort id (t): keep if _n == 1
     gen had_birth = any_birth == 1 | any_birth == 2 // gave birth to a boy or a girl
     collapse (count) num_obs = had_birth (sum) num_births = had_birth , by(`girlvar' urban) 
-    save `data'/obs_spell`spell'_`period'_`educ', replace
+    save `data'/obs_spell`spell'_g`period'_`educ'_r`region', replace
     restore
     
     // PIECE-WISE LINEAR HAZARDS
@@ -93,7 +97,7 @@ program run_analysis
     local names : colfullnames e(b)
     estimates notes: `names'
     estimates notes: $lastm
-    estimates save `data'/results_spell`spell'_g`period'_`educ', replace
+    estimates save `data'/results_spell`spell'_g`period'_`educ'_r`region', replace
     
 end
 

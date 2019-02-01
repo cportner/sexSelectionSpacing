@@ -32,6 +32,7 @@ endif
 PERIODS := 1 2 3 4
 AREAS   := rural urban
 EDUC    := low med high
+REGIONS := 1 2 3 4
 SPELLS  := 1 2 3 4
 COMP1   := _
 COMP2   := _b_ _g_
@@ -43,7 +44,8 @@ ANALYSISTARGET := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
-    $(DAT)/results_spell$(spell)_g$(per)_$(educ).ster ) ) )
+    $(foreach region, $(REGIONS), \
+    $(DAT)/results_spell$(spell)_g$(per)_$(educ)_r$(region).ster ) ) ) )
 
 ### Percentage boys and standard survival graphs
 GRAPHTARGET := \
@@ -71,8 +73,23 @@ BSDATA := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
-    $(DAT)/bs_s$(spell)_g$(per)_$(educ).dta ) ) ) 
-    
+    $(foreach region, $(REGIONS), \
+    $(DAT)/bs_s$(spell)_g$(per)_$(educ)_r$(region).dta ) ) ) )
+
+### Tables of bootstrapping results
+BSTABLE := \
+    $(foreach educ, $(EDUC), \
+    $(foreach region, $(REGIONS), \
+    $(TAB)/bootstrap_duration_sex_ratio_$(educ)_r$(region).tex $(TAB)/bootstrap_duration_p25_p75_$(educ)_r$(region).tex $(TAB)/bootstrap_any_sex_ratio_$(educ)_r$(region).tex ) )
+
+### Graphs of bootstrapping results
+BSGRAPH := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(foreach region, $(REGIONS), \
+    $(FIG)/bs_spell$(spell)_$(educ)_$(area)_r$(region).eps ) ) ) )
+
 ### Appendix graphs LaTeX code
 APPGRAPHS := \
     $(foreach spell, $(SPELLS), \
@@ -96,7 +113,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
  $(GRAPHTARGET) $(PPSTARGET) \
- $(TAB)/bootstrap_duration_sex_ratio_high.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
+ $(BSTABLE) $(BSGRAPH)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -105,19 +122,10 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
 .PHONY: view
 view: $(TEX)/$(TEXFILE).pdf
 	$(PDFAPP) $(TEX)/$(TEXFILE).pdf & 
-
-.PHONY: app
-app: $(TEX)/$(APPFILE).pdf
-	$(PDFAPP) $(TEX)/$(APPFILE).pdf & 
-
-.PHONY: all
-all: $(TEX)/$(TEXFILE).pdf $(TEX)/$(APPFILE).pdf
-	$(PDFAPP) $(TEX)/$(APPFILE).pdf & 
-	$(PDFAPP) $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
 results: $(GRAPHTARGET) $(PPSTARGET) \
- $(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex
+ $(BSTABLE) $(BSGRAPH)
 
 
 ###################################################################	
@@ -168,15 +176,16 @@ run_analysis: $(ANALYSISTARGET)
 
 # Use basename because run_analysis is an ado file
 define analysis-rule
-$(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis.ado \
+$(DAT)/obs_spell$(1)_g$(2)_$(3)_r$(4).dta $(DAT)/results_spell$(1)_g$(2)_$(3)_r$(4).ster: $(COD)/run_analysis.ado \
  $(DAT)/base.dta $(COD)/bh_$(3).ado $(COD)/genSpell$(1).do
-	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
+	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
 endef
 
 $(foreach spell, $(SPELLS), \
 $(foreach per, $(PERIODS), \
 $(foreach educ, $(EDUC), \
-$(eval $(call analysis-rule,$(spell),$(per),$(educ))) ) ) )
+$(foreach region, $(REGIONS), \
+$(eval $(call analysis-rule,$(spell),$(per),$(educ),$(region))) ) ) ) )
 
 		
 #---------------------------------------------------------------------------------------#
@@ -233,42 +242,52 @@ $(foreach spell, $(SPELLS), \
 )
 	
 	
-#--------------------#
-#      Tables        #
-#--------------------#
+#---------------------------#
+#      Bootstrapping        #
+#---------------------------#
 
 # Bootstrap results
-$(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta \
- $(COD)/bootspell.do $(COD)/bh_low.ado \
- $(COD)/bh_med.ado $(COD)/bh_high.ado \
+.PHONY: run_boot
+run_boot: $(BSDATA)
+
+$(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta $(COD)/bootspell.do \
  $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
 	cd $(COD); nice stata-se -b -q $(<F)	
 
 # Bootstrap tables
+.PHONY: run_boot_table
+run_boot_table: $(BSTABLE)
+$(BSTABLE): $(COD)/an_bootstrap_table.do \
+ $(BSDATA)
+	cd $(COD); stata-se -b -q $(<F)	
 
-$(TAB)/bootstrap_duration_sex_ratio_low.tex  $(TAB)/bootstrap_duration_sex_ratio_med.tex  $(TAB)/bootstrap_duration_sex_ratio_high.tex: $(COD)/an_bootstrap_table.do \
+# Bootstrap graphs
+.PHONY: run_boot_graph
+run_boot_graph: $(BSGRAPH)
+$(BSGRAPH): $(COD)/an_bootstrap_graph.do \
  $(BSDATA)
 	cd $(COD); stata-se -b -q $(<F)	
 
 	
 #---------------------------------------------------------------------------------------#
-# Clean directories for (most) generated files                                          #
-# This does not clean generated data files; mainly because I am a chicken               #
+# Clean directories for generated files                                                 #
 # The "-" prevents Make from stopping with an error if a file type does not exist       #
 #---------------------------------------------------------------------------------------#
 
-.PHONY: cleanall cleantab cleanfig cleantex cleancode
-clean: cleanfig cleantab cleantex cleancode
-	-cd $(DAT); rm *.ster
+.PHONY: clean cleantab cleanfig cleantex cleancode cleandata
+clean: cleantab cleanfig cleantex cleancode cleandata
 
 cleantab:
 	-cd $(TAB); rm *.tex
 	
 cleanfig:
-	-cd $(FIG); rm *.eps
+	-cd $(FIG); rm *.eps; rm *.tex
 	
 cleantex:
 	-cd $(TEX); rm *.aux; rm *.bbl; rm *.blg; rm *.log; rm *.out; rm *.pdf; rm *.gz
 	
 cleancode:	
 	-cd $(COD); rm *.log
+
+cleandata:	
+	-cd $(DAT); rm *.dta; rm *.ster
