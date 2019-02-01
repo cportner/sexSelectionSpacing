@@ -1,0 +1,382 @@
+% Revamped version for Demography focusing on method
+
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{fontspec}
+\setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[title]{appendix}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[figuresleft]{rotating}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[flushleft]{threeparttable}
+\usepackage{setspace}
+\usepackage[justification=centering]{caption}
+\usepackage[font=scriptsize]{subfig}
+\usepackage[xetex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\usepackage{adjustbox}
+\usepackage{xfrac}
+
+
+% \bibpunct{(}{)}{;}{a}{}{,}
+\newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\X}{$\times$ }
+\newcommand{\hs}{\hspace{15pt}}
+
+% Attempt to squeeze more floats in
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+
+%------------------------------------------------------------------------
+
+
+\title{Birth Spacing in the Presence of Son Preference and Sex-Selective Abortions:
+India's Experience over Four Decades%
+\protect\thanks{%
+I am grateful to Andrew Foster and Darryl Holman for discussions about the method.
+I owe thanks to Shelly Lundberg, Daniel Rees, David Ribar, 
+Hendrik Wolff, seminar participants at University of Copenhagen, University of Michigan, 
+University of Washington, University of Aarhus, the Fourth 
+Annual Conference on Population, Reproductive Health, 
+and Economic Development, and the Economic Demography Workshop for helpful 
+suggestions and comments.
+I would also like to thank Nalina Varanasi for research assistance.
+Support for development of the method from the University of Washington Royalty 
+Research Fund and the Development Research Group of the World Bank is gratefully 
+acknowledged.
+The views and findings expressed here are those of the author and
+should not be attributed to the World Bank or any of its member countries.
+Partial support for this research came from a Eunice Kennedy Shriver National
+Institute of Child Health and Human Development research infrastructure grant,
+5R24HD042828, to the Center for Studies in Demography and Ecology at the
+University of Washington.
+}
+}
+
+\author{Claus C P\"ortner\\
+    Department of Economics\\
+    Albers School of Business and Economics\\
+    Seattle University, P.O. Box 222000\\
+    Seattle, WA 98122\\
+    \href{mailto:claus@clausportner.com}{\texttt{claus@clausportner.com}}\\
+    \href{http://www.clausportner.com}{\texttt{www.clausportner.com}}\\
+    \& \\
+    Center for Studies in Demography and Ecology \\
+    University of Washington\\ \vspace{2cm}
+    }
+
+\date{November 2018}
+
+
+%------------------------------------------------------------------------
+
+
+\begin{document}
+\graphicspath{{../figures/}}
+\DeclareGraphicsExtensions{.eps,.jpg,.pdf,.mps,.png}
+
+\setcounter{page}{-1}
+\maketitle
+\thispagestyle{empty}
+
+% \setcounter{page}{0}
+
+
+\newpage
+\thispagestyle{empty}
+\doublespacing
+
+\begin{abstract}
+
+% Demography abstract
+\noindent 
+
+Strong son preference is typically associated with shorter birth spacing
+in the absence of sons, but access to sex selection has the potential to
+reverse this pattern because each abortion extends spacing by six to
+twelve months. 
+I introduce a statistical method that simultaneously
+accounts for how sex selection increases the spacing between 
+births and the likelihood of a son. 
+Using four rounds of India's National
+Family and Health Surveys, I show that, except for first births,
+the spacing between births increased substantially over the last four
+decades, with the most substantial increases among women most 
+likely to use sex selection.
+Specifically, well-educated women with no boys now
+exhibit significantly longer spacing and more male-biased sex ratios
+than similar women with boys. 
+Women with no education still follow the standard
+pattern of short spacing when they have girls and little evidence of sex
+selection, with medium-educated women showing mixed results. 
+Finally,
+sex ratios are more likely to decline within spells at lower parities,
+where there is less pressure to ensure a son, and more likely to
+increase or remain consistently high for higher-order spells, where the
+pressure to provide a son is high.
+
+
+\noindent JEL: J1, O12, I1
+\noindent Keywords: India, prenatal sex determination, censoring, competing risk
+\end{abstract}
+
+\newpage
+
+\input{../tables/bootstrap_duration_sex_ratio_low_r1.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_med_r1.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_high_r1.tex}
+
+
+\input{../tables/bootstrap_duration_sex_ratio_low_r2.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_med_r2.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_high_r2.tex}
+
+
+\input{../tables/bootstrap_duration_sex_ratio_low_r3.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_med_r3.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_high_r3.tex}
+
+
+\input{../tables/bootstrap_duration_sex_ratio_low_r4.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_med_r4.tex}
+
+\input{../tables/bootstrap_duration_sex_ratio_high_r4.tex}
+
+
+\newpage
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell1_low_rural_r4}} 
+\caption{Spell 1 - low education}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell2_low_rural_r4}} 
+\caption{Spell 2 - low education}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell3_low_rural_r4}} 
+\caption{Spell 3 - low education}
+\label{fig:results_spell1_pps}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell4_low_rural_r4}} 
+\caption{Spell 4 - low education}
+\label{fig:results_spell1_pps}
+\end{figure}
+
+
+
+\newpage
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell1_med_rural_r4}} 
+\caption{Spell 1 - medium education}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell2_med_rural_r4}} 
+\caption{Spell 2 - medium education}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell3_med_rural_r4}} 
+\caption{Spell 3 - medium education}
+\label{fig:results_spell1_pps}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell4_med_rural_r4}} 
+\caption{Spell 4 - medium education}
+\label{fig:results_spell1_pps}
+\end{figure}
+
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell1_high_rural_r4}} 
+\caption{Spell 1 - high education}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell2_high_rural_r4}} 
+\caption{Spell 2 - high education}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell3_high_rural_r4}} 
+\caption{Spell 3 - high education}
+\label{fig:results_spell1_pps}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_urban_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_urban_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_urban_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_urban_r4}} 
+\\
+\caption*{Rural}
+\subfloat[R1]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_rural_r1}} 
+\subfloat[R2]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_rural_r2}} 
+\subfloat[R3]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_rural_r3}} 
+\subfloat[R4]{\includegraphics[width=0.23\textwidth]{bs_spell4_high_rural_r4}} 
+\caption{Spell 4 - high education}
+\label{fig:results_spell1_pps}
+\end{figure}
+
+
+\onehalfspacing
+\bibliographystyle{aer}
+\bibliography{sex_selection_spacing}
+
+\end{document}
