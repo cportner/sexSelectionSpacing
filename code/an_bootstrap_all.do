@@ -1,14 +1,14 @@
 // Table of spell lengths with bootstrapped standard errors
 
-version 13.1
+version 15.1
 clear all
 
 // loc num_reps = 100
-loc num_reps = 5
+loc num_reps = 3
 file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
 capture program drop _all
-do bootspell.do
+do bootspell_all.do
 
 include directories
 
@@ -40,7 +40,7 @@ foreach educ in "high" "med" "low" {
     
     save "``educ''" // Need double ` because the name that comes from educ is itself a local variable
 
-    forvalues spell = 1/4 {
+    forvalues spell = 2/4 {
 
         forvalues group = 1/4 {
             
@@ -83,8 +83,8 @@ foreach educ in "high" "med" "low" {
         
             // Bootstrapping
             bootstrap `stats' , ///
-                reps(`num_reps') seed(100669) nowarn saving(`data'/bs_s`spell'_g`group'_`educ', replace) ///
-                : bootspell `spell' `group' `educ'
+                reps(`num_reps') seed(100669) nowarn saving(`data'/bs_s`spell'_g`group'_`educ'_all, replace) ///
+                : bootspell_all `spell' `group' `educ'
             
         }
     }

@@ -1,6 +1,5 @@
 
-program bootspell, rclass
-    version 13
+program bootspell_all, rclass
     args spell group educ
     preserve
     

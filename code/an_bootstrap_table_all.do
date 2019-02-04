@@ -1,6 +1,6 @@
 // Table of spell lengths with bootstrapped standard errors
 
-version 13.1
+version 15.1
 clear all
 
 
@@ -12,7 +12,6 @@ file close _all // easier, in case something went wrong with last file write (St
 // program that takes a matrix and a name and returns the column number
 capture program drop _all
 program find_col, rclass
-    version 13
     args mat_name name
     local col_names : colfullnames `mat_name'
     tokenize `col_names'
@@ -59,12 +58,12 @@ include directories
 
 // Load bootstrap results and create matrices.
 foreach educ in "low" "med" "high" {
-    forvalues spell = 1/4 {
+    forvalues spell = 2/4 {
         forvalues period = 1/4 {
         
             // Load bootstrap generated data and call bstat to replay results
             clear results // Stupid Stata - calling bstat after using the data does not clear old bstat
-            use `data'/bs_s`spell'_g`period'_`educ', clear
+            use `data'/bs_s`spell'_g`period'_`educ'_all, clear
             quietly bstat
             
             // Relevant matrices to extract
@@ -95,7 +94,7 @@ foreach educ in "low" "med" "high" {
         loc char "8 or More Years of Education"
     }
 
-    file open table using `tables'/bootstrap_duration_sex_ratio_`educ'.tex, write replace
+    file open table using `tables'/bootstrap_duration_sex_ratio_`educ'_all.tex, write replace
 
     //----------------------------------//
     // p50 and sex ratio table          //
@@ -123,7 +122,7 @@ foreach educ in "low" "med" "high" {
         }
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-        forvalues spell = 1/4 {
+        forvalues spell = 2/4 {
             
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell' - 1
@@ -303,7 +302,7 @@ foreach educ in "low" "med" "high" {
     // p75 and p25 table                //
     //----------------------------------//
 
-    file open table using `tables'/bootstrap_duration_p25_p75_`educ'.tex, write replace
+    file open table using `tables'/bootstrap_duration_p25_p75_`educ'_all.tex, write replace
     
     file write table "\begin{table}[hp!]" _n
     file write table "\begin{center}" _n
@@ -328,7 +327,7 @@ foreach educ in "low" "med" "high" {
         }
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-        forvalues spell = 1/4 {
+        forvalues spell = 2/4 {
             
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell' - 1
@@ -495,7 +494,7 @@ foreach educ in "low" "med" "high" {
     // any birth and sex ratio          //
     //----------------------------------//
 
-    file open table using `tables'/bootstrap_any_sex_ratio_`educ'.tex, write replace
+    file open table using `tables'/bootstrap_any_sex_ratio_`educ'_all.tex, write replace
     
     file write table "\begin{table}[hp!]" _n
     file write table "\begin{center}" _n
@@ -519,7 +518,7 @@ foreach educ in "low" "med" "high" {
         }
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-        forvalues spell = 1/4 {
+        forvalues spell = 2/4 {
             
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell' - 1

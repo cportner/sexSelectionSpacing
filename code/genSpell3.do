@@ -18,7 +18,6 @@ lab var mom_age2 "Wife's age squared / 100"
 
 gen b1space = b1_space
 gen b1space2 = b1space^2/100
-global b1space " b1space b1space2 "
 
 gen b2_born_year = int((b2_born_cmc-1)/12)
 create_groups b2_born_year
@@ -59,8 +58,9 @@ global spell = "3"
 
 replace scheduled_caste = 1 if scheduled_tribe
 
-// local variables
+// Glocal variables
 // global caste    "scheduled_caste scheduled_tribe "
+global b1space  " " // originally " b1space b1space2 "
 global caste    "scheduled_caste "
 global hh       "land_own "
 global parents  "mom_age "

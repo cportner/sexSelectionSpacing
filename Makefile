@@ -33,7 +33,7 @@ PERIODS := 1 2 3 4
 AREAS   := rural urban
 EDUC    := low med high
 REGIONS := 1 2 3 4
-SPELLS  := 1 2 3 4
+SPELLS  := 2 3 4
 COMP1   := _
 COMP2   := _b_ _g_
 COMP3   := _bb_ _bg_ _gg_
@@ -68,6 +68,29 @@ PPSTARGET := \
     $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) \
     ) ) )
 
+
+### Bootstrap - Combined
+### Data for bootstrapping
+BSDATA_ALL := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(DAT)/bs_s$(spell)_g$(per)_$(educ)_all.dta ) ) ) 
+
+### Tables of bootstrapping results
+BSTABLE_ALL := \
+    $(foreach educ, $(EDUC), \
+    $(TAB)/bootstrap_duration_sex_ratio_$(educ)_all.tex $(TAB)/bootstrap_duration_p25_p75_$(educ)_all.tex $(TAB)/bootstrap_any_sex_ratio_$(educ)_all.tex ) 
+
+### Graphs of bootstrapping results
+BSGRAPH_ALL := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS), \
+    $(FIG)/bs_spell$(spell)_$(educ)_$(area)_all.eps ) ) ) 
+
+
+### Bootstrap - by Region
 ### Data for bootstrapping
 BSDATA := \
     $(foreach spell, $(SPELLS), \
@@ -90,7 +113,9 @@ BSGRAPH := \
     $(foreach region, $(REGIONS), \
     $(FIG)/bs_spell$(spell)_$(educ)_$(area)_r$(region).eps ) ) ) )
 
-### Appendix graphs LaTeX code
+
+### Appendix 
+### graphs LaTeX code
 APPGRAPHS := \
     $(foreach spell, $(SPELLS), \
     $(foreach educ, $(EDUC), \
@@ -245,6 +270,33 @@ $(foreach spell, $(SPELLS), \
 #---------------------------#
 #      Bootstrapping        #
 #---------------------------#
+
+### All ###
+
+# Bootstrap results
+.PHONY: run_boot_all
+run_boot_all: $(BSDATA_ALL)
+
+$(BSDATA_ALL): $(COD)/an_bootstrap_all.do $(DAT)/base.dta $(COD)/bootspell_all.do \
+ $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
+	cd $(COD); nice stata-se -b -q $(<F)	
+
+# Bootstrap tables
+.PHONY: run_boot_table_all
+run_boot_table_all: $(BSTABLE_ALL)
+$(BSTABLE_ALL): $(COD)/an_bootstrap_table_all.do \
+ $(BSDATA_ALL)
+	cd $(COD); stata-se -b -q $(<F)	
+
+# Bootstrap graphs
+.PHONY: run_boot_graph_all
+run_boot_graph_all: $(BSGRAPH_ALL)
+$(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
+ $(BSDATA_ALL)
+	cd $(COD); stata-se -b -q $(<F)	
+
+
+### Region ###
 
 # Bootstrap results
 .PHONY: run_boot
