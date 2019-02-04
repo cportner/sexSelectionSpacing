@@ -49,26 +49,22 @@ label val b5_20 B5
 /* DROPPING PROBLEMATIC VARIABLES/OBSERVATIONS                        */
 /*--------------------------------------------------------------------*/
 
-// Do not ever use the high birth order children here
-// drop *_13 *_14 *_15 *_16 *_17 *_18 *_19 *_20
-
-// drop women with too short preceding birth intervals
-// b11_** is only included if there is a birth after.
-// For example, b11_01 is the preceding birth spacing for second births
-egen tooshort = anymatch(b11_*), val(0 1 2 3 4 5 6 7 8)
-drop if tooshort
-drop tooshort
-
-// drop women with multiple births
-egen multiples = anymatch(b0_*), val(1 2 3 4 5 6)
-drop if multiples
-drop multiples
+// drop women with multiple births if birth order 4 or lower
+forvalues i = 1/20 {
+    if `i' < 10 {
+        loc var = "0`i'"
+    } 
+    else {
+        loc var = "`i'"
+    }
+    drop if b0_`var' > 0 & bord_`var' < 5
+}
 
 // drop women with sterilisation before marriage
 drop if sterilisation <= marriage_cmc
 
 // drop if negative interval between marriage and first birth
-drop if space_0_1 == 996
+// drop if space_0_1 == 996
 
 // drop if marital status is not currently married or widowed (divorced or not living together)
 drop if marital_status == 4 | marital_status == 5
@@ -131,8 +127,10 @@ replace b1_mom_age = 12 if b1_mom_age < 12
 forvalues bo = 2/20 {
     loc bom1 = `bo'-1
     gen b`bo'_cen = fertility == `bo'-1
-    gen b`bo'_space = space_last_int if b`bo'_cen // censored
-    replace b`bo'_space = sterilisation - b`bom1'_born_cmc if b`bo'_cen & sterilisation != .
+    replace b`bo'_cen = . if fertility < `bom1'
+    gen b`bo'_space = space_last_int if b`bo'_cen == 1 // censored
+    replace b`bo'_space = sterilisation - b`bom1'_born_cmc if b`bo'_cen == 1 & sterilisation != .
+    drop if b`bo'_space < 0  & b`bo'_cen == 1  & sterilisation != . // sterilization occurred before birth
     gen b`bo'_sex = .
     gen b`bo'_dead_cmc = .
     gen b`bo'_born_cmc = .
@@ -154,44 +152,36 @@ forvalues bo = 2/20 {
     label var b`bo'_mom_age "Mother's age at birth of child `bom1'"
 }
 
-// drop if negative spacing
-forvalues i = 1/20 {
-    drop if b`i'_space < 0
+// drop if negative spacing - cannot just drop less than 9 because of censoring
+forvalues i = 2/4 {
+    drop if b`i'_space < 9 & b`i'_cen == 0
 }
 
 // drop if age inconsistencies by birth
 drop if b2_mom_age < b1_mom_age
 drop if b3_mom_age < b2_mom_age
 drop if b4_mom_age < b3_mom_age
-drop if b5_mom_age < b4_mom_age
-drop if b6_mom_age < b5_mom_age
-drop if b7_mom_age < b6_mom_age
-drop if b8_mom_age < b7_mom_age
-drop if b9_mom_age < b8_mom_age
-drop if b10_mom_age < b9_mom_age
-drop if b11_mom_age < b10_mom_age
-drop if b12_mom_age < b11_mom_age
 
 // surviving children
 // could subtract 9 from bX_born_cmc to allow for pregnancy
 
-forvalues dur = 2/11 {
-dis "Duration number `dur'"
-    loc durm1 = `dur'-1
-    // first child
-       gen b`dur'_boys  = b1_sex == 1 & b1_dead_cmc == . if fertility >= `dur'-1
-       gen b`dur'_girls = b1_sex == 2 & b1_dead_cmc == . if fertility >= `dur'-1
-       replace b`dur'_boys  = b1_sex == 1 & b1_dead_cmc > b`dur'_born_cmc if b`dur'_sex != .
-       replace b`dur'_girls = b1_sex == 2 & b1_dead_cmc > b`dur'_born_cmc if b`dur'_sex != .
-    // second child and above
-    forvalues i = 2/`durm1' {
-dis "Duration number `dur' - child number `i'"
-        replace b`dur'_boys  = b`dur'_boys  + 1 if (b`i'_sex == 1 & b`i'_dead_cmc == .) ///
-            | (b`i'_sex == 1 & b`i'_dead_cmc > b`dur'_born_cmc & b`dur'_sex != .) 
-        replace b`dur'_girls = b`dur'_girls + 1 if (b`i'_sex == 2 & b`i'_dead_cmc == .) ///
-            | (b`i'_sex == 2 & b`i'_dead_cmc > b`dur'_born_cmc & b`dur'_sex != .)
-    }
-}
+// forvalues dur = 2/11 {
+// dis "Duration number `dur'"
+//     loc durm1 = `dur'-1
+//     // first child
+//        gen b`dur'_boys  = b1_sex == 1 & b1_dead_cmc == . if fertility >= `dur'-1
+//        gen b`dur'_girls = b1_sex == 2 & b1_dead_cmc == . if fertility >= `dur'-1
+//        replace b`dur'_boys  = b1_sex == 1 & b1_dead_cmc > b`dur'_born_cmc if b`dur'_sex != .
+//        replace b`dur'_girls = b1_sex == 2 & b1_dead_cmc > b`dur'_born_cmc if b`dur'_sex != .
+//     // second child and above
+//     forvalues i = 2/`durm1' {
+// dis "Duration number `dur' - child number `i'"
+//         replace b`dur'_boys  = b`dur'_boys  + 1 if (b`i'_sex == 1 & b`i'_dead_cmc == .) ///
+//             | (b`i'_sex == 1 & b`i'_dead_cmc > b`dur'_born_cmc & b`dur'_sex != .) 
+//         replace b`dur'_girls = b`dur'_girls + 1 if (b`i'_sex == 2 & b`i'_dead_cmc == .) ///
+//             | (b`i'_sex == 2 & b`i'_dead_cmc > b`dur'_born_cmc & b`dur'_sex != .)
+//     }
+// }
 
 
 /*--------------------------------------------------------------------*/
@@ -240,8 +230,6 @@ drop if b1_mom_age < 12
 drop if b2_mom_age < 12 | b3_mom_age < 14 | b4_mom_age < 15
 drop if edu_mother == .
 // drop if edu_father == . | edu_father > 30 // not needed since father's edu not used
-drop if b1_space == .
-drop if land_own == .
 count
 
 /*--------------------------------------------------------------------*/
