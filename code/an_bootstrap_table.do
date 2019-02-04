@@ -59,7 +59,7 @@ include directories
 // Load bootstrap results and create matrices.
 foreach educ in "low" "med" "high" {
     forvalues region = 1/4 {
-        forvalues spell = 1/4 {
+        forvalues spell = 2/4 {
             forvalues period = 1/4 {
         
                 // Load bootstrap generated data and call bstat to replay results
@@ -126,7 +126,7 @@ forvalues region = 1/4 {
             }
             file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-            forvalues spell = 1/4 {
+            forvalues spell = 2/4 {
             
                 // Double the lines to allow for both statistics and standard errors
                 local double = 2 * `spell' - 1
@@ -331,7 +331,7 @@ forvalues region = 1/4 {
             }
             file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-            forvalues spell = 1/4 {
+            forvalues spell = 2/4 {
             
                 // Double the lines to allow for both statistics and standard errors
                 local double = 2 * `spell' - 1
@@ -522,7 +522,7 @@ forvalues region = 1/4 {
             }
             file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
-            forvalues spell = 1/4 {
+            forvalues spell = 2/4 {
             
                 // Double the lines to allow for both statistics and standard errors
                 local double = 2 * `spell' - 1

@@ -30,7 +30,7 @@ include directories
 // Load bootstrap results and create matrices.
 foreach educ in "low" "med" "high" {
     forvalues region = 1/4 {
-        forvalues spell = 1/4 {
+        forvalues spell = 2/4 {
             forvalues period = 1/4 {
         
                 // Load bootstrap generated data and call bstat to replay results
@@ -70,7 +70,7 @@ set scheme s1mono
  
 foreach educ in "low" "med" "high" {
     forvalues region = 1/4 {
-        forvalues spell = 1/4 {
+        forvalues spell = 2/4 {
 
             // Set up data from matrix
             clear // Needed because we are generating new data sets based on matrices in svmat below

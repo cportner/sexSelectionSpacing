@@ -46,7 +46,7 @@ foreach educ in "high" "med" "low" {
     // Loop over regions
     forval region = 1/4 {
     
-        forvalues spell = 1/4 {
+        forvalues spell = 2/4 {
 
             forvalues group = 1/4 {
             
