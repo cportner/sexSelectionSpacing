@@ -1,6 +1,5 @@
 
 program bootspell, rclass
-    version 13
     args spell  
     preserve
     
