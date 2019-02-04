@@ -12,7 +12,6 @@ file close _all // easier, in case something went wrong with last file write (St
 // program that takes a matrix and a name and returns the column number
 capture program drop _all
 program find_col, rclass
-    version 13
     args mat_name name
     local col_names : colfullnames `mat_name'
     tokenize `col_names'
