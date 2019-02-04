@@ -38,8 +38,9 @@ global spell = "1"
 
 replace scheduled_caste = 1 if scheduled_tribe
 
-// local variables
+// Glocal variables
 // global caste    "scheduled_caste scheduled_tribe "
+global b1space  " " // there are no prior births
 global caste    "scheduled_caste "
 global hh       "land_own "
 global parents  "mom_age "
