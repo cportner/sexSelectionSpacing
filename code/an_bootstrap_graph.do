@@ -68,38 +68,6 @@ set scheme s1mono
 // Only bottom graph (likelihood of next birth) have an x axis
 // There are no confidence intervals in graphs (refer to tables for those)
  
-
-// // Trial version of graphs
-// clear // Needed because we are generating new data sets based on matrices in svmat below
-// matrix r1_s3_high = (1, b_s3_g1_high_r1 \ 2, b_s3_g2_high_r1 \ 3, b_s3_g3_high_r1 \  4, b_s3_g4_high_r1)
-// svmat r1_s3_high, names( col )
-// twoway line p50_urban_g2 p50_urban_g1 p50_urban_g0 c1, sort  ///
-//     lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
-//     legend(off) plotregion(style(none)) xscale(off) ///
-//     ytitle("Median Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
-//     name(s3_p50, replace)  fysize(80)
-// 
-// twoway line pct_urban_g2 pct_urban_g1 pct_urban_g0 c1, sort ///
-//     lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
-//     legend(off) plotregion(style(none)) xscale(off) ///
-//     ytitle("Sex Ratio" "(Percent Boys)") yscale(r(45 75)) ylabel(45(10)75, grid) ///
-//     yline(51.2195122) ///
-//     name(s3_pct, replace) fysize(80)
-// 
-// twoway line any_urban_g2 any_urban_g1 any_urban_g0 c1, sort ///
-//     lpattern(solid longdash dash) lwidth(medthick..) lcolor(black...) ///
-//     legend(off) plotregion(style(none)) ///
-//     xtitle("") ///
-//     xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-//     ytitle("Probability of" "a Next Birth") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
-//     name(s3_any, replace) fysize(100)
-// 
-// 
-// gr combine s3_p50 s3_pct s3_any , ///
-//     iscale(1.7) col(1) xcommon imargin(0 2 1 1) ysize(12) 
-//     
-// graph export `figures'/bs_spell3_high_urban.eps, replace fontface(Palatino) 
-
 foreach educ in "low" "med" "high" {
     forvalues region = 1/4 {
         forvalues spell = 1/4 {
