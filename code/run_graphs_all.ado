@@ -1,7 +1,6 @@
 // Programs for survival and percentage boys graphs
 
 program run_graphs
-    version 13
     args spell period educ
     
     include directories
@@ -152,7 +151,6 @@ end
 // Individual spell graph programs
 
 program graph_spell1
-    version 13
     args period educ
     include directories
 
@@ -191,7 +189,6 @@ program graph_spell1
 end
 
 program graph_spell2
-    version 13
     args period educ
     include directories
 
@@ -244,7 +241,6 @@ program graph_spell2
 end
 
 program graph_spell3
-    version 13
     args period educ
     include directories
 
@@ -305,7 +301,6 @@ program graph_spell3
 end
 
 program graph_spell4
-    version 13
     args period educ
     include directories
 
