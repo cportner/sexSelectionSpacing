@@ -20,7 +20,8 @@ save "`main'"
 
 // Restricting sample and data manipulations
 
-foreach educ in "high" "med" "low" {
+// foreach educ in "high" "med" "low" {
+foreach educ in "high" {
 
     use "`main'", clear
 

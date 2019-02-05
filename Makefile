@@ -90,28 +90,25 @@ BSGRAPH_ALL := \
     $(FIG)/bs_spell$(spell)_$(educ)_$(area)_all.eps ) ) ) 
 
 
-### Bootstrap - by Region
+### Bootstrap - by Region - only high education
 ### Data for bootstrapping
 BSDATA := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
     $(foreach region, $(REGIONS), \
-    $(DAT)/bs_s$(spell)_g$(per)_$(educ)_r$(region).dta ) ) ) )
+    $(DAT)/bs_s$(spell)_g$(per)_high_r$(region).dta ) ) ) 
 
 ### Tables of bootstrapping results
 BSTABLE := \
-    $(foreach educ, $(EDUC), \
     $(foreach region, $(REGIONS), \
-    $(TAB)/bootstrap_duration_sex_ratio_$(educ)_r$(region).tex $(TAB)/bootstrap_duration_p25_p75_$(educ)_r$(region).tex $(TAB)/bootstrap_any_sex_ratio_$(educ)_r$(region).tex ) )
+    $(TAB)/bootstrap_duration_sex_ratio_high_r$(region).tex $(TAB)/bootstrap_duration_p25_p75_high_r$(region).tex $(TAB)/bootstrap_any_sex_ratio_high_r$(region).tex ) 
 
 ### Graphs of bootstrapping results
 BSGRAPH := \
     $(foreach spell, $(SPELLS), \
-    $(foreach educ, $(EDUC), \
     $(foreach area, $(AREAS), \
     $(foreach region, $(REGIONS), \
-    $(FIG)/bs_spell$(spell)_$(educ)_$(area)_r$(region).eps ) ) ) )
+    $(FIG)/bs_spell$(spell)_high_$(area)_r$(region).eps ) ) )
 
 
 ### Appendix 
@@ -296,7 +293,7 @@ $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
 	cd $(COD); stata-se -b -q $(<F)	
 
 
-### Region ###
+### Region - only high education ###
 
 # Bootstrap results
 .PHONY: run_boot

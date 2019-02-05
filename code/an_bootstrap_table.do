@@ -57,7 +57,9 @@ end
 include directories
 
 // Load bootstrap results and create matrices.
-foreach educ in "low" "med" "high" {
+
+// foreach educ in "low" "med" "high" {
+foreach educ in "high" {
     forvalues region = 1/4 {
         forvalues spell = 2/4 {
             forvalues period = 1/4 {
@@ -86,7 +88,8 @@ foreach educ in "low" "med" "high" {
 forvalues region = 1/4 {
 
     // Loop over education
-    foreach educ in "low" "med" "high" {
+//     foreach educ in "low" "med" "high" {
+    foreach educ in "high" {
 
         if "`educ'" == "low" {
             loc char "No Education"
