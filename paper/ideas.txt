@@ -1,0 +1,61 @@
+Paper ideas
+
+Based on \citet{Soest2018}
+
+"Many studies also found an association between a short birth interval
+and infant death of the next child, particularly when the preceding
+sibling survived [21–23]. An explanation for this is that the mother has
+not recuperated physiologically from the previous birth [24–25].
+"
+
+!this is an important point. In the literature, the mortality effect discussed
+generally comes from the subsequent child, not the prior one. 
+Hence, longer spacing should be beneficial for the boy born next if 
+sex selection has been used.
+This could explain part of the reduction in female mortality: The
+girls that would "normally" have been born relatively soon after the
+prior birth, and, therefore, have higher mortality risk, now are no
+longer born.
+
+
+"Sibling competition may also explain why short birth intervals and high
+fertility increase death risk: sources of food and care per head
+diminish as the number of dependent members of a family increases [5].
+"
+
+this effect can be used to explain any reductions in mortality for
+the prior girls.
+
+A type of this would be cession of breastfeeding because of a short
+birth interval - see Conde et al. paper below for discussion of 
+breastfeeding. 
+
+
+This might be something to test in a new paper. Mortality risk should
+go down differentially across parities with access to sex selection,
+depending on the sex of the prior child. This effect should be larger
+for families more likely to use sex selection, i.e. higher education
+women.
+Since we do not know actual use of sex selection, one possibility
+would be to used the area's sex ratio for the type of family.
+A caveat is that sibling competition is less likely to occur, which
+would also reduce mortality for the prior child, although possibly
+less.
+A first step would be to check on mortality levels among the
+well-educated women.
+
+
+
+
+\citep{Jayachandran2011}:
+p1518: In India, girls have a 40% higher mortality rate, relative to
+boys, betweentheages ofoneandfivebut anequal mortalityratebefore age one
+(Acharya 2004).
+
+p 1519: researchers have documented that in India excess female mortality is
+mutedfor first births (Das Gupta 1987; RetherfordandRoy 2003). In line
+with this fact, we findrelatively little gender difference in
+breastfeeding for first-born children (Figure IV).
+
+\citep{Jayachandran2011} also estimate mortality
+
