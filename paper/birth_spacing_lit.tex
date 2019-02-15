@@ -50,6 +50,9 @@ causality is difficult to establish)
 
 \citet{Soest2018}
 
+we use dynamic panel data techniques to analyse the causal effects of infant mortality on birth intervals and fertility, as well as the causal effects of birth intervals on mortality in rural Bangladesh, accounting for unobserved heterogeneity and reverse causality
+
+
 The main novelty compared to [14] is that our application concerns
 infant mortality in rural Bangladesh. While Bhalotra and van Soest used
 retrospective data to analyse neonatal mortality in India, we use
@@ -116,6 +119,10 @@ both equations are strongly related: mothers who desire many children
 also tend to use shorter birth intervals. This is consistent with the
 target fertility model of Wolpin [4] and in line with the findings in
 [14].
+
+We find evidence of causal effects in two directions: a short preceding birth interval reduces survival chances of infants, and an infant death increases the probability of a next birth and shortens the time until the next birth (replacement behaviour)
+
+Estimates of reproductive behaviour are consistent with gender preference: having more surviving boys significantly reduces the probability of having a next child and this effect is strongest in the comparison area
 
 \citet{Zimmermann2018}
 
@@ -372,7 +379,7 @@ couple that just had a son is more likely to stop having children (Das
 Trussell et al. 1985; Arnold, Choe, and Roy 1998; RetherfordandRoy
 2003). Hemochandra, Singh, and Singh (2010) show that birth intervals
 are shorter if parents have not reached their self-reported ideal number
-of sons. Second, Nemeth and Bowling (1985) examine whether having nosons
+of sons. Second, Nemeth and Bowling (1985) examine whether having no sons
 shortens the duration of breastfeeding.
 
 Muhuri and Menken (1997) show that birth spacing and the sex of older
@@ -471,15 +478,30 @@ socioeconomic status.
 
 \citep{Maitra2008}
 
-We ﬁnd that the estimates of birth spacing on child mortality are different when we do not account for fertility selection.
+We find that the estimates of birth spacing on child mortality are
+different when we do not account for fertility selection.
 
-Our analysis is based on the National Family Health Survey (NFHS) 1992–1993 data from the Indian province of the Punjab and the Demographic and Health Survey (DHS) 1991–1992 data from the Pakistani province of the Punjab.
+Our analysis is based on the National Family Health Survey (NFHS)
+1992–1993 data from the Indian province of the Punjab and the
+Demographic and Health Survey (DHS) 1991–1992 data from the Pakistani
+province of the Punjab.
 
-India: There is evidence of a statistically signiﬁcant effect of birth spacing on child survival: an increase in the duration between child i and child i + 1 signiﬁcantly reduces the hazard of mortality of child i (equivalently increases the survival chances of the child).
-for the sample of Pakistani households. As with the Indian case, there is evidence of maternal depletion/sibling competition effect in the Pakistani sample: an increase in the duration between child i and child i + 1 signiﬁcantly reduces the hazard of mortality of child i.
+India: There is evidence of a statistically signifiant effect of birth
+spacing on child survival: an increase in the duration between child i
+and child i + 1 significantly reduces the hazard of mortality of child i
+(equivalently increases the survival chances of the child).
+for the sample of Pakistani households. As with the Indian case, there
+is evidence of maternal depletion/sibling competition effect in the
+Pakistani sample: an increase in the duration between child i and child
+i + 1 significantly reduces the hazard of mortality of child i.
 
-early child death may also result in a reduction in the duration between successive children because parents want to replace children that have died.
-Our results show that the child replacement effect is signiﬁcant in the Indian sample, but not in the Pakistani sample. In other words, increased child survival increases birth spacing in India but not in Pakistan. 
+early child death may also result in a reduction in the duration between
+successive children because parents want to replace children that have
+died.
+Our results show that the child replacement effect is signiﬁcant in the
+Indian sample, but not in the Pakistani sample. In other words,
+increased child survival increases birth spacing in India but not in
+Pakistan. 
 
 \citep{Makepeace2008}
 
@@ -500,40 +522,62 @@ siblings better,
 
 NFHS 1992-93: Uttar Pradesh
 
-indicator variables constructed on the basis of the stated preferences for sons and daughters indicated that unwanted fertility contributes to excess mortality of higher order births, especially of girls.
+indicator variables constructed on the basis of the stated preferences
+for sons and daughters indicated that unwanted fertility contributes to
+excess mortality of higher order births, especially of girls.
 
 \citep{Davanzo2008}
 
 Matlab
 
-Shorter intervals are associated with higher mortality. Interval effects are greater if the
+Shorter intervals are associated with higher mortality. Interval effects
+are greater if the
 interval began with a live birth than with another pregnancy outcome.
 
-previous studies have generally considered the preceding interval between births* the interbirth interval*as their measure of spacing
+previous studies have generally considered the preceding interval
+between births* the interbirth interval*as their measure of spacing
 
-the appropriate measure to use when considering the effect of competition or disease transmission from another young child in the family
+the appropriate measure to use when considering the effect of
+competition or disease transmission from another young child in the
+family
 
-sometimes there is a pregnancy that resulted in an outcome other than a live birth (NLB) between two live births, in which case the interbirth interval will include two (or more) interpregnancy intervals.
+sometimes there is a pregnancy that resulted in an outcome other than a
+live birth (NLB) between two live births, in which case the interbirth
+interval will include two (or more) interpregnancy intervals.
 
-Some of the hypotheses about why reproductive spacing may affect infant and child health and survival are related to the interpregnancy interval
+Some of the hypotheses about why reproductive spacing may affect infant
+and child health and survival are related to the interpregnancy interval
 
-Furthermore, an intervening NLB may reflect something about the mother’s health that may affect the health of her children
+Furthermore, an intervening NLB may reflect something about the mother’s
+health that may affect the health of her children
 
-Some, but very little, of the effect is explained by the fact that shorter interbirth and inter-outcome intervals are associated with shorter gestations of pregnancy.
+Some, but very little, of the effect is explained by the fact that
+shorter interbirth and inter-outcome intervals are associated with
+shorter gestations of pregnancy.
 
 Our results give some credence to the maternal depletion hypothesis.
-We see that very short inter-outcome intervals are generally more detrimental when they follow a live birth or stillbirth than when they follow a preceding miscarriage or induced abortion. Because of their longer gestation, live births and stillbirths should be more depleting than miscarriages or induced abortions.
-The breastfeeding that follows a live birth leads to further maternal depletion. Indeed we find that the effects of short inter-outcome intervals are greatest when the preceding outcome was a live birth.
+We see that very short inter-outcome intervals are generally more
+detrimental when they follow a live birth or stillbirth than when they
+follow a preceding miscarriage or induced abortion. Because of their
+longer gestation, live births and stillbirths should be more depleting
+than miscarriages or induced abortions.
+The breastfeeding that follows a live birth leads to further maternal
+depletion. Indeed we find that the effects of short inter-outcome
+intervals are greatest when the preceding outcome was a live birth.
 
-We also find significant negative effects of subsequent short interpregnancy intervals on child survival (and have investigated this in a way that avoids reverse causality): a child is much more likely to die between ages 1 and 5 if the mother became pregnant again before this index child’s first birthday (RR02.31, pB0.001).
+We also find significant negative effects of subsequent short
+interpregnancy intervals on child survival (and have investigated this
+in a way that avoids reverse causality): a child is much more likely to
+die between ages 1 and 5 if the mother became pregnant again before this
+index child’s first birthday (RR02.31, pB0.001).
 
 \citep{Haughton1995}
 
 Vietnam Living Standards Survey (VLSS) 1992-1993
 
-This article assesses the strength of son preference in Vietnam, as reflected infertility behavior. It
+This article assesses the strength of son preference in Vietnam, as reflected in fertility behavior. It
 formulates and estimates a proportional hazards model applied to birth intervals, and a contraceptive
-prevalence model, using household survey datafrom 2,636 ever-married women aged 15-49 with at
+prevalence model, using household survey data from 2,636 ever-married women aged 15-49 with at
 least one living child who were interviewedfor the Vietnam Living Standards Survey 1992-1993.
 
  Two tests are applied to the data in an attempt to discern the presence of son preference. The hazard
@@ -551,17 +595,41 @@ the labor force and are relatively well educated.
 
 \citep{Milazzo2018}
 
-This paper is the ﬁrst to show that morbidity and mortality among adult women in India can be partially explained by son preference. First, I show suggestive evidence that women with a ﬁrst-born girl have lower survival. Second, consistent with prior literature, I ﬁnd that having a ﬁrst-born girl leads to fertility behaviors medically known to hurt women’s survival. Third, I show new evidence of eﬀects of a ﬁrst-born girl on a mother’s likelihood and severity of anemia. These outcomes are severely aggravated with each successive female birth
+This paper is the ﬁrst to show that morbidity and mortality among adult
+women in India can be partially explained by son preference. First, I
+show suggestive evidence that women with a ﬁrst-born girl have lower
+survival. Second, consistent with prior literature, I ﬁnd that having a
+ﬁrst-born girl leads to fertility behaviors medically known to hurt
+women’s survival. Third, I show new evidence of eﬀects of a ﬁrst-born
+girl on a mother’s likelihood and severity of anemia. These outcomes are
+severely aggravated with each successive female birth
 
-I pool the three available rounds of the India National Family Health Survey (NFHS) conducted in 1992/93, 1998/99, 2005/06, and consider the cross-sectional sample of women ages 15 to 39.
+I pool the three available rounds of the India National Family Health
+Survey (NFHS) conducted in 1992/93, 1998/99, 2005/06, and consider the
+cross-sectional sample of women ages 15 to 39.
 
-I show nonparametric evidence that the share of living women whose ﬁrst birth is female is a decreasing function of their age (or, alternatively, of the number of years since ﬁrst birth). This decreasing pattern starts around age 24 and continues to decrease below the biological range, stabilizing for women in their mid-30s
+I show nonparametric evidence that the share of living women whose ﬁrst
+birth is female is a decreasing function of their age (or,
+alternatively, of the number of years since ﬁrst birth). This decreasing
+pattern starts around age 24 and continues to decrease below the
+biological range, stabilizing for women in their mid-30s
 
-Although indirect, this evidence is suggestive of lower survival among women with ﬁrst girls due, at least partly, to son preference.
+Although indirect, this evidence is suggestive of lower survival among
+women with ﬁrst girls due, at least partly, to son preference.
 
-I estimate the eﬀects of having a ﬁrst-born girl on several fertility-related outcomes, including the probability of desiring more children, being sterilized, having undergone ultrasound, having had a terminated pregnancy, short birth spacing, and the number of children ever born.
+I estimate the eﬀects of having a ﬁrst-born girl on several
+fertility-related outcomes, including the probability of desiring more
+children, being sterilized, having undergone ultrasound, having had a
+terminated pregnancy, short birth spacing, and the number of children
+ever born.
 
-I provide original evidence that women with ﬁrst-born girls are more likely to develop anemia. Speciﬁcally, a ﬁrst-born daughter increases the probability of being moderately or severely anemic by 5.4 percent. The additional eﬀect of a second and third-born girl (conditional on previous female births) is equivalent to 9 and 17.6 percent, respectively. Predetermined health or current pregnancy or breastfeeding status do not appear to drive these results.
+I provide original evidence that women with ﬁrst-born girls are more
+likely to develop anemia. Speciﬁcally, a ﬁrst-born daughter increases
+the probability of being moderately or severely anemic by 5.4 percent.
+The additional eﬀect of a second and third-born girl (conditional on
+previous female births) is equivalent to 9 and 17.6 percent,
+respectively. Predetermined health or current pregnancy or breastfeeding
+status do not appear to drive these results.
 
 \citep{Gangadharan2003}
 
