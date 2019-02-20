@@ -1,0 +1,332 @@
+% Revamped version for Demography focusing on method
+
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage{amsmath}
+\usepackage{fontspec}
+\setromanfont[Ligatures=TeX]{TeX Gyre Pagella}
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Pagella Math}
+\usepackage[title]{appendix}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[figuresleft]{rotating}
+\usepackage[longnamesfirst]{natbib}
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage[flushleft]{threeparttable}
+\usepackage{setspace}
+\usepackage[justification=centering]{caption}
+\usepackage[font=scriptsize]{subfig}
+\usepackage[xetex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+\usepackage{adjustbox}
+\usepackage{xfrac}
+
+
+% \bibpunct{(}{)}{;}{a}{}{,}
+\newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\X}{$\times$ }
+\newcommand{\hs}{\hspace{15pt}}
+
+% Attempt to squeeze more floats in
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+
+%------------------------------------------------------------------------
+
+
+\title{Birth Spacing in the Presence of Son Preference and Sex-Selective Abortions:
+India's Experience over Four Decades%
+\protect\thanks{%
+I am grateful to Andrew Foster and Darryl Holman for discussions about the method.
+I owe thanks to Shelly Lundberg, Daniel Rees, David Ribar, 
+Hendrik Wolff, seminar participants at University of Copenhagen, University of Michigan, 
+University of Washington, University of Aarhus, the Fourth 
+Annual Conference on Population, Reproductive Health, 
+and Economic Development, and the Economic Demography Workshop for helpful 
+suggestions and comments.
+I would also like to thank Nalina Varanasi for research assistance.
+Support for development of the method from the University of Washington Royalty 
+Research Fund and the Development Research Group of the World Bank is gratefully 
+acknowledged.
+The views and findings expressed here are those of the author and
+should not be attributed to the World Bank or any of its member countries.
+Partial support for this research came from a Eunice Kennedy Shriver National
+Institute of Child Health and Human Development research infrastructure grant,
+5R24HD042828, to the Center for Studies in Demography and Ecology at the
+University of Washington.
+}
+}
+
+\author{Claus C P\"ortner\\
+    Department of Economics\\
+    Albers School of Business and Economics\\
+    Seattle University, P.O. Box 222000\\
+    Seattle, WA 98122\\
+    \href{mailto:claus@clausportner.com}{\texttt{claus@clausportner.com}}\\
+    \href{http://www.clausportner.com}{\texttt{www.clausportner.com}}\\
+    \& \\
+    Center for Studies in Demography and Ecology \\
+    University of Washington\\ \vspace{2cm}
+    }
+
+\date{November 2018}
+
+
+%------------------------------------------------------------------------
+
+
+\begin{document}
+\graphicspath{{../figures/}}
+\DeclareGraphicsExtensions{.eps,.jpg,.pdf,.mps,.png}
+
+\setcounter{page}{-1}
+\maketitle
+\thispagestyle{empty}
+
+% \setcounter{page}{0}
+
+
+\newpage
+\thispagestyle{empty}
+\doublespacing
+
+\begin{abstract}
+
+% Demography abstract
+\noindent 
+
+Strong son preference is typically associated with shorter birth spacing
+in the absence of sons, but access to sex selection has the potential to
+reverse this pattern because each abortion extends spacing by six to
+twelve months. 
+I introduce a statistical method that simultaneously
+accounts for how sex selection increases the spacing between 
+births and the likelihood of a son. 
+Using four rounds of India's National
+Family and Health Surveys, I show that, except for first births,
+the spacing between births increased substantially over the last four
+decades, with the most substantial increases among women most 
+likely to use sex selection.
+Specifically, well-educated women with no boys now
+exhibit significantly longer spacing and more male-biased sex ratios
+than similar women with boys. 
+Women with no education still follow the standard
+pattern of short spacing when they have girls and little evidence of sex
+selection, with medium-educated women showing mixed results. 
+Finally,
+sex ratios are more likely to decline within spells at lower parities,
+where there is less pressure to ensure a son, and more likely to
+increase or remain consistently high for higher-order spells, where the
+pressure to provide a son is high.
+
+
+\noindent JEL: J1, O12, I1
+\noindent Keywords: India, prenatal sex determination, censoring, competing risk
+\end{abstract}
+
+\newpage
+
+
+%------------------------------------------------------------------------
+
+\section{Introduction\label{sec:intro}}
+
+Parents' spacing of births has long served as a measure of son preference 
+\citep{Leung1988}.
+Before prenatal sex determination became available, the only recourse for 
+parents who wanted a son---but did not yet have one---was to have the next 
+birth sooner.
+Son preference is therefore often associated with shorter spacing after the 
+births of girls than boys 
+\citep{Das1987,Rahman1993,Pong1994,Haughton1996,Arnold1997,Soest2012,Rossi2015}.
+Shorter spacing is, in turn, associated with worse health outcomes for girls 
+and mothers 
+\citep{arnold98,Conde-Agudelo2000,Whitworth2002,Razzaque2005,Rutstein2005,Conde-Agudelo2006}.%
+\footnote{
+Parents are also more likely to cease childbearing after the birth of 
+a son than after a daughter 
+\citep{repetto72,ben-porath76b,Das1987,Arnold1997,arnold98,clark00,dreze01,filmer09,Basu2010,Altindag2016}.
+}
+
+However, the introduction of prenatal sex determination fundamentally changed the 
+relationship between son preference and birth spacing.
+Couples, who had shorter birth spacing before because of son preference,
+now have access to prenatal sex determination and sex-selective abortions,
+and each abortion increases birth spacing by six months to a year.
+The increase consists of three parts.
+First, starting from the time of the abortion, the uterus needs at 
+least two menstrual cycles to recover;  otherwise, the likelihood 
+of spontaneous abortion increases substantially \citep{zhou00b}.
+The second part is the waiting time to conception, which is between 
+one and six months \citep{Wang2003}.
+Finally, sex determination tests are reliable only from three months 
+of gestation onwards.
+
+As a result, we now have a situation where we may observer \emph{longer} spacing
+for families with daughters than for families with sons, precisely because
+strong son preference leads them to use sex selection.
+Working in the opposite direction, couples with strong son preference
+will likely still try to conceive earlier in the absence of sons. 
+They may even shorten the time until conception, knowing that they might
+have to go through multiple pregnancies and abortions before they
+conceive a son.
+To further complicate matters, we can still observe shorter birth spacing 
+after the births of daughters as a representation of son preference for 
+families who---for one reason or another---do not use prenatal sex selection.
+
+Spacing, by itself, can therefore no longer be used as a direct measure of 
+son preference, but understanding birth spacing remains a critical undertaking.
+First, 
+birth spacing is still useful in understanding son preference, 
+if combined with the likelihood of observing a boy or a girl.
+Second, 
+the duration between births may be an important factor in parents' 
+decisions, either for preference or economic reasons.
+It is, for example, possible that even parents with strong son preference 
+may reverse their decision to use prenatal sex determination---and carry 
+the next pregnancy to term whether male or female---as the duration from 
+the previous birth becomes sufficiently long.
+
+At a broader level, we know less about what determines spacing behavior in 
+developing countries than in developed countries.%
+\footnote{
+Even the effects of access to contraceptive on spacing are uncertain.
+On the one hand, access to contraceptives allows women to avoid too 
+short spacing between birth, which would increase birth spacing.
+On the other hand, increased reliability of access and effectiveness of
+contraceptives can lead to shorter spacing between births 
+\citep{Keyfitz1971,Heckman1976}.
+With less reliable contraception parents choose a higher level 
+of contraception, which results in longer spacing, to avoid having 
+too many children by accident.
+But, as contraception becomes more effective parents can more
+easily avoid future births, allowing them to reduce the spacing 
+between births without having to worry about overshooting their 
+preferred number of children.
+This idea may explain why better-educated women have
+shorter spacing than less educated women in some instances
+ \citep{Tulasidhar1993,Whitworth2002}.
+These two counteracting effects may explain why finding statistically 
+significant effects of contraception use on birth spacing is 
+difficult \citep{Yeakey2009}.
+}
+With increasing numbers of women entering the labor force in developing
+countries, understanding how couples make timing decisions will be necessary
+for the design of suitable policies \citep{Portner2018}.
+Furthermore, if spacing does affect health outcomes for mother and children, it is 
+essential to understand what drives changes in spacing.
+We know, for example, that health outcomes for girls appear to improve
+in the presence of sex selection \citep{Lin2014,Hu2015}.
+It is possible that these improvements are an unintended side-effect of
+the longer spacing that arises from sex-selective abortions, rather than
+because the smaller number of girls makes them more valued as is often
+assumed.
+
+
+In this paper, I introduce and apply a novel empirical method that directly incorporates 
+the effects of sex-selective abortions on 
+the duration between births
+\emph{and} 
+the likelihood of a son. 
+The method can be used to analyze both situations with and without prenatal
+sex selection.
+My proposed method allows for the time since the previous 
+birth to affect the decision on sex selection.
+By examining under what circumstances sex selection decisions change with 
+spacing, we can draw a more nuanced picture of the degree of son preference.
+
+% [Why India?]
+I apply the method to birth histories of Hindu women, using data from 
+India's National Family and Health Surveys (NFHS), covering the period 
+1972 to 2016. 
+India is a particularly compelling case.
+On the one hand, India has seen dramatic increases in the males-to-females ratio 
+at birth over the last three decades as access to prenatal sex determination 
+expanded 
+\citep{das_gupta97,Sudha1999,Arnold2002,retherford03b,jha06}.%
+\footnote{
+India is not alone; both China and South Korea saw
+significant changes in the sex ratio at birth over the same period 
+\citep{Yi1993,park95}.
+}
+On the other hand, research suggests that son preference in 
+India, when measured as ideally having more boys than girls, is decreasing 
+over time and with higher education \citep{bhat03,pande07}.
+% %
+% \footnote{
+% This measure of son preference is commonly used in the literature. 
+% See, for example, \citet{clark00}, \citet{Jensen2009}, and \cite{Hu2015}.
+% }
+
+There have also been substantial changes in access and legality of
+prenatal sex determination in India over the period covered.
+Abortion has been legal in India since 1971 and still is.
+The first reports of sex determination appeared around 
+1982--83 \citep{Sudha1999,bhat06,Grover2006}.
+The number of clinics quickly increased, and knowledge about sex selection 
+became widespread after a senior government official's wife aborted a 
+fetus that turned out to be male \citep[p.\ 598]{Sudha1999}.
+In 1994, the Central Government passed the Prenatal Diagnostic Techniques 
+(PNDT) Act, making determining and communicating the sex of a fetus illegal.%
+\footnote{
+Details about the act are at \href{http://pndt.gov.in/}{http://pndt.gov.in/}.
+The number of convictions has been low.
+It took until January 2008 for the first state, Haryana, to reach five convictions.
+Hence, private clinics apparently operate with little risk of legal action 
+\citep{Sudha1999}.
+Furthermore, there is little evidence that bans like this significantly
+affect sex ratios \citep{Das-Gupta2016}.
+}
+% Hence, the data make it possible to show how the spacing between births and
+% sex ratios have changed with the introduction of prenatal sex determination,
+% and whether the ban affected the relationship between birth spacing and sex 
+% ratios.
+
+
+% [Results]
+There are four main results.
+First, there has been a general increase in the length of spacing between births
+over the four decades covered by the data.
+The exception is for first births, where the median duration has either
+remained the same or slightly declined, although this hides a
+significant compression of the variation in spell length.
+Second, the most substantial increase in spacing is for the women who
+are most likely to use sex selection.
+Specifically, among the best-educated women, those with no boys now has 
+significantly longer spacing---and a more male-biased sex ratio---than 
+similar women with boys.
+Third, women with no education still follow the standard pattern of
+short spacing when they have girls and little evidence of the use of sex
+selection.
+In other words, these women adhere to a strategy where they achieve a
+son through higher fertility rather than the use of sex selection.
+Finally, sex ratios are the most likely to decline within spells at
+lower-order spells, where the pressure to provide a son is smaller, and
+are more likely to increase or remain consistently high for higher-order
+spells, where the pressure to ensure a son is high.
+
+
+
+\clearpage
+
+\onehalfspacing
+\bibliographystyle{aer}
+\bibliography{sex_selection_spacing}
+
+\addcontentsline{toc}{section}{References}
+
+
+
+
+\end{document}
+
+
+
