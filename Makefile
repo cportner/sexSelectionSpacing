@@ -175,6 +175,9 @@ $(DAT)/base.dta: $(COD)/crBase.do $(DAT)/base1.dta $(DAT)/base2.dta $(DAT)/base3
 # Recall error analysis                                                                 #
 #---------------------------------------------------------------------------------------#
 
+.PHONY: run_recall
+run_recall: $(RECALLGRAPHS) $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex
+
 $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex: $(COD)/anRecall.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
