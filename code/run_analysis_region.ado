@@ -1,6 +1,6 @@
 // Program for estimations
 
-program run_analysis
+program run_analysis_region
     args spell period educ region
     
     include directories

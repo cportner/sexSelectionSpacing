@@ -1,6 +1,6 @@
 // Programs for survival and percentage boys graphs
 
-program run_graphs
+program run_graphs_all
     args spell period educ
     
     include directories
@@ -55,8 +55,8 @@ program run_graphs
         }
     }
     else {
-        replace b1space = 16
-        replace b1space2 = b1space^2/100   
+        // replace b1space = 16
+        // replace b1space2 = b1space^2/100   
         replace girl1 = 1 if id == 3 | id == 4
         if `spell' > 2 {
             replace girl2 = 1 if id == 5 | id == 6

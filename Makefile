@@ -44,17 +44,23 @@ ANALYSISTARGET := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
+    $(DAT)/results_spell$(spell)_g$(per)_$(educ).ster ) ) )
+
+ANALYSISTARGET_REGION := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
     $(foreach region, $(REGIONS), \
     $(DAT)/results_spell$(spell)_g$(per)_$(educ)_r$(region).ster ) ) ) )
 
 ### Percentage boys and standard survival graphs
-GRAPHTARGET := \
-    $(foreach spell, $(SPELLS), \
-    $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS),\
-    $(foreach comp, $(COMP$(spell)),\
-    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)pc.eps $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)s.eps) ) ) ) )
+#GRAPHTARGET := \
+#    $(foreach spell, $(SPELLS), \
+#    $(foreach per, $(PERIODS), \
+#    $(foreach educ, $(EDUC), \
+#    $(foreach area, $(AREAS),\
+#    $(foreach comp, $(COMP$(spell)),\
+#    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)pc.eps $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)s.eps) ) ) ) )
 
 ### PPS graphs
 ### Spell 1 is different; it is combined across periods into one graph
@@ -196,12 +202,30 @@ $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex: $(COD)/anDescSta
 # Estimation results                                                                    #
 #---------------------------------------------------------------------------------------#
 
+# All/combined
 .PHONY: run_analysis
 run_analysis: $(ANALYSISTARGET)
 
 # Use basename because run_analysis is an ado file
 define analysis-rule
-$(DAT)/obs_spell$(1)_g$(2)_$(3)_r$(4).dta $(DAT)/results_spell$(1)_g$(2)_$(3)_r$(4).ster: $(COD)/run_analysis.ado \
+$(DAT)/obs_spell$(1)_g$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis_all.ado \
+ $(DAT)/base.dta $(COD)/bh_$(3).ado $(COD)/genSpell$(1).do
+	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
+endef
+
+$(foreach spell, $(SPELLS), \
+$(foreach per, $(PERIODS), \
+$(foreach educ, $(EDUC), \
+$(eval $(call analysis-rule,$(spell),$(per),$(educ))) ) ) )
+
+
+# Region 
+.PHONY: run_analysis_regions
+run_analysis_regions: $(ANALYSISTARGET_REGION)
+
+# Use basename because run_analysis is an ado file
+define analysis-rule-region
+$(DAT)/obs_spell$(1)_g$(2)_$(3)_r$(4).dta $(DAT)/results_spell$(1)_g$(2)_$(3)_r$(4).ster: $(COD)/run_analysis_region.ado \
  $(DAT)/base.dta $(COD)/bh_$(3).ado $(COD)/genSpell$(1).do
 	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
 endef
@@ -210,7 +234,7 @@ $(foreach spell, $(SPELLS), \
 $(foreach per, $(PERIODS), \
 $(foreach educ, $(EDUC), \
 $(foreach region, $(REGIONS), \
-$(eval $(call analysis-rule,$(spell),$(per),$(educ),$(region))) ) ) ) )
+$(eval $(call analysis-rule-region,$(spell),$(per),$(educ),$(region))) ) ) ) )
 
 		
 #---------------------------------------------------------------------------------------#
@@ -224,7 +248,7 @@ define graph-rule
 $(DAT)/spell$(1)_g$(2)_$(3).dta \
 $(foreach area, $(AREAS),\
 $(foreach comp, $(COMP$(1)),\
-$(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)pc.eps $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)s.eps)) : $(COD)/run_graphs.ado \
+$(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)pc.eps $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)s.eps)) : $(COD)/run_graphs_all.ado \
  $(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster $(COD)/bh_$(3).ado
 	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
 endef
@@ -263,7 +287,7 @@ $(if $(filter $(spell),1), \
 endef
 
 $(foreach spell, $(SPELLS), \
- $(eval $(call pps-rule,$(spell))) \
+$(eval $(call pps-rule,$(spell))) \
 )
 	
 	

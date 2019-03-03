@@ -21,6 +21,7 @@
 \usepackage[xetex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
 \usepackage{adjustbox}
 \usepackage{xfrac}
+\usepackage{placeins}
 
 
 % \bibpunct{(}{)}{;}{a}{}{,}
@@ -77,7 +78,7 @@ University of Washington.
     University of Washington\\ \vspace{2cm}
     }
 
-\date{November 2018}
+\date{March 2018}
 
 
 %------------------------------------------------------------------------
@@ -103,15 +104,15 @@ University of Washington.
 % Demography abstract
 \noindent 
 
+[TK rewrite with region results]
+
 Strong son preference is typically associated with shorter birth spacing
 in the absence of sons, but access to sex selection has the potential to
 reverse this pattern because each abortion extends spacing by six to
 twelve months. 
-I introduce a statistical method that simultaneously
-accounts for how sex selection increases the spacing between 
-births and the likelihood of a son. 
-Using four rounds of India's National
-Family and Health Surveys, I show that, except for first births,
+I introduce a statistical method that simultaneously accounts for how sex selection 
+increases both the spacing between births and the likelihood of a son. 
+Using the four rounds of India's National Family and Health Surveys, I show that
 the spacing between births increased substantially over the last four
 decades, with the most substantial increases among women most 
 likely to use sex selection.
@@ -121,11 +122,7 @@ than similar women with boys.
 Women with no education still follow the standard
 pattern of short spacing when they have girls and little evidence of sex
 selection, with medium-educated women showing mixed results. 
-Finally,
-sex ratios are more likely to decline within spells at lower parities,
-where there is less pressure to ensure a son, and more likely to
-increase or remain consistently high for higher-order spells, where the
-pressure to provide a son is high.
+
 
 
 \noindent JEL: J1, O12, I1
@@ -139,28 +136,15 @@ pressure to provide a son is high.
 
 \section{Introduction\label{sec:intro}}
 
-Parents' spacing of births has long served as a measure of son preference 
-\citep{Leung1988}.
-Before prenatal sex determination became available, the only recourse for 
-parents who wanted a son---but did not yet have one---was to have the next 
-birth sooner.
-Son preference is therefore often associated with shorter spacing after the 
-births of girls than boys 
-\citep{Das1987,Rahman1993,Pong1994,Haughton1996,Arnold1997,Soest2012,Rossi2015}.
-Shorter spacing is, in turn, associated with worse health outcomes for girls 
-and mothers 
-\citep{arnold98,Conde-Agudelo2000,Whitworth2002,Razzaque2005,Rutstein2005,Conde-Agudelo2006}.%
+Birth spacing has long served as a measure of son preference, with strong
+son preference typically associated with shorter birth intervals the
+fewer sons a family has \citep{ben-porath76b,Leung1988}.
+However, the introduction of prenatal sex determination has the potential to
+fundamentally change the relationship between son preference and birth spacing.
+The stronger the son preference, the more likely couples are to resort to sex-selective 
+abortions, and each abortion automatically increases the interval between births by six 
+months to a year.%
 \footnote{
-Parents are also more likely to cease childbearing after the birth of 
-a son than after a daughter 
-\citep{repetto72,ben-porath76b,Das1987,Arnold1997,arnold98,clark00,dreze01,filmer09,Basu2010,Altindag2016}.
-}
-
-However, the introduction of prenatal sex determination fundamentally changed the 
-relationship between son preference and birth spacing.
-Couples, who had shorter birth spacing before because of son preference,
-now have access to prenatal sex determination and sex-selective abortions,
-and each abortion increases birth spacing by six months to a year.
 The increase consists of three parts.
 First, starting from the time of the abortion, the uterus needs at 
 least two menstrual cycles to recover;  otherwise, the likelihood 
@@ -169,105 +153,198 @@ The second part is the waiting time to conception, which is between
 one and six months \citep{Wang2003}.
 Finally, sex determination tests are reliable only from three months 
 of gestation onwards.
-
-As a result, we now have a situation where we may observer \emph{longer} spacing
-for families with daughters than for families with sons, precisely because
-strong son preference leads them to use sex selection.
-Working in the opposite direction, couples with strong son preference
-will likely still try to conceive earlier in the absence of sons. 
-They may even shorten the time until conception, knowing that they might
-have to go through multiple pregnancies and abortions before they
-conceive a son.
-To further complicate matters, we can still observe shorter birth spacing 
-after the births of daughters as a representation of son preference for 
-families who---for one reason or another---do not use prenatal sex selection.
-
-Spacing, by itself, can therefore no longer be used as a direct measure of 
-son preference, but understanding birth spacing remains a critical undertaking.
-First, 
-birth spacing is still useful in understanding son preference, 
-if combined with the likelihood of observing a boy or a girl.
-Second, 
-the duration between births may be an important factor in parents' 
-decisions, either for preference or economic reasons.
-It is, for example, possible that even parents with strong son preference 
-may reverse their decision to use prenatal sex determination---and carry 
-the next pregnancy to term whether male or female---as the duration from 
-the previous birth becomes sufficiently long.
-
-At a broader level, we know less about what determines spacing behavior in 
-developing countries than in developed countries.%
-\footnote{
-Even the effects of access to contraceptive on spacing are uncertain.
-On the one hand, access to contraceptives allows women to avoid too 
-short spacing between birth, which would increase birth spacing.
-On the other hand, increased reliability of access and effectiveness of
-contraceptives can lead to shorter spacing between births 
-\citep{Keyfitz1971,Heckman1976}.
-With less reliable contraception parents choose a higher level 
-of contraception, which results in longer spacing, to avoid having 
-too many children by accident.
-But, as contraception becomes more effective parents can more
-easily avoid future births, allowing them to reduce the spacing 
-between births without having to worry about overshooting their 
-preferred number of children.
-This idea may explain why better-educated women have
-shorter spacing than less educated women in some instances
- \citep{Tulasidhar1993,Whitworth2002}.
-These two counteracting effects may explain why finding statistically 
-significant effects of contraception use on birth spacing is 
-difficult \citep{Yeakey2009}.
 }
-With increasing numbers of women entering the labor force in developing
-countries, understanding how couples make timing decisions will be necessary
-for the design of suitable policies \citep{Portner2018}.
-Furthermore, if spacing does affect health outcomes for mother and children, it is 
-essential to understand what drives changes in spacing.
-We know, for example, that health outcomes for girls appear to improve
-in the presence of sex selection \citep{Lin2014,Hu2015}.
-It is possible that these improvements are an unintended side-effect of
-the longer spacing that arises from sex-selective abortions, rather than
-because the smaller number of girls makes them more valued as is often
-assumed.
+As a result, we may now observe \emph{longer} average spacing for families with the
+strongest son preference, precisely because it makes them more likely to use sex selection.
+% To further complicate matters, families with son preference who---for one reason or 
+% another---do not use prenatal sex selection may continue to have shorter birth spacing 
+% than those with a lower preference for sons.
 
-
-In this paper, I introduce and apply a novel empirical method that directly incorporates 
-the effects of sex-selective abortions on 
-the duration between births
+In this paper, I examine how birth spacing in India has changed over time and across 
+groups with the introduction of sex selection.
+I introduce and apply an empirical method that directly incorporates the effects of 
+sex-selective abortions on the duration between births 
 \emph{and} 
 the likelihood of a son. 
 The method can be used to analyze both situations with and without prenatal
 sex selection.
-My proposed method allows for the time since the previous 
-birth to affect the decision on sex selection.
-By examining under what circumstances sex selection decisions change with 
-spacing, we can draw a more nuanced picture of the degree of son preference.
-
-% [Why India?]
-I apply the method to birth histories of Hindu women, using data from 
+I apply the method to birth histories of Hindu women, using data from the four
 India's National Family and Health Surveys (NFHS), covering the period 
 1972 to 2016. 
-India is a particularly compelling case.
-On the one hand, India has seen dramatic increases in the males-to-females ratio 
-at birth over the last three decades as access to prenatal sex determination 
-expanded 
-\citep{das_gupta97,Sudha1999,Arnold2002,retherford03b,jha06}.%
-\footnote{
-India is not alone; both China and South Korea saw
-significant changes in the sex ratio at birth over the same period 
-\citep{Yi1993,park95}.
-}
-On the other hand, research suggests that son preference in 
-India, when measured as ideally having more boys than girls, is decreasing 
-over time and with higher education \citep{bhat03,pande07}.
-% %
-% \footnote{
-% This measure of son preference is commonly used in the literature. 
-% See, for example, \citet{clark00}, \citet{Jensen2009}, and \cite{Hu2015}.
-% }
 
-There have also been substantial changes in access and legality of
-prenatal sex determination in India over the period covered.
+
+% [Why India?]
+India is a particularly compelling case.
+India has a long history of male preference, especially in the northern states 
+\citep{Kishor1993,murthi95,arnold98}.
+A significant proportion of Indian families exhibit a son preference based 
+differential stopping behavior, where, for a given number of children, they are more 
+likely to have an additional child if they have not yet reached their preferred number of 
+sons \citep{repetto72,Das1987,Arnold1997,arnold98,clark00,Basu2010,Barcellos2014}.%
+\footnote{
+Other countries show a similar pattern
+\citep[see, for example,][]{larsen98,filmer09,Altindag2016}.
+}
+Moreover, mortality risk is higher for females than males for most ages groups, and
+there has been an almost continuous increase in India's overall ratio of males to females 
+over the last century \citep{dyson01,Navaneetham2011,Bongaarts2015}.
+
+% [What do we know about use of sex selection?]
+Over the last three decades, India has seen dramatic increases in the males-to-females 
+ratio at birth as access to prenatal sex determination expanded 
+\citep{das_gupta97,Sudha1999,Arnold2002,retherford03b,jha06,Guilmoto2012,Portner2015b}.
+Simultaneously, fertility has declined substantially, to the point where it is now at, or 
+even below, replacement in some areas 
+\citep{Guilmoto2013,Dharmalingam2014,International-Institute-for-Population-Sciences-IIPS2017}.
+This decline in fertility, combined with a continued strong preference for sons, has 
+intensified the pressure to use sex selection 
+\citep{das_gupta97,Guilmoto2009a,Bongaarts2013,Jayachandran2017}.%
+\footnote{
+In some instances, however, the fertility decline appears to have created a stronger 
+aversion to daughters rather than a stronger preference for son \citet{DiamondSmith2008}.
+}
+At household level the strongest predictor of the use of sex selection is the sex 
+composition of previous children \citep{retherford03b,jha06,abrevaya09,Portner2015b}.
+For families without a son, the higher the parity, the higher is the probability
+of having a son as the next birth.
+The use of sex selection also increases with socioeconomic status, especially 
+education, and is more prevalent in cities than in rural areas, both possibly because 
+of lower desired fertility \citep{retherford03b,jha06,Portner2015b}.
+
+
+% [Why spacing?] 
+There are four main reasons for examining birth spacing and how it changes with 
+access to sex selection.
+First, researchers have made extensive use of birth spacing as a measure of son preference, 
+and it is critical to understand to what extent spacing is still useful as a measure of son 
+preference and develop new methods if needed.
+In India, the sex of the last-born child significantly impacts the duration to next birth,
+with the expected birth interval about three percent longer if the last-born was a son than
+if it was a daughter \citep{Bhalotra2008,Kumar2016}.
+Similarly, ethnic Indians in South Africa also show a longer duration after the birth of a 
+son than after a daughter \citep{Gangadharan2003}.%
+\footnote{
+Ethnic Indians in Malaysia do, however, show little evidence of son preference, although
+the sample sizes are small \citep{Pong1994}.
+}
+In both Bangladesh and Vietnam the more boys a family has the longer the expected duration 
+to the next birth \citep{Haughton1995,Haughton1996,Rahman1993,Soest2018}.
+Outside Asia, the evidence is more mixed.
+North Africa shows shorter spacing in the absence of sons, while a similar pattern does
+not exist in Sub-Saharan Africa \citep{Rossi2015}.%
+\footnote{
+A possible exception is Senegal, where women with a higher risk of widowhood show
+shorter birth spacing until they have secured a son \citep{Lambert2016}.
+}
+
+Second, birth spacing can have a substantial impact on children's outcomes.
+Most of the research finds a negative impact of short spacing on child health, although 
+identifying the causal mechanisms have proven more difficult
+\citep{Conde-Agudelo2006,Conde-Agudelo2012}.
+There are three pathways that birth intervals can affect health.
+First, there is maternal depletion, where the mother does not have sufficient time to 
+recover after her last pregnancy before she become pregnant again.%
+\footnote{
+This depletion can take the form of nutrition, folate, or cervical insufficiency.
+}
+Second, disease transmission both from mother to child and between children close in age.
+Third, sibling competition, where siblings close in age compete for scarce resources and
+parental care.
+Which mechanism dominates is of particular interest when son preference drives spacing 
+decisions.
+Both the maternal depletion and the transmission of disease explanations predominately
+affect the subsequent child and the mother.
+Only sibling competition has the potential to negatively affect the older child.
+
+In India, there is evidence that both the prior and the subsequent child have worse health 
+outcomes and a higher likelihood of dying the shorter the interval between them, although 
+the effect is not symmetrical
+\citep{Whitworth2002,Bhargava2003,Rutstein2005,Maitra2008,Makepeace2008,Ghosh2018}.%
+\footnote{
+\cite{Bhalotra2008}, however, find that birth spacing only explains a limited amount
+of neonatal mortality.
+}
+The increased mortality risk for prior children may come from shorter breastfeeding of 
+girls to ensure that the mother can conceive again quicker, and with poor water
+quality this shorter breastfeeding may result both in higher risk of dying and shorter
+stature if the child survives \citep{Jayachandran2011,Jayachandran2017a}.
+In other countries, focus has been mostly on the subsequent birth, but there is evidence 
+in countries as diverse as Bangladesh, Brazil, El Salvadore, and Pakistan that
+short intervals between births have adverse health effects
+\citep{Cleland1984,Curtis1993,Davanzo2008,Gribble2009,Saha2013}.
+
+The potential effects of spacing are not restricted to early outcomes, although
+there is less evidence on longer-term effects, and most comes from Western countries.
+In the US, for example, a longer spacing between births increases the older sibling's
+test scores on the Peabody Individual Achievement Test, although there is no
+statistically significant effect on the younger sibling \citep{Buckles2012}.
+In line with this, close spacing appears to increase the risk of dropping out of
+high school and lower the probability of attending a post-secondary school in both the
+US and Sweden \citep{Powell1993,Pettersson-Lidbom2009}.
+These results are, however, not uniformly supported, with recent results from Sweden 
+showing no relationship between birth spacing, even if very short, and outcomes such as 
+years of education completed, earnings, and unemployment \citep{Barclay2017}.
+
+Third, the mother may also be affected by the length of the birth intervals.
+The effect of spacing on mothers have received less attention than the effect on children, 
+and reviews of the literature show mixed results on mother's anthropometric status 
+\citep{Dewey2007,Conde-Agudelo2012}.
+For India, there is, however, evidence that women with first-born girls are both
+more likely to have short birth spacing and more likely to have anemia, possibly as
+the result of the short spacing resulting in maternal depletion \citep{Milazzo2018}.
+In Western countries, having a longer interval between births appear to have positive
+effects on long-term labor market outcomes, such as participation and 
+income \citep{Gough2017,Karimi2014}.
+
+Finally, we know less about what determines spacing behavior in developing countries than 
+in developed countries, and with declining fertility and increasing numbers of women 
+entering the labor force in developing countries, understanding how couples make timing 
+decisions will be necessary for the design of suitable policies \citep{Portner2018}.%
+\footnote{
+It is clear that birth spacing does respond to policies in both developed and 
+developing countries \citep{Pettersson-Lidbom2009,Todd2012,Meckel2015,Ghosh2018}.
+}
+For example, the evidence on the effects of education and socio-economic status on
+birth intervals is mixed, with some research showing either a positive association, no
+association, or one that is changing over time 
+\citep{Tulasidhar1993,Whitworth2002,Bhalotra2008,Kim2010,Soest2018}.
+
+Even the effects of access to contraceptive on spacing are unclear.
+On the one hand, access to contraceptives allows women to avoid too short spacing between 
+birth, which would increase birth spacing.
+On the other hand, increased reliability of access and effectiveness of contraceptives can 
+lead to shorter intervals between births  \citep{Keyfitz1971,Heckman1976}.
+With less reliable contraception parents choose a higher level of contraception, which 
+results in longer spacing, to avoid having too many children by accident.
+However, as contraception becomes more effective parents can more easily avoid future 
+births, allowing them to reduce the spacing between births without having to worry about 
+overshooting their preferred number of children.
+This idea may explain why better-educated women have shorter spacing than less educated 
+women in some instances but not in others.
+These two counteracting effects may explain why finding statistically significant effects 
+of contraception use on birth spacing is difficult \citep{Yeakey2009}.%
+\footnote{
+There is evidence in Matlab that the effect of son preference on birth spacing is
+stronger in areas with better access to family planning \citep{Rahman1993}.
+Other evidence, however, points to families ability to time birth, even in the absence
+of modern contraceptives \citep{Jayachandran2011,Alam2018}.
+}
+
+TK spacing and decline in fertility (with and without sex selection)
+
+Despite the increasing use of sex selection, the extensive use of spacing to measure son 
+preference, and the important impacts of spacing on outcomes for both mother and children  
+there has so far been no examination of what effect access to sex selection has had on 
+spacing.
+
+TK What questions I am asking
+
+TK How I am answering them
+
+
+Direct information on the use of sex selection is not available, but it is possible
+to compare different periods as a proxy since there has been substantial changes in access 
+and legality of prenatal sex determination in India.
 Abortion has been legal in India since 1971 and still is.
 The first reports of sex determination appeared around 
 1982--83 \citep{Sudha1999,bhat06,Grover2006}.
@@ -285,19 +362,14 @@ Hence, private clinics apparently operate with little risk of legal action
 Furthermore, there is little evidence that bans like this significantly
 affect sex ratios \citep{Das-Gupta2016}.
 }
-% Hence, the data make it possible to show how the spacing between births and
-% sex ratios have changed with the introduction of prenatal sex determination,
-% and whether the ban affected the relationship between birth spacing and sex 
-% ratios.
+[TK something on split 1995 to 2016 into two groups?]
 
 
-% [Results]
-There are four main results.
+
+% [Results - need updating]
+There are three main results.
 First, there has been a general increase in the length of spacing between births
 over the four decades covered by the data.
-The exception is for first births, where the median duration has either
-remained the same or slightly declined, although this hides a
-significant compression of the variation in spell length.
 Second, the most substantial increase in spacing is for the women who
 are most likely to use sex selection.
 Specifically, among the best-educated women, those with no boys now has 
@@ -308,10 +380,7 @@ short spacing when they have girls and little evidence of the use of sex
 selection.
 In other words, these women adhere to a strategy where they achieve a
 son through higher fertility rather than the use of sex selection.
-Finally, sex ratios are the most likely to decline within spells at
-lower-order spells, where the pressure to provide a son is smaller, and
-are more likely to increase or remain consistently high for higher-order
-spells, where the pressure to ensure a son is high.
+
 
 
 
@@ -329,8 +398,7 @@ spells, where the pressure to ensure a son is high.
 %    of shorter spacing and/or use of sex selection. Differences in parity
 %    progression likelihood. 
 
-The unit of analysis is a spell, the period from one birth---or for the first spell from 
-marriage---to the next birth.
+The unit of analysis is a spell, the period from one birth to the next.
 The model is a discrete time, non-proportional, competing risk hazard model with two exit 
 states: either a boy or a girl is born.
 The standard approach in the spacing literature is to use a single-exit model, but with
@@ -341,8 +409,8 @@ will impact the spacing to a girl or a boy differentially.%
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
-Both the non-randomness and differential spacing can be captured with a competing risk set 
-up.
+Both the non-randomness and differential spacing can be captured with a competing risk 
+set up.
 
 I use a non-proportional hazard specification, which allows the shape of the hazard 
 functions to vary across groups, rather than the standard proportional hazard function 
@@ -356,8 +424,8 @@ problematic for higher-order spells where different sex composition of previous 
 lead to substantial differences both in the likelihood of progressing to the next birth and
 how soon couples want their next child if they are going to have one.
 }
-Second, the introduction of prenatal sex determination likely exacerbates any bias 
-from the proportionality assumption since sex-selective abortion use varies across groups,
+Second, the introduction of prenatal sex determination exacerbates any bias from the 
+proportionality assumption since sex-selective abortion use varies across groups,
 which affects birth spacing, and because a household's use of sex selection may vary 
 within a spell, which means that the effects of covariates vary within the spell as well.
 Finally, the use of a non-proportional specification mitigates any potential effects 
@@ -852,7 +920,22 @@ sex selection.
 
 \subsection{No Education Women}
 
-\input{../tables/bootstrap_duration_sex_ratio_low.tex}
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell2_low_urban_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell3_low_urban_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell4_low_urban_all}} 
+\\
+\caption*{Rural}
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell2_low_rural_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell3_low_rural_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell4_low_rural_all}} 
+\caption{low education}
+\end{figure}
+
+
+\input{../tables/bootstrap_duration_sex_ratio_low_all.tex}
 
 Women with no education follow a pattern consistent with son
 preference with shorter spacing when they have only girls compared 
@@ -894,9 +977,24 @@ and sex ratio has increased for women with three girls, although
 the \emph{difference} across sex compositions has remained almost
 the same.
 
-\subsection{Middle Education Women}
+\subsection{Low to Medium Education Women}
 
-\input{../tables/bootstrap_duration_sex_ratio_med.tex}
+
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell2_med_urban_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell3_med_urban_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell4_med_urban_all}} 
+\\
+\caption*{Rural}
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell2_med_rural_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell3_med_rural_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell4_med_rural_all}} 
+\caption{med education}
+\end{figure}
+
+\input{../tables/bootstrap_duration_sex_ratio_med_all.tex}
 
 Women with one to seven years of education follow a pattern
 broadly similar to those with no education as 
@@ -936,7 +1034,22 @@ have begun to use sex selection at higher-order spells.
 
 \subsection{High Education Women}
 
-\input{../tables/bootstrap_duration_sex_ratio_high.tex}
+\begin{figure}[htpb]
+\centering
+\caption*{Urban}
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell2_high_urban_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell3_high_urban_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell4_high_urban_all}} 
+\\
+\caption*{Rural}
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell2_high_rural_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell3_high_rural_all}} 
+\subfloat[all]{\includegraphics[width=0.27\textwidth]{bs_spell4_high_rural_all}} 
+\caption{high education}
+\end{figure}
+
+
+\input{../tables/bootstrap_duration_sex_ratio_high_all.tex}
 
 Women with eight or more year of education mostly followed 
 the traditional spacing pattern before sex selection became 
@@ -1076,29 +1189,29 @@ into longer ones when there are few births available in the sample.
 
 % First spell for low and high education women
 
-\begin{figure}[htpb]
-\centering
-\setcounter{subfigure}{-1}
-\subfloat[Rural Women with No Education]{
-    \begin{minipage}{0.48\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_low_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{0}
-\subfloat[Urban Women with 8 or More Years of Education]{
-    \begin{minipage}{0.48\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_high_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\caption{
-Survival curves conditional on progression to first birth; start point is month of marriage
-}
-\label{fig:pps_spell1}
-\end{figure}
+% \begin{figure}[htpb]
+% \centering
+% \setcounter{subfigure}{-1}
+% \subfloat[Rural Women with No Education]{
+%     \begin{minipage}{0.48\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_low_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{0}
+% \subfloat[Urban Women with 8 or More Years of Education]{
+%     \begin{minipage}{0.48\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Probability of no birth yet]{\includegraphics[width=\textwidth]{spell1_high_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \caption{
+% Survival curves conditional on progression to first birth; start point is month of marriage
+% }
+% \label{fig:pps_spell1}
+% \end{figure}
 
 The biased sex ratio for the first spell for the most educated 
 women suggests that there might be sex selection on the first birth.
@@ -1338,187 +1451,7 @@ predicted sex ratio is for women with only girls, followed by those
 with one son and two girls, and those with two or more boys having
 almost the same sex ratio.
 
-
-
-\subsection{Does Sex Selection Change within Spells?}
-
-The above results show that length of birth spacing increased 
-more for women with only girls than for other sex compositions
-as sex ratios became more male-biased, presumably because
-of increased use of sex selection.
-Neither the median spacing or the conditional survival curves,
-however, can tell us whether sex selection varies \emph{within}
-a spell or provide any information about the likelihood of
-exiting a spell with a birth.
-To understand both, I now turn to the standard survival curves
-and predicted sex ratios by spell duration.
-
-
-\begin{figure}[htpb!]
-\centering
-\rotatebox[origin=c]{90}{\footnotesize{Urban}}
-\setcounter{subfigure}{-2}
-\subfloat[1995--2004]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_urban_g_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_urban_g_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-}
-\setcounter{subfigure}{-1}
-\subfloat[2005--2016]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_g_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_g_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-} 
-\\
-\rotatebox[origin=c]{90}{\footnotesize{Rural}}
-\setcounter{subfigure}{0}
-\subfloat[1995--2004]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g3_high_rural_g_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_rural_g_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-}
-\setcounter{subfigure}{1}
-\subfloat[2005--2016]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell2_g4_high_rural_g_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_rural_g_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-}
-\caption{Predicted probability of having a boy and probability of 
-no birth yet from nine months after first birth for women with a girl
-as their first child and eight or more years of education 
-for the 1995--2004 and 2005--2016 periods
-} 
-\label{fig:decreasing_sex_ratio} 
-\end{figure}
-
-
-
-\begin{figure}[htpb!]
-\centering
-\rotatebox[origin=c]{90}{\footnotesize{First children 2 girls}}
-\setcounter{subfigure}{-2}
-\subfloat[1995--2004]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_gg_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_gg_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-}
-\setcounter{subfigure}{-1}
-\subfloat[2005--2016]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_gg_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_gg_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-} 
-\\
-\rotatebox[origin=c]{90}{\footnotesize{First children 1 boy and 1 girl}}
-\setcounter{subfigure}{0}
-\subfloat[1995--2004]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_bg_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_bg_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-}
-\setcounter{subfigure}{1}
-\subfloat[2005--2016]{
-   \begin{minipage}{0.39\textwidth}
-       \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-       \subfloat[Prob.\ boy (\%)]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_bg_pc}}\\
-       \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_bg_s}}
-       \captionsetup[subfigure]{labelformat=parens}
-   \end{minipage}
-}
-\caption{Predicted probability of having a boy and probability of 
-no birth yet from nine months after second birth for urban women with
-eight or more years of education 
-for the 1995--2004 and 2005--2016 periods
-} 
-\label{fig:increasing_sex_ratio} 
-\end{figure}
-
-The predicted sex ratio may change within a spell for, at
-least, two reasons.
-First, parents may stop using prenatal sex determination within
-a spell once the duration from the previous birth becomes long enough.
-The desire for short spacing could, for example, arise from 
-economies of scale in childbearing and rearing that parents lose 
-if children are born too far apart \citep[p 374]{schultz97}. 
-In this case, we should observe the predicted sex ratio decline
-with spell length.
-
-Second, if the degree of son preference varies across women within 
-the sample, but their behavior is not affected by duration from the 
-previous birth, we should observe an increasing share of births come from 
-parents with stronger son preference as the duration from the
-previous birth increases.
-Whereas the early births are a combination of births to
-people with lower son preference and those with stronger son
-preference who conceived a son in the first or second pregnancy,
-births later in the spell are then predominately from those with stronger
-son preference who have not yet conceived a son.
-In this case, we should see an increase in the sex ratio 
-as duration increases.
-
-
-Figures \ref{fig:decreasing_sex_ratio} and \ref{fig:increasing_sex_ratio} show
-examples of how sex ratio behave within spells.
-Both are for women with eight or more education since the results above indicate
-that they are the most likely to use sex selection or other means of achieving 
-an unequal sex ratio.
-Figure \ref{fig:decreasing_sex_ratio} shows results for the second spell for
-the 1995--2004 and 2005--2016 periods for women with a girl as their first
-child by area of residence.
-Figure \ref{fig:increasing_sex_ratio} shows results for the third spell for
-the same two periods for urban women with either two girls or one boy and one
-girl as their first two children.
-
-Within the second spell, both urban and rural women show a declining
-sex ratio as duration increases for the 1995--2004 period, whereas there
-is little change, or possibly a small increase, with duration for the 
-2005--2016 period.
-These results are consistent with a situation where fertility is declining
-over time leaving less room for a change in the decision to use sex selection.
-Fertility decline is not immediately apparent from the second spell 
-results, but the third spell shows that the likelihood of progressing from
-two to third children declines by approximately 15 percentage points if
-the woman has given birth to a boy.
-
-The third spell figures show a very different situation with substantial 
-increases in sex ratios.
-The high sex ratio for women with two girls is likely 
-motivated by the combined desire to limit fertility and ensure a son;
-similarly to the situation for the second spell as shown in 
-Figure \ref{fig:decreasing_sex_ratio} (b) and (d).
-
-The increase in sex ratio with duration for women who already have
-given birth to a boy likely illustrates the case where there is a
-combination of degrees of son preference.
-Say that one group wants one son and after that will not use sex
-selection, whereas another group has a strong preference for two
-sons (or either have or expect to lose the boy they already have)
-and that the two groups conceive at the same rate.
-In that case, we should expect precisely the increasing sex ratios
-we observe, especially given the declining fertility over time.
-
-
+\FloatBarrier
 \section{Conclusion\label{sec:conclusion}}
 
 
@@ -1573,58 +1506,6 @@ Both the decrease for the first spell and the increase for higher-order
 spells are consistent with increased access to contraceptives over
 time \citep{Yeakey2009}.
 
-The empirical model allows for the effects of covariates
-to vary within the spell. 
-Non-proportionality is essential because the use of sex selection may 
-vary within a spell. 
-The use of sex selection may change either because preferences for not 
-too long spacing between births override the preference for sons or 
-because of selection, where
-the women who remain in a spell are those with the strongest son
-preference who have been through multiple pregnancies because the
-fetuses were female. 
-Because these move in opposite directions, I cannot
-directly establish the extent to which they affect the results. 
-Both are, however, present, as can be seen from the cases where there is
-either a decline in sex ratio with spell duration or a substantial
-increase with spell duration. 
-The first case is most likely at lower
-parities where there is still less pressure to ensure a son, which
-allows any preference for shorter spacing to play more of a role. 
-The second is most likely for higher
-parities where the desire to limit further childbearing and ensure a son
-dominates any preferences for shorter spacing.
-
-
-The potential for changes in sex ratio within a spell means that
-censoring is an important issue when trying to understand how the sex
-ratio changes over time, and especially when it comes to establishing
-whether the use of sex selection is increasing or decreasing.
-Take, for example, the case of women with eight or more years of
-education in the last period. 
-If we look at women who started their third spell in either the
-2005--2009 or the 2010--2014 periods and we treat end of 2015
-as the cut-off point, then the observed sex ratio for the 2005--2009
-women is 55.99\% boys while it is 55.38\% for women who started 
-in the 2010--2014 period.%
-\footnote{
-The calculations combines urban and rural women; the basis result 
-changes little if I split by area of residence.
-I chose the 2014 cut-off to ensure that both groups cover 
-five years, even though NFHS-4 took place in 2015 and 2016.
-}
-It would, therefore, appear that the use of sex selection for
-this spell is slightly decreasing over time.
-This interpretation, however, ignores the role of censoring.
-If we use the estimation results to predict final sex ratio
-once childbearing for the third spell is over, the predicted
-sex ratios are 56.10\% boys and 56.08\% boys for the 
-2005--2009 and the 2010--2015 starts, which indicates
-virtually no change over time.
-The reason for the difference is that while we would have 
-observed 7,134 birth out of a predicted 7,451 total number 
-of births for the 2005--2009 start, we would only have observed 
-3,348 births out of a predicted 8,842 for the 2010--2014 group.
 
 
 Although it is not possible to directly observe whether sex selection
@@ -1668,10 +1549,9 @@ future research should address.
 First, to what extent are the improvements in health for girls
 relative to boys the result of selection, the longer spacing between
 births, or changing son preference?
-There is some early evidence that sample selection can make it appear that
-girls are healthier, even though the underlying cause is a combination
-of sex selection and higher mortality together with recall 
-error \citep{Portner2018a}. 
+There is some evidence that sample selection can make it appear that girls are healthier, 
+even though the underlying cause is a combination of sex selection and higher mortality 
+together with recall error \citep{Portner2018a}. 
 Understanding what role these factors play in better health for
 girls is especially important when evaluating policies that 
 aim to directly limit the use of sex selection rather than 
@@ -1680,6 +1560,16 @@ If the better health outcomes for girls are, for example, an unintended
 side-effect of the longer spacing that arises from sex-selective 
 abortions, then an effective ban on sex selection may, at least
 temporarily, worsen health outcomes for girls.
+
+
+[move to conclusion?]
+We know that health outcomes for girls appear to improve in the presence of sex 
+selection \citep{Lin2014,Hu2015}.
+It is possible that these improvements are an unintended side-effect of the longer spacing 
+that arises from sex-selective abortions, rather than because the smaller number of girls 
+makes them more valued as is often assumed.
+A first step 
+
 
 
 Second, we need to understand how female labor force participation
@@ -1913,11 +1803,11 @@ or more.
 
 \vspace*{-0.51cm}
 
-\input{../tables/bootstrap_duration_p25_p75_low.tex}
+\input{../tables/bootstrap_duration_p25_p75_low_all.tex}
 
-\input{../tables/bootstrap_duration_p25_p75_med.tex}
+\input{../tables/bootstrap_duration_p25_p75_med_all.tex}
 
-\input{../tables/bootstrap_duration_p25_p75_high.tex}
+\input{../tables/bootstrap_duration_p25_p75_high_all.tex}
 
 \clearpage
 
@@ -1929,33 +1819,33 @@ or more.
 
 % [FIRST SPELL]
 
-\subsection{First Spell}
-
-\input{../figures/appendix_spell1_low.tex}
-
-\input{../figures/appendix_spell1_med.tex}
-
-\input{../figures/appendix_spell1_high.tex}
-
-\begin{figure}[htpb]
-\centering
-\caption*{No Education}
-\subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_low_urban_pps}} 
-\subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_low_rural_pps}} \\
-\caption*{1-7 Years of Education}
-\subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_med_urban_pps}} 
-\subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_med_rural_pps}} \\
-\caption*{8 or more Years of Education}
-\subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_high_urban_pps}} 
-\subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_high_rural_pps}} 
-\caption{Survival curves conditional on progression to first birth; start point is month of marriage}
-\label{fig:results_spell1_pps}
-\end{figure}
-
-
-\clearpage
-\newpage
-
+% \subsection{First Spell}
+% 
+% \input{../figures/appendix_spell1_low.tex}
+% 
+% \input{../figures/appendix_spell1_med.tex}
+% 
+% \input{../figures/appendix_spell1_high.tex}
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{No Education}
+% \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_low_urban_pps}} 
+% \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_low_rural_pps}} \\
+% \caption*{1-7 Years of Education}
+% \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_med_urban_pps}} 
+% \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_med_rural_pps}} \\
+% \caption*{8 or more Years of Education}
+% \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_high_urban_pps}} 
+% \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_high_rural_pps}} 
+% \caption{Survival curves conditional on progression to first birth; start point is month of marriage}
+% \label{fig:results_spell1_pps}
+% \end{figure}
+% 
+% 
+% \clearpage
+% \newpage
+% 
 \subsection{Second Spell}
 
 
