@@ -8,7 +8,7 @@ loc num_reps = 4
 file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
 capture program drop _all
-do bootspell.do
+do bootspell_region.do
 
 include directories
 
@@ -92,7 +92,7 @@ foreach educ in "high" {
                 // Bootstrapping
                 bootstrap `stats' , ///
                     reps(`num_reps') seed(100669) nowarn saving(`data'/bs_s`spell'_g`group'_`educ'_r`region', replace) ///
-                    : bootspell `spell' 
+                    : bootspell_region `spell' 
             
             }
         }

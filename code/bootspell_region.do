@@ -1,5 +1,5 @@
 
-program bootspell, rclass
+program bootspell_region, rclass
     args spell  
     preserve
     
