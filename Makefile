@@ -54,13 +54,13 @@ ANALYSISTARGET_REGION := \
     $(DAT)/results_spell$(spell)_g$(per)_$(educ)_r$(region).ster ) ) ) )
 
 ### Percentage boys and standard survival graphs
-#GRAPHTARGET := \
-#    $(foreach spell, $(SPELLS), \
-#    $(foreach per, $(PERIODS), \
-#    $(foreach educ, $(EDUC), \
-#    $(foreach area, $(AREAS),\
-#    $(foreach comp, $(COMP$(spell)),\
-#    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)pc.eps $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)s.eps) ) ) ) )
+GRAPHTARGET := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach per, $(PERIODS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach area, $(AREAS),\
+    $(foreach comp, $(COMP$(spell)),\
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)pc.eps $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)s.eps) ) ) ) )
 
 ### PPS graphs
 ### Spell 1 is different; it is combined across periods into one graph
