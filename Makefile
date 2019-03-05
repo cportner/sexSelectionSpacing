@@ -98,19 +98,19 @@ BSGRAPH_ALL := \
 
 ### Bootstrap - by Region - only high education
 ### Data for bootstrapping
-BSDATA := \
+BSDATA_REGION := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
     $(foreach region, $(REGIONS), \
     $(DAT)/bs_s$(spell)_g$(per)_high_r$(region).dta ) ) ) 
 
 ### Tables of bootstrapping results
-BSTABLE := \
+BSTABLE_REGION := \
     $(foreach region, $(REGIONS), \
     $(TAB)/bootstrap_duration_sex_ratio_high_r$(region).tex $(TAB)/bootstrap_duration_p25_p75_high_r$(region).tex $(TAB)/bootstrap_any_sex_ratio_high_r$(region).tex ) 
 
 ### Graphs of bootstrapping results
-BSGRAPH := \
+BSGRAPH_REGION := \
     $(foreach spell, $(SPELLS), \
     $(foreach area, $(AREAS), \
     $(foreach region, $(REGIONS), \
@@ -323,25 +323,25 @@ $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
 ### Region - only high education ###
 
 # Bootstrap results
-.PHONY: run_boot
-run_boot: $(BSDATA)
+.PHONY: run_boot_region
+run_boot_region: $(BSDATA_REGION)
 
-$(BSDATA): $(COD)/an_bootstrap.do $(DAT)/base.dta $(COD)/bootspell.do \
+$(BSDATA_REGION): $(COD)/an_bootstrap_region.do $(DAT)/base.dta $(COD)/bootspell_all.do \
  $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
 	cd $(COD); nice stata-se -b -q $(<F)	
 
 # Bootstrap tables
-.PHONY: run_boot_table
-run_boot_table: $(BSTABLE)
-$(BSTABLE): $(COD)/an_bootstrap_table.do \
- $(BSDATA)
+.PHONY: run_boot_table_region
+run_boot_table_region: $(BSTABLE_REGION)
+$(BSTABLE_REGION): $(COD)/an_bootstrap_table_region.do \
+ $(BSDATA_REGION)
 	cd $(COD); stata-se -b -q $(<F)	
 
 # Bootstrap graphs
-.PHONY: run_boot_graph
-run_boot_graph: $(BSGRAPH)
-$(BSGRAPH): $(COD)/an_bootstrap_graph.do \
- $(BSDATA)
+.PHONY: run_boot_graph_region
+run_boot_graph_region: $(BSGRAPH_REGION)
+$(BSGRAPH_REGION): $(COD)/an_bootstrap_graph_region.do \
+ $(BSDATA_REGION)
 	cd $(COD); stata-se -b -q $(<F)	
 
 	
