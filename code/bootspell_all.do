@@ -156,7 +156,7 @@ program bootspell_all, rclass
     // Duration measures conditional on parity progression  //
     //------------------------------------------------------//
 
-    asgen average_duration = mid_months, w(prob_pps)
+    bysort id (t): asgen average_duration = mid_months, w(prob_pps)
 
     foreach percent of numlist 25 50 75 {
         loc percentile = `percent' / 100
