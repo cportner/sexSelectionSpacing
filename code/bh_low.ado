@@ -1,7 +1,6 @@
 // Baseline hazard for low education women
 
 program bh_low, rclass
-    version 13
     args spell period
 
     loc i = 1
