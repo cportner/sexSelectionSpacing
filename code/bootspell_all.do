@@ -251,6 +251,7 @@ program bootspell_all, rclass
         loc all_girls = `spell' - 1
         loc end = `spell' - 2
         forvalues comp = 0 / `end' {
+            return scalar diff_avg_`where'_g`all_girls'_vs_g`comp' = `avg_`where'_g`all_girls'' - `avg_`where'_g`comp''
             foreach per of numlist 25 50 75 {
                 return scalar diff_p`per'_`where'_g`all_girls'_vs_g`comp' = `p`per'_`where'_g`all_girls'' - `p`per'_`where'_g`comp''
             } 

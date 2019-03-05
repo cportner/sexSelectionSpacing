@@ -71,6 +71,7 @@ foreach educ in "high" "med" "low" {
                 loc all_girls = `spell' - 1
                 loc end = `spell' - 2
                 forvalues comp = 0 / `end' {
+                    loc stats = "`stats' diff_avg_`where'_g`all_girls'_vs_g`comp' = r(diff_avg_`where'_g`all_girls'_vs_g`comp')"
                     foreach per of numlist 25 50 75 {
                         loc stats = "`stats' diff_p`per'_`where'_g`all_girls'_vs_g`comp' = r(diff_p`per'_`where'_g`all_girls'_vs_g`comp')"
                     } 
