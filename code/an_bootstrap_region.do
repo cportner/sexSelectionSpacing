@@ -4,11 +4,11 @@ version 15.1
 clear all
 
 // loc num_reps = 100
-loc num_reps = 4
+loc num_reps = 3
 file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
 capture program drop _all
-do bootspell_region.do
+do bootspell_all.do // Should be able to use the same estimation and return code
 
 include directories
 
@@ -70,6 +70,7 @@ foreach educ in "high" {
                     forvalues prior = 1/`spell' {
                         loc girls = `spell' - `prior'
                         // Remember p is percent left!!
+                        loc stats = "`stats' avg_`where'_g`girls' = r(avg_`where'_g`girls')"
                         loc stats = "`stats' p75_`where'_g`girls' = r(p75_`where'_g`girls')"
                         loc stats = "`stats' p50_`where'_g`girls' = r(p50_`where'_g`girls')"
                         loc stats = "`stats' p25_`where'_g`girls' = r(p25_`where'_g`girls')"
@@ -80,6 +81,7 @@ foreach educ in "high" {
                     loc all_girls = `spell' - 1
                     loc end = `spell' - 2
                     forvalues comp = 0 / `end' {
+                        loc stats = "`stats' diff_avg_`where'_g`all_girls'_vs_g`comp' = r(diff_avg_`where'_g`all_girls'_vs_g`comp')"                    
                         foreach per of numlist 25 50 75 {
                             loc stats = "`stats' diff_p`per'_`where'_g`all_girls'_vs_g`comp' = r(diff_p`per'_`where'_g`all_girls'_vs_g`comp')"
                         } 
@@ -92,7 +94,7 @@ foreach educ in "high" {
                 // Bootstrapping
                 bootstrap `stats' , ///
                     reps(`num_reps') seed(100669) nowarn saving(`data'/bs_s`spell'_g`group'_`educ'_r`region', replace) ///
-                    : bootspell_region `spell' 
+                    : bootspell_all `spell' 
             
             }
         }
