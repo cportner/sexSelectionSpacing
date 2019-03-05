@@ -139,18 +139,18 @@ program bootspell_all, rclass
     bysort id (t): gen double pps = (s - s[_N]) / (1.00 - s[_N])    
 
     // probability of kid
-    gen     prob_kid = 1 - s if t == 1
+    gen double     prob_kid = 1 - s if t == 1
     replace prob_kid = s[_n-1] - s[_n] if t != 1
     bysort id (t): gen double prob_any_birth = 1 - s[_N] // probability of having a birth by end of spell
 
     // Sons born
-    gen ratio_sons = pcbg * prob_kid
-    bysort id (t): egen num_sons = total(ratio_sons)
-    bysort id (t): gen  pct_sons = (num_sons / (1 - s[_N])) * 100
+    gen double ratio_sons = pcbg * prob_kid
+    bysort id (t): egen double num_sons = total(ratio_sons)
+    bysort id (t): gen double pct_sons = (num_sons / (1 - s[_N])) * 100
     
     // PPS probability
-    gen prob_pps = 1 - pps if t == 1
-    replace prob_pss = pps[_n-1] - pps[_n] if t != 1
+    gen double prob_pps = 1 - pps if t == 1
+    replace prob_pps = pps[_n-1] - pps[_n] if t != 1
     
     //------------------------------------------------------//
     // Duration measures conditional on parity progression  //
@@ -158,20 +158,20 @@ program bootspell_all, rclass
 
     asgen average_duration = mid_months, w(prob_pps)
 
-    gen below = pps < 0.5
-    gen median = (months - ((0.5 - pps) / (pps[_n-1] - pps)) * 3) ///
-        if below & !below[_n-1] 
-        // Because each t is 3 months long, this creates a "weighted" average. 
-        // All other obs are missing.
+    foreach percent of numlist 25 50 75 {
+        loc percentile = `percent' / 100
+        gen percentile`percent' = ///
+            (months - ((`percentile' - pps) / (pps[_n-1] - pps)) * 3) ///
+            if pps < `percentile' & pps[_n-1] > `percentile'                
+    }
+    xfill percentile* , i(id)
 
-    replace below = pps < 0.25
-    gen p25 = (months - ((0.25 - pps) / (pps[_n-1] - pps)) * 3) ///
-        if below & !below[_n-1] 
-
-    replace below = pps < 0.75
-    gen p75 = (months - ((0.75 - pps) / (pps[_n-1] - pps)) * 3) ///
-        if below & !below[_n-1] 
+    //------------------------------------------------------//
+    // Generate return values                               //
+    //------------------------------------------------------//
     
+    bysort id (t): keep if _n == _N    
+
     // This part depends on spell 
     foreach where in "urban" "rural" {
         if "`where'" == "urban" {
@@ -224,21 +224,18 @@ program bootspell_all, rclass
             // Number of girls
             loc girls = `spell' - `prior' // means 0 girls (or boys) in first spell
             
-            // Median spell length at sex composition and area
-            sum median `sexcomp' [iweight = prob_any_birth]
-            local p50_`where'_g`girls' = `r(mean)'
-            return scalar p50_`where'_g`girls' = `p50_`where'_g`girls''
-
-            // 25 percentile spell length - remember 25% left!!
-            sum p25 `sexcomp' [iweight = prob_any_birth]
-            local p25_`where'_g`girls' = `r(mean)'
-            return scalar p25_`where'_g`girls' = `p25_`where'_g`girls''
-
-            // 75 percentile spell length - remember 75% left!!
-            sum p75 `sexcomp' [iweight = prob_any_birth]
-            local p75_`where'_g`girls' = `r(mean)'
-            return scalar p75_`where'_g`girls' = `p75_`where'_g`girls''
-
+            // Average spell lengths at sex composition and area
+            sum average_duration `sexcomp' [iweight = prob_any_birth]
+            local avg_`where'_g`girls' = `r(mean)'
+            return scalar avg_`where'_g`girls' = `avg_`where'_g`girls''                
+            
+            // Percentile spell lengths at sex composition and area
+            foreach percent of numlist 25 50 75  {
+                sum percentile`percent' `sexcomp' [iweight = prob_any_birth]
+                local p`percent'_`where'_g`girls' = `r(mean)'
+                return scalar p`percent'_`where'_g`girls' = `p`percent'_`where'_g`girls''                
+            }
+            
             // Percent boys
             sum pct_sons `sexcomp' [iweight = prob_any_birth]
             return scalar pct_`where'_g`girls' = `r(mean)'
