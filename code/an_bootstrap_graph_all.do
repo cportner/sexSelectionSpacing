@@ -76,7 +76,7 @@ foreach educ in "low" "med" "high" {
         
         foreach where in "urban" "rural" {
             // Generate y variables in reverse order to match line pattern
-            foreach stat in "p50" "pct" "any" {
+            foreach stat in "avg" "pct" "any" {
                 loc `stat' = ""
                 forval i = `spell'(-1)1 {
                     loc g = `i' - 1
@@ -92,10 +92,10 @@ foreach educ in "low" "med" "high" {
                 if `i' == 4 loc pattern = "`pattern' shortdash"
             }
             
-            twoway line `p50' c1, sort  ///
+            twoway line `avg' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
                 legend(off) plotregion(style(none)) xscale(off) ///
-                ytitle("Median Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
+                ytitle("Expected Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
                 name(p50, replace)  fysize(80)
 
             twoway line `pct' c1, sort ///
