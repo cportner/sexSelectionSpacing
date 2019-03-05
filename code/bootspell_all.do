@@ -79,6 +79,7 @@ program bootspell_all, rclass
     expand $lastm
     bysort id: gen t = _n
     gen months = t * 3
+    gen mid_months = (t-1)*3 + 1.5
 
     // PIECE-WISE LINEAR HAZARDS
     if `spell' == 1 | `spell' == 2  {
@@ -129,7 +130,7 @@ program bootspell_all, rclass
     predict double p2, pr outcome(2) // girl
     
     // percentage 
-    capture predictnl pcbg = predict(outcome(1))/(predict(outcome(1)) + predict(outcome(2))) if p2 > 0.0000001
+    capture predictnl double pcbg = predict(outcome(1))/(predict(outcome(1)) + predict(outcome(2))) if p2 > 0.0000001
 
     // survival curves
     bysort id (t): gen double s = exp(sum(ln(p0)))
@@ -146,10 +147,16 @@ program bootspell_all, rclass
     gen ratio_sons = pcbg * prob_kid
     bysort id (t): egen num_sons = total(ratio_sons)
     bysort id (t): gen  pct_sons = (num_sons / (1 - s[_N])) * 100
+    
+    // PPS probability
+    gen prob_pps = 1 - pps if t == 1
+    replace prob_pss = pps[_n-1] - pps[_n] if t != 1
+    
+    //------------------------------------------------------//
+    // Duration measures conditional on parity progression  //
+    //------------------------------------------------------//
 
-    //----------------------------------------------------//
-    // Median duration conditional on parity progression  //
-    //----------------------------------------------------//
+    asgen average_duration = mid_months, w(prob_pps)
 
     gen below = pps < 0.5
     gen median = (months - ((0.5 - pps) / (pps[_n-1] - pps)) * 3) ///
