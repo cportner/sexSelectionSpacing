@@ -399,40 +399,43 @@ son through higher fertility rather than the use of sex selection.
 %    of shorter spacing and/or use of sex selection. Differences in parity
 %    progression likelihood. 
 
-The unit of analysis is a spell, the period from one birth to the next.
-The model is a discrete time, non-proportional, competing risk hazard model with two exit 
-states: either a boy or a girl is born.
-The standard approach in the spacing literature is to use a single-exit model, but with
-access to sex selection the sex of the next child is not random and parents' choices 
-will impact the spacing to a girl or a boy differentially.%
+The standard approach in the birth spacing literature is to use proportional hazard
+models with a single exit, the birth of a child.
+There are two problems with the standard approach in this setting.
+First, and most importantly, the introduction of sex selection means that the sex of the 
+next child is no longer necessarily random and that parents' choices will impact the 
+spacing to the birth of a girl or a boy differentially.
+I, therefore, use a competing risk set-up, which can capture both the non-randomness of
+the birth outcome and the differential spacing to the birth of a girl or a boy.
+To my knowledge, this is the first application of competing risk models to birth
+spacing.%
 \footnote{
 \cite{Merli2000} used a discrete hazard model to examine whether 
 there were under-reporting of births in rural China, although they 
 estimated separate waiting time regressions for boys and girls.
 }
-Both the non-randomness and differential spacing can be captured with a competing risk 
-set up.
 
-I use a non-proportional hazard specification, which allows the shape of the hazard 
-functions to vary across groups, rather than the standard proportional hazard function 
-for three reasons.
-First, it is unlikely---even in the absence of prenatal sex determination---that the 
+Second, it is unlikely---even in the absence of prenatal sex determination---that the 
 effect of household characteristics such as the sex composition of previous births have 
-the same effect throughout the entire spell.%
-\footnote{
+the same effect throughout the entire spell as is assumed by the proportional hazard
+model.
 Assuming that the effect of sex composition is the same throughout a spell is especially 
 problematic for higher-order spells where different sex composition of previous births can 
-lead to substantial differences both in the likelihood of progressing to the next birth and
-how soon couples want their next child if they are going to have one.
-}
-Second, the introduction of prenatal sex determination exacerbates any bias from the 
+lead to substantial differences both in the likelihood of progressing to the next birth 
+and how soon couples want their next child if they are going to have one.
+The introduction of prenatal sex determination exacerbates any bias from the 
 proportionality assumption since sex-selective abortion use varies across groups,
 which affects birth spacing, and because a household's use of sex selection may vary 
 within a spell, which means that the effects of covariates vary within the spell as well.
-Finally, the use of a non-proportional specification mitigates any potential effects 
+I, therefore, use a non-proportional hazard specification, which allows the shape of the 
+hazard functions to vary across groups.
+The use of a non-proportional specification also mitigates any potential effects 
 of unobserved heterogeneity when used in conjunction with a flexible baseline hazard 
 \citep{Dolton1995}.
 
+The model is a discrete time, non-proportional, competing risk hazard model with two exit 
+states: either a boy or a girl is born.
+The unit of analysis is a spell, the period from one birth to the next.
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
 the spell continues until time $t_i$, when either a birth occurs or the spell 
 is censored.%
