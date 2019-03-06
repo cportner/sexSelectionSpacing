@@ -1,5 +1,13 @@
 # Code
 
+## Stata
+
+All code written for Stata 15.1.
+The programs used the user-generated packages below (might not be a complete list).
+
+- asgen (net install asgen.pkg)
+- xfill (net from https://www.sealedenvelope.com/ and then install xfill)
+
 ## Create data set for analysis
 
 - crBase1.do: subset of NFHS-1, creates base1.dta
