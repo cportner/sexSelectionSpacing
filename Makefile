@@ -141,7 +141,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
  $(GRAPHTARGET) $(PPSTARGET) \
- $(BSTABLE) $(BSGRAPH)
+ $(BSTABLE_ALL) $(BSGRAPH_ALL)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -153,7 +153,7 @@ view: $(TEX)/$(TEXFILE).pdf
 		
 .PHONY: results  # convenience function during development
 results: $(GRAPHTARGET) $(PPSTARGET) \
- $(BSTABLE) $(BSGRAPH)
+ $(BSTABLE_ALL) $(BSGRAPH_ALL)
 
 
 ###################################################################	
