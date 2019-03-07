@@ -84,9 +84,11 @@ BSDATA_ALL := \
     $(DAT)/bs_s$(spell)_g$(per)_$(educ)_all.dta ) ) ) 
 
 ### Tables of bootstrapping results
+BSVAR_NAMES := duration_avg_sex_ratio duration_p50_sex_ratio duration_p25_p75 any_sex_ratio
 BSTABLE_ALL := \
     $(foreach educ, $(EDUC), \
-    $(TAB)/bootstrap_duration_sex_ratio_$(educ)_all.tex $(TAB)/bootstrap_duration_p25_p75_$(educ)_all.tex $(TAB)/bootstrap_any_sex_ratio_$(educ)_all.tex ) 
+    $(foreach var, $(BSVAR_NAMES), \
+    $(TAB)/bootstrap_$(var)_$(educ)_all.tex ) ) 
 
 ### Graphs of bootstrapping results
 BSGRAPH_ALL := \
@@ -308,6 +310,7 @@ $(BSDATA_ALL): $(COD)/an_bootstrap_all.do $(DAT)/base.dta $(COD)/bootspell_all.d
 # Bootstrap tables
 .PHONY: run_boot_table_all
 run_boot_table_all: $(BSTABLE_ALL)
+
 $(BSTABLE_ALL): $(COD)/an_bootstrap_table_all.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
@@ -333,6 +336,7 @@ $(BSDATA_REGION): $(COD)/an_bootstrap_region.do $(DAT)/base.dta $(COD)/bootspell
 # Bootstrap tables
 .PHONY: run_boot_table_region
 run_boot_table_region: $(BSTABLE_REGION)
+
 $(BSTABLE_REGION): $(COD)/an_bootstrap_table_region.do \
  $(BSDATA_REGION)
 	cd $(COD); stata-se -b -q $(<F)	
