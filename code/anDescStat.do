@@ -82,11 +82,11 @@ loc percent = `r(mean)' * 100
 loc total = `r(N)'
 count if b1_cen & b1_sex != .
 loc missed = `r(N)'
-file open num_missed using `tables'/num_missed.tex, write append
-file write num_missed "For spell 1, " %9.2fc (`percent') "\%, or " %9.0fc (`missed') " births," _n
-file write num_missed "of a total of " %9.0fc (`total') " births are observed after 120 months from the month of marriage, " _n
-file write num_missed "with the highest observed duration " %9.0fc (`max_month') " months." _n
-file close num_missed
+// file open num_missed using `tables'/num_missed.tex, write append
+// file write num_missed "For spell 1, " %9.2fc (`percent') "\%, or " %9.0fc (`missed') " births," _n
+// file write num_missed "of a total of " %9.0fc (`total') " births are observed after 120 months from the month of marriage, " _n
+// file write num_missed "with the highest observed duration " %9.0fc (`max_month') " months." _n
+// file close num_missed
 
 gen edu_group = 1 if edu_mother == 0
 replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
