@@ -501,7 +501,7 @@ foreach educ in "low" "med" "high" {
     file close table
 
     //----------------------------------//
-    // p75 and p25 table                //
+    // p75, p50, and p25 table          //
     //----------------------------------//
 
     file open table using `tables'/bootstrap_duration_p25_p75_`educ'_all.tex, write replace
@@ -510,14 +510,14 @@ foreach educ in "low" "med" "high" {
     file write table "\begin{center}" _n
     file write table "\begin{scriptsize}" _n
     file write table "\begin{threeparttable}" _n
-    file write table "\caption{Estimated 25th and 75th Percentile Durations for Women with `char'}" _n
-    file write table "\label{tab:p25_p75_`educ'}" _n
-    file write table "\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3}  @{}}" _n
+    file write table "\caption{Estimated 25th, 50th, and 75th Percentile Durations for Women with `char'}" _n
+    file write table "\label{tab:p25_p50_p75_`educ'}" _n
+    file write table "\begin{tabular}{@{} c l D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2}  @{}}" _n
     file write table "\toprule" _n
-    file write table "                   &                            & \mct{1972--1984}                        &\mct{1985--1994}                         & \mct{1995--2004}                        & \mct{2005--2016}                        \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10}" _n
-    file write table "                   &                            & \mct{Duration (Months)\tnote{a}}        & \mct{Duration (Months)\tnote{a}}        & \mct{Duration (Months)\tnote{a}}        & \mct{Duration (Months)\tnote{a}}        \\ " _n
-    file write table "                   & \mco{Composition of}       & \mct{Percentile}                        & \mct{Percentile}                        & \mct{Percentile}                        & \mct{Percentile}                        \\ " _n
-    file write table " \mco{Spell}       & \mco{Prior Children}       & \mco{25th}  & \mco{75th}                & \mco{25th}  & \mco{75th}                & \mco{25th}  & \mco{75th}                & \mco{25th}  & \mco{75th}                \\ \midrule" _n
+    file write table "                   &                            & \mcth{1972--1984}                        & \mcth{1985--1994}                        & \mcth{1995--2004}                        & \mcth{2005--2016}                        \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}" _n
+    file write table "                   &                            & \mcth{Duration (Months)\tnote{a}}        & \mcth{Duration (Months)\tnote{a}}        & \mcth{Duration (Months)\tnote{a}}        & \mcth{Duration (Months)\tnote{a}}        \\ " _n
+    file write table "                   & \mco{Composition of}       & \mcth{Percentile}                        & \mcth{Percentile}                        & \mcth{Percentile}                        & \mcth{Percentile}                        \\ " _n
+    file write table " \mco{Spell}       & \mco{Prior Children}       & \mco{25th} & \mco{50th}  & \mco{75th}    & \mco{25th} & \mco{50th}  & \mco{75th}    & \mco{25th} & \mco{50th}  & \mco{75th}    & \mco{25th} & \mco{50th}  & \mco{75th}    \\ \midrule" _n
 
     // Loop over area
     foreach where in "Urban" "Rural" {
@@ -527,7 +527,7 @@ foreach educ in "low" "med" "high" {
         if "`where'" == "Rural" {
             loc area = "rural"
         }
-        file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
+        file write table " &  & \multicolumn{12}{c}{`where'} \\" _n
 
         forvalues spell = 2/4 {
             
@@ -595,7 +595,7 @@ foreach educ in "low" "med" "high" {
                     forvalues period = 1/4 {
                                        
                         // loop over statistics (p50 and pct here)
-                        foreach stats in p75 p25 { // value is percentage left!
+                        foreach stats in p75 p50 p25 { // value is percentage left!
                     
                             // Format 
                             if "`stats'" == "pct" {
@@ -627,7 +627,7 @@ foreach educ in "low" "med" "high" {
                                     test_bs b_s`spell'_g`period'_`educ'[1,`r(col_num)'] se_s`spell'_g`period'_`educ'[1,`r(col_num)'] `nat_percent'
                                     significance_stars table `r(p_value)'
                                 }
-                                else if "`stats'" == "p25" | "`stats'" == "p75" {
+                                else if "`stats'" == "p25" | "`stats'" == "p50" | "`stats'" == "p75" {
                                     // Testing duration against all girls duration
                                     loc all_girls = `spell' - 1
                                     if `girls' < `all_girls' {
@@ -668,14 +668,14 @@ foreach educ in "low" "med" "high" {
     file write table "This process is repeated `num_reps' times and the standard errors calculated." _n
     
     file write table "\item[a] " _n
-    file write table "25th and 75th percentile durations calculated as follows." _n
+    file write table "Percentile durations calculated as follows." _n
     file write table "For each woman in a given spell/period combination sample, I calculate the time point" _n
-    file write table "at which there is a 25\% or 75\% chance that she will have given birth, conditional on the " _n
+    file write table "at which there is a given percent chance that she will have given birth, conditional on the " _n
     file write table "probability that she will eventually give birth in that spell." _n
     file write table "For example, if there is an 80\% chance that a woman will give birth by the end of the" _n
-    file write table "spell, her median duration is the predicted number of months before she passes the 20\%  or 60\%" _n
+    file write table "spell, her median duration is the predicted number of months before she passes the 40\%" _n
     file write table "mark on her survival curve." _n
-    file write table "The reported statistics is the average of this median duration across all women in a given sample using the " _n
+    file write table "The reported statistics is the average of a given percentile duration across all women in a given sample using the " _n
     file write table "individual predicted probabilities of having had a birth by the end of the spell as weights." _n
     file write table "Duration begins at 9 months after the birth of the prior child." _n
     file write table "Durations for sex compositions other than all girls are" _n
