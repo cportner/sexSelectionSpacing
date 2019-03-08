@@ -38,6 +38,8 @@ COMP1   := _
 COMP2   := _b_ _g_
 COMP3   := _bb_ _bg_ _gg_
 COMP4   := _bbb_ _bbg_ _bgg_ _ggg_
+BSVAR_NAMES := duration_avg_sex_ratio duration_p50_sex_ratio duration_p25_p75 any_sex_ratio
+
 
 ### Regression analyses
 ANALYSISTARGET := \
@@ -84,7 +86,6 @@ BSDATA_ALL := \
     $(DAT)/bs_s$(spell)_g$(per)_$(educ)_all.dta ) ) ) 
 
 ### Tables of bootstrapping results
-BSVAR_NAMES := duration_avg_sex_ratio duration_p50_sex_ratio duration_p25_p75 any_sex_ratio
 BSTABLE_ALL := \
     $(foreach educ, $(EDUC), \
     $(foreach var, $(BSVAR_NAMES), \
@@ -109,7 +110,8 @@ BSDATA_REGION := \
 ### Tables of bootstrapping results
 BSTABLE_REGION := \
     $(foreach region, $(REGIONS), \
-    $(TAB)/bootstrap_duration_sex_ratio_high_r$(region).tex $(TAB)/bootstrap_duration_p25_p75_high_r$(region).tex $(TAB)/bootstrap_any_sex_ratio_high_r$(region).tex ) 
+    $(foreach var, $(BSVAR_NAMES), \
+    $(TAB)/bootstrap_$(var)_high_r$(region).tex ) ) 
 
 ### Graphs of bootstrapping results
 BSGRAPH_REGION := \
@@ -143,7 +145,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
  $(GRAPHTARGET) $(PPSTARGET) \
- $(BSTABLE_ALL) $(BSGRAPH_ALL)
+ $(BSTABLE_ALL) $(BSGRAPH_ALL) $(BSGRAPH_REGION)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
