@@ -91,30 +91,41 @@ foreach educ in "low" "med" "high" {
                 if `i' == 3 loc pattern = "`pattern' dash"
                 if `i' == 4 loc pattern = "`pattern' shortdash"
             }
+            // Generate labels for legends
+            if `spell' == 2 {
+                local label "label(1 One Girl) label(2 One Boy) cols(1) " 
+            }
+            else if `spell' == 3 {
+                local label "label(1 Two Girls) label(2 One Boy, One Girl) label(3 Two Boys) cols(1) "
+            } 
+            else if `spell' == 4 {
+                local label "label(1 3 Girls) label(2 1 Boy, 2 Girls) label(3 2 Boys, 1 Girl) label(4 3 Boys) cols(2) "
+            }
             
             twoway line `avg' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
                 legend(off) plotregion(style(none)) xscale(off) ///
-                ytitle("Expected Spacing" "(months)") yscale(r(15 45)) ylabel(15(10)45 ,grid) ///
+                ytitle("Expected Spacing" "(months)") yscale(r(20 40)) ylabel(20(5)40 ,grid) ///
                 name(p50, replace)  fysize(80)
 
             twoway line `pct' c1, sort ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
                 legend(off) plotregion(style(none)) xscale(off) ///
-                ytitle("Sex Ratio" "(Percent Boys)") yscale(r(45 75)) ylabel(45(10)75, grid) ///
+                ytitle("Sex Ratio" "(Percent Boys)") yscale(r(40 70)) ylabel(40(10)70, grid) ///
                 yline(51.2195122) ///
                 name(pct, replace) fysize(80)
 
             twoway line `any' c1, sort ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
-                legend(off) plotregion(style(none)) ///
+                legend(`label' symxsize(*.45) size(tiny) ring(0) position(7) region(margin(vsmall))) ///
+                plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
                 ytitle("Probability of" "a Next Birth") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
                 name(any, replace) fysize(100)
 
             gr combine p50 pct any , ///
-                iscale(1.7) col(1) xcommon imargin(0 2 1 1) ysize(12) 
+                iscale(1.4) col(1) xcommon imargin(0 2 1 1) ysize(12) 
 
             graph export `figures'/bs_spell`spell'_`educ'_`where'_all.eps, replace fontface(Palatino) 
 
