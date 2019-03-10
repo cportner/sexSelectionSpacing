@@ -104,13 +104,14 @@ foreach educ in "low" "med" "high" {
     file write table "\begin{center}" _n
     file write table "\begin{scriptsize}" _n
     file write table "\begin{threeparttable}" _n
-    file write table "\caption{Estimated Expected Duration and Sex Ratio for Women with `char'}" _n
+    file write table "\caption{Estimated Expected Duration in Months, Sex Ratio, and Probability of Parity Progression for Women with `char'}" _n
     file write table "\label{tab:avg_sex_ratio_`educ'}" _n
-    file write table "\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3}  @{}}" _n
+    file write table "\begin{tabular}{@{} c l D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} @{}}" _n
     file write table "\toprule" _n
-    file write table "                   &                            & \mct{1972--1984}                                    &\mct{1985--1994}                                   & \mct{1995--2004}                                      & \mct{2005--2016}                                      \\ \cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-10}" _n
-    file write table "                   & \mco{Composition of}       & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}   & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}} & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     & \mco{Duration\tnote{a}}  & \mco{Percent\tnote{b}}     \\ " _n
-    file write table " \mco{Spell}       & \mco{Prior Children}       & \mco{(Months)}  & \mco{Boys}                        & \mco{(Months)}  & \mco{Boys}                      & \mco{(Months)}  & \mco{Boys}                          & \mco{(Months)}  & \mco{Boys}                          \\ \midrule" _n
+    file write table "                   &                     & \mcth{1972--1984}                                                   & \mcth{1985--1994}                                                   & \mcth{1995--2004}                                                   & \mcth{2005--2016}                                                   \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}" _n
+    file write table "                   & \mco{Composition}   & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            \\ " _n
+    file write table "                   & \mco{of prior}      & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            \\ " _n
+    file write table " \mco{Spell}       & \mco{Children}      & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    \\ \midrule" _n
 
     // Loop over area
     foreach where in "Urban" "Rural" {
@@ -120,7 +121,7 @@ foreach educ in "low" "med" "high" {
         if "`where'" == "Rural" {
             loc area = "rural"
         }
-        file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
+        file write table " &  & \multicolumn{12}{c}{`where'} \\" _n
 
         forvalues spell = 2/4 {
             
@@ -143,35 +144,35 @@ foreach educ in "low" "med" "high" {
                 } 
                 if `spell' == 2 {
                     if `prior' == 1 {
-                        file write table _col(23) "& \mco{One girl}             "
+                        file write table _col(23) "& \mco{1 girl}               "
                     }
                     if `prior' == 2 {
-                        file write table _col(23) "& \mco{One boy}              "
+                        file write table _col(23) "& \mco{1 boy}                "
                     }    
                 }
                 if `spell' == 3 {
                     if `prior' == 1 {
-                        file write table _col(23) "& \mco{Two girls}            "
+                        file write table _col(23) "& \mco{2 girls}              "
                     }
                     if `prior' == 2 {
-                        file write table _col(23) "& \mco{One boy / one girl}   "
+                        file write table _col(23) "& \mco{1 boy, 2 girl}        "
                     }    
                     if `prior' == 3 {
-                        file write table _col(23) "& \mco{Two boys}             "
+                        file write table _col(23) "& \mco{2 boys}               "
                     }    
                 }
                 if `spell' == 4 {
                     if `prior' == 1 {
-                        file write table _col(23) "& \mco{Three girls}          "
+                        file write table _col(23) "& \mco{3 girls}              "
                     }
                     if `prior' == 2 {
-                        file write table _col(23) "& \mco{One boy / two girls}  "
+                        file write table _col(23) "& \mco{1 boy, 2 girls}       "
                     }    
                     if `prior' == 3 {
-                        file write table _col(23) "& \mco{Two boys / one girl}  "
+                        file write table _col(23) "& \mco{2 boys, 1 girl}       "
                     }    
                     if `prior' == 4 {
-                        file write table _col(23) "& \mco{Three boys}           "
+                        file write table _col(23) "& \mco{3 boys}               "
                     }    
                 }
 
@@ -188,11 +189,14 @@ foreach educ in "low" "med" "high" {
                     forvalues period = 1/4 {
                                        
                         // loop over statistics (p50 and pct here)
-                        foreach stats in avg pct {
+                        foreach stats in avg pct any {
                     
                             // Format 
-                            if "`stats'" == "pct" {
+                            if "`stats'" == "pct" | "`stats'" == "avg" {
                                 local stat_format = "%3.1fc"
+                            }
+                            else if "`stats'" == "any" {
+                                local stat_format = "%4.3fc"
                             }
                             else {
                                 local stat_format = "%3.1fc"                        
@@ -232,6 +236,9 @@ foreach educ in "low" "med" "high" {
                                     else {
                                         file write table "       "
                                     }
+                                }
+                                else if "`stats'" == "any" {
+                                    file write table "        "
                                 }
                                 else {
                                     display "Something went wrong with table generation"                                    
@@ -287,6 +294,9 @@ foreach educ in "low" "med" "high" {
     file write table "The predicted percent boys is tested against the natural percentage boys, 105 boys per 100 girls," _n
     file write table "with *** indicating significantly different at the 1\% level, ** at the 5\% level, " _n
     file write table "and * at 10\% level."
+    
+    file write table "\item[c] " _n
+    file write table "Probability of giving birth by the end of the spell period." _n    
 
     file write table "\end{tablenotes}" _n
     file write table "\end{threeparttable}" _n
@@ -550,35 +560,35 @@ foreach educ in "low" "med" "high" {
                 } 
                 if `spell' == 2 {
                     if `prior' == 1 {
-                        file write table _col(23) "& \mco{One girl}             "
+                        file write table _col(23) "& \mco{1 girl}               "
                     }
                     if `prior' == 2 {
-                        file write table _col(23) "& \mco{One boy}              "
+                        file write table _col(23) "& \mco{1 boy}                "
                     }    
                 }
                 if `spell' == 3 {
                     if `prior' == 1 {
-                        file write table _col(23) "& \mco{Two girls}            "
+                        file write table _col(23) "& \mco{2 girls}              "
                     }
                     if `prior' == 2 {
-                        file write table _col(23) "& \mco{One boy / one girl}   "
+                        file write table _col(23) "& \mco{1 boy, 1 girl}        "
                     }    
                     if `prior' == 3 {
-                        file write table _col(23) "& \mco{Two boys}             "
+                        file write table _col(23) "& \mco{2 boys}               "
                     }    
                 }
                 if `spell' == 4 {
                     if `prior' == 1 {
-                        file write table _col(23) "& \mco{Three girls}          "
+                        file write table _col(23) "& \mco{3 girls}              "
                     }
                     if `prior' == 2 {
-                        file write table _col(23) "& \mco{One boy / two girls}  "
+                        file write table _col(23) "& \mco{1 boy, 2 girls}       "
                     }    
                     if `prior' == 3 {
-                        file write table _col(23) "& \mco{Two boys / one girl}  "
+                        file write table _col(23) "& \mco{2 boys, 1 girl}       "
                     }    
                     if `prior' == 4 {
-                        file write table _col(23) "& \mco{Three boys}           "
+                        file write table _col(23) "& \mco{3 boys}               "
                     }    
                 }
 
