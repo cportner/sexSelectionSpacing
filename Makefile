@@ -38,7 +38,7 @@ COMP1   := _
 COMP2   := _b_ _g_
 COMP3   := _bb_ _bg_ _gg_
 COMP4   := _bbb_ _bbg_ _bgg_ _ggg_
-BSVAR_NAMES := duration_avg_sex_ratio duration_p50_sex_ratio duration_p25_p75 any_sex_ratio
+BSVAR_NAMES := duration_avg_sex_ratio duration_p25_p75 
 
 
 ### Regression analyses
@@ -145,7 +145,8 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
  $(GRAPHTARGET) $(PPSTARGET) \
- $(BSTABLE_ALL) $(BSGRAPH_ALL) $(BSGRAPH_REGION)
+ $(BSTABLE_ALL) $(BSGRAPH_ALL) \
+ $(BSTABLE_REGION) $(BSGRAPH_REGION)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
