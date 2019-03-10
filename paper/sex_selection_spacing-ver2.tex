@@ -826,51 +826,27 @@ four periods.
 
 
 % [How to read tables]
-Tables \ref{tab:median_sex_ratio_low}, \ref{tab:median_sex_ratio_med}, and
-\ref{tab:median_sex_ratio_high}
-show the predicted median duration and sex ratios by period, spell, and sex 
-composition for the three education levels separated by area of residence.%
-\footnote{
-Appendix Tables \ref{tab:p25_p75_low}, \ref{tab:p25_p75_med}, and 
-\ref{tab:p25_p75_high} show 25th and 75th percentiles durations.
-} 
+Figures \ref{fig:bootstrap_low}, \ref{fig:bootstrap_med}, and  \ref{fig:bootstrap_high} 
+show predicted average birth intervals, sex ratios, and probabilities of having
+a birth by decade, spell, and sex composition for the three education levels separated 
+by area of residence.
 For each subsample, I first estimate the model described in Section 
 \ref{sec:strategy} and then use the estimated coefficients to predict 
-median duration and sex ratio.
-For the standard errors, I use bootstrapping for both measures,
-where the model is repeatedly estimated using resampling with replacement.
+average spell length, sex ratio, and the probability of having a birth in that spell.
 
-
-The predicted median duration is the weighted average over the women in the 
-subsample, using the individual probabilities of giving birth as weights.
-For each woman in a sample, I calculate her probability of ending the spell 
-with a birth, and her contribution to median spacing is how long it will take
-from the beginning of the spell to where she is predicted to reach half of that probability.
-For example, if a woman has an 80\% probability of having a birth by the end of 
-the spell, her median duration is the number of months it takes to reach
-40\% probability of having exited with a birth.
-The 40\% is equivalent to the 60\% point on a standard survival curve because that 
-captures how many have not yet exited.
-
-For the second through the fourth spell, I show whether durations for sex 
-composition other than only girls are statistically significantly different 
-from the duration with only girls.
-To calculate the level of statistical significance, I bootstrap the
-difference in spacing.
- 
-The cleanest test is comparing durations after only boys with durations after
-only girls, but the number of births to women with only sons becomes small 
-in the later periods.
-Hence, it is possible to have substantial differences in spacing that are
-not statistically significant because of low power, especially for the third 
-and fourth spell.
+The expected average duration is calculated as follows.
+For each woman in a sample, I calculate her probability of giving birth for each period
+in the spell and use these probabilities as weights to calculated her expected duration 
+for that spell.
+I then take the average of these expected durations using her probability of having a
+birth by the end of the spell as weights.
 
 The predicted sex ratio is the weighted average over the women in the sample's 
 individual predicted sex ratios, using the individual probabilities of having
 given birth by the end of the spell as weights.
 Each woman's predicted sex ratio is the weighted average of the predicted
-percentage boys over the months in the spell calculated using equation 
-(\ref{eq:probability_son}) and the probability of giving birth in each month 
+percentage boys over each period in the spell calculated using equation 
+(\ref{eq:probability_son}) and the probability of giving birth in each period 
 as weights.%
 \footnote{
 Imagine a spell has two periods and that the estimated percentage boys for a
@@ -882,6 +858,27 @@ This woman's percentage boys is then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$.
 }
 The predicted sex ratio captures the percent boys that will have been born to women 
 in the sample when childbearing for that spell is over.
+
+For legibility none of the graphs show standard errors.
+Instead, the standard errors, together with the graphed values, are shown in Appendix 
+Tables TK, TK, and TK.%
+\footnote{
+Furthermore, Appendix Tables \ref{tab:p25_p75_low}, \ref{tab:p25_p75_med}, and 
+\ref{tab:p25_p75_high} show 25th, 50th, and 75th percentiles durations with
+bootstrapped standard errors.
+} 
+The standard errors are based on bootstrapping for all three measures,
+where the model is repeatedly estimated using resampling with replacement.
+
+I also show whether durations for sex composition other than only girls are statistically 
+significantly different from the duration with only girls based on bootstrapped 
+differences. 
+The cleanest test is comparing durations after only boys with durations after
+only girls, but the number of births to women with only sons becomes small 
+in the later periods.
+Hence, it is possible to have substantial differences in spacing that are
+not statistically significant because of low power, especially for the third 
+and fourth spell.
 
 Each predicted percent boys is tested against the natural percentage 
 boys using the bootstrapped standard errors.
@@ -907,6 +904,9 @@ sex selection.
 % \caption{low education}
 % \label{fig:bootstrap_low}
 % \end{figure}
+
+% \captionsetup[subfigure]{position=top,captionskip=-1pt,farskip=-0.5pt}
+\captionsetup[subfigure]{captionskip=-1pt,farskip=-0.5pt}
 
 
 \begin{figure}[htpb]
@@ -1110,10 +1110,6 @@ have begun to use sex selection at higher-order spells.
 % \label{fig:bootstrap_high}
 % \end{figure}
 
-
-
-% \captionsetup[subfigure]{position=top,captionskip=-1pt,farskip=-0.5pt}
-\captionsetup[subfigure]{captionskip=-1pt,farskip=-0.5pt}
 
 \begin{figure}[htpb]
 \centering
