@@ -98,10 +98,10 @@ foreach educ in "high" {
                 }
                 // Generate labels for legends
                 if `spell' == 2 {
-                    local label "label(1 One Girl) label(2 One Boy) cols(1) " 
+                    local label "label(1 1 Girl) label(2 1 Boy) cols(1) " 
                 }
                 else if `spell' == 3 {
-                    local label "label(1 Two Girls) label(2 One Boy, One Girl) label(3 Two Boys) cols(1) "
+                    local label "label(1 2 Girls) label(2 1 Boy, 1 Girl) label(3 2 Boys) cols(1) "
                 } 
                 else if `spell' == 4 {
                     local label "label(1 3 Girls) label(2 1 Boy, 2 Girls) label(3 2 Boys, 1 Girl) label(4 3 Boys) cols(2) "
