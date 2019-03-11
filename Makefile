@@ -146,7 +146,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(RECALLGRAPHS) \
  $(GRAPHTARGET) $(PPSTARGET) \
  $(BSTABLE_ALL) $(BSGRAPH_ALL) \
- $(BSTABLE_REGION) $(BSGRAPH_REGION)
+ $(BSTABLE_REGION) $(BSGRAPH_REGION) $(TAB)/desc_region.tex
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -202,6 +202,8 @@ $(RECALLGRAPHS) : $(COD)/an_recall_graph.do $(DAT)/base.dta
 $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
+$(TAB)/desc_region.tex : $(COD)/an_desc_region.do $(DAT)/base.dta
+	cd $(COD); stata-se -b -q $(<F)
 
 #---------------------------------------------------------------------------------------#
 # Estimation results                                                                    #
