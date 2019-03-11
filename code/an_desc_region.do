@@ -1,4 +1,4 @@
-// Table of spell lengths with bootstrapped standard errors
+// Table of states in each region
 
 version 15.1
 clear all
@@ -14,22 +14,20 @@ label val region region
 
 levelsof region, local(regions)
 foreach reg of local regions {
-    local region_states
     levelsof state if region == `reg', local(levels)
     foreach l of local levels {
         local name: label state `l'
         local name: subinstr local name " " "_", all
-        local region_states "`region_states' `name'"
+        local region_names_`reg' "`region_names_`reg'' `name'"
     }
-    local region_states: list sort region_states
-    local region_states: subinstr local region_states " " ", ", all
-    local region_states: subinstr local region_states "_" " ", all
-    local region_names_`reg' "`region_states'"
+    local region_names_`reg': list sort region_names_`reg'
+    local region_names_`reg': subinstr local region_names_`reg' " " ", ", all
+    local region_names_`reg': subinstr local region_names_`reg' "_" " ", all
 }
 
 file open table using `tables'/desc_region.tex, write replace
 
-file write table "\begin{table}[p!]" _n
+file write table "\begin{table}[hp!]" _n
 file write table "\begin{center}" _n
 file write table "\begin{normalsize}" _n
 file write table "\begin{threeparttable}" _n
