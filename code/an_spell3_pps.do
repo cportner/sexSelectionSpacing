@@ -20,15 +20,15 @@ foreach per of numlist 1/4 {
         set scheme s1mono
 
         graph twoway ///
-            (line pps months if period == `per' & educ == "`educ'" & urban & girl2 , sort `goptions' lpattern(solid) legend(label(1 "Two Girls"))) ///
-            (line pps months if period == `per' & educ == "`educ'" & urban & girl1 , sort `goptions' lpattern(longdash) legend(label(2 "One Boy, One Girl"))) ///
-            (line pps months if period == `per' & educ == "`educ'" & urban & !girl1 & !girl2 , sort `goptions' lpattern(dash) legend(label(3 "Two Boys")))
+            (line pps months if period == `per' & educ == "`educ'" & urban & girl2 , sort `goptions' lpattern(solid) legend(label(1 "2 Girls"))) ///
+            (line pps months if period == `per' & educ == "`educ'" & urban & girl1 , sort `goptions' lpattern(longdash) legend(label(2 "1 Boy, 1 Girl"))) ///
+            (line pps months if period == `per' & educ == "`educ'" & urban & !girl1 & !girl2 , sort `goptions' lpattern(dash) legend(label(3 "2 Boys")))
         graph export `figures'/spell3_g`per'_`educ'_urban_pps.eps, replace fontface(Palatino)  
 
         graph twoway ///
-            (line pps months if period == `per' & educ == "`educ'" & !urban & girl2 , sort `goptions' lpattern(solid) legend(label(1 "Two Girls"))) ///
-            (line pps months if period == `per' & educ == "`educ'" & !urban & girl1 , sort `goptions' lpattern(longdash) legend(label(2 "One Boy, One Girl"))) ///
-            (line pps months if period == `per' & educ == "`educ'" & !urban & !girl1 & !girl2 , sort `goptions' lpattern(dash) legend(label(3 "Two Boys")))
+            (line pps months if period == `per' & educ == "`educ'" & !urban & girl2 , sort `goptions' lpattern(solid) legend(label(1 "2 Girls"))) ///
+            (line pps months if period == `per' & educ == "`educ'" & !urban & girl1 , sort `goptions' lpattern(longdash) legend(label(2 "1 Boy, 1 Girl"))) ///
+            (line pps months if period == `per' & educ == "`educ'" & !urban & !girl1 & !girl2 , sort `goptions' lpattern(dash) legend(label(3 "2 Boys")))
         graph export `figures'/spell3_g`per'_`educ'_rural_pps.eps, replace fontface(Palatino)   
     }
 }
