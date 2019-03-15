@@ -54,6 +54,104 @@ file write num_missed "but by how many that occur in each three months period." 
 file write num_missed "If there are too few births, the multinomial logit estimations will not converge." _n
 file close num_missed
 
+* SPELL 1
+preserve
+create_groups b0_born_year
+
+gen mom_age    = b1_mom_age
+
+// Distribution of births
+tab b1_space if b1_sex != .
+sum b1_space if b1_sex != .
+loc max_month = `r(max)'
+
+// Converting to 3 months intervals
+replace b1_space = int((b1_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
+loc lastm = 4*10 //
+replace b1_cen = 1 if b1_space > `lastm' // cut off 
+replace b1_space = `lastm' if b1_space > `lastm'
+global lastm = `lastm'
+
+gen boy = b1_sex == 1 & !b1_cen
+gen girl = b1_sex == 2 & !b1_cen
+
+// Censoring
+tab b1_cen b1_sex, col
+sum b1_cen if b1_sex != .
+loc percent = `r(mean)' * 100
+loc total = `r(N)'
+count if b1_cen & b1_sex != .
+loc missed = `r(N)'
+// file open num_missed using `tables'/num_missed.tex, write append
+// file write num_missed "For spell 1, " %9.2fc (`percent') "\%, or " %9.0fc (`missed') " births," _n
+// file write num_missed "of a total of " %9.0fc (`total') " births are observed after 120 months from the month of marriage, " _n
+// file write num_missed "with the highest observed duration " %9.0fc (`max_month') " months." _n
+// file close num_missed
+
+gen edu_group = 1 if edu_mother == 0
+replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
+replace edu_group = 3 if edu_mother >= 8
+
+replace scheduled_caste = 1 if scheduled_tribe
+
+
+lab var boy     "Boy born"
+lab var girl    "Girl born"
+lab var b1_cen  "Censored"
+lab var urban   "Urban"
+lab var mom_age "Age"
+lab var scheduled_caste "Sched.\ caste/tribe"
+
+tab fertility
+
+// LaTeX intro part for table
+file open stats using `tables'/des_stat.tex, write replace
+
+file write stats "\begin{sidewaystable}[htp]" _n
+file write stats "\begin{center}" _n
+file write stats "\begin{scriptsize}" _n
+file write stats "\begin{threeparttable}" _n
+file write stats "\caption{Descriptive Statistics by Education Level and Beginning of Spell}" _n
+file write stats "\label{tab:des_stat1}" _n
+file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3}  D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
+file write stats "                    &                     & \multicolumn{4}{c}{No Education}                                            & \multicolumn{4}{c}{1--7 Years of Education}                                 & \multicolumn{4}{c}{8+ Years of Education}                                 \\ \cmidrule(lr){3-6} \cmidrule(lr){7-10} \cmidrule(lr){11-14}" _n
+file write stats "                    &                     & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--}  \\ " _n
+file write stats "                    &                     & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}    \\ " _n
+file write stats "\midrule" _n
+file write stats "\multirow{16}{*}{\rotatebox{90}{First Spell}}" _n
+
+file close stats
+
+bysort edu_group group: eststo: estpost sum boy girl b1_cen urban mom_age land_own scheduled_caste
+esttab using `tables'/des_stat.tex, ///
+    main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
+    fragment nomtitles nonumber append nolines begin("                    &")
+
+// Direct version of number of quarters and observations
+file open stats using `tables'/des_stat.tex, write append
+file write stats "                    & 3 months periods "
+forvalues edu = 1/3 {
+    forvalues per = 1/4 {
+        qui sum b1_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(sum)') "}     "
+    }
+}
+file write stats " \\" _n 
+
+file write stats "                    & Women    "
+forvalues edu = 1/3 {
+    forvalues per = 1/4 {
+        qui sum b1_space if edu_group == `edu' & group == `per'
+        file write stats "& \mco{" %9.0fc (`r(N)') "}     "
+    }
+}
+file write stats " \\" _n 
+file write stats "\addlinespace" _n
+file write stats "\midrule" _n
+file close stats
+
+restore
+
 * SPELL 2
 
 preserve
@@ -116,20 +214,7 @@ lab var b1_space "First spell length"
 lab var mom_age "Age"
 lab var scheduled_caste "Sched.\ caste/tribe "
 
-// LaTeX intro part for table
-file open stats using `tables'/des_stat.tex, write replace
-
-file write stats "\begin{table}[htp]" _n
-file write stats "\begin{center}" _n
-file write stats "\begin{tiny}" _n
-file write stats "\begin{threeparttable}" _n
-file write stats "\caption{Descriptive Statistics by Education Level and Beginning of Spell}" _n
-file write stats "\label{tab:des_stat1}" _n
-file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3}  D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
-file write stats "                    &                     & \multicolumn{4}{c}{No Education}                                            & \multicolumn{4}{c}{1--7 Years of Education}                                 & \multicolumn{4}{c}{8+ Years of Education}                                 \\ \cmidrule(lr){3-6} \cmidrule(lr){7-10} \cmidrule(lr){11-14}" _n
-file write stats "                    &                     & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--}  \\ " _n
-file write stats "                    &                     & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}    \\ " _n
-file write stats "\midrule" _n
+file open stats using `tables'/des_stat.tex, write append
 file write stats "\multirow{22}{*}{\rotatebox{90}{Second Spell}}" _n
 file close stats
 
@@ -159,8 +244,20 @@ forvalues edu = 1/3 {
     }
 }
 file write stats " \\" _n 
-file write stats "\addlinespace" _n
-file write stats "\midrule" _n
+
+// End of table
+file write stats "\bottomrule" _n
+file write stats "\end{tabular}" _n
+file write stats "\begin{tablenotes} \tiny" _n
+file write stats "\item \hspace*{-0.7em} \textbf{Note.}" _n
+file write stats "Means without parentheses and standard deviation in parentheses." _n
+file write stats "Interactions between variables, baseline hazard dummies and squares not shown." _n
+// file write stats "Quarters refer to number of 3 month periods observed." _n
+file write stats "\end{tablenotes}" _n
+file write stats "\end{threeparttable}" _n
+file write stats "\end{scriptsize}" _n
+file write stats "\end{center}" _n
+file write stats "\end{sidewaystable}" _n
 
 file close stats
 
@@ -234,7 +331,21 @@ lab var scheduled_caste "Sched.\ caste/tribe "
 
 // LaTeX intro part for table
 file open stats using `tables'/des_stat.tex, write append
+
+file write stats _n "\addtocounter{table}{-1}" _n
+file write stats "" _n
+file write stats "\begin{sidewaystable}" _n
+file write stats "\begin{center}" _n
+file write stats "\begin{scriptsize}" _n
+file write stats "\begin{threeparttable}" _n
+file write stats "\caption{(Continued) Descriptive Statistics by Education Level and Beginning of Spell}" _n
+file write stats "\begin{tabular} {@{} c l D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3}  D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} D{.}{.}{1.3} @{}} \toprule" _n
+file write stats "                    &                     & \multicolumn{4}{c}{No Education}                                            & \multicolumn{4}{c}{1--7 Years of Education}                                 & \multicolumn{4}{c}{8+ Years of Education}                                 \\ \cmidrule(lr){3-6} \cmidrule(lr){7-10} \cmidrule(lr){11-14}" _n
+file write stats "                    &                     & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--} & \mco{1972--}  & \mco{1985--}  & \mco{1995--} & \mco{2005--}  \\ " _n
+file write stats "                    &                     & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}   & \mco{1984}    & \mco{1994}    & \mco{2004}   & \mco{2016}    \\ " _n
+file write stats "\midrule                    " _n
 file write stats "\multirow{24}{*}{\rotatebox{90}{Third Spell}}" _n
+
 file close stats
 
 eststo clear
@@ -378,9 +489,9 @@ file write stats "Interactions between variables, baseline hazard dummies and sq
 // file write stats "Quarters refer to number of 3 month periods observed." _n
 file write stats "\end{tablenotes}" _n
 file write stats "\end{threeparttable}" _n
-file write stats "\end{tiny}" _n
+file write stats "\end{scriptsize}" _n
 file write stats "\end{center}" _n
-file write stats "\end{table}" _n
+file write stats "\end{sidewaystable}" _n
 
 file close stats
 
