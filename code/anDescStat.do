@@ -207,8 +207,8 @@ replace scheduled_caste = 1 if scheduled_tribe
 lab var boy     "Boy born"
 lab var girl    "Girl born"
 lab var b2_cen  "Censored"
-lab var b1_boy  "One boy"
-lab var b1_girl "One girl"
+lab var b1_boy  "1 boy"
+lab var b1_girl "1 girl"
 lab var urban   "Urban"
 lab var b1_space "First spell length"
 lab var mom_age "Age"
@@ -220,7 +220,7 @@ file close stats
 
 eststo clear
 bysort edu_group group: eststo: estpost sum boy girl b2_cen ///
-    b1_boy b1_girl urban mom_age b1_space land_own scheduled_caste
+    b1_boy b1_girl urban mom_age land_own scheduled_caste
 esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
     fragment nomtitles nonumber append nolines begin("                    &")
@@ -321,9 +321,9 @@ replace scheduled_caste = 1 if scheduled_tribe
 lab var boy     "Boy born"
 lab var girl    "Girl born"
 lab var b3_cen  "Censored"
-lab var b2_2b   "Two boys"
-lab var b2_1b1g "One boy, one girl"
-lab var b2_2g   "Two girls"
+lab var b2_2b   "2 boys"
+lab var b2_1b1g "1 boy, 1 girl"
+lab var b2_2g   "2 girls"
 lab var urban   "Urban"
 lab var b1_space "First spell length"
 lab var mom_age "Age"
@@ -350,7 +350,7 @@ file close stats
 
 eststo clear
 bysort edu_group group: eststo: estpost sum boy girl b3_cen ///
-    b2_2b b2_1b1g b2_2g urban mom_age b1_space land_own scheduled_caste
+    b2_2b b2_1b1g b2_2g urban mom_age land_own scheduled_caste
 esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
     fragment nomtitles nonumber append nolines begin("                    &")
@@ -437,10 +437,10 @@ replace scheduled_caste = 1 if scheduled_tribe
 lab var boy     "Boy born"
 lab var girl    "Girl born"
 lab var b4_cen  "Censored"
-lab var girl0   "Three boys"
-lab var girl1   "Two boys, one girl"
-lab var girl2   "One boys, two girls"
-lab var girl3   "Three girls"
+lab var girl0   "3 boys"
+lab var girl1   "2 boys, 1 girl"
+lab var girl2   "1 boys, 2 girls"
+lab var girl3   "3 girls"
 lab var urban   "Urban"
 lab var b1_space "First spell length"
 lab var mom_age "Age"
@@ -453,7 +453,7 @@ file close stats
 
 eststo clear
 bysort edu_group group: eststo: estpost sum boy girl b4_cen ///
-    girl0-girl3 urban mom_age b1_space land_own scheduled_caste
+    girl0-girl3 urban mom_age land_own scheduled_caste
 esttab using `tables'/des_stat.tex, ///
     main(mean %9.3fc) aux(sd %9.3fc) noobs label nonotes nogaps ///
     fragment nomtitles nonumber append nolines begin("                    &")
