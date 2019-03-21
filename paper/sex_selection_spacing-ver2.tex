@@ -498,7 +498,11 @@ composition of previous children, if any, and $Z_2$ captures area of residence.
 The remaining explanatory variables, $\mathbf{X}$, enter proportionally,
 but to further minimize any potential bias from assuming proportionality, estimations 
 are done separately for different levels of mothers' education and for different 
-time periods.
+time periods.%
+\footnote{
+The choice of which variables to use for non-proportionality is discussed in more detail
+in the ``Explanatory Variables'' section.
+}
 
 Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
@@ -720,18 +724,43 @@ The first group consists of variables expected to affect the shape of the hazard
 (the $\mathbf{Z}$ variables): 
 mother's education, sex composition of previous children, and area of residence.
 I chose these variables because the prior literature shows that they affect 
-spacing choices and correlate with sex selection.
+spacing choices and the likelihood of using sex selection.%
+\footnote{
 Increasing the number of variables interacted with the baseline hazard would
 further lower the risk of bias but at the cost of requiring more data to 
 precisely estimate.
+}
+
+The first variable that is likely to affect the hazard rate in a non-proportional manner
+is education.
+First, there is evidence, even in the absence of sex selection, that women with
+different education levels have different hazard profiles, although the size and direction
+of the effect vary across areas and time 
+\citep{Tulasidhar1993,Whitworth2002,Bhalotra2008,Kim2010,Soest2018}.
+Second, as discussed above, the use of sex selection increases with socioeconomic 
+status, especially education, and the use of sex selection is unlikely to be the
+same throughout a spell, which means that education cannot enter in a proportional
+fashion. \citep{retherford03b,jha06,Portner2015b}.
+One potential reason for the correlation between education and sex selection is that
+increasing education of mothers correlates closely with lower fertility 
+\citep{schultz97}.
+This lower fertility leads, in turn, to a higher likelihood of using sex selection
+\citep{das_gupta97,Guilmoto2009a,Bongaarts2013,Jayachandran2017}.%
+\footnote{
+In principle, it is possible that part of the higher likelihood is driven by a stronger
+preference for son, independently of desired fertility.
+There is, however, evidence that higher education women have shown a decline in
+son preference \citep{bhat03,pande07}
+}
+Another reasons is that having more education is closely associated with higher income and 
+wealth, which makes it easier to access illegal services such as prenatal sex 
+determination.
+It is not possible to separate these two effects here.
 
 I divide women into three groups based on education attainment: no
 education, one to seven years of education, and eight and more years of education.
 The models are estimated separately for each education level to reduce
-the potential problem of including other variables as proportional.
-Increasing education of mothers correlates closely with lower fertility 
-\citep{schultz97}, and 
-we should expect lower fertility to lead to more use of sex selection.%
+the potential problem of including other variables as proportional.%
 \footnote{
 Fathers' education has two opposite predicted effects: the associated higher income
 should increase fertility and therefore lower the pressure to use sex selection, but
@@ -740,6 +769,9 @@ In practice, fathers' education had little effect on the hazards and the use of
 sex-selective abortions, and I, therefore, do not include it.
 }
 
+As discussed, the sex composition of previous children affects both the timing
+of births and the use of sex-selective abortions 
+\citep{retherford03b,jha06,Bhalotra2008,abrevaya09,Portner2015b,Kumar2016,Soest2018}.
 I capture sex composition with dummy variables for the
 possible combinations for the specific spell, ignoring the ordering of births.
 As an example, for the third spell, three groups are used: Two boys,
@@ -748,9 +780,9 @@ It is, in principle, possible to estimate the model taking into account
 the ordering of children, but this would further lower the power of the
 test, by adding one additional group for the third spell and four
 additional groups for the fourth spell. 
-As discussed, the sex composition of previous children affects both the timing
-of births and the use of sex-selective abortions.
 
+Whether a woman lives in an urban or rural area affect both her fertility level and
+her access to sex selection \citep{retherford03b,jha06,Portner2015b}.
 Area of residence is a dummy variable for the household living in
 an urban area.
 The cost of children is higher in urban areas than in rural areas, and 
