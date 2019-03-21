@@ -88,10 +88,10 @@ foreach educ in "low" "med" "high" {
         loc char "No Education"
     }
     if "`educ'" == "med" {
-        loc char "1 to 7 Years of Education"
+        loc char "One to Seven Years of Education"
     }
     if "`educ'" == "high" {
-        loc char "8 or More Years of Education"
+        loc char "Eight or More Years of Education"
     }
 
     //----------------------------------//

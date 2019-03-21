@@ -108,10 +108,10 @@ forvalues region = 1/4 {
             loc char "No Education"
         }
         if "`educ'" == "med" {
-            loc char "one to seven Years of Education"
+            loc char "One to Seven Years of Education"
         }
         if "`educ'" == "high" {
-            loc char "eight or More Years of Education"
+            loc char "Eight or More Years of Education"
         }
 
         //----------------------------------//
