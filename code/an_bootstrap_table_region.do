@@ -87,6 +87,19 @@ foreach educ in "high" {
 // Loop over region
 forvalues region = 1/4 {
 
+        if `region' == 1 {
+            loc reg_name "West"
+        } 
+        if `region' == 2 {
+            loc reg_name "North"
+        }
+        if `region' == 3 {
+            loc reg_name "East"
+        }
+        if `region' == 4 {
+            loc reg_name "South"
+        }
+
     // Loop over education
 //     foreach educ in "low" "med" "high" {
     foreach educ in "high" {
@@ -95,10 +108,10 @@ forvalues region = 1/4 {
             loc char "No Education"
         }
         if "`educ'" == "med" {
-            loc char "1 to 7 Years of Education"
+            loc char "one to seven Years of Education"
         }
         if "`educ'" == "high" {
-            loc char "8 or More Years of Education"
+            loc char "eight or More Years of Education"
         }
 
         //----------------------------------//
@@ -111,7 +124,7 @@ forvalues region = 1/4 {
         file write table "\begin{center}" _n
         file write table "\begin{scriptsize}" _n
         file write table "\begin{threeparttable}" _n
-        file write table "\caption{Estimated Expected Duration in Months, Sex Ratio, and Probability of Parity Progression for Women with `char'}" _n
+        file write table "\caption{Estimated Expected Duration in Months, Sex Ratio, and Probability of Parity Progression for Women with `char' in the " _char(96) _char(96) "`reg_name'" _char(34) " }" _n
         file write table "\label{tab:avg_sex_ratio_`educ'_r`region'}" _n
         file write table "\begin{tabular}{@{} c l D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} @{}}" _n
         file write table "\toprule" _n
@@ -324,7 +337,7 @@ forvalues region = 1/4 {
         file write table "\begin{center}" _n
         file write table "\begin{scriptsize}" _n
         file write table "\begin{threeparttable}" _n
-        file write table "\caption{Estimated Median Duration and Sex Ratio for Women with `char'}" _n
+        file write table "\caption{Estimated Median Duration and Sex Ratio for Women with `char'  in the " _char(96) _char(96) "`reg_name'" _char(34) " }" _n
         file write table "\label{tab:median_sex_ratio_`educ'}" _n
         file write table "\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3}  @{}}" _n
         file write table "\toprule" _n
@@ -528,7 +541,7 @@ forvalues region = 1/4 {
         file write table "\begin{center}" _n
         file write table "\begin{scriptsize}" _n
         file write table "\begin{threeparttable}" _n
-        file write table "\caption{Estimated 25th, 50th, and 75th Percentile Durations for Women with `char'}" _n
+        file write table "\caption{Estimated 25th, 50th, and 75th Percentile Durations for Women with `char'  in the " _char(96) _char(96) "`reg_name'" _char(34) " }" _n
         file write table "\label{tab:p25_p50_p75_`educ'_r`region'}" _n
         file write table "\begin{tabular}{@{} c l D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2}  @{}}" _n
         file write table "\toprule" _n
@@ -720,7 +733,7 @@ forvalues region = 1/4 {
         file write table "\begin{center}" _n
         file write table "\begin{scriptsize}" _n
         file write table "\begin{threeparttable}" _n
-        file write table "\caption{Estimated Probability of Birth and Sex Ratio for Women with `char'}" _n
+        file write table "\caption{Estimated Probability of Birth and Sex Ratio for Women with `char'  in the " _char(96) _char(96) "`reg_name'" _char(34) " }" _n
         file write table "\label{tab:any_birth_sex_ratio_`educ'}" _n
         file write table "\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3}  @{}}" _n
         file write table "\toprule" _n
