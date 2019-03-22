@@ -27,7 +27,7 @@ foreach reg of local regions {
 
 file open table using `tables'/desc_region.tex, write replace
 
-file write table "\begin{table}[hp!]" _n
+file write table "\begin{table}[phtb!]" _n
 file write table "\begin{center}" _n
 file write table "\begin{normalsize}" _n
 file write table "\begin{threeparttable}" _n
