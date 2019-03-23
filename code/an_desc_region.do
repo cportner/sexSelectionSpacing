@@ -46,8 +46,8 @@ file write table "\bottomrule" _n
 file write table "\end{tabular}" _n
 file write table "\begin{tablenotes} \tiny" _n
 file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
-file write table "The state names reflect those when the first NFHS was collected in 1992/1993." _n
-file write table "States created later are allocated as closely as possible to their" _n
+file write table "The state names reflect those in existence at the time of the  NFHS-1 data collection in 1992/1993." _n
+file write table "States created later are allocated as close as possible to their" _n
 file write table "original state." _n
 file write table "\end{tablenotes}" _n
 file write table "\end{threeparttable}" _n
