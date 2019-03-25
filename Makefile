@@ -256,7 +256,7 @@ $(DAT)/spell$(1)_g$(2)_$(3).dta \
 $(foreach area, $(AREAS),\
 $(foreach comp, $(COMP$(1)),\
 $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)pc.eps $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)s.eps)) : $(COD)/run_graphs_all.ado \
- $(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster $(COD)/bh_$(3).ado
+ $(DAT)/obs_spell$(1)_g$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster $(COD)/bh_$(3).ado
 	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
 endef
 
