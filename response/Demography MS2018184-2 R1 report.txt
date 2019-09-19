@@ -1,0 +1,33 @@
+“Birth Spacing in the Presence of Son Preference and Sex-Selective Abortions: India's Experience over Four Decades”
+
+This paper studies birth variation in birth spacing in relation to son preference and (access to) sex selective abortion. The data cover four decades of birth histories in India, but have no direct information on access to or use of sex selective abortion. Using discrete time competing risk models, where the “risks” are the birth of a boy and the birth of a girl, patterns of birth spacing are produced that are plausibly in line with increasing access and use of sex selective abortion over time and a strong positive relation between mother’s education level and the use of sex selective abortion. While many studies have discussed causes and consequences of the missing girls problem due to sex selective abortion, the author(s) claim that this is the first paper that systematically analyzes the link with birth spacing. If this is indeed the case (I am not following this literature close enough to be completely sure) then this is an innovative and important study that will be of interest to readers of Demography. I have some suggestions for changing the exposition.
+
+The model is well explained, but the paper could be more explicit on why a model is needed. Some of the conclusions drawn from average probabilities, sex ratios, etc. (particularly those not conditioning on specific values of the covariates) might also be directly visible in the raw data. If so, the data description part could perhaps be extended.
+
+Details on the estimation results are not presented. I assume there are too many of them to be included in the paper. Still, the paper extensively discusses model specification issues such as the proportionality assumption and the way that is handled by splitting the sample. I would like to see some discussion of model specification tests informing the reader whether this is necessary and whether the resulting flexible specifications indeed provide a good fit to the data.
+
+I found the analysis of geographical differences not very exciting. It leads to several pages with not so interesting figures of regional survival curves. I would suggest dropping the details (perhaps make them available in an online appendix) and briefly summarize the main findings.
+
+The concluding section raises some interesting points but these are only indirectly related to the content of the paper. The development of family planning possibilities with increasing availability and use over time seems to be important for understanding the general decline in fertility and lengthening of birth intervals. It is mentioned in the introduction but not in the conclusions. The relation with labor market participation may be of interest, but what is said about it was not clear to me. Why would longer birth intervals disrupt labor force participation (p. 32)
+
+Specific comments:
+
+p.7: eq. 2: I would call this a piecewise constant baseline hazard rather than a piecewise linear one.
+p.7 after eq. 3: Sex composition of previous children is in principle endogenous  if there is sex selective abortion (it is essentially a lagged dependent variable). This is not taken into account. This is, at least in theory, a limitation of the current model that should be acknowledged. (I do not think it is easy to remedy without explicitly incorporating unobserved heterogeneity.)
+
+p.7: Why use intervals of three months? Did the author(s) perform any sensitivity checks? 
+
+p.9: It might be useful to already mention that Hindus only are analyzed in the introduction, since religion might play an important role when choosing sex selective abortion.
+
+p.10: Sterilization also seems an endogenous decision in this context, this should be acknowledged as an additional limitation. How often does this occur? (It might even be possible to treat this as an additional competing risk.)
+
+p.9: why put the marriage duration threshold at 22 years? Sensitivity check?
+
+Results: The many small figures are hard to read and I did not find them an attractive way to present the results. Perhaps the author(s) can come up with an alternative?
+
+ 
+
+
+
+ 
+
