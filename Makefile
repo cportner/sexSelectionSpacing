@@ -10,7 +10,7 @@
 ### very large number of figures and all of those need to go in
 ### dependencies and targets to ensure none are missing when running.
 
-TEXFILE = sex_selection_spacing-ver2
+TEXFILE = sex_selection_spacing-ver3
 TEX  = ./paper
 FIG  = ./figures
 TAB  = ./tables
