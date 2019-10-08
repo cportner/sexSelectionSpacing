@@ -60,24 +60,30 @@ gen b4_less_short_spacing = b4_space <= 36 if b4_space != .
 
 // Descriptive stats:
 
-keep if edu_mother >= 8
-
-bysort urban b1_girl b2_girl: tabulate group b2_short_spacing , ///
+bysort urban b1_girl b2_girl: tabulate group b2_short_spacing if edu_mother >= 8, ///
     summarize(b2_died_as_infant ) means
 
 // Overall development in infant mortality
-bysort urban: tabulate group b1_girl        , summarize(b2_died_as_infant ) means
-bysort urban: tabulate group b2_only_girls  , summarize(b3_died_as_infant ) means
-bysort urban: tabulate group b3_only_girls  , summarize(b4_died_as_infant ) means
+bysort urban: tabulate group b1_girl       if edu_mother >= 8 , summarize(b2_died_as_infant ) means
+bysort urban: tabulate group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
+bysort urban: tabulate group b3_only_girls if edu_mother >= 8 , summarize(b4_died_as_infant ) means
+
+
+table group b2_only_girls  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban)
 
 // Decomposition of mortality changes
-bysort urban b3_short_spacing : tabulate group b2_only_girls  , summarize(b3_died_as_infant ) means
-bysort urban b3_short_spacing b3_girl : tabulate group b2_only_girls  , summarize(b3_died_as_infant ) means
-bysort urban b3_short_spacing : tabulate group b2_only_girls  , summarize( b3_girl ) means
+bysort urban b3_short_spacing : tabulate group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
+bysort urban b3_short_spacing b3_girl : tabulate group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
+
+table group b2_only_girls  b3_short_spacing  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban )
+table group b2_only_girls  b3_short_spacing  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban b3_girl )
+
+bysort urban b3_short_spacing : tabulate group b2_only_girls if edu_mother >= 8 , summarize( b3_girl ) means
+
 
 // Changes in spacing patterns
-bysort urban  : tabulate group b2_only_girls  , summarize( b3_short_spacing  ) means
-bysort urban b3_girl : tabulate group b2_only_girls  , summarize( b3_short_spacing  ) means
+bysort urban  : tabulate group b2_only_girls if edu_mother >= 8 , summarize( b3_short_spacing  ) means
+bysort urban b3_girl : tabulate group b2_only_girls if edu_mother >= 8 , summarize( b3_short_spacing  ) means
 
 
 
