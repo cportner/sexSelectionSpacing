@@ -41,6 +41,12 @@ gen b1_group = group
 drop group
 gen b2_born_year = int((b2_born_cmc-1)/12)
 create_groups b2_born_year
+gen b2_group = group
+drop group
+gen b3_born_year = int((b3_born_cmc-1)/12)
+create_groups b3_born_year
+gen b3_group = group
+drop group
 
 // Birth spacing variables
 gen b2_space_2 = b2_space^2
@@ -60,30 +66,27 @@ gen b4_less_short_spacing = b4_space <= 36 if b4_space != .
 
 // Descriptive stats:
 
-bysort urban b1_girl b2_girl: tabulate group b2_short_spacing if edu_mother >= 8, ///
-    summarize(b2_died_as_infant ) means
-
 // Overall development in infant mortality
-bysort urban: tabulate group b1_girl       if edu_mother >= 8 , summarize(b2_died_as_infant ) means
-bysort urban: tabulate group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
-bysort urban: tabulate group b3_only_girls if edu_mother >= 8 , summarize(b4_died_as_infant ) means
+bysort urban: tabulate b1_group b1_girl       if edu_mother >= 8 , summarize(b2_died_as_infant ) means
+bysort urban: tabulate b2_group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
+bysort urban: tabulate b3_group b3_only_girls if edu_mother >= 8 , summarize(b4_died_as_infant ) means
 
 
-table group b2_only_girls  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban)
+table b2_group b2_only_girls  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban)
 
 // Decomposition of mortality changes
-bysort urban b3_short_spacing : tabulate group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
-bysort urban b3_short_spacing b3_girl : tabulate group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
+bysort urban b3_short_spacing : tabulate b2_group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
+bysort urban b3_short_spacing b3_girl : tabulate b2_group b2_only_girls if edu_mother >= 8 , summarize(b3_died_as_infant ) means
 
-table group b2_only_girls  b3_short_spacing  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban )
-table group b2_only_girls  b3_short_spacing  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban b3_girl )
+table b2_group b2_only_girls  b3_short_spacing  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban )
+table b2_group b2_only_girls  b3_short_spacing  if edu_mother >= 8, c(mean b3_died_as_infant ) by(urban b3_girl )
 
-bysort urban b3_short_spacing : tabulate group b2_only_girls if edu_mother >= 8 , summarize( b3_girl ) means
+bysort urban b3_short_spacing : tabulate b2_group b2_only_girls if edu_mother >= 8 , summarize( b3_girl ) means
 
 
 // Changes in spacing patterns
-bysort urban  : tabulate group b2_only_girls if edu_mother >= 8 , summarize( b3_short_spacing  ) means
-bysort urban b3_girl : tabulate group b2_only_girls if edu_mother >= 8 , summarize( b3_short_spacing  ) means
+bysort urban  : tabulate b2_group b2_only_girls if edu_mother >= 8 , summarize( b3_short_spacing  ) means
+bysort urban b3_girl : tabulate b2_group b2_only_girls if edu_mother >= 8 , summarize( b3_short_spacing  ) means
 
 
 
