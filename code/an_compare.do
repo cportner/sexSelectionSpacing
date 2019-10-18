@@ -56,9 +56,14 @@ drop group
 // The spacing results in the paper starts at 9 months, but the data here starts at
 // zero months
 
-gen b2_interval = b2_space - 8 if b2_born_cmc != . & b2_space - 8 <= 96
-gen b3_interval = b3_space - 8 if b3_born_cmc != . & b3_space - 8 <= 96
-gen b4_interval = b4_space - 8 if b4_born_cmc != . & b4_space - 8 <= 96
+// gen b2_interval = b2_space - 8 if b2_born_cmc != . & b2_space - 8 <= 96
+// gen b3_interval = b3_space - 8 if b3_born_cmc != . & b3_space - 8 <= 96
+// gen b4_interval = b4_space - 8 if b4_born_cmc != . & b4_space - 8 <= 96
+
+gen b2_interval = b2_space - 8 if b2_born_cmc != . 
+gen b3_interval = b3_space - 8 if b3_born_cmc != . 
+gen b4_interval = b4_space - 8 if b4_born_cmc != . 
+
 
 
 // Uncorrected intervals, sex ratios, and parity progression probability
