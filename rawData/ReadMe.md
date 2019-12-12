@@ -22,9 +22,11 @@ iair42fl.dta - individual recode (women)
 ## NFHS-3
 
 iair52fl.dta - individual recode (women)
+iahr52fl.dta - household recode
 
 ## NFHS-4
 
 iair71fl.dta - individual recode (women)
 iahr71fl.dta - household recode
 
+~/Downloads/IAHR52DT/IAHR52FL.dta
