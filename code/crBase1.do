@@ -1,22 +1,14 @@
 * Create base data set for NFHS-1
-* Did is based on my original work 
-* crbase1.do
-* begun.: 2017-06-01
-* edited: 2017-06-02
-
 
 // THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
-// THE MAIN README FILE AND THAT THE WORKING ECTORY IS "./code"
+// THE MAIN README FILE AND THAT THE WORKING DIRECTORY IS "./code"
 
 clear
 version 13.1
 set more off
 
 // Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
+include directories
 
 tempfile religion
 
@@ -29,7 +21,7 @@ use caseid v001-v012 v024 ///
    bidx_01-b13_20 ///
    v211 v213 v214 v222 v224 ///
    v317 v501 v503 v511 ///
-   v603 v613 v616 v715 ///
+   v603 v613 v616 v714 v715 v719 v720 v721 ///
    s108 s149-s151 s517b-s517e ///
    v104 s104 ///
    using `rawdata'/iair23fl
