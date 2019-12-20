@@ -51,61 +51,38 @@ recode round_year (1992/1993 = 1992) (1998/2000 = 1999) (2005/2006 = 2006) (2015
 drop if edu_mother > 30 // 98 and 99 Don't know and NA
 gen educ_none = edu_mother == 0
 gen educ_1_7  = edu_mother > 0 & edu_mother < 8
-gen educ_8_up = edu_mother >= 8 
+gen educ_8_11 = edu_mother >= 8 & edu_mother < 12
+gen educ_12_up = edu_mother >= 12
 egen educ_group = cut(edu_mother), at(0 1 8 30)
-
 
 
 // Graph variables
 set scheme s1mono
 
 collapse currently_working work_family work_self_others work_cash, ///
-    by(round_year urban educ_none educ_1_7 educ_8_up age_group)
+    by(round_year urban educ_none educ_1_7 educ_8_11 educ_12_up age_group)
     
 replace currently_working = currently_working * 100
 replace work_family = work_family * 100
 replace work_cash = work_cash * 100
 
-
-foreach age of numlist 20 30 40 {
-    foreach area in urban !urban {
-        if "`area'" == "urban" local where = "urban"
-        else local where = "rural"
-        graph twoway line currently_working round if educ_none == 1 & `area' & age_group == `age', lwidth(thick) lpattern(solid) lcolor(black) /// 
-            || line currently_working round if educ_1_7 == 1 & `area' & age_group == `age', lwidth(thick) lpattern(longdash) lcolor(black) ///
-            || line currently_working round if educ_8_up  == 1 & `area' & age_group == `age', lwidth(thick) lpattern(shortdash) lcolor(black) ///
-            || , legend(label(1 "No education") label(2 "1 to 7 years") label(3 "8 or more years") ring(0) position(2) col(1)) ///
-                plotregion(margin(zero)) xlabel(1992 1999 2006 2015) ylabel(0(10)100) ytitle("Percent") xtitle("Survey Year")
+foreach var of varlist currently_working work_family work_cash {
+    foreach age of numlist 20 30 40 {
+        foreach area in urban !urban {
+            if "`area'" == "urban" local where = "urban"
+            else local where = "rural"
+            if "`var'" == "currently_working" local position = 2
+            if "`var'" == "work_cash" local position = 5
+            if "`var'" == "work_family" local position = 10
+            graph twoway line `var' round if educ_none == 1 & `area' & age_group == `age', lwidth(thick) lpattern(solid) lcolor(black) /// 
+                || line `var' round if educ_1_7 == 1 & `area' & age_group == `age', lwidth(thick) lpattern(longdash) lcolor(black) ///
+                || line `var' round if educ_8_11  == 1 & `area' & age_group == `age', lwidth(thick) lpattern(dash) lcolor(black) ///
+                || line `var' round if educ_12_up  == 1 & `area' & age_group == `age', lwidth(thick) lpattern(shortdash) lcolor(black) ///
+                || , legend(label(1 "No education") label(2 "1 to 7 years") label(3 "8 to 11 years") label(4 "12 or more years") ring(0) position(`position') col(1)) ///
+                    plotregion(margin(zero)) xlabel(1992 1999 2006 2015) ylabel(0(10)100) ytitle("Percent") xtitle("Survey Year")
         
-        graph export `figures'/work_currently_`where'_`age'.eps, replace fontface(Palatino)
-    }            
-}
-
-foreach age of numlist 20 30 40 {
-    foreach area in urban !urban {
-        if "`area'" == "urban" local where = "urban"
-        else local where = "rural"
-        graph twoway line work_family round if educ_none == 1 & `area' & age_group == `age', lwidth(thick) lpattern(solid) lcolor(black) /// 
-            || line work_family round if educ_1_7 == 1 & `area' & age_group == `age', lwidth(thick) lpattern(longdash) lcolor(black) ///
-            || line work_family round if educ_8_up  == 1 & `area' & age_group == `age', lwidth(thick) lpattern(shortdash) lcolor(black) ///
-            || , legend(label(1 "No education") label(2 "1 to 7 years") label(3 "8 or more years") ring(0) position(11) col(1)) ///
-                plotregion(margin(zero)) xlabel(1992 1999 2006 2015) ylabel(0(10)100) ytitle("Percent") xtitle("Survey Year")
-        
-        graph export `figures'/work_family_`where'_`age'.eps, replace fontface(Palatino)
-    }            
-}
-
-foreach age of numlist 20 30 40 {
-    foreach area in urban !urban {
-        if "`area'" == "urban" local where = "urban"
-        else local where = "rural"
-        graph twoway line work_cash round if educ_none == 1 & `area' & age_group == `age', lwidth(thick) lpattern(solid) lcolor(black) /// 
-            || line work_cash round if educ_1_7 == 1 & `area' & age_group == `age', lwidth(thick) lpattern(longdash) lcolor(black) ///
-            || line work_cash round if educ_8_up  == 1 & `area' & age_group == `age', lwidth(thick) lpattern(shortdash) lcolor(black) ///
-            || , legend(label(1 "No education") label(2 "1 to 7 years") label(3 "8 or more years") ring(0) position(5) col(1)) ///
-                plotregion(margin(zero)) xlabel(1992 1999 2006 2015) ylabel(0(10)100) ytitle("Percent") xtitle("Survey Year")
-        
-        graph export `figures'/work_cash_`where'_`age'.eps, replace fontface(Palatino)
-    }            
+            graph export `figures'/`var'_`where'_`age'.eps, replace fontface(Palatino)
+        }            
+    }
 }
 
