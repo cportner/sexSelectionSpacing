@@ -10,10 +10,7 @@ version 13.1
 set more off
 
 // Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
+include directories
 
 // CHANGES FROM NFHS-3
 // Land is no longer in the individual recode (s60 and s61 in NFHS-3).
@@ -43,7 +40,7 @@ use caseid v001-v012 v024 ///
    v211 v213 v214 v221 v222 v224 ///
    v312 v317 ///
    v501 v503 v509 ///
-   v603 v613 v616 v627-v629 v715 ///
+   v603 v613 v616 v627-v629 v714 v715 v719 v721 v741 ///
    s116 using `rawdata'/iair72fl
 des, short // for data description in paper
 drop b15_* b16_* // not in NFHS-2 (nor in NFHS-1)

@@ -1,9 +1,4 @@
 * Create base data set for NFHS-3
-* Is based on my original work
-* crBase3.do
-* begun.: 2017-06-02
-* edited: 2017-06-02
-
 
 // THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
 // THE MAIN README FILE AND THAT THE WORKING ECTORY IS "./code"
@@ -13,11 +8,7 @@ version 13.1
 set more off
 
 // Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
-
+include directories
 
 /*----------------------------------------------------------------------*/
 /* WOMEN'S RECODE 							*/
@@ -29,7 +20,7 @@ use v001-v012 v024 v026 ///
    v211 v213 v214 v221 v222 v224 ///
    v312 v317 ///
    v501 v503 v509 ///
-   v603 v613 v616 v627-v629 v715 ///
+   v603 v613 v616 v627-v629 v714 v715 v719 v721 v741 ///
    v104 v105 ///
    s60 s61 s118  using `rawdata'/iair52fl
 des, short // for data description in paper

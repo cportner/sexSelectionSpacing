@@ -1,8 +1,4 @@
 * Create base data set for NFHS - combine all surveys
-* Is based on my original work
-* crBase.do
-* begun.: 2017-06-02
-* edited: 2018-01-23
 
 // Revisions
 * 25/02/09 No longer deleting old obs (20 yrs +), but marking them
@@ -19,11 +15,7 @@ version 13.1
 set more off
 
 // Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
-
+include directories
 
 /*-------------------------------------------------------------------*/
 /* APPENDING DATA SETS                                               */

@@ -40,6 +40,14 @@ COMP3   := _bb_ _bg_ _gg_
 COMP4   := _bbb_ _bbg_ _bgg_ _ggg_
 BSVAR_NAMES := duration_avg_sex_ratio duration_p25_p75 
 
+### Intro graphs
+
+WORKGRAPHS := \
+    $(foreach area, $(AREAS), \
+    $(foreach age, 20 30 40, \
+    $(foreach var, currently_working work_cash work_family, \
+    $(FIG)/$(var)_$(area)_$(age).eps ) ) )
+
 
 ### Regression analyses
 ANALYSISTARGET := \
@@ -141,6 +149,7 @@ RECALLGRAPHS := \
 
 # Main paper
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
+ $(FIG)/educ_over_time_rural.eps $(FIG)/educ_over_time_urban.eps \
  $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
@@ -196,9 +205,17 @@ $(RECALLGRAPHS) : $(COD)/an_recall_graph.do $(DAT)/base.dta
 	cd $(COD); stata-se -b -q $(<F)
 
 #---------------------------------------------------------------------------------------#
-# Descriptive statistics                                                                #
+# Descriptive statistics and graphs                                                     #
 #---------------------------------------------------------------------------------------#
 
+
+$(FIG)/educ_over_time_rural.eps $(FIG)/educ_over_time_urban.eps: $(COD)/an_educ_over_time.do \
+ $(RAW)/iahh21fl.dta $(RAW)/iahr23fl.dta $(RAW)/iahr42fl.dta $(RAW)/iahr52fl $(RAW)/iahr71fl.dta
+	cd $(COD); stata-se -b -q $(<F)
+
+$(WORKGRAPHS): $(COD)/an_work_over_time.do $(DAT)/base.dta
+	cd $(COD); stata-se -b -q $(<F)
+	
 $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 

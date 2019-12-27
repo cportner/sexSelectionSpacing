@@ -1,9 +1,4 @@
 * Create base data set for NFHS-2
-* Is based on my original work
-* crbase2.do
-* begun.: 2017-06-02
-* edited: 2017-06-02
-
 
 // THIS FILES ASSUMES THAT YOU RUN IT USING THE FILE STRUCTURE DESCRIBED IN
 // THE MAIN README FILE AND THAT THE WORKING ECTORY IS "./code"
@@ -13,11 +8,7 @@ version 13.1
 set more off
 
 // Generic set of locations
-loc rawdata "../rawData"
-loc data    "../data"
-loc figures "../figures"
-loc tables  "../tables"
-
+include directories
 
 /*----------------------------------------------------------------------*/
 /* WOMEN'S RECODE 							*/
@@ -28,7 +19,7 @@ use caseid v001-v012 v024 ///
    bidx_01-b15_18 ///
    v211 v213 v214 v221 v222 v224 ///
    v317 v501 v503 v509 ///
-   v603 v613 v616 v627-v629 v715 ///
+   v603 v613 v616 v627-v629 v714 v715 v719 v720 v721 ///
    v104 v105 ///
    s119 ssdist using `rawdata'/iair42fl
 des, short // for data description in paper
