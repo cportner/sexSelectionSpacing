@@ -32,7 +32,6 @@ endif
 PERIODS := 1 2 3 4
 AREAS   := rural urban
 EDUC    := low med high
-REGIONS := 1 2 3 4
 SPELLS  := 2 3 4
 COMP1   := _
 COMP2   := _b_ _g_
@@ -107,28 +106,6 @@ BSGRAPH_ALL := \
     $(FIG)/bs_spell$(spell)_$(educ)_$(area)_all.eps ) ) ) 
 
 
-### Bootstrap - by Region - only high education
-### Data for bootstrapping
-BSDATA_REGION := \
-    $(foreach spell, $(SPELLS), \
-    $(foreach per, $(PERIODS), \
-    $(foreach region, $(REGIONS), \
-    $(DAT)/bs_s$(spell)_g$(per)_high_r$(region).dta ) ) ) 
-
-### Tables of bootstrapping results
-BSTABLE_REGION := \
-    $(foreach region, $(REGIONS), \
-    $(foreach var, $(BSVAR_NAMES), \
-    $(TAB)/bootstrap_$(var)_high_r$(region).tex ) ) 
-
-### Graphs of bootstrapping results
-BSGRAPH_REGION := \
-    $(foreach spell, $(SPELLS), \
-    $(foreach area, $(AREAS), \
-    $(foreach region, $(REGIONS), \
-    $(FIG)/bs_spell$(spell)_high_$(area)_r$(region).eps ) ) )
-
-
 ### Appendix 
 ### graphs LaTeX code
 APPGRAPHS := \
@@ -149,13 +126,12 @@ RECALLGRAPHS := \
 
 # Main paper
 $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
- $(FIG)/educ_over_time_rural.eps $(FIG)/educ_over_time_urban.eps \
+ $(FIG)/educ_over_time_rural.eps $(FIG)/educ_over_time_urban.eps $(WORKGRAPHS) \
  $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
  $(PPSTARGET) \
- $(BSTABLE_ALL) $(BSGRAPH_ALL) \
- $(BSTABLE_REGION) $(BSGRAPH_REGION) $(TAB)/desc_region.tex
+ $(BSTABLE_ALL) $(BSGRAPH_ALL) 
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -210,7 +186,7 @@ $(RECALLGRAPHS) : $(COD)/an_recall_graph.do $(DAT)/base.dta
 
 
 $(FIG)/educ_over_time_rural.eps $(FIG)/educ_over_time_urban.eps: $(COD)/an_educ_over_time.do \
- $(RAW)/iahh21fl.dta $(RAW)/iahr23fl.dta $(RAW)/iahr42fl.dta $(RAW)/iahr52fl $(RAW)/iahr71fl.dta
+ $(RAW)/iahh21fl.dta $(RAW)/iahr23fl.dta $(RAW)/iahr42fl.dta $(RAW)/iahr52fl.dta $(RAW)/iahr71fl.dta
 	cd $(COD); stata-se -b -q $(<F)
 
 $(WORKGRAPHS): $(COD)/an_work_over_time.do $(DAT)/base.dta
@@ -219,8 +195,6 @@ $(WORKGRAPHS): $(COD)/an_work_over_time.do $(DAT)/base.dta
 $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex: $(COD)/anDescStat.do $(DAT)/base.dta 
 	cd $(COD); stata-se -b -q $(<F)
 
-$(TAB)/desc_region.tex : $(COD)/an_desc_region.do $(DAT)/base.dta
-	cd $(COD); stata-se -b -q $(<F)
 
 #---------------------------------------------------------------------------------------#
 # Estimation results                                                                    #
@@ -232,7 +206,7 @@ run_analysis: $(ANALYSISTARGET)
 
 # Use basename because run_analysis is an ado file
 define analysis-rule
-$(DAT)/obs_spell$(1)_g$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis_all.ado \
+$(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(COD)/run_analysis_all.ado \
  $(DAT)/base.dta $(COD)/bh_$(3).ado $(COD)/genSpell$(1).do
 	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
 endef
@@ -242,49 +216,32 @@ $(foreach per, $(PERIODS), \
 $(foreach educ, $(EDUC), \
 $(eval $(call analysis-rule,$(spell),$(per),$(educ))) ) ) )
 
-
-# Region 
-.PHONY: run_analysis_regions
-run_analysis_regions: $(ANALYSISTARGET_REGION)
-
-# Use basename because run_analysis is an ado file
-define analysis-rule-region
-$(DAT)/obs_spell$(1)_g$(2)_$(3)_r$(4).dta $(DAT)/results_spell$(1)_g$(2)_$(3)_r$(4).ster: $(COD)/run_analysis_region.ado \
- $(DAT)/base.dta $(COD)/bh_$(3).ado $(COD)/genSpell$(1).do
-	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
-endef
-
-$(foreach spell, $(SPELLS), \
-$(foreach per, $(PERIODS), \
-$(foreach educ, $(EDUC), \
-$(foreach region, $(REGIONS), \
-$(eval $(call analysis-rule-region,$(spell),$(per),$(educ),$(region))) ) ) ) )
-
 		
 #---------------------------------------------------------------------------------------#
 # Percentage boys and survival graphs                                                   #
 #---------------------------------------------------------------------------------------#
 
-#.PHONY: run_graphs
-#run_graphs: $(GRAPHTARGET)
+.PHONY: run_graphs
+run_graphs: $(GRAPHTARGET)
 
-#define graph-rule
-#$(DAT)/spell$(1)_g$(2)_$(3).dta \
-#$(foreach area, $(AREAS),\
-#$(foreach comp, $(COMP$(1)),\
-#$(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)pc.eps $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)s.eps)) : $(COD)/run_graphs_all.ado \
-# $(DAT)/obs_spell$(1)_g$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster $(COD)/bh_$(3).ado
-#	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
-#endef
+define graph-rule
+$(DAT)/spell$(1)_g$(2)_$(3).dta \
+$(foreach area, $(AREAS),\
+$(foreach comp, $(COMP$(1)),\
+$(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)pc.eps $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)s.eps)) \
+ : $(COD)/run_graphs_all.ado \
+ $(DAT)/results_spell$(1)_g$(2)_$(3).ster $(COD)/bh_$(3).ado
+	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
+endef
 
-#$(foreach spell, $(SPELLS), \
-#$(foreach per, $(PERIODS), \
-#$(foreach educ, $(EDUC), \
-#$(eval $(call graph-rule,$(spell),$(per),$(educ))))))
+$(foreach spell, $(SPELLS), \
+$(foreach per, $(PERIODS), \
+$(foreach educ, $(EDUC), \
+$(eval $(call graph-rule,$(spell),$(per),$(educ))))))
 
 # Generate LaTeX code for appendix graphs
-#$(APPGRAPHS) : $(COD)/gen_appendix_graphs.do $(GRAPHTARGET)
-#	cd $(COD); stata-se -b -q $(<F)
+$(APPGRAPHS) : $(COD)/gen_appendix_graphs.do $(GRAPHTARGET)
+	cd $(COD); stata-se -b -q $(<F)
 
 #---------------------------------------------------------------------------------------#
 # Parity progression survival graphs                                                    #
@@ -344,31 +301,6 @@ $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
 
-
-### Region - only high education ###
-
-# Bootstrap results
-.PHONY: run_boot_region
-run_boot_region: $(BSDATA_REGION)
-
-$(BSDATA_REGION): $(COD)/an_bootstrap_region.do $(DAT)/base.dta $(COD)/bootspell_all.do \
- $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
-	cd $(COD); nice stata-se -b -q $(<F)	
-
-# Bootstrap tables
-.PHONY: run_boot_table_region
-run_boot_table_region: $(BSTABLE_REGION)
-
-$(BSTABLE_REGION): $(COD)/an_bootstrap_table_region.do \
- $(BSDATA_REGION)
-	cd $(COD); stata-se -b -q $(<F)	
-
-# Bootstrap graphs
-.PHONY: run_boot_graph_region
-run_boot_graph_region: $(BSGRAPH_REGION)
-$(BSGRAPH_REGION): $(COD)/an_bootstrap_graph_region.do \
- $(BSDATA_REGION)
-	cd $(COD); stata-se -b -q $(<F)	
 
 	
 #---------------------------------------------------------------------------------------#
