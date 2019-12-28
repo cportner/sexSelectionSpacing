@@ -5,6 +5,8 @@ program run_analysis_all
     
     include directories
 
+    log using run_analysis_all_`spell'_`period'_`educ'.log, replace
+
     use `data'/base, clear
 
 
@@ -93,6 +95,8 @@ program run_analysis_all
     estimates notes: `names'
     estimates notes: $lastm
     estimates save `data'/results_spell`spell'_g`period'_`educ', replace
+    
+    log close
     
 end
 
