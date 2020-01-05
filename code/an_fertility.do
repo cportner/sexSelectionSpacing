@@ -54,7 +54,7 @@ collapse  (count) count=fertility (sum) num_births=births_3yr_2_to_4, ///
 gen asbr = num_births / count
 
 // Calculate "TFR" for parities 2 through 4
-collapse, (sum) tfr=asbr ///
+collapse (sum) tfr=asbr , ///
 	by(round urban edu_group)
 
 
