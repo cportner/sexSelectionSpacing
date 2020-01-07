@@ -9,14 +9,13 @@ include directories
 
 use `data'/base, clear
 
-tempfile main low med high
-save "`data'/`main'"
+save "`data'/temp_main"
 
 // Restricting sample and data manipulations
 
 foreach educ in "high" "med" "low" {
 
-    use "`data'/`main'", clear
+    use "`data'/temp_main", clear
 
     // keep only those in education group
     if "`educ'" == "low" {
@@ -33,13 +32,13 @@ foreach educ in "high" "med" "low" {
         exit
     }
     
-    save "`data'/``educ''" // Need double ` because the name that comes from educ is itself a local variable
+    save "`data'/temp_`educ'" 
 
     forvalues spell = 1/4 {
 
         forvalues group = 1/4 {
             
-            use "`data'/``educ''" , clear
+            use "`data'/temp_`educ'" , clear
             loc girlvar " girl* "
 
             run genSpell`spell'.do
