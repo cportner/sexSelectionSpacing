@@ -35,7 +35,7 @@ foreach educ in "high" "med" "low" {
     
     save "``educ''" // Need double ` because the name that comes from educ is itself a local variable
 
-    forvalues spell = 2/4 {
+    forvalues spell = 1/4 {
 
         forvalues group = 1/4 {
             
