@@ -39,8 +39,16 @@ foreach educ in "high" "med" "low" {
         forvalues group = 1/4 {
             
             use "`data'/temp_`educ'" , clear
-            loc girlvar " girl* "
 
+            // Obviously no prior children for first spell
+            if `spell' == 1 {
+                global b1space ""
+                loc girlvar ""
+            } 
+            else {
+                loc girlvar " girl* "
+            }
+            
             run genSpell`spell'.do
             
             keep if group == `group'
@@ -87,6 +95,8 @@ foreach educ in "high" "med" "low" {
                 gen dur`i' = t >= 11
             }
 
+            // CREATE INTERACTIONS BASED ON SPELL NUMBER
+            // Note: spell 1 will never enter the loop
 
             // NON-PROPORTIONALITY
             loc npvar = "urban "
