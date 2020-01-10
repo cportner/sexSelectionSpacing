@@ -105,68 +105,224 @@ end
 use `data'/base, clear
 drop bidx_01-b12_18 bidx_19-b12_20
 
-keep if fertility >= 1
-
 // dropping those with too much recall error
 drop if observation_age_m >= 22 & round == 1
 drop if observation_age_m >= 22 & round == 2
 drop if observation_age_m >= 22 & round == 3
 drop if observation_age_m >= 22 & round == 4
 
+gen id = _n
 
 replace scheduled_caste = 1 if scheduled_tribe
 
-
-loc spell = 2
-loc period = 4
-loc educ = "high"
-
-
-
 // Predictions
-
-gen id = _n
-keep if edu_mother >= 8
-keep if round == 4
-
-// 2nd spell
 // Girl variable, id, and mom_age (code from genSpellX.do)
-gen girl1 = b1_sex == 2 if b1_sex != .
-gen girl1Xurban = girl1 * urban
-gen mom_age    = b2_mom_age
+
+// loc round = 4  // Survey round used for predictions
+// loc period = 4 // Fourth set of estimation results, not necessarily the same as survey round
+
+forvalues period = 3/4 {
+    loc round = `period'
+    foreach educ in "high" "med" "low" {
+
+        preserve
+
+        keep if round == `round'
+    
+        // keep only those in education group
+        if "`educ'" == "low" {
+            keep if edu_mother == 0
+        }
+        else if "`educ'" == "med" {
+            keep if edu_mother >= 1 & edu_mother < 8
+        }
+        else if "`educ'" == "high" {
+            keep if edu_mother >= 8
+        }
+        else {
+            dis "Something went wrong with education level"
+            exit
+        }
+
+        // 1st spell 
+        gen mom_age = b1_mom_age
+
+        predict_fertility 1 `period' `educ'
+        gen prob_1st_birth = prob_any_birth
+        gen prob_1st_son   = pct_sons / 100
+
+
+        // 2nd spell if 1st child boy
+        drop mom_age
+        gen girl1 = 0
+        gen girl1Xurban = girl1 * urban
+        gen mom_age    = b1_mom_age + 2
         
-predict_fertility 2 4 `educ'
-gen prob_2nd_birth = prob_any_birth 
-gen prob_2nd_son   = pct_sons / 100
+        predict_fertility 2 `period' `educ'
+        gen prob_2nd_birth_b = prob_any_birth 
+        gen prob_2nd_son_b   = pct_sons / 100
 
-// 3rd spell if 2nd child boy
-drop girl* mom_age
-gen girl1 = (b1_sex == 2) ///
-    if b1_sex != . // Since 2nd child assumed boy whether 1 girl depends on first birth
-gen girl2 = 0 ///
-    if b1_sex != . // Since 2nd child assumed boy cannot have two girls
-gen girl1Xurban = girl1 * urban
-gen girl2Xurban = girl2 * urban
-gen mom_age = b2_mom_age + 2 
-
-predict_fertility 3 4 `educ'
-gen prob_3rd_birth_prior_b = prob_any_birth
-gen prob_3rd_son_prior_b   = pct_sons / 100
-
-// 3rd spell if 2nd child girl
-drop girl* mom_age
-gen girl1 = (b1_sex == 1) ///
-    if b1_sex != . // Since 2nd child assumed girl 1 girl can only happen if first child a boy
-gen girl2 = (b1_sex == 2) ///
-    if b1_sex != . // Since 2nd child assumed girl will have two girls if first a girl
-gen girl1Xurban = girl1 * urban
-gen girl2Xurban = girl2 * urban
-gen mom_age = b2_mom_age + 2 
-
-predict_fertility 3 4 `educ'
-gen prob_3rd_birth_prior_g = prob_any_birth
-gen prob_3rd_son_prior_g   = pct_sons / 100
+        // 2nd spell if 1st child girl
+        drop girl* mom_age
+        gen girl1 = 1
+        gen girl1Xurban = girl1 * urban
+        gen mom_age    = b1_mom_age + 2
+        
+        predict_fertility 2 `period' `educ'
+        gen prob_2nd_birth_g = prob_any_birth 
+        gen prob_2nd_son_g   = pct_sons / 100
 
 
+        // 3rd spell if two boys
+        drop girl* mom_age
+        gen girl1 = 0
+        gen girl2 = 0 
+        gen girl1Xurban = girl1 * urban
+        gen girl2Xurban = girl2 * urban
+        gen mom_age = b1_mom_age + 4
+
+        predict_fertility 3 `period' `educ'
+        gen prob_3rd_birth_bb = prob_any_birth
+        gen prob_3rd_son_bb   = pct_sons / 100
+
+        // 3rd spell if 1 boy / 1 girl
+        drop girl* mom_age
+        gen girl1 = 1
+        gen girl2 = 0
+        gen girl1Xurban = girl1 * urban
+        gen girl2Xurban = girl2 * urban
+        gen mom_age = b1_mom_age + 4
+
+        predict_fertility 3 `period' `educ'
+        gen prob_3rd_birth_bg = prob_any_birth
+        gen prob_3rd_son_bg   = pct_sons / 100
+
+        // 3rd spell if 2 girls
+        drop girl* mom_age
+        gen girl1 = 0
+        gen girl2 = 1
+        gen girl1Xurban = girl1 * urban
+        gen girl2Xurban = girl2 * urban
+        gen mom_age = b1_mom_age + 4
+
+        predict_fertility 3 `period' `educ'
+        gen prob_3rd_birth_gg = prob_any_birth
+        gen prob_3rd_son_gg   = pct_sons / 100
 
 
+        // 4th spell if three boys
+        drop girl* mom_age
+        gen girl1 = 0
+        gen girl2 = 0 
+        gen girl3 = 0
+        gen girl1Xurban = girl1 * urban
+        gen girl2Xurban = girl2 * urban
+        gen girl3Xurban = girl3 * urban
+        gen mom_age = b1_mom_age + 6
+
+        predict_fertility 4 `period' `educ'
+        gen prob_4th_birth_bbb = prob_any_birth
+        gen prob_4th_son_bbb   = pct_sons / 100
+
+        // 4th spell if two boys / 1 girl
+        drop girl* mom_age
+        gen girl1 = 1
+        gen girl2 = 0 
+        gen girl3 = 0
+        gen girl1Xurban = girl1 * urban
+        gen girl2Xurban = girl2 * urban
+        gen girl3Xurban = girl3 * urban
+        gen mom_age = b1_mom_age + 6
+
+        predict_fertility 4 `period' `educ'
+        gen prob_4th_birth_bbg = prob_any_birth
+        gen prob_4th_son_bbg   = pct_sons / 100
+
+        // 4th spell if 1 boys / 2 girls
+        drop girl* mom_age
+        gen girl1 = 0
+        gen girl2 = 2 
+        gen girl3 = 0
+        gen girl1Xurban = girl1 * urban
+        gen girl2Xurban = girl2 * urban
+        gen girl3Xurban = girl3 * urban
+        gen mom_age = b1_mom_age + 6
+
+        predict_fertility 4 `period' `educ'
+        gen prob_4th_birth_bgg = prob_any_birth
+        gen prob_4th_son_bgg   = pct_sons / 100
+
+        // 4th spell if three girls
+        drop girl* mom_age
+        gen girl1 = 0
+        gen girl2 = 0 
+        gen girl3 = 1
+        gen girl1Xurban = girl1 * urban
+        gen girl2Xurban = girl2 * urban
+        gen girl3Xurban = girl3 * urban
+        gen mom_age = b1_mom_age + 6
+
+        predict_fertility 4 `period' `educ'
+        gen prob_4th_birth_ggg = prob_any_birth
+        gen prob_4th_son_ggg   = pct_sons / 100
+
+
+
+        gen pred_1 = prob_1st_birth
+
+        gen pred_2 = prob_1st_birth * (             ///
+            prob_1st_son * prob_2nd_birth_b +       ///
+            (1 - prob_1st_son) * prob_2nd_birth_g   ///
+        )
+
+        gen pred_3 = prob_1st_birth * (                     ///
+            prob_1st_son * prob_2nd_birth_b * (             ///
+                prob_2nd_son_b       * prob_3rd_birth_bb +  ///
+                (1 - prob_2nd_son_b) * prob_3rd_birth_bg    ///
+            )                                               ///
+            +                                               ///
+            (1 - prob_1st_son) * prob_2nd_birth_g * (       ///
+                prob_2nd_son_g       * prob_3rd_birth_bg +  ///
+                (1 - prob_2nd_son_g) * prob_3rd_birth_gg    ///
+            )                                               ///
+        )
+
+        gen pred_4 = prob_1st_birth * (                             ///
+            prob_1st_son * prob_2nd_birth_b * (                     ///
+                prob_2nd_son_b       * prob_3rd_birth_bb * (        ///
+                    prob_3rd_son_bb       * prob_4th_birth_bbb +    ///
+                    (1 - prob_3rd_son_bb) * prob_4th_birth_bbg      ///
+                )                                                   ///
+                +                                                   ///
+                (1 - prob_2nd_son_b) * prob_3rd_birth_bg * (        ///
+                    prob_3rd_son_bg       * prob_4th_birth_bbg +    ///
+                    (1 - prob_3rd_son_bg) * prob_4th_birth_bgg      ///
+                )                                                   ///
+            )                                                       ///
+            +                                                       ///
+            (1 - prob_1st_son) * prob_2nd_birth_g * (               ///
+                prob_2nd_son_g       * prob_3rd_birth_bg * (        ///
+                    prob_3rd_son_bg       * prob_4th_birth_bbg +    ///
+                    (1 - prob_3rd_son_bg) * prob_4th_birth_bgg      ///
+                )                                                   ///
+                +                                                   ///
+                (1 - prob_2nd_son_g) * prob_3rd_birth_gg * (        ///
+                    prob_3rd_son_gg       * prob_4th_birth_bgg +    ///
+                    (1 - prob_3rd_son_gg) * prob_4th_birth_ggg      ///
+                )                                                   ///
+            )                                                       ///
+        )
+
+        gen pred_fertility = pred_1 + pred_2 + pred_3 + pred_4
+
+        // Save prediction results
+        collapse (mean) pred_fertility pred_1 pred_2 pred_3 pred_4 ///
+            (min) min_pred_fertility = pred_fertility ///
+            (max) max_pred_fertility = pred_fertility ///
+            , by(urban)
+
+        save `data'/predicted_fertility_hazard_g`period'_`educ'_r`round', replace
+
+        restore
+    }
+}
