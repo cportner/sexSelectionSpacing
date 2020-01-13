@@ -1695,8 +1695,8 @@ sibling, which may reduce the sibling competition for resources.
 
 \section{How Much has Fertility Really Fallen?\label{sec:fertility}}
 
-One of the effects of the increasing use of sex selection over time is that the total 
-fertility rate will tend to overestimate the decline in fertility.
+One of the effects of the increasing use of sex selection is that the total fertility 
+rate will tend to overestimate the decline in fertility.
 ``Tempo'' effects, such as those that arise from postpone of childbearing, are studied 
 extensively in the literature \citep{Bongaarts1999}.
 With development, women tend to have their first child later as a result of increasing 
@@ -1705,14 +1705,72 @@ also tend to shorten as women become more likely to join the labor market, which
 tend to counter the downward effect on the TFR.
 
 India has also seen an increasing age of marriage, but birth spacing has also become
-much longer as women leave the labor market and there is substantial use of 
-sex selection.
-The result is that the TFR becomes an increasingly biased measure of cohort fertility
-\citep{Ni-Bhrolchain2011}.
+much longer as women have become less likely to join the labor market and with the 
+substantial use of sex selection.
+The result is that the TFR may have become an increasingly biased measure of cohort fertility.%
+\footnote{
+I use ``bias'' because what I am interested in is the cohort fertility \citep{Ni-Bhrolchain2011}
+}
 
 To understand how strong the bias from sex selection on TFR is and how cohort fertility
 has changed, I compare predicted fertility using both TFR and the model results
 presented above.
+
+I calculate TFR by urban/rural and the education groups used above.
+The main difference from the standard TFR measure is that I only use births up to parity
+four.
+Hence, the TFRs are not directly comparable those in the NFHS reports, although the
+differences are smaller the higher the education group and the most recent the survey
+as fertility has fallen over time.
+Otherwise, I follow the procedure used in the NFHS reports and count the number of births
+in months 1 to 36 before the survey month (births in the survey month are not included)
+for five-year age groups.
+
+Because NFHS-1 and NFHS-2 did not interview all women between 15 and 49 about fertility
+the number of women is based on the household rosters, assuming that never-married 
+women have had no children.
+
+
+To predict cohort fertility based on the models above, I estimate for each spell the 
+probability of progression to the next parity.%
+\footnote{
+This includes the spell from marriage to first birth, even those results are not 
+examined above because of the problems with capturing the exact timing of marriages
+for the first two rounds of the survey.
+The estimated progression probabilities should, however, be less affected by this
+problem.
+}
+
+To make the predictions depend solely on sample composition and the estimate, I
+use the age at marriage for each woman and predict the likelihood of progressing to
+each parity, assuming two years increases in age between each parity.
+For example, for a woman married at age 20, I use age 22 for predicting progression 
+to the second birth, 24 for the third, and 26 for the fourth.
+
+The parity progression depends on the sex composition for prior children for
+parity two and above.
+For example, the likelihood of a second birth is the 
+probability of having a first birth multiplied with
+sum of the 
+probability of having a son as the first child conditional on having a first child 
+multiplied with parity progression probability if the first child is a son 
+and the 
+probability of having a girl as the first child  conditional on having a first child
+multiplied with the parity progression probability if the first child is a girl.
+$$
+prob(2nd) = prob(1st) * (prob(son|1st)*prob(2nd|son) + prob(girl|1st) * prob(2nd|girl)
+$$
+
+The survey rounds do not coincide entirely with the periods I use for the model.
+For the NFHS-4, I use the model results for the 2005--2016 period, 
+for NFHS-3 the 1995-2004, NFHS-2 1985-1994, and for NFHS-1 1972-1984.
+
+
+
+
+
+
+
 
 
 
