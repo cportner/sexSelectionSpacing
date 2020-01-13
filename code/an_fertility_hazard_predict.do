@@ -1,5 +1,6 @@
-// Predictions based on sample
-// Probability of boy, duration, and parity progression
+// Predictions based on hazard model results
+// Probability of boy and parity progression
+// Depends on an_fertility_hazard.do
 
 
 clear all
@@ -121,7 +122,7 @@ replace scheduled_caste = 1 if scheduled_tribe
 // loc round = 4  // Survey round used for predictions
 // loc period = 4 // Fourth set of estimation results, not necessarily the same as survey round
 
-forvalues period = 3/4 {
+forvalues period = 1/4 {
     loc round = `period'
     foreach educ in "high" "med" "low" {
 
@@ -320,6 +321,8 @@ forvalues period = 3/4 {
             (min) min_pred_fertility = pred_fertility ///
             (max) max_pred_fertility = pred_fertility ///
             , by(urban)
+            
+        list
 
         save `data'/predicted_fertility_hazard_g`period'_`educ'_r`round', replace
 
