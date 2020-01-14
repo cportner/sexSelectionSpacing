@@ -131,7 +131,8 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
  $(PPSTARGET) \
- $(BSTABLE_ALL) $(BSGRAPH_ALL) 
+ $(BSTABLE_ALL) $(BSGRAPH_ALL) \
+ $(TAB)/fertility.tex 
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -301,6 +302,47 @@ $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
 
+
+#---------------------------#
+#  Fertility Predictions    #
+#---------------------------#
+
+FHRESULTS := \
+    $(foreach spell, 1 2 3 4, \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/fertility_results_spell$(spell)_g$(per)_$(educ).ster ) ) )
+
+FHTARGET := \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/predicted_fertility_hazard_g$(per)_$(educ)_r$(per).dta ) )
+    
+TFRTARGET := \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/predicted_tfr_round_$(per).dta ) 
+
+# TFR estimations
+$(TFRTARGET) : $(COD)/an_fertility_rate.do
+ $(RAW)/iair72fl.dta $(RAW)/iair52fl.dta \
+ $(RAW)/iahr42fl.dta $(RAW)/iair42fl.dta \
+ $(RAW)/iahh21fl.dta $(RAW)/iahr23fl.dta $(RAW)/iair23fl.dta
+	cd $(COD); stata-se -b -q $(<F)	
+
+# Hazard model estimation results
+$(FHRESULTS) : $(COD)/an_fertility_hazard.do
+ $(DAT)/base.dta
+	cd $(COD); stata-se -b -q $(<F)	
+
+# Hazard model predictions
+$(FHTARGET) : $(COD)/an_fertility_hazard_predict.do
+ $(FHRESULTS) $(DAT)/base.dta
+	cd $(COD); stata-se -b -q $(<F)	
+  
+# Table of predictions
+$(TAB)/fertility.tex : $(COD)/an_fertility_table.do \
+ $(FHTARGET) $(TFRTARGET) 
+	cd $(COD); stata-se -b -q $(<F)	
 
 	
 #---------------------------------------------------------------------------------------#
