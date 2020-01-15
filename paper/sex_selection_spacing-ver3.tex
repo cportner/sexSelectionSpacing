@@ -1688,69 +1688,76 @@ sibling, which may reduce the sibling competition for resources.
 % to be a boy because of access to sex selection.
 
 
-\section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
-
-
-
 
 \section{How Much has Fertility Really Fallen?\label{sec:fertility}}
 
-One of the effects of the increasing use of sex selection is that the total fertility 
-rate will tend to overestimate the decline in fertility.
-``Tempo'' effects, such as those that arise from postpone of childbearing, are studied 
-extensively in the literature \citep{Bongaarts1999}.
-With development, women tend to have their first child later as a result of increasing 
-years spent in school and later marriage, but, as discussed above, spacing between births 
-also tend to shorten as women become more likely to join the labor market, which will 
-tend to counter the downward effect on the TFR.
+Birth spacing has increased substantially over time across all education groups, but 
+especially among those women likely to use sex selection.
+One of the potential effects of the increased birth spacing is that the total fertility
+rate may underestimate cohort fertility, at least temporarily.
+Whether tempo effects ``biases'' fertility depends on what the outcome of interest is,
+but since my outcome of interest is cohort fertility I will use ``bias''
+\citep{Ni-Bhrolchain2011}.
 
-India has also seen an increasing age of marriage, but birth spacing has also become
-much longer as women have become less likely to join the labor market and with the 
-substantial use of sex selection.
-The result is that the TFR may have become an increasingly biased measure of cohort fertility.%
+Some tempo effects, such as those that arise from postponement of childbearing, are 
+studied extensively in the literature \citep{Bongaarts1999}.
+There are, however, to the best of my knowledge, no other cases where there has been
+as substantial an increasing in spacing as for India.
+ 
+To understand how cohort fertility has changed over time and how strong the bias in
+TFR is, I compare predicted fertility using both a version of the total fertility
+rate and the hazard model results presented above as shown in Table \ref{tab:fertility}.
+
+\input{../tables/fertility.tex}
+
+The TFR measure uses births up to parity four to make the measure comparable to what I 
+can calculate for the hazard model, and I calculate this four-parity TFR by urban/rural 
+and the education groups used above.
+Hence, the TFRs are not directly comparable to those in the NFHS reports, although the
+differences should be smaller the higher the education group and the most recent the 
+survey provided that cohort fertility has fallen over time.
+Otherwise, I follow the procedure used in the NFHS reports and calculate age specific 
+fertility rates for five-year age groups using the number of births in months 1 to 36 
+before the survey month (births in the survey month are not included) and the number
+of women in each age group.%
 \footnote{
-I use ``bias'' because what I am interested in is the cohort fertility \citep{Ni-Bhrolchain2011}
+See \citet{Croft2018} for more detail.
+Because NFHS-1 and NFHS-2 did not interview all women about fertility, the number of women 
+is based on the household rosters, assuming that never-married women have had no children.
+Because of the low number of births to women aged 45 to 49 this age group was not
+used for the hazard model estimations and, therefore, is also excluded for the fertility
+rate.
 }
 
-To understand how strong the bias from sex selection on TFR is and how cohort fertility
-has changed, I compare predicted fertility using both TFR and the model results
-presented above.
-
-I calculate TFR by urban/rural and the education groups used above.
-The main difference from the standard TFR measure is that I only use births up to parity
-four.
-Hence, the TFRs are not directly comparable those in the NFHS reports, although the
-differences are smaller the higher the education group and the most recent the survey
-as fertility has fallen over time.
-Otherwise, I follow the procedure used in the NFHS reports and count the number of births
-in months 1 to 36 before the survey month (births in the survey month are not included)
-for five-year age groups.
-
-Because NFHS-1 and NFHS-2 did not interview all women between 15 and 49 about fertility
-the number of women is based on the household rosters, assuming that never-married 
-women have had no children.
+NFHS-1 was collected after sex selection was introduced and it is, therefore, not 
+possible to calculate a fertility rate in exactly the same manner for a period before 
+sex selection was widely available.
+Instead, I calculate the fertility rates for women who was between 15 and 39 years of
+age five years prior to the survey month, again using the number of births three years 
+before that.
+Given the relatively low number of births to women 40 to 45 years of age, this approach 
+provides the best estimate of the fertility rate at the time when sex selection still was 
+not widespread.
+This fertility rate is shown as ``1987--88'' in the table.
 
 
-To predict cohort fertility based on the models above, I estimate for each spell the 
-probability of progression to the next parity.%
-\footnote{
-This includes the spell from marriage to first birth, even those results are not 
-examined above because of the problems with capturing the exact timing of marriages
-for the first two rounds of the survey.
+To predict cohort fertility based on the models above, I estimate the probability of 
+progression to the next parity for each spell.
+I include the spell from marriage to first birth, even those results are not examined 
+above because of the problems with capturing the exact timing of marriages for the first 
+two rounds of the survey.
 The estimated progression probabilities should, however, be less affected by this
 problem.
-}
-
-To make the predictions depend solely on sample composition and the estimate, I
+To ensure that the predictions depend solely on sample composition and the estimate, I
 use the age at marriage for each woman and predict the likelihood of progressing to
 each parity, assuming two years increases in age between each parity.
-For example, for a woman married at age 20, I use age 22 for predicting progression 
+Hence, for a woman married at age 20, I use age 22 for predicting progression 
 to the second birth, 24 for the third, and 26 for the fourth.
 
 The parity progression depends on the sex composition for prior children for
 parity two and above.
-For example, the likelihood of a second birth is the 
-probability of having a first birth multiplied with
+For example, the likelihood of a second birth is the probability of having a first birth 
+multiplied with
 sum of the 
 probability of having a son as the first child conditional on having a first child 
 multiplied with parity progression probability if the first child is a son 
@@ -1765,11 +1772,34 @@ The survey rounds do not coincide entirely with the periods I use for the model.
 For the NFHS-4, I use the model results for the 2005--2016 period, 
 for NFHS-3 the 1995-2004, NFHS-2 1985-1994, and for NFHS-1 1972-1984.
 
-\input{../tables/fertility.tex}
+The predicted fertility using the hazard model assumes that women in the sample
+follows the parity progression probability based on the given period. 
+For example, for the NFHS-4 the predictions assume that the women in the sample follow
+the estimated behavior for all four spells based on the 2005--2016 sample.
 
 
 
 
+The predicted cohort fertility based on the hazard model is consistently higher and
+declines faster than the predicted fertility based on the four-parity fertility rate.
+
+
+The faster decline in predicted fertility based on the hazard model is consistent with
+a large bias in the fertility rate measure arising from later marriage, increased use of 
+sex selection, and the general increase in birth spacing shown above.
+
+
+
+
+
+Consistent with the rapid increase in the use of sex selection from the mid-eighties
+the most substantial differences between the two fertility measures are for higher
+educated women for earlier samples.
+
+    
+
+
+\section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
 
 
 
