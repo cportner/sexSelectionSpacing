@@ -14,14 +14,15 @@ file open table using `tables'/fertility.tex, write replace
 
 file write table "\begin{table}[hp!]" _n
 file write table "\begin{center}" _n
-file write table "\begin{scriptsize}" _n
+file write table "\begin{footnotesize}" _n
 file write table "\begin{threeparttable}" _n
-file write table "\caption{Predicted Fertility based on Fertility Rate and on Hazard Model}" _n
+file write table "\caption{Predicted Fertility based on Four-Parity Fertility Rate and on Hazard Model}" _n
 file write table "\label{tab:fertility}" _n
-file write table "\begin{tabular}{@{} l D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  @{}}" _n
+file write table "\begin{tabular}{@{} l D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  @{}}" _n
 file write table "\toprule" _n
-file write table "                   & \mco{NFHS--1}   & \mco{NFHS--2}   & \mco{NFHS--3}   & \mco{NFHS--4}   \\" _n
-file write table "                   & \mco{1992--93}  & \mco{1998--99}  & \mco{2005}      & \mco{NFHS--4}   \\" _n
+file write table "                       &            \mct{NFHS--1}          & \mco{NFHS--2}   & \mco{NFHS--3}   & \mco{NFHS--4}   \\" _n
+file write table "Fertility Rate Period  & \mco{1987--88}  & \mco{1992--93}  & \mco{1998--99}  & \mco{2005--06}  & \mco{2015--16}  \\" _n
+file write table "Hazard Model Period    & \mco{1972--84}  &                 & \mco{1985--94}  & \mco{1995--04}  & \mco{2004--16}  \\" _n
 file write table "\midrule" _n
 
 // Loop over area
@@ -34,9 +35,9 @@ foreach where in "Urban" "Rural" {
         loc area = "rural"
         loc area_val = 0
     }
-    file write table " & \multicolumn{4}{c}{`where'} \\ \cmidrule(lr){2-5}" _n
+    file write table " & \multicolumn{5}{c}{`where'} \\ \cmidrule(lr){2-6}" _n
 
-    foreach educ in "low" "med" "high" {
+    foreach educ in "low" "med" "high" "highest" {
 
         if "`educ'" == "low" {
             loc char "No Education"
@@ -47,15 +48,24 @@ foreach where in "Urban" "Rural" {
             loc educ_val = 2
         }
         if "`educ'" == "high" {
-            loc char "Eight or More Years of Education"
+            loc char "Eight to Eleven Years of Education"
             loc educ_val = 3
+        }
+        if "`educ'" == "highest" {
+            loc char "Twelve or More Years of Education"
+            loc educ_val = 4
         }
 
         // Education group 
-        file write table " & \multicolumn{4}{c}{`char'} \\" _n
+        file write table " & \multicolumn{5}{c}{`char'} \\" _n
 
         // Get "TFR"
-        file write table "TFR\tnote{a}       "
+        file write table "Fertility Rate\tnote{a}       "
+        // Early TFR numbers
+        use `data'/predicted_tfr_round_1.dta, clear
+        sum(prior_tfr_3yr) if urban == `area_val' & edu_group == `educ_val'
+        loc result = `r(mean)'
+        file write table "&      " %3.2fc (`result') "       "
         forvalues round = 1/4 {
             use `data'/predicted_tfr_round_`round'.dta, clear
             sum(tfr_3yr) if urban == `area_val' & edu_group == `educ_val'
@@ -65,12 +75,15 @@ foreach where in "Urban" "Rural" {
         file write table "\\" _n
         
         // Hazard prediction
-        file write table "Model\tnote{b}     "
+        file write table "Hazard Model\tnote{b}     "
         forvalues round = 1/4 {
             use `data'/predicted_fertility_hazard_g`round'_`educ'_r`round'.dta
             sum(pred_fertility) if urban == `area_val'
             loc result = `r(mean)'
             file write table "&      " %3.2fc (`result') "       "
+            if `round' == 1 {
+                        file write table "&                 "
+            }
         }
         file write table "\\" _n
         file write table "\addlinespace " _n
@@ -81,10 +94,10 @@ foreach where in "Urban" "Rural" {
 // Table endnotes
 file write table "\bottomrule" _n
 file write table "\end{tabular}" _n
-file write table "\begin{tablenotes} \tiny" _n
+file write table "\begin{tablenotes} \scriptsize" _n
 file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
 file write table "All predictions based on births up to and including parity four births" _n
-file write table "for both \`\`Total Fertility Rate'' and model predictions." _n
+file write table "for both fertility rate and model predictions." _n
 file write table "NFHS-1 was collected 1992--93 and model results for 1972--1984 were" _n
 file write table "applied for the predictions." _n
 file write table "NFHS-2 was collected 1998--99 and model results for 1985--1994 were" _n
@@ -95,7 +108,7 @@ file write table "NFHS-4 was collected 2015--16 and model results for 2005--2016
 file write table "applied for the predictions." _n
 
 file write table "\item[a] " _n
-file write table "TFR is based on five-year age groups counting births that occurred 1 to" _n
+file write table "The fertility rate is based on five-year age groups, counting births that occurred 1 to" _n
 file write table "36 months before the survey months." _n
 file write table "For NFHS-1 and NFHS-2 the total number of women in the five-year age" _n
 file write table "groups is based on the household roster since only ever-married women" _n
@@ -107,14 +120,14 @@ file write table "\item[b] " _n
 file write table "The model predictions for fertility are the average predicted fertility" _n
 file write table "across all women in a given sample, using their age of marriage as the" _n
 file write table "starting point and adding two years for each spell." _n
-file write table "Observed fertility is not taken into account for the predictions." _n
+file write table "Observed births are not taken into account for the predictions." _n
 file write table "For each spell, the predicted probability is the likelihood of having a" _n
 file write table "next birth given sex composition multiplied with probability of that" _n
 file write table "sex composition and the likelihood of getting to the spell." _n
 
 file write table "\end{tablenotes}" _n
 file write table "\end{threeparttable}" _n
-file write table "\end{scriptsize}" _n
+file write table "\end{footnotesize}" _n
 file write table "\end{center}" _n
 file write table "\end{table}" _n
 

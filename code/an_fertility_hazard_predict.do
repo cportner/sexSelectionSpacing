@@ -20,7 +20,14 @@ program predict_fertility
     include directories
     
     // Load results
-    estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
+    capture estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
+    if _rc!=0 {
+        // Try the subsequent period - Only G1 spell 4 for highest is missing
+        dis "Estimation results for spell `spell', period `period', and `educ' do not exist"
+        loc ++period
+        estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
+    }
+ 
  
     capture drop dur* np* t months mid_months
     capture drop p0 p1 p2 pcbg s pps prob_kid prob_any_birth ratio_sons num_sons pct_sons
@@ -122,9 +129,15 @@ replace scheduled_caste = 1 if scheduled_tribe
 // loc round = 4  // Survey round used for predictions
 // loc period = 4 // Fourth set of estimation results, not necessarily the same as survey round
 
+// Mom age increases
+loc mom_age_2 = 3
+loc mom_age_3 = 6
+loc mom_age_4 = 9
+
+
 forvalues period = 1/4 {
     loc round = `period'
-    foreach educ in "high" "med" "low" {
+    foreach educ in "highest" "high" "med" "low" {
 
         preserve
 
@@ -138,7 +151,10 @@ forvalues period = 1/4 {
             keep if edu_mother >= 1 & edu_mother < 8
         }
         else if "`educ'" == "high" {
-            keep if edu_mother >= 8
+            keep if edu_mother >= 8 & edu_mother <= 11
+        }
+        else if "`educ'" == "highest" {
+            keep if edu_mother >= 12
         }
         else {
             dis "Something went wrong with education level"
@@ -157,7 +173,7 @@ forvalues period = 1/4 {
         drop mom_age
         gen girl1 = 0
         gen girl1Xurban = girl1 * urban
-        gen mom_age    = b1_mom_age + 2
+        gen mom_age    = b1_mom_age + `mom_age_2'
         
         predict_fertility 2 `period' `educ'
         gen prob_2nd_birth_b = prob_any_birth 
@@ -167,7 +183,7 @@ forvalues period = 1/4 {
         drop girl* mom_age
         gen girl1 = 1
         gen girl1Xurban = girl1 * urban
-        gen mom_age    = b1_mom_age + 2
+        gen mom_age    = b1_mom_age + `mom_age_2'
         
         predict_fertility 2 `period' `educ'
         gen prob_2nd_birth_g = prob_any_birth 
@@ -180,7 +196,7 @@ forvalues period = 1/4 {
         gen girl2 = 0 
         gen girl1Xurban = girl1 * urban
         gen girl2Xurban = girl2 * urban
-        gen mom_age = b1_mom_age + 4
+        gen mom_age = b1_mom_age + `mom_age_3'
 
         predict_fertility 3 `period' `educ'
         gen prob_3rd_birth_bb = prob_any_birth
@@ -192,7 +208,7 @@ forvalues period = 1/4 {
         gen girl2 = 0
         gen girl1Xurban = girl1 * urban
         gen girl2Xurban = girl2 * urban
-        gen mom_age = b1_mom_age + 4
+        gen mom_age = b1_mom_age + `mom_age_3'
 
         predict_fertility 3 `period' `educ'
         gen prob_3rd_birth_bg = prob_any_birth
@@ -204,7 +220,7 @@ forvalues period = 1/4 {
         gen girl2 = 1
         gen girl1Xurban = girl1 * urban
         gen girl2Xurban = girl2 * urban
-        gen mom_age = b1_mom_age + 4
+        gen mom_age = b1_mom_age + `mom_age_3'
 
         predict_fertility 3 `period' `educ'
         gen prob_3rd_birth_gg = prob_any_birth
@@ -219,7 +235,7 @@ forvalues period = 1/4 {
         gen girl1Xurban = girl1 * urban
         gen girl2Xurban = girl2 * urban
         gen girl3Xurban = girl3 * urban
-        gen mom_age = b1_mom_age + 6
+        gen mom_age = b1_mom_age + `mom_age_4'
 
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_bbb = prob_any_birth
@@ -233,7 +249,7 @@ forvalues period = 1/4 {
         gen girl1Xurban = girl1 * urban
         gen girl2Xurban = girl2 * urban
         gen girl3Xurban = girl3 * urban
-        gen mom_age = b1_mom_age + 6
+        gen mom_age = b1_mom_age + `mom_age_4'
 
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_bbg = prob_any_birth
@@ -247,7 +263,7 @@ forvalues period = 1/4 {
         gen girl1Xurban = girl1 * urban
         gen girl2Xurban = girl2 * urban
         gen girl3Xurban = girl3 * urban
-        gen mom_age = b1_mom_age + 6
+        gen mom_age = b1_mom_age + `mom_age_4'
 
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_bgg = prob_any_birth
@@ -261,7 +277,7 @@ forvalues period = 1/4 {
         gen girl1Xurban = girl1 * urban
         gen girl2Xurban = girl2 * urban
         gen girl3Xurban = girl3 * urban
-        gen mom_age = b1_mom_age + 6
+        gen mom_age = b1_mom_age + `mom_age_4'
 
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_ggg = prob_any_birth

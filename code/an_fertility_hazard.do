@@ -9,11 +9,11 @@ include directories
 
 use `data'/base, clear
 
-save "`data'/temp_main"
+save "`data'/temp_main", replace
 
 // Restricting sample and data manipulations
 
-foreach educ in "high" "med" "low" {
+foreach educ in "highest" "high" "med" "low" {
 
     use "`data'/temp_main", clear
 
@@ -25,14 +25,17 @@ foreach educ in "high" "med" "low" {
         keep if edu_mother >= 1 & edu_mother < 8
     }
     else if "`educ'" == "high" {
-        keep if edu_mother >= 8
+        keep if edu_mother >= 8 & edu_mother <= 11
+    }
+    else if "`educ'" == "highest" {
+        keep if edu_mother >= 12
     }
     else {
         dis "Something went wrong with education level"
         exit
     }
     
-    save "`data'/temp_`educ'" 
+    save "`data'/temp_`educ'" , replace
 
     forvalues spell = 1/4 {
 
@@ -65,7 +68,7 @@ foreach educ in "high" "med" "low" {
             bysort id (t): replace birth = 1 if b`spell'_sex == 1 & b`spell'_cen == 0 & _n == _N // exit with a son
             bysort id (t): replace birth = 2 if b`spell'_sex == 2 & b`spell'_cen == 0 & _n == _N // exit with a daugther
 
-            // PIECE-WISE LINEAR HAZARDS - REMEMBER TO CHANGE BELOW IF ANY CHANGES HERE!
+            // PIECE-WISE LINEAR HAZARDS 
             if `spell' == 1 | `spell' == 2  {
                 loc i = 1
                 forvalues per = 1/19 {
@@ -78,10 +81,12 @@ foreach educ in "high" "med" "low" {
             }
             else if `spell' == 3 {
                 loc i = 1
-                forvalues per = 1/14 {
+                forvalues per = 1/9 {
                     gen dur`i' = t == `per'
                     loc ++i
                 }
+                gen dur`i' = t >= 10 & t <= 14
+                loc ++i
                 gen dur`i' = t >= 15 & t <= 19
                 loc ++i
                 gen dur`i' = t >= 20 

@@ -101,11 +101,9 @@ egen age_group = cut(mother_age ) , at(15(5)40 46)
 // Education groupings
 gen edu_group = 1 if edu_mother == 0
 replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
-replace edu_group = 3 if edu_mother >= 8 
-
-
-// replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
-// replace edu_group = 4 if edu_mother >= 12
+// replace edu_group = 3 if edu_mother >= 8 
+replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
+replace edu_group = 4 if edu_mother >= 12
 
 
 // 3-year fertility rate by age
@@ -251,7 +249,9 @@ egen age_group = cut(mother_age ) , at(15(5)40 46)
 // Education groupings
 gen edu_group = 1 if edu_mother == 0
 replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
-replace edu_group = 3 if edu_mother >= 8 
+// replace edu_group = 3 if edu_mother >= 8 
+replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
+replace edu_group = 4 if edu_mother >= 12
 
 
 // replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
@@ -470,7 +470,9 @@ egen age_group = cut(mother_age ) , at(15(5)40 46)
 // Education groupings
 gen edu_group = 1 if edu_mother == 0
 replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
-replace edu_group = 3 if edu_mother >= 8 
+// replace edu_group = 3 if edu_mother >= 8 
+replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
+replace edu_group = 4 if edu_mother >= 12
 
 
 // replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
@@ -703,7 +705,9 @@ egen age_group = cut(mother_age ) , at(15(5)40 46)
 // Education groupings
 gen edu_group = 1 if edu_mother == 0
 replace edu_group = 2 if edu_mother >= 1 & edu_mother <= 7
-replace edu_group = 3 if edu_mother >= 8 
+// replace edu_group = 3 if edu_mother >= 8 
+replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
+replace edu_group = 4 if edu_mother >= 12
 
 
 // replace edu_group = 3 if edu_mother >= 8 & edu_mother <= 11
@@ -722,21 +726,29 @@ forvalues parity = 1/4 {
 	// birth of parity `parity' in 1 year before survey date
 	gen birth_1yr_`parity' = (interview_cmc - b`parity'_born_cmc) >= 1 & ///
 	    (interview_cmc - b`parity'_born_cmc) <= 12
+	gen prior_birth_3yr_`parity' = (interview_cmc - b`parity'_born_cmc) >= 60 & ///
+	    (interview_cmc - b`parity'_born_cmc) <= 95	
 }
 
 
 gen births_3yr_1_to_4 = birth_3yr_1 + birth_3yr_2 + birth_3yr_3 + birth_3yr_4
 gen births_1yr_1_to_4 = birth_1yr_1 + birth_1yr_2 + birth_1yr_3 + birth_1yr_4
 
+gen prior_births_3yr_1_4 = prior_birth_3yr_1 + prior_birth_3yr_2 + prior_birth_3yr_3 + prior_birth_3yr_4
+
+gen prior_count = 1 if age_group > 15
 
 // 
 collapse  (count) num_women = interview_cmc ///
+    (count) prior_num_women = prior_count ///
     (sum) num_births_3yr_bo_1 = birth_3yr_1 ///
     (sum) num_births_3yr_bo_2 = birth_3yr_2 ///
     (sum) num_births_3yr_bo_3 = birth_3yr_3 ///
     (sum) num_births_3yr_bo_4 = birth_3yr_4 ///
     (sum) num_births_3yr = births_3yr_1_to_4 ///
-    (sum) num_births_1yr = births_1yr_1_to_4, ///
+    (sum) num_births_1yr = births_1yr_1_to_4 ///
+    (sum) prior_num_births_3yr = prior_births_3yr_1_4 ///
+    , ///
 	by(urban edu_group age_group)
 
 
@@ -746,6 +758,8 @@ forvalues bo = 1/4 {
 }
 gen asbr_3yr = 5 * (num_births_3yr / 3) / num_women 
 gen asbr_1yr = 5 * num_births_1yr / num_women 
+
+gen prior_asbr_3yr = 5 * (prior_num_births_3yr / 3 ) / prior_num_women
 
 
 // Calculate "TFR" for parities 2 through 4 and 
@@ -757,7 +771,9 @@ collapse ///
     (sum) tfr_3yr_bo_3 = asbr_3yr_bo_3 ///
     (sum) tfr_3yr_bo_4 = asbr_3yr_bo_4 ///
     (sum) tfr_3yr=asbr_3yr ///
-    (sum) tfr_1yr=asbr_1yr , ///
+    (sum) tfr_1yr=asbr_1yr ///
+    (sum) prior_tfr_3yr = prior_asbr_3yr ///
+    , ///
 	by(urban edu_group)
 
 list
