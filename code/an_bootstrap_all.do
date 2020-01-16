@@ -14,37 +14,44 @@ include directories
 
 use `data'/base
 
-tempfile main low med high
-save "`main'"
+save "`data'/temp_main", replace
 
 // Restricting sample and data manipulations
 
-foreach educ in "high" "med" "low" {
+foreach educ in "highest" "high" "med" "low" {
 
-    use "`main'", clear
+    use "`data'/temp_main", clear
 
     // keep only those in education group
     if "`educ'" == "low" {
         keep if edu_mother == 0
     }
     else if "`educ'" == "med" {
-        keep if edu_mother >= 1 & edu_mother < 8
+        keep if edu_mother >= 1 & edu_mother <= 7
     }
     else if "`educ'" == "high" {
-        keep if edu_mother >= 8
+        keep if edu_mother >= 8 & edu_mother <= 11
+    }
+    else if "`educ'" == "highest" {
+        keep if edu_mother >= 12
     }
     else {
         dis "Something went wrong with education level"
         exit
     }
     
-    save "``educ''" // Need double ` because the name that comes from educ is itself a local variable
+    save "`data'/temp_`educ'" , replace
 
-    forvalues spell = 2/4 {
+	forvalues group = 1/4 {
+	
+		// Do not run the first period for the highest education group; too few obs
+		if "`educ'" == "highest" & `group' == 1 {
+			continue
+		}
 
-        forvalues group = 1/4 {
+	    forvalues spell = 2/4 {
             
-            use "``educ''" , clear
+            use "`data'/temp_`educ'" , clear
             if `spell' == 1 {
                 global b1space ""
                 loc girlvar ""

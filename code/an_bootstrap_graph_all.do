@@ -28,7 +28,7 @@ end
 include directories
 
 // Load bootstrap results and create matrices.
-foreach educ in "low" "med" "high" {
+foreach educ in "low" "med" "high" "highest" {
     forvalues spell = 2/4 {
         forvalues period = 1/4 {
     
@@ -66,7 +66,7 @@ set scheme s1mono
 // Only bottom graph (likelihood of next birth) have an x axis
 // There are no confidence intervals in graphs (refer to tables for those)
  
-foreach educ in "low" "med" "high" {
+foreach educ in "low" "med" "high" "highest" {
     forvalues spell = 2/4 {
 
         // Set up data from matrix
