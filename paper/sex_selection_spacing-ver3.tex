@@ -1748,36 +1748,32 @@ above because of the problems with capturing the exact timing of marriages for t
 two rounds of the survey.
 The estimated progression probabilities should, however, be less affected by this
 problem.
+
 To ensure that the predictions depend solely on sample composition and the estimate, I
 use the age at marriage for each woman and predict the likelihood of progressing to
-each parity, assuming two years increases in age between each parity.
-Hence, for a woman married at age 20, I use age 22 for predicting progression 
-to the second birth, 24 for the third, and 26 for the fourth.
+each parity, assuming three years increases in age between each parity.
+Hence, for a woman married at age 20, I use age 23 for predicting progression 
+to the second birth, 26 for the third, and 29 for the fourth.
+[TK Predicted fertility is higher the younger the women and the shorter the assumed spacing?]
 
-The parity progression depends on the sex composition for prior children for
-parity two and above.
-For example, the likelihood of a second birth is the probability of having a first birth 
-multiplied with
-sum of the 
-probability of having a son as the first child conditional on having a first child 
-multiplied with parity progression probability if the first child is a son 
-and the 
-probability of having a girl as the first child  conditional on having a first child
-multiplied with the parity progression probability if the first child is a girl.
-$$
-prob(2nd) = prob(1st) * (prob(son|1st)*prob(2nd|son) + prob(girl|1st) * prob(2nd|girl)
-$$
+As shown above, the parity progression depends critically on the sex composition for prior 
+children for parity two and above.
+I, therefore, estimate the progression probability for each possible sex composition
+and weigh those probabilities with the likelihood that they will occur based on the
+prior spells.
 
-The survey rounds do not coincide entirely with the periods I use for the model.
+The survey rounds do not coincide entirely with the periods I use for the hazard model.
 For the NFHS-4, I use the model results for the 2005--2016 period, 
-for NFHS-3 the 1995-2004, NFHS-2 1985-1994, and for NFHS-1 1972-1984.
+for NFHS-3 the 1995--2004 period, 
+for NFHS-2 the 1985--1994 period, 
+and for NFHS-1 the 1972--1984 period.
+Because of the small number of women who had the highest level of education in the
+1972--1984 period, I do not present a predicted fertility for this case.
 
 The predicted fertility using the hazard model assumes that women in the sample
-follows the parity progression probability based on the given period. 
-For example, for the NFHS-4 the predictions assume that the women in the sample follow
-the estimated behavior for all four spells based on the 2005--2016 sample.
-
-
+follows the parity progression probability in the period. 
+For example, for the NFHS-4 the predictions I assume that all women in the sample follow
+the estimated behavior for all four spells based on the 2005--2016 results.
 
 
 The predicted cohort fertility based on the hazard model is consistently higher and
@@ -1788,15 +1784,10 @@ The faster decline in predicted fertility based on the hazard model is consisten
 a large bias in the fertility rate measure arising from later marriage, increased use of 
 sex selection, and the general increase in birth spacing shown above.
 
+[some TFRs are actually going up!]
 
-
-
-
-Consistent with the rapid increase in the use of sex selection from the mid-eighties
-the most substantial differences between the two fertility measures are for higher
-educated women for earlier samples.
-
-    
+[CAVEAT: only first four births, these predicted fertility numbers likely too low,
+especially for the lower education groups]    
 
 
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
