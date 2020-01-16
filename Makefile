@@ -86,11 +86,19 @@ PPSTARGET := \
 
 ### Bootstrap - Combined
 ### Data for bootstrapping
-BSDATA_ALL := \
+BSDATA_HIGHEST := \
     $(foreach spell, $(SPELLS), \
-    $(foreach per, $(PERIODS), \
     $(foreach educ, $(EDUC), \
+    $(foreach per, 2 3 4, \
     $(DAT)/bs_s$(spell)_g$(per)_$(educ)_all.dta ) ) ) 
+
+BSDATA_OTHERS := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, $(EDUC), \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/bs_s$(spell)_g$(per)_$(educ)_all.dta ) ) ) 
+
+BSDATA_ALL := $(BSDATA_HIGHEST) $(BSDATA_OTHERS)
 
 ### Tables of bootstrapping results
 BSTABLE_ALL := \
