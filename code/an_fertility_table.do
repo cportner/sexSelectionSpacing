@@ -60,7 +60,7 @@ foreach where in "Urban" "Rural" {
         file write table " & \multicolumn{5}{c}{`char'} \\" _n
 
         // Get "TFR"
-        file write table "Fertility Rate\tnote{a}       "
+        file write table "Fertility Rate\tnote{a}   "
         // Early TFR numbers
         use `data'/predicted_tfr_round_1.dta, clear
         sum(prior_tfr_3yr) if urban == `area_val' & edu_group == `educ_val'
@@ -76,7 +76,13 @@ foreach where in "Urban" "Rural" {
         
         // Hazard prediction
         file write table "Hazard Model\tnote{b}     "
-        forvalues round = 1/4 {
+        forvalues round = 1/4 {            
+            # Estimation results for highest education group in the 1972-84 period unreliable
+            # because of too small sample size
+            if `round' == 1 & "`educ'" == "highest" {
+                file write table "&        .        &                 "
+                continue
+            }
             use `data'/predicted_fertility_hazard_g`round'_`educ'_r`round'.dta
             sum(pred_fertility) if urban == `area_val'
             loc result = `r(mean)'
@@ -119,7 +125,7 @@ file write table "recode sample since all women were interviewed." _n
 file write table "\item[b] " _n
 file write table "The model predictions for fertility are the average predicted fertility" _n
 file write table "across all women in a given sample, using their age of marriage as the" _n
-file write table "starting point and adding two years for each spell." _n
+file write table "starting point and adding three years for each spell." _n
 file write table "Observed births are not taken into account for the predictions." _n
 file write table "For each spell, the predicted probability is the likelihood of having a" _n
 file write table "next birth given sex composition multiplied with probability of that" _n

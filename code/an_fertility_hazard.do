@@ -37,10 +37,18 @@ foreach educ in "highest" "high" "med" "low" {
     
     save "`data'/temp_`educ'" , replace
 
-    forvalues spell = 1/4 {
+    forvalues group = 1/4 {
+    
+        # Estimation results for highest education group in the 1972-84 period unreliable
+        # because of too small sample size
+        if "`educ'" == "highest" & `group' == 1 {
+            continue
+        }
 
-        forvalues group = 1/4 {
-            
+        forvalues spell = 1/4 {
+
+            dis "Running estimations for spell `spell' in period `group' for `educ'"
+
             use "`data'/temp_`educ'" , clear
 
             // Obviously no prior children for first spell
@@ -81,12 +89,10 @@ foreach educ in "highest" "high" "med" "low" {
             }
             else if `spell' == 3 {
                 loc i = 1
-                forvalues per = 1/9 {
+                forvalues per = 1/14 {
                     gen dur`i' = t == `per'
                     loc ++i
                 }
-                gen dur`i' = t >= 10 & t <= 14
-                loc ++i
                 gen dur`i' = t >= 15 & t <= 19
                 loc ++i
                 gen dur`i' = t >= 20 
@@ -133,6 +139,7 @@ foreach educ in "highest" "high" "med" "low" {
             estimates notes: $lastm
             estimates save `data'/fertility_results_spell`spell'_g`group'_`educ', replace
             
+            dis _n
         }
     }
 }

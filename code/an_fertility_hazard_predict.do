@@ -21,13 +21,11 @@ program predict_fertility
     
     // Load results
     capture estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
-    if _rc!=0 {
-        // Try the subsequent period - Only G1 spell 4 for highest is missing
+    if _rc != 0 {
+        // Exit if estimation results missing
         dis "Estimation results for spell `spell', period `period', and `educ' do not exist"
-        loc ++period
-        estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
+        exit
     }
- 
  
     capture drop dur* np* t months mid_months
     capture drop p0 p1 p2 pcbg s pps prob_kid prob_any_birth ratio_sons num_sons pct_sons
@@ -138,6 +136,12 @@ loc mom_age_4 = 9
 forvalues period = 1/4 {
     loc round = `period'
     foreach educ in "highest" "high" "med" "low" {
+    
+        # Estimation results for highest education group in the 1972-84 period unreliable
+        # because of too small sample size
+        if "`educ'" == "highest" & `period' == 1 {
+            continue
+        }
 
         preserve
 
@@ -164,6 +168,7 @@ forvalues period = 1/4 {
         // 1st spell 
         gen mom_age = b1_mom_age
 
+        dis "1st spell in period `period' for `educ'"
         predict_fertility 1 `period' `educ'
         gen prob_1st_birth = prob_any_birth
         gen prob_1st_son   = pct_sons / 100
@@ -174,7 +179,8 @@ forvalues period = 1/4 {
         gen girl1 = 0
         gen girl1Xurban = girl1 * urban
         gen mom_age    = b1_mom_age + `mom_age_2'
-        
+
+        dis "2nd spell in period `period' for `educ' with 1 boy"        
         predict_fertility 2 `period' `educ'
         gen prob_2nd_birth_b = prob_any_birth 
         gen prob_2nd_son_b   = pct_sons / 100
@@ -184,7 +190,8 @@ forvalues period = 1/4 {
         gen girl1 = 1
         gen girl1Xurban = girl1 * urban
         gen mom_age    = b1_mom_age + `mom_age_2'
-        
+
+        dis "2nd spell in period `period' for `educ' with 1 girl"                
         predict_fertility 2 `period' `educ'
         gen prob_2nd_birth_g = prob_any_birth 
         gen prob_2nd_son_g   = pct_sons / 100
@@ -198,6 +205,7 @@ forvalues period = 1/4 {
         gen girl2Xurban = girl2 * urban
         gen mom_age = b1_mom_age + `mom_age_3'
 
+        dis "3rd spell in period `period' for `educ' with 2 boys"        
         predict_fertility 3 `period' `educ'
         gen prob_3rd_birth_bb = prob_any_birth
         gen prob_3rd_son_bb   = pct_sons / 100
@@ -210,6 +218,7 @@ forvalues period = 1/4 {
         gen girl2Xurban = girl2 * urban
         gen mom_age = b1_mom_age + `mom_age_3'
 
+        dis "3rd spell in period `period' for `educ' with 1 boy / 1 girl"
         predict_fertility 3 `period' `educ'
         gen prob_3rd_birth_bg = prob_any_birth
         gen prob_3rd_son_bg   = pct_sons / 100
@@ -222,6 +231,7 @@ forvalues period = 1/4 {
         gen girl2Xurban = girl2 * urban
         gen mom_age = b1_mom_age + `mom_age_3'
 
+        dis "3rd spell in period `period' for `educ' with 2 girls"        
         predict_fertility 3 `period' `educ'
         gen prob_3rd_birth_gg = prob_any_birth
         gen prob_3rd_son_gg   = pct_sons / 100
@@ -237,6 +247,7 @@ forvalues period = 1/4 {
         gen girl3Xurban = girl3 * urban
         gen mom_age = b1_mom_age + `mom_age_4'
 
+        dis "4th spell in period `period' for `educ' with 3 boys"
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_bbb = prob_any_birth
         gen prob_4th_son_bbb   = pct_sons / 100
@@ -251,6 +262,7 @@ forvalues period = 1/4 {
         gen girl3Xurban = girl3 * urban
         gen mom_age = b1_mom_age + `mom_age_4'
 
+        dis "4th spell in period `period' for `educ' with 2 boys / 1 girl"
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_bbg = prob_any_birth
         gen prob_4th_son_bbg   = pct_sons / 100
@@ -265,6 +277,7 @@ forvalues period = 1/4 {
         gen girl3Xurban = girl3 * urban
         gen mom_age = b1_mom_age + `mom_age_4'
 
+        dis "4th spell in period `period' for `educ' with 1 boy / 2 girls"
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_bgg = prob_any_birth
         gen prob_4th_son_bgg   = pct_sons / 100
@@ -279,6 +292,7 @@ forvalues period = 1/4 {
         gen girl3Xurban = girl3 * urban
         gen mom_age = b1_mom_age + `mom_age_4'
 
+        dis "4th spell in period `period' for `educ' with 3 girls"
         predict_fertility 4 `period' `educ'
         gen prob_4th_birth_ggg = prob_any_birth
         gen prob_4th_son_ggg   = pct_sons / 100
