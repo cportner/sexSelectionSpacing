@@ -31,7 +31,7 @@ endif
 ### Generate dependencies for ease of reading/writing
 PERIODS := 1 2 3 4
 AREAS   := rural urban
-EDUC    := low med high
+EDUC    := low med high highest
 SPELLS  := 2 3 4
 COMP1   := _
 COMP2   := _b_ _g_
