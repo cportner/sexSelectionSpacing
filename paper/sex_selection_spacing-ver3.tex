@@ -1741,8 +1741,8 @@ not widespread.
 This fertility rate is shown as ``1987--88'' in the table.
 
 
-To predict cohort fertility based on the models above, I estimate the probability of 
-progression to the next parity for each spell.
+To predict cohort fertility based on the hazard models above, I estimate the probability 
+of progression to the next parity for each spell.
 I include the spell from marriage to first birth, even those results are not examined 
 above because of the problems with capturing the exact timing of marriages for the first 
 two rounds of the survey.
@@ -1754,13 +1754,19 @@ use the age at marriage for each woman and predict the likelihood of progressing
 each parity, assuming three years increases in age between each parity.
 Hence, for a woman married at age 20, I use age 23 for predicting progression 
 to the second birth, 26 for the third, and 29 for the fourth.
-[TK Predicted fertility is higher the younger the women and the shorter the assumed spacing?]
+Decreasing the increases in age between parities leads to slightly higher predicted 
+fertility.
 
 As shown above, the parity progression depends critically on the sex composition for prior 
 children for parity two and above.
 I, therefore, estimate the progression probability for each possible sex composition
 and weigh those probabilities with the likelihood that they will occur based on the
 prior spells.
+
+The predicted fertility using the hazard model assumes that women in the sample
+follows the parity progression probability in the period. 
+For example, for the NFHS-4 the predictions I assume that all women in the sample follow
+the estimated behavior for all four spells based on the 2005--2016 results.
 
 The survey rounds do not coincide entirely with the periods I use for the hazard model.
 For the NFHS-4, I use the model results for the 2005--2016 period, 
@@ -1770,24 +1776,32 @@ and for NFHS-1 the 1972--1984 period.
 Because of the small number of women who had the highest level of education in the
 1972--1984 period, I do not present a predicted fertility for this case.
 
-The predicted fertility using the hazard model assumes that women in the sample
-follows the parity progression probability in the period. 
-For example, for the NFHS-4 the predictions I assume that all women in the sample follow
-the estimated behavior for all four spells based on the 2005--2016 results.
 
-
-The predicted cohort fertility based on the hazard model is consistently higher and
-declines faster than the predicted fertility based on the four-parity fertility rate.
-
-
+The main result is that the predicted cohort fertility based on the hazard model is 
+consistently higher and declines faster than the four-parity fertility rate.
 The faster decline in predicted fertility based on the hazard model is consistent with
 a large bias in the fertility rate measure arising from later marriage, increased use of 
 sex selection, and the general increase in birth spacing shown above.
 
-[some TFRs are actually going up!]
+The potential bias in the fertility rate is also evident in the fact that the 
+fertility rate is increasing over time for some groups.
+For example, urban women with eight to eleven years of education showed 1.84, 1.81, and
+1.87 over the last three surveys and the increase from NFHS-3 to NFHS-4 is even larger
+for rural women with one to seven years of education.
+These increases are likely the result of a stabilization of the age of first birth and
+the spacing between births.%
+\footnote{
+Increases in TFR over time, even in the face of declining fertility is not 
+unusual, as shown by Costa Rica \citep{Bongaarts1999}.
+}
 
-[CAVEAT: only first four births, these predicted fertility numbers likely too low,
-especially for the lower education groups]    
+Despite the decline in the predicted cohort fertility based on the hazard model, these 
+are still generally above the generally accepted replacement level of 2.1.
+Only for urban women with twelve or more years of education is the predicted cohort
+fertility below 2.1, and even then it is still more than 0.3 children higher than the 
+fertility rate estimate of 1.5.
+Furthermore, because only the first four births are used, the predicted cohort fertility
+numbers are likely too low, especially for the lower education groups.
 
 
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
