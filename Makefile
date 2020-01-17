@@ -307,35 +307,48 @@ $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
 #  Fertility Predictions    #
 #---------------------------#
 
-FHRESULTS := \
+FHRESULTS_OTHER := \
     $(foreach spell, 1 2 3 4, \
-    $(foreach educ, $(EDUC), \
+    $(foreach educ, low med high, \
     $(foreach per, $(PERIODS), \
     $(DAT)/fertility_results_spell$(spell)_g$(per)_$(educ).ster ) ) )
 
-FHTARGET := \
-    $(foreach educ, $(EDUC), \
+FHRESULTS_HIGHEST := \
+    $(foreach spell, 1 2 3 4, \
+    $(foreach per, 2 3 4, \
+    $(DAT)/fertility_results_spell$(spell)_g$(per)_highest.ster ) )
+
+FHRESULTS := $(FHRESULTS_HIGHEST) $(FHRESULTS_OTHER)
+
+FHTARGET_OTHER := \
+    $(foreach educ, low med high, \
     $(foreach per, $(PERIODS), \
     $(DAT)/predicted_fertility_hazard_g$(per)_$(educ)_r$(per).dta ) )
+
+FHTARGET_HIGHEST:= \
+    $(foreach per, 2 3 4, \
+    $(DAT)/predicted_fertility_hazard_g$(per)_highest_r$(per).dta ) 
+    
+FHTARGET := $(FHTARGET_HIGHEST) $(FHTARGET_OTHER)
     
 TFRTARGET := \
     $(foreach per, $(PERIODS), \
     $(DAT)/predicted_tfr_round_$(per).dta ) 
 
 # TFR estimations
-$(TFRTARGET) : $(COD)/an_fertility_rate.do
+$(TFRTARGET) : $(COD)/an_fertility_rate.do \
  $(RAW)/iair72fl.dta $(RAW)/iair52fl.dta \
  $(RAW)/iahr42fl.dta $(RAW)/iair42fl.dta \
  $(RAW)/iahh21fl.dta $(RAW)/iahr23fl.dta $(RAW)/iair23fl.dta
 	cd $(COD); stata-se -b -q $(<F)	
 
 # Hazard model estimation results
-$(FHRESULTS) : $(COD)/an_fertility_hazard.do
+$(FHRESULTS) : $(COD)/an_fertility_hazard.do \
  $(DAT)/base.dta
 	cd $(COD); stata-se -b -q $(<F)	
 
 # Hazard model predictions
-$(FHTARGET) : $(COD)/an_fertility_hazard_predict.do
+$(FHTARGET) : $(COD)/an_fertility_hazard_predict.do \
  $(FHRESULTS) $(DAT)/base.dta
 	cd $(COD); stata-se -b -q $(<F)	
   
