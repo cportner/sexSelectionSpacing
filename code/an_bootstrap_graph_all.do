@@ -29,8 +29,14 @@ include directories
 
 // Load bootstrap results and create matrices.
 foreach educ in "low" "med" "high" "highest" {
-    forvalues spell = 2/4 {
-        forvalues period = 1/4 {
+    forvalues period = 1/4 {
+
+		// Do not run the first period for the highest education group; too few obs
+		if "`educ'" == "highest" & `period' == 1 {
+			continue
+		}
+            
+        forvalues spell = 2/4 {
     
             // Load bootstrap generated data and call bstat to replay results
             clear results // Stupid Stata - calling bstat after using the data does not clear old bstat
@@ -66,7 +72,7 @@ set scheme s1mono
 // Only bottom graph (likelihood of next birth) have an x axis
 // There are no confidence intervals in graphs (refer to tables for those)
  
-foreach educ in "low" "med" "high" "highest" {
+foreach educ in "low" "med" "high" {
     forvalues spell = 2/4 {
 
         // Set up data from matrix
@@ -133,3 +139,73 @@ foreach educ in "low" "med" "high" "highest" {
         
     }
 }
+
+
+// Because highest education group not run for first period have this part separate
+
+forvalues spell = 2/4 {
+
+    // Set up data from matrix
+    clear // Needed because we are generating new data sets based on matrices in svmat below
+    matrix tmp_mat = (1, b_s`spell'_g2_highest \ 2, b_s`spell'_g3_highest \  3, b_s`spell'_g4_highest)
+    svmat tmp_mat, names( col )
+    
+    foreach where in "urban" "rural" {
+        // Generate y variables in reverse order to match line pattern
+        foreach stat in "avg" "pct" "any" {
+            loc `stat' = ""
+            forval i = `spell'(-1)1 {
+                loc g = `i' - 1
+                loc `stat' = "``stat'' `stat'_`where'_g`g' "
+            }
+        }
+        // Generate line patterns - more solid to less solid as likelihood of ssa declines
+        loc pattern = ""                
+        forval i = 1/`spell' {
+            if `i' == 1 loc pattern = "solid"
+            if `i' == 2 loc pattern = "`pattern' longdash"
+            if `i' == 3 loc pattern = "`pattern' dash"
+            if `i' == 4 loc pattern = "`pattern' shortdash"
+        }
+        // Generate labels for legends
+        if `spell' == 2 {
+            local label "label(1 1 Girl) label(2 1 Boy) cols(1) " 
+        }
+        else if `spell' == 3 {
+            local label "label(1 2 Girls) label(2 1 Boy, 1 Girl) label(3 2 Boys) cols(1) "
+        } 
+        else if `spell' == 4 {
+            local label "label(1 3 Girls) label(2 1 Boy, 2 Girls) label(3 2 Boys, 1 Girl) label(4 3 Boys) cols(2) "
+        }
+        
+        twoway line `avg' c1, sort  ///
+            lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+            legend(off) plotregion(style(none)) xscale(off) ///
+            ytitle("Expected Spacing" "(months)") yscale(r(20 40)) ylabel(20(5)40 ,grid) ///
+            name(p50, replace)  fysize(80)
+
+        twoway line `pct' c1, sort ///
+            lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+            legend(off) plotregion(style(none)) xscale(off) ///
+            ytitle("Sex Ratio" "(Percent Boys)") yscale(r(40 70)) ylabel(40(10)70, grid) ///
+            yline(51.2195122) ///
+            name(pct, replace) fysize(80)
+
+        twoway line `any' c1, sort ///
+            lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+            legend(`label' symxsize(*.45) size(tiny) ring(0) position(7) region(margin(vsmall))) ///
+            plotregion(style(none)) ///
+            xtitle("") ///
+            xlabel(1 `" "1985-" "1994" "' 2 `" "1995-" "2004" "' 3 `" "2005-" "2016" "') ///
+            ytitle("Probability of" "a Next Birth") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
+            name(any, replace) fysize(100)
+
+        gr combine p50 pct any , ///
+            iscale(1.4) col(1) xcommon imargin(0 2 1 1) ysize(12) 
+
+        graph export `figures'/bs_spell`spell'_highest_`where'_all.eps, replace fontface(Palatino) 
+
+    }
+    
+}
+
