@@ -57,7 +57,7 @@ end
 include directories
 
 // Load bootstrap results and create matrices.
-foreach educ in "low" "med" "high" {
+foreach educ in "low" "med" "high" "highest" {
     forvalues spell = 2/4 {
         forvalues period = 1/4 {
         
@@ -82,7 +82,7 @@ foreach educ in "low" "med" "high" {
 
 
 // Loop over education
-foreach educ in "low" "med" "high" {
+foreach educ in "low" "med" "high" "highest" {
 
     if "`educ'" == "low" {
         loc char "No Education"
@@ -91,7 +91,10 @@ foreach educ in "low" "med" "high" {
         loc char "One to Seven Years of Education"
     }
     if "`educ'" == "high" {
-        loc char "Eight or More Years of Education"
+        loc char "Eight to Eleven Years of Education"
+    }
+    if "`educ'" == "highest" {
+        loc char "Twelve or More Years of Education"
     }
 
     //----------------------------------//

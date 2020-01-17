@@ -18,7 +18,10 @@ program run_analysis_all
         keep if edu_mother >= 1 & edu_mother < 8
     }
     else if "`educ'" == "high" {
-        keep if edu_mother >= 8
+        keep if edu_mother >= 8 & edu_mother <= 11
+    }
+    else if "`educ'" == "highest" {
+        keep if edu_mother >= 12
     }
     else {
         dis "Something went wrong with education level"

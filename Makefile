@@ -31,7 +31,7 @@ endif
 ### Generate dependencies for ease of reading/writing
 PERIODS := 1 2 3 4
 AREAS   := rural urban
-EDUC    := low med high
+EDUC    := low med high highest
 SPELLS  := 2 3 4
 COMP1   := _
 COMP2   := _b_ _g_
@@ -86,11 +86,19 @@ PPSTARGET := \
 
 ### Bootstrap - Combined
 ### Data for bootstrapping
-BSDATA_ALL := \
+### Do not run first period for highest because too few observations
+BSDATA_HIGHEST := \
     $(foreach spell, $(SPELLS), \
+    $(foreach per, 2 3 4, \
+    $(DAT)/bs_s$(spell)_g$(per)_highest_all.dta ) ) 
+
+BSDATA_OTHERS := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, low med high, \
     $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
     $(DAT)/bs_s$(spell)_g$(per)_$(educ)_all.dta ) ) ) 
+
+BSDATA_ALL := $(BSDATA_HIGHEST) $(BSDATA_OTHERS)
 
 ### Tables of bootstrapping results
 BSTABLE_ALL := \
