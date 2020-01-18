@@ -5,6 +5,7 @@ program run_analysis_all
     
     include directories
 
+    capture log close
     log using run_analysis_all_`spell'_`period'_`educ'.log, replace
 
     use `data'/base, clear
