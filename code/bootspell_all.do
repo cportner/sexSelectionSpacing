@@ -28,10 +28,14 @@ program bootspell_all, rclass
     }
     else if `spell' == 3 {
         loc i = 1
-        forvalues per = 1/14 {
-            gen dur`i' = t == `per'
+        forvalues per = 1(2)6 {
+            gen dur`i' = t >= `per' & t <= `per' + 1
             loc ++i
         }
+        gen dur`i' = t >= 7 & t <= 9
+        loc ++i
+        gen dur`i' = t >= 10 & t <= 14
+        loc ++i
         gen dur`i' = t >= 15 & t <= 19
         loc ++i
         gen dur`i' = t >= 20 
@@ -94,10 +98,14 @@ program bootspell_all, rclass
     }
     else if `spell' == 3 {
         loc i = 1
-        forvalues per = 1/14 {
-            gen dur`i' = t == `per'
+        forvalues per = 1(2)6 {
+            gen dur`i' = t >= `per' & t <= `per' + 1
             loc ++i
         }
+        gen dur`i' = t >= 7 & t <= 9
+        loc ++i
+        gen dur`i' = t >= 10 & t <= 14
+        loc ++i
         gen dur`i' = t >= 15 & t <= 19
         loc ++i
         gen dur`i' = t >= 20 
