@@ -59,6 +59,12 @@ include directories
 // Load bootstrap results and create matrices.
 foreach educ in "low" "med" "high" "highest" {
     forvalues spell = 2/4 {
+    
+		// Do not run the fourth spell for the highest education group; too few obs in the earlier years
+		if "`educ'" == "highest" & `spell' == 4 {
+			continue
+		}
+            
         forvalues period = 1/4 {
         
             // Load bootstrap generated data and call bstat to replay results
@@ -127,6 +133,12 @@ foreach educ in "low" "med" "high" "highest" {
         file write table " &  & \multicolumn{12}{c}{`where'} \\" _n
 
         forvalues spell = 2/4 {
+
+            // Do not run the fourth spell for the highest education group; too few obs in the earlier years
+            if "`educ'" == "highest" & `spell' == 4 {
+                continue
+            }
+
             
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell' - 1
@@ -339,6 +351,11 @@ foreach educ in "low" "med" "high" "highest" {
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
         forvalues spell = 2/4 {
+
+            // Do not run the fourth spell for the highest education group; too few obs in the earlier years
+            if "`educ'" == "highest" & `spell' == 4 {
+                continue
+            }
             
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell' - 1
@@ -543,7 +560,12 @@ foreach educ in "low" "med" "high" "highest" {
         file write table " &  & \multicolumn{12}{c}{`where'} \\" _n
 
         forvalues spell = 2/4 {
-            
+
+             // Do not run the fourth spell for the highest education group; too few obs in the earlier years
+            if "`educ'" == "highest" & `spell' == 4 {
+                continue
+            }
+           
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell' - 1
             if `spell' == 1 {
@@ -733,6 +755,11 @@ foreach educ in "low" "med" "high" "highest" {
         file write table " &  & \multicolumn{6}{c}{`where'} \\" _n
 
         forvalues spell = 2/4 {
+
+            // Do not run the fourth spell for the highest education group; too few obs in the earlier years
+            if "`educ'" == "highest" & `spell' == 4 {
+                continue
+            }
             
             // Double the lines to allow for both statistics and standard errors
             local double = 2 * `spell' - 1
