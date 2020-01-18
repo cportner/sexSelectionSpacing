@@ -86,10 +86,10 @@ PPSTARGET := \
 
 ### Bootstrap - Combined
 ### Data for bootstrapping
-### Do not run first period for highest because too few observations
+### Do not run 4th spell for highest because too few observations (199 women in 1st)
 BSDATA_HIGHEST := \
-    $(foreach spell, $(SPELLS), \
-    $(foreach per, 2 3 4, \
+    $(foreach spell, 2 3, \
+    $(foreach per, $(PERIODS), \
     $(DAT)/bs_s$(spell)_g$(per)_highest_all.dta ) ) 
 
 BSDATA_OTHERS := \
@@ -291,9 +291,31 @@ $(eval $(call pps-rule,$(spell))) \
 .PHONY: run_boot_all
 run_boot_all: $(BSDATA_ALL)
 
-$(BSDATA_ALL): $(COD)/an_bootstrap_all.do $(DAT)/base.dta $(COD)/bootspell_all.do \
- $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
-	cd $(COD); nice stata-se -b -q $(<F)	
+# Use basename because run_analysis is an ado file
+define bootstrap-rule
+$(DAT)/bs_s$(1)_g$(2)_$(3)_all.dta: $(COD)/run_bootstrap.ado \
+ $(DAT)/base.dta $(COD)/genSpell$(1).do
+	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
+endef
+
+$(foreach spell, 2 3, \
+$(foreach per, 1, \
+$(foreach educ, highest, \
+$(eval $(call bootstrap-rule,$(spell),$(per),$(educ))) ) ) )
+
+$(foreach spell, $(SPELLS), \
+$(foreach per, 2 3 4, \
+$(foreach educ, highest, \
+$(eval $(call bootstrap-rule,$(spell),$(per),$(educ))) ) ) )
+
+$(foreach spell, $(SPELLS), \
+$(foreach per, $(PERIODS), \
+$(foreach educ, low med high, \
+$(eval $(call bootstrap-rule,$(spell),$(per),$(educ))) ) ) )
+
+#$(BSDATA_ALL): $(COD)/an_bootstrap_all.do $(DAT)/base.dta $(COD)/bootspell_all.do \
+# $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
+#	cd $(COD); nice stata-se -b -q $(<F)	
 
 # Bootstrap tables
 .PHONY: run_boot_table_all
