@@ -15,18 +15,10 @@ program bh_highest, rclass
     }
     else if `spell' == 3 {
         loc i = 1
-//        forvalues per = 1(2)14 {
-//            gen dur`i' = t >= `per' & t <= `per' + 1    
-//            loc ++i
-//        }
-        forvalues per = 1/8 {
-            gen dur`i' = t == `per' 
+        forvalues per = 1(2)14 {
+            gen dur`i' = t >= `per' & t <= `per' + 1    
             loc ++i
         }
-        gen dur`i' = t >= 9 & t <= 11
-        loc ++i
-        gen dur`i' = t >= 12 & t <= 14
-        loc ++i
         gen dur`i' = t >= 15 & t <= 19
         loc ++i
         gen dur`i' = t >= 20 

@@ -53,6 +53,9 @@ program run_graphs_all
         else if "`educ'" == "high" {        
             replace mom_age = 20
         }
+        else if "`educ'" == "highest" {        
+            replace mom_age = 20
+        }
     }
     else {
         // replace b1space = 16
@@ -75,6 +78,9 @@ program run_graphs_all
             else if "`educ'" == "high" {        
                 replace mom_age = 22
             }
+            else if "`educ'" == "highest" {        
+                replace mom_age = 22
+            }
         }
         else if `spell' == 3 {
             if "`educ'" == "low" {
@@ -86,6 +92,9 @@ program run_graphs_all
             else if "`educ'" == "high" {        
                 replace mom_age = 24
             }
+            else if "`educ'" == "highest" {        
+                replace mom_age = 24
+            }
         }
         else if `spell' == 4 {
             if "`educ'" == "low" {
@@ -95,6 +104,9 @@ program run_graphs_all
                 replace mom_age = 24      
             }
             else if "`educ'" == "high" {        
+                replace mom_age = 25
+            }
+            else if "`educ'" == "highest" {        
                 replace mom_age = 25
             }
         }

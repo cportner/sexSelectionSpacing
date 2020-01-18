@@ -8,7 +8,7 @@ include directories
 set obs 0
 
 foreach per of numlist 1/4 {
-    foreach educ in low med high {
+    foreach educ in low med high highest {
         append using `data'/spell3_g`per'_`educ' 
     }
 }
@@ -16,7 +16,7 @@ foreach per of numlist 1/4 {
 // survival curves conditional on parity progression
 loc goptions "xtitle(Months) xlabel(0(6)96) ytitle("") legend(cols(1) ring(0) position(1)) clwidth(medthick..) mlwidth(medthick..) ylabel(0.0(0.2)1.0, grid glw(medthick)) lcolor(black...) "        
 foreach per of numlist 1/4 {
-    foreach educ in low med high {
+    foreach educ in low med high highest {
         set scheme s1mono
 
         graph twoway ///

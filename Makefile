@@ -49,39 +49,66 @@ WORKGRAPHS := \
 
 
 ### Regression analyses
-ANALYSISTARGET := \
-    $(foreach spell, $(SPELLS), \
+ANALYSISTARGET_HIGHEST := \
+    $(foreach spell, 2 3, \
     $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
+    $(foreach educ, highest, \
     $(DAT)/results_spell$(spell)_g$(per)_$(educ).ster ) ) )
 
-ANALYSISTARGET_REGION := \
+ANALYSISTARGET_OTHER := \
     $(foreach spell, $(SPELLS), \
     $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
-    $(foreach region, $(REGIONS), \
-    $(DAT)/results_spell$(spell)_g$(per)_$(educ)_r$(region).ster ) ) ) )
+    $(foreach educ, low med high, \
+    $(DAT)/results_spell$(spell)_g$(per)_$(educ).ster ) ) )
+
+ANALYSISTARGET := $(ANALYSISTARGET_HIGHEST) $(ANALYSISTARGET_OTHER)
 
 ### Percentage boys and standard survival graphs
-GRAPHTARGET := \
-    $(foreach spell, $(SPELLS), \
+GRAPHTARGET_HIGHEST := \
+    $(foreach spell, 2 3, \
     $(foreach per, $(PERIODS), \
-    $(foreach educ, $(EDUC), \
+    $(foreach educ, highest, \
     $(foreach area, $(AREAS),\
     $(foreach comp, $(COMP$(spell)),\
     $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)pc.eps $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)s.eps) ) ) ) )
 
-### PPS graphs
-### Spell 1 is different; it is combined across periods into one graph
-PPSTARGET := \
+GRAPHTARGET_OTHER := \
     $(foreach spell, $(SPELLS), \
-    $(foreach educ, $(EDUC), \
-    $(foreach area, $(AREAS), \
-    $(if $(filter $(spell),1), \
-    $(FIG)/spell$(spell)_$(educ)_$(area)_pps.eps , \
     $(foreach per, $(PERIODS), \
-    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) \
-    ) ) )
+    $(foreach educ, low med high, \
+    $(foreach area, $(AREAS),\
+    $(foreach comp, $(COMP$(spell)),\
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)pc.eps $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)$(comp)s.eps) ) ) ) )
+
+GRAPHTARGET := $(GRAPHTARGET_HIGHEST) $(GRAPHTARGET_OTHER)
+
+### PPS graphs
+PPSTARGET_HIGHEST := \
+    $(foreach spell, 2 3, \
+    $(foreach educ, highest, \
+    $(foreach area, $(AREAS), \
+    $(foreach per, $(PERIODS), \
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) ) )
+
+PPSTARGET_OTHER := \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, low med high, \
+    $(foreach area, $(AREAS), \
+    $(foreach per, $(PERIODS), \
+    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) ) )
+
+PPSTARGET := $(PPSTARGET_HIGHEST) $(PPSTARGET_OTHER)
+
+### Spell 1 is different; it is combined across periods into one graph
+#PPSTARGET := \
+#    $(foreach spell, $(SPELLS), \
+#    $(foreach educ, $(EDUC), \
+#    $(foreach area, $(AREAS), \
+#    $(if $(filter $(spell),1), \
+#    $(FIG)/spell$(spell)_$(educ)_$(area)_pps.eps , \
+#    $(foreach per, $(PERIODS), \
+#    $(FIG)/spell$(spell)_g$(per)_$(educ)_$(area)_pps.eps ) ) \
+#    ) ) )
 
 
 ### Bootstrap - Combined
@@ -220,10 +247,16 @@ $(DAT)/obs_spell$(1)_$(2)_$(3).dta $(DAT)/results_spell$(1)_g$(2)_$(3).ster: $(C
 	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) $(4)
 endef
 
+$(foreach spell, 2 3, \
+$(foreach per, $(PERIODS), \
+$(foreach educ, highest, \
+$(eval $(call analysis-rule,$(spell),$(per),$(educ))) ) ) )
+
 $(foreach spell, $(SPELLS), \
 $(foreach per, $(PERIODS), \
-$(foreach educ, $(EDUC), \
+$(foreach educ, low med high, \
 $(eval $(call analysis-rule,$(spell),$(per),$(educ))) ) ) )
+
 
 		
 #---------------------------------------------------------------------------------------#
@@ -243,10 +276,16 @@ $(FIG)/spell$(1)_g$(2)_$(3)_$(area)$(comp)pc.eps $(FIG)/spell$(1)_g$(2)_$(3)_$(a
 	cd $(COD); stata-se -b -q $$(basename $$(<F)) $(1) $(2) $(3) 
 endef
 
+$(foreach spell, 2 3, \
+$(foreach per, $(PERIODS), \
+$(foreach educ, highest, \
+$(eval $(call graph-rule,$(spell),$(per),$(educ))) ) ) )
+
 $(foreach spell, $(SPELLS), \
 $(foreach per, $(PERIODS), \
-$(foreach educ, $(EDUC), \
-$(eval $(call graph-rule,$(spell),$(per),$(educ))))))
+$(foreach educ, low med high, \
+$(eval $(call graph-rule,$(spell),$(per),$(educ))) ) ) )
+
 
 # Generate LaTeX code for appendix graphs
 $(APPGRAPHS) : $(COD)/gen_appendix_graphs.do $(GRAPHTARGET)
@@ -260,27 +299,59 @@ $(APPGRAPHS) : $(COD)/gen_appendix_graphs.do $(GRAPHTARGET)
 
 .PHONY: run_pps
 run_pps: $(PPSTARGET)
-	
-define pps-rule
-$(foreach educ, $(EDUC), \
+
+### old version of pps-rule	
+#define pps-rule
+#$(foreach educ, $(EDUC), \
+#$(foreach area, $(AREAS), \
+#$(if $(filter $(spell),1), \
+# $(FIG)/spell$(1)_$(educ)_$(area)_pps.eps , \
+# $(foreach per, $(PERIODS), \
+# $(FIG)/spell$(1)_g$(per)_$(educ)_$(area)_pps.eps ) \
+#) ) ) \
+#: $(COD)/an_spell$(1)_pps.do \
+# $(foreach per, $(PERIODS), \
+# $(foreach educ, $(EDUC), \
+# $(DAT)/spell$(1)_g$(per)_$(educ).dta))
+#	cd $(COD); stata-se -b -q $$(<F)
+#endef
+#
+#$(foreach spell, $(SPELLS), \
+#$(eval $(call pps-rule,$(spell) ) ) )
+
 $(foreach area, $(AREAS), \
-$(if $(filter $(spell),1), \
- $(FIG)/spell$(1)_$(educ)_$(area)_pps.eps , \
+$(foreach educ, low med high, \
+$(foreach per, $(PERIODS), \
+$(FIG)/spell4_g$(per)_$(educ)_$(area)_pps.eps ) ) ) \
+ : $(COD)/an_spell4_pps.do \
  $(foreach per, $(PERIODS), \
- $(FIG)/spell$(1)_g$(per)_$(educ)_$(area)_pps.eps ) \
-) ) ) \
-: $(COD)/an_spell$(1)_pps.do \
+ $(foreach educ, low med high, \
+ $(DAT)/spell4_g$(per)_$(educ).dta ) )
+	cd $(COD); stata-se -b -q $(<F)
+
+$(foreach area, $(AREAS), \
+$(foreach educ, $(EDUC), \
+$(foreach per, $(PERIODS), \
+$(FIG)/spell3_g$(per)_$(educ)_$(area)_pps.eps ) ) ) \
+ : $(COD)/an_spell3_pps.do \
  $(foreach per, $(PERIODS), \
  $(foreach educ, $(EDUC), \
- $(DAT)/spell$(1)_g$(per)_$(educ).dta))
-	cd $(COD); stata-se -b -q $$(<F)
-endef
+ $(DAT)/spell3_g$(per)_$(educ).dta ) )
+	cd $(COD); stata-se -b -q $(<F)
 
-$(foreach spell, $(SPELLS), \
-$(eval $(call pps-rule,$(spell))) \
-)
-	
-	
+$(foreach area, $(AREAS), \
+$(foreach educ, $(EDUC), \
+$(foreach per, $(PERIODS), \
+$(FIG)/spell2_g$(per)_$(educ)_$(area)_pps.eps ) ) ) \
+ : $(COD)/an_spell2_pps.do \
+ $(foreach per, $(PERIODS), \
+ $(foreach educ, $(EDUC), \
+ $(DAT)/spell2_g$(per)_$(educ).dta ) )
+	cd $(COD); stata-se -b -q $(<F)
+
+
+
+
 #---------------------------#
 #      Bootstrapping        #
 #---------------------------#
@@ -299,12 +370,7 @@ $(DAT)/bs_s$(1)_g$(2)_$(3)_all.dta: $(COD)/run_bootstrap.ado \
 endef
 
 $(foreach spell, 2 3, \
-$(foreach per, 1, \
-$(foreach educ, highest, \
-$(eval $(call bootstrap-rule,$(spell),$(per),$(educ))) ) ) )
-
-$(foreach spell, $(SPELLS), \
-$(foreach per, 2 3 4, \
+$(foreach per, $(PERIODS), \
 $(foreach educ, highest, \
 $(eval $(call bootstrap-rule,$(spell),$(per),$(educ))) ) ) )
 
