@@ -137,8 +137,8 @@ forvalues period = 1/4 {
     loc round = `period'
     foreach educ in "highest" "high" "med" "low" {
     
-        # Estimation results for highest education group in the 1972-84 period unreliable
-        # because of too small sample size
+        // Estimation results for highest education group in the 1972-84 period unreliable
+        // because of too small sample size
         if "`educ'" == "highest" & `period' == 1 {
             continue
         }
