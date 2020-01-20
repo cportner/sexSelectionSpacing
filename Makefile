@@ -134,11 +134,18 @@ BSTABLE_ALL := \
     $(TAB)/bootstrap_$(var)_$(educ)_all.tex ) ) 
 
 ### Graphs of bootstrapping results
-BSGRAPH_ALL := \
+BSGRAPH_HIGHEST := \
+    $(foreach spell, 2 3, \
+    $(foreach area, $(AREAS), \
+    $(FIG)/bs_spell$(spell)_highest_$(area)_all.eps ) )  
+
+BSGRAPH_OTHERS := \
     $(foreach spell, $(SPELLS), \
-    $(foreach educ, $(EDUC), \
+    $(foreach educ, low med high, \
     $(foreach area, $(AREAS), \
     $(FIG)/bs_spell$(spell)_$(educ)_$(area)_all.eps ) ) ) 
+
+BSGRAPH_ALL := $(BSGRAPH_HIGHEST) $(BSGRAPH_OTHERS)
 
 
 ### Appendix 
@@ -394,6 +401,7 @@ $(BSTABLE_ALL): $(COD)/an_bootstrap_table_all.do \
 # Bootstrap graphs
 .PHONY: run_boot_graph_all
 run_boot_graph_all: $(BSGRAPH_ALL)
+
 $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
