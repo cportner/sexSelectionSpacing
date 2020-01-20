@@ -21,12 +21,13 @@ program predict_fertility
     
     // Load results
     estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
+    loc lastm = `e(estimates_note2)'
  
     capture drop dur* np* t months mid_months
     capture drop p0 p1 p2 pcbg s pps prob_kid prob_any_birth ratio_sons num_sons pct_sons
 
     // Duration variables
-    expand $lastm
+    expand `lastm'
     bysort id: gen t = _n
     gen months = t * 3
     gen mid_months = (t-1)*3 + 1.5
