@@ -49,8 +49,8 @@ program predict_fertility
     }
     else if `spell' == 3 {
         loc i = 1
-        forvalues per = 1/14 {
-            gen dur`i' = t == `per'
+        forvalues per = 1(2)14 {
+            gen dur`i' = t >= `per' & t <= `per' + 1    
             loc ++i
         }
         gen dur`i' = t >= 15 & t <= 19
