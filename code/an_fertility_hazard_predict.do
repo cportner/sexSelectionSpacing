@@ -20,12 +20,7 @@ program predict_fertility
     include directories
     
     // Load results
-    capture estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
-    if _rc != 0 {
-        // Exit if estimation results missing
-        dis "Estimation results for spell `spell', period `period', and `educ' do not exist"
-        exit
-    }
+    estimates use `data'/fertility_results_spell`spell'_g`period'_`educ'
  
     capture drop dur* np* t months mid_months
     capture drop p0 p1 p2 pcbg s pps prob_kid prob_any_birth ratio_sons num_sons pct_sons
