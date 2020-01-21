@@ -201,11 +201,11 @@ keep if b1_group == 4
 keep if b2_space <= 96
 
 gen mom_age = b2_mom_age
-gen girl1 = b2_girl
+gen girl1 = b1_girl
 gen girl1Xurban = girl1 * urban
 predict_fertility 2 4 highest
 
-reg b2_died_as_infant b1_girl b1_mom_age scheduled_caste land_own urban ///
-    c.pct_sons##i.b2_girl##i.b2_d_space 
-margins b2_d_space#b2_girl , at(pct_sons == (51.2 58)
+logit b2_died_as_infant b1_girl b1_mom_age scheduled_caste land_own urban ///
+    c.pct_sons i.b2_girl##i.b2_d_space 
+margins b2_d_space#b2_girl , at(pct_sons == (51.2 58))
 marginsplot, x(b2_d_space)
