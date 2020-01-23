@@ -118,10 +118,6 @@ drop if observation_age_m >= 22 & round == 4
 gen id = _n
 replace scheduled_caste = 1 if scheduled_tribe
 
-// Drop those less than 1 year old or without second births
-drop if b2_born_cmc == .
-drop if interview_cmc - b2_born_cmc < 13
-
 // Dummy for died as infant
 gen b2_died_as_infant = b2_dead_cmc - b2_born_cmc < 13 if b2_born_cmc != .
 gen b3_died_as_infant = b3_dead_cmc - b3_born_cmc < 13 if b3_born_cmc != .
@@ -152,13 +148,10 @@ create_groups b3_born_year
 gen b3_group = group
 drop group
 
-// Birth spacing variables
+// Birth spacing variables to match what I used for hazard model
 replace b2_space = b2_space - 9
 replace b3_space = b3_space - 9
 replace b4_space = b4_space - 9
-
-egen b2_d_space = cut(b2_space), at(0 15 27 39 51 63 75 100)
-
 
 gen b2_short_spacing = b2_space <= 24 if b2_space != .
 gen b3_short_spacing = b3_space <= 24 if b3_space != .
@@ -194,18 +187,111 @@ gen b4_less_short_spacing = b4_space <= 36 if b4_space != .
 // bysort urban b3_girl : tabulate b2_group b2_only_girls if edu_mother >= 8 , summarize( b3_short_spacing  ) means
 // 
 
+
+set scheme s1mono
+
 // example estimation for second birth
 
-keep if edu_mother >= 12
-keep if b1_group == 4
-keep if b2_space <= 96
+forvalues spell = 2/4 {
 
-gen mom_age = b2_mom_age
-gen girl1 = b1_girl
-gen girl1Xurban = girl1 * urban
-predict_fertility 2 4 highest
+    keep if fertility >= `spell'
 
-logit b2_died_as_infant b1_girl b1_mom_age scheduled_caste land_own urban ///
-    c.pct_sons i.b2_girl##i.b2_d_space 
-margins b2_d_space#b2_girl , at(pct_sons == (51.2 58))
-marginsplot, x(b2_d_space)
+    loc spell_m1 = `spell' - 1
+
+    egen b`spell'_d_space = cut(b`spell'_space), at(0 12 24 36 48 60 72 100)
+
+    forvalues period = 1/4 {
+
+        foreach educ in "highest" "high" "med" "low" {
+
+            // Estimation results for highest education group in the 1972-84 period unreliable
+            // because of too small sample size
+            if "`educ'" == "highest" & `period' == 1 {
+                continue
+            }
+
+            preserve
+        
+            keep if b`spell_m1'_group == `period' // When the spell began
+
+            // Drop those less than 1 year old, without spell births, where the child had
+            // not reached 12 months of age by interview, or spell longer than what is used
+            // for the hazard estimations
+            drop if b`spell'_born_cmc == .
+            drop if interview_cmc - b`spell'_born_cmc < 13
+            keep if b`spell'_space >= 0 & b`spell'_space <= 96
+
+            // keep only those in education group
+            if "`educ'" == "low" {
+                keep if edu_mother == 0
+            }
+            else if "`educ'" == "med" {
+                keep if edu_mother >= 1 & edu_mother < 8
+            }
+            else if "`educ'" == "high" {
+                keep if edu_mother >= 8 & edu_mother <= 11
+            }
+            else if "`educ'" == "highest" {
+                keep if edu_mother >= 12
+            }
+            else {
+                dis "Something went wrong with education level"
+                exit
+            }
+
+    //         egen b`spell'_d_space = cut(b`spell'_space), group(7) label
+
+    //         gen mom_age = b2_mom_age
+    //         gen girl1 = b1_girl
+    //         gen girl1Xurban = girl1 * urban
+    //         // predict_fertility 2 4 highest
+
+            // prior child(ren) variable
+            if `spell' == 2 {
+                gen girls = b1_girl
+            }
+            else if `spell' == 3 {
+                gen girls = 0 if (b1_sex == 1 & b2_sex == 1) & b1_sex != . & b2_sex != .
+                replace girls = 1 if (b1_sex == 2 | b2_sex == 2) & !(b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != .    
+                replace girls = 2 if (b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != . 
+            }
+            else if `spell' == 4 {
+                gen girls = 0     if (b1_sex == 1 & b2_sex == 1 & b3_sex == 1) & b1_sex != . & b2_sex != . & b3_sex != .
+                replace girls = 1 if ( ///
+                    (b1_sex == 2 & b2_sex == 1 & b3_sex == 1) | ///
+                    (b1_sex == 1 & b2_sex == 2 & b3_sex == 1) | ///
+                    (b1_sex == 1 & b2_sex == 1 & b3_sex == 2)  ///
+                    ) & b1_sex != . & b2_sex != . & b3_sex != .
+                replace girls = 2 if ( ///
+                    (b1_sex == 2 & b2_sex == 2 & b3_sex == 1) | ///
+                    (b1_sex == 2 & b2_sex == 1 & b3_sex == 2) | ///
+                    (b1_sex == 1 & b2_sex == 2 & b3_sex == 2) ///
+                    ) & b1_sex != . & b2_sex != . & b3_sex != .
+                replace girls = 3 if (b1_sex == 2 & b2_sex == 2 & b3_sex == 2) & b1_sex !=. & b2_sex != . & b3_sex != .
+            }
+            else {
+                dis "Spell not coded yet"
+                exit
+            }
+
+            loc reg_vars = " i.girls##i.b`spell'_girl##i.b`spell'_d_space "
+            loc mar_vars = " b`spell'_d_space#girls#b`spell'_girl "
+
+            logit b`spell'_died_as_infant b1_mom_age scheduled_caste land_own urban ///
+                `reg_vars' 
+            margins `mar_vars' 
+            marginsplot, x(b`spell'_d_space) noci /// 
+                plotopts(msymbol(i) ylabel(0(0.05)0.25) plotregion(margin(zero))) 
+            graph export `figures'/mortality_s`spell'_p`period'_`educ'_dummies.eps, replace fontface(Palatino)
+
+    //         logit b2_died_as_infant b1_mom_age scheduled_caste land_own urban ///
+    //             i.b1_girl##i.b2_girl##(c.b2_space c.b2_space#c.b2_space ///
+    //             c.b2_space#c.b2_space#c.b2_space c.b2_space#c.b2_space#c.b2_space#c.b2_space)
+    //         margins b1_girl#b2_girl , at(b2_space == (1(3)70) )
+    //         marginsplot
+    //         graph export `figures'/mortality_s`spell'_p`period'_`educ'_continuous.eps, replace fontface(Palatino)
+
+            restore
+        }
+    }
+}
