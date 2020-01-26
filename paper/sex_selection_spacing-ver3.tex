@@ -107,7 +107,7 @@ University of Washington.
 Strong son preference is typically associated with shorter birth spacing in the absence of 
 sons, but access to sex selection has the potential to reverse this pattern because each 
 abortion extends spacing by six to twelve months. 
-I introduce an empirical method that simultaneously accounts for how sex selection 
+I apply an empirical method that simultaneously accounts for how sex selection 
 increases both birth spacing and the likelihood of a son. 
 Using the four rounds of India's National Family and Health Surveys, I show that birth 
 intervals increased substantially over the last four decades, with the most significant
@@ -132,14 +132,24 @@ not from fewer very short birth intervals, but rather from the upper end of the 
 
 \section{Introduction\label{sec:intro}}
 
-Birth spacing has long served as a measure of son preference, with strong
-son preference associated with shorter birth intervals the
-fewer sons a family has \citep{ben-porath76b,Leung1988}.
-However, the introduction of prenatal sex determination potentially 
-changed the relationship between son preference and birth spacing.
-The stronger the son preference, the more likely couples are to resort to sex-selective 
-abortions, and each abortion increases the interval between births by six to twelve 
-months.%
+India has changed significantly over the last four decades:
+the economy has grown substantially,
+education levels have increased for both males and females,
+and the total fertility rate has fallen to the point where, at 2.2, it is just
+above replacement 
+\citep{Bosworth2008,Guilmoto2013,Dharmalingam2014,
+International-Institute-for-Population-Sciences-IIPS2017}.
+
+Over the same period, India has, however, also experienced a rapidly expanding 
+access to prenatal sex determination.
+Combined with continued strong son preference, the result has been a dramatic 
+increase in the males-to-females ratio at birth
+\citep{das_gupta97,Sudha1999,Arnold2002,retherford03b,jha06,Guilmoto2009a,Guilmoto2012,
+Bongaarts2013,Portner2015b,Jayachandran2017}.
+
+What the prior research on India has not appreciated is that since each abortion 
+increases the interval between births by six to twelve months, the growing use of 
+sex-selective abortions has the potential to increase birth spacing substantially. %
 \footnote{
 The increase consists of three parts.
 First, starting from the abortion, the uterus needs at 
@@ -150,158 +160,98 @@ one and six months \citep{Wang2003}.
 Finally, sex determination tests are reliable only from three months 
 of gestation onwards.
 }
-Hence, longer birth intervals in the absence of sons, which previously would be taken as 
-an indicator of lower son preference, may now instead arise because couples with a strong 
-son preference use sex selection.
+Add to this increase that the combination of increasing female education, 
+lower fertility, higher household income, and the low and declining female 
+labor force participation are also likely to impact birth spacing.
+Hence, the changes in birth spacing may be much more substantial in India 
+than what we have observed in other countries as they developed.
+
+Understanding the changes in birth spacing is essential for three reasons.
+
+First, tempo effects, arising from changes in birth spacing, bias the total 
+fertility rate (TFR), in the sense that the TFR becomes a more biased measure 
+of cohort fertility \citep{Bongaarts1999,Ni-Bhrolchain2011}.
+Hence, fertility may be, in fact, substantially higher than what is generally 
+accepted based on the TFR.
+
+Second, longer birth spacing is associated with lower mortality and 
+morbidity risk \citep{Conde-Agudelo2006,Conde-Agudelo2012,Molitoris2019}.
+In India, the duration to the next birth has traditionally been shorter with fewer sons, 
+which likely contributed to the higher mortality and morbidity risk for girls
+\citep{Whitworth2002,Bhargava2003,Rutstein2005,Bhalotra2008,Maitra2008,Makepeace2008,
+Jayachandran2011,Kumar2016,Jayachandran2017a,Ghosh2018}.
+Longer spacing between births then potentially lowers mortality, although there may
+be a counteracting effect of multiple abortions.
+
+Finally, birth spacing has long served as a measure of son preference, with strong
+son preference associated with shorter birth intervals, the fewer sons a family has 
+\citep{ben-porath76b,Leung1988}.
+Now, longer birth intervals in the absence of sons, rather than an indicator of 
+lower son preference, may instead arise because couples with a strong preference 
+for sons use sex selection, possibly to the point where we observe a reversal of 
+the traditional spacing pattern.
+Families with son preference who---for one reason or another---do not use prenatal 
+sex selection likely continue to have shorter birth spacing.
 
 Here, I examine how birth spacing in India has changed over time and across 
 groups with the introduction of sex selection.
-I introduce an empirical method that directly incorporates the effects of 
+I apply a competing risk hazard model that directly incorporates the effects of 
 sex-selective abortions on birth intervals
 \emph{and} 
-the likelihood of a son. 
-The method can be used to analyze both situations with and without prenatal
-sex selection.
+the likelihood of a son, 
+but which also works in cases without prenatal sex selection.
 I apply the method to birth histories of Hindu women, using data from the four
 India's National Family and Health Surveys (NFHS), covering the period 
 1972 to 2016. 
 
-
-% [Why India?]
-India is a particularly compelling case with its long history of male preference, 
-especially in the northern states \citep{Kishor1993,murthi95,arnold98}.
-Mortality risk is higher for females than males for most ages groups, resulting in
-an almost continuous increase in India's overall ratio of males to females 
-over the last century \citep{dyson01,Navaneetham2011,Bongaarts2015}.
-Differential stopping behavior is widespread, with an additional child more likely the
-fewer sons a family has 
-\citep{repetto72,Das1987,Arnold1997,arnold98,clark00,Basu2010,Barcellos2014}.%
-\footnote{
-Other countries show a similar pattern
-\citep[see, for example,][]{larsen98,filmer09,Altindag2016}.
-}
-Furthermore, fertility has declined substantially, to the point where it is now at, or even 
-below, replacement in some areas 
-\citep{Guilmoto2013,Dharmalingam2014,International-Institute-for-Population-Sciences-IIPS2017}.
-The combination of falling fertility, strong son preference, and expanding access to 
-prenatal sex determination has lead to dramatic increases in the males-to-females ratio at 
-birth over the last three decades
-\citep{das_gupta97,Sudha1999,Arnold2002,retherford03b,jha06,Guilmoto2009a,Guilmoto2012,Bongaarts2013,Portner2015b,Jayachandran2017}.
-
-
-% [Why spacing?] 
-There are four main reasons for examining birth spacing and how it changes with 
-access to sex selection.
-First, researchers have made extensive use of birth spacing as a measure of son preference, 
-and it is critical to understand to what extent spacing is still a useful measure of son 
-preference.
-For example, in Bangladesh, India, and Vietnam, having more boys, and particularly having 
-a boy as the last-born child, significantly increase the duration to next birth,
-\citep{Haughton1995,Haughton1996,Rahman1993,Bhalotra2008,Kumar2016,Soest2018}.%
-\footnote{
-Ethnic Indians in South Africa also show a longer duration after the birth of a 
-son than after a daughter \citep{Gangadharan2003}.
-}
-Outside Asia, the evidence is more mixed, with North Africa showing shorter spacing in the 
-absence of sons, while a similar pattern does not exist in Sub-Saharan Africa 
-\citep{Rossi2015}.
-
-Second, birth spacing can affect children's short and long-term outcomes.
-Most of the research finds a negative impact of short spacing on child health, especially 
-for very short intervals of 18 months or less \citep{Conde-Agudelo2006,Conde-Agudelo2012}.
-There is evidence in countries as diverse as Bangladesh, Brazil, El Salvadore, India,
-and Pakistan of worse health outcomes and a higher mortality risk the shorter the birth
-interval
-\citep{Cleland1984,Curtis1993,Whitworth2002,Bhargava2003,Rutstein2005,Bhalotra2008,Davanzo2008,Maitra2008,Makepeace2008,Gribble2009,Jayachandran2011,Saha2013,Jayachandran2017a,Ghosh2018}.
-Most of the evidence on longer-term outcomes come from Western countries.
-In the US, for example, a longer interval between births increases the older, but not the
-younger, sibling's test scores \citep{Buckles2012}.
-Furthermore, close spacing appears to increase the risk of dropping out of
-high school and lower the probability of attending a post-secondary school in both the
-US and Sweden \citep{Powell1993,Pettersson-Lidbom2009}.%
-\footnote{
-However, recent results from Sweden show no relationship between birth spacing, even if 
-very short, and outcomes such as years of education completed, earnings, and unemployment 
-\citep{Barclay2017}.
-}
-
-Third, the mother may also be affected by the length of the birth intervals, although 
-reviews of the literature show mixed results on mother's anthropometric status 
-\citep{Dewey2007,Conde-Agudelo2012}.
-For India, there is, however, evidence that women with first-born girls are more likely to 
-have anemia, possibly because short birth spacing can resulting in maternal depletion 
-\citep{Milazzo2018}.
-In Western countries, a longer interval between births has positive effects on long-term 
-labor market outcomes, such as participation and income \citep{Gough2017,Karimi2014}.
-
-Finally, we know less about what determines spacing behavior in developing countries than 
-in developed countries, and with declining fertility and increasing numbers of women 
-entering the labor force, understanding how couples make timing decisions is necessary 
-for the design of suitable policies \citep{Portner2018}.%
-\footnote{
-It is clear that birth spacing does respond to policies in both developed and 
-developing countries \citep{Pettersson-Lidbom2009,Todd2012,Meckel2015,Ghosh2018}.
-}
-Even the effects of access to contraceptive and declining fertility on spacing are unclear.
-On the one hand, access to contraceptives allows women to avoid too short spacing between 
-birth.
-On the other hand, increased reliability of access and effectiveness of contraceptives can 
-lead to shorter intervals between births if women used to have longer spacing to avoid
-having too many children by accident \citep{Keyfitz1971,Heckman1976}.
-These two counteracting effects may explain why better-educated women have shorter spacing 
-than less educated women in some instances but not in others and why finding statistically 
-significant effects of contraception use on birth spacing is difficult 
-\citep{Tulasidhar1993,Whitworth2002,Bhalotra2008,Yeakey2009,Kim2010,Soest2018}.%
-\footnote{
-In Matlab, the effect of son preference on birth spacing is stronger in areas with better 
-access to family planning \citep{Rahman1993}.
-Other evidence, however, points to families ability to time births, even in the absence
-of modern contraceptives \citep{Jayachandran2011,Alam2018}.
-}
-
 % [Hypotheses / questions]
-Despite the increasing use of sex selection, the critical impacts of spacing on outcomes 
-for both mother and children, and the extensive use of spacing to measure son preference, 
-there has so far been no systematic examination of what effect access to sex selection 
-have on spacing.
-I address three questions to remedy this shortcoming in the literature.
+I address four main questions.
+[TK combine questions and highlight of answers here?]
 
-First, how did average birth intervals change over time for different groups and how do 
+First, how did average birth intervals change over time for different groups, and how do 
 these changes relate to the use of sex selection?
-The hypothesis is that in the absence of sex selection son preference leads to shorter 
-spacing the fewer boys a family has, whereas son preference increases spacing the fewer 
-boys a family has when prenatal sex selection is available, possibly to the point where
-we observe a reversal of the standard spacing pattern.
-Families with son preference who---for one reason or another---do not use prenatal sex 
-selection likely continue to have shorter birth spacing.
-Based on the prior literature on sex selection, I focus on how birth intervals have
+To show how sex selection has affected birth spacing, I focus on how birth intervals have
 changed for different education levels, urban or rural, and the sex composition of 
 prior children.
 
-Second, have the shapes of the survival curves changed?
-Although examining average birth intervals helps us understand the overall changes in 
+Birth intervals have increased for all education groups over the four decades, 
+with larger increases, the higher the parity and the higher the education level.
+Women who are most likely to use sex selection---well-educated women with no
+sons---have seen the most substantial increases in birth intervals.
+[TK check this!] As a result, well-educated women now show a reversal of the traditional spacing 
+pattern, with the longest intervals for women with no sons.
+Those least likely to use sex selection, women with no education in rural areas, 
+still follow the traditional pattern of short spacing when they have girls and 
+little evidence of the use of sex selection.
+
+Second, how has the distribution of birth spacing changed?
+Although examiniong average birth intervals helps us understand the overall changes in 
 spacing behavior, it tells us little about how these changes came about.
 For example, the motivations that lead to an increase in average spacing are different if 
 the increase comes mainly from parents trying to avoid very short birth intervals or from 
 continued use of sex selection to ensure a son.
 
 
-There are four main results.
-First, the intervals between births have increased for all education groups over the four 
-decades.
-These increases are larger the higher the parity and the higher the education 
-level.
-Second, those women who are most likely to use sex selection---well-educated women with no
-sons---have seen the largest increases in birth intervals.
-As a result, well-educated women now show a reversal of the traditional spacing 
-pattern, with the longest birth intervals for women with no sons.
-Third, women who are least likely to use sex selection, those with no education in
-rural areas, still follow the standard pattern of short spacing when they have girls and 
-little evidence of the use of sex selection.
-Finally, the traditional pattern of longer average spacing with sons appear to arise from 
-more very long intervals, rather than from fewer very short birth intervals; across 
-education groups, there appears to be little difference in the likelihood of having a very 
-short birth interval across sex compositions, especially for lower parities.
+[TK this is unclear]
+The traditional pattern of longer average spacing with sons appears to arise from 
+an increase in the number of very long intervals, rather than from fewer very short 
+birth intervals. 
+Across education groups, there appears to be little difference in the likelihood of 
+having a very short birth interval across sex compositions, especially for lower parities.
+
+Third, to what extent does TFR reflect cohort fertility?
+An advantage of the empirical model is that I can predict fertility behavior taking into
+account both the likelihood of parity progression and having a child of a specific sex.
+I compare those predictions with fertility rate estimates based on the same data to
+show how the increases in birth spacing have led to a substantial overestimate of how 
+fast fertility has declined. [TK too imprecise? underestimate of the level, rather?]
+
+Finally, has the relationship between birth spacing and mortality changed over time?
+[TK]
+
+[TK results]
+
+
 
 
 %------------------------------------------------------------------------------------
@@ -573,7 +523,7 @@ twelve plus group, which now account for more than half of all urban women.
 
 Even as the level of female education has increased, the female labor force participation 
 in both urban and rural areas has stagnated or decreased
-\citep{Klasen2015,Afridi2018,Bhargava2018,Chatterjee2018, Bhargava2019}.
+\citep{Klasen2015,Afridi2018,Bhargava2018,Chatterjee2018,Bhargava2019}.
 A decline in female labor force participation at the beginning of development is
 consistent with the hypothesis of a U-shaped labor force participation as a country
 develops \citep{Goldin1994}.
