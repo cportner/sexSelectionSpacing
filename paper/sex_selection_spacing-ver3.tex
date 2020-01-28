@@ -79,7 +79,7 @@ University of Washington.
     University of Washington\\ \vspace{2cm}
     }
 
-\date{December 2018}
+\date{January 2019}
 
 
 %------------------------------------------------------------------------
@@ -149,7 +149,7 @@ Bongaarts2013,Portner2015b,Jayachandran2017}.
 
 What the prior research on India has not appreciated is that since each abortion 
 increases the interval between births by six to twelve months, the growing use of 
-sex-selective abortions has the potential to increase birth spacing substantially. %
+sex-selective abortions has the potential to substantially increase birth spacing.%
 \footnote{
 The increase consists of three parts.
 First, starting from the abortion, the uterus needs at 
@@ -170,9 +170,9 @@ Understanding the changes in birth spacing is essential for three reasons.
 
 First, tempo effects, arising from changes in birth spacing, bias the total 
 fertility rate (TFR), in the sense that the TFR becomes a more biased measure 
-of cohort fertility \citep{Bongaarts1999,Ni-Bhrolchain2011}.
-Hence, fertility may be, in fact, substantially higher than what is generally 
-accepted based on the TFR.
+of cohort fertility \citep{Hotz1997,Bongaarts1999,Ni-Bhrolchain2011}.
+If birth spacing increased substantially over time, India's fertility may, in 
+fact, be substantially higher than what is generally accepted based on the TFR.
 
 Second, longer birth spacing is associated with lower mortality and 
 morbidity risk \citep{Conde-Agudelo2006,Conde-Agudelo2012,Molitoris2019}.
@@ -190,23 +190,24 @@ Now, longer birth intervals in the absence of sons, rather than an indicator of
 lower son preference, may instead arise because couples with a strong preference 
 for sons use sex selection, possibly to the point where we observe a reversal of 
 the traditional spacing pattern.
-Families with son preference who---for one reason or another---do not use prenatal 
-sex selection likely continue to have shorter birth spacing.
+Despite a large literature on son preference and birth spacing, there is, however,
+no prior research has examined how sex selection affects spacing.
 
 Here, I examine how birth spacing in India has changed over time and across 
 groups with the introduction of sex selection.
-I apply a competing risk hazard model that directly incorporates the effects of 
+Using data from the four National Family and Health Surveys (NFHS), I apply
+a competing risk hazard model to the birth histories of Hindu women, covering
+the period 1972 to 2016.
+The competing risk hazard model directly incorporates the effects of 
 sex-selective abortions on birth intervals
 \emph{and} 
 the likelihood of a son, 
-but which also works in cases without prenatal sex selection.
-I apply the method to birth histories of Hindu women, using data from the four
-India's National Family and Health Surveys (NFHS), covering the period 
-1972 to 2016. 
+but also works in cases without prenatal sex selection.
+ 
 
 % [Hypotheses / questions]
 I address four main questions.
-[TK combine questions and highlight of answers here?]
+
 
 First, how did average birth intervals change over time for different groups, and how do 
 these changes relate to the use of sex selection?
@@ -680,8 +681,13 @@ their children closer together without substantially increasing child mortality 
 %    progression likelihood. 
 
 The standard approach in the birth spacing literature is to use proportional hazard
-models with a single exit, the birth of a child.
-There are two problems with the standard approach in this setting.
+models with a single exit, the birth of a child.%
+\footnote{
+See \citet{Sheps1970} and \citet{Newman1984} for early discussions of why 
+hazard models are the preferred way to deal with the censoring of birth
+intervals.
+}
+There are, however, two problems with the standard approach in this setting.
 First, and most importantly, the introduction of sex selection means that the sex of the 
 next child is no longer necessarily random and that parents' choices will impact the 
 spacing to the birth of a girl or a boy differently.
@@ -1730,6 +1736,8 @@ is based on the household rosters, assuming that never-married women have had no
 Because of the low number of births to women aged 45 to 49 this age group was not
 used for the hazard model estimations and, therefore, is also excluded for the fertility
 rate.
+The marital total fertility rate lead to unrealistically high numbers and is, therefore,
+not presented \citep{Hoem2011,Laplante2015}.
 }
 
 NFHS-1 was collected after sex selection was introduced and it is, therefore, not 
@@ -1819,6 +1827,19 @@ numbers are likely too low, especially for the lower education groups.
 
 \section{Conclusion\label{sec:conclusion}}
 
+[TK things to cover:
+- almost everybody marry, so these numbers should reflect cohort fertility relatively well
+- what happens when women begin to join the labor force in larger numbers?
+- better job oppportunities may be a direct way to affect sex selection since it makes 
+it more expensive to have long spacing
+]
+
+[TK future research:
+- health effects of multiple abortions on women and prior children
+- better address selection effects for mortality estimations
+- long-term outcomes for children
+- labor force participation
+- ]
 
 The central question addressed here is the extent to which spacing patterns significantly 
 changed as prenatal sex determination became available.
@@ -1826,9 +1847,8 @@ The underlying idea is that in the absence of sex selection son preference leads
 spacing after the birth of a girl than after the birth of a boy, whereas when prenatal sex 
 selection is available son preference increases the spacing after the birth of a girl 
 relative to after the birth of a boy.
-I introduce an empirical method that simultaneously accounts for spacing between births 
-and the potential use of sex selection, and apply the method to four decades of data 
-from India's NFHS.
+I apply an empirical method that simultaneously accounts for spacing between births 
+and the potential use of sex selection to four decades of data from India's NFHS.
 
 Three major, interrelated trends emerge.
 First, 
