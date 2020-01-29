@@ -11,8 +11,8 @@ program run_bootstrap
     
     log using run_bootstrap_`spell'_`period'_`educ'.log, replace
 
-    // loc num_reps = 100
-    loc num_reps = 3
+    loc num_reps = 100
+    // loc num_reps = 3
     file close _all // easier, in case something went wrong with last file write (Stata does not close files gracefully)
 
     do bootspell_all.do
