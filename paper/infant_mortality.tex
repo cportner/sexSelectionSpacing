@@ -55,6 +55,9 @@ now able to carry their pregnancy to term we can end up with more births
 after long spells that have higher mortality risk but not because of the
 increased use of sex selection.
 
+[Our Demography paper shows a different type of selection effect, where the
+use of sex selection biases the effect estimates of other variables that
+vary together with the use of sex selection.]
 
 Given the data and that the focus of this paper is mainly on the birth
 spacing, a more in-depth treatment of these issue is the topic of future work.
@@ -63,6 +66,8 @@ as family fixed effects does not work well when the number of births is
 very low as it is for higher education women who use sex 
 selection, especially since the spacing from marriage to first birth
 does not provide any information \citep{Kozuki2013,Molitoris2019}.
+However, the fixed effects results and linear probability do not deviate
+substantially.
 
 Second, the actual number of abortions are unobserved.
 The results above do show, however, how the use of sex selection vary
@@ -105,9 +110,335 @@ of prior children, and the birth spacing dummied.
 All other variables are set to their average values.
 [TK ehh, did I also do urban/rural?]
 
-Figures TK to TK show the estimated probabilities.
+Figures \ref{fig:mortality_low} to \ref{fig:mortality_highest} show the 
+estimated probabilities.
 To ease legibility all confidence intervals are suppressed
 (graphs with confidence intervals are available on request).
+
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\small{1972-1984}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p1_low_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p1_low_dummies} 
+    \end{minipage}
+}
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p1_low_dummies}
+    \end{minipage}
+}
+\\
+\rotatebox[origin=c]{90}{\small{1985-1994}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p2_low_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p2_low_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p2_low_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{1995-2004}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p3_low_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p3_low_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p3_low_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{2005-2016}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p4_low_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p4_low_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p4_low_dummies} 
+    \end{minipage}
+} 
+\caption{Predicted Probability of Infant Mortality for women with no education}
+\label{fig:mortality_low}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\small{1972-1984}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p1_med_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p1_med_dummies} 
+    \end{minipage}
+}
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p1_med_dummies}
+    \end{minipage}
+}
+\\
+\rotatebox[origin=c]{90}{\small{1985-1994}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p2_med_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p2_med_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p2_med_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{1995-2004}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p3_med_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p3_med_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p3_med_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{2005-2016}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p4_med_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p4_med_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p4_med_dummies} 
+    \end{minipage}
+} 
+\caption{Predicted Probability of Infant Mortality for women with no education}
+\label{fig:mortality_med}
+\end{figure}
+
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\small{1972-1984}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p1_high_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p1_high_dummies} 
+    \end{minipage}
+}
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p1_high_dummies}
+    \end{minipage}
+}
+\\
+\rotatebox[origin=c]{90}{\small{1985-1994}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p2_high_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p2_high_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p2_high_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{1995-2004}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p3_high_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p3_high_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p3_high_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{2005-2016}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p4_high_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p4_high_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p4_high_dummies} 
+    \end{minipage}
+} 
+\caption{Predicted Probability of Infant Mortality for women with no education}
+\label{fig:mortality_high}
+\end{figure}
+
+\begin{figure}[htpb]
+\centering
+\rotatebox[origin=c]{90}{\small{1985-1994}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p2_highest_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p2_highest_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p2_highest_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{1995-2004}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p3_highest_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p3_highest_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p3_highest_dummies} 
+    \end{minipage}
+} 
+\\
+\rotatebox[origin=c]{90}{\small{2005-2016}}
+\subfloat[Second Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s2_p4_highest_dummies}
+    \end{minipage}
+} 
+\subfloat[Third Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s3_p4_highest_dummies} 
+    \end{minipage}
+} 
+\subfloat[Fourth Spell]{
+    \begin{minipage}{0.29\textwidth}
+        \includegraphics[width=\textwidth]{mortality_s4_p4_highest_dummies} 
+    \end{minipage}
+} 
+\caption{Predicted Probability of Infant Mortality for women with no education}
+\label{fig:mortality_highest}
+\end{figure}
+
+
+For women with twelve or more years of education the results become very noisy
+because of the low number of births, especially for parity three and four, and
+the low mortality rate.
+As above, I do not show results for the 1972--84 period because there were too
+few women with this level of education for this period.
+
+Based on the second parity births, women with twelve or more years of education
+have the lowest infant mortality risk. 
+Even for very short birth intervals the mortality risk is less than five percent,
+and fall to less than half that for longer intervals.
+Given the low mortality there is, not surprisingly, much difference between
+the three periods covered.
+Furthermore, there is no evidence that longer intervals are associated with
+significantly higher mortality, especially for the groups most likely to have
+used sex selection (women with a girl as their first child and a boy as their
+second with a long interval).
+
+Women with eight to eleven years of education have marginally higher mortality
+risk than women with the most education, and also show slightly more evidence
+of increased mortality with very short spacing.
+Mortality risk have decreased slightly between periods, although the changes
+are relatively minor.
+As for women with the most education, there are not any statistically significant 
+differences or increases in mortality with longer spacing.
+Because of the low mortality risk and the relatively small number of births,
+the estimates for the third and fourth parity are noisy.
+
+Infant mortality risk for women with one to seven years of education have
+clearly decreased over time.
+This is also the first group that show increasing mortality risk with longer
+spacing, although this effect mostly disappears for the later periods.
+In other words, it does not appear to be the result of sex selection, but
+rather arise from the selection bias discussed above where women with long
+spells are those who find it difficult to either conceived and/or carry a 
+pregnancy to term and also have higher mortality risk for their offspring.
+
+Finally, women with no education have experienced substantial improvements
+in infant mortality risk over time.
+This decrease is especially pronounced for shorter intervals.
+For the longer intervals, there is surprisingly little difference across
+the education groups for the later periods.
+
+
+
+
+
 
 
 
