@@ -148,6 +148,23 @@ BSGRAPH_OTHERS := \
 BSGRAPH_ALL := $(BSGRAPH_HIGHEST) $(BSGRAPH_OTHERS)
 
 
+## Mortality target
+
+MORTTARGET_OTHER := \
+    $(foreach spell, 2 3 4, \
+    $(foreach educ, low med high, \
+    $(foreach per, $(PERIODS), \
+    $(FIG)/mortality_s$(spell)_p$(per)_$(educ).eps ) ) )
+
+MORTTARGET_HIGHEST := \
+    $(foreach spell, 2 3 4, \
+    $(foreach per, 2 3 4, \
+    $(FIG)/mortality_s$(spell)_p$(per)_highest.eps ) )
+
+MORTTARGET := $(MORTTARGET_OTHER) $(MORTTARGET_HIGHEST)    
+
+
+
 ### Appendix 
 ### graphs LaTeX code
 APPGRAPHS := \
@@ -465,21 +482,7 @@ $(TAB)/fertility.tex : $(COD)/an_fertility_table.do \
 #---------------------------#
 #  Infant Mortality         #
 #---------------------------#
-
-MORTTARGET_OTHER := \
-    $(foreach spell, 2 3 4, \
-    $(foreach educ, low med high, \
-    $(foreach per, $(PERIODS), \
-    $(FIG)/mortality_s$(spell)_p$(per)_$(educ).eps ) ) )
-
-MORTTARGET_HIGHEST := \
-    $(foreach spell, 2 3 4, \
-    $(foreach per, 2 3 4, \
-    $(FIG)/mortality_s$(spell)_p$(per)_highest.eps ) )
-
-MORTTARGET := $(MORTTARGET_OTHER) $(MORTTARGET_HIGHEST)    
     
-# Hazard model predictions
 $(MORTTARGET) : $(COD)/an_infant_mortality.do $(DAT)/base.dta
 	cd $(COD); stata-se -b -q $(<F)	
     
