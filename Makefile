@@ -154,12 +154,12 @@ MORTTARGET_OTHER := \
     $(foreach spell, 2 3 4, \
     $(foreach educ, low med high, \
     $(foreach per, $(PERIODS), \
-    $(FIG)/mortality_s$(spell)_p$(per)_$(educ).eps ) ) )
+    $(FIG)/mortality_s$(spell)_p$(per)_$(educ)_dummies.eps ) ) )
 
 MORTTARGET_HIGHEST := \
     $(foreach spell, 2 3 4, \
     $(foreach per, 2 3 4, \
-    $(FIG)/mortality_s$(spell)_p$(per)_highest.eps ) )
+    $(FIG)/mortality_s$(spell)_p$(per)_highest_dummies.eps ) )
 
 MORTTARGET := $(MORTTARGET_OTHER) $(MORTTARGET_HIGHEST)    
 
