@@ -1,10 +1,28 @@
-Female Education and Labor Force Participation in India
+\section{Female Education and Labor Force Participation in India}
 
 Female educational attainment has increased substantially over time.
-Figure XX shows the distribution of schooling by birth cohort for urban and rural women, 
+Figure \ref{fig:education_over_time} shows the distribution of schooling by birth 
+cohort for urban and rural women, 
 twenty years or older, whether married or not, based on the four rounds of the NFHS.
 The education groups are no education, one to seven years, and eight to eleven years,
 and twelve years and above.
+
+\begin{figure}[htpb]
+\centering
+\subfloat[Rural]{
+    \begin{minipage}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{educ_over_time_rural}
+    \end{minipage}
+} 
+\subfloat[Urban]{
+    \begin{minipage}{0.49\textwidth}
+        \includegraphics[width=\textwidth]{educ_over_time_urban} 
+    \end{minipage}
+}
+\caption{Distribution of education by cohort for women twenty years or older at survey}
+\label{fig:education_over_time}
+\end{figure}
+
 
 For rural areas, the percentage of women with no education has gone from around 90 percent
 for the 1930s cohorts to less than 20 percent for the 1990s cohorts. 
@@ -27,7 +45,7 @@ twelve plus group, which now account for more than half of all urban women.
 
 Even as the level of female education has increased, the female labor force participation 
 in both urban and rural areas has stagnated or decreased
-\citep{Klasen2015,Afridi2018,Bhargava2018,Chatterjee2018, Bhargava2019}.
+\citep{Klasen2015,Afridi2018,Bhargava2018,Chatterjee2018,Bhargava2019}.
 A decline in female labor force participation at the beginning of development is
 consistent with the hypothesis of a U-shaped labor force participation as a country
 develops \citep{Goldin1994}.
@@ -67,7 +85,7 @@ With relatively more boys born because of increased access to sex-selective
 abortions and an increasing male income, demand for better-educated women can 
 increase, even if they do not participate in the labor market \citep{Behrman1999}.
 
-Figure XX shows the percent of married women who are 
+Figure \ref{fig:work_by_survey} shows the percent of married women who are 
 currently working at the time of the survey by age group and education level.
 No other labor force participation question is consistently available across all 
 four surveys. 
@@ -78,6 +96,49 @@ force participation might have developed differently, especially since many youn
 unmarried women have begun working in, for example, the business process 
 outsourcing industry, which, in turn, has increased girls' schooling investments
 \citep{Jensen2012}.
+
+\begin{figure}[!htpb]
+\centering
+\rotatebox[origin=c]{90}{\small{40 Years or Older}}
+\subfloat[Rural]{
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{currently_working_rural_40}
+    \end{minipage}
+} 
+\subfloat[Urban]{
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{currently_working_urban_40} 
+    \end{minipage}
+}
+\\
+\rotatebox[origin=c]{90}{\small{30 to 39 Years Old}}
+\subfloat[Rural]{
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{currently_working_rural_30}
+    \end{minipage}
+} 
+\subfloat[Urban]{
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{currently_working_urban_30} 
+    \end{minipage}
+}
+\\
+\rotatebox[origin=c]{90}{\small{20 to 29 Years Old}}
+\subfloat[Rural]{
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{currently_working_rural_20}
+    \end{minipage}
+} 
+\subfloat[Urban]{
+    \begin{minipage}{0.45\textwidth}
+        \includegraphics[width=\textwidth]{currently_working_urban_20} 
+    \end{minipage}
+}
+\caption{Percentage of married women who were working at the time of the 
+survey by age group and area of residence}
+\label{fig:work_by_survey}
+\end{figure}
+
 
 The U-shaped relationship between education and working holds in most cases with 
 the highest percent working for women with either no education or with twelve or 
@@ -91,13 +152,13 @@ are mostly based on small samples, such as rural women with twelve or more
 years of education in rural areas.
 
 Almost all of the urban women who work receive either cash or a combination of 
-cash and in-kind for their work (see Appendix Figure XX). 
+cash and in-kind for their work (see Appendix Figure \ref{fig:work_cash_by_survey}). 
 Rural women have become more likely to receive cash for their labor over time, 
 and the better educated, the more likely they are to receive cash.
 
 Despite this, women across all groups have become substantially more likely to 
 work for a family member rather than for themselves or somebody else
-(see Appendix Figure XX).
+(see Appendix Figure \ref{fig:work_family_by_survey}).
 Hence, the lower likelihood of working stems mostly from women retracting from 
 the general labor market and self-employment.
 
@@ -126,4 +187,5 @@ of women in the better-educated group does not substantially change this
 group's use of sex selection.
 Working in the opposite direction is that women with more education can space
 their children closer together without substantially increasing child mortality risk.
+
 
