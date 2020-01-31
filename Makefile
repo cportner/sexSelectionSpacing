@@ -151,13 +151,13 @@ BSGRAPH_ALL := $(BSGRAPH_HIGHEST) $(BSGRAPH_OTHERS)
 ## Mortality target
 
 MORTTARGET_OTHER := \
-    $(foreach spell, 2 3 4, \
+    $(foreach spell, 2 3, \
     $(foreach educ, low med high, \
     $(foreach per, $(PERIODS), \
     $(FIG)/mortality_s$(spell)_p$(per)_$(educ)_dummies.eps ) ) )
 
 MORTTARGET_HIGHEST := \
-    $(foreach spell, 2 3 4, \
+    $(foreach spell, 2 3, \
     $(foreach per, 2 3 4, \
     $(FIG)/mortality_s$(spell)_p$(per)_highest_dummies.eps ) )
 
