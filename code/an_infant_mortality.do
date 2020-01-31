@@ -190,15 +190,15 @@ gen b4_less_short_spacing = b4_space <= 36 if b4_space != .
 
 set scheme s1mono
 
-// example estimation for second birth
+// Estimation by spell
 
-forvalues spell = 2/4 {
+forvalues spell = 2/3 {
 
     keep if fertility >= `spell'
 
     loc spell_m1 = `spell' - 1
 
-    egen b`spell'_d_space = cut(b`spell'_space), at(0 12 24 36 48 60 72 100)
+    egen b`spell'_d_space = cut(b`spell'_space), at(0 12 24 36 48 100)
 
     forvalues period = 1/4 {
 
@@ -249,25 +249,36 @@ forvalues spell = 2/4 {
             // prior child(ren) variable
             if `spell' == 2 {
                 gen girls = b1_girl
+                local label `" order(3 "1st girl, 2nd boy" 4 "1st girl, 2nd girl" 1 "1st boy, 2nd boy" 2 "1st boy, 2nd girl") col(1) subtitle("First Child, Second Child") "'
             }
+//             else if `spell' == 3 {
+//                 gen girls = 0 if (b1_sex == 1 & b2_sex == 1) & b1_sex != . & b2_sex != .
+//                 replace girls = 1 if (b1_sex == 2 | b2_sex == 2) & !(b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != .    
+//                 replace girls = 2 if (b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != . 
+//             }
+//             else if `spell' == 4 {
+//                 gen girls = 0     if (b1_sex == 1 & b2_sex == 1 & b3_sex == 1) & b1_sex != . & b2_sex != . & b3_sex != .
+//                 replace girls = 1 if ( ///
+//                     (b1_sex == 2 & b2_sex == 1 & b3_sex == 1) | ///
+//                     (b1_sex == 1 & b2_sex == 2 & b3_sex == 1) | ///
+//                     (b1_sex == 1 & b2_sex == 1 & b3_sex == 2)  ///
+//                     ) & b1_sex != . & b2_sex != . & b3_sex != .
+//                 replace girls = 2 if ( ///
+//                     (b1_sex == 2 & b2_sex == 2 & b3_sex == 1) | ///
+//                     (b1_sex == 2 & b2_sex == 1 & b3_sex == 2) | ///
+//                     (b1_sex == 1 & b2_sex == 2 & b3_sex == 2) ///
+//                     ) & b1_sex != . & b2_sex != . & b3_sex != .
+//                 replace girls = 3 if (b1_sex == 2 & b2_sex == 2 & b3_sex == 2) & b1_sex !=. & b2_sex != . & b3_sex != .
+//             }
             else if `spell' == 3 {
-                gen girls = 0 if (b1_sex == 1 & b2_sex == 1) & b1_sex != . & b2_sex != .
-                replace girls = 1 if (b1_sex == 2 | b2_sex == 2) & !(b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != .    
-                replace girls = 2 if (b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != . 
+                gen girls = 0     if !(b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != . 
+                replace girls = 2 if (b1_sex == 2 & b2_sex == 2)  & b1_sex != . & b2_sex != . 
+                local label `" order(3 "2 girls, 3rd boy" 4 "2 girls, 3rd girl" 1 "1 or 2 boys, 3rd boy" 2 "1 or 2 boys, 3rd girl") col(1) subtitle("Prior Children, Third Child") "'
             }
             else if `spell' == 4 {
-                gen girls = 0     if (b1_sex == 1 & b2_sex == 1 & b3_sex == 1) & b1_sex != . & b2_sex != . & b3_sex != .
-                replace girls = 1 if ( ///
-                    (b1_sex == 2 & b2_sex == 1 & b3_sex == 1) | ///
-                    (b1_sex == 1 & b2_sex == 2 & b3_sex == 1) | ///
-                    (b1_sex == 1 & b2_sex == 1 & b3_sex == 2)  ///
-                    ) & b1_sex != . & b2_sex != . & b3_sex != .
-                replace girls = 2 if ( ///
-                    (b1_sex == 2 & b2_sex == 2 & b3_sex == 1) | ///
-                    (b1_sex == 2 & b2_sex == 1 & b3_sex == 2) | ///
-                    (b1_sex == 1 & b2_sex == 2 & b3_sex == 2) ///
-                    ) & b1_sex != . & b2_sex != . & b3_sex != .
-                replace girls = 3 if (b1_sex == 2 & b2_sex == 2 & b3_sex == 2) & b1_sex !=. & b2_sex != . & b3_sex != .
+                gen girls = 0     if !(b1_sex == 2 & b2_sex == 2 & b3_sex == 2) & b1_sex != . & b2_sex != . & b3_sex != .
+                replace girls = 3 if (b1_sex == 2 & b2_sex == 2 & b3_sex == 2)  & b1_sex != . & b2_sex != . & b3_sex != .
+//                 local label `" order(3 "1st girl, 2nd boy" 4 "1st girl, 2nd girl" 1 "1st boy, 2nd boy" 2 "1st boy, 2nd girl") "'
             }
             else {
                 dis "Spell not coded yet"
@@ -281,7 +292,21 @@ forvalues spell = 2/4 {
                 `reg_vars' 
             margins `mar_vars' 
             marginsplot, x(b`spell'_d_space) noci /// 
-                plotopts(msymbol(i) ylabel(0(0.05)0.25) plotregion(margin(zero))) 
+                title("") ///
+                ytitle("Infant Mortality Probability") ///
+                xlabel(0 "0-11" 12 "12-23" 24 "24-35" 36 "36-47" 47 "48+" ) ///
+                xtitle("Months") ///
+                legend(`label' ///
+                     ring(0) position(2) region(margin(vsmall)) ///
+                ) ///
+                plotopts(msymbol(i) ylabel(0(0.05)0.25) plotregion(margin(zero)) ///
+                    lwidth(medthick..) ///
+                ) ///
+                plot1opts(lpattern(shortdash)) ///
+                plot2opts(lpattern(dash) ) ///
+                plot3opts(lpattern(solid) ) ///
+                plot4opts(lpattern(longdash) ) 
+
             graph export `figures'/mortality_s`spell'_p`period'_`educ'_dummies.eps, replace fontface(Palatino)
 
     //         logit b2_died_as_infant b1_mom_age scheduled_caste land_own urban ///
