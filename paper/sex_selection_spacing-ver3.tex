@@ -1,5 +1,3 @@
-% Revamped version for Demography focusing on method
-
 \documentclass[12pt,letterpaper]{article}
 
 \usepackage{amsmath}
@@ -22,6 +20,8 @@
 \usepackage{adjustbox}
 \usepackage{xfrac}
 \usepackage{placeins}
+
+\usepackage{endfloat}`
 
 
 % \bibpunct{(}{)}{;}{a}{}{,}
@@ -1597,153 +1597,61 @@ numbers are likely too low, especially for the lower education groups.
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
 
 
-[From conceptual framework section]
-If short spacing lowers the survival probability of the next child, it is not, however, 
-apparent that we should expect shorter spacing in the absence of boys.
-There are two potential reasons why parents might still try to conceive sooner 
-in the absence of boys.
-One possibility is that parents do not realize that short spacing is potentially
-detrimental to the next child's health, resulting in high mortality for both boys 
-and girls born after short spacing across all households.
-
-The other possibility is that parents realize that short spacing has adverse 
-health effects, but their preference for sons is so strong that they are willing to 
-divert substantial resources to the next child if it is a boy.
-Assuming that these investments can compensate for the adverse effects,
-we should see significant differences in mortality across sex for short-spacing 
-children in the absence of boys.
-If a son is born, his mortality risk should be substantially lower than expected 
-for the spacing duration, and we should expect worse outcomes for the other 
-children (all girls).
-If a girl is born, there are two possible outcomes.
-If parents treat all children/girls the same, we should see a slight worsening in 
-health outcomes because fewer resources are available per child; 
-if they do not, the last girl will have a much lower likelihood of surviving 
-because the parents' incentive is to invest in their prior children rather than 
-the new child.
-
-With the adverse effects of shorter spacing strongly mitigated by higher education,
-better-educated women can, in theory, have shorter spacing in the absence of a boy 
-without substantial increasing mortality risk.
-Differences in mortality outcomes across boys and girls are still possible,
-but should not be as large as for less-educated women.
-[end fro conceptual framework section]
-
-
 The prior literature show that shorter birth spacing, especially very short spacing,
 is associated with higher risk of infant mortality.
-Hence, it is possible that the increasing use of sex-selective abortions could
-directly reduce infant mortality by lengthening the duration from the prior birth.
-
-There are a number of potential issues with understanding to what extent this
-has happened.
-
-First, the sex of the next child is no longer random, and boys, in the absence of
-differential treatment, have higher infant mortality than girls.
-
-Second, it may be that what matters is not the time between births, but rather 
-between pregnancies, in which case multiple abortions followed quickly by new 
-pregnancies would lead to shorter real spells of recovery.
-The implication is that long spells might have a higher mortality risk since
-they are now more likely with multiple abortions.
-
-Third, as I show above the use of sex selection is more prevalent the higher the
-education level of the mother.
-Higher maternal education is, however, also associated with lower mortality risk
-to begin with.
-On top of this, with economic growth and better health care, infant mortality
-may have fallen across all education groups and areas in the period covered.
+Hence, the longer spacing, both from the increasing use of sex-selective abortions and
+from secular changes, may directly reduce infant mortality.
+To the extent that the longer birth intervals arise from multiple abortions
+the short duration between \emph{pregnancies} could, however, increase mortality risk.
 
 I address three questions.
-
-First, does the increased use of sex selection lead to higher mortality risk?
-
+First, how do the effects of short spacing vary by education level in India?
 Second, has the negative effects of short spacing changed over time?
+Finally, is the increased use of sex selection associated with higher mortality risk?
 
-Third, how do the effects of short spacing vary by education level in India?
+Starting with the sample used for estimating birth spacing, I select children born 
+more than 12 months before the survey month.
+I restrict the analyses to parities two and three because of the small number
+of births and deaths for parity four.
+Furthermore, I do not show results for women with twelve or more years of
+education for the 1972--84 period because of the low number of women.
 
-
-There are a number of problems with estimating the relationship between 
-sex-selective abortions and infant mortality.
-
-First, there are potential selection problem.
-For example, women who face higher mortality risk of their children might forego 
-the use of sex selection to ensure that they reach their desired number of 
-children.
-If these women also know to avoid very short birth spacing, the precense of 
-these women in the sample would inflate the mortality of the "middle" birth
-spacing, relative to the very short or very long birth spacing.
-
-[our JDE paper]
-
-An additional selection with the opposite effect is that women who have
-difficulties conceiving or carrying a preganancy to term may also have higher 
-mortality risk for their offspring, leading to a supriuos correlation
-between very long birth spacing and mortality \citep{Kozuki2013}. 
-If better health care and higher income means that more of these women are
-now able to carry their pregnancy to term we can end up with more births
-after long spells that have higher mortality risk but not because of the
-increased use of sex selection.
-
-[Our Demography paper shows a different type of selection effect, where the
-use of sex selection biases the effect estimates of other variables that
-vary together with the use of sex selection.]
-
-Given the data and that the focus of this paper is mainly on the birth
-spacing, a more in-depth treatment of these issue is the topic of future work.
-Part of the problem here is also that the method used previously, such
-as family fixed effects does not work well when the number of births is
-very low as it is for higher education women who use sex 
-selection, especially since the spacing from marriage to first birth
-does not provide any information \citep{Kozuki2013,Molitoris2019}.
-However, the fixed effects results and linear probability do not deviate
-substantially.
-
-Second, the actual number of abortions are unobserved.
-The results above do show, however, how the use of sex selection vary
-by education and sex composition of prior children.
-I, therefore, estimate infant mortality risk taking into account the
-sex composition of the prior children, as well as the index child.
-
-Starting with the sample used for estimating birth spacing, I select, by
-parity, children born more than 12 months before the survey month.
 The dependent variable is whether the child died within the first twelve
-months of life (infant mortality).
-As above, I restrict the analysis to parity two through four.
-
-The main set of explanatory variable consists of dummies for birth spacing,
-divided into less than 15 months from when conception could realistically
-could happen (same definition as above) and based on the finding that 
-spacing less than 24 months between birth is associated with higher
-infant mortality \citep{Molitoris2019}, and then in 12 months intervals
-until TK, where all births after and until 96 months are included.%
-\footnote{
-\citet{Molitoris2019} has used quartic functions, but the concern is
-that with the relatively small number sample here the shape
-of the function would be strongly influenced by a small number of
-observations.
-Using dummies provides a more flexible specification and the standard
-error will directly reflect the higher degree of noise for the
-spells periods with fewer observations.
-}
-In addition, I use dummies for sex of the index child (the child whose 
-mortality is estimated) and the sex composition of the prior children.
-Birth spacing dummies, sex of index child, and sex composition dummies
+months of life.
+The main set of explanatory variable consists of dummies for birth spacing
+covering 12 months intervals, starting from nine months after the prior birth 
+as above, until 48 months, which includes all births until 96 months.
+In addition, I use dummies for sex of the index child and the sex composition 
+of the prior children.
+The birth spacing dummies, the sex of index child, and the sex composition dummies
 are all interacted.
+Since the actual number of abortions are unobserved, the interactions between
+sex composition of prior children and the sex of the index child serve
+as proxies for the use of sex selection.
 The other explanatory variables are the same as above and estimations
-are done separately by education level.
+are done separately by education level and spell.
 
-I estimate probability of infant mortality using a logit model.
-Results are presented as the predicted probability of dying within the
-first year at the possible combinations of index child sex, sex composition
-of prior children, and the birth spacing dummied.
+I estimate the probability of infant mortality using a logit model.
+Figures \ref{fig:mortality_low} to \ref{fig:mortality_highest} present 
+the predicted probability of dying within the first year at the possible 
+combinations of index child sex, sex composition of prior children, and 
+the birth spacing dummied.
 All other variables are set to their average values.
-[TK ehh, did I also do urban/rural?]
-
-Figures \ref{fig:mortality_low} to \ref{fig:mortality_highest} show the 
-estimated probabilities.
 To ease legibility all confidence intervals are suppressed
 (graphs with confidence intervals are available on request).
+
+An important caveat is that the estimations do not 
+address potential selection problems.
+For example, if women who have difficulties conceiving or carrying a pregnancy 
+to term also have higher mortality risk for their offspring, the 
+result may be a supriuos correlation between long birth spacing and 
+mortality \citep{Kozuki2013}. 
+Unfortunately, methods used previously to address selection, such
+as family fixed effects do not work well when the number of births is
+low as it is for higher education women \citep{Kozuki2013,Molitoris2019}.
+On the positive side, the fixed effects results and linear probability in
+prior research do not deviate substantially.
+
 
 
 \begin{figure}[htpb]
@@ -1799,6 +1707,35 @@ To ease legibility all confidence intervals are suppressed
 \label{fig:mortality_low}
 \end{figure}
 
+Women with no education have experienced substantial
+improvements in infant mortality risk over time.
+The decrease is especially pronounced for shorter
+birth intervals.
+The mortality risk for children with the shortest 
+interval (the 0 to 11 months group, which is equivalent 
+to 9 to 20 months after the prior birth) is
+between 15 and 20 percent in the earlier periods, but
+fall to less than 10 percent in the last period.
+
+The mortality risk reductions for longer spells is
+less pronounced, but still there.
+For the latest period, the likelihood of dying within
+the first year is below five percent.
+
+Despite the prior findings of differential mortality
+by sex, there is little evidence that girls have
+substantially higher mortality risk, especially for
+second births.
+There is, however, some weak evidence that boys born
+after two girls have slightly lower mortality risk,
+although none of the differences are statistically
+significant.
+
+
+
+
+
+
 \begin{figure}[htpb]
 \centering
 \rotatebox[origin=c]{90}{\small{1972-1984}}
@@ -1852,6 +1789,16 @@ To ease legibility all confidence intervals are suppressed
 seven years of education}
 \label{fig:mortality_med}
 \end{figure}
+
+Infant mortality risk for women with one to seven years 
+of education have also clearly decreased over time.
+This is also the first group that show increasing 
+mortality risk with longer spacing, although this effect 
+disappears for the later periods.
+In other words, it does not appear to be the result of 
+sex selection, but rather arise from the selection bias 
+discussed above.
+
 
 
 \begin{figure}[htpb]
@@ -1908,6 +1855,24 @@ to eleven years of education}
 \label{fig:mortality_high}
 \end{figure}
 
+For women with eight to eleven years of education, 
+mortality risk have decreased slightly between periods,
+although the changes are relatively minor.
+The elevated mortality risk with very short spacing
+is still evident, but the difference is much smaller 
+than for the lower education groups.
+
+If sex selective abortions lead to higher mortality
+risk we should see an increase for longer spacing
+when the child was a born and the prior children were
+all girls (the solid lines).
+There are no apparent differences between these groups
+and the other potential combinations.
+If anything, mortality risk for boys born after girls
+have slightly lower mortality.
+None of the differences are statistical signficant.
+
+
 
 \begin{figure}[htpb]
 \centering
@@ -1952,48 +1917,34 @@ more years of education}
 \end{figure}
 
 
-For women with twelve or more years of education the results become very noisy
-because of the low number of births, especially for parity three and four, and
-the low mortality rate.
-As above, I do not show results for the 1972--84 period because there were too
-few women with this level of education for this period.
-
-Based on the second parity births, women with twelve or more years of education
-have the lowest infant mortality risk. 
-Even for very short birth intervals the mortality risk is less than five percent,
+Women with twelve or more years of education
+have the lowest infant mortality risk based on the
+second parity since the third parity results are very
+noisy. 
+Even for very short birth intervals the mortality risk is 
+less than five percent,
 and fall to less than half that for longer intervals.
-Given the low mortality there is, not surprisingly, much difference between
-the three periods covered.
-Furthermore, there is no evidence that longer intervals are associated with
-significantly higher mortality, especially for the groups most likely to have
-used sex selection (women with a girl as their first child and a boy as their
-second with a long interval).
+Given the low mortality there is, not surprisingly, much 
+difference between the three periods covered.
+Furthermore, there is still no evidence that longer 
+intervals are associated with significantly higher 
+mortality, especially for the groups most likely to have
+used sex selection (women with a girl as their first 
+child and a boy as their second with a long interval).
 
-Women with eight to eleven years of education have marginally higher mortality
-risk than women with the most education, and also show slightly more evidence
-of increased mortality with very short spacing.
-Mortality risk have decreased slightly between periods, although the changes
-are relatively minor.
-As for women with the most education, there are not any statistically significant 
-differences or increases in mortality with longer spacing.
-Because of the low mortality risk and the relatively small number of births,
-the estimates for the third and fourth parity are noisy.
 
-Infant mortality risk for women with one to seven years of education have
-clearly decreased over time.
-This is also the first group that show increasing mortality risk with longer
-spacing, although this effect mostly disappears for the later periods.
-In other words, it does not appear to be the result of sex selection, but
-rather arise from the selection bias discussed above where women with long
-spells are those who find it difficult to either conceived and/or carry a 
-pregnancy to term and also have higher mortality risk for their offspring.
-
-Finally, women with no education have experienced substantial improvements
-in infant mortality risk over time.
-This decrease is especially pronounced for shorter intervals.
-For the longer intervals, there is surprisingly little difference across
-the education groups for the later periods.
-
+Overall, the results show substantial convergence
+in mortality risk across groups over time.
+For the longer intervals, there is surprisingly little 
+difference across the education groups for the later 
+periods with even the no education group showing
+an infant mortality risk of less than five percent.
+Furthermore, with the adverse effects of shorter spacing 
+strongly mitigated by higher education and no apparent 
+increase in mortality risk from sex selection,
+better-educated women can both try to conceive early
+and and use multiple abortion in the absence of a boy
+without substantial increasing mortality risk.
 
 
 \section{Conclusion\label{sec:conclusion}}
@@ -2005,6 +1956,8 @@ the education groups for the later periods.
 it more expensive to have long spacing
 - Incorporate Newman 1984 discussion (p 947) on income vs substitution effect
 - why has fertility fallen at all? Lower mortality, higher quality children?
+- lower mortality and a higher than previously anticipated fertility implies that 
+population growth in India is higher than expected.
 ]
 
 [TK future research:
