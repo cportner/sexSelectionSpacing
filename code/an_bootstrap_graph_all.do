@@ -143,7 +143,7 @@ foreach educ in "low" "med" "high" "highest" {
 
             twoway line `any' c1, sort ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
-                legend(`label' symxsize(*.45) size(tiny) ring(0) position(7) region(margin(vsmall))) ///
+                legend(`label' symxsize(*.45) size(small) ring(0) position(7) region(margin(vsmall))) ///
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
