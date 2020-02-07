@@ -21,7 +21,7 @@
 \usepackage{xfrac}
 \usepackage{placeins}
 
-% \usepackage{endfloat}
+\usepackage{endfloat}
 
 
 % \bibpunct{(}{)}{;}{a}{}{,}
@@ -793,45 +793,93 @@ For comparison, the graphs also show the natural sex ratio, approximately 51.2\%
 
 \captionsetup[subfigure]{captionskip=-1pt,farskip=-0.5pt}
 
-\begin{figure}[htpb]
+% \begin{figure}[htpb]
+% \centering
+% \rotatebox[origin=c]{90}{\small{Urban}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_low_urban_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_low_urban_all} 
+%     \end{minipage}
+% }
+% \subfloat[Fourth Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell4_low_urban_all}
+%     \end{minipage}
+% }
+% \\
+% \rotatebox[origin=c]{90}{\small{Rural}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_low_rural_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_low_rural_all} 
+%     \end{minipage}
+% } 
+% \subfloat[Fourth Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell4_low_rural_all} 
+%     \end{minipage}
+% } 
+% \caption{Estimated average spell length, sex ratio, and probability of 
+% a next birth for women with no education}
+% \label{fig:bootstrap_low}
+% \end{figure}
+
+
+\begin{sidewaysfigure}
 \centering
 \rotatebox[origin=c]{90}{\small{Urban}}
 \subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.31\textwidth}
         \includegraphics[width=\textwidth]{bs_spell2_low_urban_all}
     \end{minipage}
 } 
 \subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.31\textwidth}
         \includegraphics[width=\textwidth]{bs_spell3_low_urban_all} 
     \end{minipage}
 }
 \subfloat[Fourth Spell]{
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.31\textwidth}
         \includegraphics[width=\textwidth]{bs_spell4_low_urban_all}
     \end{minipage}
 }
-\\
+\caption{Estimated average spell length, sex ratio, and probability of 
+a next birth for women with no education}
+\label{fig:bootstrap_low}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}
+\ContinuedFloat
 \rotatebox[origin=c]{90}{\small{Rural}}
 \subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.31\textwidth}
         \includegraphics[width=\textwidth]{bs_spell2_low_rural_all}
     \end{minipage}
 } 
 \subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.31\textwidth}
         \includegraphics[width=\textwidth]{bs_spell3_low_rural_all} 
     \end{minipage}
 } 
 \subfloat[Fourth Spell]{
-    \begin{minipage}{0.29\textwidth}
+    \begin{minipage}{0.31\textwidth}
         \includegraphics[width=\textwidth]{bs_spell4_low_rural_all} 
     \end{minipage}
 } 
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
 a next birth for women with no education}
 \label{fig:bootstrap_low}
-\end{figure}
+\end{sidewaysfigure}
+
 
 Figure \ref{fig:bootstrap_low} shows that women with no education follow a traditional 
 approach to son preference with high fertility, shorter birth intervals with fewer sons, 
@@ -876,7 +924,48 @@ across time and spells.
 % \end{figure}
 
 
-\begin{figure}[htpb]
+% \begin{figure}[htpb]
+% \centering
+% \rotatebox[origin=c]{90}{\small{Urban}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_med_urban_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_med_urban_all} 
+%     \end{minipage}
+% }
+% \subfloat[Fourth Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell4_med_urban_all}
+%     \end{minipage}
+% }
+% \\
+% \rotatebox[origin=c]{90}{\small{Rural}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_med_rural_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_med_rural_all} 
+%     \end{minipage}
+% } 
+% \subfloat[Fourth Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell4_med_rural_all} 
+%     \end{minipage}
+% } 
+% \caption{Estimated average spell length, sex ratio, and probability of 
+% a next birth for women with one to seven years of education}
+% \label{fig:bootstrap_med}
+% \end{figure}
+
+
+\begin{sidewaysfigure}
 \centering
 \rotatebox[origin=c]{90}{\small{Urban}}
 \subfloat[Second Spell]{
@@ -894,7 +983,13 @@ across time and spells.
         \includegraphics[width=\textwidth]{bs_spell4_med_urban_all}
     \end{minipage}
 }
-\\
+\caption{Estimated average spell length, sex ratio, and probability of 
+a next birth for women with one to seven years of education}
+\label{fig:bootstrap_med}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}
+\ContinuedFloat
 \rotatebox[origin=c]{90}{\small{Rural}}
 \subfloat[Second Spell]{
     \begin{minipage}{0.29\textwidth}
@@ -911,10 +1006,10 @@ across time and spells.
         \includegraphics[width=\textwidth]{bs_spell4_med_rural_all} 
     \end{minipage}
 } 
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
 a next birth for women with one to seven years of education}
 \label{fig:bootstrap_med}
-\end{figure}
+\end{sidewaysfigure}
 
 
 Figure \ref{fig:bootstrap_med} shows that for women with one to seven years of education
@@ -961,7 +1056,48 @@ intervals across sex composition similar to what we saw for women without educat
 % \end{figure}
 
 
-\begin{figure}[htpb]
+% \begin{figure}[htpb]
+% \centering
+% \rotatebox[origin=c]{90}{\small{Urban}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_high_urban_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_high_urban_all} 
+%     \end{minipage}
+% }
+% \subfloat[Fourth Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell4_high_urban_all}
+%     \end{minipage}
+% }
+% \\
+% \rotatebox[origin=c]{90}{\small{Rural}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_high_rural_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_high_rural_all} 
+%     \end{minipage}
+% } 
+% \subfloat[Fourth Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell4_high_rural_all} 
+%     \end{minipage}
+% } 
+% \caption{Estimated average spell length, sex ratio, and probability of 
+% a next birth for women with eight to eleven years of education}
+% \label{fig:bootstrap_high}
+% \end{figure}
+
+
+\begin{sidewaysfigure}
 \centering
 \rotatebox[origin=c]{90}{\small{Urban}}
 \subfloat[Second Spell]{
@@ -979,7 +1115,14 @@ intervals across sex composition similar to what we saw for women without educat
         \includegraphics[width=\textwidth]{bs_spell4_high_urban_all}
     \end{minipage}
 }
-\\
+\caption{Estimated average spell length, sex ratio, and probability of 
+a next birth for women with eight to eleven years of education}
+\label{fig:bootstrap_high}
+\end{sidewaysfigure}
+
+
+\begin{sidewaysfigure}
+\ContinuedFloat
 \rotatebox[origin=c]{90}{\small{Rural}}
 \subfloat[Second Spell]{
     \begin{minipage}{0.29\textwidth}
@@ -996,10 +1139,11 @@ intervals across sex composition similar to what we saw for women without educat
         \includegraphics[width=\textwidth]{bs_spell4_high_rural_all} 
     \end{minipage}
 } 
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
 a next birth for women with eight to eleven years of education}
 \label{fig:bootstrap_high}
-\end{figure}
+\end{sidewaysfigure}
+
 
 As Figure \ref{fig:bootstrap_high} shows, there is little difference for the second spell 
 between women with one to seven years of education and those with eight to eleven years, 
@@ -1042,7 +1186,37 @@ children.
 % \end{figure}
 
 
-\begin{figure}[htpb]
+% \begin{figure}[htpb]
+% \centering
+% \rotatebox[origin=c]{90}{\small{Urban}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_highest_urban_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_highest_urban_all} 
+%     \end{minipage}
+% }
+% \\
+% \rotatebox[origin=c]{90}{\small{Rural}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell2_highest_rural_all}
+%     \end{minipage}
+% } 
+% \subfloat[Third Spell]{
+%     \begin{minipage}{0.29\textwidth}
+%         \includegraphics[width=\textwidth]{bs_spell3_highest_rural_all} 
+%     \end{minipage}
+% } 
+% \caption{Estimated average spell length, sex ratio, and probability of 
+% a next birth for women with twelve or more years of education}
+% \label{fig:bootstrap_highest}
+% \end{figure}
+
+\begin{sidewaysfigure}
 \centering
 \rotatebox[origin=c]{90}{\small{Urban}}
 \subfloat[Second Spell]{
@@ -1055,7 +1229,13 @@ children.
         \includegraphics[width=\textwidth]{bs_spell3_highest_urban_all} 
     \end{minipage}
 }
-\\
+\caption{Estimated average spell length, sex ratio, and probability of 
+a next birth for women with twelve or more years of education}
+\label{fig:bootstrap_highest}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}
+\ContinuedFloat
 \rotatebox[origin=c]{90}{\small{Rural}}
 \subfloat[Second Spell]{
     \begin{minipage}{0.29\textwidth}
@@ -1067,10 +1247,10 @@ children.
         \includegraphics[width=\textwidth]{bs_spell3_highest_rural_all} 
     \end{minipage}
 } 
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
 a next birth for women with twelve or more years of education}
 \label{fig:bootstrap_highest}
-\end{figure}
+\end{sidewaysfigure}
 
 
 The impact that sex selection can have on birth spacing is illustrated particularly 
