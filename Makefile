@@ -147,6 +147,23 @@ BSGRAPH_OTHERS := \
 
 BSGRAPH_ALL := $(BSGRAPH_HIGHEST) $(BSGRAPH_OTHERS)
 
+### Graphs of Distribution results
+DISTGRAPH_HIGHEST := \
+    $(foreach var, p25 p50 p75 avg, \
+    $(foreach spell, 2 3, \
+    $(foreach area, $(AREAS), \
+    $(FIG)/$(var)_spell$(spell)_highest_$(area).eps ) ) )
+
+DISTGRAPH_OTHERS := \
+    $(foreach var, p25 p50 p75 avg, \
+    $(foreach spell, $(SPELLS), \
+    $(foreach educ, low med high, \
+    $(foreach area, $(AREAS), \
+    $(FIG)/$(var)_spell$(spell)_$(educ)_$(area).eps ) ) ) )
+
+DISTGRAPH_ALL := $(DISTGRAPH_HIGHEST) $(DISTGRAPH_OTHERS)
+
+
 
 ## Mortality target
 
@@ -191,6 +208,7 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(RECALLGRAPHS) \
  $(PPSTARGET) \
  $(BSTABLE_ALL) $(BSGRAPH_ALL) \
+ $(DISTGRAPH_ALL) \
  $(TAB)/fertility.tex \
  $(MORTTARGET)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -421,6 +439,14 @@ $(BSTABLE_ALL): $(COD)/an_bootstrap_table_all.do \
 run_boot_graph_all: $(BSGRAPH_ALL)
 
 $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
+ $(BSDATA_ALL)
+	cd $(COD); stata-se -b -q $(<F)	
+		
+# Distribution graphs
+.PHONY: run_distribution_graphs
+run_distribution_graphs: $(DISTGRAPH_ALL)
+
+$(DISTGRAPH_ALL): $(COD)/an_distribution_graph.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
 
