@@ -287,6 +287,11 @@ forvalues spell = 2/3 {
 
             loc reg_vars = " i.girls##i.b`spell'_girl##i.b`spell'_d_space "
             loc mar_vars = " b`spell'_d_space#girls#b`spell'_girl "
+            
+            dis _n
+            dis "Education: `educ' in period `period' for spell `spell'"
+            table b`spell'_d_space  b`spell'_died_as_infant girls , ///
+                by(b`spell'_girl) cont(freq) col row
 
             logit b`spell'_died_as_infant b1_mom_age scheduled_caste land_own urban ///
                 `reg_vars' 
@@ -299,7 +304,7 @@ forvalues spell = 2/3 {
                 legend(`label' ///
                      ring(0) position(2) region(margin(vsmall)) ///
                 ) ///
-                plotopts(msymbol(i) ylabel(0(0.05)0.25) plotregion(margin(zero)) ///
+                plotopts(msymbol(i) ylabel(0(0.05)0.25, grid) plotregion(margin(zero)) ///
                     lwidth(medthick..) ///
                 ) ///
                 plot1opts(lpattern(shortdash)) ///
