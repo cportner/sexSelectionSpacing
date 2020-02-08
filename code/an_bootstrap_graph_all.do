@@ -111,21 +111,28 @@ foreach educ in "low" "med" "high" "highest" {
                 local label "label(1 2 Girls) label(2 1 Boy, 1 Girl) label(3 2 Boys) cols(2) "
             } 
             else if `spell' == 4 {
-                local label "label(1 3 Girls) label(2 1 Boy, 2 Girls) label(3 2 Boys, 1 Girl) label(4 3 Boys) cols(2) "
+                local label "label(1 3 Girls) label(2 "1 Boy," "2 Girls") label(3 "2 Boys," "1 Girl") label(4 3 Boys) cols(2) "
             }
 
             // Scales by education level
             loc spacing_low  = 20
-            loc spacing_high = 40
-            if "`educ'" == "highest" {
-                loc spacing_high = 45
-            }
+            loc spacing_high = 45
+//             if "`educ'" == "highest" {
+//                 loc spacing_high = 45
+//             }
             
             loc sr_low  = 40
             loc sr_high = 70
             if "`educ'" == "highest" {
                 loc sr_low  = 30
                 loc sr_high = 80            
+            }
+            
+            if "`educ'" == "highest" & `spell' == 3 & "`where'" == "urban" {
+                loc position = 10
+            }
+            else {
+                loc position = 7
             }
             
             twoway line `avg' c1, sort  ///
@@ -143,7 +150,7 @@ foreach educ in "low" "med" "high" "highest" {
 
             twoway line `any' c1, sort ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
-                legend(`label' symxsize(*.4) size(small) ring(0) position(7) region(margin(vsmall))) ///
+                legend(`label' symxsize(*.5) size(small) ring(0) position(`position') region(margin(vsmall))) ///
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
