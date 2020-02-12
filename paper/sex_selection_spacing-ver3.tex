@@ -21,7 +21,8 @@
 \usepackage{xfrac}
 \usepackage{placeins}
 
-\usepackage{endfloat}
+% For word counting uncomment line below and raggedright below
+\usepackage[nolists]{endfloat}
 
 
 % \bibpunct{(}{)}{;}{a}{}{,}
@@ -79,7 +80,7 @@ University of Washington.
     University of Washington\\ \vspace{2cm}
     }
 
-\date{January 2019}
+\date{February 2020}
 
 
 %------------------------------------------------------------------------
@@ -104,8 +105,25 @@ University of Washington.
 
 % Demography abstract
 \noindent 
-
-
+Using four rounds of India's National Family and Health Surveys and a
+competing-risk hazard model, I show that average birth intervals
+increased over the last four decades for all education groups. The most
+significant increases are among the women most likely to use sex
+selection. Despite the rise in average intervals, the likelihood of very
+short spacing did not change substantially. Hence, the increases come
+predominantly from the longer birth intervals getting even longer. As a
+result of the longer spacing, fertility rates significantly
+overestimated how fast cohort fertility fell. Although cohort fertility
+and the fertility rate have started to converge, the cohort fertility is
+still substantially higher than the fertility rate. Furthermore, cohort
+fertility is still at or above replacement level for all but the
+best-educated urban women. Finally, infant mortality risk has declined
+substantially over time for all groups, but fastest for the lower
+education groups, who are now close to the level of women with the most
+education. Short birth spacing is still associated with higher
+mortality, although the difference is small for the best-educated women.
+There is no evidence that the increasing use of sex selection is
+associated with higher infant mortality risk.
 
 \noindent JEL: J1, O12, I1
 \noindent Keywords: India, prenatal sex determination, censoring, competing risk, non-proportional hazard
@@ -117,6 +135,10 @@ University of Washington.
 %------------------------------------------------------------------------
 
 \section{Introduction\label{sec:intro}}
+
+% For word counting remove comment on the line below
+\raggedright
+
 
 India has changed significantly over the last four decades:
 the economy has grown substantially,
@@ -151,8 +173,10 @@ labor force participation are also likely to impact birth spacing.
 Hence, the changes in birth spacing may be much more substantial in India 
 than what we have observed in other countries.
 
-Understanding how birth spacing changes is of interest for two main reasons, in 
-addition to a better general understanding how fertility decisions are made.
+There are two primary motivations for examining birth spacing in this
+situation, besides gaining a better general understanding of how
+families make fertility decisions.
+
 
 First, if birth intervals increased substantially over time, India's fertility may 
 be higher than generally accepted based on the total fertility rate (TFR).
@@ -187,51 +211,54 @@ the period 1972 to 2016.
 The competing risk hazard model directly incorporates the effects of 
 sex-selective abortions on birth intervals
 \emph{and} 
-the likelihood of a son, 
+the likelihood of a son 
 but also works in cases without prenatal sex selection.
 The empirical model allows me to predict fertility behavior taking into
-account both the likelihood of parity progression and having a child of a specific sex.
+account both the likelihood of parity progression and the likelihood of having a child of 
+a specific sex.
 
  
 
 % [Hypotheses / questions]
-There are four main set of results.
+There are four main sets of results.
 
 First, birth intervals have increased for all education groups over the four decades, 
-with larger increases, the higher the parity and the higher the education level.
+the more so, the higher the parity and the higher the education level.
 Women who are most likely to use sex selection---well-educated women with no
-sons---have seen the most substantial increases in birth intervals.
-[TK check this] As a result, well-educated women now show a reversal of the traditional spacing 
-pattern, with the longest intervals for women with no sons.
+sons---have seen the most substantial increases in birth intervals and the most 
+biased sex ratios.
+As a result, we now see cases that reverse the traditional spacing
+pattern, with women with no sons having longer birth intervals than
+women with sons.
 Those least likely to use sex selection, women with less education in rural areas, 
 still follow the traditional pattern of short spacing when they have girls and 
 little evidence of the use of sex selection.
-[TK add sex ratios and parity progression discussions]
-
+Women with no sons still are the most likely to have an additional birth.
+Although the probability of having a next child has declined for this group over time, the 
+declines are often substantially smaller than if a boy is present.
 
 Second, there is little difference over time and across groups in the likelihood of 
 having a very short birth interval given the sex composition of prior children, 
 especially for the lower parities.
 Hence, the increases in average spacing come predominantly from the longer birth intervals
-getting even longer over time, driven to a large degree by a substantial use of sex 
+getting even longer over time, driven in no small degree by substantial use of sex 
 selection.
-The exception to this result is that the better-educated women with \emph{very high} 
-predicted use of sex selection appear to conceive later exactly because the next child is 
-almost certainly a boy.
+The exception to this result is that the better-educated women with a \emph{very high} 
+predicted use of sex selection appear to conceive later precisely because the next child 
+is almost certainly a boy.
 
 Third, the fertility rate substantially overestimated how fast cohort fertility fell 
-in the 1990s and early 2000s, when spacing began to increase as the result of secular 
-changes and increasing use of sex selection.
-Although predicted cohort fertility and the fertility rate has lately begun to converge,
+in the 1990s and early 2000s when spacing began to increase.
+Although predicted cohort fertility and the fertility rate have lately begun to converge,
 the predicted cohort fertility is still ten to twenty percent higher than the
 fertility rate.
 Furthermore, even with the convergence, predicted cohort fertility is still at or above 
 replacement level, except for the best-educated urban women.
 
-Finally, infant mortality risk has decline substantially over time for all groups,
+Finally, infant mortality risk has declined substantially over time for all groups,
 but fastest for the lower education groups, who are now close to the level of women with 
 the most education.
-Mortality risk is, however, still inversely related to education level, especially for 
+The mortality risk is, however, still inversely related to education level, especially for 
 very short birth intervals.
 There is no evidence that the increasing use of sex selection is associated with higher 
 mortality risk.
@@ -309,9 +336,8 @@ See Appendix Figures \ref{fig:work_by_survey} through \ref{fig:work_family_by_su
 }
 Women are more likely to report working if they live in rural than urban areas 
 and the older they are.
-For married women there is relatively little change in the percentage currently working 
-over time,
-but all education and age groups have become substantially more likely to work for
+For married women, the percentage currently working changes relatively little over time. 
+All education and age groups have, however, become substantially more likely to work for 
 a family member.
 
 The increases in female educational attainment imply that access to education has 
@@ -323,19 +349,20 @@ However, ``Sanskritization'' implies that as lower castes females gain access to
 education and their husbands' income increases, the women adopt higher caste 
 norms such as stronger son preference and a retraction from the formal labor 
 market \citep{Srinivas1956,Chen1995,Abraham2013,Chatterjee2018}.
-The low and declining female labor force participation is a first indication that this
+The low and declining female labor force participation is an indication that this
 process still operates.
 
 
 \section{Birth Spacing: Mechanisms and Prior Findings}
 
-To understand the potential implications for birth spacing of the substantial changes in 
-income, female education, and female labor force participation that India has experienced, 
-this section discuss relevant theories and prior findings on birth spacing.
+To provide a conceptual framework for understanding how birth spacing
+may respond to the substantial changes in income, female education, and
+female labor force participation that India has experienced, I discuss
+in this section relevant theories and prior findings on birth spacing.
 
-The standard economic argument for why increasing female education has predominantly
-been associated with shorter spacing is that parents incur time costs when they have 
-children \citep{Hotz1997,schultz97}.
+The standard economic argument for the predominant association between
+increasing female education and shorter spacing is that parents incur
+time costs when they have children \citep{Hotz1997,schultz97}.
 Specifically, if having children require the mother to reduce her market work, parents 
 can lower the cost of children by shortening birth spacing to 
 take advantage of economies of scale in childrearing \citep{Vijverberg1982}.
@@ -343,14 +370,14 @@ take advantage of economies of scale in childrearing \citep{Vijverberg1982}.
 The low and declining female labor force participation, especially for younger women, 
 suggests, however, that families face little incentive to space children more closely 
 together for economic reasons.
-This may happen if household income has increased so substantially that the income effect 
-dominates any substitution effect.
+One explanation is that household income has increased so substantially that the income 
+effect dominates any substitution effect.
 Two findings speak for this effect.
 First, although real wages for both men and women have almost doubled between 1987 and 
 2011, the mean male wage is still close to 70 percent higher than the female wage 
 \citep{Klasen2015,Bhargava2018}.
-Second, women’s labor supply appear to be more negatively elastic to their husbands' 
-wages than it is positively elastic to own wages \citep{Bhargava2018}.
+Second, women’s labor supply appears to be more negatively elastic to their husbands' 
+wages than it is positively elastic to their wages \citep{Bhargava2018}.
 
 The combination of rising incomes and continued son preference may lead to even longer 
 spacing than the standard income effect alone predicts.
@@ -360,7 +387,7 @@ With relatively more boys born because of increased access to sex-selective
 abortions and an increasing potential income for (male) offspring, demand for 
 better-educated women can increase, even if they do not participate in the labor market 
 \citep{Behrman1999}.
-If more and ``better'' parental attention per child results in higher child ``quality'' 
+If more and ``better'' parental attention per child results in higher child ``quality,'' 
 we should expect longer birth intervals 
 \citep{Zajonc1975,Zajonc1976,Razin1980}.
 The evidence on spacing's effect on child quality measures such as IQ 
@@ -380,19 +407,19 @@ maternal education \citep{Whitworth2002,Conde-Agudelo2012,Molitoris2019}.
 % across education levels when it comes to modern contraceptives such as pills or 
 % injectables \citep{Rosenzweig1989}.
 
-The introduction of sex selection allows parents to avoid the birth of girls,
+The introduction of sex selection allows parents to avoid the birth of girls
 but increases the expected duration to the next birth.
 Theory suggests that sex selection increases with lower desired fertility, and, for a 
 given desired number of children, the higher the parity \citep{Portner2015b}.
 The increased use of sex selection in India with education and in urban
 areas is consistent with a lower desired fertility for both groups
 \citep{das_gupta97,retherford03b,Guilmoto2009a,Portner2015b,Jayachandran2017}.
-Better-educated women also tend to live in households with higher income, which better 
-enables them to access prenatal sex determination and lowers the relative costs of using 
-sex selection and have long birth intervals.
+Better-educated and urban women also tend to live in households with higher income, which 
+better enables them to access prenatal sex determination and lowers the relative costs of 
+using sex selection and have long birth intervals.
 
 We may even observe a ``delay'' effect, where parents conceive later because they know 
-that short spacing is detrimental to the next child's health, and that the next child is 
+that short spacing is detrimental to the next child's health and that the next child is 
 more likely to be a boy because of access to sex selection.
 Working in the opposite direction is that women with more education can, in principle, 
 space their children closer together without substantially increasing child mortality 
@@ -405,12 +432,12 @@ force participation, I expect a push toward longer birth spacing over time, inde
 of education levels, based on the income effects and the effects of spacing
 on child outcomes.
 As desired fertility decreases with increasing education, I, furthermore, expect 
-birth spacing to increase the most among the better-educated because of the larger
-increase in household income income---even with declining female labor participation---and 
+birth spacing to increase the most among the better-educated because their household
+income increases the most---even with declining female labor participation---and 
 their use of sex selection.
-Even with the large increase in the number of better-educated women, "Sanskritization" 
-imply that the changing composition does not substantially change this group's use of 
-sex selection.
+Even with the substantial increase in the number of better-educated women, 
+"Sanskritization" implies that the changing composition does not substantially change 
+this group's use of sex selection.
 
 
 
@@ -435,6 +462,7 @@ hazard models are the preferred way to deal with the censoring of birth
 intervals.
 }
 There are two problems with the standard approach in this setting.
+
 First, and most importantly, the introduction of sex selection means that the sex of the 
 next child is no longer necessarily random and that parents' choices will impact the 
 spacing to the birth of a girl or a boy differently.
@@ -448,15 +476,17 @@ estimated separate waiting time regressions for boys and girls.
 
 Second, it is unlikely---even in the absence of prenatal sex determination---that 
 characteristics, such as the sex composition of previous births, have the same effects 
-throughout the entire spell as is assumed by the proportional hazard model.
+throughout the entire spell, as is assumed by the proportional hazard model.
 The proportionality assumption is especially problematic for higher-order spells where 
 there are substantial differences across groups both in the likelihood of progressing to 
 the next birth and how soon couples want their next child if they are going to have one.
 
-The introduction of prenatal sex determination exacerbates any bias from the 
-proportionality assumption since sex-selective abortion use varies across groups,
-which affects birth spacing, and because a household's use of sex selection may vary 
-within a spell, which means that the effects of covariates vary within the spell as well.
+The introduction of prenatal sex determination exacerbates any bias from
+the proportionality assumption for two reasons. 
+First, sex-selective abortion use varies across groups, which affects birth spacing. 
+Second,
+a household's use of sex selection may vary within a spell, which means
+that the effects of covariates vary within the spell as well.
 
 I, therefore, use a non-proportional hazard specification, which allows the shape of the 
 hazard functions to vary across groups.
@@ -464,19 +494,19 @@ The use of a non-proportional specification also mitigates any potential effects
 of unobserved heterogeneity when used in conjunction with a flexible baseline hazard 
 \citep{Dolton1995}.
 
-The model is a discrete time, non-proportional, competing risk hazard model with two exit 
+The model is a discrete-time, non-proportional, competing risk hazard model with two exit 
 states: either a boy or a girl is born.
 The unit of analysis is a spell, the period from nine months after one birth to the next.
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
-the spell continues until time $t_i$, when either a birth occurs or the spell 
-is censored.%
+the spell continues until time $t_i$ when either birth or censoring of the spell 
+occurs.%
 \footnote{
 The time of censoring is assumed independent of the hazard rate,
 as is standard in the literature.
 }
 There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
 $J_i$ is a random variable indicating which event took place.
-The discrete time hazard rate $h_{ijt}$ is 
+The discrete-time hazard rate $h_{ijt}$ is 
 \begin{equation}
  h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
  {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
@@ -490,19 +520,18 @@ by dummies and the associated coefficients,
 D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
 \end{equation}
 with $D_m = 1$ if $t=m$ and zero otherwise.
-This approach to modeling the baseline hazard is flexible and does not place 
-overly strong restrictions on the baseline hazard.
+This approach to modeling the baseline hazard is flexible and does not restrict the 
+baseline hazard unnecessarily.
 
 The explanatory variables in $\mathbf{Z}$, and the interactions between them, 
-constitute the non-proportional part of the model, which means that they are
-interacted with the baseline hazard:
+constitute the non-proportional part of the model:
 \begin{equation}
- \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2),
+ \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2).
 \end{equation}
-where $D_j(t)$ is the piece-wise linear baseline hazard, $\mathbf{Z}_1$ captures sex 
-composition of previous children, if any, and $Z_2$ captures area of residence.
-The remaining explanatory variables, $\mathbf{X}$, enter proportionally,
-but to further minimize any potential bias from assuming proportionality, estimations 
+$D_j(t)$ is the piece-wise linear baseline hazard, $\mathbf{Z}_1$ captures sex 
+composition of previous children, and $Z_2$ captures the area of residence.
+The remaining explanatory variables, $\mathbf{X}$, enter proportionally.
+However, to further minimize any potential bias from assuming proportionality, estimations 
 are done separately for different levels of mothers' education and different 
 periods.%
 \footnote{
@@ -513,7 +542,7 @@ in the ``Explanatory Variables'' section.
 Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
 Hence, transforming the data, so each observation is an interval---here equal
-to three months---the model can be estimated using a standard multinomial logit model.
+to three months---I can estimate the model using a standard multinomial logit model.
 %
 % \footnote{
 % The multinomial model assumes that alternative exit states are stochastically independent
@@ -561,7 +590,7 @@ if she gives birth to a daughter in that interval.
 % In addition, I present graphs of survival curves conditional on parity progression,
 % which therefore begin at 100\% and end at 0\%.
 
-Interpretation of the model coefficients is challenging \citep{thomas96}.
+The interpretation of the model coefficients is challenging \citep{thomas96}.
 It is, however, possible to calculate the predicted probabilities of 
 having a boy, $b$, and of having a girl, $g$, in period $t$, conditional on 
 a set of explanatory variables and not having had a child before that period.
@@ -588,56 +617,72 @@ are boys, $\hat{Y}$, at each $t$:
 \times 100.
 \label{eq:probability_son}
 \end{equation}
-Combining the percentage boys and the likelihood of exiting the spell 
-across all $t$ gives the predicted percent boys born over the entire spell.
+Combining the percentage of boys and the likelihood of exiting the spell 
+across all $t$ gives the predicted percent of births that are boys over the entire spell.
 
 
 \section{Data\label{sec:data}}
 
 The data come from the four rounds of the National Family Health Survey
-collected in 1992--1993, 1998--1999, 2005--2006, and 2015--2016.%
-\footnote{
-A delay in the survey for Tripura means that NFHS-2 has some observation 
-collected in 2000.
-}
-The surveys are large: NFHS-1 covered 89,777 ever-married women 
-aged 13--49 from 88,562 households;
-NFHS-2 covered 90,303 ever-married women aged 15--49 from 92,486 households;
-NFHS-3 covered 124,385 never-married and ever-married women aged 
-15--49 from 109,041 households;
-and 
-NFHS-4 covered 699,686 never-married and ever-married women aged
-15--49 from 601,509 households surveyed.
+collected in 1992--1993, 1998--1999, 2005--2006, and 2015--2016.
+The surveys are large: 89,777, 90,303, 124,385, and 699,686 women,
+respectively. NFHS-1 and NFHS-2 surveyed only ever-married women, while
+the later surveys also included never-married.
 
-I exclude visitors to the household, as well as women who fall into any of the following 
+I exclude visitors, as well as women in any of the following 
 categories: never married; no gauna yet; married more than once; divorced; 
 not living with husband; inconsistent age at marriage; or education information missing.  
-The same goes for women who had at least one multiple births, reported having a birth 
+The same goes for women who had at least one multiple births, reported giving birth 
 before age 12, had a birth before marriage, or an interval between births of less than 
 nine months. 
-Finally, I restrict the sample to Hindus, who constitute about 80\% of India’s population.%
+Finally, I restrict the sample to Hindus, who constitute about 80 percent of India’s 
+population.%
 \footnote{
-If the use of sex selection differ between Hindu and other groups assuming
-that the baseline hazard is the same would lead to bias. The other
-groups are each so small that it is not possible to estimate different
-baseline hazards for each group, and are so different that combining
-them into one group would not make sense.
+If the use of sex selection differs across groups, assuming that the
+baseline hazard is the same leads to bias. 
+Furthermore, the other groups are each too small to estimate different
+baseline hazards for each and so different that combining them into one
+group would not make sense.
 } 
 
-In addition to the large number of women surveyed and the long period covered, a
-benefit of the NFHS is that surveys enumerators pay careful attention to spacing between 
-births and probe for ``missed'' births.
+In addition to a large number of women surveyed and the long period covered, a
+benefit of the NFHS is that enumerators pay careful attention to the spacing 
+between births and probe for ``missed'' births.
 Nevertheless, systematic recall error, where the likelihood of reporting a deceased 
-child depends on the sex of the child, is still a potentially substantial problem and
-will bias both spacing and sex ratios.
-As I show in the online Appendix, recall error is heavily dependent on how long ago a 
-woman was married, and I, therefore, drop women married 22 years or more.
+child depends on the sex of the child, remains a potential problem.
+Recall error is heavily dependent on how long ago a woman was married, and I, therefore, 
+drop women married 22 years or more.%
+\footnote{
+See the discussion in the Appendix.
+}
 The final sample consists of 
 \input{../tables/num_women.tex}
 % [number] women, with [number] parity one through four births.
 
+
+I focus on the second through fourth spells, that is, on the intervals from the first 
+birth until at most the fourth birth.
+I exclude the marriage to the first birth spell because many are imputed.
+
+The spells all begin nine months after the previous birth, which is the earliest we should 
+expect to observe a new birth.
+A spell continues until either a child is born or censoring occurs.
+Censoring can happen for three reasons:
+the survey takes place,
+sterilization of the woman or her husband,
+or too few births are observed for the method to work.
+For all spells, censoring is set at 96 months (eight years) after a woman can first
+give birth in the spell.
+With these cut-offs, less than one percent of observed births occur after
+the spell cut-off.
+
+% %
+% \footnote{
+% \input{../tables/num_missed.tex}
+% }
+
 Direct information on the use of sex selection is not available, so I compare different 
-periods as a proxy, based on the changes in access and legality of prenatal sex 
+periods, based on the changes in access and legality of prenatal sex 
 determination in India.
 Abortion has been legal in India since 1971.
 Reports of sex determination appeared around 1982--83, and the number of clinics 
@@ -648,74 +693,39 @@ the sex of a fetus illegal.%
 Details about the act are at \href{http://pndt.gov.in/}{http://pndt.gov.in/}.
 There is little evidence that the ban significantly affected sex ratios \citep{Das-Gupta2016}.
 }
-Although the use of sex selection increased even after 1994, some researchers argue that 
-we have passed a turning point in its use \citep{Das_Gupta2009,Diamond-Smith2015}.
+Although the use of sex selection increased even after 1994, we may have passed a 
+turning point in its use \citep{Das_Gupta2009,Diamond-Smith2015}.
 I, therefore, use four periods: 1972--1984, 1985--1994, 1995--2004, and 2005--2016.
-The allocation of spells into periods is determined by when conception, and therefore 
+The allocation of spells into periods is determined by when conception, and, therefore, 
 decisions on sex selection, can begin. 
-This allocation mechanism means that some spells cover two periods, which may bias 
-downward the differences between the periods.
-
-I focus here on the second through fourth spells, that is, on the intervals from the first 
-birth until at most the fourth birth.
-I exclude the spell from marriage to the first birth because of data issues.
-In NFHS-1 and NFHS-2 the only information on marriage is the age at marriage, and 
-all first spell durations are therefore imputed.
-In NFHS-3 about a third of respondent did not provide complete information on the
-timing of marriage and had the length of their first spell imputed using the age at 
-marriage.
-The imputation results in large numbers of women with spells that are less than nine 
-months and makes a comparison of spell duration over time subject to an 
-excessive amount of noise.
-
-The spells all begin nine months after the previous birth, which is the earliest we should 
-expect to observe a new birth.
-A spell continues until either a child is born or censoring occurs.
-Censoring can happen for three reasons:
-the survey takes place;
-sterilization of the woman or her husband;
-or too few births are observed for the method to work.
-For all spells censoring is set at 96 months (eight years) after a birth can occur.
-With these cut-offs, less than one percent of observed births occur after
-the spell cut-off.
-
-% %
-% \footnote{
-% \input{../tables/num_missed.tex}
-% }
+Hence, some spells cover two periods, which may bias downward the differences between the 
+periods.
 
 
 \subsection{Explanatory Variables}
 
 I divide the explanatory variables into two groups.
 The first group consists of characteristics that the prior literature finds affect 
-spacing choice and the use of sex selection:
+the spacing choice and the use of sex selection:
 mother's education, sex composition of previous children, and area of residence.
 The second group of variables consists of those expected to have an approximately 
 proportional effect on the hazard.
-These include the age of the mother at the beginning of the spell, whether the household 
-owns any land, and whether the household belongs to a scheduled tribe or caste.
+These include the mother's age when the spell begins, the household's
+land ownership, and whether the household belongs to a scheduled tribe
+or caste.
 
 Women with different education levels have different hazard profiles
 \citep{Whitworth2002,Bhalotra2008,Kim2010}.
-Furthermore, as discussed above, the use of sex selection increases with education, 
-either because of the associated lower fertility or because higher income enables them 
-to access and afford prenatal sex determination
-I divide women into four groups based on education attainment: no
+Furthermore, as discussed above, the use of sex selection increases with education.
+I, therefore, divide women into four educationgroups: no
 education, one to seven years of education, eight to eleven years of education,
 and twelve and more years of education.
-The models are estimated separately for each education level to reduce the potential 
-problem of including other variables as proportional.
+The models are estimated separately for each group to reduce any
+potential problem from including other variables as proportional.
 
-The sex composition of previous children affects both the timing of births and the use of 
-sex-selective abortions 
-\citep{retherford03b,Bhalotra2008,Portner2015b,Soest2018}.
 I capture sex composition with dummy variables for the
-possible combinations for the specific spell, ignoring the ordering of births.
-Finally, urban women have both lower fertility and, presumably, better access to
-sex selection, both of which lead to higher use of sex-selective abortions than in 
-rural areas \citep{retherford03b,Portner2015b}.
-Area of residence is a dummy variable for the household living in an urban area.
+possible combinations, ignoring the ordering of births.
+Area of residence is a dummy variable for living in an urban area.
 
 % %
 % \footnote{
@@ -727,7 +737,7 @@ Area of residence is a dummy variable for the household living in an urban area.
 % }
 
 Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} presents descriptive 
-statistics for the spells by education level and period.
+statistics.
 The level of censoring increases with parity and time, as we should expect with later 
 childbearing, falling fertility, and the hypothesized increases in birth intervals from 
 sex-selective abortions.
@@ -755,26 +765,27 @@ Results are available upon request.
 }
 
 
-The predicted parity progression probability is the likelihood of a birth by 96 months 
-after the beginning of the spell.
-To find the expected average duration I first calculate, for each woman, the probability 
+The predicted parity progression probability is the likelihood of giving birth by 96 
+months after the beginning of the spell.
+To find the expected average duration, I first calculate, for each woman, the probability 
 of giving birth in each period $t$, which I use as weights to calculated her expected 
 duration. 
 I then average the individual expected durations across women using the parity progression
 probabilities as weights.
 
-The predicted sex ratio captures the percent boys to women in the sample when 
-childbearing for that spell is over.
+The predicted sex ratio captures the percent of births that are boys for women in 
+the sample when childbearing for that spell is over.
 A woman's predicted sex ratio is the weighted average of the predicted percentage boys 
 over each $t$ in the spell, calculated using equation (\ref{eq:probability_son}), using
 the probability of giving birth at time $t$ as weights.%
 \footnote{
-If T=2 with the estimated percent boys 54\% and 66\% and the likelihoods of giving 
-birth 20\% and 40\%, the percent boys is $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$.
+With T=2, if 54 and 66 percent of the births are boys and the likelihoods of 
+giving birth 20 and 40 percent, then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$ percent of the
+births are boys.
 }
 The predicted sex ratio shown is the weighted average of the individual predicted sex 
 ratios, using the parity progression probabilities as weights.
-For comparison, the graphs also show the natural sex ratio, approximately 51.2\% 
+For comparison, the graphs also show the natural sex ratio, approximately 51.2 percent 
 \citep{ben-porath76b,jacobsen99,Portner2015b}.
 
 
@@ -1174,14 +1185,13 @@ a next birth for women with twelve or more years of education}
 \label{fig:bootstrap_highest}
 \end{sidewaysfigure}
 
-Average birth intervals have increased over time across all groups, and are, for a given 
-parity, longer the more education a woman.
-The increases in birth spacing are larger the higher the parity
-and, within parities, the higher the education.
+Average birth intervals have increased over time across all groups, but
+the higher the parity and the higher the schooling, the larger the
+increases.
 
-In the latest period, the lowest average birth interval is for women with no 
-education in the second spell at just shy of 25 months, which is an increase of a
-couple of months from the first period.
+In the latest period, the shortest average birth interval is 25 months for
+women with no education in the second spell, an increase of a couple of
+months from the first period.
 The longest average interval was 42 months for the third spell for women with twelve or 
 more years of education who had no boys, which is an increase of approximately a year.
 For comparison, the median birth intervals reported for the NFHS have barely
@@ -1202,18 +1212,18 @@ when trying to understand how birth spacing is changing over time.
 Parity progression probabilities are lower the higher the education and are
 falling across all groups over time, but the extent of the decline depends crucially on 
 the sex composition of prior children and the parity.
-As expected with a strong son preference, women with no sons still are the most likely to 
-have a next birth, and this group has seen often substantially smaller declines in
+Women with no sons still are the most likely to 
+have the next birth, and this group has seen often substantially smaller declines in
 the likelihood of having another birth than women with one or more sons.%
 \footnote{
-There is, however, also some evidence that parents prefer a mixed sex composition: for 
+There is, however, also some evidence that parents prefer a mix of boys and girls: for 
 the fourth spell women with two boys \emph{and} a girl
 consistently have the lowest parity progression probability.
 }
 For urban women with eight to eleven years of education, for example, the second spell
 probability of a next child declined by eight percentage points if the first child was a 
 girl, but 15 percentage points if it was a boy.
-Even more extreme is the fourth spell where the likelihood of a birth declined by six 
+Even more extreme is the fourth spell, where the likelihood of a birth declined by six 
 percentage points to 75 percent if the woman had three children, but by almost 40 
 percentage points to 25 percent if she had two boys and a girl.
 
@@ -1224,39 +1234,39 @@ There are three broad groups in the data.
 
 First, women who have only girls but do not use sex selection had, and continue to have,
 the shortest spacing, as shown, for example, by rural women with no education.
-For this group spacing is shortest with only girls across all spell, and the difference
-between sex compositions have even widen over time.
+For this group, spacing is shortest with only girls across all spell, and the difference
+between sex compositions have even grown over time.
 
-Second, even with sex selection, and the associated increases in expected spacing, the
-intervals for the other sex compositions have increased even more and the relatively 
+Second, even with sex selection and the associated increases in expected spacing, the
+intervals for the other sex compositions have increased even more, and the relative 
 pattern, therefore, remains more or less the same.
-This is the case, for example, for the second spell for women with eight to eleven
+An example is for the second spell for women with eight to eleven
 and twelve or more years of education.
 
-Finally, women with the most unequal sex ratios show the longest spacing in the 
+Finally, women with the most biased sex ratios have the longest spacing in the 
 absence of boys, and this spacing is longer than for the other possible sex 
 compositions.
 The most extreme example is that with a sex ratio for the best-educated urban women  
 approaching 80 percent, the 42 months birth intervals with two girls is seven months 
 longer than with at least one boy.
-Even urban women with eight to eleven years of education show the longest intervals with 
-only girls in the last period.
+However, even urban women with eight to eleven years of education show the longest 
+intervals with only girls in the last period.
 
 
 
 
-\subsection{Distribution of Birth Spacing}
+\section{Distribution of Birth Spacing}
 
 Average spacing is a convenient way to understand the overall changes in behavior but may 
 hide crucial differences in the distribution of spacing.
 For example, if sex selection drives the changes in birth spacing, most of the increase in 
 spacing will come from people who have two or more pregnancies rather than one and,
-therefore, from changes in the longer intervals,
-while a general increase in spacing would show up as an increase in spacing across the 
-board.
+therefore, from changes in the longer intervals.
+In contrast, a general increase in spacing would show up as an increase in spacing across 
+the board.
 
 Figures \ref{fig:combined_p25_p75_urban} and \ref{fig:combined_p25_p75_rural} 
-show how the predicted 25th and 75th percentile birth intervals has changed over time 
+show how the predicted 25th and 75th percentile birth intervals have changed over time 
 by spell and education.
 For each woman in a given spell/period combination, I calculate the time point at 
 which there is a given percent chance that she will have given birth, relative to the
@@ -1265,7 +1275,7 @@ The reported statistics is the average of the percentile duration
 across all women in a given sample using the individual predicted
 probabilities of having had a birth by the end of the spell as weights.%
 \footnote{
-The Appendix shows conditional survival curves for all groups and 
+The Appendix shows conditional survival curves for all groups, and 
 Appendix Tables \ref{tab:p25_p50_p75_low} through \ref{tab:p25_p50_p75_highest} 
 show 25th, 50th, and 75th percentiles durations with bootstrapped standard errors.
 }
@@ -1333,43 +1343,45 @@ show 25th, 50th, and 75th percentiles durations with bootstrapped standard error
 \end{figure}
 
 
-For both women with no education and those with one to seven years of education,
-almost all of the increases in the average spacing discussed above come from increases in 
-the long end of the spacing distribution rather than from a general increase.
+For women with no or little education, the increases in average spacing
+come predominantly from increases in the long end of the spacing
+distribution rather than from a general increase.
 Hence, spacing is still very short for many women, with 25 percent or more having
 their next birth within two years of the prior birth, even in the last period.
 Furthermore, the increases in the 75th percentile birth intervals are relatively small
-for the second spell and slightly larger for the third spell at around five months.
+for the second spell and slightly more substantial for the third spell at around five months.
 Most of the divergence across sex compositions happen for the fourth spell, where 
-the largest increases are for women with two or three sons.
-However, even for women with no or one son there has been increases in the birth intervals 
-of a half to a full year consistent with some use of sex selection for this group.
+the most significant increases are for women with two or three sons.
+However, even for women with no or one son, the birth intervals have
+increased by a half to a full year, consistent with some use of sex
+selection.
 
 The 25th percentile birth intervals for women with eight to eleven years of education also 
 changed relatively little over time and is, as for the less-educated women, close to
 around two years since the prior birth.
-The result is that most of the change in average spacing is driven by increases in the
-longer spacing end of the distribution.
+Hence, the increases in the longer end of the distribution drive
+the change in average spacing.
 For example, the 75th percentile spacing length for women with two girls in the third 
 spell increased by more than 15 months, mainly as the result of more widespread use of sex 
 selection as the sex ratios above indicate.
  
-The most educated urban women show an interesting pattern for the third spell, where there 
-is essentially no change in either the 25th or 75th percentile birth intervals in the
+The most educated urban women show an unusual pattern for the third spell, where there 
+is virtually no change in either the 25th or 75th percentile birth intervals in the
 presence of at least one boy.
 The 75th percentile birth interval, however, increases by more than 20 months,
-corresponding to the massive increase in the sex ratio to almost 80 precent in the 
+corresponding to the massive increase in the sex ratio to almost 80 percent in the 
 latest period.
-Hence, the increases in birth spacing and the reversal in spacing pattern by sex
-composition over time is mainly driven by increases in the length of the longer intervals, 
-consistent with a substantial use of sex selection.
+Hence, the increases in the length of the longer intervals over time are
+the main reason for the increases in average birth spacing and the
+reversal in the spacing pattern by sex composition, consistent with
+substantial use of sex selection.
 
 Although most of the increases come from among the longer intervals, there is some 
 evidence for the ``delay'' effect discussed above, where parents conceive later
-exactly because they know that the next child is likely to be a boy since they plan
+precisely because they know that the next child is likely to be a boy since they plan
 to use sex selection.
 The best example is for the best-educated urban women in the third spell, where, in the 
-last two periods, the spacing to the third child is significant longer if the two prior 
+last two periods, the spacing to the third child is significantly longer if the two prior 
 children were girls than if they already had one or two boys.
 These two periods are the periods where the predicted sex ratios are 70 and 80 percent,
 respectively.
@@ -1383,18 +1395,20 @@ the difference is substantially smaller.
 A potential effect of the substantial increases in birth spacing is that TFR may 
 underestimate cohort fertility, at least temporarily.
 I, therefore, compare predicted fertility based on a variation of the TFR and the 
-hazard model by urban/rural and education group in Table \ref{tab:fertility}.
+hazard model by urban/rural and education groups in Table \ref{tab:fertility}.
 
 \input{../tables/fertility.tex}
 
 To make the fertility rate comparable to the hazard model, it uses only births up to 
 parity four, and is, therefore, not directly comparable to those in the NFHS reports.
-Otherwise, I follow the procedure used in the NFHS reports and calculate age specific 
-fertility rates for five-year age groups using the number of births in months 1 to 36 
-before the survey month (births in the survey month are not included) and the number
-of women in each age group.%
-\footnote{
-See \citet{Croft2018} for more detail.
+Otherwise, I follow the procedure used in the NFHS reports \citep{Croft2018}.
+I calculate age-specific fertility rates for five-year age groups using the number of 
+births in months 1 to 36 before the survey month and the number of women in each age 
+group.
+
+%
+% \footnote{
+% See \citet{Croft2018} for more detail.
 % Because NFHS-1 and NFHS-2 did not interview all women about fertility, the number of women 
 % is based on the household rosters, assuming that never-married women have had no children.
 % Because of the low number of births to women aged 45 to 49 this age group was not
@@ -1402,18 +1416,17 @@ See \citet{Croft2018} for more detail.
 % rate.
 % The marital total fertility rate lead to unrealistically high numbers and is, therefore,
 % not presented \citep{Hoem2011,Laplante2015}.
-}
+% }
 
-Because NFHS-1 was collected after the introduction of sex selection it is not possible 
-to calculate a fertility rate in exactly the same manner for a period 
+Because NFHS-1 was after the introduction of sex selection, it is not possible 
+to calculate a fertility rate in precisely the same manner for a period 
 before sex selection was widely available.
-Instead, I calculate the fertility rates for women who was between 15 and 39 years of
-age five years prior to the survey month, again using the number of births three years 
-before that.
+Instead, I calculate the fertility rates for women who were between 15 and 39 years of
+age five years before the survey month, again using the number of births three years 
+before that, shown as ``1987--88''.
 Given the relatively low number of births to women 40 to 45 years of age, this approach 
 provides the best estimate of the fertility rate at the time when sex selection still was 
 not widespread.
-This fertility rate is shown as ``1987--88''.
 
 To predict cohort fertility based on the hazard models above, I estimate the probability 
 of progression to the next parity for each spell.
@@ -1422,71 +1435,70 @@ two and above, I estimate the progression probability for each possible sex comp
 and weigh those probabilities with the likelihood that they will occur based on the
 prior spells.
 
-I include the spell from marriage to first birth, despite the problems capturing the 
-exact timing of marriages for the first two rounds of the survey, since
-the estimated progression probabilities should not be affected by this problem.
+I include the spell from marriage to first birth, despite the problems
+capturing the exact timing of marriages since the estimated progression
+probabilities should not be affected by this problem.
 To ensure that the predictions depend solely on sample composition and the estimate, I
 use the age at marriage for each woman and predict the likelihood of progressing to
 each parity, assuming three years increases in age between each parity.
-Shorter assumed duration between parities leads to slightly higher predicted 
+Shorter assumed duration between births leads to slightly higher predicted 
 fertility.
 
-The survey rounds do not coincide directly with the periods I use for the hazard model.
-For the NFHS-4, I use the model results for the 2005--2016 period, 
-for NFHS-3 the 1995--2004 period, 
-for NFHS-2 the 1985--1994 period, 
-and for NFHS-1 the 1972--1984 period.
+The survey rounds do not coincide directly with the periods used for the hazard model.
+I, therefore, use the model results for 1972--1984, 1985--1994, 1995--2004,
+and 2005--2016 for rounds 1 through 4 of the NFHS, respectively.
 Because of the small number of women who had the highest level of education in the
-1972--1984 period, I do not present a predicted fertility for this case.
+1972--1984 period, I do not predict fertility for this case.
 
-In almost all cases the predicted cohort fertility based on the hazard model is higher 
-than the four-parity fertility rate.
-Only for women with no education in the first period are there almost no difference 
-between the two fertility measures; a situation where fertility is high and spacing
-very short and likely unchanged over a long period before.
+The predicted cohort fertility based on the hazard model is higher than the four-parity 
+fertility rate in almost all cases.
+Only for women with no education in the first period is there almost no difference 
+between the two fertility measures; a situation where fertility is high, spacing
+very short and likely unchanged for an extended period before.
 
-Consistent with a larger bias in the fertility rate when age of marriage and the length of 
-birth intervals are increasing, the absolute bias is least in the first and the last 
+Consistent with a more substantial bias in the fertility rate when the age of marriage 
+and the length of birth intervals are increasing, the absolute bias is least in the first and the last 
 period and highest in the middle two periods.
-Hence, the fertility rate declined too fast between the mid-1980s and the end of the 
-century, and only recently, as the rate of increase for the birth intervals have slowed, 
-are the predicted cohort fertility and the fertility beginning to converge again.
+Hence, the fertility rate declined too fast from the mid-1980s to the century's end.
+Only recently, as the rate of increase for the birth intervals have
+slowed, are the predicted cohort fertility and the fertility beginning
+to converge again.
 Even with the convergence, however, the predicted cohort fertility for 2005--16 is 
 above the 1992--93 fertility rate for every group except urban women with no education.
-Furthermore, for the last period, the predicted cohort fertility is stil between ten
+Furthermore, for the last period, the predicted cohort fertility is still between ten
 and 20 percent higher than the fertility rate. 
 
-The bias in the fertility rate is also evident in the fact that the fertility rate is 
-increasing over time for some groups.
+Another indication of the fertility rate bias is that it is increasing over time for some 
+groups.
 For example, urban women with eight to eleven years of education showed 1.84, 1.81, and
-1.87 over the last three surveys, and for rural women with one to seven years of
-education fertility rate goes from 2.25 for NFHS-3 to 2.37 for NFHS-4.
-These increases are likely the result of a stabilization of the age of first birth and
-the spacing between births.%
+1.87 over the last three surveys.
+These increases likely arise from the stabilization of the age of first birth and the 
+spacing between births.%
 \footnote{
-Increases in TFR over time, even in the face of declining cohort fertility is not 
+Increases in TFR over time, even in the face of declining cohort fertility, are not 
 unusual, as shown by Columbia in the early 1990s \citep{Bongaarts1999}.
 }
 
-Despite the declines in the predicted cohort fertility it is still mostly above the 
+Despite the declines in the predicted cohort fertility, it is still mostly above the 
 generally accepted replacement level of 2.1.
 Only for urban women with twelve or more years of education is the predicted cohort
-fertility below 2.1, and even then it is still more than 0.3 children higher than the 
+fertility below 2.1, and even then, it is still more than 0.3 children higher than the 
 fertility rate estimate of 1.5.
-Furthermore, because only the first four births are used, the predicted cohort fertility
-numbers are likely too low, especially for the lower education groups.
+Furthermore, the predicted cohort fertility numbers are likely too low,
+especially for the lower education groups, since it relies only on the
+first four births.
 
 
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
 
-The prior literature show that shorter birth spacing, especially very short spacing,
-is associated with higher risk of infant mortality.
+The prior literature shows that shorter birth spacing, especially very short spacing,
+is associated with a higher risk of infant mortality.
 Hence, the longer spacing, both from the increasing use of sex-selective abortions and
 from secular changes, may directly reduce infant mortality.
-To the extent that the longer birth intervals arise from multiple abortions
+To the extent that the longer birth intervals arise from multiple abortions,
 the short duration between \emph{pregnancies} could, however, increase mortality risk.
 This section addresses how infant mortality has changed and whether there is evidence
-of a negative impact of sex selective abortions.
+of a negative impact of sex-selective abortions.
 
 Starting with the sample used for estimating birth spacing, I select children born 
 more than 12 months before the survey month.
@@ -1497,17 +1509,17 @@ education for the 1972--84 period because of the low number of women.
 
 The dependent variable is whether the child died within the first twelve
 months of life.
-The main set of explanatory variable consists of dummies for birth spacing
+The main set of explanatory variables consists of dummies for birth spacing
 covering 12 months intervals, starting from nine months after the prior birth 
 as above, until 48 months, which includes all births until 96 months.
-In addition, I use dummies for sex of the index child and the sex composition 
+I use dummies for sex of the index child and the sex composition 
 of the prior children.
 The birth spacing dummies, the sex of index child, and the sex composition dummies
 are all interacted.
-Since the actual number of abortions are unobserved, the interactions between
-sex composition of prior children and the sex of the index child serve
+Since the actual number of abortions is unobserved, the interactions between
+the sex composition of prior children and the sex of the index child serve
 as proxies for the use of sex selection.
-The other explanatory variables are the same as above and estimations
+The other explanatory variables are the same as above, and estimations
 are done separately by education level and parity.
 
 I estimate the probability of infant mortality using a logit model.
@@ -1516,20 +1528,20 @@ the predicted probability of the second child dying within the first year at the
 possible combinations of index child sex, sex composition of prior children, and 
 the birth spacing dummied.%
 \footnote{
-The online Appendix show the corresponding graphs for the third child.
+The online Appendix shows the corresponding graphs for the third child.
 }
-All other variables are set to their average values.
-To ease legibility all confidence intervals are suppressed.
+All other variables take their average values.
+The graphs do not show confidence intervals to ease their legibility.
 
 An important caveat is that the estimations do not 
 address potential selection problems.
 For example, if women who have difficulties conceiving or carrying a pregnancy 
-to term also have higher mortality risk for their offspring, a spurious correlation 
+to term also have a higher mortality risk for their offspring, a spurious correlation 
 between long birth spacing and mortality may arise \citep{Kozuki2013}. 
 Unfortunately, methods used previously to address selection, such
 as family fixed effects, do not work well when the number of births is
-low as it is for higher education women \citep{Kozuki2013,Molitoris2019}.
-However, in prior research the fixed effects results and linear probability do not 
+low as it is for better-educated women \citep{Kozuki2013,Molitoris2019}.
+However, in prior research, the fixed effects results and linear probability do not 
 deviate substantially.
 
 
@@ -1651,19 +1663,19 @@ and Women with Twelve or More Years of Education}
 
 
 There has been substantial convergence in mortality risk across groups over time.
-For the 12 months and above intervals, there is now little difference across 
+For intervals 12 months or longer, there is now little difference across 
 the education groups, with even the no education group showing an infant mortality risk 
 below five percent.
 
 Very short birth intervals still exhibit a higher mortality risk, although the 
 effect declines with education level.
-For the best-educated women the mortality risk is three to four percent,
+For the best-educated women, the mortality risk is three to four percent,
 whereas women with no education still show a risk that is close to ten percent.
 
 Despite the prior findings of differential mortality by sex, there is little evidence 
 that girls have substantially higher mortality risk.
-There is some weak evidence that a boy born after a girl have lower mortality
-risks in the earliest periods.
+There is some weak evidence that a boy born after a girl has a lower mortality
+risk in the earliest periods.
 This difference disappears, however, with the general decline in mortality risk. 
 
 If sex selective abortions lead to higher mortality risk, boys born after a girl 
@@ -1674,12 +1686,13 @@ There are, however, no apparent consistent differences between these groups and 
 potential combinations.
 
 % line 3661 in an_infant_mortality.log
-The raw numbers for the group with the most uneven sex ratio---women with twelve or more
-years of education who have no boys in the third spell in the last period---indicates
-that even with high use of sex selection there is no impact on child mortality.
-A total of 1,004 women in this group had a third child, of which 685 are boys.
-Of these 685 boys, only 6 died within the first year of life and half of those
-were in born the 0--23 months interval, and none in 48 months or more interval.
+The raw numbers for the group with the most uneven sex ratio indicates
+that there is no impact on child mortality, even with high use of sex selection. 
+A total of 1,004 women with twelve or more years of
+education, who have no boys at the start of the third spell in the last
+period, had a third child, of which 685 were boys. 
+Of these 685 boys, only six died within the first year of life, and half of those were 
+born in the 0-23 months interval, and none in 48 months or more interval.
 
 
 
@@ -1688,119 +1701,112 @@ were in born the 0--23 months interval, and none in 48 months or more interval.
 
 % What has happened to spacing and why
 
-One effect of the major changes that India has experienced over the last four decades is
-that spacing between births have increased for everybody.
-The increases in spacing are larger the higher the parity and the higher the mother's 
-education and are larger in urban than in rural areas.
+One effect of the significant changes that India has experienced over the last four 
+decades is that spacing between births has increased.
+The size of the increase is increasing in parity and the mother's
+education and is larger in urban than in rural areas.
 
-The most substantial increases in birth intervals arise, however, with heavy use of sex 
-selection, as, for example, urban women with twelve or more years of education and two 
-girls.
-We, therefore, now in some cases observe a reversal of the traditional spacing
-pattern where strong son preference was associated with shorter birth intervals the fewer 
+The most substantial increases in birth intervals arise, however, with
+heavy use of sex selection. Some of these increases are so large that we
+even observe a reversal of the traditional spacing pattern where strong
+son preference was associated with shorter birth intervals, the fewer
 sons a family has \citep{ben-porath76b,Leung1988}.
-This reversal comes about because couples with a strong preference for sons now use sex 
-selection, not because son preference has changed over time.
 
-Despite the longer average birth intervals, a large number of women still have very
-short birth intervals.
-Hence, the changes in birth spacing is driven by the longer intervals becoming longer
-over time, both for women who do not use sex selection, but especially for those who
-do and end up with multiple abortions.
-The exception to the small change in short spacing is the delay in conception for
-women with very high sex selection use, presumably because this group knows that the
-next child will be a boy.
-
+Despite the longer average birth intervals, a large number of women
+still have very short birth intervals. 
+Hence, the changes in birth
+spacing are driven by the longer intervals becoming even longer over
+time, both for women who do not use sex selection, but especially for
+those who do and end up with multiple abortions. 
+The exception to the
+small change in short spacing is the delay in conception for women with
+very high use of sex selection, presumably because this group knows that
+the next child will be a boy.
 
 % fertility
 Fertility has declined for all groups, but the likelihood of having an additional child
 still depends strongly on the number of sons, with women with no sons having the highest 
 probabilities.
 
-That those women most likely to use sex selection are also the most likely to have a
-next birth, combined with the secular increases in spacing, makes the total fertility 
-rate a more biased measure of cohort fertility.
-This bias was most prominent early in the spread of sex selection, where the fertility
-rate was up to one child lower than the predicted cohort fertility, but is still
-present with the predicted cohort fertility ten to twenty percent higher than 
-the fertility rate.
+That those women most likely to use sex selection are also the most
+likely to have a next birth, combined with the secular increases in
+spacing, makes the total fertility rate a more biased measure of cohort
+fertility. 
+This bias was most prominent early in the spread of sex
+selection when the fertility rate was up to one child lower than the
+predicted cohort fertility. 
+It is, however, still present with the
+predicted cohort fertility ten to twenty percent higher than the
+fertility rate.
 
-Tempo effects are studied extensively in the literature,%
+Tempo effects are studied extensively in the literature.%
 \footnote{
 See, for example, \citet{Bongaarts1999}.
 }
-but there are, however, to my knowledge, no other cases where there has been as 
+Still, there are, to my knowledge, no other cases where there has been as 
 substantial an increase in birth intervals and associated bias in fertility rates 
 as for India.
-It is, therefore, conceivable that we might see increases in TFR as birth spacing 
-stabilizes or even declines again if interventions against sex selection are successful.
+It is conceivable that we might see increases in TFR as birth spacing 
+stabilizes or even shortens again if interventions against sex selection are successful.
 
-The only group who have a predicted cohort fertility below replacement are the 
-best-educated urban women, with a predicted fertility of 1.8. 
-Note that the predicted cohort fertility estimates come with the caveats that they are
-based on married Hindu women and the model only includes births up to parity four.
-However, almost everybody marry and Hindu constitute 80 percent of the population,
-and since only the first fourth parities are used, it is possible that these 
-estimates are lower-bound, especially for the less educated women.
+The best-educated urban women are the only group for whom the predicted cohort fertility 
+is below replacement at 1.8. 
+A caveat to the predicted cohort fertility is that only Hindu women are
+in the sample and that the model only includes births up to parity four.
+However, almost everybody marries, and Hindu constitute 80 percent of the population.
+Furthermore, with only the first fourth births used, these estimates may
+be lower-bound, especially for the less educated women.
 
 % Mortality
-There has been a substantial reduction in infant mortality over time with the size of
-the reductions larger the less educated the mother.
-This convergence means that there is now little difference in mortality risk across
+There has been a substantial reduction in infant mortality over time, and 
+the size of the reductions is inversely related to the mother's education.
+Hence, there is now little difference in mortality risk across
 education groups if the birth took place more than 21 months from the prior birth.
-Short birth spacing is still more dangerous for the child, with the least increase for
-the best-educated women.
-Despite the potential that extensive use of sex selection might negatively affect the 
-next child's survival, there is no evidence that children born to women who are the most
-likely to use sex selection have worse outcomes. 
-The rapid reduction in infant mortality risk, combined with the longer spacing,
-which further reduces mortality, and higher than previously realized fertility, 
-implies that population growth in India is, and will be, higher than expected.
+Short birth spacing is still associated with higher mortality, although the difference is 
+small for the best-educated women.
+There is no evidence that children born to women who are the most likely to use sex 
+selection have higher mortality risk. 
+
+An implication of the results here is that population growth in India
+will be higher than expected. There has been a rapid reduction in infant
+mortality risk, the longer spacing should further reduce mortality risk,
+and cohort fertility is higher than previously realized.
 
 
 % Future research and policy 
 
-The results here lead to two important questions that future research should address.
+The results here lead to two critical questions that future research should address.
+Sex selection means that girls-only families are less likely to have
+very short birth intervals, which may reduce sibling competition. 
+Hence, better health outcomes for girls with sex selection could be an
+unintended side-effect, rather than a result of girls becoming more
+valued as is often assumed. 
+Comparing prior children's outcomes across
+sex composition and the sex of the next child could be a way to
+understand why girls' health outcomes improve in the presence of sex selection.
 
-First, how does the changing birth spacing affect prior children?
-We know that girls' health outcomes improve in the presence of sex selection 
-\citep{Lin2014,Hu2015}.
-An extensive use of sex selection implies is that only-girls families are much less 
-likely to have a very short birth interval, which may reduce sibling competition for 
-resources.
-Hence, better health outcomes for girls could be an unintended side-effect 
-of the longer spacing that arises from sex-selective abortions, rather than because the 
-smaller number of girls makes them more valued as is often assumed.
-A more positive reading would be that parents are more likely to view prior girls as
-wanted since they know that they will eventually have a son.
-In either case, an effective ban on sex selection could, at least temporarily, worsen
-health outcomes for girls.
+Second, is there a relationship between female labor force participation
+and sex selection? Women may be staying out of the labor market
+precisely because sex selection makes them more likely to have a boy and
+increases the expected birth spacing. Better job opportunities for women
+would affect sex selection for two reasons. First, it makes it more
+expensive to be out of the labor market for long periods. Second, it
+would moderate the differential in potential earnings between husband
+and wife and make it more attractive to invest in female compared to
+male offspring's human capital. This approach could, however, be a
+double-edged sword. If better job opportunities further lower desired
+fertility, the use of sex selection may increase, everything else equal.
+Hence, understanding the trade-off between long-term benefits from
+improvements in women's labor force participation and short-term costs
+from potential increases in sex selection is of paramount importance.
 
-Second, is there an interaction between female labor force participation and 
-sex selection?
-Women may be staying out of the labor market exactly because the easier access to sex 
-selection means that they are now more likely to have a boy and because the expected 
-spacing between births has increased.
-The higher return to male offspring's human capital combined with access to sex
-selection may also explain another puzzle, why is the labor force participation so
-low when fertility is low and education has increased.
-As shown here, part of the answer may be that the number of children is, in fact, not as 
-low as previously thought, both because of the increased spacing and that more 
-children survive.
 
-Better job opportunities for women may be a direct way to affect sex selection for two 
-reasons.
-First, it makes it more expensive to be out of the labor market for long periods.
-Second, it would moderate the differential in potential earnings between husband and
-wife and make it more attractive to invest in female compared to male offspring's human 
-capital.
-This approach may, however, be a double-edged sword.
-If better job opportunities further lower desired fertility the result may be even
-higher use of sex selection, everything else equal.
-Hence, understanding the trade-off between long-term benefits from improvements in 
-women's labor force participation and short-term costs from potential increases in sex 
-selection is of paramount importance.
-
+% The higher return to male offspring's human capital combined with access to sex
+% selection may also explain another puzzle, why is the labor force participation so
+% low when fertility is low and education has increased.
+% As shown here, part of the answer may be that the number of children is, in fact, not as 
+% low as previously thought, both because of the increased spacing and that more 
+% children survive.
 
 
 
