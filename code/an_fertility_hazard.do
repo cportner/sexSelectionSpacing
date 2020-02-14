@@ -39,11 +39,11 @@ foreach educ in "highest" "high" "med" "low" {
 
     forvalues group = 1/4 {
     
-        // Estimation results for highest education group in the 1972-84 period unreliable
-        // because of too small sample size
-        if "`educ'" == "highest" & `group' == 1 {
-            continue
-        }
+//         // Estimation results for highest education group in the 1972-84 period unreliable
+//         // because of too small sample size
+//         if "`educ'" == "highest" & `group' == 1 {
+//             continue
+//         }
 
         forvalues spell = 1/4 {
 
@@ -97,14 +97,25 @@ foreach educ in "highest" "high" "med" "low" {
                 loc ++i
                 gen dur`i' = t >= 20 
             }
+//             else if `spell' == 4 {
+//                 loc i = 1
+//                 gen dur`i' = t >= 1 & t <= 5
+//                 loc ++i
+//                 gen dur`i' = t >= 6 & t <= 10
+//                 loc ++i
+//                 gen dur`i' = t >= 11
+//             }
             else if `spell' == 4 {
                 loc i = 1
-                gen dur`i' = t >= 1 & t <= 5
+                gen dur`i' = t >= 1 & t <= 3
                 loc ++i
-                gen dur`i' = t >= 6 & t <= 10
+                gen dur`i' = t >= 4 & t <= 6
+                loc ++i
+                gen dur`i' = t >= 7 & t <= 10
                 loc ++i
                 gen dur`i' = t >= 11
             }
+
 
             // CREATE INTERACTIONS BASED ON SPELL NUMBER
             // Note: spell 1 will never enter the loop

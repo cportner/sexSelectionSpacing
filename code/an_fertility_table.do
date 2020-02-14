@@ -77,12 +77,12 @@ foreach where in "Urban" "Rural" {
         // Hazard prediction
         file write table "Hazard Model\tnote{b}     "
         forvalues round = 1/4 {            
-            # Estimation results for highest education group in the 1972-84 period unreliable
-            # because of too small sample size
-            if `round' == 1 & "`educ'" == "highest" {
-                file write table "&        .        &                 "
-                continue
-            }
+//             # Estimation results for highest education group in the 1972-84 period unreliable
+//             # because of too small sample size
+//             if `round' == 1 & "`educ'" == "highest" {
+//                 file write table "&        .        &                 "
+//                 continue
+//             }
             use `data'/predicted_fertility_hazard_g`round'_`educ'_r`round'.dta
             sum(pred_fertility) if urban == `area_val'
             loc result = `r(mean)'
@@ -129,7 +129,9 @@ file write table "starting point and adding three years for each spell." _n
 file write table "Observed births are not taken into account for the predictions." _n
 file write table "For each spell, the predicted probability is the likelihood of having a" _n
 file write table "next birth given sex composition multiplied with probability of that" _n
-file write table "sex composition and the likelihood of getting to the spell." _n
+file write table "sex composition and the likelihood of getting to the spell," _n
+file write table "corrected for the probability of sterilization." _n
+
 
 file write table "\end{tablenotes}" _n
 file write table "\end{threeparttable}" _n

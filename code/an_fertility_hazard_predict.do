@@ -25,6 +25,7 @@ program predict_fertility
  
     capture drop dur* np* t months mid_months
     capture drop p0 p1 p2 pcbg s pps prob_kid prob_any_birth ratio_sons num_sons pct_sons
+    capture drop prob_sterile
 
     // Duration variables
     expand `lastm'
@@ -53,14 +54,25 @@ program predict_fertility
         loc ++i
         gen dur`i' = t >= 20 
     }
-    else if `spell' == 4 {
-        loc i = 1
-        gen dur`i' = t >= 1 & t <= 5
-        loc ++i
-        gen dur`i' = t >= 6 & t <= 10
-        loc ++i
-        gen dur`i' = t >= 11
-    }
+//     else if `spell' == 4 {
+//         loc i = 1
+//         gen dur`i' = t >= 1 & t <= 5
+//         loc ++i
+//         gen dur`i' = t >= 6 & t <= 10
+//         loc ++i
+//         gen dur`i' = t >= 11
+//     }
+            else if `spell' == 4 {
+                loc i = 1
+                gen dur`i' = t >= 1 & t <= 3
+                loc ++i
+                gen dur`i' = t >= 4 & t <= 6
+                loc ++i
+                gen dur`i' = t >= 7 & t <= 10
+                loc ++i
+                gen dur`i' = t >= 11
+            }
+
     
     // [THIS PART DEPENDS ON SPELL!]        
     loc npvar = "urban "
@@ -101,6 +113,15 @@ program predict_fertility
     
     // Only need the final values 
     bysort id (t): keep if _n == _N    
+    
+    // Sterilization likelihood (zero for 1st and 2nd spell)
+    if `spell' > 2 {
+        // Load results
+        estimates use `data'/sterilization_results_spell`spell'_g`period'_`educ'
+    
+        predict double prob_sterile 
+        replace prob_any_birth = prob_any_birth * (1 - prob_sterile)
+    }
 
 end
 
@@ -133,11 +154,11 @@ forvalues period = 1/4 {
     loc round = `period'
     foreach educ in "highest" "high" "med" "low" {
     
-        // Estimation results for highest education group in the 1972-84 period unreliable
-        // because of too small sample size
-        if "`educ'" == "highest" & `period' == 1 {
-            continue
-        }
+//         // Estimation results for highest education group in the 1972-84 period unreliable
+//         // because of too small sample size
+//         if "`educ'" == "highest" & `period' == 1 {
+//             continue
+//         }
 
         preserve
 
