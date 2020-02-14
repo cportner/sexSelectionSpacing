@@ -1,6 +1,4 @@
-* Descriptive statistics for all 36 regressions
-* Based on original work
-* anDescStat.do
+* Descriptive statistics for all regressions
 
 version 13.1
 clear all
@@ -87,6 +85,16 @@ sum b2_space if b2_sex != .
 loc max_month = `r(max)'
 
 gen b1space = b1_space
+
+// Sterilization and censoring
+gen cen_sterilisation = b1_born_cmc + b2_space == sterilisation & ///
+    sterilisation != . & b2_space <= 105 & fertility == 1
+    
+sum cen_sterilisation    
+table edu_group group urban , cont(mean cen_sterilisation) 
+
+bysort edu_group group: tab b2_space if cen_sterilisation
+
 
 // Converting to 3 months intervals
 drop if b2_space == .
@@ -195,6 +203,16 @@ tab b3_space if b3_sex != .
 sum b3_space if b3_sex != .
 loc max_month = `r(max)'
 
+// Sterilization and censoring
+gen cen_sterilisation = b2_born_cmc + b3_space == sterilisation & ///
+    sterilisation != . & b3_space <= 105 & fertility == 2
+    
+sum cen_sterilisation
+table edu_group group urban, cont(mean cen_sterilisation) 
+
+bysort edu_group group: tab b3_space if cen_sterilisation
+
+
 // Converting to 3 months intervals
 drop if b3_space == .
 replace b3_space = int((b3_space)/3) + 1 // 0-2 first quarter, 3-5 second, etc - now 9 months is **not** dropped
@@ -289,6 +307,15 @@ gen b1space = b1_space
 tab b4_space if b4_sex != .
 sum b4_space if b4_sex != .
 loc max_month = `r(max)'
+
+// Sterilization and censoring
+gen cen_sterilisation = b3_born_cmc + b4_space == sterilisation & ///
+    sterilisation != . & b4_space <= 105 & fertility == 3
+    
+sum cen_sterilisation
+table edu_group group urban, cont(mean cen_sterilisation) 
+
+bysort edu_group group: tab b4_space if cen_sterilisation
 
 // Converting to 3 months intervals
 drop if b4_space == .
