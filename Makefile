@@ -498,7 +498,7 @@ $(FHRESULTS) : $(COD)/an_fertility_hazard.do \
 # Hazard model predictions
 $(FHTARGET) : $(COD)/an_fertility_hazard_predict.do \
  $(FHRESULTS) $(DAT)/base.dta
-	cd $(COD); stata-se -b -q $(<F)	
+	cd $(COD); nice stata-se -b -q $(<F)	
   
 # Table of predictions
 $(TAB)/fertility.tex : $(COD)/an_fertility_table.do \
