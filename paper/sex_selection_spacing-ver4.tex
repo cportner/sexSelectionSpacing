@@ -182,21 +182,22 @@ important, birth spacing affects the reliability of our fertility measures and m
 impact mortality. 
 To understand these effects, I address two additional questions. 
 
-First, did birth spacing changes bias the fertility estimates for India?
-The tempo effect from longer birth intervals makes the total fertility rate a downward 
-biased estimate of cohort fertility. \citep{Hotz1997,Bongaarts1999,Ni-Bhrolchain2011}.
-Hence, if birth intervals increased substantially over time, India's fertility may 
-be higher than generally accepted.
+First, did changes in birth spacing bias the fertility estimates for India? 
+With longer spacing, mothers will be older at each parity, and this tempo effect makes the 
+total fertility rate a downward biased estimate of cohort fertility
+\citep{Hotz1997,Bongaarts1999,Ni-Bhrolchain2011}. 
+Hence, if birth intervals increased substantially, India's fertility may be higher 
+than generally accepted.
 
-Second, how do the changes in birth spacing and the increased use of abortions impact 
-children's chances of survival?
+Second, what is the relationship between infant mortality and the changes in birth spacing 
+and sex selection?
 In India, birth intervals have traditionally been shorter with fewer sons, contributing 
 to the higher mortality risk for girls
 \citep{Whitworth2002,Bhalotra2008,Maitra2008,Jayachandran2011,Jayachandran2017a}.
-Longer birth spacing may, therefore, lower mortality 
-\citep{Conde-Agudelo2012,Molitoris2019}.
-A counteracting effect is, however, possible if the longer spacing arises because of 
-multiple abortions. 
+Hence, longer birth spacing, whether from sex selection or secular changes, may reduce 
+mortality \citep{Conde-Agudelo2012,Molitoris2019}.
+However, a counteracting effect is possible if longer birth intervals arise from multiple 
+abortions since the short duration between \emph{pregnancies} could increase mortality. 
 Nevertheless, there has been no attempt to examine how infant mortality changed with 
 the increase in sex selection.
 
@@ -351,10 +352,9 @@ process still operates.
 
 \section{Birth Spacing: Mechanisms and Prior Findings}
 
-To provide a conceptual framework for understanding how birth spacing
-may respond to the substantial changes in income, female education, and
-female labor force participation that India has experienced, I discuss
-in this section relevant theories and prior findings on birth spacing.
+To provide a framework for understanding how birth spacing responded to the advent 
+of sex selection and the substantial changes in income, education, and labor force 
+participation, I next discuss relevant theories and prior findings on birth spacing.
 
 The standard economic argument for the predominant association between
 increasing female education and shorter spacing is that parents incur
@@ -748,16 +748,17 @@ sex-selective abortions.
 
 
 
-\section{How Birth Spacing has Changed\label{sec:results}}
+\section{How Birth Spacing Changed\label{sec:results}}
 
+% Explain question and what I am doing
+The first question I address is how birth spacing responded to the significant changes, 
+especially the spread of sex selection, that India experienced. 
+I estimate the competing risk hazard model for each spell/education/period subsample and 
+then predict average birth spacing, sex ratio, and the probability of having a birth 
+in that spell.
 
-% [How to read tables]
-I estimate the model for each spell/education/period subsample, the results of which I use 
-to predict average birth spacing, sex ratio, and the probability of having a birth in that 
-spell.
 Figures \ref{fig:bootstrap_low} through \ref{fig:bootstrap_highest}
-show these predicted outcomes for the four education levels separated by the area of 
-residence.%
+show the predicted outcomes for the four education levels by area of residence.%
 \footnote{
 For legibility, the graphs do not show standard errors.
 The graphed values, with standard errors, are shown in Appendix Tables 
@@ -1245,6 +1246,7 @@ the shortest spacing, as shown, for example, by rural women with no education.
 For this group, spacing is shortest with only girls across all spell, and the difference
 between sex compositions have even grown over time.
 
+[TK this is not clear]
 Second, even with sex selection and the associated increases in expected spacing, the
 intervals for the other sex compositions have increased even more, and the relative 
 pattern, therefore, remains more or less the same.
@@ -1265,13 +1267,16 @@ intervals with only girls in the last period.
 
 \section{Distribution of Birth Spacing}
 
-Average spacing is a convenient way to understand the overall changes in behavior but may 
-hide crucial differences in the distribution of spacing.
-For example, if sex selection drives the changes in birth spacing, most of the increase in 
-spacing will come from people who have two or more pregnancies rather than one and,
-therefore, from changes in the longer intervals.
-In contrast, a general increase in spacing would show up as an increase in spacing across 
-the board.
+To better understand what factors are behind the changes in average spacing, I next 
+examine the distribution of birth spacing---represented by the 25th and 75th percentiles 
+of predicted birth intervals. 
+This approach can capture differences across groups with similar changes in average spacing. 
+For example, imagine that sex selection is behind an increase in average birth spacing, 
+but that women still try to conceive early. 
+In that case, we should see little change in the 25th percentile, but the 75th percentile 
+spacing becomes much longer because those who use sex selection will have two or more 
+pregnancies rather than one. 
+In contrast, a general increase in spacing would show up as lengthening of both percentiles.
 
 Figures \ref{fig:combined_p25_p75_urban} and \ref{fig:combined_p25_p75_rural} 
 show how the predicted 25th and 75th percentile birth intervals have changed over time 
@@ -1400,15 +1405,19 @@ the difference is substantially smaller.
 
 \section{What has Happened to Fertility?\label{sec:fertility}}
 
-A potential effect of the substantial increases in birth spacing is that TFR may 
-underestimate cohort fertility, at least temporarily.
-I, therefore, compare predicted fertility based on a variation of the TFR and the 
-hazard model by urban/rural and education groups in Table \ref{tab:fertility}.
+The tempo effect from longer birth intervals means that the total fertility rate may 
+underestimate cohort fertility. 
+The next question I address is, therefore, to what extent did the changes bias the 
+fertility estimates for India? 
+To this end, I compare fertility based on a variation of the total fertility rate with 
+predicted cohort fertility from the hazard model results.
 
 \input{../tables/fertility.tex}
 
-To make the fertility rate comparable to the hazard model, it uses only births up to 
-parity four, and is, therefore, not directly comparable to those in the NFHS reports.
+Table \ref{tab:fertility} shows the two fertility measures by urban/rural and education.
+Because the hazard model predictions only use births up to parity four, I calculate
+fertility rates using only the same births.
+Hence, my fertility rates are not directly comparable to those in the NFHS reports.
 Otherwise, I follow the procedure used in the NFHS reports \citep{Croft2018}.
 I calculate age-specific fertility rates for five-year age groups using the number of 
 births in months 1 to 36 before the survey month and the number of women in each age 
@@ -1509,22 +1518,14 @@ of the 96 months long spell.
 
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
 
-The prior literature shows that shorter birth spacing, especially very short spacing,
-is associated with a higher risk of infant mortality.
-Hence, the longer spacing, both from the increasing use of sex-selective abortions and
-from secular changes, may directly reduce infant mortality.
-
-To the extent that the longer birth intervals arise from multiple abortions,
-the short duration between \emph{pregnancies} could, however, increase mortality risk.
-This section addresses how infant mortality has changed and whether there is evidence
-of a negative impact of sex-selective abortions.
-
-Starting with the sample used for estimating birth spacing, I select children born 
-more than 12 months before the survey month.
-I restrict the analyses to parities two and three because of the small number
-of births and deaths for parity four.
-Furthermore, I do not show results for women with twelve or more years of
-education for the 1972--84 period because of the low number of women.
+The final question I address is whether there is an association between infant mortality 
+and increases in birth spacing and sex selection. 
+Starting with the sample used for estimating birth spacing, I select children born more 
+than 12 months before the survey month. 
+I restrict the analyses to parities two and three because of the small number of births 
+and deaths for parity four. 
+Furthermore, I do not show the results for women with twelve or more years of education 
+for the 1972--84 period because of the small number of women.
 
 The dependent variable is whether the child died within the first twelve
 months of life.
@@ -1560,7 +1561,7 @@ between long birth spacing and mortality may arise \citep{Kozuki2013}.
 Unfortunately, methods used previously to address selection, such
 as family fixed effects, do not work well when the number of births is
 low as it is for better-educated women \citep{Kozuki2013,Molitoris2019}.
-However, in prior research, the fixed effects results and linear probability do not 
+However, in prior research, the fixed effects and linear probability results do not 
 deviate substantially.
 
 
