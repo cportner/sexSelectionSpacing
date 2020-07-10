@@ -1,4 +1,5 @@
-// Experimental graph generation for bootstrap results
+// Graph generation for bootstrap results
+// Birth intervals rather than spell lengths
 
 version 15.1
 clear all
@@ -122,8 +123,8 @@ foreach educ in "low" "med" "high" "highest" {
             }
 
             // 75th percentile
-            loc spacing_low  = 25
-            loc spacing_high = 60
+            loc spacing_low  = 30
+            loc spacing_high = 70
 
             twoway line `p25' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
@@ -131,14 +132,14 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
+                ytitle("75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80)
 
             graph export `figures'/p75_spell`spell'_`educ'_`where'.eps, replace fontface(Palatino) 
             
             // 50th percentile
-            loc spacing_low  = 15
-            loc spacing_high = 40
+            loc spacing_low  = 24
+            loc spacing_high = 48
                                     
             twoway line `p50' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
@@ -146,15 +147,15 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("50th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
+                ytitle("50th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80)
             
             graph export `figures'/p50_spell`spell'_`educ'_`where'.eps, replace fontface(Palatino) 
             
 
             // 25th percentile
-            loc spacing_low  = 5
-            loc spacing_high = 25
+            loc spacing_low  = 12
+            loc spacing_high = 36
 
             twoway line `p75' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
@@ -162,15 +163,15 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("25th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
+                ytitle("25th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80)
 
             graph export `figures'/p25_spell`spell'_`educ'_`where'.eps, replace fontface(Palatino) 
 
 
             // Average
-            loc spacing_low  = 20
-            loc spacing_high = 45
+            loc spacing_low  = 30
+            loc spacing_high = 54
 
             twoway line `avg' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
@@ -206,15 +207,15 @@ foreach educ in "low" "med" "high" "highest" {
                 local set_label "off"
             }
             
-            loc spacing_low  = 10
-            loc spacing_high = 60
+            loc spacing_low  = 16
+            loc spacing_high = 72
 
             twoway line `p25' c1, sort  ///
                 lpattern(`pattern' ) lwidth(medthick..) lcolor(black...) ///
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("25th and 75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
+                ytitle("25th and 75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80) ///
                  || ///
             line `p75' c1, sort  ///
@@ -222,7 +223,7 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("25th and 75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
+                ytitle("25th and 75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                  || ///
                  , legend(`set_label') /// 
 

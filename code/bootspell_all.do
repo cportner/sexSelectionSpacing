@@ -82,8 +82,9 @@ program bootspell_all, rclass
     capture drop dur* np* t
     expand $lastm
     bysort id: gen t = _n
-    gen months = t * 3
-    gen mid_months = (t-1)*3 + 1.5
+    // + 9 to get to birth intervals rather than spell lengths
+    gen months = t * 3 + 9 
+    gen mid_months = (t-1)*3 + 1.5 + 9
 
     // PIECE-WISE LINEAR HAZARDS
     if `spell' == 1 | `spell' == 2  {

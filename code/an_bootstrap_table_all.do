@@ -1,4 +1,6 @@
-// Table of spell lengths with bootstrapped standard errors
+// Table of birth intervals with bootstrapped standard errors
+// + 9 added in bootspell_all.do to get birth intervals
+
 
 version 15.1
 clear all
@@ -113,13 +115,13 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "\begin{center}" _n
     file write table "\begin{scriptsize}" _n
     file write table "\begin{threeparttable}" _n
-    file write table "\caption{Estimated Expected Duration in Months, Sex Ratio, and Probability of Parity Progression for Women with `char'}" _n
+    file write table "\caption{Estimated Expected Birth Interval in Months, Sex Ratio, and Probability of Parity Progression for Women with `char'}" _n
     file write table "\label{tab:avg_sex_ratio_`educ'}" _n
     file write table "\begin{tabular}{@{} c l D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} @{}}" _n
     file write table "\toprule" _n
     file write table "                   &                     & \mcth{1972--1984}                                                   & \mcth{1985--1994}                                                   & \mcth{1995--2004}                                                   & \mcth{2005--2016}                                                   \\ \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}" _n
-    file write table "                   & \mco{Composition}   & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            & \mco{Dura-}         & \mco{Per-}          & \mco{Proba-}            \\ " _n
-    file write table "                   & \mco{of prior}      & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            & \mco{tion\tnote{a}} & \mco{cent\tnote{b}} & \mco{bility}            \\ " _n
+    file write table "                   & \mco{Composition}   & \mco{Inter-}        & \mco{Per-}          & \mco{Proba-}            & \mco{Inter-}        & \mco{Per-}          & \mco{Proba-}            & \mco{Inter-}        & \mco{Per-}          & \mco{Proba-}            & \mco{Inter-}        & \mco{Per-}          & \mco{Proba-}            \\ " _n
+    file write table "                   & \mco{of prior}      & \mco{val\tnote{a}}  & \mco{cent\tnote{b}} & \mco{bility}            & \mco{val\tnote{a}}  & \mco{cent\tnote{b}} & \mco{bility}            & \mco{val\tnote{a}}  & \mco{cent\tnote{b}} & \mco{bility}            & \mco{val\tnote{a}}  & \mco{cent\tnote{b}} & \mco{bility}            \\ " _n
     file write table " \mco{Spell}       & \mco{Children}      & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    & \mco{(Mos)}         & \mco{boys}          & \mco{birth\tnote{c}}    \\ \midrule" _n
 
     // Loop over area
@@ -275,7 +277,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "\end{tabular}" _n
     file write table "\begin{tablenotes} \tiny" _n
     file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
-    file write table "The statistics for each spell/period combination are calculated based on the regression" _n
+    file write table "The statistics for each spell/period combination are calculated based on the competing risk hazard" _n
     file write table "model for that combination as described in the main text, using bootstrapping to find the " _n
     file write table "standard errors shown in parentheses. " _n
     file write table "For bootstrapping, the original sample is resampled, the regression model run on the " _n
@@ -283,16 +285,15 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "This process is repeated `num_reps' times and the standard errors calculated." _n
     
     file write table "\item[a] " _n
-    file write table "The expected duration is calculated as follows." _n
+    file write table "Expected birth interval is calculated as follows." _n
     file write table "For each woman in a given spell/period combination sample, I calculate the probability of that she" _n
     file write table "will give birth for each period, conditional on the likelihood that she will eventually" _n
     file write table "give birth in that spell, and use these probabilities as weights to calculated the expected" _n
-    file write table "or average duration." _n
-    file write table "The reported statistics is the average of this expected duration across all women in a given" _n
+    file write table "or average birth interval." _n
+    file write table "The reported statistics is the average of this expected interval across all women in a given" _n
     file write table "sample using the " _n
     file write table "individual predicted probabilities of having had a birth by the end of the spell as weights." _n
-    file write table "Duration begins at 9 months after the birth of the prior child." _n
-    file write table "Durations for sex compositions other than all girls are" _n
+    file write table "Birth intervals for sex compositions other than all girls are" _n
     file write table "tested against the duration for all girls, "
     file write table "with *** indicating significantly different at the 1\% level, ** at the 5\% level," _n
     file write table "and * at the 10\% level."
