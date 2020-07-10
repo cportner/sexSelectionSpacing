@@ -464,7 +464,7 @@ There are two problems with the standard approach in this setting.
 First, and most importantly, the introduction of sex selection means that the sex of the 
 next child is no longer necessarily random and that parents' choices will impact the 
 spacing to the birth of a girl or a boy differently.
-I, therefore, use a competing risk set-up, which can capture both the non-randomness of
+I, therefore, use a competing risk set-up that captures both the non-randomness of
 the birth outcome and the differential spacing.%
 \footnote{
 \cite{Merli2000} used a discrete hazard model to examine whether 
@@ -472,22 +472,23 @@ there were under-reporting of births in rural China, although they
 estimated separate waiting time regressions for boys and girls.
 }
 
-Second, it is unlikely---even in the absence of prenatal sex determination---that 
-characteristics, such as the sex composition of previous births, have the same effects 
-throughout the entire spell, as is assumed by the proportional hazard model.
-If proportionality does not hold, the results are biased.
-The proportionality assumption is especially problematic for higher-order spells where 
-there are substantial differences across groups both in the likelihood of progressing to 
-the next birth and how soon couples want their next child if they are going to have one.
+Second, even without sex selection it is unlikely that characteristics, such as the sex
+composition of previous births, have the same effects throughout the entire birth interval.
+That is, however, the assumption behind the proportional hazard model, and if 
+proportionality does not hold, the results are biased.
+The proportionality assumption is especially problematic for higher-order birth 
+intervals where there are substantial differences across groups both in the likelihood of 
+progressing to the next birth and how soon couples want their next child if they are going 
+to have one \citep{Whitworth2002,Bhalotra2008,Kim2010}.
 
 The introduction of prenatal sex determination exacerbates any bias from
 the proportionality assumption for two reasons. 
-First, sex-selective abortion use varies across groups, which affects birth spacing. 
-Second,
-a household's use of sex selection may vary within a spell, which means
-that the effects of covariates vary within the spell as well.
+First, different groups have different levels of sex-selective abortion use and, thereby, 
+birth spacing. 
+Second, within a birth interval, a household's use of sex selection may vary and that
+means that the effects of covariates vary as well.
 
-I, therefore, use a non-proportional hazard specification, which allows the shape of the 
+I, therefore, use a non-proportional hazard specification that allows the shape of the 
 hazard functions to vary across groups.
 The use of a non-proportional specification also mitigates any potential effects 
 of unobserved heterogeneity when used in conjunction with a flexible baseline hazard 
@@ -495,14 +496,22 @@ of unobserved heterogeneity when used in conjunction with a flexible baseline ha
 
 The model is a discrete-time, non-proportional, competing risk hazard model with two exit 
 states: either a boy or a girl is born.
-The unit of analysis is a spell, the period from nine months after one birth to the next.
+The unit of analysis is a spell---the period from nine months after one birth to the 
+following birth or censoring.
+The spells begin nine months after the previous birth since this is the earliest we should 
+expect to observe a new birth.
+Censoring can happen for three reasons:
+the survey takes place,
+sterilization of the woman or her husband,
+or there are too few births for the method to work.
+
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
 the spell continues until time $t_i$ when either birth or censoring of the spell 
 occurs.
 The time of censoring is assumed independent of the hazard rate,
 as is standard in the literature.
 There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
-$J_i$ is a random variable indicating which event took place.
+$J_i$ indicates which event took place.
 The discrete-time hazard rate $h_{ijt}$ is 
 \begin{equation}
  h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
@@ -532,17 +541,15 @@ The remaining explanatory variables, $\mathbf{X}$, enter proportionally.%
 With sex selection, the composition of prior children is, in principle, endogenous.
 It is beyond the scope of this paper to develop a method for dealing with this issue.
 }
-However, to further minimize any potential bias from assuming proportionality, estimations 
-are done separately for different levels of mothers' education and different 
-periods.%
-\footnote{
-I discuss the choice of which variables to use for non-proportionality in more detail
-in the ``Explanatory Variables'' section.
-}
+
+% To further minimize any potential bias from assuming proportionality, estimations 
+% are done separately for different levels of mothers' education and different periods.
+% I discuss the choice of which variables to use for non-proportionality below.
+
 
 Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
-Hence, transforming the data, so each observation is an interval---here equal
+Hence, transforming the data, so each observation is a time period---here equal
 to three months---I can estimate the model using a standard multinomial logit model.
 %
 % \footnote{
@@ -591,60 +598,62 @@ if she gives birth to a daughter in that interval.
 % In addition, I present graphs of survival curves conditional on parity progression,
 % which therefore begin at 100\% and end at 0\%.
 
-The interpretation of the model coefficients is challenging \citep{thomas96}.
-It is, however, possible to calculate the predicted probabilities of 
-having a boy, $b$, and of having a girl, $g$, in period $t$, conditional on 
-a set of explanatory variables and not having had a child before that period.
-% , as
-% \begin{align}
-% P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt}, t ) 
-% & =  
-% \frac{ \exp(D_j(t) + \alpha_{1t}' \mathbf{Z}_{kt} + \beta_1' \mathbf{X}_{k} )}
-% {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt} ' \mathbf{Z}_{kt} + \beta_l ' \mathbf{X}_{k})}
-% \label{eq:probability_boy} \\
-% P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t ) 
-% & =  
-% \frac{ \exp(D_j(t) + \alpha_{2t}'\mathbf{Z}_{kt} + \beta_2'\mathbf{X}_{k} )}
-% {1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}
-% \label{eq:probability_girl}
-% \end{align}
-It is then straightforward to calculate the estimated percentage of children born that 
-are boys, $\hat{Y}$, at each $t$:  
+
+I use the model to predict birth interval measures, the probability of having a birth, 
+and the sex ratio.%
+\footnote{
+The interpretation of competing risk model coefficients is challenging \citep{thomas96}.
+}
+The sex ratio is based on the estimated percentage of children born at each $t$ that are 
+boys, $\hat{Y}$:  
 \begin{equation}
 \hat{Y}_t 
 = 
 \frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
 { P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
-\times 100.
+\times 100,
 \label{eq:probability_son}
 \end{equation}
-Combining the percentage of boys and the likelihood of exiting the spell 
-across all $t$ gives the predicted percent of births that are boys over the entire spell.
+where $b$ and $g$ are the predicted probabilities of having a boy and a girl, respectively,
+conditional on the explanatory variables and not having had a child before $t$.
+Combining the percentage of boys and the likelihood of exiting the spell with a birth
+across all $t$ gives the predicted percent of births that are boys over the entire spell.%
+\footnote{
+With T=2, if 54 and 66 percent of the births are boys and the likelihoods of 
+giving birth 20 and 40 percent, then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$ percent of the
+births are boys.
+}
+The predicted sex ratio shown is the weighted average of the individual predicted sex 
+ratios, using the parity progression probabilities as weights.
 
 
 \section{Data\label{sec:data}}
 
-The data come from the four rounds of the National Family Health Survey
+The data come from the four rounds of the NFHS
 collected in 1992--1993, 1998--1999, 2005--2006, and 2015--2016.
-The surveys are large: 89,777, 90,303, 124,385, and 699,686 women,
-respectively. NFHS-1 and NFHS-2 surveyed only ever-married women, while
-the later surveys also included never-married.
+The surveys are large: 89,777, 90,303, 124,385, and 699,686 women, respectively. 
+NFHS-1 and NFHS-2 surveyed only ever-married women, while the two later surveys included 
+never-married.
 
-I exclude visitors, as well as women in any of the following 
-categories: never married; no gauna yet; married more than once; divorced; 
-not living with husband; inconsistent age at marriage; or education information missing.  
-The same goes for women who had at least one multiple births, reported giving birth 
-before age 12, had a birth before marriage, or an interval between births of less than 
-nine months. 
+I focus on the three birth intervals starting from the first birth and ending with the 
+fourth birth.
+I exclude the interval from marriage to the first birth because many are imputed and,
+with falling fertility, few women had five or more births, especially among the 
+better-educated.
 
-Finally, I restrict the sample to Hindus, who constitute about 80 percent of India’s 
-population.
+I restrict the sample to Hindus, who constitute about 80 percent of India’s population.
 If the use of sex selection differs across groups, assuming that the
 baseline hazard is the same leads to bias. 
 Furthermore, the other groups are each too small to estimate different
 baseline hazards for each and so different that combining them into one
 group would not make sense.
 
+Finally, I exclude visitors, as well as women in any of the following 
+categories: never married; no gauna yet; married more than once; divorced; 
+not living with husband; inconsistent age at marriage; or education information missing.  
+The same goes for women who had at least one multiple births, reported giving birth 
+before age 12, had a birth before marriage, or an interval between births of less than 
+nine months. 
 
 In addition to a large number of women surveyed and the long period covered, a
 benefit of the NFHS is that enumerators pay careful attention to the spacing 
@@ -653,34 +662,14 @@ Nevertheless, systematic recall error, where the likelihood of reporting a decea
 child depends on the sex of the child, remains a potential problem.
 Recall error is heavily dependent on how long ago a woman was married, and I, therefore, 
 drop women married 22 years or more based on the discussion in the Appendix.
+
+To ensure that there are enough births for the method to work, I censor each spell at 96 
+months (eight years) after a woman can first give birth in the spell, which is equivalent 
+to 105 months after the birth of the prior child.
+Less than one percent of observed births occur after the cut-off.
 The final sample consists of 
 \input{../tables/num_women.tex}
 % [number] women, with [number] parity one through four births.
-
-
-I focus on the second through fourth spells, that is, on the intervals from the first 
-birth until at most the fourth birth.
-I exclude the marriage to the first birth spell because many are imputed.
-
-The spells all begin nine months after the previous birth, which is the earliest we should 
-expect to observe a new birth.
-A spell continues until either a child is born or censoring occurs.
-Censoring can happen for three reasons:
-the survey takes place,
-sterilization of the woman or her husband,
-or too few births are observed for the method to work.%
-\footnote{
-Most sterilizations take place right after a woman gives birth, and,
-therefore, do not show up in the samples used. 
-Furthermore, sterilization depends strongly on the sex composition of prior children
-with lower probabilities, the fewer boys. 
-The effect is that the differences in parity progression probabilities are biased 
-downwards.
-}
-For all spells, censoring is set at 96 months (eight years) after a woman can first
-give birth in the spell.
-With these cut-offs, less than one percent of observed births occur after
-the spell cut-off.
 
 % %
 % \footnote{
@@ -707,9 +696,6 @@ decisions on sex selection, can begin.
 Hence, some spells cover two periods, which may bias downward the differences between the 
 periods.
 
-
-\subsection{Explanatory Variables}
-
 I divide the explanatory variables into two groups.
 The first group consists of characteristics that the prior literature finds affect 
 the spacing choice and the use of sex selection:
@@ -720,10 +706,8 @@ These include the mother's age when the spell begins, the household's
 land ownership, and whether the household belongs to a scheduled tribe
 or caste.
 
-The models are estimated separately for each of the four education group to reduce any
-potential problem from including other variables as proportional since
-women with different education levels have different hazard profiles
-\citep{Whitworth2002,Bhalotra2008,Kim2010}.
+I estimate a separate model for each birth interval, education group, and period 
+combination to minimize any potential bias from including proportional variables.
 I capture sex composition with dummy variables for the
 possible combinations, ignoring the ordering of births.
 Area of residence is a dummy variable for living in an urban area.
@@ -750,9 +734,9 @@ sex-selective abortions.
 % Explain question and what I am doing
 The first question I address is how birth spacing responded to the significant changes, 
 especially the spread of sex selection, that India experienced. 
-I estimate the competing risk hazard model for each spell/education/period subsample and 
-then predict average birth spacing, sex ratio, and the probability of having a birth 
-in that spell.
+I estimate the competing risk hazard model for each spell, education, and period 
+subsample and then predict average birth spacing, sex ratio, and the probability of having 
+a birth in that spell.
 
 Figures \ref{fig:bootstrap_low} through \ref{fig:bootstrap_highest}
 show the predicted outcomes for the four education levels by area of residence.%
@@ -766,27 +750,24 @@ results very noisy.
 Results are available upon request.
 }
 
-To find the expected average duration, I first calculate, for each woman, the probability 
-of giving birth in each period $t$, which I use as weights to calculated her expected 
-duration. 
-I then average the individual expected durations across women using the parity progression
-probabilities as weights.
+To find the expected average birth interval, I first calculate, for each woman, the 
+probability of giving birth in each period $t$, which I use as weights to calculated her 
+expected spell lengths. 
+I then average the individual expected spell lengths across women using the parity 
+progression probabilities as weights.
+Finally, I add nine months to account for spell start to arrive at birth interval.
 
-The predicted parity progression probability is the likelihood of giving birth by 96 
-months after the beginning of the spell.
-
-The predicted sex ratio captures the percent of births that are boys for women in 
-the sample when childbearing for that spell is over.
-A woman's predicted sex ratio is the weighted average of the predicted percentage boys 
-over each $t$ in the spell, calculated using equation (\ref{eq:probability_son}), using
-the probability of giving birth at time $t$ as weights.%
+The predicted parity progression probability is the likelihood of giving birth by the
+end of the spell.%
 \footnote{
-With T=2, if 54 and 66 percent of the births are boys and the likelihoods of 
-giving birth 20 and 40 percent, then $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$ percent of the
-births are boys.
+Most sterilizations take place right after a woman gives birth, and,
+therefore, do not show up in the samples used. 
+Furthermore, sterilization depends strongly on the sex composition of prior children
+with lower probabilities, the fewer boys. 
+The effect is to bias downward the differences in parity progression probabilities.
 }
-The predicted sex ratio shown is the weighted average of the individual predicted sex 
-ratios, using the parity progression probabilities as weights.
+The predicted sex ratio captures the percent of births that are boys for women in 
+the sample when childbearing for that spell is over, calculated as shown above.
 For comparison, the graphs also show the natural sex ratio, approximately 51.2 percent 
 \citep{ben-porath76b,jacobsen99,Portner2015b}.
 
@@ -868,7 +849,7 @@ For comparison, the graphs also show the natural sex ratio, approximately 51.2 p
         \includegraphics[width=\textwidth]{bs_spell4_low_urban_all}
     \end{minipage}
 }
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with no education}
 \label{fig:bootstrap_low}
 \end{sidewaysfigure}
@@ -892,7 +873,7 @@ a next birth for women with no education}
         \includegraphics[width=\textwidth]{bs_spell4_low_rural_all} 
     \end{minipage}
 } 
-\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with no education}
 \label{fig:bootstrap_low}
 \end{sidewaysfigure}
@@ -949,7 +930,7 @@ a next birth for women with no education}
 %         \includegraphics[width=\textwidth]{bs_spell4_med_rural_all} 
 %     \end{minipage}
 % } 
-% \caption{Estimated average spell length, sex ratio, and probability of 
+% \caption{Estimated average birth interval, sex ratio, and probability of 
 % a next birth for women with one to seven years of education}
 % \label{fig:bootstrap_med}
 % \end{figure}
@@ -973,7 +954,7 @@ a next birth for women with no education}
         \includegraphics[width=\textwidth]{bs_spell4_med_urban_all}
     \end{minipage}
 }
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with one to seven years of education}
 \label{fig:bootstrap_med}
 \end{sidewaysfigure}
@@ -997,7 +978,7 @@ a next birth for women with one to seven years of education}
         \includegraphics[width=\textwidth]{bs_spell4_med_rural_all} 
     \end{minipage}
 } 
-\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with one to seven years of education}
 \label{fig:bootstrap_med}
 \end{sidewaysfigure}
@@ -1053,7 +1034,7 @@ a next birth for women with one to seven years of education}
 %         \includegraphics[width=\textwidth]{bs_spell4_high_rural_all} 
 %     \end{minipage}
 % } 
-% \caption{Estimated average spell length, sex ratio, and probability of 
+% \caption{Estimated average birth interval, sex ratio, and probability of 
 % a next birth for women with eight to eleven years of education}
 % \label{fig:bootstrap_high}
 % \end{figure}
@@ -1077,7 +1058,7 @@ a next birth for women with one to seven years of education}
         \includegraphics[width=\textwidth]{bs_spell4_high_urban_all}
     \end{minipage}
 }
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with eight to eleven years of education}
 \label{fig:bootstrap_high}
 \end{sidewaysfigure}
@@ -1102,7 +1083,7 @@ a next birth for women with eight to eleven years of education}
         \includegraphics[width=\textwidth]{bs_spell4_high_rural_all} 
     \end{minipage}
 } 
-\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with eight to eleven years of education}
 \label{fig:bootstrap_high}
 \end{sidewaysfigure}
@@ -1149,7 +1130,7 @@ a next birth for women with eight to eleven years of education}
 %         \includegraphics[width=\textwidth]{bs_spell3_highest_rural_all} 
 %     \end{minipage}
 % } 
-% \caption{Estimated average spell length, sex ratio, and probability of 
+% \caption{Estimated average birth interval, sex ratio, and probability of 
 % a next birth for women with twelve or more years of education}
 % \label{fig:bootstrap_highest}
 % \end{figure}
@@ -1167,7 +1148,7 @@ a next birth for women with eight to eleven years of education}
         \includegraphics[width=\textwidth]{bs_spell3_highest_urban_all} 
     \end{minipage}
 }
-\caption{Estimated average spell length, sex ratio, and probability of 
+\caption{Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with twelve or more years of education}
 \label{fig:bootstrap_highest}
 \end{sidewaysfigure}
@@ -1186,7 +1167,7 @@ a next birth for women with twelve or more years of education}
         \includegraphics[width=\textwidth]{bs_spell3_highest_rural_all} 
     \end{minipage}
 } 
-\caption{(Continued) Estimated average spell length, sex ratio, and probability of 
+\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
 a next birth for women with twelve or more years of education}
 \label{fig:bootstrap_highest}
 \end{sidewaysfigure}
@@ -1195,14 +1176,13 @@ Average birth intervals have increased over time across all groups, but
 the higher the parity and the higher the schooling, the larger the
 increases.
 
-In the latest period, the shortest average birth interval is 25 months for
+In the latest period, the shortest average birth interval is 33 months for
 women with no education in the second spell, an increase of a couple of
 months from the first period.
-The longest average interval was 42 months for the third spell for women with twelve or 
+The longest average interval was 51 months for the third spell for urban women with twelve or 
 more years of education who had no boys, which is an increase of approximately a year.
 For comparison, the median birth intervals reported for the NFHS have barely
-moved over time, staying at approximately 22 months calculated with the starting point 
-nine months after the prior birth used here.%
+moved over time, staying at approximately 31 months.%
 \footnote{
 See
 \citet[][p.\ 110--112]{International-Institute-for-Population-Sciences-IIPS1995},
@@ -1644,7 +1624,7 @@ and Women with One to Seven Years of Education}
         \captionsetup[subfigure]{labelformat=parens}
     \end{minipage}
 }
-\begin{minipage}[t]{0.42\textwidth}\vspace{-2.68cm}\centering\footnotesize{Twelve or More Years of Education}\end{minipage}
+\begin{minipage}[t]{0.39\textwidth}\vspace{-2.68cm}\centering\footnotesize{Twelve or More Years of Education}\end{minipage}
 \\
 \rotatebox[origin=c]{90}{\small{1985-1994}}
 \subfloat[Second Spell]{
