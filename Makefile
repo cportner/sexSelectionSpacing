@@ -10,7 +10,7 @@
 ### very large number of figures and all of those need to go in
 ### dependencies and targets to ensure none are missing when running.
 
-TEXFILE = sex_selection_spacing-ver3
+TEXFILE = sex_selection_spacing-ver4
 TEX  = ./paper
 FIG  = ./figures
 TAB  = ./tables
@@ -422,9 +422,6 @@ $(foreach per, $(PERIODS), \
 $(foreach educ, low med high, \
 $(eval $(call bootstrap-rule,$(spell),$(per),$(educ))) ) ) )
 
-#$(BSDATA_ALL): $(COD)/an_bootstrap_all.do $(DAT)/base.dta $(COD)/bootspell_all.do \
-# $(COD)/genSpell1.do $(COD)/genSpell2.do $(COD)/genSpell3.do $(COD)/genSpell4.do
-#	cd $(COD); nice stata-se -b -q $(<F)	
 
 # Bootstrap tables
 .PHONY: run_boot_table_all
@@ -434,6 +431,7 @@ $(BSTABLE_ALL): $(COD)/an_bootstrap_table_all.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
 
+
 # Bootstrap graphs
 .PHONY: run_boot_graph_all
 run_boot_graph_all: $(BSGRAPH_ALL)
@@ -441,6 +439,7 @@ run_boot_graph_all: $(BSGRAPH_ALL)
 $(BSGRAPH_ALL): $(COD)/an_bootstrap_graph_all.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
+
 		
 # Distribution graphs
 .PHONY: run_distribution_graphs
