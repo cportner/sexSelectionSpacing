@@ -453,7 +453,7 @@ this group's use of sex selection.
 %    progression likelihood. 
 
 The standard approach in the birth spacing literature is to use proportional hazard
-models with a single exit, the birth of a child.%
+models with a single exit---the birth of a child.%
 \footnote{
 See \citet{Sheps1970} and \citet{Newman1984} for early discussions of why 
 hazard models are the preferred way to deal with the censoring of birth
@@ -461,10 +461,10 @@ intervals.
 }
 There are two problems with the standard approach in this setting.
 
-First, and most importantly, the introduction of sex selection means that the sex of the 
-next child is no longer necessarily random and that parents' choices will impact the 
-spacing to the birth of a girl or a boy differently.
-I, therefore, use a competing risk set-up that captures both the non-randomness of
+First and foremost, the use of sex selection means that the sex of the next child is 
+no longer random and that the spacing to the birth of a boy will differ from the 
+spacing to a girl. 
+Therefore, I use a competing risk set-up that captures both the non-randomness of 
 the birth outcome and the differential spacing.%
 \footnote{
 \cite{Merli2000} used a discrete hazard model to examine whether 
@@ -472,38 +472,39 @@ there were under-reporting of births in rural China, although they
 estimated separate waiting time regressions for boys and girls.
 }
 
-Second, even without sex selection it is unlikely that characteristics, such as the sex
-composition of previous births, have the same effects throughout the entire birth interval.
-That is, however, the assumption behind the proportional hazard model, and if 
-proportionality does not hold, the results are biased.
+Second, even without sex selection, it is unlikely that characteristics, such as 
+the sex composition of previous births, have the same effects throughout the entire 
+birth interval. 
+The proportional hazard model requires that the hazard for any individual is a 
+fixed proportion of the hazard for any other individual. 
+That the effects are not constant violates that assumption, and the results from a 
+proportional hazard model would, therefore, be biased. 
 The proportionality assumption is especially problematic for higher-order birth 
-intervals where there are substantial differences across groups both in the likelihood of 
-progressing to the next birth and how soon couples want their next child if they are going 
-to have one \citep{Whitworth2002,Bhalotra2008,Kim2010}.
+intervals since there are substantial differences across groups in the likelihood 
+of progressing to the next birth and how soon couples want their next child if they 
+are going to have one \citep{Whitworth2002,Bhalotra2008,Kim2010}.
 
 The introduction of prenatal sex determination exacerbates any bias from
 the proportionality assumption for two reasons. 
 First, different groups have different levels of sex-selective abortion use and, thereby, 
 birth spacing. 
-Second, within a birth interval, a household's use of sex selection may vary and that
+Second, within a birth interval, a household's use of sex selection may vary, and that
 means that the effects of covariates vary as well.
 
-I, therefore, use a non-proportional hazard specification that allows the shape of the 
+Therefore, I use a non-proportional hazard specification that allows the shape of the 
 hazard functions to vary across groups.
 The use of a non-proportional specification also mitigates any potential effects 
 of unobserved heterogeneity when used in conjunction with a flexible baseline hazard 
 \citep{Dolton1995}.
 
-The model is a discrete-time, non-proportional, competing risk hazard model with two exit 
-states: either a boy or a girl is born.
-The unit of analysis is a spell---the period from nine months after one birth to the 
-following birth or censoring.
-The spells begin nine months after the previous birth since this is the earliest we should 
-expect to observe a new birth.
-Censoring can happen for three reasons:
-the survey takes place,
-sterilization of the woman or her husband,
-or there are too few births for the method to work.
+The model is a discrete-time, non-proportional, competing risk hazard model with two 
+exit states: either a boy or a girl is born. 
+The unit of analysis is a spell---the period from one parity birth to the following 
+birth or censoring. 
+For estimation purposes, the spells begin nine months after the previous birth since 
+this is the earliest we should expect to observe a new birth. 
+Censoring can happen for three reasons: the survey takes place, sterilization of the 
+woman or her husband, or imposed because of too few births for the method to work.
 
 For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
 the spell continues until time $t_i$ when either birth or censoring of the spell 
@@ -512,15 +513,14 @@ The time of censoring is assumed independent of the hazard rate,
 as is standard in the literature.
 There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
 $J_i$ indicates which event took place.
+
 The discrete-time hazard rate $h_{ijt}$ is 
 \begin{equation}
  h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
- {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
+ {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2.
  \label{eq:hazard}
 \end{equation}
-where the explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, capture 
-individual, household, and community characteristics discussed below,
-and $D_{j}(t)$ is the piece-wise constant baseline hazard for outcome $j$, captured
+$D_{j}(t)$ is the piece-wise constant baseline hazard for outcome $j$, captured
 by dummies and the associated coefficients,
 \begin{equation}
 D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
@@ -528,19 +528,10 @@ D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
 with $D_m = 1$ if $t=m$ and zero otherwise.
 This approach to modeling the baseline hazard is flexible and does not restrict the 
 baseline hazard unnecessarily.
+$\mathbf{Z}$ is the non-proportional part, which includes the interactions between 
+$D_j(t)$ and a set of explanatory variables and the interactions of those.
+The remaining explanatory variables, $\mathbf{X}$, enter proportionally.
 
-The explanatory variables in $\mathbf{Z}$, and the interactions between them, 
-constitute the non-proportional part of the model:
-\begin{equation}
- \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2).
-\end{equation}
-$D_j(t)$ is the piece-wise constant baseline hazard, $\mathbf{Z}_1$ captures sex 
-composition of previous children, and $Z_2$ captures the area of residence.
-The remaining explanatory variables, $\mathbf{X}$, enter proportionally.%
-\footnote{
-With sex selection, the composition of prior children is, in principle, endogenous.
-It is beyond the scope of this paper to develop a method for dealing with this issue.
-}
 
 % To further minimize any potential bias from assuming proportionality, estimations 
 % are done separately for different levels of mothers' education and different periods.
@@ -699,7 +690,11 @@ periods.
 I divide the explanatory variables into two groups.
 The first group consists of characteristics that the prior literature finds affect 
 the spacing choice and the use of sex selection:
-mother's education, sex composition of previous children, and area of residence.
+mother's education, sex composition of previous children, and area of residence.%
+\footnote{
+With sex selection, the composition of prior children is, in principle, endogenous.
+It is beyond the scope of this paper to develop a method for dealing with this issue.
+}
 The second group of variables consists of those expected to have an approximately 
 proportional effect on the hazard.
 These include the mother's age when the spell begins, the household's
@@ -735,8 +730,8 @@ sex-selective abortions.
 The first question I address is how birth spacing responded to the significant changes, 
 especially the spread of sex selection, that India experienced. 
 I estimate the competing risk hazard model for each spell, education, and period 
-subsample and then predict average birth spacing, sex ratio, and the probability of having 
-a birth in that spell.
+subsample and then predict average birth interval in months, sex ratio, and the 
+probability of having a birth in that spell.
 
 Figures \ref{fig:bootstrap_low} through \ref{fig:bootstrap_highest}
 show the predicted outcomes for the four education levels by area of residence.%
@@ -750,9 +745,9 @@ results very noisy.
 Results are available upon request.
 }
 
-To find the expected average birth interval, I first calculate, for each woman, the 
-probability of giving birth in each period $t$, which I use as weights to calculated her 
-expected spell lengths. 
+To find the expected average birth interval, I first calculate, for each woman, 
+the probability of giving birth in each period $t$, which I use as weights to calculated 
+her expected spell lengths. 
 I then average the individual expected spell lengths across women using the parity 
 progression probabilities as weights.
 Finally, I add nine months to account for spell start to arrive at birth interval.
@@ -768,7 +763,7 @@ The effect is to bias downward the differences in parity progression probabiliti
 }
 The predicted sex ratio captures the percent of births that are boys for women in 
 the sample when childbearing for that spell is over, calculated as shown above.
-For comparison, the graphs also show the natural sex ratio, approximately 51.2 percent 
+For comparison, I also show the natural sex ratio, approximately 51.2 percent 
 \citep{ben-porath76b,jacobsen99,Portner2015b}.
 
 
