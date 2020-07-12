@@ -701,15 +701,8 @@ results very noisy.
 Results are available upon request.
 }
 
-To find the expected average birth interval, I first calculate, for each woman, 
-the probability of giving birth in each period $t$, which I use as weights to calculated 
-her expected spell lengths. 
-I then average the individual expected spell lengths across women using the parity 
-progression probabilities as weights.
-Finally, I add nine months to account for spell start to arrive at birth interval.
-
 The predicted parity progression probability is the likelihood of giving birth by the
-end of the spell.%
+imposed censoring based on standard survival curve calculations.%
 \footnote{
 Most sterilizations take place right after a woman gives birth, and,
 therefore, do not show up in the samples used. 
@@ -721,6 +714,12 @@ The predicted sex ratio captures the percent of births that are boys for women i
 the sample when childbearing for that spell is over, calculated as shown above.
 For comparison, I also show the natural sex ratio, approximately 51.2 percent 
 \citep{ben-porath76b,jacobsen99,Portner2015b}.
+To find the expected average birth interval, I first calculate, for each woman, 
+the probability of giving birth in each period $t$, which I use as weights to calculated 
+her expected spell lengths. 
+I then average the individual expected spell lengths across women using their parity 
+progression probabilities as weights.
+Finally, I add nine months to account for spell start to arrive at birth interval.
 
 
 % \begin{figure}[htpb]
@@ -1131,7 +1130,7 @@ In the latest period, the shortest average birth interval is 33 months for
 women with no education in the second spell, an increase of a couple of
 months from the first period.
 The longest average interval was 51 months for the third spell for urban women with twelve or 
-more years of education who had no boys, which is an increase of approximately a year.
+more years of education who had no boys, an increase of approximately a year.
 For comparison, the median birth intervals reported for the NFHS have barely
 moved over time, staying at approximately 31 months.%
 \footnote{
@@ -1143,17 +1142,18 @@ See
 Median estimates are in
 Appendix Tables \ref{tab:p25_p50_p75_low} through \ref{tab:p25_p50_p75_highest}.
 }
-This lack of change underscores the importance of accounting for censoring of birth spells 
-when trying to understand how birth spacing is changing over time.
+This lack of change in the NFHS reported birth intervals underscores the importance of 
+accounting for censoring of birth spells when trying to understand how birth spacing 
+is changing over time.
 
 Parity progression probabilities are lower the higher the education and are
 falling across all groups over time, but the extent of the decline depends crucially on 
 the sex composition of prior children and the parity.
-Women with no sons still are the most likely to 
-have the next birth, and this group has seen often substantially smaller declines in
+Women with no sons are still the most likely to 
+have the next birth, and this group has seen substantially smaller declines in
 the likelihood of having another birth than women with one or more sons.%
 \footnote{
-There is, however, also some evidence that parents prefer a mix of boys and girls: for 
+However, there is also some evidence that parents prefer a mix of boys and girls: for 
 the fourth spell women with two boys \emph{and} a girl
 consistently have the lowest parity progression probability.
 }
@@ -1168,7 +1168,7 @@ percentage points to 25 percent if she had two boys and a girl.
 \subsection{Distribution of Birth Spacing}
 
 To better understand what factors are behind the changes in average spacing, I next 
-examine the distribution of birth spacing---represented by the 25th and 75th percentiles 
+examine its distribution---represented by the 25th and 75th percentiles 
 of predicted birth intervals. 
 This approach can capture differences across groups with similar changes in average spacing. 
 For example, imagine that sex selection is behind an increase in average birth spacing, 
@@ -1401,7 +1401,7 @@ probabilities should not be affected by this problem.
 To ensure that the predictions depend solely on sample composition and the estimate, I
 use the age at marriage for each woman and predict the likelihood of progressing to
 each parity, assuming three years increases in age between each parity.
-Shorter assumed duration between births leads to slightly higher predicted 
+Shorter assumed increases in age between births leads to slightly higher predicted 
 fertility.
 
 The survey rounds do not coincide directly with the periods used for the hazard model.
@@ -1447,10 +1447,10 @@ generally accepted replacement level of 2.1.
 Only for urban women with twelve or more years of education is the predicted cohort
 fertility clearly below 2.1, and even then, it is still more than 0.3 children higher than 
 the fertility rate estimate of 1.5.
-Furthermore, the predicted cohort fertility numbers are likely too low,
+Finally, the predicted cohort fertility numbers are likely too low,
 especially for the lower education groups, since it relies only on the
 first four births and because the model ignores births that took place past the end
-of the 96 months long spell.
+of the imposed 105 month birth interval censoring.
 
 
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
@@ -1466,9 +1466,10 @@ for the 1972--84 period because of the small number of women.
 
 The dependent variable is whether the child died within the first twelve
 months of life.
-The main set of explanatory variables consists of dummies for birth spacing
-covering 12 months intervals, starting from nine months after the prior birth 
-as above, until 48 months, which includes all births until 96 months.
+The main set of explanatory variables consists of dummies for the spacing from
+the prior birth.
+Starting nine months after the prior birth, the birth interval dummies cover 12 
+month periods until 57 months, which covers until 105 months after the prior birth.
 I use dummies for sex of the index child and the sex composition 
 of the prior children.
 The birth spacing dummies, the sex of index child, and the sex composition dummies
@@ -1479,7 +1480,7 @@ as proxies for the use of sex selection.
 The other explanatory variables are the same as above, and estimations
 are done separately by education level and parity.
 
-I estimate the probability of infant mortality using a logit model.
+I estimate the probability of infant mortality using a Logit model.
 Figures \ref{fig:mortality_low_med} and \ref{fig:mortality_high_highest} present 
 the predicted probability of the second child dying within the first year at the 
 possible combinations of index child sex, sex composition of prior children, and 
@@ -1498,8 +1499,8 @@ between long birth spacing and mortality may arise \citep{Kozuki2013}.
 Unfortunately, methods used previously to address selection, such
 as family fixed effects, do not work well when the number of births is
 low as it is for better-educated women \citep{Kozuki2013,Molitoris2019}.
-However, in prior research, the fixed effects and linear probability results do not 
-deviate substantially.
+However, the fixed effects and linear probability results did not 
+deviate substantially in prior research.
 
 
 \begin{figure}[htpb]
@@ -1620,7 +1621,7 @@ and Women with Twelve or More Years of Education}
 
 
 There has been substantial convergence in mortality risk across groups over time.
-For intervals 12 months or longer, there is now little difference across 
+For intervals 21 months or longer, there is now little difference across 
 the education groups, with even the no education group showing an infant mortality risk 
 below five percent.
 
@@ -1643,13 +1644,14 @@ There are, however, no apparent consistent differences between these groups and 
 potential combinations.
 
 % line 3661 in an_infant_mortality.log
-The raw numbers for the group with the most uneven sex ratio indicates
-that there is no impact on child mortality, even with high use of sex selection. 
+The raw numbers for women with the most uneven sex ratio also suggests that even with 
+high use of sex selection there is no impact on child mortality. 
 A total of 1,004 women with twelve or more years of
-education, who have no boys at the start of the third spell in the last
+education and no boys at the start of the third spell in the last
 period, had a third child, of which 685 were boys. 
-Of these 685 boys, only six died within the first year of life, and half of those were 
-born in the 0-23 months interval, and none in 48 months or more interval.
+Of these 685 boys, only six died within the first year of life.
+Half of those who died were born in the 9-32 months interval, and none in 57 months 
+or longer interval.
 
 
 
