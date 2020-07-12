@@ -1,4 +1,5 @@
-// Experimental graph generation for bootstrap results
+// Graph generation for bootstrap results
+// Birth intervals rather than spell lengths
 
 version 15.1
 clear all
@@ -115,8 +116,8 @@ foreach educ in "low" "med" "high" "highest" {
             }
 
             // Scales by education level
-            loc spacing_low  = 20
-            loc spacing_high = 45
+            loc spacing_low  = 30
+            loc spacing_high = 54
 //             if "`educ'" == "highest" {
 //                 loc spacing_high = 45
 //             }
@@ -138,7 +139,7 @@ foreach educ in "low" "med" "high" "highest" {
             twoway line `avg' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
                 legend(off) plotregion(style(none)) xscale(off) ///
-                ytitle("Expected Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
+                ytitle("Expected Birth Interval" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 name(p50, replace)  fysize(80)
 
             twoway line `pct' c1, sort ///

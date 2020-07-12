@@ -148,10 +148,12 @@ create_groups b3_born_year
 gen b3_group = group
 drop group
 
+// No longer needed since I now use birth interval rather than spell
+// throughout the paper
 // Birth spacing variables to match what I used for hazard model
-replace b2_space = b2_space - 9
-replace b3_space = b3_space - 9
-replace b4_space = b4_space - 9
+// replace b2_space = b2_space - 9
+// replace b3_space = b3_space - 9
+// replace b4_space = b4_space - 9
 
 gen b2_short_spacing = b2_space <= 24 if b2_space != .
 gen b3_short_spacing = b3_space <= 24 if b3_space != .
@@ -198,7 +200,7 @@ forvalues spell = 2/3 {
 
     loc spell_m1 = `spell' - 1
 
-    egen b`spell'_d_space = cut(b`spell'_space), at(0 12 24 36 48 100)
+    egen b`spell'_d_space = cut(b`spell'_space), at(9 21 33 45 57 100)
 
     forvalues period = 1/4 {
 
@@ -299,8 +301,8 @@ forvalues spell = 2/3 {
             marginsplot, x(b`spell'_d_space) noci /// 
                 title("") ///
                 ytitle("Infant Mortality Probability") ///
-                xlabel(0 "0-11" 12 "12-23" 24 "24-35" 36 "36-47" 47 "48+" ) ///
-                xtitle("Months") ///
+                xlabel(9 "9-20" 21 "21-32" 33 "33-44" 45 "45-56" 57 "57+" ) ///
+                xtitle("Preceding Birth Interval (Months)") ///
                 legend(`label' ///
                      ring(0) position(2) region(margin(vsmall)) ///
                 ) ///
