@@ -132,7 +132,7 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
+                ytitle("75th Percentile Birth Interval" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80)
 
             graph export `figures'/p75_spell`spell'_`educ'_`where'.eps, replace fontface(Palatino) 
@@ -147,7 +147,7 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("50th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
+                ytitle("50th Percentile Birth Interval" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80)
             
             graph export `figures'/p50_spell`spell'_`educ'_`where'.eps, replace fontface(Palatino) 
@@ -163,7 +163,7 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("25th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
+                ytitle("25th Percentile Birth Interval" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80)
 
             graph export `figures'/p25_spell`spell'_`educ'_`where'.eps, replace fontface(Palatino) 
@@ -179,7 +179,7 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("Expected Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
+                ytitle("Average Birth Interval" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(5)`spacing_high' ,grid) ///
                 fysize(80)
 
             graph export `figures'/avg_spell`spell'_`educ'_`where'.eps, replace fontface(Palatino) 
@@ -215,7 +215,7 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("25th and 75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
+                ytitle("25th and 75th Percentile Birth Intervals" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 fysize(80) ///
                  || ///
             line `p75' c1, sort  ///
@@ -223,7 +223,7 @@ foreach educ in "low" "med" "high" "highest" {
                 plotregion(style(none)) ///
                 xtitle("") ///
                 xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("25th and 75th Percentile Spacing" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
+                ytitle("25th and 75th Percentile Birth Intervals" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                  || ///
                  , legend(`set_label') /// 
 

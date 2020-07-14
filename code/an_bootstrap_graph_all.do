@@ -139,7 +139,7 @@ foreach educ in "low" "med" "high" "highest" {
             twoway line `avg' c1, sort  ///
                 lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
                 legend(off) plotregion(style(none)) xscale(off) ///
-                ytitle("Expected Birth Interval" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
+                ytitle("Average Birth Interval" "(months)") yscale(r(`spacing_low' `spacing_high')) ylabel(`spacing_low'(6)`spacing_high' ,grid) ///
                 name(p50, replace)  fysize(80)
 
             twoway line `pct' c1, sort ///
