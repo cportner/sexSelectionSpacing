@@ -22,6 +22,7 @@
 \usepackage{placeins}
 
 % For word counting uncomment line below and raggedright below
+% http://countwordsfree.com/#
 % \usepackage[nolists]{endfloat}
 
 
@@ -516,8 +517,7 @@ the spell continues until time $t_i$ when either birth or censoring of the spell
 occurs.
 The time of censoring is assumed independent of the hazard rate,
 as is standard in the literature.
-There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
-$J_i$ indicates which event took place.
+There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$.
 
 The discrete-time hazard rate $h_{ijt}$ is 
 \begin{equation}
@@ -589,20 +589,23 @@ never-married.
 
 I focus on the three birth intervals starting from the first birth and ending with the 
 fourth birth.
-I exclude the interval from marriage to the first birth because many are imputed and
-higher order intervals because, with falling fertility, few women had five or more 
-births, especially among the better-educated.
+I exclude the interval from marriage to the first birth because many are imputed and the
+higher-order intervals because few women had five or more births, especially among the 
+better-educated.
 
-I restrict the sample to Hindus, who constitute about 80 percent of India’s population.
-If the use of sex selection differs across groups, assuming that the
-baseline hazard is the same leads to bias. 
-Furthermore, the other groups are each too small to estimate different
-baseline hazards for each and so different that combining them into one
-group would not make sense.
+I restrict the sample to Hindus for two reasons.
+First, Hindus are the majority population group, about 80 percent of India’s population.
+Second, the prior literature shows that son preference and use of sex selection vary 
+substantially between Hindus and the second largest group, Muslims. 
+Combining them and assuming that the baseline hazard is the same would lead to biased 
+results.
+Because of space constraints and the relatively small number of observations once split 
+by education and periods, I do not provide separate results for Muslims or any of the 
+remaining groups, such as Sikhs, Jains, and Christians.
 
-Finally, I exclude visitors, as well as women in any of the following 
-categories: never married; no gauna yet; married more than once; divorced; 
-not living with husband; inconsistent age at marriage; or education information missing.  
+Finally, I exclude visitors and women in any of the following categories: never married; 
+no gauna yet; married more than once; divorced; not living with husband; inconsistent age 
+at marriage; or education information missing.  
 The same goes for women who had at least one multiple births, reported giving birth 
 before age 12, had a birth before marriage, or an interval between births of less than 
 nine months. 
@@ -610,26 +613,23 @@ nine months.
 In addition to a large number of women surveyed and the long period covered, a significant 
 benefit of the NFHS over other surveys is that enumerators pay careful attention to the 
 spacing between births and probe for ``missed'' births.
-The quality of the birth date data is crucial since the reliability of the results depends 
-on the correctness of the birth histories provided by the respondents.
 For India, the main concern is underreporting of deceased children, especially a systematic 
 recall error where respondents' likelihood of reporting the birth of a deceased child depends 
 on the sex of that child.
-If deceased children are not reported the birth intervals will be inflated and likely make 
-the changes over time appear smaller than they really are.
+Unreported deceased children inflate the birth intervals and, with declining mortality, 
+make changes over time appear too small.
 I, therefore, provide a detailed analysis of systematic recall error in the Online Appendix.
-Recall error is heavily dependent on how long ago a woman was married, and I, consequently, 
+Recall error depends heavily on how long ago a woman was married, and I, consequently, 
 drop women married 22 years or more.%
 \footnote{
-\citet{Schoumaker2014} discusses the quality of birth histories in DHS surveys and the 
-impact on fertility estimates.
-Although that analysis does not directly examine systematic recall error, it is likely that
-it explain why the first rounds of NFHS are listed as ``moderate quality.''
+Recall error is likely behind the designation of the first two rounds of NFHS as ``moderate 
+quality'' in an analysis of the quality of birth histories in DHS surveys and its impact 
+on fertility estimates \citep{Schoumaker2014}.
 }
 
 To ensure that there are enough births for the method to work, I censor each spell at 96 
-months (eight years) after a woman can first give birth in the spell, which is equivalent 
-to 105 months after the birth of the prior child.
+months (eight years) after a woman can first give birth, which is equivalent to 105 months 
+after the birth of the prior child.
 Less than one percent of observed births occur after the cut-off.
 The final sample consists of 
 \input{../tables/num_women.tex}
@@ -640,29 +640,25 @@ The final sample consists of
 % \input{../tables/num_missed.tex}
 % }
 
-Direct information on the use of sex selection is not available, so I compare different 
-periods, based on the changes in access and legality of prenatal sex determination in India.
+Direct information on the use of sex selection is not available, so I compare periods 
+based on the changes in access and legality of prenatal sex determination in India.
 Abortion has been legal in India since 1971.
 Reports of sex determination appeared around 1982--83, and the number of clinics 
 quickly increased \citep{Sudha1999,bhat06,Grover2006}.
 In 1994, the Prenatal Diagnostic Techniques Act made determining and communicating 
 the sex of a fetus illegal.%
 \footnote{
-Details about the act are at \href{http://pndt.gov.in/}{http://pndt.gov.in/}.
+% Details about the act are at \href{http://pndt.gov.in/}{http://pndt.gov.in/}.
 There is little evidence that the ban significantly affected sex ratios \citep{Das-Gupta2016}.
 }
-Finally, although the use of sex selection increased even after 1994, we may have passed a 
-turning point in its use in the mid-2000s with son preference declining
-\citep{Das_Gupta2009,Kumar2012,Bongaarts2013,Diamond-Smith2015}.%
-\footnote{
-Although see also \citep{Navaneetham2011}.
-}
+Finally, although sex selection increased even after 1994, we may have passed a 
+turning point in its use in the mid-2000s \citep{Das_Gupta2009,Kumar2012,Bongaarts2013,Diamond-Smith2015}.
 
 I use four periods: 1972--1984, 1985--1994, 1995--2004, and 2005--2016.
-The first period covers before sex selection became available and the second the period 
-from when sex selection became available until the Prenatal Diagnostic Techniques Act.
-I have split the period from 1995 until 2016 into two to understand if there is any 
-support for the prior literature's hypothesized reversal in child sex ratios and son 
+The first covers before sex selection became available and the second from when sex 
+selection became available until the Prenatal Diagnostic Techniques Act.
+I have split the period from 1995 until 2016 into two to examine if there is support for 
+the prior literature's hypothesized reversal in child sex ratios and son 
 preference in India.
 The allocation of spells into periods is determined by when conception, and, therefore, 
 decisions on sex selection, can begin. 
@@ -680,30 +676,14 @@ It is beyond the scope of this paper to develop a method for dealing with this i
 The second group of variables consists of those expected to have an approximately 
 proportional effect on the hazard.
 These include the mother's age when the spell begins, the household's
-land ownership, and whether the household belongs to a scheduled tribe
-or caste.
+land ownership, and whether it belongs to a scheduled tribe or caste.
+Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} present descriptive statistics.
 
 I estimate a separate model for each birth interval, education group, and period 
 combination to minimize any potential bias from including proportional variables.
 I capture sex composition with dummy variables for the
 possible combinations, ignoring the ordering of births.
 Area of residence is a dummy variable for living in an urban area.
-
-% %
-% \footnote{
-% Fathers' education has two opposite predicted effects: the associated higher income
-% should increase fertility and therefore lower the pressure to use sex selection, but
-% the higher income also makes the use of sex selection cheaper.
-% In practice, fathers' education had little effect on the hazards and the use of 
-% sex-selective abortions, and I, therefore, do not include it.
-% }
-
-Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} presents descriptive 
-statistics.
-The level of censoring increases with parity and time, as we should expect with later 
-childbearing, falling fertility, and the hypothesized increases in birth intervals from 
-sex-selective abortions.
-
 
 
 \section{How Birth Spacing Changed\label{sec:results}}
