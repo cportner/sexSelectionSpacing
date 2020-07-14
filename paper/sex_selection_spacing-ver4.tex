@@ -547,16 +547,29 @@ Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has th
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
 Hence, splitting spells into smaller intervals---here equal to three months---and 
 treating them as observations, I can estimate the model using a standard multinomial 
-logit model. 
+Logit model. 
 In the reorganized data, the outcome variable is 0 if the woman does not have a child 
 in a given interval (the base outcome), 1 if she gives birth to a son in that interval, 
 and 2 if she gives birth to a daughter in that interval.
 
-I use the model to predict birth interval measures, the probability of having a birth, 
-and the sex ratio.%
-\footnote{
-The interpretation of competing risk model coefficients is challenging \citep{thomas96}.
-}
+I use the model to predict birth interval measures, parity progression probabilities, 
+and the sex ratio rather than present coefficients since the interpretation 
+of competing risk model coefficients is challenging \citep{thomas96}.
+The predicted parity progression probability is the likelihood of giving birth by the
+imposed censoring based on standard survival curve calculations averaged across all
+women in a given sample.
+
+For birth intervals, I estimate the average birth interval and a set of percentile
+birth intervals.
+To find the average birth interval, I calculate, for each woman, the probability of 
+giving birth in each $t$, and her expected spell length from these probabilities.
+I then average the individual expected spell lengths across women using their parity 
+progression probabilities as weights.
+Finally, I add nine months because spells begin nine months after the previous birth.
+The process is similar for the percentile birth intervals, except that I use the time 
+point when there is a given percent probability that a woman will give birth, conditional 
+on her giving birth in the spell.
+
 The predicted sex ratio is the weighted average of individual predicted sex ratios, using 
 parity progression probabilities as weights.
 For an individual woman, the estimated percent of births that are boys at $t$, $\hat{Y_t}$, is:  
@@ -660,10 +673,16 @@ selection became available until the Prenatal Diagnostic Techniques Act.
 I have split the period from 1995 until 2016 into two to examine if there is support for 
 the prior literature's hypothesized reversal in child sex ratios and son 
 preference in India.
+
 The allocation of spells into periods is determined by when conception, and, therefore, 
 decisions on sex selection, can begin. 
 Hence, some spells cover two periods, which may bias downward the differences between the 
 periods.
+Most sterilizations take place right after a woman gives birth, and,
+therefore, do not show up in the samples used. 
+Furthermore, sterilization depends strongly on the sex composition of prior children
+with lower probabilities, the fewer boys. 
+The effect is to bias downward the differences in parity progression probabilities.
 
 I divide the explanatory variables into two groups.
 The first group consists of characteristics that the prior literature finds affect 
@@ -692,7 +711,7 @@ Area of residence is a dummy variable for living in an urban area.
 The first question I address is how birth spacing responded to the significant changes, 
 especially the spread of sex selection, that India experienced. 
 I estimate the competing risk hazard model for each spell, education, and period 
-subsample and then predict average birth interval in months, sex ratio, and the 
+combination and then predict average birth interval in months, sex ratio, and the 
 probability of having a birth in that spell.
 
 Figures \ref{fig:bootstrap_low} through \ref{fig:bootstrap_highest}
@@ -706,26 +725,9 @@ the low number of births, especially with one or more boys, make the spacing and
 results very noisy.
 Results are available upon request.
 }
+For comparison, the graphs for the sex ratio also show the natural sex ratio, 
+approximately 51.2 percent \citep{ben-porath76b,jacobsen99,Portner2015b}.
 
-The predicted parity progression probability is the likelihood of giving birth by the
-imposed censoring based on standard survival curve calculations.%
-\footnote{
-Most sterilizations take place right after a woman gives birth, and,
-therefore, do not show up in the samples used. 
-Furthermore, sterilization depends strongly on the sex composition of prior children
-with lower probabilities, the fewer boys. 
-The effect is to bias downward the differences in parity progression probabilities.
-}
-The predicted sex ratio captures the percent of births that are boys for women in 
-the sample when childbearing for that spell is over, calculated as shown above.
-For comparison, I also show the natural sex ratio, approximately 51.2 percent 
-\citep{ben-porath76b,jacobsen99,Portner2015b}.
-To find the expected average birth interval, I first calculate, for each woman, 
-the probability of giving birth in each period $t$, which I use as weights to calculated 
-her expected spell lengths. 
-I then average the individual expected spell lengths across women using their parity 
-progression probabilities as weights.
-Finally, I add nine months to account for spell start to arrive at birth interval.
 
 
 % \begin{figure}[htpb]
@@ -1186,13 +1188,7 @@ In contrast, a general increase in spacing would show up as lengthening of both 
 
 Figures \ref{fig:combined_p25_p75_urban} and \ref{fig:combined_p25_p75_rural} 
 show how the predicted 25th and 75th percentile birth intervals have changed over time 
-by spell and education.
-For each woman in a given spell/period combination, I calculate the time point at 
-which there is a given percent chance that she will have given birth, relative to the
-probability that she will eventually give birth in that spell.
-The reported statistics is the average of the percentile duration
-across all women in a given sample using the individual predicted
-probabilities of having had a birth by the end of the spell as weights.%
+by spell and education.%
 \footnote{
 The Appendix shows conditional survival curves for all groups, and 
 Appendix Tables \ref{tab:p25_p50_p75_low} through \ref{tab:p25_p50_p75_highest} 
