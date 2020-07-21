@@ -14,7 +14,7 @@
 \usepackage{multirow}
 \usepackage[flushleft]{threeparttable}
 \usepackage{setspace}
-\usepackage[justification=centering]{caption}
+\usepackage[justification=centering,skip=2pt]{caption}
 \usepackage[font=scriptsize]{subfig}
 \usepackage[xetex,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
 \usepackage{adjustbox}
@@ -82,7 +82,7 @@ University of Washington.
     University of Washington\\ \vspace{2cm}
     }
 
-\date{June 2020}
+\date{July 2020}
 
 
 %------------------------------------------------------------------------
@@ -145,7 +145,7 @@ associated with higher infant mortality risk.
 % Background
 India experienced many positive changes over the last four decades:
 the economy grew substantially,
-schooling increased for both males and females,
+schooling increased for males and females,
 and the total fertility rate fell to 2.2 
 \citep{Bosworth2008,Dharmalingam2014,
 International-Institute-for-Population-Sciences-IIPS2017}.
@@ -174,7 +174,7 @@ Finally, sex determination tests are reliable only from three months of gestatio
 Hence, the growing use of sex-selective abortions may substantially increase birth spacing, 
 but we know little about how much. 
 Second, more female education, higher household income, and low and declining female labor 
-force participation are all likely to impact birth spacing. 
+force participation all likely impact birth spacing. 
 The combined changes in birth spacing may, therefore, outpace what we have observed in 
 other countries.
 
@@ -210,7 +210,7 @@ I apply the model to the birth histories of Hindu women covering 1972 to 2016 us
 data from the four National Family and Health Surveys (NFHS). 
 
 The primary outcomes I examine are average birth intervals, the sex ratio of births, 
-and the likelihood of a next birth. 
+and the likelihood of giving birth. 
 Because sex selection might also affect the distribution of birth intervals, I furthermore
 examine the 25th and 75th percentiles of birth intervals. 
 I estimate the model across four periods to capture the changing access and 
@@ -231,8 +231,8 @@ and the sex of the index child.
 % Main results
 There are four main results.
 
-First, over the four decades, average birth intervals lengthen for all, but most for higher 
-parities and more educated women. 
+First, average birth intervals lengthen over the four decades, more so the higher the 
+parity and the more educated the woman.
 Women most likely to use sex selection---well-educated with no sons---had the most 
 substantial lengthening of birth intervals and the most biased sex ratios. 
 As a result, we now see cases that reverse the traditional spacing pattern, with some 
@@ -714,7 +714,7 @@ I estimate the competing risk hazard model for each spell, education, and period
 combination and then predict average birth interval in months, sex ratio, and the 
 probability of having a birth in that spell.
 
-Figures \ref{fig:bootstrap_low} through \ref{fig:bootstrap_highest}
+Figures \ref{fig:spacing_low_rural} through \ref{fig:spacing_highest_urban}
 show the predicted outcomes for the four education levels by area of residence.%
 \footnote{
 For legibility, the graphs do not show standard errors.
@@ -724,411 +724,79 @@ Furthermore, I do not show the results for the fourth spell the best-educated wo
 the low number of births, especially with one or more boys, make the spacing and sex ratio 
 results very noisy.
 Results are available upon request.
+
+[Urban low and rural highest in online Appendix]
+
 }
 For comparison, the graphs for the sex ratio also show the natural sex ratio, 
 approximately 51.2 percent \citep{ben-porath76b,jacobsen99,Portner2015b}.
 
 
-
-% \begin{figure}[htpb]
+% \begin{figure}
 % \centering
-% \caption*{Urban}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_low_urban_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_low_urban_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_low_urban_all}} 
-% \\
-% \caption*{Rural}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_low_rural_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_low_rural_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_low_rural_all}} 
-% \caption{low education}
-% \label{fig:bootstrap_low}
-% \end{figure}
-
-% \captionsetup[subfigure]{position=top,captionskip=-1pt,farskip=-0.5pt}
-
-% \begin{figure}[htpb]
-% \centering
-% \rotatebox[origin=c]{90}{\small{Urban}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_low_urban_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_low_urban_all} 
-%     \end{minipage}
-% }
-% \subfloat[Fourth Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell4_low_urban_all}
-%     \end{minipage}
-% }
-% \\
-% \rotatebox[origin=c]{90}{\small{Rural}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_low_rural_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_low_rural_all} 
-%     \end{minipage}
-% } 
-% \subfloat[Fourth Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell4_low_rural_all} 
-%     \end{minipage}
-% } 
-% \caption{Estimated average spell length, sex ratio, and probability of 
-% a next birth for women with no education}
-% \label{fig:bootstrap_low}
+% \includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_low_urban}
+% \caption{combined graphs - low urban}
+% \label{fig:spacing_low_urban}
 % \end{figure}
 
 
-\begin{sidewaysfigure}
-\captionsetup[subfigure]{captionskip=-1pt,farskip=-0.5pt}
+\begin{figure}
 \centering
-\rotatebox[origin=c]{90}{\small{Urban}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.31\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_low_urban_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.31\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_low_urban_all} 
-    \end{minipage}
-}
-\subfloat[Fourth Spell]{
-    \begin{minipage}{0.31\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell4_low_urban_all}
-    \end{minipage}
-}
-\caption{Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with no education}
-\label{fig:bootstrap_low}
-\end{sidewaysfigure}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_low_rural}
+\caption{combined graphs - low rural}
+\label{fig:spacing_low_rural}
+\end{figure}
 
-\begin{sidewaysfigure}
+
+\begin{figure}
 \centering
-\ContinuedFloat
-\rotatebox[origin=c]{90}{\small{Rural}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.31\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_low_rural_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.31\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_low_rural_all} 
-    \end{minipage}
-} 
-\subfloat[Fourth Spell]{
-    \begin{minipage}{0.31\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell4_low_rural_all} 
-    \end{minipage}
-} 
-\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with no education}
-\label{fig:bootstrap_low}
-\end{sidewaysfigure}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_med_urban}
+\caption{combined graphs - med urban}
+\label{fig:spacing_med_urban}
+\end{figure}
 
 
-% \begin{figure}[htpb]
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_med_rural}
+\caption{combined graphs - med rural}
+\label{fig:spacing_med_rural}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_high_urban}
+\caption{combined graphs - high urban}
+\label{fig:spacing_high_urban}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_high_rural}
+\caption{combined graphs - high rural}
+\label{fig:spacing_high_rural}
+\end{figure}
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_highest_urban}
+\caption{combined graphs - highest urban}
+\label{fig:spacing_highest_urban}
+\end{figure}
+
+
+% \begin{figure}
 % \centering
-% \caption*{Urban}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_med_urban_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_med_urban_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_med_urban_all}} 
-% \\
-% \caption*{Rural}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_med_rural_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_med_rural_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_med_rural_all}} 
-% \caption{med education}
-% \label{fig:bootstrap_med}
+% \includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_highest_rural}
+% \caption{combined graphs - highest rural}
+% \label{fig:spacing_highest_rural}
 % \end{figure}
 
 
-% \begin{figure}[htpb]
-% \centering
-% \rotatebox[origin=c]{90}{\small{Urban}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_med_urban_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_med_urban_all} 
-%     \end{minipage}
-% }
-% \subfloat[Fourth Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell4_med_urban_all}
-%     \end{minipage}
-% }
-% \\
-% \rotatebox[origin=c]{90}{\small{Rural}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_med_rural_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_med_rural_all} 
-%     \end{minipage}
-% } 
-% \subfloat[Fourth Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell4_med_rural_all} 
-%     \end{minipage}
-% } 
-% \caption{Estimated average birth interval, sex ratio, and probability of 
-% a next birth for women with one to seven years of education}
-% \label{fig:bootstrap_med}
-% \end{figure}
-
-
-\begin{sidewaysfigure}
-\centering
-\rotatebox[origin=c]{90}{\small{Urban}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_med_urban_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_med_urban_all} 
-    \end{minipage}
-}
-\subfloat[Fourth Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell4_med_urban_all}
-    \end{minipage}
-}
-\caption{Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with one to seven years of education}
-\label{fig:bootstrap_med}
-\end{sidewaysfigure}
-
-\begin{sidewaysfigure}
-\centering
-\ContinuedFloat
-\rotatebox[origin=c]{90}{\small{Rural}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_med_rural_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_med_rural_all} 
-    \end{minipage}
-} 
-\subfloat[Fourth Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell4_med_rural_all} 
-    \end{minipage}
-} 
-\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with one to seven years of education}
-\label{fig:bootstrap_med}
-\end{sidewaysfigure}
-
-% \begin{figure}[htpb]
-% \centering
-% \caption*{Urban}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_highest_urban_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_highest_urban_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_highest_urban_all}} 
-% \\
-% \caption*{Rural}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_highest_rural_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_highest_rural_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_highest_rural_all}} 
-% \caption{high education}
-% \label{fig:bootstrap_high}
-% \end{figure}
-
-
-% \begin{figure}[htpb]
-% \centering
-% \rotatebox[origin=c]{90}{\small{Urban}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_high_urban_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_high_urban_all} 
-%     \end{minipage}
-% }
-% \subfloat[Fourth Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell4_high_urban_all}
-%     \end{minipage}
-% }
-% \\
-% \rotatebox[origin=c]{90}{\small{Rural}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_high_rural_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_high_rural_all} 
-%     \end{minipage}
-% } 
-% \subfloat[Fourth Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell4_high_rural_all} 
-%     \end{minipage}
-% } 
-% \caption{Estimated average birth interval, sex ratio, and probability of 
-% a next birth for women with eight to eleven years of education}
-% \label{fig:bootstrap_high}
-% \end{figure}
-
-
-\begin{sidewaysfigure}
-\centering
-\rotatebox[origin=c]{90}{\small{Urban}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_high_urban_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_high_urban_all} 
-    \end{minipage}
-}
-\subfloat[Fourth Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell4_high_urban_all}
-    \end{minipage}
-}
-\caption{Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with eight to eleven years of education}
-\label{fig:bootstrap_high}
-\end{sidewaysfigure}
-
-
-\begin{sidewaysfigure}
-\centering
-\ContinuedFloat
-\rotatebox[origin=c]{90}{\small{Rural}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_high_rural_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_high_rural_all} 
-    \end{minipage}
-} 
-\subfloat[Fourth Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell4_high_rural_all} 
-    \end{minipage}
-} 
-\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with eight to eleven years of education}
-\label{fig:bootstrap_high}
-\end{sidewaysfigure}
-
-
-% \begin{figure}[htpb]
-% \centering
-% \caption*{Urban}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_highest_urban_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_highest_urban_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_highest_urban_all}} 
-% \\
-% \caption*{Rural}
-% \subfloat[Second Spell]{\includegraphics[width=0.27\textwidth]{bs_spell2_highest_rural_all}} 
-% \subfloat[Third Spell]{\includegraphics[width=0.27\textwidth]{bs_spell3_highest_rural_all}} 
-% \subfloat[Fourth Spell]{\includegraphics[width=0.27\textwidth]{bs_spell4_highest_rural_all}} 
-% \caption{high education}
-% \label{fig:bootstrap_high}
-% \end{figure}
-
-
-% \begin{figure}[htpb]
-% \centering
-% \rotatebox[origin=c]{90}{\small{Urban}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_highest_urban_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_highest_urban_all} 
-%     \end{minipage}
-% }
-% \\
-% \rotatebox[origin=c]{90}{\small{Rural}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell2_highest_rural_all}
-%     \end{minipage}
-% } 
-% \subfloat[Third Spell]{
-%     \begin{minipage}{0.29\textwidth}
-%         \includegraphics[width=\textwidth]{bs_spell3_highest_rural_all} 
-%     \end{minipage}
-% } 
-% \caption{Estimated average birth interval, sex ratio, and probability of 
-% a next birth for women with twelve or more years of education}
-% \label{fig:bootstrap_highest}
-% \end{figure}
-
-\begin{sidewaysfigure}
-\centering
-\rotatebox[origin=c]{90}{\small{Urban}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_highest_urban_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_highest_urban_all} 
-    \end{minipage}
-}
-\caption{Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with twelve or more years of education}
-\label{fig:bootstrap_highest}
-\end{sidewaysfigure}
-
-\begin{sidewaysfigure}
-\centering
-\ContinuedFloat
-\rotatebox[origin=c]{90}{\small{Rural}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell2_highest_rural_all}
-    \end{minipage}
-} 
-\subfloat[Third Spell]{
-    \begin{minipage}{0.29\textwidth}
-        \includegraphics[width=\textwidth]{bs_spell3_highest_rural_all} 
-    \end{minipage}
-} 
-\caption{(Continued) Estimated average birth interval, sex ratio, and probability of 
-a next birth for women with twelve or more years of education}
-\label{fig:bootstrap_highest}
-\end{sidewaysfigure}
 
 Average birth intervals have increased over time across all groups, but
 the higher the parity and the higher the schooling, the larger the
@@ -1137,22 +805,20 @@ increases.
 In the latest period, the shortest average birth interval is 33 months for
 women with no education in the second spell, an increase of a couple of
 months from the first period.
-The longest average interval was 51 months for the third spell for urban women with twelve or 
-more years of education who had no boys, an increase of approximately a year.
+The longest average interval was 51 months for the third spell for urban women with twelve 
+or more years of education who had no boys, an increase of approximately a year over
+4 decades.
 For comparison, the median birth intervals reported for the NFHS have barely
-moved over time, staying at approximately 31 months.%
+moved over time, staying at approximately 31 months, and fast changing countries have 
+median birth intervals that increase change around 3.5 months per decade 
+\citep{Rutstein2011,Casterline2016}.%
 \footnote{
-See
-\citet[][p.\ 110--112]{International-Institute-for-Population-Sciences-IIPS1995},
-\citet[][p.\ 98--103]{International-Institute-for-Population-Sciences-IIPS2000},
-\citet[][p.\ 88--91]{International-Institute-for-Population-Sciences-IIPS2007}, and
-\citet[][p.\ 81--82]{International-Institute-for-Population-Sciences-IIPS2017}.
-Median estimates are in
-Appendix Tables \ref{tab:p25_p50_p75_low} through \ref{tab:p25_p50_p75_highest}.
+Median estimates are in Appendix Tables \ref{tab:p25_p50_p75_low} through 
+\ref{tab:p25_p50_p75_highest}.
 }
-This lack of change in the NFHS reported birth intervals underscores the importance of 
-accounting for censoring of birth spells when trying to understand how birth spacing 
-is changing over time.
+This lack of change in the NFHS reported birth intervals over round underscores the 
+importance of accounting for censoring of birth spells when trying to understand how birth 
+spacing is changing over time.
 
 Parity progression probabilities are lower the higher the education and are
 falling across all groups over time, but the extent of the decline depends crucially on 
@@ -1194,68 +860,6 @@ The Appendix shows conditional survival curves for all groups, and
 Appendix Tables \ref{tab:p25_p50_p75_low} through \ref{tab:p25_p50_p75_highest} 
 show 25th, 50th, and 75th percentiles durations with bootstrapped standard errors.
 }
-
-\begin{figure}[htpb]
-\captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_low_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_low_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell4_low_urban}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_med_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_med_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell4_med_urban}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_high_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_high_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell4_high_urban}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_highest_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_highest_urban}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-25th and 75th Percentile Birth Intervals for Urban Women by Spell and Education
-}
-\label{fig:combined_p25_p75_urban}
-\end{figure}
-
-
-\begin{figure}[htpb]
-% \captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup[subfigure]{position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_low_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_low_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell4_low_rural}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_med_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_med_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell4_med_rural}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_high_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_high_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell4_high_rural}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell2_highest_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{combined_p25_p75_spell3_highest_rural}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-25th and 75th Percentile Birth Intervals for Rural Women by Spell and Education
-}
-\label{fig:combined_p25_p75_rural}
-\end{figure}
 
 
 For women with no or little education, the increases in average spacing
@@ -1331,8 +935,22 @@ The final group consists of those women, who, in the absence of a son, have the 
 biased sex ratios and the longest birth intervals, and where this spacing is longer than 
 for the other possible sex compositions. 
 The most extreme example is best-educated urban women with two girls, who have a sex ratio 
-approaching 80 and an average birth interval of 42 months. 
+approaching 80 and an average birth interval of 51 months. 
 This birth interval is seven months longer than with at least one boy.
+
+Even more striking is the change for this group when sex selection was first introduced.
+There was a six months jump, from 39.5 to 45.4, in average spacing between the first and 
+the second period for women with two girls, but only a month increase for the other sex 
+compositions.
+Furthermore, the 75th percentile birth interval with two girls increased from 48 months to 
+64 months with two girls over the period, while the other sex compositions showed a 
+slightly decrease from around 55 months to 54 months.
+
+Theses changes may even be an underestimate of the changes in birth spacing sine
+this particular group appear to have had access to sex selection even before it became
+widespread as shown by the unequal sex ratio for the 1972--1984 period for women with
+two girls.
+
 
 In summary, although birth spacing has increased over time with improving economic 
 conditions and falling fertility, most of the increases in birth spacing come from the
@@ -1508,121 +1126,139 @@ However, the fixed effects and linear probability results did not
 deviate substantially in prior research.
 
 
-\begin{figure}[htpb]
+% \begin{figure}[htpb]
+% \centering
+% \rotatebox[origin=c]{90}{\small{1972-1984}}
+% \setcounter{subfigure}{-1}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[No Eduction]{\includegraphics[width=\textwidth]{mortality_s2_p1_low_dummies}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{-0} 
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[One to Seven Years of Education]{\includegraphics[width=\textwidth]{mortality_s2_p1_med_dummies}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \\
+% \rotatebox[origin=c]{90}{\small{1985-1994}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p2_low_dummies}
+%     \end{minipage}
+% } 
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p2_med_dummies} 
+%     \end{minipage}
+% } 
+% \\
+% \rotatebox[origin=c]{90}{\small{1995-2004}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p3_low_dummies}
+%     \end{minipage}
+% } 
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p3_med_dummies} 
+%     \end{minipage}
+% } 
+% \\
+% \rotatebox[origin=c]{90}{\small{2005-2016}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p4_low_dummies}
+%     \end{minipage}
+% } 
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p4_med_dummies} 
+%     \end{minipage}
+% } 
+% \caption{Predicted Probability of Second Child's Infant Mortality 
+% for Women with No Education
+% and Women with One to Seven Years of Education}
+% \label{fig:mortality_low_med}
+% \end{figure}
+
+
+% \begin{figure}[htpb]
+% \centering
+% \rotatebox[origin=c]{90}{\small{1972-1984}}
+% \setcounter{subfigure}{-1}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Eight to Eleven Years of Education]{\includegraphics[width=\textwidth]{mortality_s2_p1_high_dummies}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \begin{minipage}[t]{0.39\textwidth}\vspace{-2.68cm}\centering\footnotesize{Twelve or More Years of Education}\end{minipage}
+% \\
+% \rotatebox[origin=c]{90}{\small{1985-1994}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p2_high_dummies}
+%     \end{minipage}
+% } 
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p2_highest_dummies}
+%     \end{minipage}
+% } 
+% \\
+% \rotatebox[origin=c]{90}{\small{1995-2004}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p3_high_dummies}
+%     \end{minipage}
+% } 
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p3_highest_dummies} 
+%     \end{minipage}
+% } 
+% \\
+% \rotatebox[origin=c]{90}{\small{2005-2016}}
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p4_high_dummies}
+%     \end{minipage}
+% } 
+% \subfloat[Second Spell]{
+%     \begin{minipage}{0.37\textwidth}
+%         \includegraphics[width=\textwidth]{mortality_s2_p4_highest_dummies} 
+%     \end{minipage}
+% } 
+% \caption{Predicted Probability of Second Child's Infant Mortality 
+% for Women with Eight to Eleven of Education
+% and Women with Twelve or More Years of Education}
+% \label{fig:mortality_high_highest}
+% \end{figure}
+
+
+\begin{figure}
 \centering
-\rotatebox[origin=c]{90}{\small{1972-1984}}
-\setcounter{subfigure}{-1}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[No Eduction]{\includegraphics[width=\textwidth]{mortality_s2_p1_low_dummies}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{-0} 
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[One to Seven Years of Education]{\includegraphics[width=\textwidth]{mortality_s2_p1_med_dummies}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\\
-\rotatebox[origin=c]{90}{\small{1985-1994}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p2_low_dummies}
-    \end{minipage}
-} 
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p2_med_dummies} 
-    \end{minipage}
-} 
-\\
-\rotatebox[origin=c]{90}{\small{1995-2004}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p3_low_dummies}
-    \end{minipage}
-} 
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p3_med_dummies} 
-    \end{minipage}
-} 
-\\
-\rotatebox[origin=c]{90}{\small{2005-2016}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p4_low_dummies}
-    \end{minipage}
-} 
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p4_med_dummies} 
-    \end{minipage}
-} 
-\caption{Predicted Probability of Second Child's Infant Mortality 
-for Women with No Education
-and Women with One to Seven Years of Education}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{mortality_low_med}
+\caption{Mortality low medium}
 \label{fig:mortality_low_med}
 \end{figure}
 
 
-\begin{figure}[htpb]
+\begin{figure}
 \centering
-\rotatebox[origin=c]{90}{\small{1972-1984}}
-\setcounter{subfigure}{-1}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Eight to Eleven Years of Education]{\includegraphics[width=\textwidth]{mortality_s2_p1_high_dummies}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\begin{minipage}[t]{0.39\textwidth}\vspace{-2.68cm}\centering\footnotesize{Twelve or More Years of Education}\end{minipage}
-\\
-\rotatebox[origin=c]{90}{\small{1985-1994}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p2_high_dummies}
-    \end{minipage}
-} 
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p2_highest_dummies}
-    \end{minipage}
-} 
-\\
-\rotatebox[origin=c]{90}{\small{1995-2004}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p3_high_dummies}
-    \end{minipage}
-} 
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p3_highest_dummies} 
-    \end{minipage}
-} 
-\\
-\rotatebox[origin=c]{90}{\small{2005-2016}}
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p4_high_dummies}
-    \end{minipage}
-} 
-\subfloat[Second Spell]{
-    \begin{minipage}{0.37\textwidth}
-        \includegraphics[width=\textwidth]{mortality_s2_p4_highest_dummies} 
-    \end{minipage}
-} 
-\caption{Predicted Probability of Second Child's Infant Mortality 
-for Women with Eight to Eleven of Education
-and Women with Twelve or More Years of Education}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{mortality_high_highest}
+\caption{Mortality high highest}
 \label{fig:mortality_high_highest}
 \end{figure}
+
+
 
 
 There has been substantial convergence in mortality risk across groups over time.
