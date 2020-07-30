@@ -410,13 +410,13 @@ The exception is one crucial aspect of child quality---health and mortality---wh
 longer spacing does lead to better outcomes, although this relationship weakens with 
 maternal education \citep{Whitworth2002,Conde-Agudelo2012,Molitoris2019}.
 
-If parents realize that longer spacing leads to better child outcomes, we may even observe 
-later conception, especially when, with sex selection, the next child is likely to be a boy.
-Working in the opposite direction of this "delay" effect is that women with more education 
-can, in principle, space their children closer together without substantially increasing 
-child mortality risk. 
-However, given the apparent lack of pressure to return to the labor force, this effect is 
-likely small.
+% If parents realize that longer spacing leads to better child outcomes, we may even observe 
+% later conception, especially when, with sex selection, the next child is likely to be a boy.
+% Working in the opposite direction of this "delay" effect is that women with more education 
+% can, in principle, space their children closer together without substantially increasing 
+% child mortality risk. 
+% However, given the apparent lack of pressure to return to the labor force, this effect is 
+% likely small.
 
 % Sanskritization
 
@@ -559,16 +559,16 @@ The predicted parity progression probability is the likelihood of giving birth b
 imposed censoring based on standard survival curve calculations averaged across all
 women in a given sample.
 
-For birth intervals, I estimate the average birth interval and a set of percentile
-birth intervals.
-To find the average birth interval, I calculate, for each woman, the probability of 
-giving birth in each $t$, and her expected spell length from these probabilities.
-I then average the individual expected spell lengths across women using their parity 
-progression probabilities as weights.
-Finally, I add nine months because spells begin nine months after the previous birth.
-The process is similar for the percentile birth intervals, except that I use the time 
-point when there is a given percent probability that a woman will give birth, conditional 
-on her giving birth in the spell.
+For birth intervals, I estimate a set of percentile birth intervals.
+To find a given percentile birth interval, I first calculate for each woman when there is 
+a given percent chance that she will have given birth, conditional on the probability of 
+giving birth in the spell.
+I then add nine months to account for the start of the spell. 
+For example, with an 80 percent chance of giving birth by the end of the spell, the median birth 
+interval is the predicted number of months before a woman passes the 40 percent mark on her 
+survival curve. 
+The reported statistic is the average of a given percentile interval across all women in 
+a given sample using the individual progression probabilities as weights.
 
 The predicted sex ratio is the weighted average of individual predicted sex ratios, using 
 parity progression probabilities as weights.
@@ -711,34 +711,24 @@ Area of residence is a dummy variable for living in an urban area.
 The first question I address is how birth spacing responded to the significant changes, 
 especially the spread of sex selection, that India experienced. 
 I estimate the competing risk hazard model for each spell, education, and period 
-combination and then predict average birth interval in months, sex ratio, and the 
-probability of having a birth in that spell.
+combination and then predict 25th, 50th, and 75th percentiles birth intervals in 
+months, the sex ratio, and the probability of having a birth in that spell.
+Sex selection increases all three percentile birth intervals, but the effects of abortions 
+are easiest to observe in the 75th percentile birth interval, 
+and it is also the changes in the longest birth intervals that will likely the largest 
+impact on fertility measures.
+The 25th percentile captures changes in the short spacing, which is the most likely to 
+have an adverse impact on health.
 
 Figures \ref{fig:spacing_low_rural} through \ref{fig:spacing_highest_urban}
-show the predicted outcomes for the four education levels by area of residence.%
-\footnote{
-For legibility, the graphs do not show standard errors.
-The graphed values, with standard errors, are shown in Appendix Tables 
-\ref{tab:avg_sex_ratio_low} through \ref{tab:avg_sex_ratio_highest}.
-Furthermore, I do not show the results for the fourth spell the best-educated women since 
-the low number of births, especially with one or more boys, make the spacing and sex ratio 
-results very noisy.
-Results are available upon request.
-
-[Urban low and rural highest in online Appendix]
-
-}
-For comparison, the graphs for the sex ratio also show the natural sex ratio, 
-approximately 51.2 percent \citep{ben-porath76b,jacobsen99,Portner2015b}.
-
-
-% \begin{figure}
-% \centering
-% \includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_low_urban}
-% \caption{combined graphs - low urban}
-% \label{fig:spacing_low_urban}
-% \end{figure}
-
+show the predicted outcomes for the four education levels by area of residence.
+The underlying values with bootstrapped standard errors are available in the online 
+appendix.
+The sex ratio graphs also show the natural sex ratio, approximately 51.2 percent 
+\citep{ben-porath76b,jacobsen99,Portner2015b}.
+Results for urban women without education, rural women with twelve or more years of 
+education, and the fourth spell for women with twelve or more years of education are
+presented in the online appendix because they are based on relatively few observations.
 
 \begin{figure}
 \centering
@@ -747,14 +737,12 @@ approximately 51.2 percent \citep{ben-porath76b,jacobsen99,Portner2015b}.
 \label{fig:spacing_low_rural}
 \end{figure}
 
-
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_med_urban}
-\caption{combined graphs - med urban}
-\label{fig:spacing_med_urban}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_low_urban}
+\caption{combined graphs - low urban}
+\label{fig:spacing_low_urban}
 \end{figure}
-
 
 \begin{figure}
 \centering
@@ -763,14 +751,12 @@ approximately 51.2 percent \citep{ben-porath76b,jacobsen99,Portner2015b}.
 \label{fig:spacing_med_rural}
 \end{figure}
 
-
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_high_urban}
-\caption{combined graphs - high urban}
-\label{fig:spacing_high_urban}
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_med_urban}
+\caption{combined graphs - med urban}
+\label{fig:spacing_med_urban}
 \end{figure}
-
 
 \begin{figure}
 \centering
@@ -779,7 +765,19 @@ approximately 51.2 percent \citep{ben-porath76b,jacobsen99,Portner2015b}.
 \label{fig:spacing_high_rural}
 \end{figure}
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_high_urban}
+\caption{combined graphs - high urban}
+\label{fig:spacing_high_urban}
+\end{figure}
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_highest_rural}
+\caption{combined graphs - highest rural}
+\label{fig:spacing_highest_rural}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -788,178 +786,178 @@ approximately 51.2 percent \citep{ben-porath76b,jacobsen99,Portner2015b}.
 \label{fig:spacing_highest_urban}
 \end{figure}
 
-
-% \begin{figure}
-% \centering
-% \includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_highest_rural}
-% \caption{combined graphs - highest rural}
-% \label{fig:spacing_highest_rural}
-% \end{figure}
-
-
-
-Average birth intervals have increased over time across all groups, but
-the higher the parity and the higher the schooling, the larger the
-increases.
-
-In the latest period, the shortest average birth interval is 33 months for
-women with no education in the second spell, an increase of a couple of
-months from the first period.
-The longest average interval was 51 months for the third spell for urban women with twelve 
-or more years of education who had no boys, an increase of approximately a year over
-4 decades.
-For comparison, the median birth intervals reported for the NFHS have barely
-moved over time, staying at approximately 31 months, and fast changing countries have 
-median birth intervals that increase change around 3.5 months per decade 
-\citep{Rutstein2011,Casterline2016}.%
-\footnote{
-Median estimates are in Appendix Tables \ref{tab:p25_p50_p75_low} through 
-\ref{tab:p25_p50_p75_highest}.
-}
-This lack of change in the NFHS reported birth intervals over round underscores the 
-importance of accounting for censoring of birth spells when trying to understand how birth 
-spacing is changing over time.
-
-Parity progression probabilities are lower the higher the education and are
-falling across all groups over time, but the extent of the decline depends crucially on 
-the sex composition of prior children and the parity.
-Women with no sons are still the most likely to 
-have the next birth, and this group has seen substantially smaller declines in
-the likelihood of having another birth than women with one or more sons.%
-\footnote{
-However, there is also some evidence that parents prefer a mix of boys and girls: for 
-the fourth spell women with two boys \emph{and} a girl
-consistently have the lowest parity progression probability.
-}
-For urban women with eight to eleven years of education, for example, the second spell
-probability of a next child declined by eight percentage points if the first child was a 
-girl, but 15 percentage points if it was a boy.
-Even more extreme is the fourth spell, where the likelihood of a birth declined by six 
-percentage points to 75 percent if the woman had three children, but by almost 40 
-percentage points to 25 percent if she had two boys and a girl.
+The results show three broad trends.
+% [Birth intervals]
+First, 
+over the four decades, birth intervals have lengthen, whether measured by the
+25th, 50th, or 75th percentile.
+These increases are larger the higher the education of the mother, the higher the parity, 
+and the higher the percentile measure.
 
 
-\subsection{Distribution of Birth Spacing}
-
-To better understand what factors are behind the changes in average spacing, I next 
-examine its distribution---represented by the 25th and 75th percentiles 
-of predicted birth intervals. 
-This approach can capture differences across groups with similar changes in average spacing. 
-For example, imagine that sex selection is behind an increase in average birth spacing, 
-but that women still try to conceive early. 
-In that case, we should see little change in the 25th percentile, but the 75th percentile 
-spacing becomes much longer because those who use sex selection will have two or more 
-pregnancies rather than one. 
-In contrast, a general increase in spacing would show up as lengthening of both percentiles.
-
-Figures \ref{fig:combined_p25_p75_urban} and \ref{fig:combined_p25_p75_rural} 
-show how the predicted 25th and 75th percentile birth intervals have changed over time 
-by spell and education.%
-\footnote{
-The Appendix shows conditional survival curves for all groups, and 
-Appendix Tables \ref{tab:p25_p50_p75_low} through \ref{tab:p25_p50_p75_highest} 
-show 25th, 50th, and 75th percentiles durations with bootstrapped standard errors.
-}
+% [Parity progression probability]
+Second, 
+the likelihood of a next birth has fallen over time, and the declines are
+larger the higher the education, the higher the parity, and with the presence of at
+least one son. 
+Within a given spell and period, parity progressions are lower in urban than in rural areas, 
+if at least one son is present, and the more educated the mother.
 
 
-For women with no or little education, the increases in average spacing
-come predominantly from increases in the long end of the spacing
-distribution rather than from a general increase.
-Hence, spacing is still very short for many women, with 25 percent or more having
-their next birth within two years of the prior birth, even in the last period.
-Furthermore, the increases in the 75th percentile birth intervals are relatively small
-for the second spell and slightly more substantial for the third spell at around five months.
-Most of the divergence across sex compositions happen for the fourth spell, where 
-the most significant increases are for women with two or three sons.
-However, even for women with no or one son, the birth intervals have
-increased by a half to a full year, consistent with some use of sex
-selection.
+% [Sex ratios]
+Finally, 
+the sex ratios of next births has become more male dominated for women with no
+sons, while there are no clear trends for the other sex compositions.
+The increases in the predicted percent boys are larger the higher the education and the 
+higher the parity.
+Furthermore, for a given spell and period, sex ratios in the absence of a son are higher 
+in urban than in rural areas, the higher the education of the mother, and the higher
+the parity.
+There is some evidence of unnaturally high percentage boys born even when women have one 
+son, although most are clearly lower than in the absence of a son and the failing fertility
+make more of those estimate noisy.
 
-The 25th percentile birth intervals for women with eight to eleven years of education also 
-changed relatively little over time and is, as for the less-educated women, close to
-around two years since the prior birth.
-Hence, the increases in the longer end of the distribution drive
-the change in average spacing.
-For example, the 75th percentile spacing length for women with two girls in the third 
-spell increased by more than 15 months, mainly as the result of more widespread use of sex 
-selection as the sex ratios above indicate.
- 
-The most educated urban women show an unusual pattern for the third spell, where there 
-is virtually no change in either the 25th or 75th percentile birth intervals in the
-presence of at least one boy.
-The 75th percentile birth interval, however, increases by more than 20 months,
-corresponding to the massive increase in the sex ratio to almost 80 percent in the 
-latest period.
-Hence, the increases in the length of the longer intervals over time are
-the main reason for the increases in average birth spacing and the
-reversal in the spacing pattern by sex composition, consistent with
-substantial use of sex selection.
 
-Although most of the increases come from among the longer intervals, there is some 
-evidence for the ``delay'' effect discussed above, where parents conceive later
-precisely because they know that the next child is likely to be a boy since they plan
-to use sex selection.
-The best example is for the best-educated urban women in the third spell, where, in the 
-last two periods, the spacing to the third child is significantly longer if the two prior 
-children were girls than if they already had one or two boys.
-These two periods are the periods where the predicted sex ratios are 70 and 80 percent,
-respectively.
-There is also a significantly longer spacing with only girls for women with eight to
-eleven years of education in the last period for the third and fourth spell, although
-the difference is substantially smaller.
+% [25th percentile birth intervals]
+Despite the increases in birth intervals and the decline in fertility, a remarkably high 
+proportion of birth intervals are still very short.
+For all but the most educated, more than 25 percent of women have their second and their
+third child within 24 months of their previous child.
+Furthermore, even with the larger increases in birth intervals with higher parity, the 
+25th percentile birth intervals for the fourth spell is around 24 months for women with 
+less than eight years of education. 
 
-\subsection{Sex Selection and Birth Spacing}
+% [median birth intervals]
+The median birth intervals have increased more than the 25th percentile birth intervals
+but are still also relatively short.
+Although most median birth intervals have increased by three to six months over the four 
+decades, the majority of median birth intervals are still at 36 months or below, 
+with the shortest only 29 months.
+For comparison, fast changing countries have median birth intervals that increase around 
+3.5 months per decade with declining fertility \citep{Rutstein2011,Casterline2016}.
+Furthermore, the NFHS reports show median closed birth intervals that have barely
+moved over time, staying at approximately 31 months, underscoring the importance of 
+accounting for censoring of birth spells when trying to understand how birth spacing 
+changes over time.
 
-The results above show that average birth intervals increased over time across all groups 
-and that these increases are larger for higher parities and with more schooling. 
-Furthermore, the increases come predominately from the longer intervals getting even 
-longer while there is little change in the length of the shortest intervals.
+An important exception to the relatively short median intervals come from the better 
+educated women, especially in the absence of sons.
+The longest median interval was 48 months for the third spell for urban women with twelve 
+or more years of education who had no boys, an increase of almost 15 months over
+four decades.
+Similary, urban women with eight to eleven years of education and no sons had median
+birth intervals of around 40 months, an increase of about 10 months.
+Finally, the best educated women now have a median second birth interval of around 42
+months whether their first child was a boy or a girl.
 
-What do these results tell us about the extent to which the introduction of sex selection 
-changed birth spacing across sex compositions? 
-There are three broad groups in the data.
 
-The first group consists of women who do not use sex selection even if they have only 
-girls, such as rural women with no education. 
-For this group, the shortest spacing---across all spells---is when they have only girls. 
-Notably, the difference in birth intervals across sex compositions has even grown over 
-time as spacing when sons are present increased.
+% [75th percentile birth intervals]
+The most substantial differences across women come from the longer birth intervals, 
+captured by the 75th percentile birth intervals.
+For the two lowest education groups the increases in the 75th percentile birth 
+intervals are relatively small for the second spell and slightly more substantial for the 
+third spell at around five months.
+However, the fourth spell show significant increases, especially for women with two
+or three sons, with increases of fifteen to twenty months.
+The fourth spell is also where most of the divergence across sex compositions happen,
+but even for women with no or one son, the 75th percentile birth intervals have
+increased by a half to a full year.
+For women with eight to eleven years of education, the 75th percentile spacing length for 
+women with two girls in the third spell increased by more than 15 months, mainly as the 
+result of more widespread use of sex selection as the sex ratios above indicate.
 
-In the second group are women who use sex selection and who, therefore, show the expected 
-associated increase in birth intervals for those sex compositions. 
-However, the intervals for their other sex compositions have increased even more. 
-The result is that the relative pattern remains more or less the same. 
-An example is women with eight more years of education in the second spell.
+% [Exceptions to the results]
+The best-educated women are an especially interesting case that run somewhat counter
+to the results above.
+First, despite a rapidly declining probability of having a third child when they already 
+have a son, there is little change in the associated birth intervals and all are lower for 
+the third spell than for the second.
+Second, the massive increase in the sex ratio to almost 80 percent boys for women with two 
+girls is associated with a more than 20 month increase in the 75th percentile birth 
+interval.
+The third spell is also the case with the clearest reversal in the spacing pattern by sex 
+composition; the birth intervals with two girls are consistently longer than with one
+or two sons no matter the percentile used.
 
-The final group consists of those women, who, in the absence of a son, have the most 
-biased sex ratios and the longest birth intervals, and where this spacing is longer than 
-for the other possible sex compositions. 
-The most extreme example is best-educated urban women with two girls, who have a sex ratio 
-approaching 80 and an average birth interval of 51 months. 
-This birth interval is seven months longer than with at least one boy.
 
+What do these results tell us about the role of son preference and the extent to which 
+the introduction of sex selection changed birth spacing across sex compositions? 
+
+The clearest illustration of how the combination of son preference and the introduction of 
+sex selection impacted birth spacing comes from the third spell of the best-educated urban 
+women.
+Women with two girls have a predicted sex ratio for their third child approaching 80 
+percent boys and a 75th percentile birth interval of almost 70 months, about 13 months
+longer than if they had at least one son.
 Even more striking is the change for this group when sex selection was first introduced.
-There was a six months jump, from 39.5 to 45.4, in average spacing between the first and 
-the second period for women with two girls, but only a month increase for the other sex 
-compositions.
-Furthermore, the 75th percentile birth interval with two girls increased from 48 months to 
-64 months with two girls over the period, while the other sex compositions showed a 
+The 75th percentile birth interval with two girls increased from 48 months to 
+64 months with two girls, while the other sex compositions showed a 
 slightly decrease from around 55 months to 54 months.
-
 Theses changes may even be an underestimate of the changes in birth spacing sine
 this particular group appear to have had access to sex selection even before it became
 widespread as shown by the unequal sex ratio for the 1972--1984 period for women with
 two girls.
 
+Even for the women the least likely to use sex selection, such as rural women with no 
+education, son preference shows up clearly. 
+For this group, the shortest spacing---across all spells---is when they have only girls. 
+Notably, the difference in birth intervals across sex compositions has grown over 
+time as spacing when sons are present increased.
+Despite the strong son preference in spacing and sex ratios, there is also some indication 
+that parents prefer a mix of boys and girls;
+women with two boys \emph{and} a girl consistently have the lowest parity progression 
+probability in the fourth spell across education levels. 
 
-In summary, although birth spacing has increased over time with improving economic 
+Did the predictions of a turn-around in the use of sex selection come true?
+There is no clear evidence for or against a reversal in the use of sex selection, with 
+some showing increases in sex ratios between the last two periods, others little change, 
+and some a decline.
+The best-educated women is again a good illustration.
+The percent boys born to women with two girls continued to increase over the last two
+periods, but the likelihood of a third birth declined and when the first child was a girl, 
+the sex ratio for the second birth dropped slightly as did the probability of a second birth. 
+There is, however, also cases where there is clearly no abatement in the increasing use of 
+sex selection. 
+The sex ratios in the absence of girls continued to increase for rural women with
+one to seven years of education and the likelihood of an additional birth remained high.
+
+
+% [Interpretation]
+How do these changes in birth intervals tie in with the changes in India over the four
+decades?
+% [TK economic growth? -> higher return to education for males -> lower fertility and
+% higher investment in boys' education -- has anybody looked at this?]
+First, the parity progression probabilities have been falling over time across all 
+education levels, especially for women with at least one son.
+Falling fertility is associated with increases in longer spacing, although it is still an 
+unresolved question why \citep{Casterline2016}.
+What is especially interesting is that the results for the most educated women show that 
+the rapidly declining probability of a third birth for women with one or two sons did not 
+lengthen the birth intervals at any of the percentiles.
+One possibility is that the most educated women have both better access to modern
+contraceptive and are better at using traditional contraceptive methods 
+\citep{Rosenzweig1989}.
+
+Second, there is evidence that in situations where sex selection does not play a role 
+in birth intervals, women with the smallest change in birth intervals are also those most 
+likely to work.
+For example, the increases in average third spell birth intervals for urban women with
+one boy and one girl over the four decades were 2.7, 3.4, 5.8, and 1.8 months from lowest 
+to highest education groups.%
+\footnote{
+For women with two sons, the numbers were 4.3, 6.3, 7.0, and 3.0, respectively.
+See the online appendix tables for the average birth intervals.
+}
+This means that the group with the lowest labor force participation, women with eight to 
+eleven years of education, was also the group with the largest increases in average 
+spacing, likely driven by the substantial improvement in household income that came
+from economic growth.
+
+Finally, although birth spacing has increased over time with improving economic 
 conditions and falling fertility, most of the increases in birth spacing come from the
 increased use of sex selection. 
 The most substantial increase over the four decades is a full year for the best-educated 
 women with two girls, which is the group with the most biased sex ratio.
-There is no clear evidence for or against a reversal in the use of sex selection, with 
-some showing increases in sex ratios between the last two periods, others little change, 
-and some a decline.
 
 
 
@@ -1331,9 +1329,6 @@ Hence, the changes in birth spacing are driven predominately by the longer inter
 becoming even longer over time.
 This pattern holds generally, but is especially prevalent for those who use sex selection 
 and, therefore, may end up with multiple abortions. 
-The exception to the small change in short spacing is the delay in conception for women 
-with very high use of sex selection, presumably because this group knows that
-the next child will be a boy.
 
 % fertility
 Fertility has declined for all groups, but the likelihood of having an additional child
@@ -1718,7 +1713,7 @@ value the longer ago the parents were married.
 \subfloat[NFHS-1]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_1}}
 \subfloat[NFHS-2]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_2}} \\
 \subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_3}} 
-\subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_4}} 
+\subfloat[NFHS-4]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_4}} 
 \caption{Ratio of Boys for ``First'' Births by Survey Round}
 \label{fig:sex_ratio_recall_rounds_bo1}
 \end{figure}
@@ -1728,7 +1723,7 @@ value the longer ago the parents were married.
 \subfloat[NFHS-1]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_1_bo2}}
 \subfloat[NFHS-2]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_2_bo2}} \\
 \subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_3_bo2}} 
-\subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_4_bo2}} 
+\subfloat[NFHS-4]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_4_bo2}} 
 \caption{Ratio of Boys for ``Second'' Births by Survey Round}
 \label{fig:sex_ratio_recall_rounds_bo2}
 \end{figure}
@@ -1766,19 +1761,50 @@ or more.
 
 
 
-\section{Duration Results Tables}
+\section{Additional Results Figures and  Tables}
 
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
-The first set of tables, Tables \ref{tab:avg_sex_ratio_low}, \ref{tab:avg_sex_ratio_med}, 
-\ref{tab:avg_sex_ratio_high}, and \ref{tab:avg_sex_ratio_highest}, show predicted average 
-birth intervals, sex ratios, and 
-probabilities of having a birth by decade, spell, and sex composition for the three 
-education levels separated by the area of residence, together with standard errors for all 
-three outcomes.
-The standard errors are based on bootstrapping for all three measures,
+
+Figures \ref{fig:spacing_low_urban} and \ref{fig:spacing_highest_rural} show 25th, 50th,
+and 75th percentile birth intervals, the sex ratio, and the probability of parity
+progression by spell for urban women with no education and rural women with twelve or
+more years of education, respectively.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_low_urban}
+\caption{combined graphs - low urban}
+\label{fig:spacing_low_urban}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_highest_rural}
+\caption{combined graphs - highest rural}
+\label{fig:spacing_highest_rural}
+\end{figure}
+
+
+
+The first set of tables, Tables \ref{tab:p25_p50_p75_low}, \ref{tab:p25_p50_p75_med},
+\ref{tab:p25_p50_p75_high}, and \ref{tab:p25_p50_p75_highest} show 25th, 50th, and
+75th percentile birth intervals together with their standard errors.
+The standard errors for all measures are based on bootstrapping,
 where the model is repeatedly estimated using resampling with replacement.
+
+The second set of tables, 
+Tables \ref{tab:avg_sex_ratio_low}, \ref{tab:avg_sex_ratio_med}, 
+\ref{tab:avg_sex_ratio_high}, and \ref{tab:avg_sex_ratio_highest}, show predicted average 
+birth intervals, sex ratios, and probabilities of having a birth by decade, spell, and sex 
+composition for the four education levels separated by the area of residence, together 
+with bootstrapped standard errors for all three outcomes.
+To find the average birth interval, I calculate, for each woman, the probability of 
+giving birth in each t, and her expected spell length from these probabilities. 
+I then average the individual expected spell lengths across women using their parity 
+progression probabilities as weights. Finally, I add nine months because spells begin 
+nine months after the previous birth.
 
 I also show whether durations for sex composition other than only girls are statistically 
 significantly different from the duration with only girls based on bootstrapped 
@@ -1798,6 +1824,13 @@ The predicted percentage boys may differ from the natural rate because of
 natural variation, any remaining recall error not corrected for, or 
 sex selection. 
 
+\input{../tables/bootstrap_duration_p25_p75_low_all.tex}
+
+\input{../tables/bootstrap_duration_p25_p75_med_all.tex}
+
+\input{../tables/bootstrap_duration_p25_p75_high_all.tex}
+
+\input{../tables/bootstrap_duration_p25_p75_highest_all.tex}
 
 \input{../tables/bootstrap_duration_avg_sex_ratio_low_all.tex}
 
@@ -1808,199 +1841,192 @@ sex selection.
 \input{../tables/bootstrap_duration_avg_sex_ratio_highest_all.tex}
 
 
-\input{../tables/bootstrap_duration_p25_p75_low_all.tex}
-
-\input{../tables/bootstrap_duration_p25_p75_med_all.tex}
-
-\input{../tables/bootstrap_duration_p25_p75_high_all.tex}
-
-\input{../tables/bootstrap_duration_p25_p75_highest_all.tex}
 
 \clearpage
 
-\begin{figure}[htpb]
-\captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_low_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_low_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_low_urban}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_med_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_med_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_med_urban}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_high_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_high_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_high_urban}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_highest_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_highest_urban}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-Changes in 25th Percentile Birth Intervals for Urban Women by Spell and Education
-}
-\label{fig:p25_urban}
-\end{figure}
-
-
-\begin{figure}[htpb]
-\captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_low_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_low_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_low_rural}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_med_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_med_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_med_rural}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_high_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_high_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_high_rural}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_highest_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_highest_rural}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-Changes in 25th Percentile Birth Intervals for Rural Women by Spell and Education
-}
-\label{fig:p25_rural}
-\end{figure}
-
-\begin{figure}[htpb]
-\captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_low_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_low_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_low_urban}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_med_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_med_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_med_urban}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_high_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_high_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_high_urban}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_highest_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_highest_urban}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-Changes in 50th Percentile Birth Intervals for Urban Women by Spell and Education
-}
-\label{fig:p50_urban}
-\end{figure}
-
-
-\begin{figure}[htpb]
-\captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_low_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_low_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_low_rural}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_med_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_med_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_med_rural}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_high_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_high_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_high_rural}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_highest_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_highest_rural}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-Changes in 50th Percentile Birth Intervals for Rural Women by Spell and Education
-}
-\label{fig:p50_rural}
-\end{figure}
-
-
-\begin{figure}[htpb]
-\captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_low_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_low_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_low_urban}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_med_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_med_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_med_urban}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_high_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_high_urban}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_high_urban}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_highest_urban}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_highest_urban}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-Changes in Average Birth Intervals for Urban Women by Spell and Education
-}
-\label{fig:avg_urban}
-\end{figure}
-
-
-\begin{figure}[htpb]
-\captionsetup[subfigure]{labelformat=empty,position=top}
-\captionsetup{font=footnotesize,skip=2pt}
-\centering
-\caption*{No education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_low_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_low_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_low_rural}}
-\\
-\caption*{One to Seven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_med_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_med_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_med_rural}}
-\\
-\caption*{Eight to Eleven Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_high_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_high_rural}}
-\subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_high_rural}}
-\\
-\caption*{Twelve or More Years of Education}
-\subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_highest_rural}}
-\subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_highest_rural}}
-\begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
-\captionsetup{font=normalsize}
-\caption{
-Changes in Average Birth Intervals for Rural Women by Spell and Education
-}
-\label{fig:avg_rural}
-\end{figure}
+% \begin{figure}[htpb]
+% \captionsetup[subfigure]{labelformat=empty,position=top}
+% \captionsetup{font=footnotesize,skip=2pt}
+% \centering
+% \caption*{No education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_low_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_low_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_low_urban}}
+% \\
+% \caption*{One to Seven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_med_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_med_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_med_urban}}
+% \\
+% \caption*{Eight to Eleven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_high_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_high_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_high_urban}}
+% \\
+% \caption*{Twelve or More Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_highest_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_highest_urban}}
+% \begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
+% \captionsetup{font=normalsize}
+% \caption{
+% Changes in 25th Percentile Birth Intervals for Urban Women by Spell and Education
+% }
+% \label{fig:p25_urban}
+% \end{figure}
+% 
+% 
+% \begin{figure}[htpb]
+% \captionsetup[subfigure]{labelformat=empty,position=top}
+% \captionsetup{font=footnotesize,skip=2pt}
+% \centering
+% \caption*{No education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_low_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_low_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_low_rural}}
+% \\
+% \caption*{One to Seven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_med_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_med_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_med_rural}}
+% \\
+% \caption*{Eight to Eleven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_high_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_high_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p25_spell4_high_rural}}
+% \\
+% \caption*{Twelve or More Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p25_spell2_highest_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p25_spell3_highest_rural}}
+% \begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
+% \captionsetup{font=normalsize}
+% \caption{
+% Changes in 25th Percentile Birth Intervals for Rural Women by Spell and Education
+% }
+% \label{fig:p25_rural}
+% \end{figure}
+% 
+% \begin{figure}[htpb]
+% \captionsetup[subfigure]{labelformat=empty,position=top}
+% \captionsetup{font=footnotesize,skip=2pt}
+% \centering
+% \caption*{No education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_low_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_low_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_low_urban}}
+% \\
+% \caption*{One to Seven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_med_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_med_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_med_urban}}
+% \\
+% \caption*{Eight to Eleven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_high_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_high_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_high_urban}}
+% \\
+% \caption*{Twelve or More Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_highest_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_highest_urban}}
+% \begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
+% \captionsetup{font=normalsize}
+% \caption{
+% Changes in 50th Percentile Birth Intervals for Urban Women by Spell and Education
+% }
+% \label{fig:p50_urban}
+% \end{figure}
+% 
+% 
+% \begin{figure}[htpb]
+% \captionsetup[subfigure]{labelformat=empty,position=top}
+% \captionsetup{font=footnotesize,skip=2pt}
+% \centering
+% \caption*{No education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_low_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_low_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_low_rural}}
+% \\
+% \caption*{One to Seven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_med_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_med_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_med_rural}}
+% \\
+% \caption*{Eight to Eleven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_high_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_high_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{p50_spell4_high_rural}}
+% \\
+% \caption*{Twelve or More Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{p50_spell2_highest_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{p50_spell3_highest_rural}}
+% \begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
+% \captionsetup{font=normalsize}
+% \caption{
+% Changes in 50th Percentile Birth Intervals for Rural Women by Spell and Education
+% }
+% \label{fig:p50_rural}
+% \end{figure}
+% 
+% 
+% \begin{figure}[htpb]
+% \captionsetup[subfigure]{labelformat=empty,position=top}
+% \captionsetup{font=footnotesize,skip=2pt}
+% \centering
+% \caption*{No education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_low_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_low_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_low_urban}}
+% \\
+% \caption*{One to Seven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_med_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_med_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_med_urban}}
+% \\
+% \caption*{Eight to Eleven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_high_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_high_urban}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_high_urban}}
+% \\
+% \caption*{Twelve or More Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_highest_urban}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_highest_urban}}
+% \begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
+% \captionsetup{font=normalsize}
+% \caption{
+% Changes in Average Birth Intervals for Urban Women by Spell and Education
+% }
+% \label{fig:avg_urban}
+% \end{figure}
+% 
+% 
+% \begin{figure}[htpb]
+% \captionsetup[subfigure]{labelformat=empty,position=top}
+% \captionsetup{font=footnotesize,skip=2pt}
+% \centering
+% \caption*{No education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_low_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_low_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_low_rural}}
+% \\
+% \caption*{One to Seven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_med_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_med_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_med_rural}}
+% \\
+% \caption*{Eight to Eleven Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_high_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_high_rural}}
+% \subfloat[][Fourth Spell]{\includegraphics[width=0.32\textwidth]{avg_spell4_high_rural}}
+% \\
+% \caption*{Twelve or More Years of Education}
+% \subfloat[][Second Spell]{\includegraphics[width=0.32\textwidth]{avg_spell2_highest_rural}}
+% \subfloat[][Third Spell]{\includegraphics[width=0.32\textwidth]{avg_spell3_highest_rural}}
+% \begin{minipage}{0.32\textwidth}\hspace{1cm}\end{minipage}
+% \captionsetup{font=normalsize}
+% \caption{
+% Changes in Average Birth Intervals for Rural Women by Spell and Education
+% }
+% \label{fig:avg_rural}
+% \end{figure}
 
 
 
@@ -2008,961 +2034,961 @@ Changes in Average Birth Intervals for Rural Women by Spell and Education
 \newpage
 
 
-\section{Survival Curves Conditional on Parity Progression for All Education and Spell Groups}
-
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-
-% [FIRST SPELL]
-
-% \subsection{First Spell}
+% \section{Survival Curves Conditional on Parity Progression for All Education and Spell Groups}
 % 
-% \input{../figures/appendix_spell1_low.tex}
+% \setcounter{figure}{0}
+% \setcounter{table}{0}
 % 
-% \input{../figures/appendix_spell1_med.tex}
 % 
-% \input{../figures/appendix_spell1_high.tex}
+% % [FIRST SPELL]
+% 
+% % \subsection{First Spell}
+% % 
+% % \input{../figures/appendix_spell1_low.tex}
+% % 
+% % \input{../figures/appendix_spell1_med.tex}
+% % 
+% % \input{../figures/appendix_spell1_high.tex}
+% % 
+% % \begin{figure}[htpb]
+% % \centering
+% % \caption*{No Education}
+% % \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_low_urban_pps}} 
+% % \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_low_rural_pps}} \\
+% % \caption*{1-7 Years of Education}
+% % \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_med_urban_pps}} 
+% % \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_med_rural_pps}} \\
+% % \caption*{8 or more Years of Education}
+% % \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_highest_urban_pps}} 
+% % \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_highest_rural_pps}} 
+% % \caption{Survival curves conditional on progression to first birth; start point is month of marriage}
+% % \label{fig:results_spell1_pps}
+% % \end{figure}
+% % 
+% % 
+% % \clearpage
+% % \newpage
+% % 
+% \subsection{Second Spell}
+% 
+% 
+% % \input{../figures/appendix_spell2_low.tex}
+% 
+% 
+% % PARITY PROGRESSION SURVIVAL CURVES - Low
+% 
+% % Low education
+% \vspace*{-0.75cm}
+% \begin{figure}[hp!]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2005]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with no education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell2_low_pps}
+% \end{figure}
+% 
+% 
+% 
+% 
+% % SPELL 2 - URBAN - MEDIUM
+% 
+% % \input{../figures/appendix_spell2_med.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - MEDIUM
+% 
+% 
+% % Low education
 % 
 % \begin{figure}[htpb]
 % \centering
-% \caption*{No Education}
-% \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_low_urban_pps}} 
-% \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_low_rural_pps}} \\
-% \caption*{1-7 Years of Education}
-% \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_med_urban_pps}} 
-% \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_med_rural_pps}} \\
-% \caption*{8 or more Years of Education}
-% \subfloat[Urban]{\includegraphics[width=0.49\textwidth]{spell1_highest_urban_pps}} 
-% \subfloat[Rural]{\includegraphics[width=0.49\textwidth]{spell1_highest_rural_pps}} 
-% \caption{Survival curves conditional on progression to first birth; start point is month of marriage}
-% \label{fig:results_spell1_pps}
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_med_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_med_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.32\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with 1-7 years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell2_med_pps}
+% \end{figure}
+% 
+% 
+% 
+% % High education
+% 
+% % \input{../figures/appendix_spell2_high.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - High education
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with eight to eleven years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell2_high_pps}
+% \end{figure}
+% 
+% 
+% % Highest education
+% 
+% % PARITY PROGRESSION SURVIVAL - Highest education
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_highest_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_highest_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_highest_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_highest_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_highest_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_highest_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_highest_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_highest_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with twelve or more years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell2_highest_pps}
 % \end{figure}
 % 
 % 
 % \clearpage
 % \newpage
 % 
-\subsection{Second Spell}
-
-
-% \input{../figures/appendix_spell2_low.tex}
-
-
-% PARITY PROGRESSION SURVIVAL CURVES - Low
-
-% Low education
-\vspace*{-0.75cm}
-\begin{figure}[hp!]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2005]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_low_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with no education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell2_low_pps}
-\end{figure}
-
-
-
-
-% SPELL 2 - URBAN - MEDIUM
-
-% \input{../figures/appendix_spell2_med.tex}
-
-% PARITY PROGRESSION SURVIVAL - MEDIUM
-
-
-% Low education
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_med_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_med_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.32\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with 1-7 years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell2_med_pps}
-\end{figure}
-
-
-
-% High education
-
-% \input{../figures/appendix_spell2_high.tex}
-
-% PARITY PROGRESSION SURVIVAL - High education
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_high_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with eight to eleven years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell2_high_pps}
-\end{figure}
-
-
-% Highest education
-
-% PARITY PROGRESSION SURVIVAL - Highest education
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_highest_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_highest_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_highest_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_highest_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g1_highest_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g2_highest_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g3_highest_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell2_g4_highest_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with twelve or more years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell2_highest_pps}
-\end{figure}
-
-
-\clearpage
-\newpage
-
-\subsection{Third Spell}
-
-% low education
-% \input{../figures/appendix_spell3_low.tex}
-
-% PARITY PROGRESSION SURVIVAL - LOW
-\vspace*{-0.75cm}
-\begin{figure}[hp!]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with no education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell3_low_pps}
-\end{figure}
-
-
-
-
-% Medium education
-
-% \input{../figures/appendix_spell3_med.tex}
-
-% PARITY PROGRESSION SURVIVAL - MEDIUM
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_med_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_med_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with 1 to 7 years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell3_med_pps}
-\end{figure}
-
-
-
-
-% High education
-
-% \input{../figures/appendix_spell3_high.tex}
-
-% PARITY PROGRESSION SURVIVAL - high
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with eight to eleven years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell3_high_pps}
-\end{figure}
-
-
-% Highest education
-
-% PARITY PROGRESSION SURVIVAL - highest
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_highest_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_highest_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_highest_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_highest_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_highest_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_highest_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_highest_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_highest_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with twelve or more years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell3_highest_pps}
-\end{figure}
-
-
-
-
-
-\clearpage
-\newpage
-
-\subsection{Fourth Spell}
-
-% low education
-
-% \input{../figures/appendix_spell4_low.tex}
-
-% PARITY PROGRESSION SURVIVAL - LOW
-\vspace*{-0.75cm}
-\begin{figure}[hp!]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with no education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell4_low_pps}
-\end{figure}
-
-
-
-
-% Medium education
-
-% \input{../figures/appendix_spell4_med.tex}
-
-% PARITY PROGRESSION SURVIVAL - MEDIUM
-
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_med_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_med_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_med_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_med_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with 1 to 7 years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell4_med_pps}
-\end{figure}
-
-
-
-% High education
-
-% \input{../figures/appendix_spell4_high.tex}
-
-% PARITY PROGRESSION SURVIVAL - high
-
-\begin{figure}[htpb]
-\centering
-\caption*{Urban}
-\setcounter{subfigure}{-1}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_urban_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{-0}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{1}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{2}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_urban_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption*{Rural}
-\setcounter{subfigure}{3}
-\subfloat[1972--1984]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_rural_pps}} 
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} 
-\setcounter{subfigure}{4}
-\subfloat[1985--1994]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-} \\
-\setcounter{subfigure}{5}
-\subfloat[1995--2004]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\setcounter{subfigure}{6}
-\subfloat[2005--2016]{
-    \begin{minipage}{0.31\textwidth}
-        \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-        \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_rural_pps}}
-        \captionsetup[subfigure]{labelformat=parens}
-    \end{minipage}
-}
-\caption{Survival curves conditional on parity progression
-for women with eight to eleven years of education by month beginning 9 months after prior birth.
-}
-\label{fig:results_spell4_high_pps}
-\end{figure}
-
-
-\clearpage
-\newpage
-
+% \subsection{Third Spell}
+% 
+% % low education
+% % \input{../figures/appendix_spell3_low.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - LOW
+% \vspace*{-0.75cm}
+% \begin{figure}[hp!]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_low_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with no education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell3_low_pps}
+% \end{figure}
+% 
+% 
+% 
+% 
+% % Medium education
+% 
+% % \input{../figures/appendix_spell3_med.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - MEDIUM
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_med_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_med_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with 1 to 7 years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell3_med_pps}
+% \end{figure}
+% 
+% 
+% 
+% 
+% % High education
+% 
+% % \input{../figures/appendix_spell3_high.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - high
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_high_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with eight to eleven years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell3_high_pps}
+% \end{figure}
+% 
+% 
+% % Highest education
+% 
+% % PARITY PROGRESSION SURVIVAL - highest
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_highest_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_highest_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_highest_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_highest_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g1_highest_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g2_highest_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g3_highest_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell3_g4_highest_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with twelve or more years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell3_highest_pps}
+% \end{figure}
+% 
+% 
+% 
+% 
+% 
+% \clearpage
+% \newpage
+% 
+% \subsection{Fourth Spell}
+% 
+% % low education
+% 
+% % \input{../figures/appendix_spell4_low.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - LOW
+% \vspace*{-0.75cm}
+% \begin{figure}[hp!]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_low_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_low_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with no education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell4_low_pps}
+% \end{figure}
+% 
+% 
+% 
+% 
+% % Medium education
+% 
+% % \input{../figures/appendix_spell4_med.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - MEDIUM
+% 
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_med_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_med_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_med_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_med_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with 1 to 7 years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell4_med_pps}
+% \end{figure}
+% 
+% 
+% 
+% % High education
+% 
+% % \input{../figures/appendix_spell4_high.tex}
+% 
+% % PARITY PROGRESSION SURVIVAL - high
+% 
+% \begin{figure}[htpb]
+% \centering
+% \caption*{Urban}
+% \setcounter{subfigure}{-1}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob.\ no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_urban_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{-0}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{1}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{2}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_urban_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption*{Rural}
+% \setcounter{subfigure}{3}
+% \subfloat[1972--1984]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g1_high_rural_pps}} 
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } 
+% \setcounter{subfigure}{4}
+% \subfloat[1985--1994]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g2_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% } \\
+% \setcounter{subfigure}{5}
+% \subfloat[1995--2004]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g3_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \setcounter{subfigure}{6}
+% \subfloat[2005--2016]{
+%     \begin{minipage}{0.31\textwidth}
+%         \captionsetup[subfigure]{labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
+%         \subfloat[Prob. no birth yet]{\includegraphics[width=\textwidth]{spell4_g4_high_rural_pps}}
+%         \captionsetup[subfigure]{labelformat=parens}
+%     \end{minipage}
+% }
+% \caption{Survival curves conditional on parity progression
+% for women with eight to eleven years of education by month beginning 9 months after prior birth.
+% }
+% \label{fig:results_spell4_high_pps}
+% \end{figure}
+% 
+% 
+% \clearpage
+% \newpage
+% 
 
 \section{Infant Mortality Graphs}
 
