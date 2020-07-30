@@ -1,0 +1,68 @@
+# Delay effect notes
+
+[from conceptual framework section]
+If parents realize that longer spacing leads to better child outcomes, we may even observe 
+later conception, especially when, with sex selection, the next child is likely to be a boy.
+Working in the opposite direction of this "delay" effect is that women with more education 
+can, in principle, space their children closer together without substantially increasing 
+child mortality risk. 
+However, given the apparent lack of pressure to return to the labor force, this effect is 
+likely small.
+
+
+
+The problem with identifying a ``delay'' effect is that both abortions and the delay
+effect works in the same direction.
+A constant use of abortions within a spell means that the percentage increase in
+birth intervals are the same across all percentiles.
+Hence, with abortions we should see an increase in all three percentiles even in the
+absence of a delay effect.
+
+
+
+[This is wrong, at least the part about being able to identify the timing effect]
+Presenting the three different percentile birth intervals rather than, say, just the 
+median birth interval makes it possible to identify the extent to which people 
+change the timing of when they try to conceive differentially across time and spells.
+If the probability of conception and the rate of abortion of female fetuses were constant 
+within a spell, any percentile birth interval would be a sufficient statistics since the 
+ratios of birth intervals both within and across given abortion regimes would be constant.
+That is, all percentile birth interval lengthen with lower probability of conception and 
+higher abortion rates, but the ratio of one percentile birth interval to another percentile 
+birth interval within a spell is independent both of the abortion rate and the conception 
+probability.
+Similarly, the ratio of a given percentile birth interval with one abortion rate to the 
+same percentile at another abortion rate is constant across all percentiles and depends 
+only on the abortion rate. 
+Hence, the only reason we should see a change in, for example, the ratio of the 50th to
+the 25th percentile birth interval over time or across sex compositions would be if the
+probabilities of conception and abortion varied differentially within spells.
+
+
+[original text from paper, wrong as well]
+Although most of the increases come from among the longer intervals, there is some 
+evidence for the ``delay'' effect discussed above, where parents conceive later
+precisely because they know that the next child is likely to be a boy since they plan
+to use sex selection.
+The best example is for the best-educated urban women in the third spell, where, in the 
+last two periods, the spacing to the third child is significantly longer if the two prior 
+children were girls than if they already had one or two boys.
+These two periods are the periods where the predicted sex ratios are 70 and 80 percent,
+respectively.
+There is also a significantly longer spacing with only girls for women with eight to
+eleven years of education in the last period for the third and fourth spell, although
+the difference is substantially smaller.
+
+[from conclusion]
+
+Despite the longer average birth intervals, a large number of women still have very 
+short birth intervals. 
+Hence, the changes in birth spacing are driven predominately by the longer intervals 
+becoming even longer over time.
+This pattern holds generally, but is especially prevalent for those who use sex selection 
+and, therefore, may end up with multiple abortions. 
+The exception to the small change in short spacing is the delay in conception for women 
+with very high use of sex selection, presumably because this group knows that
+the next child will be a boy.
+
+
