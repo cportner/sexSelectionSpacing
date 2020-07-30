@@ -176,13 +176,13 @@ foreach educ in "low" "med" "high" "highest" {
 //             }
             
             twoway line `p25' c1, sort  ///
-                lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
                  || ///
             line `p50' c1, sort  ///
-                lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
                  || ///
             line `p75' c1, sort  ///
-                lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
                  || ///
                  , name(interval_`spell', replace) ///
                  title(`title', size(medium)) ///
@@ -194,14 +194,14 @@ foreach educ in "low" "med" "high" "highest" {
 
             
             twoway line `pct' c1, sort ///
-                lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
                 legend(off) plotregion(style(none)) xscale(off) ///
                 ytitle("`sr_title1'" "`sr_title2'") yscale(r(`sr_low' `sr_high')) ylabel(`sr_low'(10)`sr_high', grid) ///
                 yline(51.2195122) ///
                 name(pct_`spell', replace) fysize(60) `fxsize'
 
             twoway line `any' c1, sort ///
-                lpattern(`pattern') lwidth(medthick..) lcolor(black...) ///
+                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
                 legend(off) ///
                 plotregion(style(none)) ///
                 xtitle("") ///
