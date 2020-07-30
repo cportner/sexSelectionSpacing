@@ -1,11 +1,11 @@
-// Simulation of median birth intervals
+// Simulation of percentile birth intervals
 
 clear all
 
-set obs 150
+set obs 300
 gen month = _n
 
-loc prob_concept = 0.02
+loc prob_concept = 0.025
 loc boy_ratio = 0.512
 
 
@@ -23,7 +23,7 @@ gen cum_girls = sum(girls)
 
 
 // With abortion
-loc abort_rate = 0.3 // out of girls conceived
+loc abort_rate = 0.5 // out of girls conceived
 gen double abort_survival = 100 - (100 * `prob_concept' - 100 * `prob_concept' * (1 - `boy_ratio') * `abort_rate') if _n == 1
 replace abort_survival = abort_survival[_n-1] - (abort_survival[_n-1] * `prob_concept' - abort_survival[_n-1] * `prob_concept' * (1 - `boy_ratio') * `abort_rate') if _n > 1
 
@@ -47,9 +47,16 @@ foreach var of varlist survival abort_survival {
 	}
 }
 
+dis "Ratios of percentile birth intervals by abortion level"
 foreach var of varlist survival abort_survival {
-	dis "p50/p25: " `p50_`var'' / `p75_`var'' " p75/p25: " `p25_`var'' / `p75_`var''
+	dis "p50/p25: " `p50_`var'' / `p75_`var'' " p75/p25: " `p25_`var'' / `p75_`var'' " p75/p50: " `p25_`var'' / `p50_`var''
 	
 }
+
+
+dis "Ratio of abort percentiles to non-abort percentiles"
+dis "p25: " `p75_abort_survival'/`p75_survival'
+dis "p50: " `p50_abort_survival'/`p50_survival'
+dis "p75: " `p25_abort_survival'/`p25_survival'
 
 
