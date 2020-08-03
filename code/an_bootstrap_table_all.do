@@ -501,7 +501,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "at which there is a 50\% chance that she will have given birth, conditional on the " _n
     file write table "probability that she will eventually give birth in that spell." _n
     file write table "For example, if there is an 80\% chance that a woman will give birth by the end of the" _n
-    file write table "spell, her median birth interval is the predicted number of months before she passes the 40\% " _n
+    file write table "spell, her median birth interval is the predicted number of months before she passes the 60\% " _n
     file write table "mark on her survival curve plus nine months to account for spell start." _n
     file write table "The reported statistics is the average of this median birth interval across all women" _n
     file write table "in a given sample using the " _n
@@ -710,7 +710,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "at which there is a given percent chance that she will have given birth, conditional on the " _n
     file write table "probability that she will eventually give birth in that spell." _n
     file write table "For example, if there is an 80\% chance that a woman will give birth by the end of the" _n
-    file write table "spell, her median birth interval is the predicted number of months before she passes the 40\%" _n
+    file write table "spell, her median birth interval is the predicted number of months before she passes the 60\%" _n
     file write table "mark on her survival curve plus nine months to account for spell start." _n
     file write table "The reported statistics is the average of a given percentile interval across all women" _n
     file write table "in a given sample using the " _n

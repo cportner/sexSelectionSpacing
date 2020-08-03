@@ -128,8 +128,11 @@ Short birth spacing is still associated with higher mortality, although substant
 so for the best-educated women. 
 There is no evidence that the increasing use of sex selection is associated with
 higher infant mortality risk.
+
 \noindent JEL: J1, O12, I1
-\noindent Keywords: India, prenatal sex determination, censoring, competing risk, non-proportional hazard
+
+\noindent Keywords: India, prenatal sex determination, censoring, competing risk, 
+non-proportional hazard
 \end{abstract}
 
 \newpage
@@ -473,8 +476,8 @@ the sex composition of previous births, have the same effects throughout the ent
 birth interval. 
 The proportional hazard model requires that the hazard for any individual is a 
 fixed proportion of the hazard for any other individual. 
-That the effects are not constant violates that assumption, and the results from a 
-proportional hazard model would, therefore, be biased. 
+Non-constant effects violate that assumption, and the results from a proportional hazard 
+model would, therefore, be biased. 
 The proportionality assumption is especially problematic for higher-order birth 
 intervals since there are substantial differences across groups in the likelihood 
 of progressing to the next birth and how soon couples want their next child if they 
@@ -507,7 +510,7 @@ the spell continues until time $t_i$ when either birth or censoring of the spell
 occurs.
 The time of censoring is assumed independent of the hazard rate,
 as is standard in the literature.
-There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$.
+The two exit states are the birth of a boy, $j=1$, or a girl, $j=2$.
 
 The discrete-time hazard rate $h_{ijt}$ is 
 \begin{equation}
@@ -538,9 +541,9 @@ likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
 Hence, splitting spells into smaller intervals---here equal to three months---and 
 treating them as observations, I can estimate the model using a standard multinomial 
 Logit model. 
-In the reorganized data, the outcome variable is 0 if the woman does not have a child 
-in a given interval (the base outcome), 1 if she gives birth to a son in that interval, 
-and 2 if she gives birth to a daughter in that interval.
+% In the reorganized data, the outcome variable is 0 if the woman does not have a child 
+% in a given interval (the base outcome), 1 if she gives birth to a son in that interval, 
+% and 2 if she gives birth to a daughter in that interval.
 
 I use the model to predict birth interval measures, parity progression probabilities, 
 and the sex ratio rather than present coefficients since the interpretation 
@@ -549,30 +552,42 @@ The predicted parity progression probability is the likelihood of giving birth b
 imposed censoring based on standard survival curve calculations averaged across all
 women in a given sample.
 
-For birth intervals, I estimate a set of percentile birth intervals.
-To find a given percentile birth interval, I first calculate for each woman when there is 
-a given percent chance that she will have given birth, conditional on the probability of 
-giving birth in the spell.
-I then add nine months to account for the start of the spell. 
-For example, with an 80 percent chance of giving birth by the end of the spell, the median birth 
-interval is the predicted number of months before a woman passes the 40 percent mark on her 
-survival curve. 
+For birth intervals, I estimate a set of percentile birth intervals. 
+I first calculate for each woman when there is a given percent chance that she will have 
+given birth, conditional on the probability of giving birth in the spell. 
+For example, with an 80 percent parity progression probability, the median birth interval 
+is the predicted number of months before a woman passes the 60 percent mark on her survival 
+curve. 
+I then and add nine months to account for the start of the spell. 
 The reported statistic is the average of a given percentile interval across all women in 
 a given sample using the individual progression probabilities as weights.
 
+% The predicted sex ratio is the weighted average of individual predicted sex ratios, using 
+% parity progression probabilities as weights.
+% For an individual woman, the estimated percent of births that are boys at $t$, $\hat{Y_t}$, is:  
+% \begin{equation}
+% \hat{Y}_t 
+% = 
+% \frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
+% { P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
+% \times 100,
+% \label{eq:probability_son}
+% \end{equation}
+% where $b$ and $g$ are the predicted probabilities of having a boy and a girl, respectively,
+% conditional on the explanatory variables and not having had a child before $t$.
+% Weighting the percentages boys with the likelihood of exiting the spell with a birth across all 
+% $t$ gives the predicted percent of boys over the entire spell for an individual.%
+% \footnote{
+% Imagine $T=2$. 
+% If 54 and 66 percent of births are boys and the likelihood of giving birth 20 and 40 percent, 
+% then the predicted sex ratio is $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$ percent boys. 
+% }
+
+
 The predicted sex ratio is the weighted average of individual predicted sex ratios, using 
 parity progression probabilities as weights.
-For an individual woman, the estimated percent of births that are boys at $t$, $\hat{Y_t}$, is:  
-\begin{equation}
-\hat{Y}_t 
-= 
-\frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
-{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
-\times 100,
-\label{eq:probability_son}
-\end{equation}
-where $b$ and $g$ are the predicted probabilities of having a boy and a girl, respectively,
-conditional on the explanatory variables and not having had a child before $t$.
+To find the individual sex ratio, I estimate the percent of births that are boys at $t$, 
+conditional on not having had a child before $t$.
 Weighting the percentages boys with the likelihood of exiting the spell with a birth across all 
 $t$ gives the predicted percent of boys over the entire spell for an individual.%
 \footnote{
@@ -580,6 +595,7 @@ Imagine $T=2$.
 If 54 and 66 percent of births are boys and the likelihood of giving birth 20 and 40 percent, 
 then the predicted sex ratio is $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$ percent boys. 
 }
+
 
 
 \section{Data\label{sec:data}}
@@ -1590,6 +1606,132 @@ working at the time of the survey by age group and area of residence}
 working at the time of the survey, by age group and area of residence}
 \label{fig:work_family_by_survey}
 \end{figure}
+
+
+\clearpage
+\newpage
+
+\section{Empirical Model Details}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+[More formal version of empirical strategy section]
+
+
+The model is a discrete time, non-proportional, competing risk hazard model with two exit 
+states: either a boy or a girl is born.
+The unit of analysis is a spell, the period from nine months after one birth to the next.
+For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
+the spell continues until time $t_i$, when either a birth occurs or the spell 
+is censored.%
+\footnote{
+The time of censoring is assumed independent of the hazard rate,
+as is standard in the literature.
+}
+There are two exit states: the birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
+$J_i$ is a random variable indicating which event took place.
+The discrete time hazard rate $h_{ijt}$ is 
+\begin{equation}
+ h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
+ {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
+ \label{eq:hazard}
+\end{equation}
+where the explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, capture 
+individual, household, and community characteristics,
+and $D_{j}(t)$ is the piece-wise linear baseline hazard for outcome $j$, captured
+by dummies and the associated coefficients,
+\begin{equation}
+D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
+\end{equation}
+with $D_m = 1$ if $t=m$ and zero otherwise.
+This approach to modeling the baseline hazard is flexible and does not place 
+overly strong restrictions on the baseline hazard.
+
+The explanatory variables in $\mathbf{Z}$, and the interactions between them, 
+constitute the non-proportional part of the model, which means that they are
+interacted with the baseline hazard:
+\begin{equation}
+ \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2),
+\end{equation}
+where $D_j(t)$ is the piece-wise linear baseline hazard, $\mathbf{Z}_1$ captures sex 
+composition of previous children, if any, and $Z_2$ captures area of residence.
+The remaining explanatory variables, $\mathbf{X}$, enter proportionally,
+but to further minimize any potential bias from assuming proportionality, estimations 
+are done separately for different levels of mothers' education and different 
+periods.
+
+Equation (\ref{eq:hazard}) is equivalent to the logistic hazard model and has the same 
+likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
+Hence, transforming the data, so each observation is an interval---here equal
+to three months---the model can be estimated using a standard multinomial logit model.
+
+The distribution of spacing is captured by the survival curve, which shows the probability 
+of not having had a birth yet by spell duration, for a given set of explanatory variables.
+The survival curve at time $t$ is 
+\begin{equation}
+\label{eq:survival}
+S_{t} 
+= 
+\prod_{d=1}^t
+\left(
+\frac{ 1 }
+{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{ld}'\mathbf{Z}_{kd} + \beta_l'\mathbf{X}_{k})}
+\right).
+\end{equation}
+
+% Because the probability of ever having a next birth varies across groups, a direct 
+% comparison of standard survival curves tells us little about how the spread of sex 
+% selection affects birth spacing across groups.
+% I, therefore, condition on the predicted likelihood of parity progression when examining 
+% birth spacing measures, such as the average duration to a birth.
+% The reliability of this approach depends on whether the spell length covered is 
+% sufficiently long that few women are likely to give birth after the spell cut-off.
+% I discuss the choice of spell length below.%
+% \footnote{
+% It is important to note that the approach is not the same as merely calculating 
+% the birth spacing measures for women who already have a given 
+% parity child in the survey because that number does not take into account
+% the censoring of spells that will eventually lead to a birth.
+% }
+% In addition, I present graphs of survival curves conditional on parity progression,
+% which therefore begin at 100\% and end at 0\%.
+
+Interpretation of the model coefficients is challenging \citep{thomas96}.
+It is, however, possible to calculate the predicted probabilities of 
+having a boy, $b$, and of having a girl, $g$, in period $t$, conditional on 
+a set of explanatory variables and not having had a child before that period, as
+\begin{align}
+P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt}, t ) 
+& =  
+\frac{ \exp(D_j(t) + \alpha_{1t}' \mathbf{Z}_{kt} + \beta_1' \mathbf{X}_{k} )}
+{1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt} ' \mathbf{Z}_{kt} + \beta_l ' \mathbf{X}_{k})}
+\label{eq:probability_boy} \\
+P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t ) 
+& =  
+\frac{ \exp(D_j(t) + \alpha_{2t}'\mathbf{Z}_{kt} + \beta_2'\mathbf{X}_{k} )}
+{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}
+\label{eq:probability_girl}
+\end{align}
+It is then straightforward to calculate the estimated percentage of children born that 
+are boys, $\hat{Y}$, at each $t$:  
+\begin{equation}
+\hat{Y}_t 
+= 
+\frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
+{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
+\times 100.
+\label{eq:probability_son}
+\end{equation}
+Combining the percentage boys and the likelihood of exiting the spell 
+across all $t$ gives the predicted percent boys born over the entire spell.%
+\footnote{
+Imagine $T=2$. 
+If 54 and 66 percent of births are boys and the likelihood of giving birth 20 and 40 percent, 
+then the predicted sex ratio is $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$ percent boys. 
+}
+
+
 
 
 \clearpage
