@@ -606,7 +606,7 @@ The surveys are large: 89,777, 90,303, 124,385, and 699,686 women, respectively.
 NFHS-1 and NFHS-2 surveyed only ever-married women, while the two later surveys included 
 never-married.
 
-I focus on the three birth intervals starting from the first birth and ending with the 
+I focus on the three spells starting from the first birth and ending with the 
 fourth birth.
 I exclude the interval from marriage to the first birth because many are imputed and the
 higher-order intervals because few women had five or more births, especially among the 
@@ -637,17 +637,17 @@ recall error where respondents' likelihood of reporting the birth of a deceased 
 on the sex of that child.
 Unreported deceased children inflate the birth intervals and, with declining mortality, 
 make changes over time appear too small.
-I, therefore, provide a detailed analysis of systematic recall error in the Online Appendix.
-Recall error depends heavily on how long ago a woman was married, and I, consequently, 
-drop women married 22 years or more.%
+In the Online Appendix, I provide a detailed analysis of systematic recall error, which 
+shows that recall error depends heavily on how long ago a woman was married. 
+I, consequently, drop women married 22 years or more.%
 \footnote{
 Recall error is likely behind the designation of the first two rounds of NFHS as ``moderate 
 quality'' in an analysis of the quality of birth histories in DHS surveys and its impact 
 on fertility estimates \citep{Schoumaker2014}.
 }
 
-To ensure that there are enough births for the method to work, I censor each spell at 96 
-months (eight years) after a woman can first give birth, which is equivalent to 105 months 
+To ensure that there are enough births for the method to work, I censor spells at 96 
+months (eight years) after a woman can first give birth, equivalent to 105 months 
 after the birth of the prior child.
 Less than one percent of observed births occur after the cut-off.
 The final sample consists of 
@@ -690,25 +690,26 @@ Furthermore, sterilization depends strongly on the sex composition of prior chil
 with lower probabilities, the fewer boys. 
 The effect is to bias downward the differences in parity progression probabilities.
 
-I divide the explanatory variables into two groups.
-The first group consists of characteristics that the prior literature finds affect 
-the spacing choice and the use of sex selection:
-mother's education, sex composition of previous children, and area of residence.%
+I divide the explanatory variables into two groups, non-proportional and proportional. 
+The first group consists of characteristics that the prior literature finds affect the 
+spacing choice and the use of sex selection: mother’s education, sex composition of 
+previous children, and area of residence. 
+To minimize any potential bias from including proportional variables, I estimate a 
+separate model for each birth interval, education group, and period combination, rather 
+than including education as a variable. 
+I capture sex composition with dummy variables for the possible combinations, ignoring 
+the ordering of births.%
 \footnote{
-With sex selection, the composition of prior children is, in principle, endogenous.
-It is beyond the scope of this paper to develop a method for dealing with this issue.
+With sex selection, the composition of prior children is, in principle, endogenous. 
+It is beyond the scope of this paper to develop a method for dealing with this issue. 
 }
+Area of residence is a dummy variable for living in an urban area.
+
 The second group of variables consists of those expected to have an approximately 
 proportional effect on the hazard.
 These include the mother's age when the spell begins, the household's
 land ownership, and whether it belongs to a scheduled tribe or caste.
 Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} present descriptive statistics.
-
-I estimate a separate model for each birth interval, education group, and period 
-combination to minimize any potential bias from including proportional variables.
-I capture sex composition with dummy variables for the
-possible combinations, ignoring the ordering of births.
-Area of residence is a dummy variable for living in an urban area.
 
 
 \section{How Birth Spacing Changed\label{sec:results}}
