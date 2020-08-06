@@ -23,7 +23,7 @@
 
 % For word counting uncomment line below and raggedright below
 % http://countwordsfree.com/#
-% \usepackage[nolists]{endfloat}
+\usepackage[nolists]{endfloat}
 
 
 % \bibpunct{(}{)}{;}{a}{}{,}
@@ -143,7 +143,7 @@ non-proportional hazard
 \section{Introduction\label{sec:intro}}
 
 % For word counting remove comment on the line below
-% \raggedright
+\raggedright
 
 
 % Background
@@ -741,12 +741,12 @@ appendix.
 \label{fig:spacing_low_rural}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_low_urban}
-\caption{combined graphs - low urban}
-\label{fig:spacing_low_urban}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_low_urban}
+% \caption{combined graphs - low urban}
+% \label{fig:spacing_low_urban}
+% \end{figure}
 
 \begin{figure}
 \centering
@@ -776,12 +776,12 @@ appendix.
 \label{fig:spacing_high_urban}
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_highest_rural}
-\caption{combined graphs - highest rural}
-\label{fig:spacing_highest_rural}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[width=\textwidth,height=\textheight,keepaspectration=true]{bs_highest_rural}
+% \caption{combined graphs - highest rural}
+% \label{fig:spacing_highest_rural}
+% \end{figure}
 
 \begin{figure}
 \centering
@@ -993,18 +993,18 @@ underestimate cohort fertility.
 The next question I address is, therefore, to what extent did the changes bias the 
 fertility estimates for India? 
 To this end, I compare fertility based on a variation of the total fertility rate with 
-predicted cohort fertility from the hazard model results.
+predicted cohort fertility from the hazard model.
+Table \ref{tab:fertility} shows the two fertility measures by urban/rural and education.
 
 \input{../tables/fertility.tex}
 
-Table \ref{tab:fertility} shows the two fertility measures by urban/rural and education.
-Because the hazard model predictions only use births up to parity four, I calculate
-fertility rates using only the same births.
-Hence, my fertility rates are not directly comparable to those in the NFHS reports,
-but otherwise, I follow the procedure used in the NFHS reports \citep{Croft2018}.
-I calculate age-specific fertility rates for five-year age groups using the number of 
-births in months 1 to 36 before the survey month and the number of women in each age 
-group.
+The fertility rate follows the same procedure as in the Demographic and Health Survey 
+reports: I use the births from 36 to 1 month before the survey month to calculate 
+age-specific fertility rates for five-year age groups and then sum the age-specific 
+fertility rates multiplied by five  \citep{Croft2018}.
+However, because the hazard model predictions only use births up to parity four, I use the 
+same set of births for the fertility rate and label it the ``four-parity'' fertility rate. 
+Hence, the presented fertility rates are not directly comparable to those in the NFHS reports.
 
 %
 % \footnote{
@@ -1018,85 +1018,68 @@ group.
 % not presented \citep{Hoem2011,Laplante2015}.
 % }
 
-Because NFHS-1 was after the introduction of sex selection, it is not possible 
-to calculate a fertility rate in precisely the same manner for a period 
-before sex selection was widely available.
-Instead, I calculate the fertility rates for women who were between 15 and 39 years of
-age five years before the survey month, again using the number of births three years 
-before that, shown as ``1987--88''.
+Because NFHS-1 was after the introduction of sex selection, I cannot calculate a fertility 
+rate in precisely the same manner for a period before sex selection was widely available.
+Instead, I calculate the fertility rates for women between 15 and 39 years of age five years 
+before the survey month, again using the number of births three years before.
+This rate is shown as ``1987--88'' in the table.
 Given the relatively low number of births to women 40 to 45 years of age, this approach 
-provides the best estimate of the fertility rate at the time when sex selection still was 
-not widespread.
+provides the best estimate of the fertility rate when sex selection still was not 
+widespread.
 
-To predict cohort fertility based on the hazard models above, I estimate the probability 
-of progression to the next parity for each spell.
-Since the parity progression depends on the sex composition for prior children for parity 
-two and above, I estimate the progression probability for each possible sex composition
-and weigh those probabilities with the likelihood that they will occur based on the
-prior spells.
+To predict cohort fertility based on the hazard models, I estimate the parity progression 
+probability for each spell. 
+Since parity progression depends on the sex composition of prior children, I estimate the 
+probability for each sex composition and weigh the probabilities with the likelihood of 
+the sex compositions.
+The survey rounds do not coincide directly with the periods used for the hazard model.
+Therefore, I compare the model results for 1972--1984, 1985--1994, 1995--2004,
+and 2005--2016 with rounds 1 through 4 of the NFHS, respectively.
+
+I include the spell from marriage to first birth, despite the problems capturing the exact 
+timing of marriages since the estimated progression probabilities should not be affected 
+by this problem. 
+I begin with the age of marriage for each woman and predict the likelihood of progressing 
+to each parity, assuming three years increases in age between births. 
+Shorter assumed increases in age lead to slightly higher predicted fertility.
 
 Sterilizations are not incorporated into the hazard model because most occur
 immediately after giving birth. 
-To compensate, I estimate the likelihood of sterilization using a Logit model, predict 
-the probability of not getting sterilized, and then use that to scale down the parity
-progression probability when predicting cohort fertility.
-
-I include the spell from marriage to first birth, despite the problems
-capturing the exact timing of marriages since the estimated progression
-probabilities should not be affected by this problem.
-To ensure that the predictions depend solely on sample composition and the estimate, I
-use the age at marriage for each woman and predict the likelihood of progressing to
-each parity, assuming three years increases in age between each parity.
-Shorter assumed increases in age between births leads to slightly higher predicted 
-fertility.
-
-The survey rounds do not coincide directly with the periods used for the hazard model.
-I, therefore, use the model results for 1972--1984, 1985--1994, 1995--2004,
-and 2005--2016 for rounds 1 through 4 of the NFHS, respectively.
-
-% Because of the small number of women who had the highest level of education in the
-% 1972--1984 period, I do not predict fertility for this case.
+To compensate, I estimate the probability of sterilization using a Logit model and use 
+that to scale down the parity progression probability when predicting cohort fertility.
 
 The predicted cohort fertility based on the hazard model is higher than the four-parity 
-fertility rate in almost all cases.
-Only for women with no education in the first period is there almost no difference 
-between the two fertility measures; a situation where fertility is high, spacing
-very short and likely unchanged for an extended period before.
+fertility rate in almost all cases. 
+Only women with no education in the first period show little difference between the two 
+fertility measures, a situation where fertility is high, spacing very short, and likely 
+unchanged for an extended period.
 
 Consistent with a more substantial bias in the fertility rate when the age of marriage 
-and the length of birth intervals are increasing, the absolute bias is least in the first and the last 
-period and highest in the middle two periods.
+and the length of birth intervals increase, the absolute bias is least in the first 
+and the last period and highest in the middle two periods.
 Hence, the fertility rate declined too fast from the mid-1980s to the century's end.
-Only recently, as the rate of increase for the birth intervals have
-slowed, are the predicted cohort fertility and the fertility beginning
-to converge again.
-Even with the convergence, however, the predicted cohort fertility for 2005--16 is 
-above the 1992--93 fertility rate for every group except urban women with no education.
-Furthermore, for the last period, the predicted cohort fertility is still between ten
-and 20 percent higher than the fertility rate. 
+Only recently, as the rate of increase for the birth intervals has slowed, do the two 
+fertility measures begin to converge again.
+Even with the convergence, the predicted 2005--16 cohort fertility is still above the 
+1992--93 fertility rate for every group, except urban women with no education. 
+Furthermore, for the last period, the predicted cohort fertility remains at least ten to 
+twenty percent higher than the fertility rate.
 
-Another indication of the fertility rate bias is that it is increasing over time for some 
-groups.
-For example, urban women with eight to eleven years of education showed 1.84, 1.81, and
-1.87 over the last three surveys.
-These increases likely arise from the stabilization of the age of first birth and the 
+Another indication of how tempo effects bias the fertility rate bias is that the
+fertility rate \emph{increases} for some groups.
+For example, for urban women with eight to eleven years of education, the fertility
+rates were 1.84, 1.81, and 1.87 over the last three surveys.
+This pattern likely arises from the stabilization of the age of first birth and the 
 spacing between births.
 
-%
-% \footnote{
-% Increases in TFR over time, even in the face of declining cohort fertility, are not 
-% unusual, as shown by Columbia in the early 1990s \citep{Bongaarts1999}.
-% }
-
-Despite the declines in the predicted cohort fertility, it is still mostly above the 
-generally accepted replacement level of 2.1.
+Finally, even with the declines in the predicted cohort fertility, it is still mostly 
+above replacement.
 Only for urban women with twelve or more years of education is the predicted cohort
-fertility clearly below 2.1, and even then, it is still more than 0.3 children higher than 
+fertility clearly below 2.1.
+Even then, cohort fertility is still more than 0.3 children higher than 
 the fertility rate estimate of 1.5.
-Finally, the predicted cohort fertility numbers are likely too low,
-especially for the lower education groups, since it relies only on the
-first four births and because the model ignores births that took place past the end
-of the imposed 105 month birth interval censoring.
+Furthermore, the predicted cohort fertility numbers are likely too low since I use only 
+the first four births and births before the imposed 105-month birth interval censoring.
 
 
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
