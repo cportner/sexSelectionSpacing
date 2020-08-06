@@ -335,7 +335,7 @@ forvalues spell = 2/2 {
                 `legend' ///
                 plotopts( ///
                     msymbol(i) ylabel(0(0.05)0.20, grid) plotregion(margin(zero) style(none)) ///
-                    lwidth(medthick..) ///
+                    lwidth(medthin..) ///
                     yscale(range(0 0.25)) ///
                 ) ///
                 plot1opts(lpattern(shortdash)) ///
