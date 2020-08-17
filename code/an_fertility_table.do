@@ -16,13 +16,13 @@ file write table "\begin{table}[hp!]" _n
 file write table "\begin{center}" _n
 file write table "\begin{footnotesize}" _n
 file write table "\begin{threeparttable}" _n
-file write table "\caption{Predicted Fertility based on Four-Parity Fertility Rate and on Hazard Model}" _n
+file write table "\caption{Four-parity fertility rate versus predicted cohort fertility based on hazard model}" _n
 file write table "\label{tab:fertility}" _n
 file write table "\begin{tabular}{@{} l D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  @{}}" _n
 file write table "\toprule" _n
 file write table "                       &            \mct{NFHS--1}          & \mco{NFHS--2}   & \mco{NFHS--3}   & \mco{NFHS--4}   \\" _n
-file write table "Fertility Rate Period  & \mco{1987--88}  & \mco{1992--93}  & \mco{1998--99}  & \mco{2005--06}  & \mco{2015--16}  \\" _n
-file write table "Hazard Model Period    & \mco{1972--84}  &                 & \mco{1985--94}  & \mco{1995--04}  & \mco{2004--16}  \\" _n
+file write table "Fertility Rate Period  & \mco{1987--1988}  & \mco{1992--1993}  & \mco{1998--1999}  & \mco{2005--2006}  & \mco{2015--2016}  \\" _n
+file write table "Hazard Model Period    & \mco{1972--1984}  &                 & \mco{1985--1994}  & \mco{1995--2004}  & \mco{2004--2016}  \\" _n
 file write table "\midrule" _n
 
 // Loop over area
@@ -48,11 +48,11 @@ foreach where in "Urban" "Rural" {
             loc educ_val = 2
         }
         if "`educ'" == "high" {
-            loc char "Eight to Eleven Years of Education"
+            loc char "8 to 11 Years of Education"
             loc educ_val = 3
         }
         if "`educ'" == "highest" {
-            loc char "Twelve or More Years of Education"
+            loc char "12 or More Years of Education"
             loc educ_val = 4
         }
 
@@ -104,13 +104,13 @@ file write table "\begin{tablenotes} \scriptsize" _n
 file write table "\item \hspace*{-0.5em} \textbf{Note.}" _n
 file write table "All predictions based on births up to and including parity four births" _n
 file write table "for both fertility rate and model predictions." _n
-file write table "NFHS-1 was collected 1992--93 and model results for 1972--1984 were" _n
+file write table "NFHS-1 was collected 1992--1993 and model results for 1972--1984 were" _n
 file write table "applied for the predictions." _n
-file write table "NFHS-2 was collected 1998--99 and model results for 1985--1994 were" _n
+file write table "NFHS-2 was collected 1998--1999 and model results for 1985--1994 were" _n
 file write table "applied for the predictions." _n
-file write table "NFHS-3 was collected 2005--06 and model results for 1995--2004 were" _n
+file write table "NFHS-3 was collected 2005--2006 and model results for 1995--2004 were" _n
 file write table "applied for the predictions." _n
-file write table "NFHS-4 was collected 2015--16 and model results for 2005--2016 were" _n
+file write table "NFHS-4 was collected 2015--2016 and model results for 2005--2016 were" _n
 file write table "applied for the predictions." _n
 
 file write table "\item[a] " _n
