@@ -194,8 +194,7 @@ set scheme s1mono
 
 // Estimation by spell
 
-// forvalues spell = 2/3 {
-forvalues spell = 2/2 {
+forvalues spell = 2/3 {
 
     keep if fertility >= `spell'
 
@@ -361,12 +360,12 @@ forvalues spell = 2/2 {
         col(2) xcommon ysize(9) xsize(6.5) imargin(0 2 3 0) ///
         iscale(*0.9)
             
-    graph export `figures'/mortality_low_med.eps, replace fontface(Palatino)
+    graph export `figures'/mortality_spell_`spell'_low_med.eps, replace fontface(Palatino)
     
     graph combine mort_high_1 mort_highest_1 mort_high_2 mort_highest_2 mort_high_3 mort_highest_3 mort_high_4 mort_highest_4 , ///
         col(2) xcommon ysize(9) xsize(6.5) imargin(0 2 3 0) ///
         iscale(*0.9)
     
-    graph export `figures'/mortality_high_highest.eps, replace fontface(Palatino)
+    graph export `figures'/mortality_spell_`spell'_high_highest.eps, replace fontface(Palatino)
     
 }
