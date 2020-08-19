@@ -299,7 +299,7 @@ forvalues spell = 2/3 {
                 if "`educ'" == "low"     loc mort_title `"title("No Education", size(medium))"'
                 if "`educ'" == "med"     loc mort_title `"title("1-7 Years of Education", size(medium))"'
                 if "`educ'" == "high"    loc mort_title `"title("8-11 Years of Education", size(medium))"'
-                if "`educ'" == "highest" loc mort_title `"title("12- Years of Education", size(medium))"'                
+                if "`educ'" == "highest" loc mort_title `"title("12+ Years of Education", size(medium))"'                
                 loc fysize "fysize(95.6)"
             }
             else {

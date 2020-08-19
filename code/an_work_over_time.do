@@ -78,7 +78,7 @@ foreach var of varlist currently_working work_family work_cash {
                 || line `var' round if educ_1_7 == 1 & `area' & age_group == `age', lwidth(thick) lpattern(longdash) lcolor(black) ///
                 || line `var' round if educ_8_11  == 1 & `area' & age_group == `age', lwidth(thick) lpattern(dash) lcolor(black) ///
                 || line `var' round if educ_12_up  == 1 & `area' & age_group == `age', lwidth(thick) lpattern(shortdash) lcolor(black) ///
-                || , legend(label(1 "No education") label(2 "1 to 7 years") label(3 "8 to 11 years") label(4 "12 or more years") ring(0) position(`position') col(1)) ///
+                || , legend(label(1 "No education") label(2 "1--7 years") label(3 "8--11 years") label(4 "12 or more years") ring(0) position(`position') col(1)) ///
                     plotregion(margin(zero)) xlabel(1992 1999 2006 2015) ylabel(0(10)100) ytitle("Percent") xtitle("Survey Year")
         
             graph export `figures'/`var'_`where'_`age'.eps, replace fontface(Palatino)
