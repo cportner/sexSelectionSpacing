@@ -214,12 +214,12 @@ program sexRatioTest
     file write tmpFile "Test (prtest in Stata 13) whether recall error increases " _n
     file write tmpFile "with time passed, which would manifest itself in a higher sex ratio for a more recent" _n
     file write tmpFile "survey than an earlier for the same cohort." _n
-    file write tmpFile "A: Cohort sex ratio significantly larger in NFHS-2 than NFHS-1 at the 10 percent level. " _n
-    file write tmpFile "B: Cohort sex ratio significantly larger in NFHS-3 than NFHS-1 at the 10 percent level. " _n
-    file write tmpFile "C: Cohort sex ratio significantly larger in NFHS-4 than NFHS-1 at the 10 percent level. " _n
-    file write tmpFile "D: Cohort sex ratio significantly larger in NFHS-3 than NFHS-2 at the 10 percent level. " _n
-    file write tmpFile "E: Cohort sex ratio significantly larger in NFHS-4 than NFHS-2 at the 10 percent level. " _n
-    file write tmpFile "F: Cohort sex ratio significantly larger in NFHS-4 than NFHS-3 at the 10 percent level. " _n
+    file write tmpFile "A: Cohort sex ratio significantly larger in NFHS-2 than NFHS-1 at the 10\% level. " _n
+    file write tmpFile "B: Cohort sex ratio significantly larger in NFHS-3 than NFHS-1 at the 10\% level. " _n
+    file write tmpFile "C: Cohort sex ratio significantly larger in NFHS-4 than NFHS-1 at the 10\% level. " _n
+    file write tmpFile "D: Cohort sex ratio significantly larger in NFHS-3 than NFHS-2 at the 10\% level. " _n
+    file write tmpFile "E: Cohort sex ratio significantly larger in NFHS-4 than NFHS-2 at the 10\% level. " _n
+    file write tmpFile "F: Cohort sex ratio significantly larger in NFHS-4 than NFHS-3 at the 10\% level. " _n
     file write tmpFile "\end{tablenotes}" _n
     file write tmpFile "\end{threeparttable}" _n
     file write tmpFile "\end{small}" _n

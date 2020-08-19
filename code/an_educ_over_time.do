@@ -196,7 +196,7 @@ foreach var of varlist urban rural {
         || rarea line_0 line_1 cohort if `var', color(gs10) lwidth(none) ///
         || rarea line_1 line_2 cohort if `var', color(gs6) lwidth(none) ///
         || rarea line_2 one cohort if `var', color(gs2) lwidth(none) ///
-        || , legend(label(1 "No education") label(2 "1--7 years") label(3 "8--11 years") label(4 "12 or more years") ring(0) position(8) col(1)) ///
+        || , legend(label(1 "No education") label(2 "1-7 years") label(3 "8-11 years") label(4 "12 or more years") ring(0) position(8) col(1)) ///
             plotregion(margin(zero)) xlabel(1930(10)1990) xtitle("Cohort") ytitle("Percent")
 
     graph export `figures'/educ_over_time_`var'.eps, replace fontface(Palatino)
