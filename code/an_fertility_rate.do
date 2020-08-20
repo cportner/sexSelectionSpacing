@@ -726,6 +726,7 @@ forvalues parity = 1/4 {
 	// birth of parity `parity' in 1 year before survey date
 	gen birth_1yr_`parity' = (interview_cmc - b`parity'_born_cmc) >= 1 & ///
 	    (interview_cmc - b`parity'_born_cmc) <= 12
+	// To calculate "before sex selection" fertility rate
 	gen prior_birth_3yr_`parity' = (interview_cmc - b`parity'_born_cmc) >= 60 & ///
 	    (interview_cmc - b`parity'_born_cmc) <= 95	
 }

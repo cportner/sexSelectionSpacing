@@ -163,23 +163,31 @@ DISTGRAPH_OTHERS := \
 
 DISTGRAPH_ALL := $(DISTGRAPH_HIGHEST) $(DISTGRAPH_OTHERS)
 
-
+### Graphs of percentile bootstrapped results_spell
+PERCENTILE_GRAPHS := \
+    $(foreach educ, low med high highest, \
+    $(foreach area, $(AREAS), \
+    $(FIG)/bs_$(educ)_$(area).eps ) )
 
 ## Mortality target
 
-MORTTARGET_OTHER := \
+#MORTTARGET_OTHER := \
+#    $(foreach spell, 2 3, \
+#    $(foreach educ, low med high, \
+#    $(foreach per, $(PERIODS), \
+#    $(FIG)/mortality_s$(spell)_p$(per)_$(educ)_dummies.eps ) ) )
+
+#MORTTARGET_HIGHEST := \
+#    $(foreach spell, 2 3, \
+#    $(foreach per, 2 3 4, \
+#    $(FIG)/mortality_s$(spell)_p$(per)_highest_dummies.eps ) )
+
+#MORTTARGET := $(MORTTARGET_OTHER) $(MORTTARGET_HIGHEST)    
+
+MORTALITY_GRAPHS := \
     $(foreach spell, 2 3, \
-    $(foreach educ, low med high, \
-    $(foreach per, $(PERIODS), \
-    $(FIG)/mortality_s$(spell)_p$(per)_$(educ)_dummies.eps ) ) )
-
-MORTTARGET_HIGHEST := \
-    $(foreach spell, 2 3, \
-    $(foreach per, 2 3 4, \
-    $(FIG)/mortality_s$(spell)_p$(per)_highest_dummies.eps ) )
-
-MORTTARGET := $(MORTTARGET_OTHER) $(MORTTARGET_HIGHEST)    
-
+    $(foreach group, low_med high_highest, \
+    $(FIG)/mortality_spell_$(spell)_$(group).eps ) )
 
 
 ### Appendix 
@@ -206,11 +214,10 @@ $(TEX)/$(TEXFILE).pdf: $(TEX)/$(TEXFILE).tex $(TEX)/sex_selection_spacing.bib \
  $(TAB)/des_stat.tex $(TAB)/num_women.tex $(TAB)/num_missed.tex \
  $(TAB)/recallBirthBO1.tex $(TAB)/recallBirthBO2.tex $(TAB)/recallMarriageBO1.tex $(TAB)/recallMarriageBO2.tex \
  $(RECALLGRAPHS) \
- $(PPSTARGET) \
- $(BSTABLE_ALL) $(BSGRAPH_ALL) \
- $(DISTGRAPH_ALL) \
+ $(BSTABLE_ALL)  \
+ $(PERCENTILE_GRAPHS) \
  $(TAB)/fertility.tex \
- $(MORTTARGET)
+ $(MORTALITY_GRAPHS)
 	cd $(TEX); xelatex $(TEXFILE)
 	cd $(TEX); bibtex $(TEXFILE)
 	cd $(TEX); xelatex $(TEXFILE)
@@ -221,7 +228,7 @@ view: $(TEX)/$(TEXFILE).pdf
 	$(PDFAPP) $(TEX)/$(TEXFILE).pdf & 
 		
 .PHONY: results  # convenience function during development
-results: $(GRAPHTARGET) $(PPSTARGET) \
+results: $(GRAPHTARGET) $(PPSTARGET) $(PERCENTILE_GRAPHS) \
  $(BSTABLE_ALL) $(BSGRAPH_ALL)
 
 
@@ -448,6 +455,14 @@ run_distribution_graphs: $(DISTGRAPH_ALL)
 $(DISTGRAPH_ALL): $(COD)/an_distribution_graph.do \
  $(BSDATA_ALL)
 	cd $(COD); stata-se -b -q $(<F)	
+	
+# Percentile graphs
+.PHONY: run_percentile_graphs
+run_percentile_graphs: $(PERCENTILE_GRAPHS)
+
+$(PERCENTILE_GRAPHS): $(COD)/an_bootstrap_graph_percentiles.do \
+ $(BSDATA_ALL)
+	cd $(COD); stata-se -b -q $(<F)		
 
 
 #---------------------------#
@@ -508,7 +523,7 @@ $(TAB)/fertility.tex : $(COD)/an_fertility_table.do \
 #  Infant Mortality         #
 #---------------------------#
     
-$(MORTTARGET) : $(COD)/an_infant_mortality.do $(DAT)/base.dta
+$(MORTALITY_GRAPHS) : $(COD)/an_infant_mortality.do $(DAT)/base.dta
 	cd $(COD); stata-se -b -q $(<F)	
     
 

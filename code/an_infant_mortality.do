@@ -206,11 +206,11 @@ forvalues spell = 2/3 {
 
         foreach educ in "highest" "high" "med" "low" {
 
-            // Estimation results for highest education group in the 1972-84 period unreliable
-            // because of too small sample size
-            if "`educ'" == "highest" & `period' == 1 {
-                continue
-            }
+//             // Estimation results for highest education group in the 1972-84 period unreliable
+//             // because of too small sample size
+//             if "`educ'" == "highest" & `period' == 1 {
+//                 continue
+//             }
 
             preserve
         
@@ -251,27 +251,15 @@ forvalues spell = 2/3 {
             // prior child(ren) variable
             if `spell' == 2 {
                 gen girls = b1_girl
-                local label `" order(3 "1st girl, 2nd boy" 4 "1st girl, 2nd girl" 1 "1st boy, 2nd boy" 2 "1st boy, 2nd girl") col(1) subtitle("First Child, Second Child") "'
+                if `period' == 1 {
+//                     local label `" order(3 "1st girl, 2nd boy" 4 "1st girl, 2nd girl" 1 "1st boy, 2nd boy" 2 "1st boy, 2nd girl") col(1) subtitle("First Child, Second Child", size(vsmall)) "'
+                    local label `" order(3 "Girl / Boy" 4 "Girl / Girl" 1 "Boy / Boy" 2 "Boy / Girl") subtitle("First Child / Second Child", size(small)) "'
+                    local legend " legend(`label' size(small) col(2) colfirst ring(0) position(2) bmargin(tiny) region(margin(tiny) lwidth(none)) keygap(0.5) colgap(1.5) rowgap(0.25)  forcesize ) "
+                    }
+                else {
+                    local legend "legend(off)"
+                }
             }
-//             else if `spell' == 3 {
-//                 gen girls = 0 if (b1_sex == 1 & b2_sex == 1) & b1_sex != . & b2_sex != .
-//                 replace girls = 1 if (b1_sex == 2 | b2_sex == 2) & !(b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != .    
-//                 replace girls = 2 if (b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != . 
-//             }
-//             else if `spell' == 4 {
-//                 gen girls = 0     if (b1_sex == 1 & b2_sex == 1 & b3_sex == 1) & b1_sex != . & b2_sex != . & b3_sex != .
-//                 replace girls = 1 if ( ///
-//                     (b1_sex == 2 & b2_sex == 1 & b3_sex == 1) | ///
-//                     (b1_sex == 1 & b2_sex == 2 & b3_sex == 1) | ///
-//                     (b1_sex == 1 & b2_sex == 1 & b3_sex == 2)  ///
-//                     ) & b1_sex != . & b2_sex != . & b3_sex != .
-//                 replace girls = 2 if ( ///
-//                     (b1_sex == 2 & b2_sex == 2 & b3_sex == 1) | ///
-//                     (b1_sex == 2 & b2_sex == 1 & b3_sex == 2) | ///
-//                     (b1_sex == 1 & b2_sex == 2 & b3_sex == 2) ///
-//                     ) & b1_sex != . & b2_sex != . & b3_sex != .
-//                 replace girls = 3 if (b1_sex == 2 & b2_sex == 2 & b3_sex == 2) & b1_sex !=. & b2_sex != . & b3_sex != .
-//             }
             else if `spell' == 3 {
                 gen girls = 0     if !(b1_sex == 2 & b2_sex == 2) & b1_sex != . & b2_sex != . 
                 replace girls = 2 if (b1_sex == 2 & b2_sex == 2)  & b1_sex != . & b2_sex != . 
@@ -286,6 +274,47 @@ forvalues spell = 2/3 {
                 dis "Spell not coded yet"
                 exit
             }
+                        
+            if "`educ'" == "low" | "`educ'" == "high" {
+                if `period' == 1 {
+                    loc y_info `"ytitle("1972-1984")"'
+                }
+                if `period' == 2 {
+                    loc y_info `"ytitle("1985-1994")"'
+                }
+                if `period' == 3 {
+                    loc y_info `"ytitle("1995-2004")"'
+                }
+                if `period' == 4 {
+                    loc y_info `"ytitle("2005-2016")"'
+                }
+                loc fxsize "fxsize(100)"
+            }
+            else {
+                loc y_info `"ytitle("")"'
+                loc fxsize "fxsize(95.75)"
+            }
+
+            if `period' == 1 {
+                if "`educ'" == "low"     loc mort_title `"title("No Education", size(medium))"'
+                if "`educ'" == "med"     loc mort_title `"title("1-7 Years of Education", size(medium))"'
+                if "`educ'" == "high"    loc mort_title `"title("8-11 Years of Education", size(medium))"'
+                if "`educ'" == "highest" loc mort_title `"title("12+ Years of Education", size(medium))"'                
+                loc fysize "fysize(95.6)"
+            }
+            else {
+                loc mort_title `"title("")"'
+                loc fysize "fysize(87)"
+            }
+                        
+            if `period' == 4 {
+                loc x_info `"xlabel(9 "9-20" 21 "21-32" 33 "33-44" 45 "45-56" 57 "57+" ) xtitle("Preceding Birth Interval (Months)")"'
+                loc fysize "fysize(100)"
+            }
+            else {
+//                 loc x_info "xscale(off)"
+                loc x_info "xtick(9 21 33 45 57) xlabel(none) xtitle("")"
+            }
 
             loc reg_vars = " i.girls##i.b`spell'_girl##i.b`spell'_d_space "
             loc mar_vars = " b`spell'_d_space#girls#b`spell'_girl "
@@ -299,22 +328,22 @@ forvalues spell = 2/3 {
                 `reg_vars' 
             margins `mar_vars' 
             marginsplot, x(b`spell'_d_space) noci /// 
-                title("") ///
-                ytitle("Infant Mortality Probability") ///
-                xlabel(9 "9-20" 21 "21-32" 33 "33-44" 45 "45-56" 57 "57+" ) ///
-                xtitle("Preceding Birth Interval (Months)") ///
-                legend(`label' ///
-                     ring(0) position(2) region(margin(vsmall)) ///
-                ) ///
-                plotopts(msymbol(i) ylabel(0(0.05)0.25, grid) plotregion(margin(zero)) ///
-                    lwidth(medthick..) ///
+                `mort_title' ///
+                `y_info' ///
+                `x_info' ///
+                `legend' ///
+                plotopts( ///
+                    msymbol(i) ylabel(0(0.05)0.20, grid) plotregion(margin(zero) style(none)) ///
+                    lwidth(medthin..) ///
+                    yscale(range(0 0.25)) ///
                 ) ///
                 plot1opts(lpattern(shortdash)) ///
                 plot2opts(lpattern(dash) ) ///
                 plot3opts(lpattern(solid) ) ///
-                plot4opts(lpattern(longdash) ) 
+                plot4opts(lpattern(longdash) ) ///
+                `fysize' `fxsize' ///
+                name(mort_`educ'_`period', replace) 
 
-            graph export `figures'/mortality_s`spell'_p`period'_`educ'_dummies.eps, replace fontface(Palatino)
 
     //         logit b2_died_as_infant b1_mom_age scheduled_caste land_own urban ///
     //             i.b1_girl##i.b2_girl##(c.b2_space c.b2_space#c.b2_space ///
@@ -326,4 +355,17 @@ forvalues spell = 2/3 {
             restore
         }
     }
+    
+    graph combine mort_low_1 mort_med_1 mort_low_2 mort_med_2 mort_low_3 mort_med_3 mort_low_4 mort_med_4 , ///
+        col(2) xcommon ysize(9) xsize(6.5) imargin(0 2 3 0) ///
+        iscale(*0.9)
+            
+    graph export `figures'/mortality_spell_`spell'_low_med.eps, replace fontface(Palatino)
+    
+    graph combine mort_high_1 mort_highest_1 mort_high_2 mort_highest_2 mort_high_3 mort_highest_3 mort_high_4 mort_highest_4 , ///
+        col(2) xcommon ysize(9) xsize(6.5) imargin(0 2 3 0) ///
+        iscale(*0.9)
+    
+    graph export `figures'/mortality_spell_`spell'_high_highest.eps, replace fontface(Palatino)
+    
 }
