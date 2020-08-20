@@ -1,7 +1,9 @@
 # Sex Selective Abortions and Spacing
 
-**Purpose:** Write paper for Demography based on rejected version. 
-This version focuses on the method and spacing.
+**Purpose:** Write paper for Demography based on original rejected version. 
+This version focuses on spacing and how access to sex selection affects it.
+Furthermore, the paper examines how the changes in spacing affects fertility estimates
+and infant mortality.
 A separate version will examine fertility and sex selection in more detail.
 
 ## Directory structure
@@ -18,6 +20,7 @@ In addition, the following directories has writing in them:
 
 - paper: the paper itself, together with snippets and notes
 - presentations: various presentations, each its own tex file
+- response: referee reports and responses
 
 ##  Generating files
 
