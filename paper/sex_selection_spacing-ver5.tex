@@ -569,14 +569,14 @@ logit model.
 % in a given interval (the base outcome), 1 if she gives birth to a son in that interval, 
 % and 2 if she gives birth to a daughter in that interval.
 
-I use the model to predict birth interval measures, parity progression probabilities, 
+I use the model to predict birth interval lengths, parity progression probabilities, 
 and the sex ratio rather than present coefficients because the interpretation 
 of competing risk model coefficients is challenging \citep{thomas96}.
 The predicted parity progression probability is the likelihood of giving birth by the
 imposed censoring based on standard survival curve calculations averaged across all
 women in a given sample.
 
-For birth intervals, I estimate a set of percentile birth intervals. 
+For birth interval lengths, I estimate a set of percentile durations. 
 I first calculate for each woman when there is a given percentage chance that she will have 
 given birth, conditional on the probability of giving birth in the spell. 
 For example, with an 80\% parity progression probability, the median birth interval 
@@ -656,10 +656,10 @@ nine months.
 In addition to a large number of women surveyed and the long period covered, a significant 
 benefit of the NFHS over other surveys is that enumerators pay careful attention to the 
 spacing between births and probe for ``missed'' births.
-For India, the main concern is underreporting of deceased children, especially a systematic 
+For India, the main concern is the underreporting of deceased children, especially a systematic 
 recall error where respondents' likelihood of reporting the birth of a deceased child depends 
 on the sex of that child.
-Unreported deceased children inflate the birth intervals and, with declining mortality, 
+Unreported deceased children inflate the length of birth intervals and, with declining mortality, 
 make changes over time appear too small.
 In the online appendix, I provide a detailed analysis of systematic recall error, which 
 shows that recall error depends heavily on how long ago a woman was married. 
@@ -742,7 +742,7 @@ Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} present descriptive 
 The first question I address is how birth spacing responded to the significant 
 changes in India.
 Figures \ref{fig:spacing_low_rural} through \ref{fig:spacing_highest_urban}
-show the 25th, 50th, and 75th percentile birth intervals in 
+show the 25th, 50th, and 75th percentile birth interval durations in 
 months, the sex ratio, and the probability of having a birth for each spell
 by education levels and area of residence.%
 \footnote{
@@ -761,7 +761,7 @@ appendix.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_low_rural}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval durations, sex ratios, and parity progression  
 for rural women with no education by spell, sex composition, and period}
 \label{fig:spacing_low_rural}
 \end{figure}
@@ -777,7 +777,7 @@ for rural women with no education by spell, sex composition, and period}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_med_rural}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval durations, sex ratios, and parity progression  
 for rural women with 1--7 years of education by spell, sex composition, and period}
 \label{fig:spacing_med_rural}
 \end{figure}
@@ -785,7 +785,7 @@ for rural women with 1--7 years of education by spell, sex composition, and peri
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_med_urban}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval durations, sex ratios, and parity progression  
 for urban women with 1--7 years of education by spell, sex composition, and period}
 \label{fig:spacing_med_urban}
 \end{figure}
@@ -793,7 +793,7 @@ for urban women with 1--7 years of education by spell, sex composition, and peri
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_high_rural}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval durations, sex ratios, and parity progression  
 for rural women with 8--11 years of education by spell, sex composition, and period}
 \label{fig:spacing_high_rural}
 \end{figure}
@@ -801,7 +801,7 @@ for rural women with 8--11 years of education by spell, sex composition, and per
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_high_urban}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval durations, sex ratios, and parity progression  
 for urban women with 8--11 years of education by spell, sex composition, and period}
 \label{fig:spacing_high_urban}
 \end{figure}
@@ -817,7 +817,7 @@ for urban women with 8--11 years of education by spell, sex composition, and per
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_highest_urban}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval durations, sex ratios, and parity progression  
 for urban women with 12 or more years of education by spell, sex composition, and period}
 \label{fig:spacing_highest_urban}
 \end{figure}
@@ -848,19 +848,18 @@ Some women with one son also show an unnaturally high percentage of boys, althou
 failing fertility makes these estimates noisy.
 
 
-% [Birth intervals w/o sex selection]
 \subsection{When Sex Selection Is Less Used}
 
 To separate the effects of the introduction of sex selection and the other changes in
-India, I first discuss how birth intervals have changed in situations where sex selection 
-is less used.
+India, I first discuss how the lengths of birth intervals have changed in situations where 
+sex selection is less used.
 The group broadly covers women with no education, regardless of the sex composition of their 
 children, and women with any education who have one or two sons already. 
 Despite the lower level of sex selection, son preference is still evident with the 
 shortest spacing when they have only girls. 
 Notably, for those least likely to use sex selection---rural women with no education---the 
-difference in birth intervals across sex compositions has grown over time as spacing when 
-sons are present has increased.
+difference in birth interval length across sex compositions has grown over time as spacing when 
+sons are present has become longer.
 
 % [25th percentile birth intervals]
 A remarkably high proportion of birth intervals are still very short.
@@ -868,30 +867,30 @@ For all but the most educated, 25\% or more have their second and third child
 within 24 months of the previous birth.
 These intervals are substantially below the 24 months between 
 \emph{pregnancies} the WHO recommends.
-Furthermore, despite higher parities' more substantial increases in birth intervals, even 
-the 25th percentile birth intervals for the fourth spell are around 24 months for women 
-with less than eight years of education.
+Even with the more substantial lengthening of birth intervals for higher parities, the 25th
+percentile duration is still around 24 months for the fourth spell for women with less than
+eight years of education.
 
 % [median birth intervals]
-Median birth intervals have also increased relatively little---only three to six months 
+Median birth interval lengths have also increased relatively little---only three to six months 
 over the four decades---compared to around 3.5 months \emph{per decade} in other countries with 
 declining fertility \citep{Rutstein2011,Casterline2016}.%
 \footnote{
-The NFHS reports show median closed birth intervals of approximately 31 months, which have 
-barely moved over time, underscoring the importance of accounting for censoring when examining 
-birth spacing.
+The NFHS reports show median durations of closed birth intervals of approximately 31 months, 
+which have barely moved over time, underscoring the importance of accounting for censoring 
+when examining birth spacing.
 }
-The result is that most of the median birth intervals are still at 36 months or below, 
-with the shortest only 29 months.
+The result is that most of the median birth interval durations are still at 36 months or
+below, with the shortest only 29 months.
 
 
-Birth intervals appeared to lengthen the most for women the least likely to work.
-For example, from lowest to highest education, the average third-spell birth intervals for 
-urban women with one boy and one girl increased by 2.7, 3.4, 5.8, and 1.8 months over the 
-four decades.%
+Birth intervals appeared to lengthen the most for women who are the least likely to work.
+For example, from lowest to highest education, the average duration of third-spell birth 
+intervals for urban women with one boy and one girl increased by 2.7, 3.4, 5.8, and 1.8 
+months over the four decades.%
 \footnote{
 For women with two sons, the numbers were 4.3, 6.3, 7.0, and 3.0.
-See the online appendix tables for the average birth intervals.
+See the online appendix tables for the average birth interval durations.
 }
 Hence, women with the lowest labor force participation---those with 8--11 years 
 of education---also saw the largest increases in average spacing, possibly driven by the 
@@ -899,11 +898,12 @@ substantial improvement in household income for this group from economic growth.
 
 
 % [75th percentile birth intervals]
-The most substantial changes occurred in the 75th percentile birth intervals, where the 
-more the parity progression probabilities declined, the more the birth interval lengthened. 
+The most substantial changes occurred in the 75th percentile birth interval durations, 
+where the more the parity progression probabilities declined, the more the birth interval 
+lengthened. 
 For example, the probability of a fourth birth for urban women with 8--11 years 
-of education and two sons and a girl has declined by almost 40 percentage points as the 
-75th percentile birth interval increased by 22 months.
+of education and two sons and one girl has declined by almost 40 percentage points as the 
+75th percentile birth interval length increased by 22 months.
 Compare this with rural women of no education with a boy as their first child, for whom the 
 probability of a third birth declined by fewer than six percentage points while the birth 
 interval increased only slightly over two months.
@@ -911,23 +911,15 @@ interval increased only slightly over two months.
 %0.637 0.241
 
 These results are in line with prior research showing that falling fertility is associated 
-with increases in longer spacing, although why is still an unresolved question 
-\citep{Casterline2016}.
-The exception to this trend suggests one possible answer.
-For the most educated women who already have a son, the probability of a third birth 
-declined rapidly, but the birth intervals changed little.
+with a lengthening of particularly the longer birth intervals, although why is still an 
+unresolved question \citep{Casterline2016}.
+The most educated women who already have a son is an exception to this trend; the 
+probability of a third birth declined rapidly, but the birth interval lengths changed little. 
 These women both have better access to modern contraceptives and are better at using 
-traditional contraceptive methods \citep{Rosenzweig1989}.
-
-
-% [Interpretation]
-% How do these changes in birth intervals tie in with the changes in India over the four
-% decades?
-% [TK economic growth? -> higher return to education for males -> lower fertility and
-% higher investment in boys' education -- has anybody looked at this?]
-% First, the parity progression probabilities have been falling over time across all 
-% education levels, especially for women with at least one son.
-
+traditional contraceptive methods \citep{Rosenzweig1989}. 
+Hence, it is possible that the lengthening of birth intervals with falling fertility arises
+because unintended births become a relatively larger proportion of the total number of
+births for a given parity.
 
 
 % [Birth intervals with sex selection]
@@ -937,7 +929,7 @@ A clear illustration of how the combination of son preference and the introducti
 sex selection affected birth spacing comes from the third spell of the best-educated urban 
 women.
 With two girls, almost 80\% of the third births are boys, and the 75th percentile 
-birth interval is close to 70 months. 
+birth interval length is close to 70 months. 
 This interval is about 13 months longer than if they had at least one son and represents 
 an increase of almost 21 months over the four decades.
 
@@ -946,15 +938,14 @@ selection.
 The 75th percentile birth interval with two girls increased from 48 months to 
 64 months in a decade, while the other sex compositions showed a slight decrease from 
 around 55 months to 54 months.
-These changes in birth spacing may even be an underestimate because this particular group 
-appears to have had access to sex selection even before it became widespread, as shown by 
+These birth spacing changes may even be underestimated because this particular group
+appears to have had access to sex selection even before it became widespread, as shown by
 the unequal sex ratio for the 1972--1984 period for women with two girls.
 
-
 The 75th percentile changes are the most dramatic, but sex selection also affects the 
-25th and median birth intervals. 
-For the best-educated urban women with two girls, the 25th percentile birth interval 
-increased by six months, or 23\%, while the median percentile birth interval 
+25th and median birth interval lengths. 
+For the best-educated urban women with two girls, the 25th percentile birth interval
+length increased by six months, or 23\%, while the median percentile birth interval length
 increased by 15 months (43\%).
 
 
@@ -965,22 +956,6 @@ two boys, no matter the percentile used.
 A similar reversal, although more muted, occurred for the third spell for urban women 
 with 1--7 years of education and both urban and rural women with 8--11 years of 
 education.
-
-% An important exception to the relatively short median intervals come from the better 
-% educated women, especially in the absence of sons.
-% The longest median interval was 48 months for the third spell for urban women with twelve 
-% or more years of education who had no boys, an increase of almost 15 months over
-% four decades.
-% Similary, urban women with eight to eleven years of education and no sons had median
-% birth intervals of around 40 months, an increase of about 10 months.
-% Finally, the best educated women now have a median second birth interval of around 42
-% months whether their first child was a boy or a girl.
-
-
-% Despite the strong son preference in spacing and sex ratios, there is also some indication 
-% that parents prefer a mix of boys and girls;
-% women with two boys \emph{and} a girl consistently have the lowest parity progression 
-% probability in the fourth spell across education levels. 
 
 Did the predictions of declining use of sex selection come true? 
 There is no clear evidence for or against a reversal in the use of sex selection, with 
@@ -1006,11 +981,11 @@ work are also those with the most substantial increases.
 
 Sex selection, however, is behind the most substantial increases in birth spacing. 
 The best-educated women with two girls had the most biased sex ratio and the most 
-significant increase in birth intervals. 
-Over the four decades, the median birth interval for this group increased by almost 15 
-months, 
-and the 75th percentile birth interval increased by a staggering 21 months, most of that 
-within a decade.
+significant increase in birth interval lengths. 
+Over the four decades, the median birth interval length for this group increased by almost 
+15 months, 
+and the 75th percentile birth interval length increased by a staggering 21 months, most of 
+that within a decade.
 
 \section{What Happened to Fertility?\label{sec:fertility}}
 
@@ -1084,8 +1059,8 @@ Consistent with a more substantial bias in the fertility rate when the age of ma
 and the length of birth intervals increase, the absolute bias is least in the first 
 and the last period and highest in the middle two periods.
 Hence, the fertility rate declined too fast from the mid-1980s to the century's end.
-Only recently, as the rate of increase for the birth intervals has slowed, have the two 
-fertility measures begun to converge again.
+Only recently, as the rate of increase for the birth interval lengths has slowed, have the 
+two fertility measures begun to converge again.
 Even with the convergence, the predicted 2005--2016 cohort fertility is still above the 
 1992--1993 fertility rate for every group, except urban women with no education. 
 Furthermore, for the last period, the predicted cohort fertility remains at least 
@@ -1104,8 +1079,9 @@ Only for urban women with 12 or more years of education is the predicted cohort
 fertility clearly below 2.1 children.
 Even then, cohort fertility is still more than 0.3 children higher than 
 the fertility rate estimate of 1.5.
-Furthermore, the predicted cohort fertility numbers are likely too low because I use only 
-the first four births and births before the imposed 105-month birth interval censoring.
+Furthermore, the predicted cohort fertility numbers are likely too low because I use only
+the first four births and births before the imposed 105-month censoring of birth interval
+durations.
 
 
 \section{Mortality and the Changing Birth Spacing\label{sec:mortality}}
@@ -1122,8 +1098,8 @@ for the 1972--1984 period because of the small number of women.
 The dependent variable is whether the child died within the first 12 months of life.
 The main set of explanatory variables consists of dummies for the spacing from
 the prior birth.
-The birth interval dummies cover 12-month periods, starting nine months after the prior 
-birth, until the 57-month dummy, which covers until 105 months after the prior birth.
+The birth interval duration dummies cover 12-month periods, starting nine months after the 
+prior birth, until the 57-month dummy, which covers until 105 months after the prior birth.
 I use dummies for sex of the index child and the sex composition 
 of the prior children.
 The birth spacing dummies, the sex of index child, and the sex composition dummies
@@ -1277,7 +1253,7 @@ deviate substantially in prior research.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{mortality_spell_2_low_med}
-\caption{Infant mortality by preceding birth interval across periods for second child of women with 
+\caption{Infant mortality by preceding birth interval length across periods for second child of women with 
 no education and women with 1--7 years of education}
 \label{fig:mortality_low_med}
 \end{figure}
@@ -1286,7 +1262,7 @@ no education and women with 1--7 years of education}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{mortality_spell_2_high_highest}
-\caption{Infant mortality by preceding birth interval across periods for second child of women with 
+\caption{Infant mortality by preceding birth interval length across periods for second child of women with 
 8--11 and 12 and above years of education}
 \label{fig:mortality_high_highest}
 \end{figure}
@@ -1351,8 +1327,8 @@ and sex selection?
 The most substantial lengthening of birth intervals came from the best-educated women
 because of their substantial use of sex selection combined with falling fertility.
 Take, for example, women with 12 or more years of education who had two girls. 
-As the sex ratio increased to close to 80\% boys, the expected median birth interval 
-increased by almost 15 months, and the 75th percentile interval increased by 21 months.
+As the sex ratio increased to close to 80\% boys, the expected median birth interval length
+increased by almost 15 months, and the 75th percentile interval length increased by 21 months.
 Most of the increase in the long intervals came immediately after the introduction of sex 
 selection in India.
 
@@ -1399,7 +1375,7 @@ cohort fertility is below replacement.
 
 Tempo effects are studied extensively in the literature \citep[see, for example, ][]{Bongaarts1999}.
 Still, there are, to my knowledge, no other cases where there has been as 
-substantial an increase in birth intervals and associated bias in fertility rates 
+substantial an increase in birth interval lengths and associated bias in fertility rates 
 as for India.
 It is conceivable that we might see increases in the total fertility rate as birth spacing 
 stabilizes or even shortens again if interventions against sex selection are successful.
@@ -1785,7 +1761,7 @@ NFHS enumerators probe for any missed births, although the method depends on the
 NFHS-1 probe for each calendar birth interval that is four or more years.
 NFHS-2 asked for stillbirths, spontaneous and induced abortions and also probed 
 for each calendar birth interval four or more years.
-NFHS-3 and NFHS-4 did not directly use birth intervals, but asked whether there were any 
+NFHS-3 and NFHS-4 did not directly use birth interval lengths, but asked whether there were any 
 other live births between (name of previous birth) and (name), including any children who 
 died after birth, and asked for births before the birth listed as first birth and
 after the last birth listed as the last birth.
@@ -1951,14 +1927,14 @@ or more.
 \captionsetup[figure]{skip = -16pt}
 
 Figures \ref{fig:spacing_low_urban} and \ref{fig:spacing_highest_rural} show 25th, 50th,
-and 75th percentile birth intervals, the sex ratio, and the probability of parity
+and 75th percentile birth interval lengths, the sex ratio, and the probability of parity
 progression by spell for urban women with no education and rural women with 12 or
 more years of education, respectively.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_low_urban}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval lengths, sex ratios, and parity progression  
 for urban women with no education by spell, sex composition, and period}
 \label{fig:spacing_low_urban}
 \end{figure}
@@ -1966,7 +1942,7 @@ for urban women with no education by spell, sex composition, and period}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_highest_rural}
-\caption{Percentile birth intervals, sex ratios, and parity progression  
+\caption{Percentile birth interval lengths, sex ratios, and parity progression  
 for rural women with 12 or more years of education by spell, sex composition, and period}
 \label{fig:spacing_highest_rural}
 \end{figure}
@@ -1975,17 +1951,17 @@ for rural women with 12 or more years of education by spell, sex composition, an
 
 The first set of tables, Tables \ref{tab:p25_p50_p75_low}, \ref{tab:p25_p50_p75_med},
 \ref{tab:p25_p50_p75_high}, and \ref{tab:p25_p50_p75_highest} show 25th, 50th, and
-75th percentile birth intervals together with their standard errors.
+75th percentile birth interval lengths together with their standard errors.
 The standard errors for all measures are based on bootstrapping,
 where the model is repeatedly estimated using resampling with replacement.
 
 The second set of tables, 
 Tables \ref{tab:avg_sex_ratio_low}, \ref{tab:avg_sex_ratio_med}, 
 \ref{tab:avg_sex_ratio_high}, and \ref{tab:avg_sex_ratio_highest}, show predicted average 
-birth intervals, sex ratios, and probabilities of having a birth by decade, spell, and sex 
+birth interval lengths, sex ratios, and probabilities of having a birth by decade, spell, and sex 
 composition for the four education levels separated by the area of residence, together 
 with bootstrapped standard errors for all three outcomes.
-To find the average birth interval, I calculate, for each woman, the probability of 
+To find the average birth interval length, I calculate, for each woman, the probability of 
 giving birth in each $t$, and her expected spell length from these probabilities. 
 I then average the individual expected spell lengths across women using their parity 
 progression probabilities as weights. Finally, I add nine months because spells begin 
@@ -3186,7 +3162,7 @@ sex selection.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{mortality_spell_3_low_med}
-\caption{Infant mortality by preceding birth interval across periods for third child of women with 
+\caption{Infant mortality by preceding birth interval length across periods for third child of women with 
 no education and women with 1--7 years of education}
 \label{fig:mortality_low_med_spell_3}
 \end{figure}
@@ -3195,7 +3171,7 @@ no education and women with 1--7 years of education}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{mortality_spell_3_high_highest}
-\caption{Infant mortality by preceding birth interval across periods for third child of women with 
+\caption{Infant mortality by preceding birth interval length across periods for third child of women with 
 8--11 and 12 and above years of education}
 \label{fig:mortality_high_highest_spell_3}
 \end{figure}
