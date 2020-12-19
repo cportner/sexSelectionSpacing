@@ -656,12 +656,12 @@ better-educated.
 
 I restrict the sample to Hindus for two reasons.
 First, Hindus are the majority population group, about 80\% of India’s population.
-Second, the prior literature shows that son preference and use of sex selection vary 
+Second, the prior literature shows that son preference and sex selection vary 
 substantially between Hindus and the second largest group, Muslims. 
 Combining them and assuming that the baseline hazard is the same would lead to biased 
 results.
 Because of space constraints and the relatively small number of observations once split 
-by education and periods, I do not provide separate results for Muslims or any of the 
+by education and periods, I do not provide separate results for Muslims or any  
 remaining groups, such as Sikhs, Jains, and Christians.
 
 Finally, I exclude visitors and women in any of the following categories: Never married; 
@@ -671,7 +671,7 @@ The same goes for women who had at least one multiple births, reported giving bi
 before age 12, had a birth before marriage, or had an interval between births of less than 
 nine months. 
 
-In addition to a large number of women surveyed and the long period covered, a significant 
+In addition to the large number of women surveyed and the long period covered, a significant 
 benefit of the NFHS over other surveys is that enumerators pay careful attention to the 
 spacing between births and probe for ``missed'' births.
 For India, the main concern is the underreporting of deceased children, especially a systematic 
@@ -701,7 +701,7 @@ The final sample consists of
 % \input{../tables/num_missed.tex}
 % }
 
-Direct information on the use of sex selection is not available, so I compare periods 
+Direct information on sex selection is not available, so I compare periods 
 based on the changes in access and legality of prenatal sex determination in India.
 Abortion has been legal in India since 1971.
 Reports of sex determination appeared around 1982--1983, and the number of clinics 
@@ -728,17 +728,34 @@ Hence, some spells cover two periods, which may bias downward the differences be
 periods.
 Most sterilizations take place soon after giving birth. 
 These spells, therefore, do not show up in the samples used. 
-Furthermore, sterilization depends strongly on the sex composition of prior children
-with lower probabilities, the fewer boys. 
+Furthermore, sterilization depends strongly on prior children's sex composition; the 
+fewer boys, the lower the probability of sterilization. 
 The effect is to bias downward the differences in parity progression probabilities.
 
 I divide the explanatory variables into two groups, nonproportional and proportional. 
 The first group consists of characteristics shown in the prior literature to affect the 
 spacing choice and the use of sex selection: Mother’s education, sex composition of 
-previous children, and area of residence. 
+previous children, and area of residence.
 To minimize any potential bias from including proportional variables, I estimate a 
 separate model for each birth interval, education group, and period combination, rather 
 than including education as a variable. 
+
+I divide education levels into four groups: No education, 1--7 years, 8--11 years, and 
+12 and more years.
+The latter two correspond to having completed primary and secondary school, 
+respectively.%
+\footnote{
+Although there are variations by state, elementary education in India consists of a 
+primary school covering grades one through five and an upper primary---or middle 
+school---covering grades six through eight. 
+Similarly, secondary education covers grades nine and tenth for ``secondary education'' 
+and 11 and 12 for ``upper secondary.''
+}
+To ensure that the results are comparable with the prior literature on fertility
+and mortality in India, I follow the NFHS reports, except that I combine the 
+less than five years and 5--7 years of schooling completed and the 8--9 
+and 10--11 years of schooling completed to ensure sufficient cell sizes.
+
 I capture sex composition with dummy variables for the possible combinations, ignoring 
 the ordering of births.%
 \footnote{
@@ -751,7 +768,8 @@ The second group of variables consists of those expected to have an approximatel
 proportional effect on the hazard.
 These include the mother's age when the spell begins, the household's
 land ownership, and whether it belongs to a scheduled tribe or caste.
-Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} present descriptive statistics.
+Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} present the descriptive 
+statistics.
 
 
 \section{How Birth Spacing Changed\label{sec:results}}
