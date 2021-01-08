@@ -115,7 +115,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "\begin{center}" _n
     file write table "\begin{scriptsize}" _n
     file write table "\begin{threeparttable}" _n
-    file write table "\caption{Estimated Average Birth Interval in Months, Sex Ratio, and Probability of Parity Progression for Women with `char'}" _n
+    file write table "\caption{Estimated Average Birth Interval Length in Months, Sex Ratio, and Probability of Parity Progression for Women with `char'}" _n
     file write table "\label{tab:avg_sex_ratio_`educ'}" _n
     file write table "\begin{tabular}{@{} c l D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{1.3} @{}}" _n
     file write table "\toprule" _n
@@ -285,7 +285,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "This process is repeated `num_reps' times and the standard errors calculated." _n
     
     file write table "\item[a] " _n
-    file write table "Average birth interval is calculated as follows." _n
+    file write table "Average birth interval length is calculated as follows." _n
     file write table "For each woman in a given spell/period combination sample, I calculate the probability of that she" _n
     file write table "will give birth for each period, conditional on the likelihood that she will eventually" _n
     file write table "give birth in that spell, and use these probabilities as weights to calculated the expected" _n
@@ -334,7 +334,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "\begin{center}" _n
     file write table "\begin{scriptsize}" _n
     file write table "\begin{threeparttable}" _n
-    file write table "\caption{Estimated Median Birth Interval and Sex Ratio for Women with `char'}" _n
+    file write table "\caption{Estimated Median Birth Interval Length and Sex Ratio for Women with `char'}" _n
     file write table "\label{tab:median_sex_ratio_`educ'}" _n
     file write table "\begin{tabular}{@{} c l D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3} D{.}{.}{2.3}  D{.}{.}{2.3}  @{}}" _n
     file write table "\toprule" _n
@@ -496,7 +496,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "This process is repeated `num_reps' times and the standard errors calculated." _n
     
     file write table "\item[a] " _n
-    file write table "Median birth interval is calculated as follows." _n
+    file write table "Median birth interval length is calculated as follows." _n
     file write table "For each woman in a given spell/period combination sample, I calculate the time point" _n
     file write table "at which there is a 50\% chance that she will have given birth, conditional on the " _n
     file write table "probability that she will eventually give birth in that spell." _n
@@ -542,7 +542,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "\begin{center}" _n
     file write table "\begin{scriptsize}" _n
     file write table "\begin{threeparttable}" _n
-    file write table "\caption{Estimated 25th, 50th, and 75th Percentile Birth Intervals for Women with `char'}" _n
+    file write table "\caption{Estimated 25th, 50th, and 75th Percentile Birth Interval Lengths for Women with `char'}" _n
     file write table "\label{tab:p25_p50_p75_`educ'}" _n
     file write table "\begin{tabular}{@{} c l D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2} D{.}{.}{2.2}  D{.}{.}{2.2}  @{}}" _n
     file write table "\toprule" _n
@@ -705,7 +705,7 @@ foreach educ in "low" "med" "high" "highest" {
     file write table "This process is repeated `num_reps' times and the standard errors calculated." _n
     
     file write table "\item[a] " _n
-    file write table "Percentile birth intervals calculated as follows." _n
+    file write table "Percentile birth interval lengths calculated as follows." _n
     file write table "For each woman in a given spell/period combination sample, I calculate the time point" _n
     file write table "at which there is a given percent chance that she will have given birth, conditional on the " _n
     file write table "probability that she will eventually give birth in that spell." _n
