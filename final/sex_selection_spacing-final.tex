@@ -21,19 +21,12 @@
 \usepackage{xfrac}
 \usepackage{placeins}
 
-% For word counting uncomment line below and raggedright below
-% http://countwordsfree.com/#
-% \usepackage[nolists]{endfloat}
-
-
-% \bibpunct{(}{)}{;}{a}{}{,}
 \newcommand{\mco}[1]{\multicolumn{1}{c}{#1}}
 \newcommand{\mct}[1]{\multicolumn{2}{c}{#1}}
 \newcommand{\mcth}[1]{\multicolumn{3}{c}{#1}}
 \newcommand{\X}{$\times$ }
 \newcommand{\hs}{\hspace{15pt}}
 
-% Attempt to squeeze more floats in
 \renewcommand\floatpagefraction{.9}
 \renewcommand\topfraction{.9}
 \renewcommand\bottomfraction{.9}
@@ -66,8 +59,8 @@ Partial support for this research came from a Eunice Kennedy Shriver National
 Institute of Child Health and Human Development research infrastructure grant,
 5R24HD042828, to the Center for Studies in Demography and Ecology at the
 University of Washington.
-Text and code for this paper is available at 
-\href{https://github.com/cportner/sexSelectionSpacing}{https://github.com/cportner/sexSelectionSpacing}
+Text and code for this paper are available at 
+\href{https://github.com/cportner/sexSelectionSpacing}{\texttt{https://github.com/cportner/sexSelectionSpacing}}.
 }
 }
 
@@ -90,15 +83,12 @@ Text and code for this paper is available at
 
 
 \begin{document}
-\graphicspath{{../figures/}}
+\graphicspath{{./figures/}}
 \DeclareGraphicsExtensions{.eps,.jpg,.pdf,.mps,.png}
 
 \setcounter{page}{-1}
 \maketitle
 \thispagestyle{empty}
-
-% \setcounter{page}{0}
-
 
 \newpage
 \thispagestyle{empty}
@@ -141,11 +131,6 @@ nonproportional hazard
 
 \section{Introduction\label{sec:intro}}
 
-% For word counting remove comment on the line below
-% \raggedright
-
-
-% Background
 India has experienced many positive changes over the past four decades:
 The economy has grown substantially,
 real wages have more than doubled,
@@ -162,7 +147,6 @@ in the male--female ratio at birth
 \citep{das_gupta97,Arnold2002,retherford03b,Guilmoto2012,Portner2015b,Jayachandran2017}.
 
 
-% Questions addressed and why valuable
 The main question I address here is how birth spacing responded to these changes, 
 especially the spread of sex selection. 
 The motivation is twofold.
@@ -205,7 +189,6 @@ those intervals may not see the same benefits as children born after a long inte
 is not punctuated by abortions.
 
 
-% How the study progresses
 To investigate how birth spacing has changed, I use a competing risk hazard model with 
 two exit states: The birth of a girl or the birth of a boy. 
 I apply the model to Hindu women's birth histories covering 1972--2016 using data from the 
@@ -229,9 +212,7 @@ the increasing use of sex selection.
 The key explanatory variables remain the same, except for the addition of birth spacing 
 and the sex of the index child. 
 
-% Main results
 There are three main results.
-
 
 First, birth intervals lengthened over the four decades, with the lengthening longer, the
 higher the parity, the more educated the woman, and the higher the percentile of the
@@ -269,7 +250,6 @@ spacing decisions: economic conditions, investment in children, and son preferen
 Next, I discuss why female education, area of residence, and sex composition are the
 principal factors in the empirical analyses and tie them to the three explanations.
 
-% Economic conditions
 The improvements in economic condition, especially the doubling of real wages,
 are likely to affect fertility, although the direction is ambiguous; empirically, 
 higher female wages reduce fertility, whereas higher male wages increase fertility 
@@ -290,7 +270,6 @@ Shortening birth spacing allows parents to take advantage of economies of scale 
 childrearing---for example, looking after two children requires less than double the time 
 needed for one child \citep{Vijverberg1982,Hotz1997}.
 
-% Investment in children
 With increasing returns to education and lower offspring mortality, parents are likely to 
 reduce fertility and invest more in each child \citep{Rosenzweig1982a,Wolpin1997}.
 The higher return to education means a stronger incentive to invest in their children's
@@ -306,7 +285,6 @@ Whether longer spacing also improves human capital outcomes is more speculative 
 mixed evidence for developed countries and no evidence for developing countries
 \citep{Zajonc1976,Powell1993,Pettersson-Lidbom2009,Buckles2012,Barclay2017}.
 
-% Son preference 
 Stronger son preference has traditionally been associated with shorter spacing and worse
 health outcomes for daughters when there no sons in the household
 \citep{Whitworth2002,Jayachandran2011}.
@@ -326,7 +304,6 @@ Finally, sex-determination tests are reliable only from three months of gestatio
 Hence, it takes at least six months before the couple is at the same point in the next 
 pregnancy as they were in the prior pregnancy when they decided to abort.
 
-% Factors/predictions
 The closest available proxies in the data for capturing the explanations linking
 fertility and birth spacing are the sex composition of previous children, mothers'
 education, and area of residence. 
@@ -418,7 +395,6 @@ change sex selection unless there is a concurrent increase in the relative retur
 education in the labor market. 
 
 
-% Sanskritization
 Finally, the process of "Sanskritization" implies that as lower-caste females gain access
 to education, they adopt higher-caste norms such as stronger son preference and a
 retraction from the formal labor market \citep{Srinivas1956}. 
@@ -428,7 +404,6 @@ Thus, although the expansion in female education will likely bring in groups who
 have different norms, we are unlikely to see substantial changes in how women with a given 
 education level behave.
 
-% Summary / hypotheses
 In summary, with substantial increases in husbands' income and a declining female labor 
 force participation, I expect longer birth spacing over time, independent of education 
 levels.
@@ -439,15 +414,6 @@ women will not substantially change the use of sex selection.
 
 
 \section{Estimation Strategy\label{sec:strategy}}
-
-% Requirements for method and the intuition behind each:  
-%  - Account for censoring (hazard model)
-%  - Work both with and without sex selection (competing risk part)
-%  - Allow for changes in use of sex selection within spell (flexible specification of baseline hazard ?)
-%  - Capture that the shape of the hazard function differ across groups
-%    (nonproportionality); needs a better description, maybe using example
-%    of shorter spacing and/or use of sex selection. Differences in parity
-%    progression likelihood. 
 
 The empirical analysis has three parts. 
 First, I document the changes in birth spacing over time and how the introduction of sex 
@@ -537,19 +503,11 @@ $D_j(t)$ and a set of explanatory variables and the interactions of those.
 The remaining explanatory variables, $\mathbf{X}$, enter proportionally.
 
 
-% To further minimize any potential bias from assuming proportionality, estimations 
-% are done separately for different levels of mothers' education and different periods.
-% I discuss the choice of which variables to use for nonproportionality below.
-
-
 Equation \ref{eq:hazard} is equivalent to the logistic hazard model and has the same 
 likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
 Hence, splitting spells into smaller intervals---here equal to three months---and 
 treating them as observations, I can estimate the model using a standard multinomial 
 logit model. 
-% In the reorganized data, the outcome variable is 0 if the woman does not have a child 
-% in a given interval (the base outcome), 1 if she gives birth to a son in that interval, 
-% and 2 if she gives birth to a daughter in that interval.
 
 I use the model to predict birth interval lengths, parity progression probabilities, 
 and the sex ratio rather than present coefficients because the interpretation 
@@ -562,32 +520,11 @@ For birth interval lengths, I estimate a set of percentile durations.
 I first calculate for each woman when there is a given percentage chance that she will have 
 given birth, conditional on the probability of giving birth in the spell. 
 For example, with an 80\% parity progression probability, the median birth interval 
-is the predicted number of months before a woman passes the 60\% $(100-\frac{80}{2})$ 
+is the predicted number of months before a woman passes the 60\% $\left(100-\frac{80}{2}\right)$ 
 mark on her survival curve. 
 I then add nine months to account for the start of the spell. 
 The reported statistic is the average of a given percentile interval across all women in 
 a given sample using the individual progression probabilities as weights.
-
-% The predicted sex ratio is the weighted average of individual predicted sex ratios, using 
-% parity progression probabilities as weights.
-% For an individual woman, the estimated percent of births that are boys at $t$, $\hat{Y_t}$, is:  
-% \begin{equation}
-% \hat{Y}_t 
-% = 
-% \frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
-% { P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
-% \times 100,
-% \label{eq:probability_son}
-% \end{equation}
-% where $b$ and $g$ are the predicted probabilities of having a boy and a girl, respectively,
-% conditional on the explanatory variables and not having had a child before $t$.
-% Weighting the percentages boys with the likelihood of exiting the spell with a birth across all 
-% $t$ gives the predicted percent of boys over the entire spell for an individual.%
-% \footnote{
-% Imagine $T=2$. 
-% If 54 and 66 percent of births are boys and the likelihood of giving birth 20 and 40 percent, 
-% then the predicted sex ratio is $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$ percent boys. 
-% }
 
 
 The predicted sex ratio is the weighted average of individual predicted sex ratios, using 
@@ -664,13 +601,7 @@ months (eight years) after a woman can first give birth, equivalent to 105 month
 after the birth of the prior child.
 Less than 1\% of observed births occur after the cutoff.
 The final sample consists of 
-\input{../tables/num_women.tex}
-% [number] women, with [number] parity one through four births.
-
-% %
-% \footnote{
-% \input{../tables/num_missed.tex}
-% }
+\input{./tables/num_women.tex}
 
 Direct information on sex selection is not available, so I compare periods 
 based on the changes in access and legality of prenatal sex determination in India.
@@ -680,7 +611,6 @@ quickly increased \citep{Sudha1999,bhat06,Grover2006}.
 In 1994, the Prenatal Diagnostic Techniques Act made determining and communicating 
 the sex of a fetus illegal.%
 \footnote{
-% Details about the act are at \href{http://pndt.gov.in/}{http://pndt.gov.in/}.
 There is little evidence that the ban significantly affected sex ratios \citep{Das-Gupta2019}.
 }
 Finally, although sex selection increased even after 1994, we may have passed a 
@@ -739,13 +669,11 @@ The second group of variables consists of those expected to have an approximatel
 proportional effect on the hazard.
 These include the mother's age when the spell begins, the household's
 land ownership, and whether it belongs to a scheduled tribe or caste.
-Appendix Tables \ref{tab:des_stat1} and \ref{tab:des_stat2} present the descriptive 
-statistics.
+The online appendix present the descriptive statistics.
 
 
 \section{How Birth Spacing Changed\label{sec:results}}
 
-% Explain question and what I am doing
 The first question I address is how birth spacing responded to the significant 
 changes in India.
 I begin with a broad outline of how parity progression probabilities and
@@ -777,14 +705,6 @@ significant differences across sex compositions are available in the online appe
 for rural women with no education by spell, sex composition, and period}
 \label{fig:spacing_low_rural}
 \end{figure}
-
-% \begin{figure}
-% \centering
-% \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_low_urban}
-% \caption{Percentile birth intervals, sex ratios, and parity progression  
-% for urban women with no education by spell, sex composition, and period}
-% \label{fig:spacing_low_urban}
-% \end{figure}
 
 \begin{figure}
 \centering
@@ -818,14 +738,6 @@ for urban women with 8--11 years of education by spell, sex composition, and per
 \label{fig:spacing_high_urban}
 \end{figure}
 
-% \begin{figure}
-% \centering
-% \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_highest_rural}
-% \caption{Percentile birth intervals, sex ratios, and parity progression  
-% for rural women with 12 or more years of education by spell, sex composition, and period}
-% \label{fig:spacing_highest_rural}
-% \end{figure}
-
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_highest_urban}
@@ -835,7 +747,6 @@ for urban women with 12 or more years of education by spell, sex composition, an
 \end{figure}
 
 
-% [Parity progression probability]
 The parity progression and the sex ratio show two broad trends.
 First, 
 in line with the falling total fertility rate, the likelihood of a next birth 
@@ -846,7 +757,6 @@ Within a given spell and period, parity progressions are lower in urban than rur
 if at least one son is present, and the more educated the mother.
 
 
-% [Sex ratios]
 Second, sex ratios have become more male-dominated for women with no sons, indicating the spread 
 of sex selection. 
 The percentage of boys increased more quickly, the higher the education and the higher the parity. 
@@ -874,7 +784,6 @@ least one son is present than if no son is present.
 Furthermore, the difference in birth interval length across sex compositions has grown over
 time as spacing when sons are present has become longer.
 
-% [25th percentile birth intervals]
 A remarkably high proportion of birth intervals are still very short.
 For all but the most educated, 25\% or more have their second and third child 
 within 24 months of the previous birth.
@@ -884,7 +793,6 @@ Even with the more substantial lengthening of birth intervals for higher paritie
 percentile duration is still around 24 months for the fourth spell for women with less than
 eight years of education.
 
-% [median birth intervals]
 Median birth interval lengths have also increased relatively little---only three to six months 
 over the four decades---compared to around 3.5 months \emph{per decade} in other countries with 
 declining fertility \citep{Rutstein2011,Casterline2016}.%
@@ -910,7 +818,6 @@ of education---also saw the largest increases in average spacing, possibly drive
 substantial improvement in household income for this group from economic growth.
 
 
-% [75th percentile birth intervals]
 The most substantial changes occurred in the 75th percentile birth interval durations, 
 where the more the parity progression probabilities declined, the more the birth interval 
 lengthened. 
@@ -920,8 +827,6 @@ of education and two sons and one girl has declined by almost 40 percentage poin
 Compare this with rural women of no education with a boy as their first child, for whom the 
 probability of a third birth declined by fewer than six percentage points while the birth 
 interval increased by only slightly more than two months.
-
-%0.637 0.241
 
 These results are in line with prior research showing that falling fertility is associated 
 with a lengthening of particularly the longer birth intervals, although why is still an 
@@ -935,7 +840,6 @@ the prior research arises because unintended births become a relatively larger p
 of the total number of births for a given parity and those can occur at any time.
 
 
-% [Birth intervals with sex selection]
 \subsection{Sex Selection and Birth Spacing}
 
 A clear illustration of how the combination of son preference and the introduction of 
@@ -1011,7 +915,7 @@ To this end, I compare fertility based on a variation of the total fertility rat
 predicted cohort fertility from the hazard model.
 Table \ref{tab:fertility} shows the two fertility measures by area of residence and education.
 
-\input{../tables/fertility.tex}
+\input{./tables/fertility.tex}
 
 The fertility rate follows the same procedure as in the Demographic and Health Survey 
 reports: I use the births from 36 to 1 month before the survey month to calculate 
@@ -1020,18 +924,6 @@ fertility rates multiplied by five  \citep{Croft2018}.
 However, because the hazard model predictions only use births up to parity four, I use the 
 same set of births for the fertility rate and label it the ``four-parity'' fertility rate. 
 Hence, the presented fertility rates are not directly comparable to those in the NFHS reports.
-
-%
-% \footnote{
-% See \citet{Croft2018} for more detail.
-% Because NFHS-1 and NFHS-2 did not interview all women about fertility, the number of women 
-% is based on the household rosters, assuming that never-married women have had no children.
-% Because of the low number of births to women aged 45 to 49 this age group was not
-% used for the hazard model estimations and, therefore, is also excluded for the fertility
-% rate.
-% The marital total fertility rate lead to unrealistically high numbers and is, therefore,
-% not presented \citep{Hoem2011,Laplante2015}.
-% }
 
 Because NFHS-1 was after the introduction of sex selection, I cannot calculate a fertility 
 rate in precisely the same manner for a period before sex selection was widely available.
@@ -1146,123 +1038,6 @@ However, the fixed effects and linear probability results did not
 deviate substantially in prior research.
 
 
-% \begin{figure}[htpb]
-% \centering
-% \rotatebox[origin=c]{90}{\small{1972-1984}}
-% \setcounter{subfigure}{-1}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[No Eduction]{\includegraphics[width=\textwidth]{mortality_s2_p1_low_dummies}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \setcounter{subfigure}{-0} 
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[One to Seven Years of Education]{\includegraphics[width=\textwidth]{mortality_s2_p1_med_dummies}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \\
-% \rotatebox[origin=c]{90}{\small{1985-1994}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p2_low_dummies}
-%     \end{minipage}
-% } 
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p2_med_dummies} 
-%     \end{minipage}
-% } 
-% \\
-% \rotatebox[origin=c]{90}{\small{1995-2004}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p3_low_dummies}
-%     \end{minipage}
-% } 
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p3_med_dummies} 
-%     \end{minipage}
-% } 
-% \\
-% \rotatebox[origin=c]{90}{\small{2005-2016}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p4_low_dummies}
-%     \end{minipage}
-% } 
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p4_med_dummies} 
-%     \end{minipage}
-% } 
-% \caption{Predicted Probability of Second Child's Infant Mortality 
-% for Women with No Education
-% and Women with One to Seven Years of Education}
-% \label{fig:mortality_low_med}
-% \end{figure}
-
-
-% \begin{figure}[htpb]
-% \centering
-% \rotatebox[origin=c]{90}{\small{1972-1984}}
-% \setcounter{subfigure}{-1}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \captionsetup[subfigure]{font=footnotesize,labelformat=empty,position=top,captionskip=-1pt,farskip=-0.5pt}
-%         \subfloat[Eight to Eleven Years of Education]{\includegraphics[width=\textwidth]{mortality_s2_p1_high_dummies}}
-%         \captionsetup[subfigure]{labelformat=parens}
-%     \end{minipage}
-% }
-% \begin{minipage}[t]{0.39\textwidth}\vspace{-2.68cm}\centering\footnotesize{Twelve or More Years of Education}\end{minipage}
-% \\
-% \rotatebox[origin=c]{90}{\small{1985-1994}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p2_high_dummies}
-%     \end{minipage}
-% } 
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p2_highest_dummies}
-%     \end{minipage}
-% } 
-% \\
-% \rotatebox[origin=c]{90}{\small{1995-2004}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p3_high_dummies}
-%     \end{minipage}
-% } 
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p3_highest_dummies} 
-%     \end{minipage}
-% } 
-% \\
-% \rotatebox[origin=c]{90}{\small{2005-2016}}
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p4_high_dummies}
-%     \end{minipage}
-% } 
-% \subfloat[Second Spell]{
-%     \begin{minipage}{0.37\textwidth}
-%         \includegraphics[width=\textwidth]{mortality_s2_p4_highest_dummies} 
-%     \end{minipage}
-% } 
-% \caption{Predicted Probability of Second Child's Infant Mortality 
-% for Women with Eight to Eleven of Education
-% and Women with Twelve or More Years of Education}
-% \label{fig:mortality_high_highest}
-% \end{figure}
-
-
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{mortality_spell_2_low_med}
@@ -1321,13 +1096,11 @@ Half of those who died were born in the 9--32-month interval, and none died in t
 
 \section{Conclusion\label{sec:conclusion}}
 
-% Background
 Over the past four decades, India saw a dramatic increase in the male-to-female
 sex ratio at birth as access to sex selection spread and son preference remained high. 
 Simultaneously, economic growth was strong, schooling increased, and the total fertility 
 rate declined to almost replacement level.
 
-% Questions
 The main question I address in this paper is how birth spacing responded to the 
 significant changes in India between 1972 and 2016, particularly the spread of sex 
 selection.
@@ -1336,8 +1109,6 @@ First, did changes in birth spacing make us overestimate the decline in cohort f
 Second, what is the relationship between infant mortality and the changes in birth spacing 
 and sex selection?
 
-
-% What has happened to spacing and why
 The most substantial lengthening of birth intervals occurred among the best-educated women,
 likely because of substantial use of sex selection combined with falling fertility.
 Take, for example, women with 12 or more years of education who had two girls. 
@@ -1369,17 +1140,12 @@ Furthermore, many women still have very short birth intervals.
 More than 25\% of women have their next child within 24 months of the previous birth in 
 many cases.  
 
-
-% [predictions of declining sex selection] 
 Despite predictions that the use of sex selection would decline, there is no clear 
 evidence of this. 
 The most likely users of sex selection continue to show substantial male-biased sex ratios, 
 although there may be some leveling off.
 More concerning, the increasingly male-biased sex ratios among less-educated women suggest
 that sex selection use appears to be spreading as fertility falls.
-
-
-% fertility bias
 
 The increases in spacing make the total fertility rate a more biased measure of cohort 
 fertility. 
@@ -1397,8 +1163,6 @@ as for India.
 It is conceivable that we might see increases in the total fertility rate as birth spacing 
 stabilizes or even shortens again if interventions against sex selection are successful.
 
-
-% Mortality
 There has been a substantial reduction in infant mortality over time, and the size of the 
 reductions is inversely related to the mother's education.
 Hence, there is now little difference in mortality risk across education groups if the 
@@ -1411,8 +1175,6 @@ well-educated mothers, only daughters, and high predicted sex ratios---the combi
 which suggests repeated sex-selective abortions---have no higher infant mortality than other
 children.  
 
-
-% Implications 
 The results here paint a less rosy picture of India's prospects for a continued reduction 
 in population growth than generally accepted. 
 With predicted cohort fertility still substantially higher than the period fertility rate, 
@@ -1423,10 +1185,6 @@ increase in the total fertility rate will be.
 Furthermore, the rapid decline in infant mortality risk, combined with likely future 
 declines as the proportion of very short birth intervals falls, may also slow the 
 reduction in population growth. 
-
-
-
-% Future research and policy 
 
 There are two crucial questions that future research should address.
 
@@ -1454,604 +1212,13 @@ Understanding the trade-off between long-term benefits from improvements in wome
 force participation and short-term costs from potential increases in sex selection is of 
 paramount importance.
 
-
-% The higher return to male offspring's human capital combined with access to sex
-% selection may also explain another puzzle, why is the labor force participation so
-% low when fertility is low and education has increased.
-% As shown here, part of the answer may be that the number of children is, in fact, not as 
-% low as previously thought, both because of the increased spacing and that more 
-% children survive.
-
-
-
 \clearpage
 
 \onehalfspacing
 \bibliographystyle{aer}
-\bibliography{sex_selection_spacing}
+\bibliography{sex_selection_spacing-final}
 
 \addcontentsline{toc}{section}{References}
-
-
-
-\clearpage
-\newpage
-
-\appendix
-
-% CHANGING NUMBERING OF FIGURES AND TABLES FOR APPENDIX
-\renewcommand\thefigure{\thesection.\arabic{figure}}    
-\renewcommand\thetable{\thesection.\arabic{table}}    
-
-\section*{Appendices for Online Publication}
-
-These appendices are intended for online publication.
-They provide the descriptive statistics, additional
-estimated duration tables, and graphs for all 
-education groups and spells.
-
-\clearpage
-\newpage
-
-\section{Characteristics of Women's Work Experiences}
-
-
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-Figure \ref{fig:work_by_survey} shows the percent of married women who are 
-currently working at the time of the survey by age group and education level.
-No other labor force participation question is consistently available across all 
-four surveys. 
-Because the question refers to currently working, the percentages are lower in previous
-studies. 
-
-\captionsetup[figure]{skip = 10pt}
-
-\begin{figure}[!htpb]
-\centering
-\rotatebox[origin=c]{90}{\small{40 Years or Older}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{currently_working_rural_40}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{currently_working_urban_40} 
-    \end{minipage}
-}
-\\
-\rotatebox[origin=c]{90}{\small{30--39 Years Old}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{currently_working_rural_30}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{currently_working_urban_30} 
-    \end{minipage}
-}
-\\
-\rotatebox[origin=c]{90}{\small{20--29 Years Old}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{currently_working_rural_20}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{currently_working_urban_20} 
-    \end{minipage}
-}
-\caption{Percentage of married women who were working at the time of the 
-survey by age group and area of residence}
-\label{fig:work_by_survey}
-\end{figure}
-
-
-\begin{figure}[!htpb]
-\centering
-\rotatebox[origin=c]{90}{\small{40 Years or Older}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_cash_rural_40}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_cash_urban_40} 
-    \end{minipage}
-}
-\\
-\rotatebox[origin=c]{90}{\small{30--39 Years Old}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_cash_rural_30}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_cash_urban_30} 
-    \end{minipage}
-}
-\\
-\rotatebox[origin=c]{90}{\small{20--29 Years Old}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_cash_rural_20}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_cash_urban_20} 
-    \end{minipage}
-}
-\caption{Percentage of women paid cash or cash and in-kind of those women who were 
-working at the time of the survey by age group and area of residence}
-\label{fig:work_cash_by_survey}
-\end{figure}
-
-
-
-\begin{figure}[!htpb]
-\centering
-\rotatebox[origin=c]{90}{\small{40 Years or Older}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_family_rural_40}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_family_urban_40} 
-    \end{minipage}
-}
-\\
-\rotatebox[origin=c]{90}{\small{30--39 Years Old}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_family_rural_30}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_family_urban_30} 
-    \end{minipage}
-}
-\\
-\rotatebox[origin=c]{90}{\small{20--29 Years Old}}
-\subfloat[Rural]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_family_rural_20}
-    \end{minipage}
-} 
-\subfloat[Urban]{
-    \begin{minipage}{0.45\textwidth}
-        \includegraphics[width=\textwidth]{work_family_urban_20} 
-    \end{minipage}
-}
-\caption{Percentage women who worked for a family member of those 
-working at the time of the survey, by age group and area of residence}
-\label{fig:work_family_by_survey}
-\end{figure}
-
-
-\clearpage
-\newpage
-
-\section{Empirical Model Details}
-
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-% [More formal version of empirical strategy section]
-
-
-The model is a discrete time, nonproportional, competing risk hazard model with two exit 
-states: Either a boy or a girl is born.
-The unit of analysis is a spell, the period from nine months after one birth to the next.
-For each woman, $i=1,\ldots,n$, the starting point for a spell is time $t=1$, and 
-the spell continues until time $t_i$, when either a birth occurs or the spell 
-is censored.%
-\footnote{
-The time of censoring is assumed independent of the hazard rate,
-as is standard in the literature.
-}
-There are two exit states: The birth of a boy, $j=1$, or the birth of a girl, $j=2$, and 
-$J_i$ is a random variable indicating which event took place.
-The discrete time hazard rate $h_{ijt}$ is 
-\begin{equation}
- h_{ijt} = \frac{\exp(D_j(t) + \alpha_{jt}'\mathbf{Z}_{it} + \beta_j'\mathbf{X}_{i})} 
- {1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{it} + \beta_l'\mathbf{X}_{i})} \: \: \; \; \;  j = 1,2
- \label{eq:hazard_appendix}
-\end{equation}
-where the explanatory variable vectors, $\mathbf{Z}_{it}$ and $\mathbf{X}_{i}$, capture 
-individual, household, and community characteristics,
-and $D_{j}(t)$ is the piece-wise linear baseline hazard for outcome $j$, captured
-by dummies and the associated coefficients,
-\begin{equation}
-D_j(t) = \gamma_{j1} D_1 + \gamma_{j2} D_2 + \ldots + \gamma_{jT} D_T,
-\end{equation}
-with $D_m = 1$ if $t=m$ and zero otherwise.
-This approach to modeling the baseline hazard is flexible and does not place 
-overly strong restrictions on the baseline hazard.
-
-The explanatory variables in $\mathbf{Z}$, and the interactions between them, 
-constitute the nonproportional part of the model, which means that they are
-interacted with the baseline hazard:
-\begin{equation}
- \mathbf{Z}_{it} = D_j(t) \times (\mathbf{Z}_1 + Z_2 + \mathbf{Z}_1 \times Z_2),
-\end{equation}
-where $D_j(t)$ is the piece-wise linear baseline hazard, $\mathbf{Z}_1$ captures sex 
-composition of previous children, if any, and $Z_2$ captures area of residence.
-The remaining explanatory variables, $\mathbf{X}$, enter proportionally,
-but to further minimize any potential bias from assuming proportionality, estimations 
-are done separately for different levels of mothers' education and different 
-periods.
-
-Equation (\ref{eq:hazard_appendix}) is equivalent to the logistic hazard model and has the same 
-likelihood function as the multinomial logit model \citep{allison82,jenkins95}.
-Hence, transforming the data, so each observation is an interval---here equal
-to three months---the model can be estimated using a standard multinomial logit model.
-
-The distribution of spacing is captured by the survival curve, which shows the probability 
-of not having had a birth yet by spell duration, for a given set of explanatory variables.
-The survival curve at time $t$ is 
-\begin{equation}
-\label{eq:survival}
-S_{t} 
-= 
-\prod_{d=1}^t
-\left(
-\frac{ 1 }
-{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{ld}'\mathbf{Z}_{kd} + \beta_l'\mathbf{X}_{k})}
-\right).
-\end{equation}
-
-% Because the probability of ever having a next birth varies across groups, a direct 
-% comparison of standard survival curves tells us little about how the spread of sex 
-% selection affects birth spacing across groups.
-% I, therefore, condition on the predicted likelihood of parity progression when examining 
-% birth spacing measures, such as the average duration to a birth.
-% The reliability of this approach depends on whether the spell length covered is 
-% sufficiently long that few women are likely to give birth after the spell cut-off.
-% I discuss the choice of spell length below.%
-% \footnote{
-% It is important to note that the approach is not the same as merely calculating 
-% the birth spacing measures for women who already have a given 
-% parity child in the survey because that number does not take into account
-% the censoring of spells that will eventually lead to a birth.
-% }
-% In addition, I present graphs of survival curves conditional on parity progression,
-% which therefore begin at 100\% and end at 0\%.
-
-Interpretation of the model coefficients is challenging \citep{thomas96}.
-It is, however, possible to calculate the predicted probabilities of 
-having a boy, $b$, and of having a girl, $g$, in period $t$, conditional on 
-a set of explanatory variables and not having had a child before that period, as
-\begin{align}
-P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt}, t ) 
-& =  
-\frac{ \exp(D_j(t) + \alpha_{1t}' \mathbf{Z}_{kt} + \beta_1' \mathbf{X}_{k} )}
-{1 + \sum_{l=1}^2 \exp(D_j(t) + \alpha_{lt} ' \mathbf{Z}_{kt} + \beta_l ' \mathbf{X}_{k})}
-\label{eq:probability_boy} \\
-P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t ) 
-& =  
-\frac{ \exp(D_j(t) + \alpha_{2t}'\mathbf{Z}_{kt} + \beta_2'\mathbf{X}_{k} )}
-{1 + \sum_{l=2}^2 \exp(D_j(t) + \alpha_{lt}'\mathbf{Z}_{kt} + \beta_l'\mathbf{X}_{k})}
-\label{eq:probability_girl}
-\end{align}
-It is then straightforward to calculate the estimated percentage of children born that 
-are boys, $\hat{Y}$, at each $t$:  
-\begin{equation}
-\hat{Y}_t 
-= 
-\frac{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )}
-{ P(b_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t) + P(g_{t} | \mathbf{X}_{k}, \mathbf{Z}_{kt},t )} 
-\times 100.
-\label{eq:probability_son}
-\end{equation}
-Combining the percentage boys and the likelihood of exiting the spell 
-across all $t$ gives the predicted percent boys born over the entire spell.%
-\footnote{
-Imagine $T=2$. 
-If 54\% and 66\% of births are boys and the likelihood of giving birth 20\% and 40\%, 
-then the predicted sex ratio is $\frac{54*0.2+66*0.4}{0.2+0.4} = 62$\% boys. 
-}
-
-
-
-
-\clearpage
-\newpage
-
-\section{Recall Error and the Sex Ratio}
-
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-The reliability of the results depends on the correctness of the birth histories
-provided by the respondents.
-A significant concern here is underreporting of child mortality, especially a systematic
-recall error where respondents' likelihood of reporting a deceased child depends on the 
-sex of that child. 
-This appendix section assesses the degree of recall error across the surveys and discusses 
-methods to address it.
-
-NFHS enumerators probe for any missed births, although the method depends on the survey.
-NFHS-1 probe for each calendar birth interval that is four or more years.
-NFHS-2 asked for stillbirths, spontaneous and induced abortions and also probed 
-for each calendar birth interval four or more years.
-NFHS-3 and NFHS-4 did not directly use birth interval lengths, but asked whether there were any 
-other live births between (name of previous birth) and (name), including any children who 
-died after birth, and asked for births before the birth listed as first birth and
-after the last birth listed as the last birth.
-
-Probing catches many initially missed births, but systematic recall error based on son
-preference may still be a problem.
-First, son preference leads to significantly higher mortality for girls than boys.
-Secondly, son preference makes it more likely that parents will remember deceased boys 
-than deceased girls.
-Finally, in the absence of sex-selective abortions, parents with a preference for sons may
-have the next birth sooner if the last child was a girl than if it was a boy.
-If this girl subsequently dies, she is more likely to be missed if probing for missed 
-births is only done for long intervals as in NFHS-1 and NFHS-2.
-
-I use two approaches to examine the degree of recall error.
-The first approach is to test whether the observed sex ratio is significantly different
-from the natural sex ratio.
-The natural sex ratio is approximately 105 boys to 100 girls or
-51.2\% \citep{jacobsen99,Portner2015b}.
-Prenatal sex determination techniques did not become widely available until the mid-1980s, 
-so any significant deviation from the natural sex ratio before that time is likely the 
-result of recall error.
-The second approach is to compare births that took place during the same period but
-where captured in different surveys.
-Recall error is likely to increase with time, so births and deaths that took place earlier 
-are more likely to be subject to recall error than more recent events.
-
-Table \ref{tab:recallBirthBO1} shows the sex ratios of children recorded as first-born by 
-year of birth, together with tests for whether the observed sex ratio is significantly 
-higher than the natural sex ratio and whether more recent surveys have a higher sex ratio 
-for the cohort than earlier surveys for the same period births.
-Births are combined into five-year cohorts to achieve sufficient power.
-
-\input{../tables/recallBirthBO1.tex}
-
-% \input{../tables/recallBirthBO2.tex}
-
-
-The ``first-born'' sex ratios illustrate the systematic recall error problem well.
-In all four surveys around 55\% of children reported as first-born are boys
-for the first cohort of births observed.
-Given that these cohorts cover from 1960-1964 to 1980-1984, which is before sex selection 
-techniques became available in India, the most likely explanation for the skewed sex ratio 
-is that some children listed as first-borns were not, in fact, the first children born in 
-their families.
-Instead, for a substantial proportion of families, their first-born was a girl who died 
-and went unreported when enumerators asked about birth history.
-
-As expected, the difference between the observed sex ratio and the natural sex ratio is 
-less pronounced the closer to the survey date the cohort is.
-The observed sex ratio for children born just before the NFHS-1 survey and listed as 
-first-born is 0.517, which is not statistically significantly different from the
-natural sex ratio.
-The same general pattern holds for the other three surveys, with cohorts further away
-from the survey date more likely to have a sex ratio skewed male.
-
-% Second births show a pattern very similar to that for first births.
-% An interesting difference is that there is evidence of a U-shaped relationship between
-% time and sex ratio for second births.
-% Cohorts furthest away from the survey year show the highest sex ratios, but declines to the
-% natural sex ratio in the mid-1980s, and the sex ratio is then significantly higher again 
-% for more recent births.
-% This is in line with the results in the main paper that show that sex selective abortions 
-% take place on lower parity births as desired fertility declined.
-
-Finally, across surveys, the same cohort tends to show a higher sex ratio the more recent 
-the survey (births in the cohort took place earlier relative to the survey date).
-Despite this, few cohorts show significantly different sex ratios across surveys, most 
-likely because of a lack of power.
-The exception is that comparisons involving NFHS-4 are mostly statistically significant
-since the number of surveyed households in NFHS-4 were much larger than in prior surveys.
-
-The problem with the above approach is that the year of birth is affected by recall error; 
-a second born child listed as first-born is born later than the real first born child.
-Year of marriage should, however, be affected neither by parental recall error 
-nor the use of sex-selective abortions.
-Tables \ref{tab:recallMarriageBO1} and \ref{tab:recallMarriageBO2}, therefore, shows sex 
-ratios of children recorded as first-born and second-born by year of parents' marriage, 
-together with tests for whether the observed sex ratio is significantly higher than the 
-natural sex ratio and whether more recent surveys show a higher sex ratio for the cohort 
-than earlier surveys.
-The basic recall error pattern remains, with women married longer ago more
-likely to report that their first-born is a boy.
-Similarly, comparing women married in the same five-year period across surveys shows
-that women married longer ago are more likely to report having a son.
-
-
-\input{../tables/recallMarriageBO1.tex}
-
-\input{../tables/recallMarriageBO2.tex}
-
-
-The relationship between the length of marriage and recall error can also be seen in 
-Figures \ref{fig:sex_ratio_recall_rounds_bo1} and \ref{fig:sex_ratio_recall_rounds_bo2}, 
-which show the observed sex ratio for children reported as first born as a function of 
-the duration of marriage at the time of the survey.
-The solid line is the sex ratio of children reported as first-born by the number of years 
-between the survey and marriage, while the dashed lines indicate the 95\% confidence 
-interval and the horizontal line the natural sex ratio (approximately 0.512).
-To ensure sufficient cell sizes I group years into twos.
-In line with the results from Tables \ref{tab:recallMarriageBO1} and 
-\ref{tab:recallMarriageBO2}, the observed ratio of boys is increasingly above the expected 
-value the longer ago the parents were married.
-
-\begin{figure}
-\centering
-\subfloat[NFHS-1]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_1}}
-\subfloat[NFHS-2]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_2}} \\
-\subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_3}} 
-\subfloat[NFHS-4]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_4}} 
-\caption{Ratio of Boys for ``First'' Births by Survey Round}
-\label{fig:sex_ratio_recall_rounds_bo1}
-\end{figure}
-
-\begin{figure}
-\centering
-\subfloat[NFHS-1]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_1_bo2}}
-\subfloat[NFHS-2]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_2_bo2}} \\
-\subfloat[NFHS-3]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_3_bo2}} 
-\subfloat[NFHS-4]{\includegraphics[width=.49\textwidth]{recall_sex_ratio_marriage_round_4_bo2}} 
-\caption{Ratio of Boys for ``Second'' Births by Survey Round}
-\label{fig:sex_ratio_recall_rounds_bo2}
-\end{figure}
-
-
-The increasingly unequal sex ratio with increasing marriage duration suggests that
-a solution to the recall error problem is to drop observations for 
-women who were married ``too far'' from the survey year.
-The main problem is establishing what the best cut-off point should be, with the
-trade-off between retaining enough observations and the correctness of the information.
-As Tables \ref{tab:recallMarriageBO1} and \ref{tab:recallMarriageBO2} show, there are 
-differences in recall error across the three surveys and between the two birth
-orders, although this may be the result of differences in the number of observations 
-across surveys.
-Furthermore, the recall error pattern is not entirely consistent across observed birth 
-orders.
-Since most of the surveys start showing significantly biased sex ratio from around 22
-years of marriage on, I drop all observations where the marriage took place 22 years
-or more.
-
-
-\clearpage
-\newpage
-
-\section{Descriptive Statistics}
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-
-% Descriptive statistics tables
-\input{../tables/des_stat.tex}
-
-\clearpage
-\newpage
-
-
-
-\section{Additional Results Figures and  Tables}
-
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-\captionsetup[figure]{skip = -16pt}
-
-Figures \ref{fig:spacing_low_urban} and \ref{fig:spacing_highest_rural} show 25th, 50th,
-and 75th percentile birth interval lengths, the sex ratio, and the probability of parity
-progression by spell for urban women with no education and rural women with 12 or
-more years of education, respectively.
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_low_urban}
-\caption{Percentile birth interval lengths, sex ratios, and parity progression  
-for urban women with no education by spell, sex composition, and period}
-\label{fig:spacing_low_urban}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{bs_highest_rural}
-\caption{Percentile birth interval lengths, sex ratios, and parity progression  
-for rural women with 12 or more years of education by spell, sex composition, and period}
-\label{fig:spacing_highest_rural}
-\end{figure}
-
-
-
-The first set of tables, Tables \ref{tab:p25_p50_p75_low}, \ref{tab:p25_p50_p75_med},
-\ref{tab:p25_p50_p75_high}, and \ref{tab:p25_p50_p75_highest} show 25th, 50th, and
-75th percentile birth interval lengths together with their standard errors.
-The standard errors for all measures are based on bootstrapping,
-where the model is repeatedly estimated using resampling with replacement.
-
-The second set of tables, 
-Tables \ref{tab:avg_sex_ratio_low}, \ref{tab:avg_sex_ratio_med}, 
-\ref{tab:avg_sex_ratio_high}, and \ref{tab:avg_sex_ratio_highest}, show predicted average 
-birth interval lengths, sex ratios, and probabilities of having a birth by decade, spell, and sex 
-composition for the four education levels separated by the area of residence, together 
-with bootstrapped standard errors for all three outcomes.
-To find the average birth interval length, I calculate, for each woman, the probability of 
-giving birth in each $t$, and her expected spell length from these probabilities. 
-I then average the individual expected spell lengths across women using their parity 
-progression probabilities as weights. Finally, I add nine months because spells begin 
-nine months after the previous birth.
-
-I also show whether durations for sex composition other than only girls are statistically 
-significantly different from the duration with only girls based on bootstrapped 
-differences. 
-The cleanest test is comparing durations after only boys with durations after
-only girls, but the number of births to women with only sons becomes small 
-in the later periods.
-Hence, it is possible to have substantial differences in spacing that are
-not statistically significant because of low power, especially for the third 
-and fourth spell.
-
-Each predicted percent of boys is tested against the natural percentage of
-boys using the bootstrapped standard errors.
-The natural sex ratio is approximately 105 boys to 100 girls or
-51.2\% \citep{jacobsen99,Portner2015b}.
-The predicted percentage boys may differ from the natural rate because of 
-natural variation, any remaining recall error not corrected for, or 
-sex selection. 
-
-\input{../tables/bootstrap_duration_p25_p75_low_all.tex}
-
-\input{../tables/bootstrap_duration_p25_p75_med_all.tex}
-
-\input{../tables/bootstrap_duration_p25_p75_high_all.tex}
-
-\input{../tables/bootstrap_duration_p25_p75_highest_all.tex}
-
-\input{../tables/bootstrap_duration_avg_sex_ratio_low_all.tex}
-
-\input{../tables/bootstrap_duration_avg_sex_ratio_med_all.tex}
-
-\input{../tables/bootstrap_duration_avg_sex_ratio_high_all.tex}
-
-\input{../tables/bootstrap_duration_avg_sex_ratio_highest_all.tex}
-
-
-\clearpage
-\newpage
-
-
-\section{Infant Mortality Graphs}
-
-\setcounter{figure}{0}
-\setcounter{table}{0}
-
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{mortality_spell_3_low_med}
-\caption{Infant mortality by preceding birth interval length across periods for third child of women with 
-no education and women with 1--7 years of education}
-\label{fig:mortality_low_med_spell_3}
-\end{figure}
-
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,height=\textheight,keepaspectratio=true]{mortality_spell_3_high_highest}
-\caption{Infant mortality by preceding birth interval length across periods for third child of women with 
-8--11 and 12 and above years of education}
-\label{fig:mortality_high_highest_spell_3}
-\end{figure}
-
 
 
 \end{document}
