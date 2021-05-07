@@ -8,25 +8,23 @@ To reproduce results the following files are needed.
 
 ## NFHS-1
 
-iawi22fl.dta - wealth index
-iahr23fl.dta - household recode
-iahh21fl.dta - household raw
-iair23fl.dta - individual recode (women)
+ - iawi22fl.dta - wealth index
+ - iahr23fl.dta - household recode
+ - iahh21fl.dta - household raw
+ - iair23fl.dta - individual recode (women)
 
 ## NFHS-2
 
-iahr42fl.dta - household recode
-iawi41fl.dta - wealth index
-iair42fl.dta - individual recode (women)
+ - iahr42fl.dta - household recode
+ - iawi41fl.dta - wealth index
+ - iair42fl.dta - individual recode (women)
 
 ## NFHS-3
 
-iair52fl.dta - individual recode (women)
-iahr52fl.dta - household recode
+ - iair52fl.dta - individual recode (women)
+ - iahr52fl.dta - household recode
 
 ## NFHS-4
 
-iair71fl.dta - individual recode (women)
-iahr71fl.dta - household recode
-
-~/Downloads/IAHR52DT/IAHR52FL.dta
+ - iair71fl.dta - individual recode (women)
+ - iahr71fl.dta - household recode
