@@ -2,3 +2,5 @@
 /tables/*.tex
 /figures/*.tex
 
+* Track EPS files for typesetting
+!/typesetting/figures/*.EPS
