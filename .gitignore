@@ -1,4 +1,11 @@
-* Generated files to ignore (not ignored through global
+* Generated files to ignore
 /tables/*.tex
 /figures/*.tex
 
+* Ignore data files
+*.dta
+*.DTA
+*.ster
+
+* Track EPS files for typesetting
+!/typesetting/figures/*.EPS
