@@ -11,3 +11,12 @@ sexSelectionSpacing-ver1.tex: This is the shorten version of the last round subm
 to *Demography* with the changes I suggested in my appeal.
 
 
+# N-IUSSP article
+
+How to run Markdown file in this directory if you do not want to use Make.
+
+To PDF: 
+`pandoc default.yaml niussp.md -o niussp.pdf --pdf-engine=xelatex -N -s --filter pandoc-citeproc`
+
+
+
