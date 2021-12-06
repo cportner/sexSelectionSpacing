@@ -20,32 +20,36 @@ link-citations: true
 
 The introduction of ultrasound in India in the mid-1980s ushered in an era of
 significant use of sex-selective abortions.
-Sex selection has two major direct impacts. 
-One is obvious, more boys are born relative to girls. 
-The other less so: with each abortion the time that passes between births increases.  
+One impact of sex selection is obvious: more boys are born relative to girls.
+There is, however, also a less obvious impact: 
+each sex-selective abortion adds 6--12 months to the time between births.
+This extra time comes from a combination of having to wait after an abortion, the time 
+to a new conception, and the time until the couple is at the same point in the new 
+pregnancy as they were in the prior when it was aborted.
 
-This duration, also known as spacing, between births is relevant for three reasons.
-First, the spacing between births can tell us about the extent of sex selection and
-has previously been used to measure son preference.
-For example, traditionally, a strong preference for sons has led Indian women to have 
-the next child much sooner if they do not yet have a son than if they do.
+The duration between births---also known as birth spacing---is relevant for three reasons.
+First, increases in spacing between births can tell us about the extent of sex selection.
+Furthermore, before the introduction of sex selection birth spacing was used to 
+measure son preference since, traditionally, Indian women had their next child much
+sooner if they did not yet have a son.
+
 Second, shorter durations between births negatively affect both mother's and children's
 health.
 Particularly, very short birth intervals makes it significantly more likely that children 
 will die, which means that the traditional shorter birth intervals for women without sons 
 may be part of the reason for girls' higher mortality risk compared to boys in India.
-Finally, because of how we calculate our most commonly used fertility measures, rapid 
-lengthening in birth spacing give the illusion that fertility is declining faster than 
-it really is if we follow the number of children women actually end up with.
 
-In a recent paper, I examine how Hindu women's birth spacing has changed over time in 
-India, using birth histories covering 1972--2016 from the four National Family and Health 
-Surveys [@Portner2021].
-I focus on the effects of the spread of sex selection because each sex-selective abortion 
-adds 6--12 months to the length of the birth interval.
-This extra time comes from a combination of having to wait after an abortion, time to 
-a new conception, and the time until the couple is at the same point in the new 
-pregnancy as they were in the prior when it was aborted.
+Finally, because of how we calculate our most commonly used fertility measure---the
+total fertility rate (TFR)---lengthening in birth spacing can give the illusion 
+that fertility is declining faster than it really is if we follow how many children 
+women actually end up with.
+This phenomenon is known as a tempo effect and arises because the TFR is a period
+fertility measure, based on how many births women across all age groups had in a 
+given period, often the last year [@Bongaarts1999;@Hotz1997;@Ni-Bhrolchain2011].
+
+In a recent paper, I examine how Hindu women's birth spacing has changed over the
+1972--2016 period, focusing on the effects of the spread of sex selection [@Portner2021]. 
+The data comes from the first four National Family and Health Surveys.
 
 
 # The use of sex selection is not declining
@@ -120,14 +124,9 @@ valued as is often assumed.
 
 # Spread of sex selection makes us overestimate fertility decline
 
-Our most commonly used measure of fertility is the total fertility rate (TFR), which is 
-based on how many births women across all age groups had in a period, often the last year.
-Hence, the TFR is not an estimate of how many births a given woman will have but rather a 
-measure of period fertility.
-A rapidly expanding use of sex selection, which increases the time between births, makes 
+A rapidly expanding use of sex selection increases the time between births and makes 
 the TFR a downward-biased estimate of cohort fertility, which capture how many children a 
-family actually ends up with, in what is known as a tempo effect
-[@Bongaarts1999;@Hotz1997;@Ni-Bhrolchain2011].
+family actually ends up with.
 
 This is exactly what appeared to have happened in India, with the period fertility rate 
 substantially overestimating how fast cohort fertility fell in the 1990s and early 2000s 
