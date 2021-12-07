@@ -1,5 +1,5 @@
 ---
-title: "Sex Selection Lengthens Birth Spacing and Biases Fertility Measure"
+title: "Sex Selection Lengthens Birth Spacing and Makes Fertility Measure Too Low"
 data: December 2021
 author:
 - Claus C. Pörtner^[Department of Economics,
@@ -20,52 +20,51 @@ link-citations: true
 
 The introduction of ultrasound in India in the mid-1980s ushered in an era of rapidly 
 increasing use of sex-selective abortions. 
-One self-evident impact is that more boys were born relative to girls. 
-However, each sex-selective abortion also delays the next birth by 6 to 12 months, 
-resulting in longer durations between births.
+One well-known impact is that more boys were born relative to girls. 
+A less-known effect is that each sex-selective abortion delays the next birth by 6 
+to 12 months, resulting in longer durations between births.
 
-The duration between births---also known as birth spacing---is relevant for three reasons. 
-First, increases in spacing can tell us about the extent of sex selection. 
-Furthermore, before sex selection, demographers used spacing to measure son preference 
-since, traditionally, Indian women had their next child much sooner if they did not yet 
-have a son.
+The duration between births---also known as birth spacing---is relevant for three reasons.
+First, spacing can help us understand the degree of son preference. 
+Before sex selection, demographers used spacing to measure son preference since, 
+traditionally, Indian women had their next child much sooner if they did not yet have a 
+son. 
+Now, increases in spacing can tell us about the extent of sex selection.
 
-Second, shorter durations between births negatively affect both mothers' and children's 
-health. 
-In particular, very short birth intervals increase child mortality. 
-Hence, the traditional shorter birth intervals for women without sons may explain part 
-of girls' higher mortality risk compared to boys in India.
+Second, shorter durations between births negatively affect children's health. 
+Specifically, very short birth intervals increase child mortality. 
+Hence, the traditional shorter birth intervals for women without sons may partly explain
+girls' higher mortality risk compared to boys in India.
 
 Finally, lengthening birth intervals makes our most commonly used fertility measure---the 
 total fertility rate (TFR)---decline faster than cohort fertility, which is how many 
 children women eventually have. 
-This phenomenon is known as a tempo effect. It arises because the TFR is a period 
-fertility measure based on how many births women across all age groups had in a given 
-period, often the last year [@Bongaarts1999;@Hotz1997;@Ni-Bhrolchain2011].
-
+This phenomenon is known as a tempo effect. 
+It arises because the TFR is a period fertility measure based on how many births women 
+across all age groups had in a given period, often the last year 
+[@Bongaarts1999;@Hotz1997;@Ni-Bhrolchain2011].
 
 In a recent paper, I examine how Hindu women's birth spacing has changed over the 
 1972--2016 period, focusing on the effects of the spread of sex selection [@Portner2021]. 
 The data comes from the first four National Family and Health Surveys. 
 In the absence of sons, the desire to use sex selection appears to increase with lower 
-desired fertility and higher parity [@Portner2015b;@Jayachandran2017]. 
+desired fertility and higher parity, where parity is the number of live births so far 
+[@Portner2015b;@Jayachandran2017]. 
 Thus, birth intervals should lengthen most for women with no sons, lower desired 
 fertility, and better access to sex selection for a given parity.
 
 
 # The use of sex selection is not declining
 
-The data show two broad trends over the four decades. 
+The data show two broad trends over the last four decades. 
 First, the likelihood of a subsequent birth has decreased over time. 
 Not surprisingly, given the son preference in India, the probability of having another 
 child is much lower if the mother already has one or more sons. 
-Similarly, more educated mothers and women in urban areas have a lower likelihood of 
-having another birth.
 
 Second, sex ratios have become more male-dominated for women with no sons, illustrating 
 the spread of sex selection. 
-Furthermore, in the absence of a son, sex ratios are higher, the more educated the mother, 
-and the more children she already has, and are higher in urban than in rural areas.
+In the absence of a son, male-to-female ratios at birth are higher, the more educated the 
+mother and the more children she already has.
 
 Despite predictions that sex selection use will eventually decline, there is no clear 
 evidence of this yet. 
@@ -86,25 +85,27 @@ A remarkably high proportion of these birth intervals are still very short.
 Expect for the most educated, 25% or more have their second and third child within 24 
 months of the previous birth, substantially below the 24 months between pregnancies the 
 WHO recommends. 
-Furthermore, in these intervals, son preference is still evident, with the shortest birth 
-spacing when a family has only girls.
+Furthermore, son preference is still evident in these intervals, with the shortest birth 
+spacing occurring when a family has only girls.
 
 The story is very different when sex selection is used. 
 Well-educated women with no sons had the most substantial lengthening of birth intervals 
 and the most male-biased sex ratios, evidence of very significant use of sex-selective 
 abortions. 
 For example, among women with 12 or more years of education, almost 80% of third births 
-were boys if they had two daughters first. 
+were boys if the women already had two daughters. 
 On top of that, the 75th percentile birth interval length is nearly 70 months, a 
 21-month increase over four decades. 
-Strikingly, most of this change occurred soon after the introduction of sex selection.
+Strikingly, more than 70% of this increase occurred in the first decade after the 
+introduction of sex selection.
 
 Therefore, some women with no sons now have *longer* birth intervals than those with sons, 
 reversing India's traditional spacing pattern. 
 Although this change is manifestly not because of declining son preference, it does open 
 the possibility of unintended positive effects on the prior daughters' health and 
-survival, as girls-only families are now less likely to have very short birth intervals.
-
+survival.
+Girls-only families are now less likely to have very short birth intervals, and that may, 
+by itself, improve girls survival chances.
 
 
 # Spread of sex selection makes us overestimate fertility decline
