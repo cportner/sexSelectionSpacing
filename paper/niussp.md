@@ -1,5 +1,5 @@
 ---
-title: "Sex Selection Lengthens Birth Spacing and Makes Fertility Measure Too Low"
+title: "Sex Selection in India Lengthens Birth Spacing and Makes TFR Too Low"
 data: December 2021
 author:
 - Claus C. Pörtner^[Department of Economics,
@@ -15,6 +15,15 @@ link-citations: true
 ...
 
 \doublespacing
+
+# Summary
+
+In India, the male-to-female ratio at birth has increased continuously since the mid-1980s. 
+Claus Portner shows that the increasing use of sex selection substantially 
+lengthened birth intervals. 
+This rapid lengthening, in turn, is responsible for a significant downward bias in the 
+total fertility rate compared to predicted cohort fertility. 
+
 
 # Introduction
 
