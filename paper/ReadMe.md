@@ -18,5 +18,10 @@ How to run Markdown file in this directory if you do not want to use Make.
 To PDF: 
 `pandoc default.yaml niussp.md -o niussp.pdf --pdf-engine=xelatex -N -s --filter pandoc-citeproc`
 
+To Word:
+`pandoc default.yaml niussp.md -o niussp.docx -N -s --filter pandoc-citeproc`
+
+
+
 
 
