@@ -1,6 +1,8 @@
 * Generated files to ignore
 /tables/*.tex
 /figures/*.tex
+*.doc
+*.docx
 
 * Ignore data files
 *.dta
