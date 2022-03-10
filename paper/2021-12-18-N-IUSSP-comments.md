@@ -11,7 +11,9 @@ unfortunate, because you are comparing periods (not always clear which ones), an
 assume that everybody knows everything: e.g., fertility levels and trends, or changes 
 over time of birth intervals, or probabilities of further children depending on the sex 
 of the first one(s), evolution of sex ratio at birth in India (and neighbouring 
-countries, eg. China?) Also: is sex selective abortion permitted in India? 
+countries, eg. China?) 
+
+Also: is sex selective abortion permitted in India? 
 Probably not (although it is happening nonetheless), but this is also something that 
 should be said.
 
@@ -19,8 +21,8 @@ Beyond that, the general message of your article is unclear to us.
 Your only concern about sex-selective abortion seems to be about birth intervals 
 (even your original title focused only on this - but we suggest that you change both 
 contents and title) and the use that scholars should make of them. However, laypersons 
-are (correctly) impressed by sex-selective abortions for different reasons (e.g. as i
-ndicators of backwardness, measures of the need for female empowerment in India, and 
+are (correctly) impressed by sex-selective abortions for different reasons (e.g. as 
+indicators of backwardness, measures of the need for female empowerment in India, and 
 possible causes of distortion in the marriage market in the future), which are not even
 mentioned in your article. 
 
