@@ -9,5 +9,8 @@
 *.DTA
 *.ster
 
+* Ignore Mac files
+.DS_Store
+
 * Track EPS files for typesetting
 !/typesetting/figures/*.EPS
