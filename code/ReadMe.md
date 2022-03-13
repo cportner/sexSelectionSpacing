@@ -8,6 +8,11 @@ The programs used the user-generated packages below (might not be a complete lis
 - asgen (net install asgen.pkg)
 - xfill (net from https://www.sealedenvelope.com/ and then install xfill)
 
+The following user-generated packages are needed for the N-IUSSP article
+
+- wbopendata (ssc install wbopendata [website](https://datahelpdesk.worldbank.org/knowledgebase/articles/889464-wbopendata-stata-module-to-access-world-bank-data))
+- cleanplots (net install cleanplots, from("https://tdmize.github.io/data/cleanplots"))
+
 ## Create data set for analysis
 
 - crBase1.do: subset of NFHS-1, creates base1.dta
