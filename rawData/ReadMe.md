@@ -10,6 +10,8 @@ To reproduce results the following files are needed.
 
  - iawi22fl.dta - wealth index
  - iair23fl.dta - individual recode (women)
+ - iahh21fl.dta - household raw (needed for education graphs)
+ - iahr23fl.dta - household recode (needed for education graphs)
 
 ## NFHS-2
 
@@ -20,6 +22,7 @@ To reproduce results the following files are needed.
 ## NFHS-3
 
  - iair52fl.dta - individual recode (women)
+ - iahr52fl.dta - household recode (needed for education graphs)
 
 ## NFHS-4
 
