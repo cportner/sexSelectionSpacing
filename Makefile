@@ -238,7 +238,7 @@ results: $(GRAPHTARGET) $(PPSTARGET) $(PERCENTILE_GRAPHS) \
 
 # Create base data set(s)
 # Need "end" file as outcome, here the base data sets for each survey
-$(DAT)/base1.dta: $(COD)/crBase1.do $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta $(RAW)/iahh21fl.dta
+$(DAT)/base1.dta: $(COD)/crBase1.do $(RAW)/iair23fl.dta $(RAW)/iawi22fl.dta 
 	cd $(COD); stata-se -b -q $(<F)
     
 $(DAT)/base2.dta: $(COD)/crBase2.do $(RAW)/iair42fl.dta $(RAW)/iawi41fl.dta $(RAW)/iahr42fl.dta
