@@ -3,6 +3,7 @@
 /figures/*.tex
 *.doc
 *.docx
+*.log
 
 * Ignore data files
 *.dta
