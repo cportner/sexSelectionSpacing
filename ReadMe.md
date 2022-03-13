@@ -38,11 +38,16 @@ Stata has to be version 15 or later.
 Make sure you do not have your profile automatically change
 working directory (to something like cd ~/data for example).
 If you do, make will not run the Stata files correctly.
-Finally, make sure you install the user generated packages detailed in the `ReadMe.md` 
-file in the `code` directory.
+
+Finally, make sure you install the user generated packages detailed 
+in the `ReadMe.md` file in the `code` directory.
+The bootstrap code will not run without these.
 
 The PDF of final paper is created using XeLaTeX with the TeX
 Gyre Pagella fonts.
 The fonts are freely available here:
 - [Math font](http://www.gust.org.pl/projects/e-foundry/tg-math/index_html)
 - [Text font](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella)
+
+If you are on a Mac, the easiest approach is to download the OTF files, 
+then open Font Book and add the font files that way.
