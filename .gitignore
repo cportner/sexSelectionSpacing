@@ -5,6 +5,7 @@
 *.docx
 *.log
 *.eps
+*.png
 
 * Ignore data files
 *.dta

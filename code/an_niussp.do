@@ -11,15 +11,68 @@ capture program drop _all
 
 include directories
  
+// Try sex ratio from NFHS data
+
+
+
+/*-------------------------------------------------------------------*/
+/* LOADING DATA AND CREATING NEW VARIABLES                           */
+/*-------------------------------------------------------------------*/
+
+use `data'/base
+
+keep if hindu 
+drop if observation_age_m >= 22 & round == 1
+drop if observation_age_m >= 22 & round == 2
+drop if observation_age_m >= 22 & round == 3
+drop if observation_age_m >= 22 & round == 4
+
+// 524,761 before / 395,695
+
+
+// survey information
+gen survey = round // Round is now calculated in crBase.do
+
+
+
+/*-------------------------------------------------------------------*/
+/* DEVELOPMENT IN SEX RATIOS							             */
+/*-------------------------------------------------------------------*/
+
+// prepares data for analysis
+//preserve
+keep round survey urban observation_age* mom_id b*_sex b*_born_cmc
+reshape long b@_sex b@_born_cmc, i(mom_id) j(bo)
+drop if b_sex == .
+gen born_year = int((b_born_cmc-1)/12)+1900
+// drop if born_year < `startyear'
+recode b_sex (2=0)
+
+collapse b_sex if born_year >= 1972, by(born_year)
+rename born_year year
+save `data'/tmp_sr.dta, replace
+
+ 
  
 // Get background data
 
 wbopendata, country(ind) indicator(SP.POP.BRTH.MF;SP.DYN.TFRT.IN) year(1972:2016) clear long
 
+merge 1:1 year using `data'/tmp_sr.dta
+exit
+
 // Percent boys to ensure consistency across graphs
 gen percent_boys = (sp_pop_brth_mf / (1 + sp_pop_brth_mf ))*100
 
 // Graph TFR and percent boys
+
+// The problem with using the WB data for sex ratio is that there is 
+// substantial measurement error/recall bias. According to the WB
+// data there is a above normal sex ratio at birth even in 1972, which
+// is likely the result of mortality combined with recall error.
+// One option is to use the DHS data I already cleaned. 
+
+set scheme cleanplots
 
 // With TFR as axis 1
 // twoway line sp_dyn_tfrt_in year, yaxis(1)  ytitle("Total Fertility Rate")  || ///
