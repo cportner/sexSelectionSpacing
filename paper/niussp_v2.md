@@ -7,19 +7,26 @@ days**
 Economics, Seattle University, WA, USA and Center for Studies in
 Demography and Ecology, University of Washington, USA.
 
-***Summary.** In India, the male-to-female ratio at birth has been on
-the increase since the mid-1980s. **Claus Pörtner** shows that the
-increasing use of sex selection substantially lengthened birth
-intervals. This rapid lengthening, in turn, is responsible for a
+***Summary.** In India, the male-to-female ratio at birth has increased
+since the mid-1980s. 
+**Claus Pörtner** shows that the increasing use of sex selection 
+substantially lengthened birth intervals. 
+This rapid lengthening, in turn, is responsible for a
 significant downward bias in the total fertility rate compared to
 predicted cohort fertility.*
 
 **Introduction**
 
 The introduction of ultrasound in India in the mid-1980s ushered in an
-era of rapidly increasing use of sex-selective abortions. One well-known
-impact is that more boys were born relative to girls. A less-known
-effect is that each sex-selective abortion delays the next birth by 6 to
+era of rapidly increasing use of sex-selective abortions. 
+Figure XX shows the increase in the percentage boys at birth from
+1972 to 2016 and the decline in the total fertility rate from around 5.5
+to just over 2 over the same period.
+
+
+
+One well-known impact is that more boys were born relative to girls. 
+A less-known effect is that each sex-selective abortion delays the next birth by 6 to
 12 months, resulting in longer durations between births.
 
 The duration between births---also known as birth spacing---is relevant
