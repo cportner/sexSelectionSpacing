@@ -21,7 +21,6 @@ include directories
 
 use `data'/base
 
-keep if hindu 
 drop if observation_age_m >= 22 & round == 1
 drop if observation_age_m >= 22 & round == 2
 drop if observation_age_m >= 22 & round == 3
@@ -52,17 +51,15 @@ collapse b_sex if born_year >= 1972, by(born_year)
 rename born_year year
 save `data'/tmp_sr.dta, replace
 
- 
- 
-// Get background data
-
+// Get World Bank data
 wbopendata, country(ind) indicator(SP.POP.BRTH.MF;SP.DYN.TFRT.IN) year(1972:2016) clear long
 
 merge 1:1 year using `data'/tmp_sr.dta
-exit
+drop _merge
 
 // Percent boys to ensure consistency across graphs
-gen percent_boys = (sp_pop_brth_mf / (1 + sp_pop_brth_mf ))*100
+gen percent_boys_wb = (sp_pop_brth_mf / (1 + sp_pop_brth_mf ))*100
+gen percent_boys_nfhs = b_sex * 100
 
 // Graph TFR and percent boys
 
@@ -87,7 +84,8 @@ set scheme cleanplots
 
 // Sex ratio as axis 1
 twoway ///
-    line percent_boys year, yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
+    line percent_boys_wb year, yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
+    lowess percent_boys_nfhs year, yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
 	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2))  || ///
     , legend(label(1 "Sex Ratio") label(2 "Total Fertility Rate") ring(0)) ///
     yscale(r(0 6) axis(2)) yscale(r(50 53) axis(1)) ///
