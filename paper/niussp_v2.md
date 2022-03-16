@@ -26,7 +26,7 @@ predicted cohort fertility.*
 
 The introduction of ultrasound in India in the mid-1980s ushered in an
 era of increasing use of sex-selective abortions. 
-Figure [-@fig:sr-tfr] shows the increase in the percentage boys at birth for
+Figure [-@fig:sr-tfr] shows the percentage boys at birth for
 Hindu women from 1972 to 2016.
 The sex ratio is elevated even before the mid-1980s mainly 
 because of a combination of recall bias, where deceased girls are 
