@@ -482,6 +482,12 @@ FHRESULTS_HIGHEST := \
 
 FHRESULTS := $(FHRESULTS_HIGHEST) $(FHRESULTS_OTHER)
 
+STERILIZATIONRESULTS := \
+    $(foreach spell, 3 4, \
+    $(foreach educ, low med high highest, \
+    $(foreach per, $(PERIODS), \
+    $(DAT)/sterilization_results_spell$(spell)_g$(per)_$(educ).ster ) ) )
+
 FHTARGET_OTHER := \
     $(foreach educ, low med high, \
     $(foreach per, $(PERIODS), \
@@ -508,10 +514,15 @@ $(TFRTARGET) : $(COD)/an_fertility_rate.do \
 $(FHRESULTS) : $(COD)/an_fertility_hazard.do \
  $(DAT)/base.dta
 	cd $(COD); stata-se -b -q $(<F)	
+	
+# Sterilization model estimation results
+$(STERILIZATIONRESULTS) : $(COD)/an_sterilisation.do \
+ $(DAT)/base.dta
+	cd $(COD); stata-se -b -q $(<F)	
 
 # Hazard model predictions
 $(FHTARGET) : $(COD)/an_fertility_hazard_predict.do \
- $(FHRESULTS) $(DAT)/base.dta
+ $(FHRESULTS) $(STERILIZATIONRESULTS) $(DAT)/base.dta
 	cd $(COD); nice stata-se -b -q $(<F)	
   
 # Table of predictions
