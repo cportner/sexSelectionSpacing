@@ -10,6 +10,7 @@ file close _all // easier, in case something went wrong with last file write (St
 capture program drop _all
 
 include directories
+set scheme cleanplots
  
 // Try sex ratio from NFHS data
 
@@ -69,8 +70,6 @@ gen percent_boys_nfhs = b_sex * 100
 // is likely the result of mortality combined with recall error.
 // One option is to use the DHS data I already cleaned. 
 
-set scheme cleanplots
-
 // With TFR as axis 1
 // twoway line sp_dyn_tfrt_in year, yaxis(1)  ytitle("Total Fertility Rate")  || ///
 //     line percent_boys year, yaxis(2)  ytitle("Sex Ratio (% Boys)", axis(2)) || ///
@@ -83,18 +82,29 @@ set scheme cleanplots
 
 
 // Sex ratio as axis 1
+// twoway ///
+//     line percent_boys_wb year, yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
+//     lowess percent_boys_nfhs year, yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
+// 	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2))  || ///
+//     , legend(label(1 "Sex Ratio") label(2 "Total Fertility Rate") ring(0)) ///
+//     yscale(r(0 6) axis(2)) yscale(r(50 53) axis(1)) ///
+//     ylabel(0(1)6, axis(2)) ylabel(50(0.5)53, axis(1)) ///
+//     plotregion(margin(zero)) yline(51.2195122, axis(1)) ///
+//     note("Source: World Bank Open Databases") ///
+//     text(51.1 1972 "Natural sex ratio", yaxis(1) color(gs8) placement(east))
+
 twoway ///
-    line percent_boys_wb year, yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
-    lowess percent_boys_nfhs year, yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
+    lowess percent_boys_nfhs year, bw(0.7) yaxis(1)  ytitle("Sex Ratio (% Boys)", axis(1)) || ///
 	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2))  || ///
-    , legend(label(1 "Sex Ratio") label(2 "Total Fertility Rate") ring(0)) ///
+    , legend(label(1 "Sex Ratio for Hindu Women") label(2 "Total Fertility Rate for India") ring(0)) ///
     yscale(r(0 6) axis(2)) yscale(r(50 53) axis(1)) ///
     ylabel(0(1)6, axis(2)) ylabel(50(0.5)53, axis(1)) ///
     plotregion(margin(zero)) yline(51.2195122, axis(1)) ///
-    note("Source: World Bank Open Databases") ///
+    note("Sources: World Bank Open Databases and National Family and Health Surveys 1 through 4") ///
     text(51.1 1972 "Natural sex ratio", yaxis(1) color(gs8) placement(east))
 
-graph export `figures'/n_iussp_sr_tfr.png, replace
+
+graph export `figures'/n_iussp_sr_tfr.pdf, replace fontface(Palatino) 
 
 
 

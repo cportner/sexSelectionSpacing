@@ -1,3 +1,10 @@
+---
+bibliography: sex_selection_spacing.bib
+csl: journal-of-development-economics.csl
+link-citations: true
+...
+
+
 **Sex selective abortion in India: a practice that continues to our
 days**
 
@@ -18,14 +25,19 @@ predicted cohort fertility.*
 **Introduction**
 
 The introduction of ultrasound in India in the mid-1980s ushered in an
-era of rapidly increasing use of sex-selective abortions. 
-Figure XX shows the increase in the percentage boys at birth from
-1972 to 2016 and the decline in the total fertility rate from around 5.5
-to just over 2 over the same period.
+era of increasing use of sex-selective abortions. 
+Figure [-@fig:sr-tfr] shows the increase in the percentage boys at birth for
+Hindu women from 1972 to 2016.
+The sex ratio is elevated even before the mid-1980s mainly 
+because of a combination of recall bias, where deceased girls are 
+less likely to be reported, and a higher mortality among girls,
+but the increase starting in the mid-1980s is clear.
+Figure [-@fig:sr-tfr] also shows the decline in India's total fertility 
+rate from around 5.5 to just over 2 over the same period.
+
+![Sex Ratio and Total Fertility Rate in India](../figures/n_iussp_sr_tfr.pdf){#fig:sr-tfr width=100%}
 
 
-
-One well-known impact is that more boys were born relative to girls. 
 A less-known effect is that each sex-selective abortion delays the next birth by 6 to
 12 months, resulting in longer durations between births.
 
