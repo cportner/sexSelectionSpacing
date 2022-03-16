@@ -9,6 +9,8 @@
 *.out
 *.aux
 *.pdf
+*.bbl
+*.blg
 
 * Ignore data files
 *.dta
