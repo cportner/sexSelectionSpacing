@@ -17,7 +17,7 @@ set scheme cleanplots
 
 
 /*-------------------------------------------------------------------*/
-/* LOADING DATA AND CREATING NEW VARIABLES                           */
+/* LOADING BASE DATA AND CREATING NEW VARIABLES                      */
 /*-------------------------------------------------------------------*/
 
 use `data'/base
@@ -29,10 +29,8 @@ drop if observation_age_m >= 22 & round == 4
 
 // 524,761 before / 395,695
 
-
 // survey information
 gen survey = round // Round is now calculated in crBase.do
-
 
 
 /*-------------------------------------------------------------------*/
@@ -105,6 +103,48 @@ twoway ///
 
 
 graph export `figures'/n_iussp_sr_tfr.pdf, replace fontface(Palatino) 
+
+
+
+/*-------------------------------------------------------------------*/
+/* REPRODUCE RESULTS PLOTS   							             */
+/*-------------------------------------------------------------------*/
+
+// This is based on code from an_bootstrap_graph_all.do
+
+// Weird Stata behavior; you can write my_matrix[1,2], but not my_matrix[1,"var_name"]
+// when you want to extract a scalar.
+// Need to get col number first using variable name, then call matrix (grumble, grumble)
+// program that takes a matrix and a name and returns the column number
+capture program drop _all
+program find_col, rclass
+    args mat_name name
+    local col_names : colfullnames `mat_name'
+    tokenize `col_names'
+    local i = 1
+    local found = 0
+    while "``i''" != "" & `found' == 0 {
+        if "`name'" == "``i''" {
+            return scalar col_num = `i' 
+            local found = 1
+        }
+        local i = `i' + 1
+    }
+end
+
+// Load bootstrap results and create matrices.
+foreach educ in "low" "highest" {
+	forvalues period = 1/4 {
+		clear results // Stupid Stata - calling bstat after using the data does not clear old bstat
+		use `data'/bs_s3_g`period'_`educ'_all, clear
+		quietly bstat
+	
+		// Relevant matrices to extract
+		// point estimates e(b)
+		matrix b_s`spell'_g`period'_`educ' = e(b)
+    }
+}
+
 
 
 
