@@ -6,6 +6,9 @@
 *.log
 *.eps
 *.png
+*.out
+*.aux
+*.pdf
 
 * Ignore data files
 *.dta
