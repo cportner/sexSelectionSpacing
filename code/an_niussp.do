@@ -112,7 +112,7 @@ graph export `figures'/niussp_sr_tfr.pdf, replace fontface(Palatino)
 
 set scheme s1mono
 
-// This is based on code from an_bootstrap_graph_percentiles.do
+// This is based on code from an_bootstrap_graph_percentiles.do / an_bootstrap_graph_percentiles-typesetting.do
 
 // Weird Stata behavior; you can write my_matrix[1,2], but not my_matrix[1,"var_name"]
 // when you want to extract a scalar.
@@ -172,8 +172,10 @@ forval i = 1/3 {
 // Generate labels for legends
 local label "order(1 "2 Girls" 2 "1 Boy/" "1 Girl" 3 "2 Boys") cols(2) span "
 local title "Third Spell"
-local bi_title1 "{bf: 25th/50th/75th Percentile}" 
-local bi_title2 "{bf: Birth Intervals (months)}"
+// local bi_title1 "{bf: 25th/50th/75th Percentile}" 
+// local bi_title2 "{bf: Birth Intervals (months)}"
+local bi_title1 "{bf: 75th Percentile Birth}" 
+local bi_title2 "{bf: Intervals (months)}"
 local sr_title1 "{bf: Sex Ratio}" 
 local sr_title2 "{bf: (% Boys)}"
 local pp_title1 "{bf: Probability of}" 
@@ -181,7 +183,9 @@ local pp_title2 "{bf: a Next Birth}"
 local fxsize    "fxsize(64)"
 
 // Scales 
-loc spacing_low  = 18
+// loc spacing_low  = 18
+// loc spacing_high = 72
+loc spacing_low  = 36
 loc spacing_high = 72
 loc sr_low  = 30
 loc sr_high = 80            
@@ -203,12 +207,6 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 }
 			
 twoway line `p25' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-	 || ///
-line `p50' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-	 || ///
-line `p75' c1, sort  ///
 	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
 	 || ///
 	 , name(interval_low, replace) ///
@@ -260,12 +258,6 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 twoway line `p25' c1, sort  ///
 	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
 	 || ///
-line `p50' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-	 || ///
-line `p75' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-	 || ///
 	 , name(interval_highest, replace) ///
 	 title("Urban Women With 12 or" "More Years of Education", size(medium)) ///
 	 legend(`label' symxsize(*1) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize) ///				 
@@ -300,7 +292,7 @@ twoway line `any' c1, sort ///
 
 // Combine by variable first, then combine all variables    
 gr combine interval_low interval_highest , /// 
-	row(1) ycommon name(interval, replace) fysize(70) imargin(0 2 0 0)
+	row(1) ycommon name(interval, replace) fysize(50) imargin(0 2 0 0)
 
 gr combine pct_low pct_highest , ///
 	row(1) ycommon  name(pct, replace) fysize(25) imargin(0 2 0 0)
@@ -309,11 +301,10 @@ gr combine any_low any_highest , ///
 	row(1) ycommon  name(any, replace) fysize(32) imargin(0 2 0 0)
 
 gr combine interval pct any  , ///
-	col(1) xcommon ysize(9) xsize(6.5) imargin(0 0 3 0) iscale(*1.2)
+	col(1) xcommon ysize(8) xsize(6.5) imargin(0 0 3 0) iscale(*1.2)
 
 graph export `figures'/niussp_spell.pdf, replace fontface(Palatino) 
 
-exit
 
 
 
@@ -322,86 +313,4 @@ exit
 
 
 
-foreach educ in "low" "highest" {
-    foreach where in "urban" "rural" {
-    
-        // Graph names for combining
-        loc gr_interval ""
-        loc gr_pct ""
-        loc gr_any ""
 
-        loc spell = 3
-
-            // Set up data from matrix
-            clear // Needed because we are generating new data sets based on matrices in svmat below
-            matrix tmp_mat = (1, b_s`spell'_g1_`educ' \ 2, b_s`spell'_g2_`educ' \ 3, b_s`spell'_g3_`educ' \  4, b_s`spell'_g4_`educ')
-            svmat tmp_mat, names( col )
-        
-            // Generate y variables in reverse order to match line pattern
-            foreach stat in "p25" "p50" "p75" "pct" "any" {
-                loc `stat' = ""
-                forval i = `spell'(-1)1 {
-                    loc g = `i' - 1
-                    loc `stat' = "``stat'' `stat'_`where'_g`g' "
-                }
-            }
-                        
-            twoway line `p25' c1, sort  ///
-                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-                 || ///
-            line `p50' c1, sort  ///
-                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-                 || ///
-            line `p75' c1, sort  ///
-                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-                 || ///
-                 , name(interval_`spell', replace) ///
-                 title(`title', size(medium)) ///
-                 legend(`label' symxsize(*1) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize) ///
-                 ytitle("`bi_title1'" "`bi_title2'") yscale(r(`spacing_low' `spacing_high')) ///
-                 ylabel(`spacing_low'(6)`spacing_high' ,grid)  ///
-                 plotregion(style(none)) xscale(off) ///
-                 fysize(120) `fxsize'
-
-            
-            twoway line `pct' c1, sort ///
-                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-                legend(off) plotregion(style(none)) xscale(off) ///
-                ytitle("`sr_title1'" "`sr_title2'") yscale(r(`sr_low' `sr_high')) ylabel(`sr_low'(10)`sr_high', grid) ///
-                yline(51.2195122) ///
-                name(pct_`spell', replace) fysize(60) `fxsize'
-
-            twoway line `any' c1, sort ///
-                lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-                legend(off) ///
-                plotregion(style(none)) ///
-                xtitle("") ///
-                xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-                ytitle("`pp_title1'" "`pp_title2'") yscale(range(0 1)) ylabel(0.25(0.25)1, grid) ///
-                name(any_`spell', replace) fysize(80) `fxsize'
-
-            // To account for differences in number of spells covered
-            // Stata graph combine does not support wildcards
-            loc gr_interval "`gr_interval' interval_`spell'"
-            loc gr_pct      "`gr_pct' pct_`spell'"
-            loc gr_any      "`gr_any' any_`spell'"
-
-
-        // Combine by variable across spells first, then combine all variables    
-        gr combine `gr_interval' , /// 
-            row(1) ycommon name(interval, replace) fysize(70) imargin(0 2 0 0)
-    
-        gr combine `gr_pct' , ///
-            row(1) ycommon  name(pct, replace) fysize(25) imargin(0 2 0 0)
-    
-        gr combine `gr_any' , ///
-            row(1) ycommon  name(any, replace) fysize(32) imargin(0 2 0 0)
-
-        gr combine interval pct any  , ///
-            col(1) xcommon ysize(9) xsize(6.5) imargin(0 0 3 0) iscale(*1.2)
-    
-        graph export `figures'/bs_`educ'_`where'.eps, replace fontface(Palatino) 
-
-    }
-    
-}
