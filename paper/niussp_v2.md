@@ -35,7 +35,7 @@ but the increase starting in the mid-1980s is clear.
 Figure [-@fig:sr-tfr] also shows the decline in India's total fertility 
 rate from around 5.5 to just over 2 over the same period.
 
-![Sex Ratio and Total Fertility Rate in India](../figures/n_iussp_sr_tfr.pdf){#fig:sr-tfr width=100%}
+![Sex Ratio and Total Fertility Rate in India](../figures/niussp_sr_tfr.pdf){#fig:sr-tfr width=100%}
 
 
 A less-known effect is that each sex-selective abortion delays the next birth by 6 to
