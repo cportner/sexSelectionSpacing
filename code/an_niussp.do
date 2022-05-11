@@ -221,8 +221,7 @@ twoway line `p25' c1, sort  ///
 	lpattern(`pattern') lwidth(medthin..) ///
 	 || ///
 	 , name(interval_low, replace) ///
-	 title("Rural Hindu Women" "With No Education", size(medium)) ///
-	 legend(`label' symxsize(*2.8) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize) ///				 
+	 legend(`label' symxsize(*2.8) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
 	 ytitle("`bi_title1'" "`bi_title2'") ///
 	 yscale(r(`spacing_low' `spacing_high')) ///
 	 ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  ///
@@ -237,7 +236,7 @@ twoway line `pct' c1, sort ///
 	ytitle("`sr_title1'" "`sr_title2'") ///
 	yscale(r(`sr_low' `sr_high')) ///
 	ylabel(`sr_low'(10)`sr_high', grid angle(0)) ///
-	yline(51.2195122) ///
+	yline(51.2195122, lcolor(gs10)) ///
 	name(pct_low, replace) fysize(60) `fxsize'
 
 // 	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
@@ -272,8 +271,7 @@ twoway line `p25' c1, sort  ///
 	lpattern(`pattern') lwidth(medthin..) ///
 	 || ///
 	 , name(interval_highest, replace) ///
-	 title("Urban Hindu Women With 12" "or More Years of Education", size(medium)) ///
-	 legend(`label' symxsize(*2.8) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize) ///				 
+	 legend(`label' symxsize(*2.8) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///				 
 	 ytitle("`bi_title1'" "`bi_title2'") ///
 	 yscale(r(`spacing_low' `spacing_high')) ///
 	 ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  ///
@@ -287,7 +285,7 @@ twoway line `pct' c1, sort ///
 	ytitle("`sr_title1'" "`sr_title2'") ///
 	yscale(r(`sr_low' `sr_high')) ///
 	ylabel(`sr_low'(10)`sr_high', grid angle(0)) ///
-	yline(51.2195122) ///
+	yline(51.2195122, lcolor(gs10)) ///
 	name(pct_highest, replace) fysize(60) `fxsize'
 
 twoway line `any' c1, sort ///
