@@ -172,7 +172,8 @@ forval i = 1/3 {
 	if `i' == 4 loc pattern = "`pattern' shortdash"
 }
 // Generate labels for legends
-local label "order(1 "2 Girls" 2 "1 Boy/" "1 Girl" 3 "2 Boys") cols(2) span "
+//local label "order(1 "2 Girls" 2 "1 Boy/" "1 Girl" 3 "2 Boys") cols(2) span "
+local label "order(1 "2 Daughters" 2 "1 Son/" "1 Daughter" 3 "2 Sons") cols(2) span "
 local title "Third Spell"
 // Original
 // local bi_title1 "{bf: 25th/50th/75th Percentile}" 
@@ -186,10 +187,10 @@ local title "Third Spell"
 // Without bold and only 75th 
 local bi_title1 "75th Percentile Birth" 
 local bi_title2 "Intervals (months)"
-local sr_title1 "Sex Ratio" 
-local sr_title2 "(% Boys)"
+local sr_title1 "Sex Ratio of Third" 
+local sr_title2 "Births (% Boys)"
 local pp_title1 "Probability of" 
-local pp_title2 "a Next Birth"
+local pp_title2 "a Third Birth"
 local fxsize    "fxsize(64)"
 
 // Scales 
@@ -216,39 +217,40 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 	}
 }
 			
-// 	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-twoway line `p25' c1, sort  ///
+twoway line `any' c1, sort ///
 	lpattern(`pattern') lwidth(medthin..) ///
-	 || ///
-	 , name(interval_low, replace) ///
-	 legend(`label' symxsize(*2.8) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
-	 ytitle("`bi_title1'" "`bi_title2'") ///
-	 yscale(r(`spacing_low' `spacing_high')) ///
-	 ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  ///
-	 plotregion(style(none)) xscale(off) ///
-	 fysize(120) `fxsize'
+    legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
+	plotregion(style(none)) ///
+	xscale(off) ///
+    xlabel( , nogextend) ///
+	ytitle("`pp_title1'" "`pp_title2'", size(small)) ///
+	yscale(range(0 1)) ///
+	ylabel(0 ".00" 0.25 ".25" 0.50 ".50" 0.75 ".75" 1 "1.0", grid angle(0) labsize(*.84)) ///
+	name(any_low, replace) fysize(100) `fxsize'
 
-
-// 	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
 twoway line `pct' c1, sort ///
 	lpattern(`pattern') lwidth(medthin..) ///
-	legend(off) plotregion(style(none)) xscale(off) ///
-	ytitle("`sr_title1'" "`sr_title2'") ///
+	legend(off) /// 
+	plotregion(style(none)) ///
+	xscale(off) ///
+	ytitle("`sr_title1'" "`sr_title2'", size(small)) ///
 	yscale(r(`sr_low' `sr_high')) ///
 	ylabel(`sr_low'(10)`sr_high', grid angle(0)) ///
 	yline(51.2195122, lcolor(gs10)) ///
 	name(pct_low, replace) fysize(60) `fxsize'
 
-// 	lpattern(`pattern') lwidth(medthin..) lcolor(black...) ///
-twoway line `any' c1, sort ///
+twoway line `p25' c1, sort  ///
 	lpattern(`pattern') lwidth(medthin..) ///
-	legend(off) ///
+	 || ///
+	 , name(interval_low, replace) ///
+    legend(off) ///
 	plotregion(style(none) margin(2 2 0 2)) ///	
 	xtitle("Period") ///
 	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-	ytitle("`pp_title1'" "`pp_title2'") yscale(range(0 1)) ///
-	ylabel(0.25 ".25" 0.50 ".50" 0.75 ".75" 1 "1", grid angle(0) labsize(*.84)) ///
-	name(any_low, replace) fysize(80) `fxsize'
+    ytitle("`bi_title1'" "`bi_title2'", size(small)) ///
+	yscale(r(`spacing_low' `spacing_high')) ///
+	ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  ///
+	fysize(100) `fxsize'
 
 
 
@@ -266,52 +268,55 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 		loc `stat' = "``stat'' `stat'_urban_g`g' "
 	}
 }
-			
-twoway line `p25' c1, sort  ///
+
+twoway line `any' c1, sort ///
 	lpattern(`pattern') lwidth(medthin..) ///
-	 || ///
-	 , name(interval_highest, replace) ///
-	 legend(`label' symxsize(*2.8) size(small) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///				 
-	 ytitle("`bi_title1'" "`bi_title2'") ///
-	 yscale(r(`spacing_low' `spacing_high')) ///
-	 ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  ///
-	 plotregion(style(none)) xscale(off) ///
-	 fysize(120) `fxsize'
-
-
+	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
+	plotregion(style(none)) ///
+	xscale(off) ///
+    xlabel( , nogextend) ///
+	ytitle("`pp_title1'" "`pp_title2'", size(small)) ///
+	yscale(range(0 1)) ///
+	ylabel(0 ".00" 0.25 ".25" 0.50 ".50" 0.75 ".75" 1 "1.0", grid angle(0) labsize(*.84)) ///
+	name(any_highest, replace) fysize(100) `fxsize'
+			
 twoway line `pct' c1, sort ///
 	lpattern(`pattern') lwidth(medthin..) ///
-	legend(off) plotregion(style(none)) xscale(off) ///
-	ytitle("`sr_title1'" "`sr_title2'") ///
+	legend(off) ///
+	plotregion(style(none)) ///
+	xscale(off) ///
+	ytitle("`sr_title1'" "`sr_title2'", size(small)) ///
 	yscale(r(`sr_low' `sr_high')) ///
 	ylabel(`sr_low'(10)`sr_high', grid angle(0)) ///
 	yline(51.2195122, lcolor(gs10)) ///
 	name(pct_highest, replace) fysize(60) `fxsize'
 
-twoway line `any' c1, sort ///
+twoway line `p25' c1, sort  ///
 	lpattern(`pattern') lwidth(medthin..) ///
-	legend(off) ///
+	 || ///
+	 , name(interval_highest, replace) ///	
+	legend(off) ///	
 	plotregion(style(none) margin(2 2 0 2)) ///	
 	xtitle("Period") ///
 	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
-	ytitle("`pp_title1'" "`pp_title2'") yscale(range(0 1)) ///
-	ylabel(0.25 ".25" 0.50 ".50" 0.75 ".75" 1 "1", grid angle(0) labsize(*.84)) ///
-	name(any_highest, replace) fysize(80) `fxsize'
-
+	ytitle("`bi_title1'" "`bi_title2'", size(small)) ///
+	yscale(r(`spacing_low' `spacing_high')) ///
+	ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  ///
+	fysize(100) `fxsize'
 
 
 
 // Combine by variable first, then combine all variables    
-gr combine interval_low interval_highest , /// 
-	row(1) ycommon name(interval, replace) fysize(50) imargin(0 2 0 0)
+gr combine any_low any_highest , ///
+	row(1) ycommon  name(any, replace) fysize(40) imargin(0 2 0 0)
 
 gr combine pct_low pct_highest , ///
 	row(1) ycommon  name(pct, replace) fysize(25) imargin(0 2 0 0)
 
-gr combine any_low any_highest , ///
-	row(1) ycommon  name(any, replace) fysize(32) imargin(0 2 0 0)
+gr combine interval_low interval_highest , /// 
+	row(1) ycommon name(interval, replace) fysize(40) imargin(0 2 0 0)
 
-gr combine interval pct any  , ///
+gr combine any pct interval , ///
 	col(1) xcommon ysize(8) xsize(6.5) imargin(0 0 3 0) iscale(*1.2)
 
 graph export `figures'/niussp_spell.pdf, replace fontface(Palatino) 
