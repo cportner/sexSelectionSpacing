@@ -13,7 +13,7 @@ link-citations: true
 Economics, Seattle University, WA, USA, and Center for Studies in
 Demography and Ecology, University of Washington, USA.
 
-* **Summary.** In India, the male-to-female ratio at birth has increased
+***Summary.** In India, the male-to-female ratio at birth has increased
 since the mid-1980s. 
 **Claus Pörtner** ties the continuously growing use of sex selection to India's falling 
 fertility among well-educated women. 
@@ -21,8 +21,7 @@ He shows how sex selection  substantially lengthened birth intervals, which, in 
 responsible for a significant downward bias in the 
 total fertility rate compared to the predicted cohort fertility.
 Less-educated women still have relatively high fertility and short birth intervals when 
-they have no sons, negatively affecting girls' survival chances.
-*
+they have no sons, negatively affecting girls' survival chances.*
 
 ### Introduction {.unlisted .unnumbered}
 
