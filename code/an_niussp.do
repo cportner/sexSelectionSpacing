@@ -92,14 +92,14 @@ gen percent_boys_nfhs = b_sex * 100
 //     text(51.1 1972 "Natural sex ratio", yaxis(1) color(gs8) placement(east))
 
 twoway ///
-    lowess percent_boys_nfhs year, bw(0.7) yaxis(1)  ytitle("Sex Ratio at Birth (% Boys)", axis(1) color(red*1.2)) || ///
+    lowess percent_boys_nfhs year, bw(0.7) yaxis(1)  ytitle("Percentage Boys at Birth", axis(1) color(red*1.2)) || ///
 	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2) color(eltblue))  || ///
-    , legend(label(1 "Sex Ratio for Hindu Women") label(2 "Total Fertility Rate for India") ring(0)) ///
+    , legend(label(1 "Percentage Boys for Hindu Women") label(2 "Total Fertility Rate for India") ring(0)) ///
     yscale(r(0 6) axis(2)) yscale(r(50 53) axis(1)) ///
     ylabel(0(1)6, axis(2)) ylabel(50(0.5)53, axis(1)) ///
     plotregion(margin(zero)) yline(51.2195122, axis(1)) ///
-    note("Sources: World Bank Open Databases and National Family and Health Surveys 1 through 4") ///
-    text(51.1 1972 "Natural sex ratio", yaxis(1) color(gs8) placement(east))
+    note("{it:Sources: World Bank Open Databases and National Family and Health Surveys 1 through 4}") ///
+    text(51.1 1972 "Natural percentage boys", yaxis(1) color(gs8) placement(east))
 
 
 graph export `figures'/niussp_sr_tfr.pdf, replace fontface(Palatino) 
@@ -187,8 +187,8 @@ local title "Third Spell"
 // Without bold and only 75th 
 local bi_title1 "75th Percentile Birth" 
 local bi_title2 "Intervals (months)"
-local sr_title1 "Sex Ratio of Third" 
-local sr_title2 "Births (% Boys)"
+local sr_title1 "Percentage Boys" 
+local sr_title2 "of Third Births"
 local pp_title1 "Probability of" 
 local pp_title2 "a Third Birth"
 local fxsize    "fxsize(64)"
@@ -322,11 +322,128 @@ gr combine any pct interval , ///
 graph export `figures'/niussp_spell.pdf, replace fontface(Palatino) 
 
 
+// Try version split by panel
+
+
+// Rural - low education
+// Set up data from matrix
+clear // Needed because we are generating new data sets based on matrices in svmat below
+matrix tmp_mat = (1, b_s3_g1_low \ 2, b_s3_g2_low \ 3, b_s3_g3_low \  4, b_s3_g4_low)
+svmat tmp_mat, names( col )
+
+// Generate y variables in reverse order to match line pattern
+foreach stat in "p25" "p50" "p75" "pct" "any" {
+	loc `stat' = ""
+	forval i = 3(-1)1 {
+		loc g = `i' - 1
+		loc `stat' = "``stat'' `stat'_rural_g`g' "
+	}
+}
+			
+twoway line `any' c1, sort ///
+	lpattern(`pattern') lwidth(medthin..) ///
+    legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
+	plotregion(style(none)) ///
+	xtitle("Period") ///
+	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "', nogextend) ///
+	ytitle("Probability of a Third Birth") ///
+	yscale(range(0 1)) ///
+	ylabel(0 ".00" 0.25 ".25" 0.50 ".50" 0.75 ".75" 1 "1.0", grid angle(0) labsize(*.84)) ///
+	name(any_low, replace) 
+
+twoway line `pct' c1, sort ///
+	lpattern(`pattern') lwidth(medthin..) ///
+    legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
+	plotregion(style(none)) ///
+	xtitle("Period") ///
+	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "', nogextend) ///
+	ytitle("Percentage Boys of Third Births") ///
+	yscale(r(`sr_low' `sr_high')) ///
+	ylabel(`sr_low'(10)`sr_high', grid angle(0)) ///
+	yline(51.2195122, lcolor(gs10)) ///
+	name(pct_low, replace) 
+
+twoway line `p25' c1, sort  ///
+	lpattern(`pattern') lwidth(medthin..) ///
+	 || ///
+	 , name(interval_low, replace) ///
+    legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
+	plotregion(style(none)) ///	
+	xtitle("Period") ///
+	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
+    ytitle("75th Percentile Birth Intervals (months)") ///
+	yscale(r(`spacing_low' `spacing_high')) ///
+	ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  
 
 
 
+// Urban - highest education
+// Set up data from matrix
+clear // Needed because we are generating new data sets based on matrices in svmat below
+matrix tmp_mat = (1, b_s3_g1_highest \ 2, b_s3_g2_highest \ 3, b_s3_g3_highest \  4, b_s3_g4_highest)
+svmat tmp_mat, names( col )
 
+// Generate y variables in reverse order to match line pattern
+foreach stat in "p25" "p50" "p75" "pct" "any" {
+	loc `stat' = ""
+	forval i = 3(-1)1 {
+		loc g = `i' - 1
+		loc `stat' = "``stat'' `stat'_urban_g`g' "
+	}
+}
 
+twoway line `any' c1, sort ///
+	lpattern(`pattern') lwidth(medthin..) ///
+	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
+	plotregion(style(none)) ///
+	xtitle("Period") ///
+	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "', nogextend) ///
+	ytitle("Probability of a Third Birth") ///
+	yscale(range(0 1)) ///
+	ylabel(0 ".00" 0.25 ".25" 0.50 ".50" 0.75 ".75" 1 "1.0", grid angle(0) labsize(*.84)) ///
+	name(any_highest, replace) 
+			
+twoway line `pct' c1, sort ///
+	lpattern(`pattern') lwidth(medthin..) ///
+	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
+	plotregion(style(none)) ///
+	xtitle("Period") ///
+	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "', nogextend) ///
+	ytitle("Percentage Boys of Third Births") ///
+	yscale(r(`sr_low' `sr_high')) ///
+	ylabel(`sr_low'(10)`sr_high', grid angle(0)) ///
+	yline(51.2195122, lcolor(gs10)) ///
+	name(pct_highest, replace) 
+
+twoway line `p25' c1, sort  ///
+	lpattern(`pattern') lwidth(medthin..) ///
+	 || ///
+	 , name(interval_highest, replace) ///	
+	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
+	plotregion(style(none)) ///	
+	xtitle("Period") ///
+	xlabel(1 `" "1972-" "1984" "' 2 `" "1985-" "1994" "' 3 `" "1995-" "2004" "' 4 `" "2005-" "2016" "') ///
+	ytitle("75th Percentile Birth Intervals (months)") ///
+	yscale(r(`spacing_low' `spacing_high')) ///
+	ylabel(`spacing_low'(6)`spacing_high' ,grid angle(0))  
+
+gr combine any_low any_highest , ///
+	row(1) ycommon xcommon imargin(0 5 0 0) ///
+    note("{it:Source: National Family and Health Surveys 1 through 4}", position(6)) ///
+	
+graph export `figures'/niussp_spell_parity.pdf, replace fontface(Palatino) 
+
+gr combine pct_low pct_highest , ///
+	row(1) ycommon xcommon imargin(0 5 0 0) ///
+    note("{it:Source: National Family and Health Surveys 1 through 4}", position(6)) ///
+
+graph export `figures'/niussp_spell_sex.pdf, replace fontface(Palatino) 
+
+gr combine interval_low interval_highest , /// 
+	row(1) ycommon xcommon imargin(0 5 0 0) ///
+    note("{it:Source: National Family and Health Surveys 1 through 4}", position(6)) ///
+
+graph export `figures'/niussp_spell_spacing.pdf, replace fontface(Palatino) 
 
 
 
