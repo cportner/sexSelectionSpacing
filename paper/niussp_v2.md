@@ -9,12 +9,12 @@ link-citations: true
 
 *Claus C. Pörtner*
 
-**BIO.** Department of Economics, Albers School of Business and
+**Affiliation.** Department of Economics, Albers School of Business and
 Economics, Seattle University, WA, USA, and Center for Studies in
 Demography and Ecology, University of Washington, USA.
 
-***Summary.** In India, the male-to-female ratio at birth has increased
-since the mid-1980s. 
+***Summary.** In India, the percentage of boys at birth has increased since 
+the mid-1980s. 
 **Claus Pörtner** ties the continuously growing use of sex selection to India's falling 
 fertility among well-educated women. 
 He shows how sex selection  substantially lengthened birth intervals, which, in turn, is 
@@ -39,7 +39,7 @@ However, if the desire is for one son *and* a maximum of two children, about 25 
 of  families must use sex selection to achieve both targets.
 
 
-![Sex Ratio and Total Fertility Rate in India](../figures/niussp_sr_tfr.pdf){#fig:sr-tfr width=100%}
+![Percentage of Boys at Birth and Total Fertility Rate in India](../figures/niussp_sr_tfr.pdf){#fig:sr-tfr width=80%}
 
 As striking as these overall numbers are, they obscure three critical aspects of the 
 changes in India.
@@ -56,16 +56,17 @@ The data comes from the first four National Family and Health Surveys.
 I focus on Hindu women because Hindus constitute about 80% of India's population and have 
 shown stronger son preference and higher use of sex selection than Muslims.
 
-To illustrate some of the results, Figure [-@fig:spell] shows the probability of a third 
-birth, the third birth sex ratio, and the 75th percentile birth intervals after 
-the second child for rural women with no education and urban women with 12 or more 
-years of education.
+To illustrate some of the results, Figures [-@fig:spell_parity] to [-@fig:spell_spacing] 
+show the probability of a third birth, the percentage of boys among third births, and 
+the 75th percentile birth intervals after the second child for rural women with no 
+education and urban women with 12 or more years of education.
 These two groups represent the extremes in India and exemplify the divergent behaviors in 
 response to son preference.
+Currently, the two groups constitute approximately 15% and 20% of the female
+Hindu population, respectively.
+The graphs for the other groups are available in @Portner2022.
 The analyses cover four periods: 1972--1984, 1985--1994, 1995--2004, and 2005--2016.
 
-![Two Examples of Fertility, Sex Ratios, and Birth Intervals After the First Two Births by 
-the Sex of Prior Children](../figures/niussp_spell.pdf){#fig:spell width=100%}
 
 ### Falling fertility, but son preference still affects the likelihood of a subsequent birth {.unlisted .unnumbered}
 
@@ -74,7 +75,10 @@ birth has decreased over time for all parities.
 However, the probability of having another child remained higher for women without sons 
 than for women with one or more sons, showing the continued strong son preference in India.
 
-Consistent with these general trends, both groups of women shown in Figure [-@fig:spell] 
+![Two Examples of Fertility After the First Two Births by 
+the Sex of Prior Children](../figures/niussp_spell_parity.pdf){#fig:spell_parity width=100%}
+
+Consistent with these general trends, both groups of women shown in Figure [-@fig:spell_parity] 
 show a declining likelihood of having a third child and are more likely to 
 have a third child if they have two daughters already than if they have one or two sons.
 However, more than 75% of rural women with no education still have a third birth no matter 
@@ -89,12 +93,17 @@ only daughters.
 Second, despite predictions that sex selection will eventually decline in India,
 there is no clear evidence to support this idea. 
 The most likely users of sex selection---better-educated women with no sons---continue to 
-show substantial male-biased sex ratios. 
-More concerning, increasingly male-biased sex ratios among less-educated mothers suggest 
+show substantial male-biased births. 
+More concerning, increasingly male-biased births among less-educated mothers suggest 
 that sex selection is spreading as the fertility of this group falls.
 
-The well-educated urban women in Figure [-@fig:spell] illustrate the increasingly 
-male-dominated sex ratios for mothers with no sons as access to sex selection spread. 
+![Two Examples of Percentage Boys Born After the First Two Births by 
+the Sex of Prior Children](../figures/niussp_spell_sex.pdf){#fig:spell_sex width=100%}
+
+
+The well-educated urban women in Figure [-@fig:spell_sex] illustrate how the 
+percentage of boys at birth increased for mothers with no sons as access to sex selection 
+spread. 
 For this group, we are fast approaching a situation where 80% of the third births are boys,
 reflecting that, as desired fertility declined, more and more women used sex selection
 to secure a boy before they stopped childbearing.
@@ -108,13 +117,16 @@ although this might change in the future as fertility declines further.
 
 ### Modest increases in birth intervals, except with sex selection {.unlisted .unnumbered}
 
-Based on the estimated sex ratios at birth, we can split Hindu births into two broad 
-groups.
+Based on the percentage of boys at birth, we can split Hindu births into two broad groups.
 The first group is where there is no evidence of sex selection, which includes births to
 better-educated mothers with at least one son and all less-educated mothers whether 
 they have a son or not.
 The second is where there is evidence of sex selection, which includes births to 
 better-educated mothers with no sons. 
+
+![Two Examples of Birth Intervals After the First Two Births by 
+the Sex of Prior Children](../figures/niussp_spell_spacing.pdf){#fig:spell_spacing width=100%}
+
 
 For births where sex selection is not used, the median birth intervals have increased 
 relatively little---only three to six months over the four decades---compared to around 
