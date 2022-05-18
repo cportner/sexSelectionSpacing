@@ -11,3 +11,19 @@ sexSelectionSpacing-ver1.tex: This is the shorten version of the last round subm
 to *Demography* with the changes I suggested in my appeal.
 
 
+# N-IUSSP article
+
+How to run Markdown file in this directory if you do not want to use Make.
+In either case, you need to have `pandoc` and `pandoc-crossref` installed.
+If on a Mac, I recommend [brew](https://brew.sh).
+
+To PDF: 
+`pandoc default.yaml niussp.md -o niussp.pdf --pdf-engine=xelatex -N -s --filter pandoc-crossref --citeproc`
+
+To Word:
+`pandoc default.yaml niussp.md -o niussp.docx -N -s --filter pandoc-crossref --citeproc`
+
+
+
+
+

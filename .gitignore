@@ -1,11 +1,24 @@
 * Generated files to ignore
 /tables/*.tex
 /figures/*.tex
+*.doc
+*.docx
+*.log
+*.eps
+*.png
+*.out
+*.aux
+*.pdf
+*.bbl
+*.blg
 
 * Ignore data files
 *.dta
 *.DTA
 *.ster
+
+* Ignore Mac files
+.DS_Store
 
 * Track EPS files for typesetting
 !/typesetting/figures/*.EPS
