@@ -92,8 +92,8 @@ gen percent_boys_nfhs = b_sex * 100
 //     text(51.1 1972 "Natural sex ratio", yaxis(1) color(gs8) placement(east))
 
 twoway ///
-    lowess percent_boys_nfhs year, bw(0.7) yaxis(1)  ytitle("Percentage Boys at Birth", axis(1) color(red*1.2)) || ///
-	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2) color(eltblue))  || ///
+    lowess percent_boys_nfhs year, bw(0.7) yaxis(1)  ytitle("Percentage Boys at Birth", axis(1) color(red*1.2)) lwidth(medthick) || ///
+	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2) color(eltblue)) lwidth(medthick) || ///
     , legend(label(1 "Percentage Boys for Hindu Women") label(2 "Total Fertility Rate for India") ring(0)) ///
     yscale(r(0 6) axis(2)) yscale(r(50 53) axis(1)) ///
     ylabel(0(1)6, axis(2)) ylabel(50(0.5)53, axis(1)) ///
@@ -218,7 +218,7 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 }
 			
 twoway line `any' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
     legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
 	plotregion(style(none)) ///
 	xscale(off) ///
@@ -229,7 +229,7 @@ twoway line `any' c1, sort ///
 	name(any_low, replace) fysize(100) `fxsize'
 
 twoway line `pct' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	legend(off) /// 
 	plotregion(style(none)) ///
 	xscale(off) ///
@@ -240,7 +240,7 @@ twoway line `pct' c1, sort ///
 	name(pct_low, replace) fysize(60) `fxsize'
 
 twoway line `p25' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	 || ///
 	 , name(interval_low, replace) ///
     legend(off) ///
@@ -270,7 +270,7 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 }
 
 twoway line `any' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
 	plotregion(style(none)) ///
 	xscale(off) ///
@@ -281,7 +281,7 @@ twoway line `any' c1, sort ///
 	name(any_highest, replace) fysize(100) `fxsize'
 			
 twoway line `pct' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	legend(off) ///
 	plotregion(style(none)) ///
 	xscale(off) ///
@@ -292,7 +292,7 @@ twoway line `pct' c1, sort ///
 	name(pct_highest, replace) fysize(60) `fxsize'
 
 twoway line `p25' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	 || ///
 	 , name(interval_highest, replace) ///	
 	legend(off) ///	
@@ -341,7 +341,7 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 }
 			
 twoway line `any' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
     legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
 	plotregion(style(none)) ///
 	xtitle("Period") ///
@@ -352,7 +352,7 @@ twoway line `any' c1, sort ///
 	name(any_low, replace) 
 
 twoway line `pct' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
     legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
 	plotregion(style(none)) ///
 	xtitle("Period") ///
@@ -364,7 +364,7 @@ twoway line `pct' c1, sort ///
 	name(pct_low, replace) 
 
 twoway line `p25' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	 || ///
 	 , name(interval_low, replace) ///
     legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Rural Hindu Women With No" "Education — Prior Children:") ) ///				 
@@ -393,7 +393,7 @@ foreach stat in "p25" "p50" "p75" "pct" "any" {
 }
 
 twoway line `any' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
 	plotregion(style(none)) ///
 	xtitle("Period") ///
@@ -404,7 +404,7 @@ twoway line `any' c1, sort ///
 	name(any_highest, replace) 
 			
 twoway line `pct' c1, sort ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
 	plotregion(style(none)) ///
 	xtitle("Period") ///
@@ -416,7 +416,7 @@ twoway line `pct' c1, sort ///
 	name(pct_highest, replace) 
 
 twoway line `p25' c1, sort  ///
-	lpattern(`pattern') lwidth(medthin..) ///
+	lpattern(`pattern') lwidth(medthick..) ///
 	 || ///
 	 , name(interval_highest, replace) ///	
 	legend(`label' symxsize(*2.8) size(vsmall) linegap(0.75) ring(1) position(12) region(margin(vsmall) lwidth(none)) colgap(1.5) keygap(0.5) symysize(6.5) forcesize subtitle("Urban Hindu Women With 12 or More" "Years of Education — Prior Children:" )) ///
