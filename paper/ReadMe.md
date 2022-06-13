@@ -18,10 +18,10 @@ In either case, you need to have `pandoc` and `pandoc-crossref` installed.
 If on a Mac, I recommend [brew](https://brew.sh).
 
 To PDF: 
-`pandoc default.yaml niussp.md -o niussp.pdf --pdf-engine=xelatex -N -s --filter pandoc-crossref --citeproc`
+`pandoc default.yaml niussp_v2.md -o niussp_v2.pdf --pdf-engine=xelatex -N -s --filter pandoc-crossref --citeproc`
 
 To Word:
-`pandoc default.yaml niussp.md -o niussp.docx -N -s --filter pandoc-crossref --citeproc`
+`pandoc default.yaml niussp_v2.md -o niussp_v2.docx -N -s --filter pandoc-crossref --citeproc`
 
 
 

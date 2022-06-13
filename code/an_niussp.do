@@ -11,6 +11,13 @@ capture program drop _all
 
 include directories
 set scheme cleanplots
+
+// Make blue lines slightly darker for N-IUSSP
+grstyle init
+grstyle color p2 eltblue*1.15
+grstyle color p2line eltblue*1.15
+grstyle color p2lineplot eltblue*1.15
+grstyle color p2markline eltblue*1.15
  
 // Try sex ratio from NFHS data
 
@@ -93,7 +100,7 @@ gen percent_boys_nfhs = b_sex * 100
 
 twoway ///
     lowess percent_boys_nfhs year, bw(0.7) yaxis(1)  ytitle("Percentage Boys at Birth", axis(1) color(red*1.2)) lwidth(medthick) || ///
-	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2) color(eltblue)) lwidth(medthick) || ///
+	line sp_dyn_tfrt_in year, yaxis(2)  ytitle("Total Fertility Rate", axis(2) color(eltblue*1.15)) lwidth(medthick) || ///
     , legend(label(1 "Percentage Boys for Hindu Women") label(2 "Total Fertility Rate for India") ring(0)) ///
     yscale(r(0 6) axis(2)) yscale(r(50 53) axis(1)) ///
     ylabel(0(1)6, axis(2)) ylabel(50(0.5)53, axis(1)) ///
