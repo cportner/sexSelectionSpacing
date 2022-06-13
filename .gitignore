@@ -11,6 +11,15 @@
 *.pdf
 *.bbl
 *.blg
+*.gz
+*.fff
+*.ttt
+*.lot
+*.lof
+*.snm
+*.toc
+*.nav
+.Rhistory
 
 * Ignore data files
 *.dta
